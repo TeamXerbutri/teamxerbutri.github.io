@@ -51,41 +51,41 @@ function hideMenu(){
 }
 
 function laadMeer(lastid, number, small){
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            //var response = this.responseText;
-            //var d = document.getElementById('ld');
-            //d.parentNode.removeChild(d);
-            var e = document.getElementById('oc');
-            e.insertAdjacentHTML('beforeend', this.responseText);
-            ladenKlaar=true;
-            if(!filterActive.brug&&!filterActive.gebouw&&!filterActive.spoor&&!filterActive.tunnel){
-                //nothing
-            }
-            else{
-                if(filterActive.brug){
-                    setDisplayFilter('brugt', 'none');
-                }
-                if(filterActive.gebouw){
-                    setDisplayFilter('gebouwt', 'none');
-                }
-                if(filterActive.spoor){
-                    setDisplayFilter('spoort', 'none');
-                }
-                if(filterActive.tunnel){
-                    setDisplayFilter('tunnelt', 'none');
-                }
-            }
-            }   
-        };
-        var lastidx=encodeURIComponent(lastid);
-        var numberx = encodeURIComponent(number);
-        var smallx = encodeURIComponent(small);
-        var params="params="+lastidx+","+numberx+","+smallx;
-        xhttp.open("POST", "getmoreicons", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send(params);
+    // var xhttp = new XMLHttpRequest();
+    // xhttp.onreadystatechange = function() {
+    //     if (this.readyState === 4 && this.status === 200) {
+    //         //var response = this.responseText;
+    //         //var d = document.getElementById('ld');
+    //         //d.parentNode.removeChild(d);
+    //         var e = document.getElementById('oc');
+    //         e.insertAdjacentHTML('beforeend', this.responseText);
+    //         ladenKlaar=true;
+    //         if(!filterActive.brug&&!filterActive.gebouw&&!filterActive.spoor&&!filterActive.tunnel){
+    //             //nothing
+    //         }
+    //         else{
+    //             if(filterActive.brug){
+    //                 setDisplayFilter('brugt', 'none');
+    //             }
+    //             if(filterActive.gebouw){
+    //                 setDisplayFilter('gebouwt', 'none');
+    //             }
+    //             if(filterActive.spoor){
+    //                 setDisplayFilter('spoort', 'none');
+    //             }
+    //             if(filterActive.tunnel){
+    //                 setDisplayFilter('tunnelt', 'none');
+    //             }
+    //         }
+    //         }   
+    //     };
+    //     var lastidx=encodeURIComponent(lastid);
+    //     var numberx = encodeURIComponent(number);
+    //     var smallx = encodeURIComponent(small);
+    //     var params="params="+lastidx+","+numberx+","+smallx;
+    //     xhttp.open("POST", "getmoreicons", true);
+    //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //     xhttp.send(params);
 }
 
 function showContact(){
@@ -186,7 +186,7 @@ var lastid=1;
         //load the filtering
         var indexFilter = document.createElement("script");
         indexFilter.type = "text/javascript";
-        indexFilter.src = "ui/js/indexFilter.js";
+        indexFilter.src = "assets/js/indexFilter.js";
         document.body.appendChild(indexFilter);
         hideMenu();
     }
@@ -230,7 +230,7 @@ var lastid=1;
         //load the filtering
         var indexFilter = document.createElement("script");
         indexFilter.type = "text/javascript";
-        indexFilter.src = "ui/js/indexFilter.js";
+        indexFilter.src = "assets/js/indexFilter.js";
         document.body.appendChild(indexFilter);
     }
 
