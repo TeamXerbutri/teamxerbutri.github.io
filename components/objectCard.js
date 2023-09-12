@@ -254,11 +254,6 @@ class ObjectCard extends HTMLElement {
                 categoryName = "Not Found"
         }
     }
-
-
-
-
-
 }
 
 window.customElements.define('object-card', ObjectCard)

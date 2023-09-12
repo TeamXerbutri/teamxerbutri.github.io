@@ -1,18 +1,29 @@
 //For Mobile
 
+"use strict";
+
 //before loading build a skeleton with tekst
 var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-var menuActief=true, contactActief, privacyActief, scrollActief, ladenKlaar=false, filterActive = {brug:false, gebouw:false, spoor:false, tunnel:false};
+var uiState = {};
+uiState.hasMenu = true;
+uiState.hasContactModal = false;
+uiState.hasPrivacyModal = false;
+uiState.hasBackToTop = false;
+uiState.hasFilter = {brug:false, gebouw:false, spoor:false, tunnel:false};
+var appState = {};
+appState.language = "nl";
 
+// UI state Business logic for filtering
 function setDisplayFilter(className, display){
-    var x = document.getElementsByClassName(className);		
+    var categories = document.getElementsByClassName(className);		
     var i;
-    for(i=0; i< x.length; i++){
-  	x[i].style.display = display;
+    for(i=0; i< categories.length; i++){
+        categories[i].style.display = display;
     };	
 }
 
+// why is showMenu so complicated?
 function showMenu(){
     var menu = document.getElementById("menu");
     var menuitems = menu.getElementsByTagName("a");
@@ -22,16 +33,17 @@ function showMenu(){
     }
     menu.style.width = "100px";
     menu.style.height = "276px";
-    window.setTimeout(setMenuActief,1000);
+    // Why did I have this again?
+    window.setTimeout(setHasMenuTrue , 1000);
     document.getElementsByClassName('filteren')[0].style.display='none';
 }
 
-function setMenuActief(){
-    menuActief = true;
+function setHasMenuTrue(){
+    uiState.hasMenu = true;
 }
 
 function hideMenu(){
-    if (menuActief) {    
+    if (uiState.hasMenu) {    
         var menu = document.getElementById("menu");
         var menuitems = menu.getElementsByTagName("a");
 
@@ -46,7 +58,7 @@ function hideMenu(){
         if(document.getElementsByClassName('filteren')[0]){
         document.getElementsByClassName('filteren')[0].style.display='inline-block';
         }
-        menuActief = false;
+        uiState.hasMenu = false;
     }
 }
 
@@ -88,78 +100,120 @@ function laadMeer(lastid, number, small){
     //     xhttp.send(params);
 }
 
-function showContact(){
+function showContactModal(){
     var cp = document.getElementById("contactpanel");
     cp.style.display = "block";
-    window.setTimeout(setContactActief,1000);
+    window.setTimeout(setContactModalTrue,1000);
 }
 
-function setContactActief(){
-    contactActief = "true";
+function setContactModalTrue(){
+    uiState.hasContactModal = true;
 }
 
-function hideContact(){
-    if (contactActief==="true") {    
+function hideContactModal(){
+    if (uiState.hasContactModal) {    
         var cp = document.getElementById("contactpanel");
         cp.style.display = "none";
-        contactActief = "false";
+        uiState.hasContactModal = false;
     }
 }
 
-function showPrivacy(){
+function showPrivacyModal(){
     var pp = document.getElementById("privacypanel");
     pp.style.display = "block";
-    window.setTimeout(setPrivacyActief,1000);
+    window.setTimeout(setHasPrivacyModalTrue,1000);
 }
 
-function setPrivacyActief(){
-    privacyActief = "true";
+function setHasPrivacyModalTrue(){
+    uiState.hasPrivacyModal = true;
 }
 
-function hidePrivacy(){
-    if (privacyActief==="true") {    
+function hidePrivacyModal(){
+    if (uiState.hasPrivacyModal==="true") {    
         var pp = document.getElementById("privacypanel");
         pp.style.display = "none";
-        privacyActief = "false";
+        uiState.hasPrivacyModal = "false";
     }
 }
 
-function showScroll(){
+function showBackTotop(){
     var bt = document.getElementById("back-to-top");
     bt.style.display = "inline";
-    window.setTimeout(setScrollActief,1000);
+    window.setTimeout(setBacktoTopTrue,1000);
 }
 
-function setScrollActief(){
-    scrollActief = "true";
+function setBacktoTopTrue(){
+    uiState.hasBackToTop = true;
 }
 
-function hideScroll(){
-    if (scrollActief==="true") {    
+function hideBackTotop(){
+    if (uiState.hasBackToTop) {    
         var bt = document.getElementById("back-to-top");
         bt.style.display = "none";
-        scrollActief = "false";
+        uiState.hasBackToTop = false;
     }
+}
+
+function filterObjects(){
+    if(filterActive.brug){
+        setDisplayFilter('brug', 'none');
+    }
+    if(filterActive.gebouw){
+        setDisplayFilter('gebouw', 'none');
+    }
+    if(filterActive.spoor){
+        setDisplayFilter('spoor', 'none');
+    }
+    if(filterActive.tunnel){
+        setDisplayFilter('tunnel', 'none');
+    }
+}
+
+function getObjects(){
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            return JSON.parse(request.responseText);           
+        }
+    };
+    request.open("GET", "../../data/index.".concat(language,".json"), false);
+    request.send(null);    
+    
 }
 
 var lastid=1;
 
-(function(){//geef een naam in de toekomst, en roep aan als window.onresize en voer uit als domcontentisloaded
-    if(viewportWidth <=755){document.addEventListener('DOMContentLoaded', initMobiel);};//Als de pagina geladen is, roep init aan
-	if(viewportWidth >755){document.addEventListener('DOMContentLoaded', initLarge);};
-        
-    function initMobiel(){   
-        hidePrivacy();
-        hideContact();
-        hideScroll();
+(function(){
+    document.addEventListener('DOMContentLoaded', init);
+    
+    function init(){
+        hidePrivacyModal();
+        hideContactModal();
+        hideBackTotop();
         document.addEventListener("click", hideMenu);
-        document.addEventListener("click", hidePrivacy);
-        document.addEventListener("click", hideContact);
+        document.addEventListener("click", hidePrivacyModal);
+        document.addEventListener("click", hideContactModal);
         document.getElementById("menu").addEventListener("click", showMenu);
-        document.getElementById("contact").addEventListener("click", showContact);
-       document.getElementById("privacy").addEventListener("click", showPrivacy);
+        document.getElementById("contact").addEventListener("click", showContactModal);
+        document.getElementById("privacy").addEventListener("click", showPrivacyModal);
+
+        //object factory
+
+        // get the object container
+        var objectContainer = document.getElementById('oc');
+        // fetch the objects
+        const objects = JSON.parse()
+
+        if(viewportWidth <=755){ initMobiel};//Als de pagina geladen is, roep init aan
+	    if(viewportWidth >755){ initLarge};
+    }
+
+    //ToDo window.onresize() -> doe een resizing en wijzig op basis van UIstate
+
+    function initMobiel(){   
         //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));
         var maxid = parseInt(document.getElementById('maxid').value);
+        //ToDo, load based on size! Do a height calculation
         laadMeer(lastid+1, 5, true);
         lastid = lastid+6;
         window.onscroll = function(ev) {
@@ -192,13 +246,6 @@ var lastid=1;
     }
         
 	function initLarge(){
-        hidePrivacy();
-        hideContact();
-        hideScroll();
-        document.addEventListener("click", hidePrivacy);
-        document.addEventListener("click", hideContact);
-        document.getElementById("contact").addEventListener("click", showContact);
-        document.getElementById("privacy").addEventListener("click", showPrivacy);
         //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));//==1, maar ook flexibel zo.
         var maxid = parseInt(document.getElementById('maxid').value);
         var h = Math.round(window.innerHeight/180)*4-4;//h is bekend.
