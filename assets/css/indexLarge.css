@@ -102,54 +102,7 @@ img.TX{
     text-decoration: none;
     color: #fff;
 }
-.tile{
-    overflow: hidden;
-    display: inline-block;
-    height:190px;
-    width: 248px;
-    background-color: #181818;
-    margin: 2px;
-}
-img.te{
-    transition: all .5s ease-in-out;
-    height:190px;
-    width: 248px;
-}
-a:hover img.te{
-    transform: scale(1.05);
-}
-h2.te{
-    display: block;
-    position: relative;
-    top: -107px;
-    left: 0px;
-    font-size: 1.2em;
-    width: auto;
-    background: #000000; /* For browsers that do not support gradients*/
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Safari 5.1 to 6.0*/ 
-    background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* Standard syntax */
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-h3.te{
-    display: block;
-    position: relative;
-    top: -91px;
-    left: 0px;
-    font-size: 1em;
-    font-weight: normal;
-    color: #c7c7c7;
-    width: auto;
-    background: #000000; /* For browsers that do not support gradients*/
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* For Safari 5.1 to 6.0*/ 
-    background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* Standard syntax */
-    padding-top: 10px;
-    padding-bottom: 0px;
-}
+
 .filteren{
     position:fixed;
     padding:1px;
@@ -168,24 +121,5 @@ h3.te{
 @media only screen and (min-width: 1350px){
 #oc{
     width: 1260px;
-}
-.tile{
-    height:238px;
-    width: 310px;
-}
-img.te{
-    height:238px;
-    width: 310px;
-}
-h2.te{
-    top: -117px;
-    font-size: 1.5em;
-}
-h3.te{
-    display: block;
-    position: relative;
-    top: -97px;
-    left: 0px;
-    font-size: 1em;
 }
 }
