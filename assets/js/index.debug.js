@@ -170,13 +170,17 @@ function filterObjects(){
 }
 
 function getObjects(){
+    console.log("get objects");
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
+            console.log(request);
             return JSON.parse(request.responseText);           
         }
     };
-    request.open("GET", "../../data/index.".concat(language,".json"), false);
+    const urlstring = "../../data/index.".concat(appState.language,".json")
+    console.log(urlstring);
+    request.open("GET", urlstring, false);
     request.send(null);    
     
 }
@@ -202,7 +206,7 @@ var lastid=1;
         // get the object container
         var objectContainer = document.getElementById('oc');
         // fetch the objects
-        const objects = JSON.parse()
+        const objects = getObjects();   
 
         if(viewportWidth <=755){ initMobiel};//Als de pagina geladen is, roep init aan
 	    if(viewportWidth >755){ initLarge};
