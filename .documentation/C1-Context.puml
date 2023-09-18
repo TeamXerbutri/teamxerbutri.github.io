@@ -1,0 +1,16 @@
+@startuml XerbutriContext
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+LAYOUT_WITH_LEGEND()
+
+title 1. System Context diagram for Xerbutri
+
+Person(visitor, "Visitor", "Visiting the website")
+
+System(xerbutri, "Xerbutri", "The xerbutri website")
+
+System_Ext(cms, "TX CMS", "Local TX CMS app")
+
+Rel(visitor, xerbutri, "visits website")
+Rel(cms, xerbutri, "add and maintain content")
+
+@enduml

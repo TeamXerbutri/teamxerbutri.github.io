@@ -1,0 +1,23 @@
+@startuml XerbutriContainer
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+LAYOUT_WITH_LEGEND()
+
+title 2. Container diagram for Xerbutri
+
+Person(visitor, "Visitor", "Visiting the website")
+
+
+System_Boundary(xerbutri, "Xerbutri",){
+    Container(txsite, "SPA xerbutri ", "Container: JavaScript", "Single page front end application")
+    Container(data, "Persistance system", "Container: filesystem", "Using the filesystem for persistance")
+}
+
+System_Ext(cms, "TX CMS", "Local TX CMS app")
+
+Rel(visitor, txsite, "visits website")
+Rel(txsite, data, "gets content")
+Rel(cms, data, "add and maintain content")
+
+
+
+@enduml

@@ -1,4 +1,7 @@
-# teamxerbutri.github.io
+# Team Xerbutri on GitHub pages
+
+Team Xerbutri is the new version of the xerbutri website on GitHub pages. It uses Vue 3 with Vite as a framework
+
 
 This template should help get you started developing with Vue 3 in Vite.
 
