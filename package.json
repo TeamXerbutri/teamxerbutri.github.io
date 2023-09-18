@@ -1,0 +1,26 @@
+{
+  "name": "teamxerbutri.github.io",
+  "description": "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures",
+  "version": "6.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamxerbutri/teamxerbutri.github.io.git"
+  },
+  "keywords": [
+    "xerbutri",
+    "webpage"
+  ],
+  "author": "Team Xerbutri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teamxerbutri/teamxerbutri.github.io/issues"
+  },
+  "homepage": "https://github.com/teamxerbutri/teamxerbutri.github.io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
