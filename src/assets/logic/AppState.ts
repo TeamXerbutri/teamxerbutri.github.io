@@ -1,0 +1,1 @@
+/*App state is about content, like objects and language */
