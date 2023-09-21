@@ -21,10 +21,16 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+
+header{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    background-color: #242424;
+    z-index: 1;
+  }
+
+
 
 .logo {
   display: block;
