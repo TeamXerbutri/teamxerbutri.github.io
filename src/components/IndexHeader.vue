@@ -1,9 +1,8 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import Modal from './Modal.vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-  // ToDo Contact and privacy modals
-})
+const showPrivacy = ref(false)
 </script>
 
 
@@ -17,7 +16,7 @@ export default defineComponent({
 		<a href="avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
 		<a href="avontuur/TXAUE" title="Over Urban exploring">Over UE</a>-->
 		<a id="contact" title="Neem contact met ons op">Contact</a>
-        <a id="privacy" title="Onze privacy declaratie">Privacy</a>
+    <a id="privacy" title="Onze privacy declaratie">Privacy</a>
 		<!--<a href="vier/xerbutri.php?lang=2" title="Visit the team xerbutri page version 4 in English" >EN</a>-->
 	</div>
     <div id="contactpanel">
@@ -63,8 +62,13 @@ export default defineComponent({
   padding-left:4px
 }
 
-/*Uitzoeken!!*/
-#contactpanel,#privacypanel{display:none;border-style:solid;width:180px;position:absolute;right:0;top:52px;color:#fff;border-color:#242424;border-width:4px;background-color:#303030;font-size:.85em;margin-top:2px;margin-right:4px;padding-left:8px;padding-right:8px}#contactpanel p span{display:none}#back-to-top{background-color:rgba(0,0,0,.25);border-radius:0;box-shadow:0 0 1px #fff;color:#fff;display:none;padding:5px 12px;position:fixed;right:3px;text-align:center;text-decoration:none;text-transform:uppercase;top:85%;transition:all 0.3s ease 0s;font-size:1.1em}#map{display:none}#oi{padding-top:50px;color:#fff;background-color:#242424;overflow:hidden;border:solid #242424 5px}#oc{margin-left:auto;margin-right:auto}#oi a{text-decoration:none;color:#fff}.filteren{position:fixed;padding:1px;top:3px;right:52px;z-index:2}
+/* Ik wil de panels naar modals*/
+#contactpanel,#privacypanel{display:none;border-style:solid;width:180px;position:absolute;right:0;top:52px;color:#fff;border-color:#242424;border-width:4px;background-color:#303030;font-size:.85em;margin-top:2px;margin-right:4px;padding-left:8px;padding-right:8px}
+#contactpanel p span{display:none}
+
+
+
+.filteren{position:fixed;padding:1px;top:3px;right:52px;z-index:2}
 
 @media only screen and (min-width: 756px){
   .logo{
@@ -91,19 +95,4 @@ export default defineComponent({
   }
 }
 
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
 </style>

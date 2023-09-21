@@ -30,8 +30,24 @@ header{
     z-index: 1;
   }
 
+#back-to-top{
+  background-color:rgba(0,0,0,.25);
+  border-radius:0;
+  box-shadow:0 0 1px #fff;
+  color:#fff;
+  display:none;
+  padding:5px 12px;
+  position:fixed;
+  right:3px;
+  text-align:center;
+  text-decoration:none;
+  text-transform:uppercase;
+  top:85%;
+  transition:all 0.3s ease 0s;
+  font-size:1.1em
+}
 
-
+/* bij vue template*/
 .logo {
   display: block;
   margin: 0 auto 2rem;
