@@ -177,6 +177,7 @@ template.innerHTML = `
 `; 
 
 class ObjectCard extends HTMLElement {
+    categoryName;
     constructor() {
         super();
         
@@ -227,10 +228,10 @@ class ObjectCard extends HTMLElement {
     getCategoryName(category, language){
         switch(language){
             case 'nl':
-                categoryName = this.getCategoryNameNl(category);
+                this.categoryName = this.getCategoryNameNl(category);
                 break;
             default:
-                categoryName= "Not Found"
+                this.categoryName= "Not Found"
         }
 
 
@@ -239,19 +240,19 @@ class ObjectCard extends HTMLElement {
     getCategoryNameNl(category){
         switch(category){
             case 'gebouw':
-                categoryName = "Verlaten Gebouwen";
+                this.categoryName = "Verlaten Gebouwen";
                 break;
             case 'spoor':
-                categoryName = "Spoorlijnen";
+                this.categoryName = "Spoorlijnen";
                 break;
             case 'tunnel':
-                categoryName = "Tunnels";
+                this.categoryName = "Tunnels";
                 break;
             case 'brug':
-                categoryName = "Bruggen";
+                this.categoryName = "Bruggen";
                 break;
             default:
-                categoryName = "Not Found"
+                this.categoryName = "Not Found"
         }
     }
 }
