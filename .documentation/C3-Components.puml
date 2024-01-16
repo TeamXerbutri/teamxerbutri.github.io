@@ -1,0 +1,34 @@
+@startuml XerbutriComponent
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+LAYOUT_WITH_LEGEND()
+
+title 3. Component diagram for Xerbutri
+AddRelTag("link", $textColor="blue", $lineColor="blue", $lineStyle = DashedLine())
+
+Container_Boundary(xerbutri, "SPA xerbutri ", "Container: JavaScript", "Single page front end application"){
+    Component(home, "Homepage", "JavaScript - HTML", "Page with the objects and blogs")
+    Component(object, "Blog", "JavaScript - HTML", "Page with the (object) blog")
+    Component(gallery, "Gallery", "JavaScript - HTML", "Page with pictures")
+    Component(map, "Map", "JavaScript - HTML", "Page with all of the objects on a map")
+}
+
+Container_Boundary(data, "Persistance system", "Container: filesystem", "Using the filesystem for persistance"){
+    Component(homedata, "Index.lang.json", "JSON", "File with data for the homepage")
+    Component(mapdata, "Some map file", "JSON", "File with data for the map")
+    Component(objectdata, "Object data", "JSON", "Object data organised per category containing kml, json and md files")
+}
+
+
+'Rel(xerbutri, data, "gets content")
+Rel(home, homedata, "gets content")
+Rel(object, objectdata, "gets content")
+Rel(gallery, objectdata, "gets content")
+Rel(map, mapdata, "gets content")
+
+Rel(home, object, "contains links to objects and blogs", $tags="link")
+Rel(home, map, "contains links to map", $tags="link")
+Rel(map, object, "contains links to objects", $tags="link")
+Rel(object, gallery, "contains links to gallery", $tags="link")
+Rel(object, object, "contains links to objects and blogs", $tags="link")
+
+@enduml
