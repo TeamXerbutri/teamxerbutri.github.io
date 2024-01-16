@@ -174,9 +174,9 @@ template.innerHTML = `
         <h2 class="te"></h2>
     </a>
 </div>
-`; 
+`;
 
-class ObjectCard extends HTMLElement {
+export class ObjectCard extends HTMLElement {
     categoryName;
     constructor() {
         super();
@@ -195,7 +195,7 @@ class ObjectCard extends HTMLElement {
 
         // add href and titleto anchor
         // href logic -> ToDo see if you can eliminate the need for this logic
-        var link = "";
+        let link = "";
         if(abbreviation==="map"){
             link = "map";
         }
@@ -211,7 +211,7 @@ class ObjectCard extends HTMLElement {
         this.shadowRoot.querySelector('img').id = abbreviation;
         
         // h3 logic
-        var firstline = "";
+        let firstline = "";
         if(category==="xerbutri"){
             firstline = realname;
         }
@@ -255,6 +255,8 @@ class ObjectCard extends HTMLElement {
                 this.categoryName = "Not Found"
         }
     }
+    
 }
 
-window.customElements.define('object-card', ObjectCard)
+
+//window.customElements.define('object-card', ObjectCard)

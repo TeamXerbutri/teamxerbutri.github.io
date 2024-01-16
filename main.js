@@ -2,35 +2,43 @@
 
 "use strict";
 
-//before loading build a skeleton with tekst
-var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+import {ObjectCard} from "./components/objectCard"
 
-var uiState = {};
+
+//before loading build a skeleton with text
+let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+let uiState = {};
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
 uiState.hasPrivacyModal = false;
 uiState.hasBackToTop = false;
 uiState.hasFilter = {brug:false, gebouw:false, spoor:false, tunnel:false};
-var appState = {};
+let appState = {};
 appState.language = "nl";
+
+let getObjects = fetch("../../data/index.".concat(appState.language, ".json")).then((response) => response.json());
 
 // UI state Business logic for filtering
 function setDisplayFilter(className, display){
-    var categories = document.getElementsByClassName(className);		
-    var i;
+    let categories = document.getElementsByClassName(className);		
+    let i;
+    
     for(i=0; i< categories.length; i++){
         categories[i].style.display = display;
-    };	
+    }	
 }
 
 // why is showMenu so complicated?
 function showMenu(){
-    var menu = document.getElementById("menu");
-    var menuitems = menu.getElementsByTagName("a");
-    for (var i = 0; i < menuitems.length; i++) {
-        var element = menuitems[i];
+    let menu = document.getElementById("menu");
+    let menuitems = menu.getElementsByTagName("a");
+    
+    for (let i = 0; i < menuitems.length; i++) {
+        let element = menuitems[i];
         element.style.display = "block";
     }
+    
     menu.style.width = "100px";
     menu.style.height = "276px";
     // Why did I have this again?
@@ -44,11 +52,11 @@ function setHasMenuTrue(){
 
 function hideMenu(){
     if (uiState.hasMenu) {    
-        var menu = document.getElementById("menu");
-        var menuitems = menu.getElementsByTagName("a");
+        let menu = document.getElementById("menu");
+        let menuitems = menu.getElementsByTagName("a");
 
-        for (var i = 0; i < menuitems.length; i++) {
-            var element = menuitems[i];
+        for (let i = 0; i < menuitems.length; i++) {
+            let element = menuitems[i];
             element.style.display = "none";
         }
 
@@ -101,7 +109,7 @@ function laadMeer(lastid, number, small){
 }
 
 function showContactModal(){
-    var cp = document.getElementById("contactpanel");
+    let cp = document.getElementById("contactpanel");
     cp.style.display = "block";
     window.setTimeout(setContactModalTrue,1000);
 }
@@ -112,14 +120,14 @@ function setContactModalTrue(){
 
 function hideContactModal(){
     if (uiState.hasContactModal) {    
-        var cp = document.getElementById("contactpanel");
+        let cp = document.getElementById("contactpanel");
         cp.style.display = "none";
         uiState.hasContactModal = false;
     }
 }
 
 function showPrivacyModal(){
-    var pp = document.getElementById("privacypanel");
+    let pp = document.getElementById("privacypanel");
     pp.style.display = "block";
     window.setTimeout(setHasPrivacyModalTrue,1000);
 }
@@ -130,14 +138,14 @@ function setHasPrivacyModalTrue(){
 
 function hidePrivacyModal(){
     if (uiState.hasPrivacyModal==="true") {    
-        var pp = document.getElementById("privacypanel");
+        let pp = document.getElementById("privacypanel");
         pp.style.display = "none";
         uiState.hasPrivacyModal = "false";
     }
 }
 
 function showBackTotop(){
-    var bt = document.getElementById("back-to-top");
+    let bt = document.getElementById("back-to-top");
     bt.style.display = "inline";
     window.setTimeout(setBacktoTopTrue,1000);
 }
@@ -148,7 +156,7 @@ function setBacktoTopTrue(){
 
 function hideBackTotop(){
     if (uiState.hasBackToTop) {    
-        var bt = document.getElementById("back-to-top");
+        let bt = document.getElementById("back-to-top");
         bt.style.display = "none";
         uiState.hasBackToTop = false;
     }
@@ -169,9 +177,34 @@ function filterObjects(){
     }
 }
 
-function getObjects(){
-    console.log("get objects");
-    var request = new XMLHttpRequest();
+// What happens here? https://web.dev/articles/custom-elements-v1
+function objectFactory(subjects){
+    var objectContainer = document.getElementById('oc');
+    for(let i in subjects){
+        
+        let displayObject = document.createElement("object-card");
+        displayObject.setAttribute('category', subjects[i].category)
+        displayObject.setAttribute('abbreviation', subjects[i].abbreviation)
+        displayObject.setAttribute('shortname', subjects[i].shortname)
+        displayObject.setAttribute('realname', subjects[i].realname)
+        displayObject.setAttribute('description', subjects[i].description)
+        objectContainer.appendChild(displayObject);
+    }
+}
+
+function BlogObject(category, abbreviation, shortname, realname, description){
+    this.category = category;
+    this.abbreviation = abbreviation;
+    this.shortname = shortname;
+    this.realname = realname;
+    this.description = description;
+}
+
+
+
+//Obsolete
+function getObjectsXhttp(){
+    let request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             console.log(request);
@@ -181,11 +214,16 @@ function getObjects(){
     const urlstring = "../../data/index.".concat(appState.language,".json")
     console.log(urlstring);
     request.open("GET", urlstring, false);
-    request.send(null);    
-    
+    request.send(null);
 }
 
+
+
+
+
 var lastid=1;
+
+window.customElements.define('object-card', ObjectCard);
 
 (function(){
     document.addEventListener('DOMContentLoaded', init);
@@ -204,12 +242,16 @@ var lastid=1;
         //object factory
 
         // get the object container
-        var objectContainer = document.getElementById('oc');
+        
+        
         // fetch the objects
-        const objects = getObjects();   
-
-        if(viewportWidth <=755){ initMobiel};//Als de pagina geladen is, roep init aan
-	    if(viewportWidth >755){ initLarge};
+        getObjects.then(
+            function(value) {objectFactory(value.subjects);},
+            function (error) {errorHandler(error)},
+        )
+            
+        if(viewportWidth <=755){ initMobiel}//Als de pagina geladen is, roep init aan
+	    if(viewportWidth >755){ initLarge}
     }
 
     //ToDo window.onresize() -> doe een resizing en wijzig op basis van UIstate
@@ -260,10 +302,10 @@ var lastid=1;
             if (lastid>=maxid){
                 return;    
             }
-            var totalHeight = window.innerHeight + window.scrollY;
+            let totalHeight = window.innerHeight + window.scrollY;
             if (totalHeight >= 0.9*document.body.offsetHeight) {
-                var icons = 8;
-                var nextlastid = lastid+icons;
+                let icons = 8;
+                let nextlastid = lastid+icons;
                 if(maxid<=nextlastid){
                     icons = maxid-lastid;
                 }
@@ -279,7 +321,7 @@ var lastid=1;
         };
 
         //load the filtering
-        var indexFilter = document.createElement("script");
+        let indexFilter = document.createElement("script");
         indexFilter.type = "text/javascript";
         indexFilter.src = "assets/js/indexFilter.js";
         document.body.appendChild(indexFilter);
