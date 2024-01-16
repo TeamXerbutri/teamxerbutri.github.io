@@ -8,9 +8,10 @@
 	<link rel="manifest" href="manifest.json">
 	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#090909">
 	<meta name="theme-color" content="#000000">
-	<link rel="stylesheet" type="text/css" href="assets/css/index.css" media="screen and (max-width: 755px)">
-	<link rel="stylesheet" type="text/css" href="assets/css/indexLarge.css" media="screen and (min-width: 756px)">
-	<link rel="stylesheet" type="text/css" href="assets/css/indexFilter.css" media="screen">
+<!--	<link rel="stylesheet" type="text/css" href="assets/css/index.css" media="screen and (max-width: 755px)">-->
+<!--	<link rel="stylesheet" type="text/css" href="assets/css/indexLarge.css" media="screen and (min-width: 756px)">-->
+<!--	<link rel="stylesheet" type="text/css" href="assets/css/indexFilter.css" media="screen">-->
+<!--	<link rel="stylesheet" type="text/css" href="assets/css/objectCard.css" media="screen">-->
 	<meta name="description" content="Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.">
 	<meta name="keywords" content="Urban Adventure, Urban exploring, Abandoned buildings, lost railways, railway bridges, railway tunnels">
 	<meta name="robots" content="index, follow">
@@ -19,55 +20,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body id="app">
 
-<main>
-<header>
-	<img class="TX" src="assets/images/TX.gif" alt="Team Xerbutri Logo">
-	<h1 class="logo">Team Xerbutri</h1>
-	
-	<div class="menu" id="menu">
-		<!--<a href="map" title="Team Xerbutri Maps"> Maps</a>
-		<a href="avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
-		<a href="avontuur/TXAUE" title="Over Urban exploring">Over UE</a>-->
-		<a id="contact" title="Neem contact met ons op">Contact</a>
-        <a id="privacy" title="Onze privacy declaratie">Privacy</a>
-		<!--<a href="vier/xerbutri.php?lang=2" title="Visit the team xerbutri page version 4 in English" >EN</a>-->
-	</div>
-    <div id="contactpanel">
-        <p>Voor op- of aanmerkingen, maak een issue op GitHub <a href="https://github.com/TeamXerbutri/teamxerbutri.github.io/issues">Team Xerbutri GitHub</a> </p>
-    </div>
-    <div id="privacypanel">
-        <p>We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy.</p>
-    </div>
-</header>
 
-<div id="oi">
-	<div id="oc">
-<!--        <div class="xerbutrit tile" id="kaart">-->
-<!--            <a href="map" title="Toon alle locaties op de kaart">-->
-<!--                <img class="te"  src="data/xerbutri/map/map.jpg">-->
-<!--                <h3 class="te">Toon op kaart</h3>-->
-<!--                <h2 class="te">Alle locaties op kaart</h2>-->
-<!--            </a>-->
-<!--        </div>-->
-		<object-card category="xerbutri" abbreviation="map" shortname="Alle locaties op kaart" realname="Toon op kaart" description="Toon alle locaties op kaart"></object-card>
-    </div>
-	<noscript>
-		<p>Javascript is niet geactiveerd. <br/>
-	 	Team Xerbutri gebruikt Javascript om het laden van de afbeeldingen soepel te laten verlopen en om te kunnen filteren op categorie.<br/>
-	 	Voor instructies om javascript aan te zetten verwijzen we naar <a href="https://www.browserchecker.nl/javascript-aanzetten">Browserchecker, Javascript aanzetten</a>.
-		<br/><br/>
-		Als je Javascript niet aan wilt zetten, dan kun je altijd onze oude website bezoeken via deze link: <a href="https://www.xerbutri.nl/vier/xerbutri.php?lang=1">Ga naar Xerbutri versie 4.3</a><br/>
-		Op Xerbutri versie 4.3 vind je niet onze nieuwste avonturen, versie 4.3 is in december 2017 voor het laatst inhoudelijk bijgewerkt.</p>
-	</noscript>
-</div>
+<script src="/main.js" type="module"></script>
 
-    <a id="back-to-top" href="#top">^</a>
-</main>
-    <input type="hidden" id="maxid" value="1"/>
-<script src="main.js" type="module"></script>
-<script src="components/objectCard.js" type="module"></script>
 
 </body>
 </html>

@@ -1,8 +1,52 @@
-//For Mobile
+import './style.css'
+import {createBlogObject} from "./components/objectFactory"
 
-"use strict";
+document.querySelector('#app').innerHTML =`<main>
+<header>
+	<img class="TX" src="assets/images/TX.gif" alt="Team Xerbutri Logo">
+	<h1 class="logo">Team Xerbutri</h1>
+	
+	<div class="menu" id="menu">
+		<!--<a href="map" title="Team Xerbutri Maps"> Maps</a>
+		<a href="avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
+		<a href="avontuur/TXAUE" title="Over Urban exploring">Over UE</a>-->
+		<a id="contact" title="Neem contact met ons op">Contact</a>
+        <a id="privacy" title="Onze privacy declaratie">Privacy</a>
+		<!--<a href="vier/xerbutri.php?lang=2" title="Visit the team xerbutri page version 4 in English" >EN</a>-->
+	</div>
+    <div id="contactpanel">
+        <p>Voor op- of aanmerkingen, maak een issue op GitHub <a href="https://github.com/TeamXerbutri/teamxerbutri.github.io/issues">Team Xerbutri GitHub</a> </p>
+    </div>
+    <div id="privacypanel">
+        <p>We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy.</p>
+    </div>
+</header>
 
-import {ObjectCard} from "./components/objectCard"
+<div id="oi">
+	<div id="oc">
+<!--        <div class="xerbutrit tile" id="kaart">-->
+<!--            <a href="map" title="Toon alle locaties op de kaart">-->
+<!--                <img class="te"  src="data/xerbutri/map/map.jpg">-->
+<!--                <h3 class="te">Toon op kaart</h3>-->
+<!--                <h2 class="te">Alle locaties op kaart</h2>-->
+<!--            </a>-->
+<!--        </div>-->
+		<object-card category="xerbutri" abbreviation="map" shortname="Alle locaties op kaart" realname="Toon op kaart" description="Toon alle locaties op kaart"></object-card>
+    </div>
+	<noscript>
+		<p>Javascript is niet geactiveerd. <br/>
+	 	Team Xerbutri gebruikt Javascript om het laden van de afbeeldingen soepel te laten verlopen en om te kunnen filteren op categorie.<br/>
+	 	Voor instructies om javascript aan te zetten verwijzen we naar <a href="https://www.browserchecker.nl/javascript-aanzetten">Browserchecker, Javascript aanzetten</a>.
+		<br/><br/>
+		Als je Javascript niet aan wilt zetten, dan kun je altijd onze oude website bezoeken via deze link: <a href="https://www.xerbutri.nl/vier/xerbutri.php?lang=1">Ga naar Xerbutri versie 4.3</a><br/>
+		Op Xerbutri versie 4.3 vind je niet onze nieuwste avonturen, versie 4.3 is in december 2017 voor het laatst inhoudelijk bijgewerkt.</p>
+	</noscript>
+</div>
+
+    <a id="back-to-top" href="#top">^</a>
+</main>
+    <input type="hidden" id="maxid" value="1"/>`
+
 
 
 //before loading build a skeleton with text
@@ -181,24 +225,12 @@ function filterObjects(){
 function objectFactory(subjects){
     var objectContainer = document.getElementById('oc');
     for(let i in subjects){
-        
-        let displayObject = document.createElement("object-card");
-        displayObject.setAttribute('category', subjects[i].category)
-        displayObject.setAttribute('abbreviation', subjects[i].abbreviation)
-        displayObject.setAttribute('shortname', subjects[i].shortname)
-        displayObject.setAttribute('realname', subjects[i].realname)
-        displayObject.setAttribute('description', subjects[i].description)
+        let displayObject = createBlogObject(subjects[i]);         
         objectContainer.appendChild(displayObject);
     }
 }
 
-function BlogObject(category, abbreviation, shortname, realname, description){
-    this.category = category;
-    this.abbreviation = abbreviation;
-    this.shortname = shortname;
-    this.realname = realname;
-    this.description = description;
-}
+
 
 
 
@@ -223,7 +255,6 @@ function getObjectsXhttp(){
 
 var lastid=1;
 
-window.customElements.define('object-card', ObjectCard);
 
 (function(){
     document.addEventListener('DOMContentLoaded', init);
