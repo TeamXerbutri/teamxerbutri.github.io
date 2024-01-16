@@ -1,9 +1,10 @@
 import './style.css'
+import txLogo from './assets/images/TX.gif'
 import {createBlogObject} from "./components/objectFactory"
 
 document.querySelector('#app').innerHTML =`<main>
 <header>
-	<img class="TX" src="assets/images/TX.gif" alt="Team Xerbutri Logo">
+	<img class="TX" src=${txLogo} alt="Team Xerbutri Logo">
 	<h1 class="logo">Team Xerbutri</h1>
 	
 	<div class="menu" id="menu">
@@ -61,7 +62,7 @@ uiState.hasFilter = {brug:false, gebouw:false, spoor:false, tunnel:false};
 let appState = {};
 appState.language = "nl";
 
-let getObjects = fetch("../../data/index.".concat(appState.language, ".json")).then((response) => response.json());
+let getObjects = fetch("data/index.".concat(appState.language, ".json")).then((response) => response.json());
 
 // UI state Business logic for filtering
 function setDisplayFilter(className, display){
@@ -230,29 +231,6 @@ function objectFactory(subjects){
     }
 }
 
-
-
-
-
-//Obsolete
-function getObjectsXhttp(){
-    let request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            console.log(request);
-            return JSON.parse(request.responseText);           
-        }
-    };
-    const urlstring = "../../data/index.".concat(appState.language,".json")
-    console.log(urlstring);
-    request.open("GET", urlstring, false);
-    request.send(null);
-}
-
-
-
-
-
 var lastid=1;
 
 
@@ -357,5 +335,4 @@ var lastid=1;
         indexFilter.src = "assets/js/indexFilter.js";
         document.body.appendChild(indexFilter);
     }
-
 })();
