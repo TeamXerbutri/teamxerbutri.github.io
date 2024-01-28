@@ -1,9 +1,10 @@
 ﻿import './style.css'
+import txLogo from './../assets/images/tx.gif'
 
 document.querySelector('#app').innerHTML =`
 <main>
 <header >
-	<a href="../" title="Team Xerbutri Overzichts pagina"><img class="TX" src="../ui/pics/TX.gif" alt="Team Xerbutri Logo"></a>
+	<a href="../" title="Team Xerbutri Overzichts pagina"><img class="tx" src=${txLogo} alt="Team Xerbutri Logo"></a>
 	<h1 class="logo">Team Xerbutri</h1>
         <div id="sharepanel">
             <a href="" target="_blank" id="sharefb">Facebook</a>
