@@ -19,12 +19,13 @@ document.querySelector('#app').innerHTML =`
 	</div>
         <a class="overview" href="../" title="Terug naar overzicht">X</a>
         <div id="contactpanel">
-            <p>Voor op- of aanmerkingen of persoonlijk contact stuur een bericht naar &#105;&#110;&#102;&#111;<span>rmation</span>&#064;<span>&nbsp;</span>xerbutri&#46;&#110;l</p>
+            <p>Voor op- of aanmerkingen, maak een issue op GitHub <a href="https://github.com/TeamXerbutri/teamxerbutri.github.io/issues">Team Xerbutri GitHub</a> </p>
         </div>
 </header>
 
 <article id="top">
 	
+	<!-- START HERE with translating the code from PHP-fff to javascript -->
 	<include href="{{@artikel}}"/>
         <check if="{{@categorieid == 5 }}"><true></true><false>
         <h3>Bronnen</h3>
