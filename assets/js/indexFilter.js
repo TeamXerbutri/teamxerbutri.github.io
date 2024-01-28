@@ -12,47 +12,47 @@
             var spoorButton = document.createElement('button');
             spoorButton.innerHTML = 'V';
             spoorButton.title = 'verberg de spoorwegen';
-            spoorButton.id = 'spoorFilter'; 
+            spoorButton.id = 'spoorfilter'; 
             spoorButton.addEventListener('click',spoorFilter);
 
-            var brugButton = document.createElement('button');
-            brugButton.title = 'verberg de bruggen';
-            brugButton.innerHTML ='V';
-            brugButton.id = 'brugFilter';
-            brugButton.addEventListener('click',brugFilter);
+            var bridgeButton = document.createElement('button');
+            bridgeButton.title = 'verberg de bruggen';
+            bridgeButton.innerHTML ='V';
+            bridgeButton.id = 'bridgefilter';
+            bridgeButton.addEventListener('click', bridgeFilter);
         
             var tunnelButton = document.createElement('button');
 	    tunnelButton.innerHTML = 'V';
             tunnelButton.title = 'verberg de tunnels';
-            tunnelButton.id = 'tunnelFilter';
-            tunnelButton.addEventListener('click',tunnelFilter);
+            tunnelButton.id = 'tunnelfilter';
+            tunnelButton.addEventListener('click', tunnelFilter);
 
-            var gebouwButton = document.createElement('button');
-            gebouwButton.innerHTML = 'V';
-            gebouwButton.title = 'verberg de verlaten gebouwen';
-            gebouwButton.id = 'gebouwFilter';
-            gebouwButton.addEventListener('click',gebouwFilter);
+            var buildingButton = document.createElement('button');
+            buildingButton.innerHTML = 'V';
+            buildingButton.title = 'verberg de verlaten gebouwen';
+            buildingButton.id = 'buildingfilter';
+            buildingButton.addEventListener('click', buildingFilter);
 
             var filter = document.createElement('div');
             filter.className = 'filteren';
-            filter.appendChild(brugButton);
+            filter.appendChild(bridgeButton);
             filter.appendChild(tunnelButton);
             filter.appendChild(spoorButton);
-            filter.appendChild(gebouwButton);
+            filter.appendChild(buildingButton);
             document.body.appendChild(filter);
        
 		
-	function brugFilter(){
-  		if (filterActive.brug) {
-                        setDisplayFilter("brugt", displayString);
-                        setFilterStyle(brugButton, 'bruggen', filterActive.brug);
-                        filterActive.brug = false;
+	function bridgeFilter(){
+  		if (filterActive.bridge) {
+                        setDisplayFilter("bridge", displayString);
+                        setFilterStyle(bridgeButton, 'bruggen', filterActive.bridge);
+                        filterActive.bridge = false;
   			}
   		else{
- 			setDisplayFilter("brugt", 'none');
-                        setFilterStyle(brugButton, 'bruggen', filterActive.brug);
-                        filterActive.brug = true;
-                        iconenLaden();
+ 			setDisplayFilter("bridge", 'none');
+                        setFilterStyle(bridgeButton, 'bruggen', filterActive.bridge);
+                        filterActive.bridge = true;
+			loadIcons();
   			};
   		}
   	function tunnelFilter(){
@@ -62,53 +62,53 @@
                         filterActive.tunnel= false;
   			}
   		else{
-  			setDisplayFilter("tunnelt", 'none');
+  			setDisplayFilter("tunnel", 'none');
   			setFilterStyle(tunnelButton, 'tunnels', filterActive.tunnel);
                         filterActive.tunnel=true;
-                        iconenLaden();
+			loadIcons();
   			};
   		}
-  	function gebouwFilter(){
-  		if (filterActive.gebouw) {
-  			setDisplayFilter("gebouwt", displayString);
-                        setFilterStyle(gebouwButton, 'verlaten gebouwen', filterActive.gebouw);
-                        filterActive.gebouw=false;
+  	function buildingFilter(){
+  		if (filterActive.building) {
+  			setDisplayFilter("building", displayString);
+                        setFilterStyle(buildingButton, 'verlaten gebouwen', filterActive.building);
+                        filterActive.building=false;
   			}
   		else{
-  			setDisplayFilter("gebouwt", 'none');
-  			setFilterStyle(gebouwButton, 'verlaten gebouwen', filterActive.gebouw);
-                        filterActive.gebouw=true;
-                        iconenLaden();
+  			setDisplayFilter("building", 'none');
+  			setFilterStyle(buildingButton, 'verlaten gebouwen', filterActive.building);
+                        filterActive.building=true;
+			loadIcons();
   			};
   		}
-  	function spoorFilter(){
-  		if (filterActive.spoor) {
-  			setDisplayFilter("spoort", displayString);
-                        setFilterStyle(spoorButton, 'spoorwegen', filterActive.spoor);
-                        filterActive.spoor=false
+  	function railFilter(){
+  		if (filterActive.rail) {
+  			setDisplayFilter("rail", displayString);
+                        setFilterStyle(railButton, 'spoorwegen', filterActive.rail);
+                        filterActive.rail=false
   			}
   		else{
-  			setDisplayFilter("spoort", 'none');
-  			setFilterStyle(spoorButton, 'spoorwegen', filterActive.spoor);
-                        filterActive.spoor=true;
-                        iconenLaden();
+  			setDisplayFilter("rail", 'none');
+  			setFilterStyle(railButton, 'spoorwegen', filterActive.rail);
+                        filterActive.rail=true;
+                        loadIcons();
   			};
   		}
   	function setFilterStyle(buttonName, categorieName, activeFilter){
-            var vink = '&nbsp;';
-            var titel = 'toon de '+categorieName;
-            var stijl = "rgba(30,30,30,0.8)";
+            let check = '&nbsp;';
+            var title = 'toon de '+categorieName;
+            var filterStyle = "rgba(30,30,30,0.8)";
             if(activeFilter){
-                vink = 'V';
-                titel = 'verberg de '+categorieName;
-                stijl = "rgba(30,30,30,0.2)";
+				check = 'V';
+				title = 'verberg de '+categorieName;
+                filterStyle = "rgba(30,30,30,0.2)";
             }
-            buttonName.title = titel;
-            buttonName.innerHTML = vink;
-            buttonName.style.backgroundColor = stijl;
+            buttonName.title = title;
+            buttonName.innerHTML = check;
+            buttonName.style.backgroundColor = filterStyle;
         }
 
-        function iconenLaden(){
+        function loadIcons(){
                     //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));
                     var maxid = parseInt(document.getElementById('maxid').value);
                     if (lastid>=maxid){
@@ -121,12 +121,12 @@
                         if(maxid<=nextlastid){
                             icons = maxid-lastid;
                         }
-                        ladenKlaar=false;
-                        laadMeer(lastid+1, icons, viewportWidth <=755);
-                        var laadInterval = setInterval(function() {
-                            if (ladenKlaar) {
-                                clearInterval(laadInterval);
-                                iconenLaden();}
+                        loadingReady=false;
+                        loadMore(lastid+1, icons, viewportWidth <=755);
+                        let loadingInterval = setInterval(function() {
+                            if (loadingReady) {
+                                clearInterval(loadingInterval);
+                                loadIcons();}
                             }, 10);
                         lastid = lastid+icons+1;                       
                     }

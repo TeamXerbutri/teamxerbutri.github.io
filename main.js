@@ -1,16 +1,16 @@
 import './style.css'
-import txLogo from './assets/images/TX.gif'
-import {createBlogObject} from "./components/objectFactory"
+import txLogo from './assets/images/tx.gif'
+import {createBlogObject} from "./components/objectfactory"
 
 document.querySelector('#app').innerHTML =`<main>
 <header>
-	<img class="TX" src=${txLogo} alt="Team Xerbutri Logo">
+	<img class="tx" src=${txLogo} alt="Team Xerbutri Logo">
 	<h1 class="logo">Team Xerbutri</h1>
 	
 	<div class="menu" id="menu">
-		<!--<a href="map" title="Team Xerbutri Maps"> Maps</a>
+		<a href="map" title="Team Xerbutri Maps"> Maps</a>
 		<a href="avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
-		<a href="avontuur/TXAUE" title="Over Urban exploring">Over UE</a>-->
+		<a href="avontuur/TXAUE" title="Over Urban exploring">Over UE</a>
 		<a id="contact" title="Neem contact met ons op">Contact</a>
         <a id="privacy" title="Onze privacy declaratie">Privacy</a>
 		<!--<a href="vier/xerbutri.php?lang=2" title="Visit the team xerbutri page version 4 in English" >EN</a>-->
@@ -32,7 +32,7 @@ document.querySelector('#app').innerHTML =`<main>
 <!--                <h2 class="te">Alle locaties op kaart</h2>-->
 <!--            </a>-->
 <!--        </div>-->
-		<object-card category="xerbutri" abbreviation="map" shortname="Alle locaties op kaart" realname="Toon op kaart" description="Toon alle locaties op kaart"></object-card>
+<!--		<object-card category="xerbutri" abbreviation="map" shortname="Alle locaties op kaart" realname="Toon op kaart" description="Toon alle locaties op kaart"></object-card>-->
     </div>
 	<noscript>
 		<p>Javascript is niet geactiveerd. <br/>
@@ -58,7 +58,7 @@ uiState.hasMenu = true;
 uiState.hasContactModal = false;
 uiState.hasPrivacyModal = false;
 uiState.hasBackToTop = false;
-uiState.hasFilter = {brug:false, gebouw:false, spoor:false, tunnel:false};
+uiState.hasFilter = {bridge:false, building:false, rail:false, tunnel:false};
 let appState = {};
 appState.language = "nl";
 
@@ -88,7 +88,7 @@ function showMenu(){
     menu.style.height = "276px";
     // Why did I have this again?
     window.setTimeout(setHasMenuTrue , 1000);
-    document.getElementsByClassName('filteren')[0].style.display='none';
+    document.getElementsByClassName('filter')[0].style.display='none';
 }
 
 function setHasMenuTrue(){
@@ -108,14 +108,14 @@ function hideMenu(){
         menu.style.width = "44px";
         menu.style.height = "44px";
 
-        if(document.getElementsByClassName('filteren')[0]){
-        document.getElementsByClassName('filteren')[0].style.display='inline-block';
+        if(document.getElementsByClassName('filter')[0]){
+        document.getElementsByClassName('filter')[0].style.display='inline-block';
         }
         uiState.hasMenu = false;
     }
 }
 
-function laadMeer(lastid, number, small){
+function loadMore(lastid, number, small){
     // var xhttp = new XMLHttpRequest();
     // xhttp.onreadystatechange = function() {
     //     if (this.readyState === 4 && this.status === 200) {
@@ -125,18 +125,18 @@ function laadMeer(lastid, number, small){
     //         var e = document.getElementById('oc');
     //         e.insertAdjacentHTML('beforeend', this.responseText);
     //         ladenKlaar=true;
-    //         if(!filterActive.brug&&!filterActive.gebouw&&!filterActive.spoor&&!filterActive.tunnel){
+    //         if(!filterActive.bridge&&!filterActive.building&&!filterActive.rail&&!filterActive.tunnel){
     //             //nothing
     //         }
     //         else{
-    //             if(filterActive.brug){
-    //                 setDisplayFilter('brugt', 'none');
+    //             if(filterActive.bridge){
+    //                 setDisplayFilter('bridget', 'none');
     //             }
-    //             if(filterActive.gebouw){
-    //                 setDisplayFilter('gebouwt', 'none');
+    //             if(filterActive.building){
+    //                 setDisplayFilter('buildingt', 'none');
     //             }
-    //             if(filterActive.spoor){
-    //                 setDisplayFilter('spoort', 'none');
+    //             if(filterActive.rail){
+    //                 setDisplayFilter('railt', 'none');
     //             }
     //             if(filterActive.tunnel){
     //                 setDisplayFilter('tunnelt', 'none');
@@ -208,21 +208,21 @@ function hideBackTotop(){
 }
 
 function filterObjects(){
-    if(filterActive.brug){
-        setDisplayFilter('brug', 'none');
+    if(filterActive.bridge){
+        setDisplayFilter('bridge', 'none');
     }
-    if(filterActive.gebouw){
-        setDisplayFilter('gebouw', 'none');
+    if(filterActive.building){
+        setDisplayFilter('building', 'none');
     }
-    if(filterActive.spoor){
-        setDisplayFilter('spoor', 'none');
+    if(filterActive.rail){
+        setDisplayFilter('rail', 'none');
     }
     if(filterActive.tunnel){
         setDisplayFilter('tunnel', 'none');
     }
 }
 
-// What happens here? https://web.dev/articles/custom-elements-v1
+// Builds the objects
 function objectFactory(subjects){
     var objectContainer = document.getElementById('oc');
     for(let i in subjects){
@@ -259,17 +259,17 @@ var lastid=1;
             function (error) {errorHandler(error)},
         )
             
-        if(viewportWidth <=755){ initMobiel}//Als de pagina geladen is, roep init aan
+        if(viewportWidth <=755){ initMobile}//When the page is loaded, call init
 	    if(viewportWidth >755){ initLarge}
     }
 
     //ToDo window.onresize() -> doe een resizing en wijzig op basis van UIstate
 
-    function initMobiel(){   
+    function initMobile(){   
         //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));
         var maxid = parseInt(document.getElementById('maxid').value);
         //ToDo, load based on size! Do a height calculation
-        laadMeer(lastid+1, 5, true);
+        loadMore(lastid+1, 5, true);
         lastid = lastid+6;
         window.onscroll = function(ev) {
             if (lastid>=maxid){
@@ -282,7 +282,7 @@ var lastid=1;
                 if(maxid<=nextlastid){
                     icons = maxid-lastid;
                 }
-                laadMeer(lastid+1, icons, true);
+                loadMore(lastid+1, icons, true);
                 lastid = lastid+icons+1;
             }
             if (window.scrollY >= 200) {
@@ -295,7 +295,7 @@ var lastid=1;
         //load the filtering
         var indexFilter = document.createElement("script");
         indexFilter.type = "text/javascript";
-        indexFilter.src = "assets/js/indexFilter.js";
+        indexFilter.src = "assets/js/indexfilter.js";
         document.body.appendChild(indexFilter);
         hideMenu();
     }
@@ -304,7 +304,7 @@ var lastid=1;
         //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));//==1, maar ook flexibel zo.
         var maxid = parseInt(document.getElementById('maxid').value);
         var h = Math.round(window.innerHeight/180)*4-4;//h is bekend.
-        laadMeer(lastid+1, h, false);
+        loadMore(lastid+1, h, false);
         lastid = lastid+h+1;
         window.onscroll = function(ev) {
             //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));//hier gaat het mis bij snel scrollen.
@@ -318,7 +318,7 @@ var lastid=1;
                 if(maxid<=nextlastid){
                     icons = maxid-lastid;
                 }
-                laadMeer(lastid+1, icons, false);
+                loadMore(lastid+1, icons, false);
                 lastid = lastid+icons+1;//set new lastid in js instead of fetching from page
             }
             if (window.scrollY >= 200) {
@@ -332,7 +332,7 @@ var lastid=1;
         //load the filtering
         let indexFilter = document.createElement("script");
         indexFilter.type = "text/javascript";
-        indexFilter.src = "assets/js/indexFilter.js";
+        indexFilter.src = "assets/js/indexfilter.js";
         document.body.appendChild(indexFilter);
     }
 })();

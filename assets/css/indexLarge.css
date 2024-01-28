@@ -40,7 +40,7 @@ h1.logo{
     display: inline-block;
     margin: 0;
 }
-img.TX{
+img.tx{
     display: inline-block;
     padding-top: 4px;
     padding-left: 4px;
@@ -103,7 +103,7 @@ img.TX{
     color: #fff;
 }
 
-.filteren{
+.filter{
     position:fixed;
     padding:1px;
     top: 0em;

@@ -1,9 +1,9 @@
 {
     "subjects":[
         {"category": "xerbutri", "abbreviation": "map", "shortname": "Alle locaties op kaart", "realname": "Toon op kaart", "description": "Toon alle locaties op kaart" },
-        {"category": "gebouw", "abbreviation": "VBMH", "shortname": "Muggenhoeve", "realname": "Melkveehouderij De Win, De Winhoeve", "description": "Team Xerbutri bezoekt deze door muggen geteisterde boerderij" },
-        {"category": "gebouw", "abbreviation": "SKFE", "shortname": "Koolmijn Lorraine", "realname": "Steenkolenmijn Lorraine", "description": "Team Xerbutri betrapt in steenkolenmijn Sainte-Fontaine" },
-        {"category": "gebouw", "abbreviation": "KWH", "shortname": "Chateau Blanc", "realname": "Kasteel Withof", "description": "Een verhaal over bluf en toeval, en een wit kasteel, welk een populaire urbex-bestemming bleek te zijn" },
-        {"category": "spoor", "abbreviation": "L126", "shortname": "Lijn 126 Condroz", "realname": "Lijn 126; Ligne du Condroz: [Statte] - Marchin - Ciney", "description": "Een bliksembezoek uit 2007 en een nader onderzoek van het spoorfietspad in 2015" }
+        {"category": "gebouw", "abbreviation": "vbmh", "shortname": "Muggenhoeve", "realname": "Melkveehouderij De Win, De Winhoeve", "description": "Team Xerbutri bezoekt deze door muggen geteisterde boerderij" },
+        {"category": "gebouw", "abbreviation": "skfe", "shortname": "Koolmijn Lorraine", "realname": "Steenkolenmijn Lorraine", "description": "Team Xerbutri betrapt in steenkolenmijn Sainte-Fontaine" },
+        {"category": "gebouw", "abbreviation": "kwh", "shortname": "Chateau Blanc", "realname": "Kasteel Withof", "description": "Een verhaal over bluf en toeval, en een wit kasteel, welk een populaire urbex-bestemming bleek te zijn" },
+        {"category": "spoor", "abbreviation": "l126", "shortname": "Lijn 126 Condroz", "realname": "Lijn 126; Ligne du Condroz: [Statte] - Marchin - Ciney", "description": "Een bliksembezoek uit 2007 en een nader onderzoek van het spoorfietspad in 2015" }
     ]
 }

@@ -16,7 +16,7 @@ document.querySelector('#app').innerHTML =`
 		<a id="contact" title="Neem contact met ons op">Contact</a>
 <!--		<a href="../vier/xerbutri.php?lang=2" title="Visit the team xerbutri page version 4 in English" >EN</a>-->
 	</div>
-        <a class="overzicht" href="../" title="Terug naar overzicht">X</a>
+        <a class="overview" href="../" title="Terug naar overzicht">X</a>
         <div id="contactpanel">
             <p>Voor op- of aanmerkingen of persoonlijk contact stuur een bericht naar &#105;&#110;&#102;&#111;<span>rmation</span>&#064;<span>&nbsp;</span>xerbutri&#46;&#110;l</p>
         </div>
@@ -35,8 +35,8 @@ document.querySelector('#app').innerHTML =`
         </ol>
         </false></check>
         <h3><check if="{{@categorieid == 3 }}"><true>Fotoreportage</true><false>Galerij</false></check> </h3>
-        <p id="galerijcontent"><check if="{{@categorieid == 3 }}"><true>Klik op de foto om naar de fotoreportage te gaan</true><false>Tik op de foto om alle foto's van {{@titel| decodehtml}} te bekijken in de fotoviewer</false></check></p>
-        <div id="galerij" class="galerij">
+        <p id="gallerycontent"><check if="{{@categorieid == 3 }}"><true>Klik op de foto om naar de fotoreportage te gaan</true><false>Tik op de foto om alle foto's van {{@titel| decodehtml}} te bekijken in de fotoviewer</false></check></p>
+        <div id="gallery" class="gallery">
             <figure id="mobgal">
                 <img id="mobgalimg" src={{@firstimage}} itemprop="thumbnail" alt="{{@beschrijving| decodehtml}}" >
             </figure>
@@ -87,7 +87,6 @@ document.querySelector('#app').innerHTML =`
 </div>
 </main>
 <script src="../picz/{{@categorie}}/{{@map}}/items.js"></script>
-<script src='../ui/js/avontuur.js'></script>
 <script src='../ui/js/photoswipe.min.js'></script>
 <script src='../ui/js/photoswipe-ui-default.min.js'></script>
 <check if="{{@categorieid == 3 }}"><true> 
@@ -95,7 +94,7 @@ document.querySelector('#app').innerHTML =`
     <script src="../ui/js/reportage.js"></script>
     </true>
     <false>
-    <script  src="../ui/js/galery.js"></script>
+    <script  src="../ui/js/gallery.js"></script>
     <script type="application/ld+json">
         <include href="{{@jsonld}}"/>
 </script>
@@ -104,8 +103,8 @@ document.querySelector('#app').innerHTML =`
 `
 
 
-var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-var menuActief = true, shareActief = true, contactActief, scrollActief;
+let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+let menuActive = true, shareActive = true, contactActive, scrollActive;
 
 function showMenu() {
 	var menu = document.getElementById("menu");
@@ -116,15 +115,15 @@ function showMenu() {
 	}
 	menu.style.width = "116px";
 	menu.style.height = "230px";
-	window.setTimeout(setMenuActief, 1000)
+	window.setTimeout(setMenuActive, 1000)
 }
 
-function setMenuActief() {
-	menuActief = true
+function setMenuActive() {
+	menuActive = true
 }
 
 function hideMenu() {
-	if (menuActief) {
+	if (menuActive) {
 		var menu = document.getElementById("menu");
 		var menuitems = menu.getElementsByTagName("a");
 		for (var i = 0; i < menuitems.length; i += 1) {
@@ -133,7 +132,7 @@ function hideMenu() {
 		}
 		menu.style.width = "44px";
 		menu.style.height = "44px";
-		menuActief = false
+		menuActive = false
 	}
 }
 
@@ -146,15 +145,15 @@ function showShare() {
 	}
 	share.style.width = "116px";
 	share.style.height = "91px";
-	window.setTimeout(setShareActief, 1000)
+	window.setTimeout(setShareActive, 1000)
 }
 
-function setShareActief() {
-	shareActief = true
+function setShareActive() {
+	shareActive = true
 }
 
 function hideShare() {
-	if (shareActief) {
+	if (shareActive) {
 		var share = document.getElementById("sharepanel");
 		var shareitems = share.getElementsByTagName("a");
 		for (var i = 0; i < shareitems.length; i += 1) {
@@ -163,52 +162,52 @@ function hideShare() {
 		}
 		share.style.width = "44px";
 		share.style.height = "44px";
-		shareActief = false
+		shareActive = false
 	}
 }
 
 function showContact() {
 	var cp = document.getElementById("contactpanel");
 	cp.style.display = "block";
-	window.setTimeout(setContactActief, 1000)
+	window.setTimeout(setContactActive, 1000)
 }
 
-function setContactActief() {
-	contactActief = "true"
+function setContactActive() {
+	contactActive = "true"
 }
 
 function hideContact() {
-	if (contactActief === "true") {
+	if (contactActive === "true") {
 		var cp = document.getElementById("contactpanel");
 		cp.style.display = "none";
-		contactActief = "false"
+		contactActive = "false"
 	}
 }
 
 function showScroll() {
 	var bt = document.getElementById("back-to-top");
 	bt.style.display = "inline";
-	window.setTimeout(setScrollActief, 1000)
+	window.setTimeout(setScrollActive, 1000)
 }
 
-function setScrollActief() {
-	scrollActief = "true"
+function setScrollActive() {
+	scrollActive = "true"
 }
 
 function hideScroll() {
-	if (scrollActief === "true") {
+	if (scrollActive === "true") {
 		var bt = document.getElementById("back-to-top");
 		bt.style.display = "none";
-		scrollActief = "false"
+		scrollActive = "false"
 	}
 }
 
-function laadGalerij(src) {
-	var galery = document.getElementById("galerij");
+function loadGallery(src) {
+	var gallery = document.getElementById("gallery");
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState === 4 && this.status === 200) {
-			galery.innerHTML = xhttp.responseText
+			gallery.innerHTML = xhttp.responseText
 		}
 	};
 	xhttp.open("GET", src, true);
@@ -237,15 +236,14 @@ function setShare() {
 
 (function () {
 	if (viewportWidth <= 755) {
-		document.addEventListener('DOMContentLoaded', initMobiel)
+		document.addEventListener('DOMContentLoaded', initMobile)
 	}
-	;
+	
 	if (viewportWidth > 755) {
 		document.addEventListener('DOMContentLoaded', initLarge)
 	}
-	;
 
-	function initMobiel() {
+	function initMobile() {
 		setShare();
 		hideMenu();
 		hideShare();
@@ -298,6 +296,6 @@ function setShare() {
 			}
 		}
 		nsrc = nsrc + 'NL_foto.phtml';
-		laadGalerij(nsrc)
+		loadGallery(nsrc)
 	}
 })();
