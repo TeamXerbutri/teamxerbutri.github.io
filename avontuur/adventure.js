@@ -12,8 +12,8 @@ document.querySelector('#app').innerHTML =`
         </div>
 	<div class="menu" id="menu">
 		<a href="../map" title="Team Xerbutri Maps"> Maps</a>
-		<a href="../avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
-		<a href="../avontuur/TXAUE" title="Over Urban exploring">Over UE</a>
+		<a href="../avontuur/txatx" title="Over Team Xerbutri urban exploring"> Over TX</a>
+		<a href="../avontuur/txaue" title="Over Urban exploring">Over UE</a>
 		<a id="contact" title="Neem contact met ons op">Contact</a>
 <!--		<a href="../vier/xerbutri.php?lang=2" title="Visit the team xerbutri page version 4 in English" >EN</a>-->
 	</div>
@@ -226,14 +226,6 @@ function setShare() {
 	var waElem = document.getElementById('sharewa');
 	fbElem.href = fburi;
 	waElem.href = wauri;
-	try {
-		if (typeof _paq !== 'undefined') {
-			waElem.addEventListener("click", _paq.push(['trackEvent', 'SocialMedia', 'Share', 'WhatsApp']));
-			fbElem.addEventListener("click", _paq.push(['trackEvent', 'SocialMedia', 'Share', 'Facebook']))
-		}
-	} catch (error) {
-		console.error("Your browser is blocking analytics")
-	}
 }
 
 (function () {
