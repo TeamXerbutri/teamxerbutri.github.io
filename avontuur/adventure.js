@@ -24,27 +24,6 @@ document.querySelector('#app').innerHTML =`
 </header>
 
 <article id="top">
-	
-	<!-- START HERE with translating the code from PHP-fff to javascript -->
-	<include href="{{@artikel}}"/>
-        <check if="{{@categorieid == 5 }}"><true></true><false>
-        <h3>Bronnen</h3>
-        <p>Voor het artikel is gebruikt gemaakt van de volgende bronnen:</p>
-        <ol>
-        <repeat group="{{ @bronresults }}" value="{{ @bronitem }}"> 
-            <li><a href="{{@bronitem.bronadres}}" title="{{@bronitem.brontitel}}" target="_blank">{{@bronitem.brontitel|decodehtml}}</a> <i>bezocht op {{date("j M Y",strtotime(@bronitem.brondatum))}}</i></li>
-        </repeat>
-        </ol>
-        </false></check>
-        <h3><check if="{{@categorieid == 3 }}"><true>Fotoreportage</true><false>Galerij</false></check> </h3>
-        <p id="gallerycontent"><check if="{{@categorieid == 3 }}"><true>Klik op de foto om naar de fotoreportage te gaan</true><false>Tik op de foto om alle foto's van {{@titel| decodehtml}} te bekijken in de fotoviewer</false></check></p>
-        <div id="gallery" class="gallery">
-            <figure id="mobgal">
-                <img id="mobgalimg" src={{@firstimage}} itemprop="thumbnail" alt="{{@beschrijving| decodehtml}}" >
-            </figure>
-        </div>
-        
-
 
 </article>
 <a id="back-to-top" href="#top">^</a>
@@ -104,109 +83,123 @@ document.querySelector('#app').innerHTML =`
 </check>
 `
 
-
 let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-let menuActive = true, shareActive = true, contactActive, scrollActive;
 
+let uiState = {};
+uiState.hasMenu = true;
+uiState.hasContactModal = false;
+uiState.hasPrivacyModal = false;
+uiState.hasShareModal = false;
+uiState.hasBackToTop = false;
+
+let appState = {};
+appState.language = "nl";
+// TODO: get language from browser like:
+let futureLanguage = navigator.language;
+
+// get last part of url string
+let abbreviation = window.location.href.split("/").pop();
+let category = "gebouw"; //TODO Get category from somewhere
+let blogContent = fetch("data/".concat(category, "/", abbreviation, "/", appState.language,"_",abbreviation, ".html")).then(response => response.text());
 function showMenu() {
-	var menu = document.getElementById("menu");
-	var menuitems = menu.getElementsByTagName("a");
-	for (var i = 0; i < menuitems.length; i += 1) {
-		var element = menuitems[i];
+	let menu = document.getElementById("menu");
+	let menuitems = menu.getElementsByTagName("a");
+	for (let i = 0; i < menuitems.length; i += 1) {
+		let element = menuitems[i];
 		element.style.display = "block"
 	}
 	menu.style.width = "116px";
 	menu.style.height = "230px";
-	window.setTimeout(setMenuActive, 1000)
+	window.setTimeout(setHasMenuTrue, 1000)
 }
 
-function setMenuActive() {
-	menuActive = true
+function setHasMenuTrue(){
+	uiState.hasMenu = true;
 }
 
 function hideMenu() {
-	if (menuActive) {
-		var menu = document.getElementById("menu");
-		var menuitems = menu.getElementsByTagName("a");
-		for (var i = 0; i < menuitems.length; i += 1) {
-			var element = menuitems[i];
+	if (uiState.hasMenu) {
+		let menu = document.getElementById("menu");
+		let menuitems = menu.getElementsByTagName("a");
+		for (let i = 0; i < menuitems.length; i += 1) {
+			let element = menuitems[i];
 			element.style.display = "none"
 		}
 		menu.style.width = "44px";
 		menu.style.height = "44px";
-		menuActive = false
+		uiState.hasMenu = false
 	}
 }
 
-function showShare() {
-	var share = document.getElementById("sharepanel");
-	var shareitems = share.getElementsByTagName("a");
-	for (var i = 0; i < shareitems.length; i += 1) {
-		var element = shareitems[i];
+function showShareModal() {
+	let share = document.getElementById("sharepanel");
+	let shareitems = share.getElementsByTagName("a");
+	for (let i = 0; i < shareitems.length; i += 1) {
+		const element = shareitems[i];
 		element.style.display = "block"
 	}
 	share.style.width = "116px";
 	share.style.height = "91px";
-	window.setTimeout(setShareActive, 1000)
+	window.setTimeout(setHasShareModal, 1000)
 }
 
-function setShareActive() {
-	shareActive = true
+function setHasShareModal() {
+	uiState.hasShareModal = true
 }
 
-function hideShare() {
-	if (shareActive) {
-		var share = document.getElementById("sharepanel");
-		var shareitems = share.getElementsByTagName("a");
-		for (var i = 0; i < shareitems.length; i += 1) {
-			var element = shareitems[i];
+function hideShareModal() {
+	if (uiState.hasShareModal) {
+		const share = document.getElementById("sharepanel");
+		const shareitems = share.getElementsByTagName("a");
+		for (let i = 0; i < shareitems.length; i += 1) {
+			const element = shareitems[i];
 			element.style.display = "none"
 		}
 		share.style.width = "44px";
 		share.style.height = "44px";
-		shareActive = false
+		uiState.hasShareModal = false
 	}
 }
 
-function showContact() {
-	var cp = document.getElementById("contactpanel");
+function showContactModal() {
+	const cp = document.getElementById("contactpanel");
 	cp.style.display = "block";
-	window.setTimeout(setContactActive, 1000)
+	window.setTimeout(setContactModalTrue, 1000)
 }
 
-function setContactActive() {
-	contactActive = "true"
+function setContactModalTrue() {
+	uiState.hasContactModal = "true"
 }
 
-function hideContact() {
-	if (contactActive === "true") {
-		var cp = document.getElementById("contactpanel");
+function hideContactModal() {
+	if (uiState.hasContactModal === "true") {
+		const cp = document.getElementById("contactpanel");
 		cp.style.display = "none";
-		contactActive = "false"
+		uiState.hasContactModal = "false"
 	}
 }
 
-function showScroll() {
-	var bt = document.getElementById("back-to-top");
+function showBackToTop() {
+	const bt = document.getElementById("back-to-top");
 	bt.style.display = "inline";
-	window.setTimeout(setScrollActive, 1000)
+	window.setTimeout(setBackToTopTrue, 1000)
 }
 
-function setScrollActive() {
-	scrollActive = "true"
+function setBackToTopTrue(){
+	uiState.hasBackToTop = true;
 }
 
-function hideScroll() {
-	if (scrollActive === "true") {
-		var bt = document.getElementById("back-to-top");
+function hideBackToTop() {
+	if (uiState.hasBackToTop === "true") {
+		const bt = document.getElementById("back-to-top");
 		bt.style.display = "none";
-		scrollActive = "false"
+		uiState.hasBackToTop = "false"
 	}
 }
 
 function loadGallery(src) {
-	var gallery = document.getElementById("gallery");
-	var xhttp = new XMLHttpRequest();
+	const gallery = document.getElementById("gallery");
+	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState === 4 && this.status === 200) {
 			gallery.innerHTML = xhttp.responseText
@@ -218,12 +211,12 @@ function loadGallery(src) {
 }
 
 function setShare() {
-	var uri = location.href;
-	var urienc = encodeURIComponent(uri);
-	var fburi = "https://www.facebook.com/sharer/sharer.php?u=" + urienc;
-	var wauri = "whatsapp://send?text=" + urienc;
-	var fbElem = document.getElementById('sharefb');
-	var waElem = document.getElementById('sharewa');
+	const uri = location.href;
+	const urienc = encodeURIComponent(uri);
+	const fburi = "https://www.facebook.com/sharer/sharer.php?u=" + urienc;
+	const wauri = "whatsapp://send?text=" + urienc;
+	const fbElem = document.getElementById('sharefb');
+	const waElem = document.getElementById('sharewa');
 	fbElem.href = fburi;
 	waElem.href = wauri;
 }
@@ -238,50 +231,52 @@ function setShare() {
 	}
 
 	function initMobile() {
+		blogContent.then(data => {document.getElementById("top").innerHTML = data;});
 		setShare();
 		hideMenu();
-		hideShare();
-		hideContact();
-		hideScroll();
+		hideShareModal();
+		hideContactModal();
+		hideBackToTop();
 		document.addEventListener("click", hideMenu);
-		document.addEventListener("click", hideContact);
-		document.addEventListener("click", hideShare);
+		document.addEventListener("click", hideContactModal);
+		document.addEventListener("click", hideShareModal);
 		document.getElementById("menu").addEventListener("click", showMenu);
-		document.getElementById("sharepanel").addEventListener("click", showShare);
-		document.getElementById("contact").addEventListener("click", showContact);
+		document.getElementById("sharepanel").addEventListener("click", showShareModal);
+		document.getElementById("contact").addEventListener("click", showContactModal);
 		window.onscroll = function (ev) {
-			var pvopen = false;
+			const pvopen = false;
 			if (window.scrollY >= 200) {
-				showScroll()
+				showBackToTop()
 			} else {
-				hideScroll()
+				hideBackToTop()
 			}
 		}
 	};
 
 	function initLarge() {
+		blogContent.then(data => {document.getElementById("top").innerHTML = data;});
 		setShare();
 		hideMenu();
-		hideShare();
-		hideContact();
-		hideScroll();
+		hideShareModal();
+		hideContactModal();
+		hideBackToTop();
 		document.addEventListener("click", hideMenu);
-		document.addEventListener("click", hideShare);
-		document.addEventListener("click", hideContact);
+		document.addEventListener("click", hideShareModal);
+		document.addEventListener("click", hideContactModal);
 		document.getElementById("menu").addEventListener("click", showMenu);
-		document.getElementById("sharepanel").addEventListener("click", showShare);
-		document.getElementById("contact").addEventListener("click", showContact);
+		document.getElementById("sharepanel").addEventListener("click", showShareModal);
+		document.getElementById("contact").addEventListener("click", showContactModal);
 		window.onscroll = function (ev) {
 			if (window.scrollY >= 250) {
-				showScroll()
+				showBackToTop()
 			} else {
-				hideScroll()
+				hideBackToTop()
 			}
 		};
 		document.getElementById("mobgal").style.display = "none";
-		var src = document.getElementById("mobgalimg").src;
-		var asrc = src.split("/");
-		var nsrc = "";
+		const src = document.getElementById("mobgalimg").src;
+		const asrc = src.split("/");
+		let nsrc = "";
 		for (let i = 0; i < asrc.length - 1; i += 1) {
 			if (asrc[i] === "") {
 				nsrc = nsrc + "//"

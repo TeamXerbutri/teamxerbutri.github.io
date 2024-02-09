@@ -1,6 +1,7 @@
 import './style.css'
 import txLogo from './assets/images/tx.gif'
 import {createBlogObject} from "./components/objectfactory"
+//TODO import the router.js
 
 document.querySelector('#app').innerHTML =`<main>
 <header>
@@ -59,8 +60,12 @@ uiState.hasContactModal = false;
 uiState.hasPrivacyModal = false;
 uiState.hasBackToTop = false;
 uiState.hasFilter = {bridge:false, building:false, rail:false, tunnel:false};
+
 let appState = {};
 appState.language = "nl";
+// TODO: get language from browser like:
+let futureLanguage = navigator.language;
+let lastid=1;
 
 let getObjects = fetch("data/index.".concat(appState.language, ".json")).then((response) => response.json());
 
@@ -189,7 +194,7 @@ function hidePrivacyModal(){
     }
 }
 
-function showBackTotop(){
+function showBackToTop(){
     let bt = document.getElementById("back-to-top");
     bt.style.display = "inline";
     window.setTimeout(setBacktoTopTrue,1000);
@@ -199,7 +204,7 @@ function setBacktoTopTrue(){
     uiState.hasBackToTop = true;
 }
 
-function hideBackTotop(){
+function hideBackToTop(){
     if (uiState.hasBackToTop) {    
         let bt = document.getElementById("back-to-top");
         bt.style.display = "none";
@@ -208,30 +213,30 @@ function hideBackTotop(){
 }
 
 function filterObjects(){
-    if(filterActive.bridge){
+    if(uiState.hasFilter.bridge){
         setDisplayFilter('bridge', 'none');
     }
-    if(filterActive.building){
+    if(uiState.hasFilter.building){
         setDisplayFilter('building', 'none');
     }
-    if(filterActive.rail){
+    if(uiState.hasFilter.rail){
         setDisplayFilter('rail', 'none');
     }
-    if(filterActive.tunnel){
+    if(uiState.hasFilter.tunnel){
         setDisplayFilter('tunnel', 'none');
     }
 }
 
 // Builds the objects
 function objectFactory(subjects){
-    var objectContainer = document.getElementById('oc');
+    const objectContainer = document.getElementById('oc');
     for(let i in subjects){
         let displayObject = createBlogObject(subjects[i]);         
         objectContainer.appendChild(displayObject);
     }
 }
 
-var lastid=1;
+
 
 
 (function(){
@@ -240,7 +245,7 @@ var lastid=1;
     function init(){
         hidePrivacyModal();
         hideContactModal();
-        hideBackTotop();
+        hideBackToTop();
         document.addEventListener("click", hideMenu);
         document.addEventListener("click", hidePrivacyModal);
         document.addEventListener("click", hideContactModal);
@@ -248,11 +253,6 @@ var lastid=1;
         document.getElementById("contact").addEventListener("click", showContactModal);
         document.getElementById("privacy").addEventListener("click", showPrivacyModal);
 
-        //object factory
-
-        // get the object container
-        
-        
         // fetch the objects
         getObjects.then(
             function(value) {objectFactory(value.subjects);},
@@ -267,7 +267,7 @@ var lastid=1;
 
     function initMobile(){   
         //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));
-        var maxid = parseInt(document.getElementById('maxid').value);
+        let maxid = parseInt(document.getElementById('maxid').value);
         //ToDo, load based on size! Do a height calculation
         loadMore(lastid+1, 5, true);
         lastid = lastid+6;
@@ -275,10 +275,10 @@ var lastid=1;
             if (lastid>=maxid){
              return;    
             }
-            var totalHeight = window.innerHeight + window.scrollY;
+            let totalHeight = window.innerHeight + window.scrollY;
             if (totalHeight >= 0.9*document.body.offsetHeight) {
-                var icons = 8;
-                var nextlastid = lastid+icons;
+                let icons = 8;
+                let nextlastid = lastid + icons;
                 if(maxid<=nextlastid){
                     icons = maxid-lastid;
                 }
@@ -286,14 +286,14 @@ var lastid=1;
                 lastid = lastid+icons+1;
             }
             if (window.scrollY >= 200) {
-                showScroll();
+                showBackToTop();
             }
             else{
-                hideScroll();
+                hideBackToTop();
             }
         };
         //load the filtering
-        var indexFilter = document.createElement("script");
+        const indexFilter = document.createElement("script");
         indexFilter.type = "text/javascript";
         indexFilter.src = "assets/js/indexfilter.js";
         document.body.appendChild(indexFilter);
@@ -302,8 +302,8 @@ var lastid=1;
         
 	function initLarge(){
         //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));//==1, maar ook flexibel zo.
-        var maxid = parseInt(document.getElementById('maxid').value);
-        var h = Math.round(window.innerHeight/180)*4-4;//h is bekend.
+        let maxid = parseInt(document.getElementById('maxid').value);
+        let h = Math.round(window.innerHeight / 180) * 4 - 4;//h is bekend.
         loadMore(lastid+1, h, false);
         lastid = lastid+h+1;
         window.onscroll = function(ev) {
@@ -322,10 +322,10 @@ var lastid=1;
                 lastid = lastid+icons+1;//set new lastid in js instead of fetching from page
             }
             if (window.scrollY >= 200) {
-                showScroll();
+                showBackToTop();
             }
             else{
-                hideScroll();
+                hideBackToTop();
             }                
         };
 
