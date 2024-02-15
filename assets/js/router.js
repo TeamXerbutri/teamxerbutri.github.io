@@ -1,36 +1,36 @@
-﻿const adventurePath = "/avontuur/index.html";
+﻿
 //TODO Create routes from json or something
 // Cant you create an easier way to create the index homepage and use this router to load everything as htmls?
 const routes = {
-	"/vbmh": {
+	"/avontuur/vbmh": {
 		template: adventurePath,
 		title: "Muggenhoeve",
 		category: "gebouw", 
 		description: "Muggenhoeve",
 	},
-	"/l126": {
+	"/avontuur/l126": {
 		template: adventurePath,
 		title: "Lijn 126 Condroz",
 		category: "spoor",
 		description: "Lijn 126 Condroz",
 	},
-	"/kwh": {
+	"/avontuur/kwh": {
 		template: adventurePath,
 		title: "Chateau Blanc",
 		category: "gebouw",
 		description: "TX bezoekt wit kasteel",
 	},
-	"/skfe": {
+	"/avontuur/skfe": {
 		template: adventurePath,
 		title: "Koolmijn Lorraine",
 		description: "Koolmijn Lorraine",
 	},
-	"/txatx": {
+	"/avontuur/txatx": {
 		template: adventurePath,
 		title: "About Us",
 		description: "This is the about page",
 	},
-	"/txaue": {
+	"/avontuur/txaue": {
 		template: adventurePath,
 		title: "About Urban Exploring",
 		description: "About Urban Exploring",
@@ -46,13 +46,13 @@ const route = (event) => {
 };
 
 const locationHandler = async () => {
-	let location = window.location.pathname; // get the url path
+	let path = window.location.pathname; // get the url path
 	// if the path length is 0, set it to primary page route
-	if (location.length == 0) {
-		location = "/";
+	if (path.length === 0) {
+		path = "/";
 	}
 	// get the route object from the urlRoutes object
-	const route = routes[location] || routes["404"];
+	const route = routes[path] || routes["404"];
 	// get the html from the template
 	const html = await fetch(route.template).then((response) => response.text());
 	// set the content of the content div to the html

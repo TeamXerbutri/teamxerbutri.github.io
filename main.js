@@ -1,8 +1,9 @@
 import './style.css'
 import txLogo from './assets/images/tx.gif'
-import {createBlogObject} from "./components/objectfactory"
+import {showContactModal, hideContactModal, showPrivacyModal, hidePrivacyModal, showBackToTop, hideBackToTop, showMenu, hideMenu} from './assets/js/header.js'
 //TODO import the router.js
 
+ //TODO The header and main are universal. As is the noscript tag. Create a container wrapper div. load image and eventlistener from init 
 document.querySelector('#app').innerHTML =`<main>
 <header>
 	<img class="tx" src=${txLogo} alt="Team Xerbutri Logo">
@@ -54,12 +55,9 @@ document.querySelector('#app').innerHTML =`<main>
 //before loading build a skeleton with text
 let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-let uiState = {};
-uiState.hasMenu = true;
-uiState.hasContactModal = false;
-uiState.hasPrivacyModal = false;
-uiState.hasBackToTop = false;
-uiState.hasFilter = {bridge:false, building:false, rail:false, tunnel:false};
+
+
+
 
 let appState = {};
 appState.language = "nl";
@@ -67,182 +65,13 @@ appState.language = "nl";
 let futureLanguage = navigator.language;
 let lastid=1;
 
-let getObjects = fetch("data/index.".concat(appState.language, ".json")).then((response) => response.json());
-
-// UI state Business logic for filtering
-function setDisplayFilter(className, display){
-    let categories = document.getElementsByClassName(className);		
-    let i;
-    
-    for(i=0; i< categories.length; i++){
-        categories[i].style.display = display;
-    }	
-}
-
-// why is showMenu so complicated?
-function showMenu(){
-    let menu = document.getElementById("menu");
-    let menuitems = menu.getElementsByTagName("a");
-    
-    for (let i = 0; i < menuitems.length; i++) {
-        let element = menuitems[i];
-        element.style.display = "block";
-    }
-    
-    menu.style.width = "100px";
-    menu.style.height = "276px";
-    // Why did I have this again?
-    window.setTimeout(setHasMenuTrue , 1000);
-    document.getElementsByClassName('filter')[0].style.display='none';
-}
-
-function setHasMenuTrue(){
-    uiState.hasMenu = true;
-}
-
-function hideMenu(){
-    if (uiState.hasMenu) {    
-        let menu = document.getElementById("menu");
-        let menuitems = menu.getElementsByTagName("a");
-
-        for (let i = 0; i < menuitems.length; i++) {
-            let element = menuitems[i];
-            element.style.display = "none";
-        }
-
-        menu.style.width = "44px";
-        menu.style.height = "44px";
-
-        if(document.getElementsByClassName('filter')[0]){
-        document.getElementsByClassName('filter')[0].style.display='inline-block';
-        }
-        uiState.hasMenu = false;
-    }
-}
-
-function loadMore(lastid, number, small){
-    // var xhttp = new XMLHttpRequest();
-    // xhttp.onreadystatechange = function() {
-    //     if (this.readyState === 4 && this.status === 200) {
-    //         //var response = this.responseText;
-    //         //var d = document.getElementById('ld');
-    //         //d.parentNode.removeChild(d);
-    //         var e = document.getElementById('oc');
-    //         e.insertAdjacentHTML('beforeend', this.responseText);
-    //         ladenKlaar=true;
-    //         if(!filterActive.bridge&&!filterActive.building&&!filterActive.rail&&!filterActive.tunnel){
-    //             //nothing
-    //         }
-    //         else{
-    //             if(filterActive.bridge){
-    //                 setDisplayFilter('bridget', 'none');
-    //             }
-    //             if(filterActive.building){
-    //                 setDisplayFilter('buildingt', 'none');
-    //             }
-    //             if(filterActive.rail){
-    //                 setDisplayFilter('railt', 'none');
-    //             }
-    //             if(filterActive.tunnel){
-    //                 setDisplayFilter('tunnelt', 'none');
-    //             }
-    //         }
-    //         }   
-    //     };
-    //     var lastidx=encodeURIComponent(lastid);
-    //     var numberx = encodeURIComponent(number);
-    //     var smallx = encodeURIComponent(small);
-    //     var params="params="+lastidx+","+numberx+","+smallx;
-    //     xhttp.open("POST", "getmoreicons", true);
-    //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //     xhttp.send(params);
-}
-
-function showContactModal(){
-    let cp = document.getElementById("contactpanel");
-    cp.style.display = "block";
-    window.setTimeout(setContactModalTrue,1000);
-}
-
-function setContactModalTrue(){
-    uiState.hasContactModal = true;
-}
-
-function hideContactModal(){
-    if (uiState.hasContactModal) {    
-        let cp = document.getElementById("contactpanel");
-        cp.style.display = "none";
-        uiState.hasContactModal = false;
-    }
-}
-
-function showPrivacyModal(){
-    let pp = document.getElementById("privacypanel");
-    pp.style.display = "block";
-    window.setTimeout(setHasPrivacyModalTrue,1000);
-}
-
-function setHasPrivacyModalTrue(){
-    uiState.hasPrivacyModal = true;
-}
-
-function hidePrivacyModal(){
-    if (uiState.hasPrivacyModal==="true") {    
-        let pp = document.getElementById("privacypanel");
-        pp.style.display = "none";
-        uiState.hasPrivacyModal = "false";
-    }
-}
-
-function showBackToTop(){
-    let bt = document.getElementById("back-to-top");
-    bt.style.display = "inline";
-    window.setTimeout(setBacktoTopTrue,1000);
-}
-
-function setBacktoTopTrue(){
-    uiState.hasBackToTop = true;
-}
-
-function hideBackToTop(){
-    if (uiState.hasBackToTop) {    
-        let bt = document.getElementById("back-to-top");
-        bt.style.display = "none";
-        uiState.hasBackToTop = false;
-    }
-}
-
-function filterObjects(){
-    if(uiState.hasFilter.bridge){
-        setDisplayFilter('bridge', 'none');
-    }
-    if(uiState.hasFilter.building){
-        setDisplayFilter('building', 'none');
-    }
-    if(uiState.hasFilter.rail){
-        setDisplayFilter('rail', 'none');
-    }
-    if(uiState.hasFilter.tunnel){
-        setDisplayFilter('tunnel', 'none');
-    }
-}
-
-// Builds the objects
-function objectFactory(subjects){
-    const objectContainer = document.getElementById('oc');
-    for(let i in subjects){
-        let displayObject = createBlogObject(subjects[i]);         
-        objectContainer.appendChild(displayObject);
-    }
-}
-
 
 
 
 (function(){
     document.addEventListener('DOMContentLoaded', init);
-    
-    function init(){
+
+    function init() {
         hidePrivacyModal();
         hideContactModal();
         hideBackToTop();
@@ -252,87 +81,24 @@ function objectFactory(subjects){
         document.getElementById("menu").addEventListener("click", showMenu);
         document.getElementById("contact").addEventListener("click", showContactModal);
         document.getElementById("privacy").addEventListener("click", showPrivacyModal);
+        if (window.scrollY >= 200) {
+            showBackToTop();
+        }
+        else{
+            hideBackToTop();
+        }
+    }})();
 
-        // fetch the objects
-        getObjects.then(
-            function(value) {objectFactory(value.subjects);},
-            function (error) {errorHandler(error)},
-        )
-            
-        if(viewportWidth <=755){ initMobile}//When the page is loaded, call init
-	    if(viewportWidth >755){ initLarge}
-    }
 
-    //ToDo window.onresize() -> doe een resizing en wijzig op basis van UIstate
 
-    function initMobile(){   
-        //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));
-        let maxid = parseInt(document.getElementById('maxid').value);
-        //ToDo, load based on size! Do a height calculation
-        loadMore(lastid+1, 5, true);
-        lastid = lastid+6;
-        window.onscroll = function(ev) {
-            if (lastid>=maxid){
-             return;    
-            }
-            let totalHeight = window.innerHeight + window.scrollY;
-            if (totalHeight >= 0.9*document.body.offsetHeight) {
-                let icons = 8;
-                let nextlastid = lastid + icons;
-                if(maxid<=nextlastid){
-                    icons = maxid-lastid;
-                }
-                loadMore(lastid+1, icons, true);
-                lastid = lastid+icons+1;
-            }
-            if (window.scrollY >= 200) {
-                showBackToTop();
-            }
-            else{
-                hideBackToTop();
-            }
-        };
-        //load the filtering
-        const indexFilter = document.createElement("script");
-        indexFilter.type = "text/javascript";
-        indexFilter.src = "assets/js/indexfilter.js";
-        document.body.appendChild(indexFilter);
-        hideMenu();
-    }
-        
-	function initLarge(){
-        //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));//==1, maar ook flexibel zo.
-        let maxid = parseInt(document.getElementById('maxid').value);
-        let h = Math.round(window.innerHeight / 180) * 4 - 4;//h is bekend.
-        loadMore(lastid+1, h, false);
-        lastid = lastid+h+1;
-        window.onscroll = function(ev) {
-            //var lastid= parseInt(document.getElementById('oc').lastChild.getAttribute("data-num"));//hier gaat het mis bij snel scrollen.
-            if (lastid>=maxid){
-                return;    
-            }
-            let totalHeight = window.innerHeight + window.scrollY;
-            if (totalHeight >= 0.9*document.body.offsetHeight) {
-                let icons = 8;
-                let nextlastid = lastid+icons;
-                if(maxid<=nextlastid){
-                    icons = maxid-lastid;
-                }
-                loadMore(lastid+1, icons, false);
-                lastid = lastid+icons+1;//set new lastid in js instead of fetching from page
-            }
-            if (window.scrollY >= 200) {
-                showBackToTop();
-            }
-            else{
-                hideBackToTop();
-            }                
-        };
 
-        //load the filtering
-        let indexFilter = document.createElement("script");
-        indexFilter.type = "text/javascript";
-        indexFilter.src = "assets/js/indexfilter.js";
-        document.body.appendChild(indexFilter);
-    }
-})();
+
+
+
+
+
+
+
+
+
+

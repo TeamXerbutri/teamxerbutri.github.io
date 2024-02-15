@@ -1,0 +1,2 @@
+﻿let uiState = {};
+export { uiState };
