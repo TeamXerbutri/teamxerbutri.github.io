@@ -1,41 +1,7 @@
 ﻿
 //TODO Create routes from json or something
 // Cant you create an easier way to create the index homepage and use this router to load everything as htmls?
-const routes = {
-	"/avontuur/vbmh": {
-		template: adventurePath,
-		title: "Muggenhoeve",
-		category: "gebouw", 
-		description: "Muggenhoeve",
-	},
-	"/avontuur/l126": {
-		template: adventurePath,
-		title: "Lijn 126 Condroz",
-		category: "spoor",
-		description: "Lijn 126 Condroz",
-	},
-	"/avontuur/kwh": {
-		template: adventurePath,
-		title: "Chateau Blanc",
-		category: "gebouw",
-		description: "TX bezoekt wit kasteel",
-	},
-	"/avontuur/skfe": {
-		template: adventurePath,
-		title: "Koolmijn Lorraine",
-		description: "Koolmijn Lorraine",
-	},
-	"/avontuur/txatx": {
-		template: adventurePath,
-		title: "About Us",
-		description: "This is the about page",
-	},
-	"/avontuur/txaue": {
-		template: adventurePath,
-		title: "About Urban Exploring",
-		description: "About Urban Exploring",
-	},
-};
+
 
 const route = (event) => {
 	event = event || window.event; // get window.event if event argument not provided
@@ -46,6 +12,10 @@ const route = (event) => {
 };
 
 const locationHandler = async () => {
+	
+	// TODO search for the part of the path (nothing or vijf -> home, startswith avontuur -> adventure, startswith map -> map)
+	// TODO just call naviate@@
+	
 	let path = window.location.pathname; // get the url path
 	// if the path length is 0, set it to primary page route
 	if (path.length === 0) {

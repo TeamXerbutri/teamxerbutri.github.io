@@ -1,0 +1,1 @@
+﻿//ToDo init Blog like in avontuur
