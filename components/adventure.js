@@ -1,7 +1,7 @@
 ﻿import './style.css'
 import txLogo from './../assets/images/tx.gif'
 
-document.querySelector('#app').innerHTML =`
+document.querySelector('#app').innerHTML = `
 <main>
 <header >
 	<a href="../" title="Team Xerbutri Overzichts pagina"><img class="tx" src=${txLogo} alt="Team Xerbutri Logo"></a>
@@ -100,7 +100,8 @@ let futureLanguage = navigator.language;
 // get last part of url string
 let abbreviation = window.location.href.split("/").pop();
 let category = "gebouw"; //TODO Get category from somewhere
-let blogContent = fetch("data/".concat(category, "/", abbreviation, "/", appState.language,"_",abbreviation, ".html")).then(response => response.text());
+let blogContent = fetch("data/".concat(category, "/", abbreviation, "/", appState.language, "_", abbreviation, ".html")).then(response => response.text());
+
 function showMenu() {
 	let menu = document.getElementById("menu");
 	let menuitems = menu.getElementsByTagName("a");
@@ -113,7 +114,7 @@ function showMenu() {
 	window.setTimeout(setHasMenuTrue, 1000)
 }
 
-function setHasMenuTrue(){
+function setHasMenuTrue() {
 	uiState.hasMenu = true;
 }
 
@@ -185,7 +186,7 @@ function showBackToTop() {
 	window.setTimeout(setBackToTopTrue, 1000)
 }
 
-function setBackToTopTrue(){
+function setBackToTopTrue() {
 	uiState.hasBackToTop = true;
 }
 
@@ -225,13 +226,15 @@ function setShare() {
 	if (viewportWidth <= 755) {
 		document.addEventListener('DOMContentLoaded', initMobile)
 	}
-	
+
 	if (viewportWidth > 755) {
 		document.addEventListener('DOMContentLoaded', initLarge)
 	}
 
 	function initMobile() {
-		blogContent.then(data => {document.getElementById("top").innerHTML = data;});
+		blogContent.then(data => {
+			document.getElementById("top").innerHTML = data;
+		});
 		setShare();
 		hideMenu();
 		hideShareModal();
@@ -251,10 +254,12 @@ function setShare() {
 				hideBackToTop()
 			}
 		}
-	};
+	}
 
 	function initLarge() {
-		blogContent.then(data => {document.getElementById("top").innerHTML = data;});
+		blogContent.then(data => {
+			document.getElementById("top").innerHTML = data;
+		});
 		setShare();
 		hideMenu();
 		hideShareModal();

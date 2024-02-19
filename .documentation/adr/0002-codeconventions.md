@@ -1,6 +1,5 @@
 ﻿# Code conventions
 
-
 ## Status
 
 Go!
@@ -13,7 +12,6 @@ Go!
 ## Rationale
 
 - Apache/Linux are case sensitive, so we need to be careful with filenames
-
 
 ## Consequences
 

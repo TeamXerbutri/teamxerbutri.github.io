@@ -11,58 +11,56 @@ function createBlogObject(BlogObject) {
 	let div = document.createElement('div');
 	div.classList.add('tile');
 	div.classList.add(BlogObject.category);
-	
+
 	let link = document.createElement('a');
 	link.href = createLink(BlogObject);
 	link.title = BlogObject.description;
-	
+
 	let image = document.createElement('img');
 	image.src = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation, ".jpg");
 	image.alt = BlogObject.realname;
 	image.classList.add('te')
 	image.id = BlogObject.abbreviation;
-	
+
 	link.appendChild(image);
-	
+
 	let objectDescription = document.createElement('h3');
 	objectDescription.classList.add('te');
 	objectDescription.innerText = createObjectDescription(BlogObject.category, BlogObject.realname, 'nl');
-	
+
 	link.appendChild(objectDescription);
 
 	let name = document.createElement('h2');
 	name.classList.add('te');
 	name.innerText = BlogObject.shortname;
 	link.appendChild(name);
-	
+
 	div.appendChild(link);
 	return div;
 }
 
-function createLink(BlogObject){
+function createLink(BlogObject) {
 	let link = "";
-	if(BlogObject.abbreviation==="map"){
+	if (BlogObject.abbreviation === "map") {
 		link = "map";
-	}
-	else{
+	} else {
 		link = "avontuur/".concat(BlogObject.abbreviation)
 	}
 	return link;
 }
 
-function createObjectDescription(category, realname, language){
+function createObjectDescription(category, realname, language) {
 	let firstline = "";
-	if(category==="xerbutri"){
+	if (category === "xerbutri") {
 		firstline = realname;
-	}
-	else{
+	} else {
 		firstline = getCategoryName(category, language)
 	}
 	return firstline;
 }
 
-function getCategoryName(category, language){
-	switch(language){
+function getCategoryName(category, language) {
+	switch (language) {
 		case 'nl':
 			return getCategoryNameNl(category);
 		default:
@@ -70,18 +68,18 @@ function getCategoryName(category, language){
 	}
 }
 
-function getCategoryNameNl(category){
-	switch(category){
+function getCategoryNameNl(category) {
+	switch (category) {
 		case 'gebouw':
-			return  "Verlaten Gebouwen";
+			return "Verlaten Gebouwen";
 		case 'spoor':
 			return "Spoorlijnen";
 		case 'tunnel':
-			return  "Tunnels";
+			return "Tunnels";
 		case 'brug':
-			return  "Bruggen";
+			return "Bruggen";
 		default:
-			return  "Not Found"
+			return "Not Found"
 	}
 }
 

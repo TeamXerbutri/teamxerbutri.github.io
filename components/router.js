@@ -1,5 +1,4 @@
-﻿
-//TODO Create routes from json or something
+﻿//TODO Create routes from json or something
 // Cant you create an easier way to create the index homepage and use this router to load everything as htmls?
 
 
@@ -12,10 +11,10 @@ const route = (event) => {
 };
 
 const locationHandler = async () => {
-	
+
 	// TODO search for the part of the path (nothing or vijf -> home, startswith avontuur -> adventure, startswith map -> map)
 	// TODO just call naviate@@
-	
+
 	let path = window.location.pathname; // get the url path
 	// if the path length is 0, set it to primary page route
 	if (path.length === 0) {
@@ -35,4 +34,4 @@ const locationHandler = async () => {
 		.setAttribute("content", route.description);
 };
 
-export { route, locationHandler };
+export {route, locationHandler};

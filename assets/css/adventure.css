@@ -66,7 +66,7 @@ h1.logo {
 	width: 0
 }
 
-img.tx {
+img#tx {
 	display: inline-block;
 	padding-top: 4px;
 	padding-left: 4px
