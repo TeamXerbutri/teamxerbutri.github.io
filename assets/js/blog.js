@@ -96,16 +96,28 @@ export function initBlog() {
 		<a id="back-to-top" href="#app">^</a>
 		`
 	
+	//As gemini says it should go
+	fetch(blogPath).then(response => response.text()).then(data => {const container = document.getElementById('blog');console.log("The hmml string: ", data); container.innerHTML = data;});
+	
+	fetch(blogPath)
+		.then(response => response.text())
+		.then(function(html){
+			let parser = new DOMParser();
+			var doc = parser.parseFromString(html, 'text/html');
+			console.log("The doc: ", doc);
+		})
+	
+	
 	// fetch the objects
-	blogContent.then(
-		function (value) {
-			console.log("Value: ", value);
-			document.getElementById("blog").innerHTML = value;
-		},
-		function (error) {
-			errorHandler(error)
-		}
-		);
+	// blogContent.then(
+	// 	function (value) {
+	// 		console.log("Value: ", value);
+	// 		document.getElementById("blog").innerHTML = value;
+	// 	},
+	// 	function (error) {
+	// 		errorHandler(error)
+	// 	}
+	// 	);
 	//setShare();
 	if (window.scrollY >= 200) {
 		showBackToTop();
