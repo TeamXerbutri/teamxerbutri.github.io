@@ -1,5 +1,5 @@
-import './style.css'
-import txLogo from './assets/images/tx.gif'
+import '../avontuur/style.css'
+import txLogo from '../assets/images/tx.gif'
 import {
 	hideBackToTop,
 	hideContactModal,
@@ -8,9 +8,9 @@ import {
 	showContactModal,
 	showMenu,
 	showPrivacyModal
-} from './assets/js/header.js'
-import {initHome} from './assets/js/home.js';
-import {stateContext} from "./assets/js/statemachine.js";
+} from '../assets/js/header.js'
+import {initBlog} from "../assets/js/blog.js";
+import {stateContext} from "../assets/js/statemachine.js";
 
 let navState = new stateContext();
 const route = (event) => {
@@ -37,9 +37,9 @@ const route = (event) => {
 		document.addEventListener("click", hideContactModal);
 		document.getElementById("menu").addEventListener("click", showMenu);
 		document.getElementById("contact").addEventListener("click", showContactModal);
-		document.getElementById("privacy").addEventListener("click", showPrivacyModal);
-		navState.initState();
-		initHome();
+		//document.getElementById("privacy").addEventListener("click", showPrivacyModal);
+		// navState.initState();
+		initBlog();
 		//ToDo I am not sure what to do with route const. I need to add onclicks at hrefs
 	}
 })();

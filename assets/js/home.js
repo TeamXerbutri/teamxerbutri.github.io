@@ -1,10 +1,7 @@
-﻿import {createBlogObject} from "./objectfactory"
-import {uiState} from "./uistate"
-import {hideBackToTop, showBackToTop} from "./header";
-import {appState} from "./appState";
-
-
-
+﻿import {createBlogObject} from "./objectfactory.js"
+import {uiState} from "./uistate.js"
+import {hideBackToTop, showBackToTop} from "./header.js";
+import {appState} from "./appstate.js";
 
 // UI state Business logic for filtering
 function setDisplayFilter(className, display) {
@@ -49,8 +46,15 @@ export function initHome() {
     </div>
 </div>
 <a id="back-to-top" href="#app">^</a>`
+	
 	uiState.hasFilter = {bridge: false, building: false, rail: false, tunnel: false};
+	
 	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+	function errorHandler(error) {
+		console.error(error);
+	}
+
 	// fetch the objects
 	getObjects.then(
 		function (value) {

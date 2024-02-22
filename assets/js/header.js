@@ -1,4 +1,4 @@
-﻿import {uiState} from './uiState.js';
+﻿import {uiState} from './uistate.js';
 
 function showContactModal() {
 	let cp = document.getElementById("contactpanel");

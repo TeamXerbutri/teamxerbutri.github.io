@@ -1,7 +1,7 @@
 ﻿//ToDo init Blog like in avontuur
-import {uiState} from "./uistate";
-import {hideBackToTop, showBackToTop} from "./header";
-import {appState} from "./appState";
+import {uiState} from "./uistate.js";
+import {hideBackToTop, showBackToTop} from "./header.js";
+import {appState} from "./appstate.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -83,6 +83,7 @@ uiState.hasBackToTop = false;
 
 export function initBlog() {
 	// get last part of url string //TODO in function
+	console.log("Hit init blog");
 	let abbreviation = window.location.href.split("/").pop();
 	let category = "gebouw"; //TODO Get category from somewhere
 	let blogPath = "data/".concat(category, "/", abbreviation, "/", appState.language, "_", abbreviation, ".html");
@@ -93,19 +94,19 @@ export function initBlog() {
 		<article id="blog">
 
 		</article>
-		<a id="back-to-top" href="#app">^</a>
+		<a id="back-to-top" href="#blog">^</a>
 		`
 	
 	//As gemini says it should go
-	fetch(blogPath).then(response => response.text()).then(data => {const container = document.getElementById('blog');console.log("The hmml string: ", data); container.innerHTML = data;});
+	//fetch(blogPath).then(response => response.text()).then(data => {const container = document.getElementById('blog');console.log("The hmml string: ", data); container.innerHTML = data;});
 	
-	fetch(blogPath)
-		.then(response => response.text())
-		.then(function(html){
-			let parser = new DOMParser();
-			var doc = parser.parseFromString(html, 'text/html');
-			console.log("The doc: ", doc);
-		})
+	// fetch(blogPath)
+	// 	.then(response => response.text())
+	// 	.then(function(html){
+	// 		let parser = new DOMParser();
+	// 		var doc = parser.parseFromString(html, 'text/html');
+	// 		console.log("The doc: ", doc);
+	// 	})
 	
 	
 	// fetch the objects
