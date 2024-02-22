@@ -1,4 +1,7 @@
-﻿let stateContext = function () {
+﻿import {initHome} from './home.js';
+import {initBlog} from "./blog.js";
+
+let stateContext = function () {
 	let currentState = new homeState(this);
 
 	this.transitionTo = function (state) {
@@ -29,7 +32,7 @@ let homeState = function (context) {
 	this.context = context;
 	this.enterState = function () {
 		console.log("Entering home state");
-		//initHome();
+		initHome();
 	}
 	this.navigate = function () {
 		let path = window.location.pathname;
@@ -52,8 +55,7 @@ let blogState = function (context) {
 	this.context = context;
 	this.enterState = function () {
 		console.log("Entering blog state");
-		window.location.assign("/avontuur/");
-		//initBlog();
+		initBlog();
 	}
 	this.navigate = function () {
 		let path = window.location.pathname;

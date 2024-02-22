@@ -39,7 +39,6 @@ const route = (event) => {
 		document.getElementById("contact").addEventListener("click", showContactModal);
 		document.getElementById("privacy").addEventListener("click", showPrivacyModal);
 		navState.initState();
-		initHome();
 		//ToDo I am not sure what to do with route const. I need to add onclicks at hrefs
 	}
 })();

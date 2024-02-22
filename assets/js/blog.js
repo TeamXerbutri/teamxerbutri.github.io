@@ -81,13 +81,22 @@ uiState.hasBackToTop = false;
 // 	waElem.href = wauri;
 // }
 
+//TODO insert category and abbreviation as parameters in initBlog, or even better, send the JSON object in, because I need more (title, description, etc)
 export function initBlog() {
-	// get last part of url string //TODO in function
+	
+	// TODO set the title and description
+	// TODO set the header
+	
 	console.log("Hit init blog");
+	// ToDo check for param abbrev, if not there, go get it.
 	let abbreviation = window.location.href.split("/").pop();
-	let category = "gebouw"; //TODO Get category from somewhere
+	// ToDo check for param category, if not there, go get it from JSON
+	let category = "gebouw"; 
+	
+	
 	let blogPath = "data/".concat(category, "/", abbreviation, "/", appState.language, "_", abbreviation, ".html");
 	console.log("Blogpath: ",blogPath);
+	// TODO try dynamic import as javascript instead of html 
 	let blogContent = fetch("data/".concat(category, "/", abbreviation, "/", appState.language, "_", abbreviation, ".html")).then(response => response.text());
 	
 	document.querySelector('#app').innerHTML = `

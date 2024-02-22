@@ -47,6 +47,7 @@ export function initHome() {
 </div>
 <a id="back-to-top" href="#app">^</a>`
 	
+	// TODO set the header
 	uiState.hasFilter = {bridge: false, building: false, rail: false, tunnel: false};
 	
 	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
