@@ -1,7 +1,8 @@
-﻿//ToDo init Blog like in avontuur
-import {uiState} from "./uistate.js";
+﻿import {uiState} from "./uistate.js";
 import {hideBackToTop, showBackToTop} from "./header.js";
 import {appState} from "./appstate.js";
+import txLogo from "../images/tx.gif"
+import {getBlogDataById, getHomeData} from "./blogdata.js"
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -81,53 +82,63 @@ uiState.hasBackToTop = false;
 // 	waElem.href = wauri;
 // }
 
-//TODO insert category and abbreviation as parameters in initBlog, or even better, send the JSON object in, because I need more (title, description, etc)
+
 export function initBlog() {
-	
-	// TODO set the title and description
-	// TODO set the header
-	
-	console.log("Hit init blog");
-	// ToDo check for param abbrev, if not there, go get it.
-	let abbreviation = window.location.href.split("/").pop();
-	// ToDo check for param category, if not there, go get it from JSON
-	let category = "gebouw"; 
-	
-	
-	let blogPath = "data/".concat(category, "/", abbreviation, "/", appState.language, "_", abbreviation, ".html");
-	console.log("Blogpath: ",blogPath);
-	// TODO try dynamic import as javascript instead of html 
-	let blogContent = fetch("data/".concat(category, "/", abbreviation, "/", appState.language, "_", abbreviation, ".html")).then(response => response.text());
-	
+
 	document.querySelector('#app').innerHTML = `
 		<article id="blog">
-
 		</article>
 		<a id="back-to-top" href="#blog">^</a>
 		`
+	// TODO set the localized translations in header
+		
+	const header = `<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
+		<h1 class="logo">Team Xerbutri</h1>
+		<div id="sharepanel">
+			<a href="" target="_blank" id="sharefb">Facebook</a>
+			<a href="" target="_blank" id="sharewa">Whatsapp</a>
+		</div>
+		<div class="blogmenu" id="menu">
+			<a href="../map" title="Team Xerbutri Maps"> Maps</a>
+			<a href="../avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
+			<a href="../avontuur/TXAUE" title="Over Urban exploring">Over UE</a>
+			<a id="contact" title="Neem contact met ons op">Contact</a>
+		</div>
+		<a class="overview" href="../" title="Terug naar overzicht">X</a>
+		<div id="contactpanel">
+			<p>Voor op- of aanmerkingen, maak een issue op GitHub <a
+					href="https://github.com/TeamXerbutri/teamxerbutri.github.io/issues">Team Xerbutri GitHub</a></p>
+		</div>`
+	const headerElem = document.getElementById("header");
+	if(headerElem.classList.contains("home")){
+		headerElem.classList.remove("home");
+		headerElem.classList.add("blog")
+		headerElem.innerHTML = header
+	}
 	
-	//As gemini says it should go
-	//fetch(blogPath).then(response => response.text()).then(data => {const container = document.getElementById('blog');console.log("The hmml string: ", data); container.innerHTML = data;});
+	console.log("Hit init blog");
 	
-	// fetch(blogPath)
-	// 	.then(response => response.text())
-	// 	.then(function(html){
-	// 		let parser = new DOMParser();
-	// 		var doc = parser.parseFromString(html, 'text/html');
-	// 		console.log("The doc: ", doc);
-	// 	})
+	function errorHandler(error) {
+		console.error(error);
+	}
+	let abbreviation = window.location.href.split("/").pop();
+	getBlogDataById(abbreviation).then(
+		function (value) {
+			console.log("Blog object is: ", value);
+			document.title = value.shortname + " - Xerbutri Urban Exploring";
+			document.querySelector('meta[name="description"]').setAttribute("content", value.description);
+		});
 	
 	
-	// fetch the objects
-	// blogContent.then(
-	// 	function (value) {
-	// 		console.log("Value: ", value);
-	// 		document.getElementById("blog").innerHTML = value;
-	// 	},
-	// 	function (error) {
-	// 		errorHandler(error)
-	// 	}
-	// 	);
+	// ToDo check for param category, if not there, go get it from JSON
+	let category = "gebouw";
+	
+	
+	
+	
+	
+	
+	
 	//setShare();
 	if (window.scrollY >= 200) {
 		showBackToTop();

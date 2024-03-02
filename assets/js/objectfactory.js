@@ -5,16 +5,17 @@
 //         <h2 class="te"></h2>
 //     </a>
 // </div>
-
+import {BlogObject} from "./blogobject.js";
 
 function createBlogObject(BlogObject) {
 	let div = document.createElement('div');
 	div.classList.add('tile');
 	div.classList.add(BlogObject.category);
-
+		
 	let link = document.createElement('a');
 	link.href = createLink(BlogObject);
 	link.title = BlogObject.description;
+	//link.onclick = route();
 
 	let image = document.createElement('img');
 	image.src = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation, ".jpg");
@@ -82,14 +83,5 @@ function getCategoryNameNl(category) {
 			return "Not Found"
 	}
 }
-
-function BlogObject(category, abbreviation, shortname, realname, description) {
-	this.category = category;
-	this.abbreviation = abbreviation;
-	this.shortname = shortname;
-	this.realname = realname;
-	this.description = description;
-}
-
 
 export {createBlogObject};

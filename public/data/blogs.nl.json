@@ -1,0 +1,37 @@
+{
+	"map":{
+			"category": "xerbutri",
+			"abbreviation": "map",
+			"shortname": "Alle locaties op kaart",
+			"realname": "Toon op kaart",
+			"description": "Toon alle locaties op kaart"
+		},
+	"vbmh":	{
+			"category": "gebouw",
+			"abbreviation": "vbmh",
+			"shortname": "Muggenhoeve",
+			"realname": "Melkveehouderij De Win, De Winhoeve",
+			"description": "Team Xerbutri bezoekt deze door muggen geteisterde boerderij"
+		},
+	"skfe":	{
+			"category": "gebouw",
+			"abbreviation": "skfe",
+			"shortname": "Koolmijn Lorraine",
+			"realname": "Steenkolenmijn Lorraine",
+			"description": "Team Xerbutri betrapt in steenkolenmijn Sainte-Fontaine"
+		},
+	"kwh": {
+			"category": "gebouw",
+			"abbreviation": "kwh",
+			"shortname": "Chateau Blanc",
+			"realname": "Kasteel Withof",
+			"description": "Een verhaal over bluf en toeval, en een wit kasteel, welk een populaire urbex-bestemming bleek te zijn"
+		},
+	"l126":	{
+			"category": "spoor",
+			"abbreviation": "l126",
+			"shortname": "Lijn 126 Condroz",
+			"realname": "Lijn 126; Ligne du Condroz: [Statte] - Marchin - Ciney",
+			"description": "Een bliksembezoek uit 2007 en een nader onderzoek van het spoorfietspad in 2015"
+		}
+}

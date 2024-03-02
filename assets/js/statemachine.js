@@ -42,6 +42,7 @@ let homeState = function (context) {
 			return;
 		}
 		if (path.startsWith("/avontuur")) {
+			//TODO context.navigationInfo = {category: "avontuur", abbreviation: "avontuur"}; or something along these lines
 			this.context.transitionTo(new blogState(this.context));
 			return;
 		}

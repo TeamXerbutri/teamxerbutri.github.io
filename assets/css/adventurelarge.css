@@ -15,7 +15,7 @@
 		/*border-bottom: solid 1px #666;*/
 	}
 
-	header .menu a, #sharepanel a {
+	header .blogmenu a, #sharepanel a {
 		display: none;
 		color: #fff;
 		text-decoration: none;
@@ -26,7 +26,7 @@
 		border-bottom: 1px solid #000;
 	}
 
-	.menu {
+	.blogmenu {
 		background-image: url(../images/menu.png);
 		display: inline-block;
 		background-color: #000;
@@ -38,7 +38,7 @@
 		overflow: visible;
 	}
 
-	.menu:hover {
+	.blogmenu:hover {
 		background-color: #303030;
 	}
 
@@ -58,7 +58,7 @@
 		background-color: #303030;
 	}
 
-	div.menu a:hover, div.menu a:active {
+	div.blogmenu a:hover, div.blogmenu a:active {
 		background-color: #404040;
 	}
 
