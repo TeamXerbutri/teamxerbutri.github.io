@@ -213,14 +213,14 @@ div.gallery img:active {
 	opacity: .7
 }
 
-div.head {
+#article-title {
 	background-image: url(../images/bgweb.jpg);
 	background-repeat: repeat-x;
 	background: #000;
 	background-image: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .95)), url(../images/bgweb.jpg)
 }
 
-div.head h1 {
+#article-title h1 {
 	margin-top: 0;
 	margin-left: .5em;
 	color: #fff;

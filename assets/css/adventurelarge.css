@@ -265,7 +265,7 @@
 		opacity: 0.7;
 	}
 
-	div.head {
+	#article-title {
 		overflow: hidden;
 		display: inline-block;
 		height: 50px;
@@ -279,7 +279,7 @@
 		background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.95)), url(../images/bgweb.jpg); /* Standard syntax */
 	}
 
-	div.head h1 {
+	#article-title h1 {
 		margin-top: 0;
 		margin-left: 0.5em;
 		color: #fff;

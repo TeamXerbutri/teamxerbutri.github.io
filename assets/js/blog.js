@@ -70,23 +70,24 @@ uiState.hasBackToTop = false;
 
 
 
-//ToDo later!
-// function setShare() {
-// 	const uri = location.href;
-// 	const urienc = encodeURIComponent(uri);
-// 	const fburi = "https://www.facebook.com/sharer/sharer.php?u=" + urienc;
-// 	const wauri = "whatsapp://send?text=" + urienc;
-// 	const fbElem = document.getElementById('sharefb');
-// 	const waElem = document.getElementById('sharewa');
-// 	fbElem.href = fburi;
-// 	waElem.href = wauri;
-// }
+
+function setShare() {
+	const uri = location.href;
+	const urienc = encodeURIComponent(uri);
+	const fburi = "https://www.facebook.com/sharer/sharer.php?u=" + urienc;
+	const wauri = "whatsapp://send?text=" + urienc;
+	const fbElem = document.getElementById('sharefb');
+	const waElem = document.getElementById('sharewa');
+	fbElem.href = fburi;
+	waElem.href = wauri;
+}
 
 
 export function initBlog() {
 
 	document.querySelector('#app').innerHTML = `
 		<article id="blog">
+		<div id="article-title"></div>
 		</article>
 		<a id="back-to-top" href="#blog">^</a>
 		`
@@ -127,6 +128,7 @@ export function initBlog() {
 			console.log("Blog object is: ", value);
 			document.title = value.shortname + " - Xerbutri Urban Exploring";
 			document.querySelector('meta[name="description"]').setAttribute("content", value.description);
+			document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
 		});
 	
 	
