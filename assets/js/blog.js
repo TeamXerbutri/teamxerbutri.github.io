@@ -129,11 +129,26 @@ export function initBlog() {
 			document.title = value.shortname + " - Xerbutri Urban Exploring";
 			document.querySelector('meta[name="description"]').setAttribute("content", value.description);
 			document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
-		});
+			const getBlogLanguageContent = fetch("../../data/".concat(value.category,"/",abbreviation,"/blog.", appState.language, ".json")).then((response) => response.json());
+			const blogContent =  getBlogLanguageContent.then(
+				function (value) {
+					return value;
+				},
+				errorHandler
+			);
+			const getBlogFacts = fetch("../../data/".concat(value.category,"/",abbreviation,"/blog.json")).then((response) => response.json());
+			const blogFacts =  getBlogFacts.then(
+				function (value) {
+					return value;
+				},
+				errorHandler
+			);
+			// ToDo construct the blog content from tge language content and facts in a blogfactory
+		}, errorHandler
+	);
 	
 	
-	// ToDo check for param category, if not there, go get it from JSON
-	let category = "gebouw";
+	
 	
 	
 	
