@@ -1,0 +1,24 @@
+﻿{
+	"author": "Ferdinand Xerbutri",
+	"created": "2007-08",
+	"updated": "2019-09-07",
+	"facts": {
+		"Rating": 3,
+		"Build": "1872",
+		"Abandoned": "1982",
+		"Visited": "2007",
+		"Demolished": "2008",
+		"Reused": "-",
+		"Length": "41,4 km",
+		"Line": "126",
+		"Map": "L126"
+	},
+	"sources": [
+		{
+			"title": "Spoorlijn 126 Wikipedia",
+			"language": "nl",
+			"url": "https://www.https://nl.wikipedia.org/wiki/Spoorlijn_126",
+			"date": "2019-07-28"
+		}
+	]
+}

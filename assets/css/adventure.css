@@ -135,6 +135,10 @@ aside {
 	padding-right: 8px
 }
 
+aside li{
+	list-style-type: none;
+}
+
 p a, article a {
 	color: #C7C7C7;
 	text-decoration: none
