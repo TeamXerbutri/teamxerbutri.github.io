@@ -138,6 +138,7 @@ export function initBlog() {
 		console.error(error);
 	}
 	let abbreviation = window.location.href.split("/").pop();
+	
 	getBlogDataById(abbreviation).then(
 		function (value) {
 			console.log("Blog object is: ", value);
@@ -148,7 +149,49 @@ export function initBlog() {
 			const getBlogLanguageContent = fetch("../../data/".concat(value.category,"/",abbreviation,"/blog.", appState.language, ".json")).then((response) => response.json());
 			getBlogLanguageContent.then(
 				function (blogContent) {
+					// intro
 					document.getElementById("article-intro").innerHTML = blogContent.intro;
+					
+					// adventure and history
+					if(blogContent.adventure !==""){
+						let adventureTitle = "";
+						switch(appState.language){
+							case "nl":
+								adventureTitle = "Avontuur";
+								break;
+							case "en":
+								adventureTitle = "Adventure";
+								break;
+							case "fr":
+								adventureTitle = "Aventure";
+								break;
+							case "de":
+								adventureTitle = "Abenteuer";
+								break;
+						}
+						document.getElementById("article-content").innerHTML += `<h3>${adventureTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += blogContent.adventure;
+					}
+					
+					if(blogContent.history !==""){
+						let historyTitle = "";
+						switch(appState.language){
+							case "nl":
+								historyTitle = "Historie";
+								break;
+							case "en":
+								historyTitle = "History";
+								break;
+							case "fr":
+								historyTitle = "Histoire";
+								break;
+							case "de":
+								historyTitle = "Geschichte";
+								break;
+						}
+						document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += blogContent.history;
+					}
 				},
 				errorHandler
 			);
@@ -161,6 +204,8 @@ export function initBlog() {
 					const year = blogFacts["created"].split("-")[0];
 					const month = blogFacts["created"].split("-")[1];
 					let monthBlog = "";
+					
+					// Get month translation
 					if(appState.language === "nl"){
 						switch (month) {
 							case "01":
@@ -200,8 +245,128 @@ export function initBlog() {
 								monthBlog = "december";
 								break;
 						}
+						if(appState.language === "en"){
+							switch (month) {
+								case "01":
+									monthBlog = "January";
+									break;
+								case "02":
+									monthBlog = "February";
+									break;
+								case "03":
+									monthBlog = "March";
+									break;
+								case "04":
+									monthBlog = "April";
+									break;
+								case "05":
+									monthBlog = "May";
+									break;
+								case "06":
+									monthBlog = "June";
+									break;
+								case "07":
+									monthBlog = "July";
+									break;
+								case "08":
+									monthBlog = "August";
+									break;
+								case "09":
+									monthBlog = "September";
+									break;
+								case "10":
+									monthBlog = "October";
+									break;
+								case "11":
+									monthBlog = "November";
+									break;
+								case "12":
+									monthBlog = "December";
+									break;
+							}
+							if(appState.language==="fr"){
+								switch (month) {
+									case "01":
+										monthBlog = "janvier";
+										break;
+									case "02":
+										monthBlog = "février";
+										break;
+									case "03":
+										monthBlog = "mars";
+										break;
+									case "04":
+										monthBlog = "avril";
+										break;
+									case "05":
+										monthBlog = "mai";
+										break;
+									case "06":
+										monthBlog = "juin";
+										break;
+									case "07":
+										monthBlog = "juillet";
+										break;
+									case "08":
+										monthBlog = "août";
+										break;
+									case "09":
+										monthBlog = "septembre";
+										break;
+									case "10":
+										monthBlog = "octobre";
+										break;
+									case "11":
+										monthBlog = "novembre";
+										break;
+									case "12":
+										monthBlog = "décembre";
+										break;
+								}
+							}
+							if(appState.language==="de"){
+								switch (month) {
+									case "01":
+										monthBlog = "Januar";
+										break;
+									case "02":
+										monthBlog = "Februar";
+										break;
+									case "03":
+										monthBlog = "März";
+										break;
+									case "04":
+										monthBlog = "April";
+										break;
+									case "05":
+										monthBlog = "Mai";
+										break;
+									case "06":
+										monthBlog = "Juni";
+										break;
+									case "07":
+										monthBlog = "Juli";
+										break;
+									case "08":
+										monthBlog = "August";
+										break;
+									case "09":
+										monthBlog = "September";
+										break;
+									case "10":
+										monthBlog = "Oktober";
+										break;
+									case "11":
+										monthBlog = "November";
+										break;
+									case "12":
+										monthBlog = "Dezember";
+										break;
+								}
+							}
+						}
 					}
-					//ToDo English/French/Deutsch
+					
 					
 					document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
 					
@@ -213,6 +378,7 @@ export function initBlog() {
 								document.getElementById("article-aside").innerHTML += `<li>${key}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
 							}
 							
+							// Get fact translations
 							if(key==="Build"){
 								let buildKey = "";
 								switch (appState.language) {
@@ -367,29 +533,11 @@ export function initBlog() {
 						document.getElementById("article-aside").innerHTML += `</ul>`;
 					}
 					
-					
-					
 				},
 				errorHandler
 			);
-			// ToDo construct the blog content from the language content and facts in a blogfactory
-			
-			
-			
-			
-			
-			
 		}, errorHandler
 	);
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//setShare();
 	if (window.scrollY >= 200) {
