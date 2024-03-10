@@ -103,6 +103,7 @@ export function initBlog() {
 		<aside id="article-aside"></aside>
 		<section id="article-content"></section>
 		<p id="article-updated" class="authordate"></p>
+		<section id="article-sources"></section>
 		</article>
 		<a id="back-to-top" href="#blog">^</a>
 		`
@@ -138,10 +139,174 @@ export function initBlog() {
 		console.error(error);
 	}
 	let abbreviation = window.location.href.split("/").pop();
-	
+
+	function getMonthTranslation(month, monthBlog) {
+		// Get month translation
+		if (appState.language === "nl") {
+			switch (month) {
+				case "01":
+					monthBlog = "januari";
+					break;
+				case "02":
+					monthBlog = "februari";
+					break;
+				case "03":
+					monthBlog = "maart";
+					break;
+				case "04":
+					monthBlog = "april";
+					break;
+				case "05":
+					monthBlog = "mei";
+					break;
+				case "06":
+					monthBlog = "juni";
+					break;
+				case "07":
+					monthBlog = "juli";
+					break;
+				case "08":
+					monthBlog = "augustus";
+					break;
+				case "09":
+					monthBlog = "september";
+					break;
+				case "10":
+					monthBlog = "oktober";
+					break;
+				case "11":
+					monthBlog = "november";
+					break;
+				case "12":
+					monthBlog = "december";
+					break;
+			}
+			if (appState.language === "en") {
+				switch (month) {
+					case "01":
+						monthBlog = "January";
+						break;
+					case "02":
+						monthBlog = "February";
+						break;
+					case "03":
+						monthBlog = "March";
+						break;
+					case "04":
+						monthBlog = "April";
+						break;
+					case "05":
+						monthBlog = "May";
+						break;
+					case "06":
+						monthBlog = "June";
+						break;
+					case "07":
+						monthBlog = "July";
+						break;
+					case "08":
+						monthBlog = "August";
+						break;
+					case "09":
+						monthBlog = "September";
+						break;
+					case "10":
+						monthBlog = "October";
+						break;
+					case "11":
+						monthBlog = "November";
+						break;
+					case "12":
+						monthBlog = "December";
+						break;
+				}
+				if (appState.language === "fr") {
+					switch (month) {
+						case "01":
+							monthBlog = "janvier";
+							break;
+						case "02":
+							monthBlog = "février";
+							break;
+						case "03":
+							monthBlog = "mars";
+							break;
+						case "04":
+							monthBlog = "avril";
+							break;
+						case "05":
+							monthBlog = "mai";
+							break;
+						case "06":
+							monthBlog = "juin";
+							break;
+						case "07":
+							monthBlog = "juillet";
+							break;
+						case "08":
+							monthBlog = "août";
+							break;
+						case "09":
+							monthBlog = "septembre";
+							break;
+						case "10":
+							monthBlog = "octobre";
+							break;
+						case "11":
+							monthBlog = "novembre";
+							break;
+						case "12":
+							monthBlog = "décembre";
+							break;
+					}
+				}
+				if (appState.language === "de") {
+					switch (month) {
+						case "01":
+							monthBlog = "Januar";
+							break;
+						case "02":
+							monthBlog = "Februar";
+							break;
+						case "03":
+							monthBlog = "März";
+							break;
+						case "04":
+							monthBlog = "April";
+							break;
+						case "05":
+							monthBlog = "Mai";
+							break;
+						case "06":
+							monthBlog = "Juni";
+							break;
+						case "07":
+							monthBlog = "Juli";
+							break;
+						case "08":
+							monthBlog = "August";
+							break;
+						case "09":
+							monthBlog = "September";
+							break;
+						case "10":
+							monthBlog = "Oktober";
+							break;
+						case "11":
+							monthBlog = "November";
+							break;
+						case "12":
+							monthBlog = "Dezember";
+							break;
+					}
+				}
+			}
+		}
+		return monthBlog;
+	}
+
 	getBlogDataById(abbreviation).then(
 		function (value) {
-			console.log("Blog object is: ", value);
 			document.title = value.shortname + " - Xerbutri Urban Exploring";
 			document.querySelector('meta[name="description"]').setAttribute("content", value.description);
 			document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
@@ -200,175 +365,36 @@ export function initBlog() {
 			
 			getBlogFacts.then(
 				function (blogFacts) {
-					
+					console.log("Blog object is: ", blogFacts);
 					const year = blogFacts["created"].split("-")[0];
 					const month = blogFacts["created"].split("-")[1];
 					let monthBlog = "";
+
+					monthBlog = getMonthTranslation(month, monthBlog);
+
+
+					document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
 					
-					// Get month translation
+					var updatedSplit = blogFacts["updated"].split("-");
+					const monthUpdated = updatedSplit[1];
+					let monthBlogUpdated = "";
+					monthBlogUpdated = getMonthTranslation(monthUpdated, monthBlogUpdated);
+					
+					var updatedBlog = "";
 					if(appState.language === "nl"){
-						switch (month) {
-							case "01":
-								monthBlog = "januari";
-								break;
-							case "02":
-								monthBlog = "februari";
-								break;
-							case "03":
-								monthBlog = "maart";
-								break;
-							case "04":
-								monthBlog = "april";
-								break;
-							case "05":
-								monthBlog = "mei";
-								break;
-							case "06":
-								monthBlog = "juni";
-								break;
-							case "07":
-								monthBlog = "juli";
-								break;
-							case "08":
-								monthBlog = "augustus";
-								break;
-							case "09":
-								monthBlog = "september";
-								break;
-							case "10":
-								monthBlog = "oktober";
-								break;
-							case "11":
-								monthBlog = "november";
-								break;
-							case "12":
-								monthBlog = "december";
-								break;
-						}
-						if(appState.language === "en"){
-							switch (month) {
-								case "01":
-									monthBlog = "January";
-									break;
-								case "02":
-									monthBlog = "February";
-									break;
-								case "03":
-									monthBlog = "March";
-									break;
-								case "04":
-									monthBlog = "April";
-									break;
-								case "05":
-									monthBlog = "May";
-									break;
-								case "06":
-									monthBlog = "June";
-									break;
-								case "07":
-									monthBlog = "July";
-									break;
-								case "08":
-									monthBlog = "August";
-									break;
-								case "09":
-									monthBlog = "September";
-									break;
-								case "10":
-									monthBlog = "October";
-									break;
-								case "11":
-									monthBlog = "November";
-									break;
-								case "12":
-									monthBlog = "December";
-									break;
-							}
-							if(appState.language==="fr"){
-								switch (month) {
-									case "01":
-										monthBlog = "janvier";
-										break;
-									case "02":
-										monthBlog = "février";
-										break;
-									case "03":
-										monthBlog = "mars";
-										break;
-									case "04":
-										monthBlog = "avril";
-										break;
-									case "05":
-										monthBlog = "mai";
-										break;
-									case "06":
-										monthBlog = "juin";
-										break;
-									case "07":
-										monthBlog = "juillet";
-										break;
-									case "08":
-										monthBlog = "août";
-										break;
-									case "09":
-										monthBlog = "septembre";
-										break;
-									case "10":
-										monthBlog = "octobre";
-										break;
-									case "11":
-										monthBlog = "novembre";
-										break;
-									case "12":
-										monthBlog = "décembre";
-										break;
-								}
-							}
-							if(appState.language==="de"){
-								switch (month) {
-									case "01":
-										monthBlog = "Januar";
-										break;
-									case "02":
-										monthBlog = "Februar";
-										break;
-									case "03":
-										monthBlog = "März";
-										break;
-									case "04":
-										monthBlog = "April";
-										break;
-									case "05":
-										monthBlog = "Mai";
-										break;
-									case "06":
-										monthBlog = "Juni";
-										break;
-									case "07":
-										monthBlog = "Juli";
-										break;
-									case "08":
-										monthBlog = "August";
-										break;
-									case "09":
-										monthBlog = "September";
-										break;
-									case "10":
-										monthBlog = "Oktober";
-										break;
-									case "11":
-										monthBlog = "November";
-										break;
-									case "12":
-										monthBlog = "Dezember";
-										break;
-								}
-							}
-						}
+						updatedBlog = "Artikel voor het laatst bijgewerkt "+ updatedSplit[2]+" "+monthBlogUpdated+ " " +updatedSplit[0];
+					}
+					if(appState.language === "en"){
+						updatedBlog = "Article last updated "+ monthBlogUpdated+" "+updatedSplit[2]+", "+updatedSplit[0];
+					}
+					if(appState.language === "fr"){
+						updatedBlog = "Article mis à jour pour la dernière fois "+ updatedSplit[2]+" "+monthBlogUpdated+ " " +updatedSplit[0];
+					}
+					if(appState.language === "de"){
+						updatedBlog = "Artikel zuletzt aktualisiert "+ updatedSplit[2]+" "+monthBlogUpdated+ " " +updatedSplit[0];
 					}
 					
-					
-					document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
+					document.getElementById("article-updated").innerHTML = updatedBlog;
 					
 					//aside
 					if(countProperties(blogFacts.facts)>0){
@@ -531,6 +557,45 @@ export function initBlog() {
 							}
 						});
 						document.getElementById("article-aside").innerHTML += `</ul>`;
+					}
+					
+					if(blogFacts.sources.length>0){
+						let sourceTitle = "";
+						let sourceDescription = "";
+						if(appState.language === "nl"){
+							sourceTitle = "Bronnen";
+							sourceDescription = "Voor het artikel is gebruikt gemaakt van de volgende bronnen: ";
+						}
+						if(appState.language === "en"){
+							sourceTitle = "Sources";
+							sourceDescription = "The following sources were used for this article: ";
+						}
+						if(appState.language === "fr"){
+							sourceTitle = "Sources";
+							sourceDescription = "Les sources suivantes ont été utilisées pour cet article: ";
+						}
+						if(appState.language === "de"){
+							sourceTitle = "Quellen";
+							sourceDescription = "Für diesen Artikel wurden folgende Quellen verwendet: ";
+						}
+						
+						
+						document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
+						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
+						document.getElementById("article-sources").innerHTML += `<ol>`;
+						blogFacts.sources.forEach(function (source) {
+							
+							let visitedOn = "";
+							let visitedOnDateArray = source.date.split("-");
+							let visitedMonthSource = "";
+							let visitedOnMonth = getMonthTranslation(visitedOnDateArray[1], visitedMonthSource);
+							if(appState.language === "nl"){
+								visitedOn = "Bezocht op "+visitedOnDateArray[2]+" "+visitedOnMonth+" "+visitedOnDateArray[0];
+							}
+							
+							document.getElementById("article-sources").innerHTML += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
+						});
+						document.getElementById("article-sources").innerHTML += `</ol>`;
 					}
 					
 				},
