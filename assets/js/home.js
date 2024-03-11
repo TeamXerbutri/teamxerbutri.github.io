@@ -1,6 +1,14 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {uiState} from "./uistate.js"
-import {hideBackToTop, showBackToTop} from "./header.js";
+import {
+	hideBackToTop,
+	hideContactPopover,
+	hideMenu,
+	hidePrivacyDialog,
+	showBackToTop,
+	showContactPopover,
+	showMenu, showPrivacyDialog
+} from "./header.js";
 import {appState} from "./appstate.js";
 import txLogo from "../images/tx.gif"
 import {getHomeData} from "./blogdata.js"
@@ -93,6 +101,16 @@ export function initHome() {
 			errorHandler(error)
 		}
 	)
+
+	hideBackToTop();
+	hideContactPopover();
+	hidePrivacyDialog();
+	document.addEventListener("click", hideMenu);
+	document.addEventListener("click", hidePrivacyDialog);
+	document.addEventListener("click", hideContactPopover);
+	document.getElementById("menu").addEventListener("click", showMenu);
+	document.getElementById("contact").addEventListener("click", showContactPopover);
+	document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
 	
 	if (window.scrollY >= 200) {
 		showBackToTop();

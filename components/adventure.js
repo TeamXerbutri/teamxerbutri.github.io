@@ -162,7 +162,7 @@ function hideShareModal() {
 	}
 }
 
-function showContactModal() {
+function showContactPopover() {
 	const cp = document.getElementById("contactpanel");
 	cp.style.display = "block";
 	window.setTimeout(setContactModalTrue, 1000)
@@ -172,7 +172,7 @@ function setContactModalTrue() {
 	uiState.hasContactModal = "true"
 }
 
-function hideContactModal() {
+function hideContactPopover() {
 	if (uiState.hasContactModal === "true") {
 		const cp = document.getElementById("contactpanel");
 		cp.style.display = "none";
@@ -238,14 +238,14 @@ function setShare() {
 		setShare();
 		hideMenu();
 		hideShareModal();
-		hideContactModal();
+		hideContactPopover();
 		hideBackToTop();
 		document.addEventListener("click", hideMenu);
-		document.addEventListener("click", hideContactModal);
+		document.addEventListener("click", hideContactPopover);
 		document.addEventListener("click", hideShareModal);
 		document.getElementById("menu").addEventListener("click", showMenu);
 		document.getElementById("sharepanel").addEventListener("click", showShareModal);
-		document.getElementById("contact").addEventListener("click", showContactModal);
+		document.getElementById("contact").addEventListener("click", showContactPopover);
 		window.onscroll = function (ev) {
 			const pvopen = false;
 			if (window.scrollY >= 200) {
@@ -263,14 +263,14 @@ function setShare() {
 		setShare();
 		hideMenu();
 		hideShareModal();
-		hideContactModal();
+		hideContactPopover();
 		hideBackToTop();
 		document.addEventListener("click", hideMenu);
 		document.addEventListener("click", hideShareModal);
-		document.addEventListener("click", hideContactModal);
+		document.addEventListener("click", hideContactPopover);
 		document.getElementById("menu").addEventListener("click", showMenu);
 		document.getElementById("sharepanel").addEventListener("click", showShareModal);
-		document.getElementById("contact").addEventListener("click", showContactModal);
+		document.getElementById("contact").addEventListener("click", showContactPopover);
 		window.onscroll = function (ev) {
 			if (window.scrollY >= 250) {
 				showBackToTop()

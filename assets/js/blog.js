@@ -1,5 +1,13 @@
 ﻿import {uiState} from "./uistate.js";
-import {hideBackToTop, showBackToTop} from "./header.js";
+import {
+	hideBackToTop,
+	hideContactPopover,
+	hideMenu,
+	hidePrivacyDialog,
+	showBackToTop,
+	showContactPopover,
+	showMenu, showPrivacyDialog
+} from "./header.js";
 import {appState} from "./appstate.js";
 import txLogo from "../images/tx.gif"
 import {getBlogDataById, getHomeData} from "./blogdata.js"
@@ -92,8 +100,35 @@ function setShare() {
 	waElem.href = wauri;
 }
 
-
+function showShare() {
+	var share = document.getElementById("sharepanel");
+	var shareitems = share.getElementsByTagName("a");
+	for (var i = 0; i < shareitems.length; i += 1) {
+		var element = shareitems[i];
+		element.style.display = "block"
+	}
+	share.style.width = "116px";
+	share.style.height = "91px";
+	window.setTimeout(setShareActive, 1000)
+}
+function setShareActive() {
+	uiState.hasShareModal = true
+}
+function hideShare() {
+	if (uiState.hasShareModal){
+		var share = document.getElementById("sharepanel");
+		var shareitems = share.getElementsByTagName("a");
+		for (var i = 0; i < shareitems.length; i += 1) {
+			var element = shareitems[i];
+			element.style.display = "none"
+		}
+		share.style.width = "44px";
+		share.style.height = "44px";
+		uiState.hasShareModal = false
+	}
+}
 export function initBlog() {
+	uiState.hasShareModal = true;
 
 	document.querySelector('#app').innerHTML = `
 		<article id="blog">
@@ -104,11 +139,11 @@ export function initBlog() {
 		<section id="article-content"></section>
 		<p id="article-updated" class="authordate"></p>
 		<section id="article-sources"></section>
+		<section id="article-gallery"></section>
 		</article>
 		<a id="back-to-top" href="#blog">^</a>
 		`
-	// TODO set the localized translations in header
-		
+	// TODO set the localized translations in header		
 	const header = `<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
 		<h1 class="logo">Team Xerbutri</h1>
 		<div id="sharepanel">
@@ -604,8 +639,56 @@ export function initBlog() {
 		}, errorHandler
 	);
 	
-	//setShare();
+	//gallery
+	
+	let galleryTitle = "";
+	if(appState.language === "nl"){
+		galleryTitle = "Galerij";
+	}
+	if(appState.language === "en"){
+		galleryTitle = "Gallery";
+	}
+	if(appState.language === "fr"){
+		galleryTitle = "Galerie";
+	}
+	if(appState.language === "de"){
+		galleryTitle = "Galerie";
+	}
+	
+	let galleryDescription = "";
+	if(appState.language === "nl"){
+		galleryDescription = "Klik op de foto om naar de galerij te gaan";
+	}
+	if(appState.language === "en"){
+		galleryDescription = "Click the picture to go to the gallery";
+	}
+	if(appState.language === "fr"){
+		galleryDescription = "Cliquez sur l'image pour accéder à la galerie";
+	}
+	if(appState.language === "de"){
+		galleryDescription = "Klicken Sie auf das Bild, um zur Galerie zu gelangen";
+	}
+	
+	document.getElementById("article-gallery").innerHTML = `<h3>${galleryTitle}</h3> <p>${galleryDescription}</p>`;
+	
+
+	setShare();
+	hideMenu();
+	hideShare();
+	hideBackToTop();
+	hideContactPopover();
+	//hidePrivacyDialog();
+	document.addEventListener("click", hideMenu);
+	//document.addEventListener("click", hidePrivacyDialog);
+	document.addEventListener("click", hideContactPopover);
+	document.addEventListener("click", hideShare);
+	document.getElementById("menu").addEventListener("click", showMenu);
+	document.getElementById("contact").addEventListener("click", showContactPopover);
+	document.getElementById("sharepanel").addEventListener("click", showShare);
+	//document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
+	
 	if (window.scrollY >= 200) {
+		console.log("Show back to top"); //TODO the scroll to top does not show
 		showBackToTop();
 	} else {
 		hideBackToTop();

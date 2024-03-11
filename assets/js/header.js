@@ -1,6 +1,6 @@
 ﻿import {uiState} from './uistate.js';
 
-function showContactModal() {
+function showContactPopover() {
 	let cp = document.getElementById("contactpanel");
 	cp.style.display = "block";
 	window.setTimeout(setContactModalTrue, 1000);
@@ -10,7 +10,7 @@ function setContactModalTrue() {
 	uiState.hasContactModal = true;
 }
 
-function hideContactModal() {
+function hideContactPopover() {
 	if (uiState.hasContactModal) {
 		let cp = document.getElementById("contactpanel");
 		cp.style.display = "none";
@@ -18,7 +18,7 @@ function hideContactModal() {
 	}
 }
 
-function showPrivacyModal() {
+function showPrivacyDialog() {
 	let pp = document.getElementById("privacypanel");
 	pp.style.display = "block";
 	window.setTimeout(setHasPrivacyModalTrue, 1000);
@@ -28,7 +28,7 @@ function setHasPrivacyModalTrue() {
 	uiState.hasPrivacyModal = true;
 }
 
-function hidePrivacyModal() {
+function hidePrivacyDialog() {
 	if (uiState.hasPrivacyModal === "true") {
 		let pp = document.getElementById("privacypanel");
 		pp.style.display = "none";
@@ -54,8 +54,10 @@ function hideBackToTop() {
 	}
 }
 
+//ToDo Do the menu with popover
 function showMenu() {
 	let menu = document.getElementById("menu");
+		
 	let menuitems = menu.getElementsByTagName("a");
 
 	for (let i = 0; i < menuitems.length; i++) {
@@ -65,7 +67,7 @@ function showMenu() {
 
 	menu.style.width = "100px";
 	menu.style.height = "276px";
-	// Why did I have this again?
+	// Why did I have this again? (double clicks?) Try with onblur instead
 	window.setTimeout(setHasMenuTrue, 1000);
 	document.getElementsByClassName('filter')[0].style.display = 'none';
 }
@@ -96,10 +98,10 @@ function hideMenu() {
 
 export {
 	uiState,
-	showContactModal,
-	hideContactModal,
-	showPrivacyModal,
-	hidePrivacyModal,
+	showContactPopover,
+	hideContactPopover,
+	showPrivacyDialog,
+	hidePrivacyDialog,
 	showBackToTop,
 	hideBackToTop,
 	showMenu,

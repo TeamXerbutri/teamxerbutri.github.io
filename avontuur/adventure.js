@@ -2,12 +2,12 @@ import '../avontuur/style.css'
 import txLogo from '../assets/images/tx.gif'
 import {
 	hideBackToTop,
-	hideContactModal,
+	hideContactPopover,
 	hideMenu,
-	hidePrivacyModal,
-	showContactModal,
+	hidePrivacyDialog,
+	showContactPopover,
 	showMenu,
-	showPrivacyModal
+	showPrivacyDialog
 } from '../assets/js/header.js'
 import {initBlog} from "../assets/js/blog.js";
 import {stateContext} from "../assets/js/statemachine.js";
@@ -29,15 +29,15 @@ const route = (event) => {
 		document.getElementById("tx").src = `${txLogo}`;
 
 		// set events
-		hidePrivacyModal();
-		hideContactModal();
+		hidePrivacyDialog();
+		hideContactPopover();
 		hideBackToTop();
 		document.addEventListener("click", hideMenu);
-		document.addEventListener("click", hidePrivacyModal);
-		document.addEventListener("click", hideContactModal);
+		document.addEventListener("click", hidePrivacyDialog);
+		document.addEventListener("click", hideContactPopover);
 		document.getElementById("menu").addEventListener("click", showMenu);
-		document.getElementById("contact").addEventListener("click", showContactModal);
-		//document.getElementById("privacy").addEventListener("click", showPrivacyModal);
+		document.getElementById("contact").addEventListener("click", showContactPopover);
+		//document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
 		// navState.initState();
 		initBlog();
 		//ToDo I am not sure what to do with route const. I need to add onclicks at hrefs
