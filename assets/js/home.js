@@ -56,7 +56,7 @@ export function initHome() {
 </div>
 <a id="back-to-top" href="#oi">^</a>`
 
-	// TODO set the header
+	// TODO set the correct translations
 	const header = `<img alt="Team Xerbutri Logo" id="tx" src="${txLogo}">
 		<h1 class="logo">Team Xerbutri</h1>
 
