@@ -1,0 +1,139 @@
+/*CSS file for the Homepage (Resolution 1024x768 (Viewsize 1010x660) and up)*/
+@media only screen and (min-width: 756px) {
+	body {
+		background-color: #000;
+		font-family: Verdana, Tahoma, sans-serif;
+		font-size: 100%;
+		margin: 0;
+	}
+
+	/* -header- */
+	header {
+		width: 100%;
+		height: 50px;
+		position: fixed;
+		background-color: #242424;
+		z-index: 1;
+	}
+
+	header .menu a {
+		display: inline-block;
+		color: #fff;
+		text-decoration: none;
+		height: 50px;
+		background-color: #303030;
+		padding: 13px 8px 0 8px;
+		transition: background-color 0.4s;
+	}
+
+	header a:hover {
+		background-color: #404040;
+	}
+
+	.menu {
+		display: inline-block;
+		float: right;
+		height: 50px;
+		overflow: hidden;
+	}
+
+	h1.logo {
+		font: normal normal bold 2.7em sans-serif; /*Verdana, Tahoma,*/
+		color: #fff;
+		text-align: center;
+		display: inline-block;
+		margin: 0;
+	}
+
+	img#tx {
+		display: inline-block;
+		padding-top: 4px;
+		padding-left: 4px;
+	}
+
+	#contactpanel, #privacypanel {
+		display: none;
+		border-style: solid;
+		width: 180px;
+		position: absolute;
+		right: 0;
+		color: #fff;
+		border-color: #242424;
+		border-width: 4px;
+		background-color: #303030;
+		font-size: 0.85em;
+		margin-top: 2px;
+		margin-right: 4px;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+
+	#contactpanel p span {
+		display: none;
+	}
+
+	#contact {
+		cursor: pointer;
+	}
+
+	#back-to-top {
+		background-color: rgba(0, 0, 0, .25);
+		border-radius: 0;
+		box-shadow: 0 0 1px #fff;
+		color: #fff;
+		display: none;
+		padding: 5px 12px;
+		position: fixed;
+		right: 3px;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		top: 85%;
+		transition: all 0.3s ease 0s;
+		font-size: 1.1em;
+	}
+
+	#privacy {
+		cursor: pointer;
+	}
+
+	/*icons*/
+	#oi {
+		padding-top: 50px;
+		color: #fff;
+		background-color: #000;
+		overflow: hidden;
+	}
+
+	#oc {
+		margin-left: auto;
+		margin-right: auto;
+		width: 756px;
+	}
+
+	#oi a {
+		text-decoration: none;
+		color: #fff;
+	}
+
+	.filter {
+		position: fixed;
+		padding: 1px;
+		top: 0;
+		right: 27.4em;
+		z-index: 2;
+	}
+}
+
+@media only screen and (min-width: 1010px) {
+	#oc {
+		width: 1010px;
+	}
+}
+
+/* Resolution 1366x768*/
+@media only screen and (min-width: 1350px) {
+	#oc {
+		width: 1260px;
+	}
+}

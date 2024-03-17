@@ -1,0 +1,21 @@
+﻿{
+	"author": "Team Xerbutri",
+	"created": "2009-03",
+	"updated": "2019-04-4",
+	"facts": {
+		"Rating": 5,
+		"Build": "1908",
+		"Abandoned": "1986",
+		"Visited": "2009",
+		"Demolished": "-",
+		"Reused": "-"
+	},
+	"sources": [
+		{
+			"title": "Geoportail Francaise",
+			"language": "fr",
+			"url": "https://www.geoportail.gouv.fr/carte",
+			"date": "2019-04-4"
+		}
+	]
+}
