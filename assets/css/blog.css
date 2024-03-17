@@ -1,10 +1,3 @@
-/*header {*/
-/*	width: 100%;*/
-/*	height: 50px;*/
-/*	position: fixed;*/
-/*	background-color: #242424;*/
-/*	z-index: 3*/
-/*}*/
 
 header .blogmenu a, #sharepanel a {
 	display: none;
@@ -13,7 +6,7 @@ header .blogmenu a, #sharepanel a {
 	width: 100px;
 	background-color: #303030;
 	padding: 13px 8px 13px 8px;
-	border-bottom: 1px solid #000
+	border-bottom: 1px solid #000;
 }
 
 .blogmenu {
@@ -23,7 +16,7 @@ header .blogmenu a, #sharepanel a {
 	right: 50px;
 	margin-top: 3px;
 	margin-right: 6px;
-	overflow: visible
+	overflow: visible;
 }
 
 #sharepanel {
@@ -34,7 +27,7 @@ header .blogmenu a, #sharepanel a {
 	right: 100px;
 	margin-top: 3px;
 	margin-right: 5px;
-	overflow: visible
+	overflow: visible;
 }
 
 .overview {
@@ -47,79 +40,32 @@ header .blogmenu a, #sharepanel a {
 	padding: 11px 13px 0 13px;
 	min-width: 20px;
 	text-align: center;
-	float: right
+	float: right;
 }
-
-/*h1.logo {*/
-/*	font: normal normal bold 1em sans-serif;*/
-/*	color: #fff;*/
-/*	text-align: center;*/
-/*	display: inline-block;*/
-/*	margin: 0;*/
-/*	width: 0*/
-/*}*/
 
 img#tx {
 	display: inline-block;
 	padding-top: 4px;
-	padding-left: 4px
+	padding-left: 4px;
 }
-
-/*#contactpanel {*/
-/*	display: none;*/
-/*	border-style: solid;*/
-/*	width: 180px;*/
-/*	position: absolute;*/
-/*	right: 0;*/
-/*	color: #fff;*/
-/*	border-color: #242424;*/
-/*	border-width: 4px;*/
-/*	background-color: #303030;*/
-/*	font-size: .85em;*/
-/*	margin-top: 2px;*/
-/*	margin-right: 4px;*/
-/*	padding-left: 8px;*/
-/*	padding-right: 8px*/
-/*}*/
-
-/*#contactpanel p span {*/
-/*	display: none*/
-/*}*/
-
-/*#back-to-top {*/
-/*	background-color: rgba(0, 0, 0, .25);*/
-/*	border-radius: 0;*/
-/*	box-shadow: 0 0 1px #fff;*/
-/*	color: #fff;*/
-/*	display: none;*/
-/*	padding: 5px 12px;*/
-/*	position: fixed;*/
-/*	right: 3px;*/
-/*	text-align: center;*/
-/*	text-decoration: none;*/
-/*	text-transform: uppercase;*/
-/*	top: 85%;*/
-/*	transition: all 0.3s ease 0s;*/
-/*	font-size: 1.1em*/
-/*}*/
 
 .authordate {
 	font-style: italic;
-	font-size: .85em
+	font-size: .85em;
 }
 
 article {
 	padding-top: 50px;
 	width: 100%;
-	color: #fff
+	color: #fff;
 }
 
 article p {
-	color: #fff
+	color: #fff;
 }
 
 span.line {
-	text-decoration: line-through
+	text-decoration: line-through;
 }
 
 aside {
@@ -130,7 +76,7 @@ aside {
 	font-size: .85em;
 	margin: 4px;
 	padding-left: 8px;
-	padding-right: 8px
+	padding-right: 8px;
 }
 
 aside li {
@@ -212,7 +158,7 @@ div.gallery img {
 }
 
 div.gallery img:active {
-	opacity: .7
+	opacity: .7;
 }
 
 #article-title {
