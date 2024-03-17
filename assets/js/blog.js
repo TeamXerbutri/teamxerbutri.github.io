@@ -610,11 +610,10 @@ export function initBlog() {
 							sourceTitle = "Quellen";
 							sourceDescription = "Für diesen Artikel wurden folgende Quellen verwendet: ";
 						}
-
-
+						
 						document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
 						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
-						document.getElementById("article-sources").innerHTML += `<ol>`;
+						let sourceList = "";
 						blogFacts.sources.forEach(function (source) {
 
 							let visitedOn = "";
@@ -625,11 +624,10 @@ export function initBlog() {
 								visitedOn = "Bezocht op " + visitedOnDateArray[2] + " " + visitedOnMonth + " " + visitedOnDateArray[0];
 							}
 
-							document.getElementById("article-sources").innerHTML += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
+							sourceList += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
 						});
-						document.getElementById("article-sources").innerHTML += `</ol>`;
+						document.getElementById("article-sources").innerHTML += `<ol>${sourceList}</ol>`;
 					}
-
 				},
 				errorHandler
 			);
