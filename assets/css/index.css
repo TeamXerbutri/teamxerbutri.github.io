@@ -3,7 +3,7 @@
 		background-color: #404040;;
 		font-family: Verdana, Tahoma, sans-serif;
 		font-size: 100%;
-		margin: 0
+		margin: 0;
 	}
 
 	header {
@@ -11,11 +11,11 @@
 		height: 50px;
 		position: fixed;
 		background-color: #242424;
-		z-index: 1
+		z-index: 1;
 	}
 
 	header .menu a {
-		display: none
+		display: none;
 	}
 
 	header .menu a {
@@ -25,7 +25,7 @@
 		background-color: #303030;
 		padding: 13px 8px 13px 8px;
 		transition: background-color 0.4s;
-		border-bottom: 1px solid #000
+		border-bottom: 1px solid #000;
 	}
 
 	.menu {
@@ -35,7 +35,7 @@
 		right: 0;
 		margin-top: 3px;
 		margin-right: 8px;
-		overflow: visible
+		overflow: visible;
 	}
 
 	h1.logo {
@@ -44,7 +44,7 @@
 		text-align: center;
 		display: inline-block;
 		margin: 0;
-		width: 0
+		width: 0;
 	}
 
 	img#tx {
