@@ -68,11 +68,11 @@
 		margin-top: 2px;
 		margin-right: 4px;
 		padding-left: 8px;
-		padding-right: 8px
+		padding-right: 8px;
 	}
 
 	#contactpanel p span {
-		display: none
+		display: none;
 	}
 
 	#back-to-top {
@@ -89,11 +89,11 @@
 		text-transform: uppercase;
 		top: 85%;
 		transition: all 0.3s ease 0s;
-		font-size: 1.1em
+		font-size: 1.1em;
 	}
 
 	#map {
-		display: none
+		display: none;
 	}
 
 	#oi {
@@ -101,17 +101,17 @@
 		color: #fff;
 		background-color: #242424;
 		overflow: hidden;
-		border: solid #242424 5px
+		border: solid #242424 5px;
 	}
 
 	#oc {
 		margin-left: auto;
-		margin-right: auto
+		margin-right: auto;
 	}
 
 	#oi a {
 		text-decoration: none;
-		color: #fff
+		color: #fff;
 	}
 
 	.filter {
@@ -119,6 +119,6 @@
 		padding: 1px;
 		top: 3px;
 		right: 52px;
-		z-index: 2
+		z-index: 2;
 	}
 }

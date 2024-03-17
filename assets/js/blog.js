@@ -1,16 +1,8 @@
 ﻿import {uiState} from "./uistate.js";
-import {
-	hideBackToTop,
-	hideContactPopover,
-	hideMenu,
-	hidePrivacyDialog,
-	showBackToTop,
-	showContactPopover,
-	showMenu, showPrivacyDialog
-} from "./header.js";
+import {hideBackToTop, hideContactPopover, hideMenu, showBackToTop, showContactPopover, showMenu} from "./header.js";
 import {appState} from "./appstate.js";
 import txLogo from "../images/tx.gif"
-import {getBlogDataById, getHomeData} from "./blogdata.js"
+import {getBlogDataById} from "./blogdata.js"
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -21,8 +13,8 @@ uiState.hasBackToTop = false;
 function countProperties(obj) {
 	let count = 0;
 
-	for(const prop in obj) {
-		if(obj.hasOwnProperty(prop))
+	for (const prop in obj) {
+		if (obj.hasOwnProperty(prop))
 			++count;
 	}
 
@@ -86,9 +78,6 @@ function countProperties(obj) {
 // </div>
 
 
-
-
-
 function setShare() {
 	const uri = location.href;
 	const urienc = encodeURIComponent(uri);
@@ -111,11 +100,13 @@ function showShare() {
 	share.style.height = "91px";
 	window.setTimeout(setShareActive, 1000)
 }
+
 function setShareActive() {
 	uiState.hasShareModal = true
 }
+
 function hideShare() {
-	if (uiState.hasShareModal){
+	if (uiState.hasShareModal) {
 		var share = document.getElementById("sharepanel");
 		var shareitems = share.getElementsByTagName("a");
 		for (var i = 0; i < shareitems.length; i += 1) {
@@ -127,6 +118,7 @@ function hideShare() {
 		uiState.hasShareModal = false
 	}
 }
+
 export function initBlog() {
 	uiState.hasShareModal = true;
 
@@ -152,8 +144,8 @@ export function initBlog() {
 		</div>
 		<div class="blogmenu" id="menu">
 			<a href="../map" title="Team Xerbutri Maps"> Maps</a>
-			<a href="../avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
-			<a href="../avontuur/TXAUE" title="Over Urban exploring">Over UE</a>
+			<a href="../avontuur/txatx" title="Over Team Xerbutri urban exploring"> Over TX</a>
+			<a href="../avontuur/txaue" title="Over Urban exploring">Over UE</a>
 			<a id="contact" title="Neem contact met ons op">Contact</a>
 		</div>
 		<a class="overview" href="../" title="Terug naar overzicht">X</a>
@@ -162,17 +154,18 @@ export function initBlog() {
 					href="https://github.com/TeamXerbutri/teamxerbutri.github.io/issues">Team Xerbutri GitHub</a></p>
 		</div>`
 	const headerElem = document.getElementById("header");
-	if(headerElem.classList.contains("home")){
+	if (headerElem.classList.contains("home")) {
 		headerElem.classList.remove("home");
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
-	
+
 	console.log("Hit init blog");
-	
+
 	function errorHandler(error) {
 		console.error(error);
 	}
+
 	let abbreviation = window.location.href.split("/").pop();
 
 	function getMonthTranslation(month, monthBlog) {
@@ -345,17 +338,17 @@ export function initBlog() {
 			document.title = value.shortname + " - Xerbutri Urban Exploring";
 			document.querySelector('meta[name="description"]').setAttribute("content", value.description);
 			document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
-			
-			const getBlogLanguageContent = fetch("../../data/".concat(value.category,"/",abbreviation,"/blog.", appState.language, ".json")).then((response) => response.json());
+
+			const getBlogLanguageContent = fetch("../../data/".concat(value.category, "/", abbreviation, "/blog.", appState.language, ".json")).then((response) => response.json());
 			getBlogLanguageContent.then(
 				function (blogContent) {
 					// intro
 					document.getElementById("article-intro").innerHTML = blogContent.intro;
-					
+
 					// adventure and history
-					if(blogContent.adventure !==""){
+					if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 						let adventureTitle = "";
-						switch(appState.language){
+						switch (appState.language) {
 							case "nl":
 								adventureTitle = "Avontuur";
 								break;
@@ -372,10 +365,10 @@ export function initBlog() {
 						document.getElementById("article-content").innerHTML += `<h3>${adventureTitle}</h3>`;
 						document.getElementById("article-content").innerHTML += blogContent.adventure;
 					}
-					
-					if(blogContent.history !==""){
+
+					if (blogContent.history !== undefined && blogContent.history !== "") {
 						let historyTitle = "";
-						switch(appState.language){
+						switch (appState.language) {
 							case "nl":
 								historyTitle = "Historie";
 								break;
@@ -392,12 +385,16 @@ export function initBlog() {
 						document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
 						document.getElementById("article-content").innerHTML += blogContent.history;
 					}
+
+					if (blogContent.other !== undefined && blogContent.other !== "") {
+						document.getElementById("article-content").innerHTML += blogContent.other;
+					}
 				},
 				errorHandler
 			);
-			
-			const getBlogFacts = fetch("../../data/".concat(value.category,"/",abbreviation,"/blog.json")).then((response) => response.json());
-			
+
+			const getBlogFacts = fetch("../../data/".concat(value.category, "/", abbreviation, "/blog.json")).then((response) => response.json());
+
 			getBlogFacts.then(
 				function (blogFacts) {
 					console.log("Blog object is: ", blogFacts);
@@ -409,38 +406,38 @@ export function initBlog() {
 
 
 					document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
-					
+
 					var updatedSplit = blogFacts["updated"].split("-");
 					const monthUpdated = updatedSplit[1];
 					let monthBlogUpdated = "";
 					monthBlogUpdated = getMonthTranslation(monthUpdated, monthBlogUpdated);
-					
+
 					var updatedBlog = "";
-					if(appState.language === "nl"){
-						updatedBlog = "Artikel voor het laatst bijgewerkt "+ updatedSplit[2]+" "+monthBlogUpdated+ " " +updatedSplit[0];
+					if (appState.language === "nl") {
+						updatedBlog = "Artikel voor het laatst bijgewerkt " + updatedSplit[2] + " " + monthBlogUpdated + " " + updatedSplit[0];
 					}
-					if(appState.language === "en"){
-						updatedBlog = "Article last updated "+ monthBlogUpdated+" "+updatedSplit[2]+", "+updatedSplit[0];
+					if (appState.language === "en") {
+						updatedBlog = "Article last updated " + monthBlogUpdated + " " + updatedSplit[2] + ", " + updatedSplit[0];
 					}
-					if(appState.language === "fr"){
-						updatedBlog = "Article mis à jour pour la dernière fois "+ updatedSplit[2]+" "+monthBlogUpdated+ " " +updatedSplit[0];
+					if (appState.language === "fr") {
+						updatedBlog = "Article mis à jour pour la dernière fois " + updatedSplit[2] + " " + monthBlogUpdated + " " + updatedSplit[0];
 					}
-					if(appState.language === "de"){
-						updatedBlog = "Artikel zuletzt aktualisiert "+ updatedSplit[2]+" "+monthBlogUpdated+ " " +updatedSplit[0];
+					if (appState.language === "de") {
+						updatedBlog = "Artikel zuletzt aktualisiert " + updatedSplit[2] + " " + monthBlogUpdated + " " + updatedSplit[0];
 					}
-					
+
 					document.getElementById("article-updated").innerHTML = updatedBlog;
-					
+
 					//aside
-					if(countProperties(blogFacts.facts)>0){
+					if (countProperties(blogFacts.facts) > 0) {
 						document.getElementById("article-aside").innerHTML += `<ul>`;
 						Object.entries(blogFacts.facts).forEach(([key, value]) => {
-							if(key==="Rating"){
+							if (key === "Rating") {
 								document.getElementById("article-aside").innerHTML += `<li>${key}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
 							}
-							
+
 							// Get fact translations
-							if(key==="Build"){
+							if (key === "Build") {
 								let buildKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -459,7 +456,7 @@ export function initBlog() {
 								document.getElementById("article-aside").innerHTML += `<li>${buildKey}: <span class="fact">${value}</span> </li>`;
 							}
 
-							if(key==="Abandoned"){
+							if (key === "Abandoned") {
 								let abandonedKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -478,7 +475,7 @@ export function initBlog() {
 								document.getElementById("article-aside").innerHTML += `<li>${abandonedKey}: <span class="fact">${value}</span> </li>`;
 							}
 
-							if(key==="Visited"){
+							if (key === "Visited") {
 								let visitedKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -497,7 +494,7 @@ export function initBlog() {
 								document.getElementById("article-aside").innerHTML += `<li>${visitedKey}: <span class="fact">${value}</span> </li>`;
 							}
 
-							if(key==="Demolished"){
+							if (key === "Demolished") {
 								let demolishKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -516,7 +513,7 @@ export function initBlog() {
 								document.getElementById("article-aside").innerHTML += `<li>${demolishKey}: <span class="fact">${value}</span> </li>`;
 							}
 
-							if(key==="Reused"){
+							if (key === "Reused") {
 								let reuseKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -534,8 +531,8 @@ export function initBlog() {
 								}
 								document.getElementById("article-aside").innerHTML += `<li>${reuseKey}: <span class="fact">${value}</span> </li>`;
 							}
-							
-							if(key==="Length"){
+
+							if (key === "Length") {
 								let lengthKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -554,7 +551,7 @@ export function initBlog() {
 								document.getElementById("article-aside").innerHTML += `<li>${lengthKey}: <span class="fact">${value}</span> </li>`;
 							}
 
-							if(key==="Line"){
+							if (key === "Line") {
 								let lineKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -572,7 +569,7 @@ export function initBlog() {
 								}
 								document.getElementById("article-aside").innerHTML += `<li>${lineKey}: <span class="fact">${value}</span> </li>`;
 							}
-							if (key==="Map") {
+							if (key === "Map") {
 								let mapKey = "";
 								switch (appState.language) {
 									case "nl":
@@ -593,84 +590,84 @@ export function initBlog() {
 						});
 						document.getElementById("article-aside").innerHTML += `</ul>`;
 					}
-					
-					if(blogFacts.sources.length>0){
+
+					if (blogFacts.sources.length > 0) {
 						let sourceTitle = "";
 						let sourceDescription = "";
-						if(appState.language === "nl"){
+						if (appState.language === "nl") {
 							sourceTitle = "Bronnen";
 							sourceDescription = "Voor het artikel is gebruikt gemaakt van de volgende bronnen: ";
 						}
-						if(appState.language === "en"){
+						if (appState.language === "en") {
 							sourceTitle = "Sources";
 							sourceDescription = "The following sources were used for this article: ";
 						}
-						if(appState.language === "fr"){
+						if (appState.language === "fr") {
 							sourceTitle = "Sources";
 							sourceDescription = "Les sources suivantes ont été utilisées pour cet article: ";
 						}
-						if(appState.language === "de"){
+						if (appState.language === "de") {
 							sourceTitle = "Quellen";
 							sourceDescription = "Für diesen Artikel wurden folgende Quellen verwendet: ";
 						}
-						
-						
+
+
 						document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
 						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
 						document.getElementById("article-sources").innerHTML += `<ol>`;
 						blogFacts.sources.forEach(function (source) {
-							
+
 							let visitedOn = "";
 							let visitedOnDateArray = source.date.split("-");
 							let visitedMonthSource = "";
 							let visitedOnMonth = getMonthTranslation(visitedOnDateArray[1], visitedMonthSource);
-							if(appState.language === "nl"){
-								visitedOn = "Bezocht op "+visitedOnDateArray[2]+" "+visitedOnMonth+" "+visitedOnDateArray[0];
+							if (appState.language === "nl") {
+								visitedOn = "Bezocht op " + visitedOnDateArray[2] + " " + visitedOnMonth + " " + visitedOnDateArray[0];
 							}
-							
+
 							document.getElementById("article-sources").innerHTML += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
 						});
 						document.getElementById("article-sources").innerHTML += `</ol>`;
 					}
-					
+
 				},
 				errorHandler
 			);
 		}, errorHandler
 	);
-	
+
 	//gallery
-	
+
 	let galleryTitle = "";
-	if(appState.language === "nl"){
+	if (appState.language === "nl") {
 		galleryTitle = "Galerij";
 	}
-	if(appState.language === "en"){
+	if (appState.language === "en") {
 		galleryTitle = "Gallery";
 	}
-	if(appState.language === "fr"){
+	if (appState.language === "fr") {
 		galleryTitle = "Galerie";
 	}
-	if(appState.language === "de"){
+	if (appState.language === "de") {
 		galleryTitle = "Galerie";
 	}
-	
+
 	let galleryDescription = "";
-	if(appState.language === "nl"){
+	if (appState.language === "nl") {
 		galleryDescription = "Klik op de foto om naar de galerij te gaan";
 	}
-	if(appState.language === "en"){
+	if (appState.language === "en") {
 		galleryDescription = "Click the picture to go to the gallery";
 	}
-	if(appState.language === "fr"){
+	if (appState.language === "fr") {
 		galleryDescription = "Cliquez sur l'image pour accéder à la galerie";
 	}
-	if(appState.language === "de"){
+	if (appState.language === "de") {
 		galleryDescription = "Klicken Sie auf das Bild, um zur Galerie zu gelangen";
 	}
-	
+
 	document.getElementById("article-gallery").innerHTML = `<h3>${galleryTitle}</h3> <p>${galleryDescription}</p>`;
-	
+
 
 	setShare();
 	hideMenu();
@@ -686,7 +683,7 @@ export function initBlog() {
 	document.getElementById("contact").addEventListener("click", showContactPopover);
 	document.getElementById("sharepanel").addEventListener("click", showShare);
 	//document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
-	
+
 	if (window.scrollY >= 200) {
 		console.log("Show back to top"); //TODO the scroll to top does not show
 		showBackToTop();

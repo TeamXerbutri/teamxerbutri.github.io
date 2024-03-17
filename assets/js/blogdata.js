@@ -10,7 +10,9 @@ function fetchHomeData() {
 
 export function getBlogDataById(id) {
 	const blogs = fetchBlogData();
-	return blogs.then((data) => {return data[id]});
+	return blogs.then((data) => {
+		return data[id]
+	});
 }
 
 export function getBlogData() {

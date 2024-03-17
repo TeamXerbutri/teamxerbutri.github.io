@@ -5,7 +5,7 @@
 		display: block;
 		height: 200px;
 		background-color: #181818;
-		margin: 2px
+		margin: 2px;
 	}
 
 	.tile:nth-child(-n+3) h2.te {

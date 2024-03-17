@@ -5,13 +5,12 @@
 //         <h2 class="te"></h2>
 //     </a>
 // </div>
-import {BlogObject} from "./blogobject.js";
 
 function createBlogObject(BlogObject) {
 	let div = document.createElement('div');
 	div.classList.add('tile');
 	div.classList.add(BlogObject.category);
-		
+
 	let link = document.createElement('a');
 	link.href = createLink(BlogObject);
 	link.title = BlogObject.description;

@@ -7,9 +7,9 @@ import {
 	hidePrivacyDialog,
 	showBackToTop,
 	showContactPopover,
-	showMenu, showPrivacyDialog
+	showMenu,
+	showPrivacyDialog
 } from "./header.js";
-import {appState} from "./appstate.js";
 import txLogo from "../images/tx.gif"
 import {getHomeData} from "./blogdata.js"
 
@@ -55,15 +55,15 @@ export function initHome() {
     </div>
 </div>
 <a id="back-to-top" href="#oi">^</a>`
-	
+
 	// TODO set the header
 	const header = `<img alt="Team Xerbutri Logo" id="tx" src="${txLogo}">
 		<h1 class="logo">Team Xerbutri</h1>
 
 		<div class="menu" id="menu">
 			<a href="map" title="Team Xerbutri Maps"> Maps</a>
-			<a href="avontuur/TXATX" title="Over Team Xerbutri urban exploring"> Over TX</a>
-			<a href="avontuur/TXAUE" title="Over Urban exploring">Over UE</a>
+			<a href="avontuur/txatx" title="Over Team Xerbutri urban exploring"> Over TX</a>
+			<a href="avontuur/txaue" title="Over Urban exploring">Over UE</a>
 			<a id="contact" title="Neem contact met ons op">Contact</a>
 			<a id="privacy" title="Onze privacy declaratie">Privacy</a>
 			<!--<a href="vier/xerbutri.php?lang=2" title="Visit the team xerbutri page version 4 in English" >EN</a>-->
@@ -75,16 +75,16 @@ export function initHome() {
 		<div id="privacypanel">
 			<p>We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy.</p>
 		</div>`
-	
+
 	const headerElem = document.getElementById("header");
-	if(headerElem.classList.contains("blog")){
+	if (headerElem.classList.contains("blog")) {
 		headerElem.classList.remove("blog");
 		headerElem.classList.add("home")
 		headerElem.innerHTML = header
 	}
-	
+
 	uiState.hasFilter = {bridge: false, building: false, rail: false, tunnel: false};
-	
+
 	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 	function errorHandler(error) {
@@ -111,7 +111,7 @@ export function initHome() {
 	document.getElementById("menu").addEventListener("click", showMenu);
 	document.getElementById("contact").addEventListener("click", showContactPopover);
 	document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
-	
+
 	if (window.scrollY >= 200) {
 		showBackToTop();
 	} else {

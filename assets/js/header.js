@@ -57,7 +57,7 @@ function hideBackToTop() {
 //ToDo Do the menu with popover
 function showMenu() {
 	let menu = document.getElementById("menu");
-		
+
 	let menuitems = menu.getElementsByTagName("a");
 
 	for (let i = 0; i < menuitems.length; i++) {

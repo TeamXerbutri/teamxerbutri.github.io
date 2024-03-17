@@ -1,5 +1,4 @@
 ﻿// vite.config.js
-import { defineConfig } from 'vite'
-export default defineConfig({
-	assetsInclude: ['**/*.md'],
-})
+export default {
+	// config options
+}
