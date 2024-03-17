@@ -610,7 +610,7 @@ export function initBlog() {
 							sourceTitle = "Quellen";
 							sourceDescription = "Für diesen Artikel wurden folgende Quellen verwendet: ";
 						}
-						
+
 						document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
 						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
 						let sourceList = "";

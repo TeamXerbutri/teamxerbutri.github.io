@@ -3,7 +3,7 @@
 The proof of concept for the new Team Xerbutri website.
 
 Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the
-pictures
+pictures.
 
 ## Technicalities
 
