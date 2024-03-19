@@ -87,18 +87,13 @@ export function initHome() {
 
 	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
-	function errorHandler(error) {
-		console.error(error);
-	}
-
 	// fetch the objects
 	getHomeData().then(
 		function (value) {
-			console.log("Index objects are: ", value);
 			objectFactory(value.subjects);
 		},
 		function (error) {
-			errorHandler(error)
+			console.error(error);
 		}
 	)
 
