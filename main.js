@@ -30,6 +30,10 @@ let navState = new stateContext();
 		document.getElementById("menu").addEventListener("click", showMenu);
 		document.getElementById("contact").addEventListener("click", showContactPopover);
 		document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
+		if (window.location.hash.length > 1) {
+			const path = window.location.hash.replace('#', '')
+			history.pushState({ page: 1 }, "", '/' + path)
+		}
 		navState.initState();
 	}
 })();
