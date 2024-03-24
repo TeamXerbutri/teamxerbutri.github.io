@@ -20,6 +20,7 @@ let stateContext = function () {
 	this.initState = function () {
 		let path = window.location.pathname;
 		console.log("Path: ", path);
+		console.log("Hash: ", window.location.hash);
 		if (path.startsWith("/map")) {
 			this.transitionTo(new mapState(this.context));
 			return;
