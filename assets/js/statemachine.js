@@ -34,7 +34,6 @@ let stateContext = function () {
 let homeState = function (context) {
 	this.context = context;
 	this.enterState = function () {
-		console.log("Entering home state");
 		initHome();
 	}
 	this.navigate = function () {
@@ -61,7 +60,6 @@ let blogState = function (context) {
 	}
 	this.navigate = function () {
 		let path = window.location.pathname;
-		console.log("Path: ", path);
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			this.context.transitionTo(new homeState(this.context));
 			return;

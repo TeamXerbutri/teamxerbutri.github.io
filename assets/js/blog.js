@@ -90,10 +90,10 @@ function setShare() {
 }
 
 function showShare() {
-	var share = document.getElementById("sharepanel");
-	var shareitems = share.getElementsByTagName("a");
-	for (var i = 0; i < shareitems.length; i += 1) {
-		var element = shareitems[i];
+	let share = document.getElementById("sharepanel");
+	let shareitems = share.getElementsByTagName("a");
+	for (let i = 0; i < shareitems.length; i += 1) {
+		const element = shareitems[i];
 		element.style.display = "block"
 	}
 	share.style.width = "116px";
@@ -107,10 +107,10 @@ function setShareActive() {
 
 function hideShare() {
 	if (uiState.hasShareModal) {
-		var share = document.getElementById("sharepanel");
-		var shareitems = share.getElementsByTagName("a");
-		for (var i = 0; i < shareitems.length; i += 1) {
-			var element = shareitems[i];
+		const share = document.getElementById("sharepanel");
+		const shareitems = share.getElementsByTagName("a");
+		for (let i = 0; i < shareitems.length; i += 1) {
+			const element = shareitems[i];
 			element.style.display = "none"
 		}
 		share.style.width = "44px";
@@ -159,8 +159,6 @@ export function initBlog() {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
-
-	console.log("Hit init blog");
 
 	function errorHandler(error) {
 		console.error(error);
@@ -397,22 +395,20 @@ export function initBlog() {
 
 			getBlogFacts.then(
 				function (blogFacts) {
-					console.log("Blog object is: ", blogFacts);
 					const year = blogFacts["created"].split("-")[0];
 					const month = blogFacts["created"].split("-")[1];
 					let monthBlog = "";
 
 					monthBlog = getMonthTranslation(month, monthBlog);
 
-
 					document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
 
-					var updatedSplit = blogFacts["updated"].split("-");
+					let updatedSplit = blogFacts["updated"].split("-");
 					const monthUpdated = updatedSplit[1];
 					let monthBlogUpdated = "";
 					monthBlogUpdated = getMonthTranslation(monthUpdated, monthBlogUpdated);
 
-					var updatedBlog = "";
+					let updatedBlog = "";
 					if (appState.language === "nl") {
 						updatedBlog = "Artikel voor het laatst bijgewerkt " + updatedSplit[2] + " " + monthBlogUpdated + " " + updatedSplit[0];
 					}
@@ -683,7 +679,7 @@ export function initBlog() {
 	//document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
 
 	if (window.scrollY >= 200) {
-		console.log("Show back to top"); //TODO the scroll to top does not show
+		 //TODO the scroll to top does not show
 		showBackToTop();
 	} else {
 		hideBackToTop();
