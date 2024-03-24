@@ -6,21 +6,19 @@ let stateContext = function () {
 
 	this.transitionTo = function (state) {
 		currentState = state;
-		if (window.location.hash.length > 1) {
-			const path = window.location.hash.replace('#', '')
-			history.pushState({ page: 1 }, "", '/' + path)
-		}
 		currentState.enterState();
 	}
 
 	this.navigate = function () {
+		if (window.location.hash.length > 1) {
+			const path = window.location.hash.replace('#', '')
+			history.pushState({ page: 1 }, "", '/' + path)
+		}
 		currentState.navigate();
 	}
 
 	this.initState = function () {
 		let path = window.location.pathname;
-		console.log("Path: ", path);
-		console.log("Hash: ", window.location.hash);
 		if (path.startsWith("/map")) {
 			this.transitionTo(new mapState(this.context));
 			return;
@@ -41,7 +39,6 @@ let homeState = function (context) {
 	}
 	this.navigate = function () {
 		let path = window.location.pathname;
-		console.log("Path: ", path);
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			// do nothing, I am already @home TODO redirect (sorta) to home by pushing empty path to history
 			return;
@@ -60,7 +57,6 @@ let homeState = function (context) {
 let blogState = function (context) {
 	this.context = context;
 	this.enterState = function () {
-		console.log("Entering blog state");
 		initBlog();
 	}
 	this.navigate = function () {
@@ -83,7 +79,6 @@ let blogState = function (context) {
 let mapState = function (context) {
 	this.context = context;
 	this.enterState = function () {
-		console.log("Entering map state");
 	}
 	this.navigate = function () {
 		let path = window.location.pathname;
