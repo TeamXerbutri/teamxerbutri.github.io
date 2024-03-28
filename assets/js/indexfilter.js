@@ -44,11 +44,11 @@ function initFilter() {
 
 	function bridgeFilter() {
 		if (uiState.hasFilter.bridge) {
-			setDisplayFilter("bridge", displayString);
+			setDisplayFilter("brug", displayString);
 			setFilterStyle(bridgeButton, 'bruggen', uiState.hasFilter.bridge);
 			uiState.hasFilter.bridge = false;
 		} else {
-			setDisplayFilter("bridge", 'none');
+			setDisplayFilter("brug", 'none');
 			setFilterStyle(bridgeButton, 'bruggen', uiState.hasFilter.bridge);
 			uiState.hasFilter.bridge = true;
 		}
@@ -68,11 +68,11 @@ function initFilter() {
 
 	function buildingFilter() {
 		if (uiState.hasFilter.building) {
-			setDisplayFilter("building", displayString);
+			setDisplayFilter("gebouw", displayString);
 			setFilterStyle(buildingButton, 'verlaten gebouwen', uiState.hasFilter.building);
 			uiState.hasFilter.building = false;
 		} else {
-			setDisplayFilter("building", 'none');
+			setDisplayFilter("gebouw", 'none');
 			setFilterStyle(buildingButton, 'verlaten gebouwen', uiState.hasFilter.building);
 			uiState.hasFilter.building = true;
 		}
@@ -80,23 +80,23 @@ function initFilter() {
 
 	function railFilter() {
 		if (uiState.hasFilter.rail) {
-			setDisplayFilter("rail", displayString);
+			setDisplayFilter("spoor", displayString);
 			setFilterStyle(railButton, 'spoorwegen', uiState.hasFilter.rail);
 			uiState.hasFilter.rail = false
 		} else {
-			setDisplayFilter("rail", 'none');
+			setDisplayFilter("spoor", 'none');
 			setFilterStyle(railButton, 'spoorwegen', uiState.hasFilter.rail);
 			uiState.hasFilter.rail = true;
 		}
 	}
 
-	function setFilterStyle(buttonName, categorieName, activeFilter) {
+	function setFilterStyle(buttonName, categoryName, activeFilter) {
 		let check = '&nbsp;';
-		let title = 'toon de ' + categorieName;
+		let title = 'toon de ' + categoryName;
 		let filterStyle = "rgba(30,30,30,0.8)";
 		if (activeFilter) {
 			check = 'V';
-			title = 'verberg de ' + categorieName;
+			title = 'verberg de ' + categoryName;
 			filterStyle = "rgba(30,30,30,0.2)";
 		}
 		buttonName.title = title;
