@@ -1,5 +1,6 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {uiState} from "./uistate.js"
+import {initFilter} from "./indexfilter.js";
 import {
 	hideBackToTop,
 	hideContactPopover,
@@ -13,15 +14,7 @@ import {
 import txLogo from "../images/tx.gif"
 import {getHomeData} from "./blogdata.js"
 
-// UI state Business logic for filtering
-function setDisplayFilter(className, display) {
-	let categories = document.getElementsByClassName(className);
-	let i;
 
-	for (i = 0; i < categories.length; i++) {
-		categories[i].style.display = display;
-	}
-}
 
 // Builds the objects
 function objectFactory(subjects) {
@@ -31,23 +24,6 @@ function objectFactory(subjects) {
 		objectContainer.appendChild(displayObject);
 	}
 }
-
-function filterObjects() {
-	if (uiState.hasFilter.bridge) {
-		setDisplayFilter('bridge', 'none');
-	}
-	if (uiState.hasFilter.building) {
-		setDisplayFilter('building', 'none');
-	}
-	if (uiState.hasFilter.rail) {
-		setDisplayFilter('rail', 'none');
-	}
-	if (uiState.hasFilter.tunnel) {
-		setDisplayFilter('tunnel', 'none');
-	}
-}
-
-
 export function initHome() {
 	document.querySelector('#app').innerHTML = `
 <div id="oi">
@@ -83,10 +59,7 @@ export function initHome() {
 		headerElem.innerHTML = header
 	}
 
-	uiState.hasFilter = {bridge: false, building: false, rail: false, tunnel: false};
-
-	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
+	
 	// fetch the objects
 	getHomeData().then(
 		function (value) {
@@ -116,6 +89,9 @@ export function initHome() {
 		.querySelector('meta[name="description"]')
 		.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
 	document.title = "Xerbutri Urban Exploring";
+	
+	initFilter();
+	
 }
 
 	
