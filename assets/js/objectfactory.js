@@ -14,7 +14,6 @@ function createBlogObject(BlogObject) {
 	let link = document.createElement('a');
 	link.href = createLink(BlogObject);
 	link.title = BlogObject.description;
-	//link.onclick = route();
 
 	let image = document.createElement('img');
 	image.src = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation, ".jpg");
