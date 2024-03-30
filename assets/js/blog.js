@@ -1,5 +1,5 @@
 ﻿import {uiState} from "./uistate.js";
-import {hideBackToTop, hideContactPopover, hideMenu, showBackToTop, showContactPopover, showMenu} from "./header.js";
+import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem} from "./header.js";
 import {appState} from "./appstate.js";
 import txLogo from "../images/tx.gif"
 import {getBlogDataById} from "./blogdata.js"
@@ -667,16 +667,11 @@ export function initBlog() {
 	hideMenu();
 	hideShare();
 	hideBackToTop();
-	hideContactPopover();
-	//hidePrivacyDialog();
 	document.addEventListener("click", hideMenu);
-	//document.addEventListener("click", hidePrivacyDialog);
-	document.addEventListener("click", hideContactPopover);
 	document.addEventListener("click", hideShare);
 	document.getElementById("menu").addEventListener("click", showMenu);
-	document.getElementById("contact").addEventListener("click", showContactPopover);
 	document.getElementById("sharepanel").addEventListener("click", showShare);
-	//document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
+	document.getElementById("contact").addEventListener("click", function(){showMenuItem("contactpanel")});
 
 	if (window.scrollY >= 200) {
 		 //TODO the scroll to top does not show
