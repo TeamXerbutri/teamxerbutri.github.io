@@ -1,15 +1,12 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
-import {uiState} from "./uistate.js"
+
 import {initFilter} from "./indexfilter.js";
 import {
 	hideBackToTop,
-	hideContactPopover,
-	hideMenu,
-	hidePrivacyDialog,
 	showBackToTop,
-	showContactPopover,
 	showMenu,
-	showPrivacyDialog
+	hideMenu,
+	showMenuItem
 } from "./header.js";
 import txLogo from "../images/tx.gif"
 import {getHomeData} from "./blogdata.js"
@@ -58,7 +55,6 @@ export function initHome() {
 		headerElem.classList.add("home")
 		headerElem.innerHTML = header
 	}
-
 	
 	// fetch the objects
 	getHomeData().then(
@@ -71,20 +67,25 @@ export function initHome() {
 	)
 
 	hideBackToTop();
-	hideContactPopover();
-	hidePrivacyDialog();
-	document.addEventListener("click", hideMenu);
-	document.addEventListener("click", hidePrivacyDialog);
-	document.addEventListener("click", hideContactPopover);
-	document.getElementById("menu").addEventListener("click", showMenu);
-	document.getElementById("contact").addEventListener("click", showContactPopover);
-	document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
+	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	
+	if(viewportWidth <= 755) {
+		document.addEventListener("click", hideMenu);
+		document.getElementById("menu").addEventListener("click", showMenu);
+	}
+	
+	
+	
+	document.getElementById("contact").addEventListener("click", function(){showMenuItem("contactpanel")});
+	document.getElementById("privacy").addEventListener("click", function(){showMenuItem("privacypanel")});
+	//document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
 
 	if (window.scrollY >= 200) {
 		showBackToTop();
 	} else {
 		hideBackToTop();
 	}
+	
 	document
 		.querySelector('meta[name="description"]')
 		.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");

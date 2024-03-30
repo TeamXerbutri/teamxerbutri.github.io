@@ -153,12 +153,7 @@
 		background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* For Firefox 3.6 to 15 */
 		background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* Standard syntax */
 		padding-top: 10px;
-		padding-bottom: 0px;
-	}
-
-	.tile {
-		height: 238px;
-		width: 310px;
+		padding-bottom: 0;
 	}
 }
 
@@ -168,7 +163,12 @@
 		height: 238px;
 		width: 310px;
 	}
-
+	
+	.tile {
+		height: 238px;
+		width: 310px;
+	}
+	
 	h2.te {
 		top: -117px;
 		font-size: 1.5em;
