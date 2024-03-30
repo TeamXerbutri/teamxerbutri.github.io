@@ -17,7 +17,8 @@ import {getHomeData} from "./blogdata.js"
 function objectFactory(subjects) {
 	const objectContainer = document.getElementById('oc');
 	for (let i in subjects) {
-		let displayObject = createBlogObject(subjects[i]);
+		let displayObject = createBlogObject(subjects[i],i);
+				
 		objectContainer.appendChild(displayObject);
 	}
 }
@@ -70,6 +71,7 @@ export function initHome() {
 	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	
 	if(viewportWidth <= 755) {
+		hideMenu();
 		document.addEventListener("click", hideMenu);
 		document.getElementById("menu").addEventListener("click", showMenu);
 	}

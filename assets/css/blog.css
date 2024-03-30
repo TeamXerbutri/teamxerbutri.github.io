@@ -43,11 +43,6 @@ header .blogmenu a, #sharepanel a {
 	float: right;
 }
 
-img#tx {
-	display: inline-block;
-	padding-top: 4px;
-	padding-left: 4px;
-}
 
 .authordate {
 	font-style: italic;
@@ -177,4 +172,355 @@ div.gallery img:active {
 
 div.mobile {
 	display: none;
+}
+
+/*CSS file for the Avontuur design (Tablets and up)*/
+@media only screen and (min-width: 756px) {
+	body {
+		background-color: #000;
+		font-family: Verdana, Tahoma, sans-serif;
+		font-size: 100%;
+		margin: 0;
+	}
+
+	/* -header- */
+	header {
+		width: 100%;
+		height: 50px;
+		background-color: #242424;
+	}
+
+	header .blogmenu a, #sharepanel a {
+		display: none;
+		color: #fff;
+		text-decoration: none;
+		width: 100px;
+		background-color: #303030;
+		padding: 13px 8px 13px 8px;
+		transition: background-color 0.4s;
+		border-bottom: 1px solid #000;
+	}
+
+	.blogmenu {
+		background-image: url(../images/menu.png);
+		display: inline-block;
+		background-color: #000;
+		transition: background-color 0.4s;
+		position: absolute;
+		right: 50px;
+		margin-top: 3px;
+		margin-right: 5px;
+		overflow: visible;
+	}
+
+	.blogmenu:hover {
+		background-color: #303030;
+	}
+
+	#sharepanel {
+		background-image: url(../images/share.png);
+		display: inline-block;
+		background-color: #000;
+		transition: background-color 0.4s;
+		position: absolute;
+		right: 100px;
+		margin-top: 3px;
+		margin-right: 5px;
+		overflow: visible;
+	}
+
+	#sharepanel:hover {
+		background-color: #303030;
+	}
+
+	div.blogmenu a:hover, div.blogmenu a:active {
+		background-color: #404040;
+	}
+
+	.overview {
+		color: #909090;
+		text-decoration: none;
+		margin-top: 3px;
+		margin-right: 5px;
+		height: 33px;
+		background-color: #000;
+		padding: 11px 13px 0 13px;
+		transition: background-color 0.4s;
+		min-width: 20px;
+		text-align: center;
+		float: right;
+	}
+
+	.overview:hover {
+		color: #fff;
+		background-color: #303030;
+	}
+
+	h1.logo span {
+		display: none;
+	}
+
+	img#tx {
+		display: inline-block;
+		padding-top: 4px;
+		padding-left: 4px;
+	}
+
+	#contactpanel {
+		display: none;
+		border-style: solid;
+		width: 180px;
+		position: absolute;
+		right: 0;
+		color: #fff;
+		border-color: #242424;
+		border-width: 4px;
+		background-color: #303030;
+		font-size: 0.85em;
+		margin-top: 2px;
+		margin-right: 4px;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+
+	#contactpanel p span {
+		display: none;
+	}
+
+	#contact {
+		cursor: pointer;
+	}
+
+	#back-to-top {
+		background-color: rgba(0, 0, 0, .25);
+		border-radius: 0;
+		box-shadow: 0 0 1px #fff;
+		color: #fff;
+		display: none;
+		padding: 5px 12px;
+		position: fixed;
+		right: 3px;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		top: 85%;
+		transition: all 0.3s ease 0s;
+		font-size: 1.1em;
+	}
+
+	/* -article-*/
+	.authordate {
+		font-style: italic;
+		font-size: 0.85em;
+	}
+
+	article {
+		width: 756px;
+		margin-left: auto;
+		margin-right: auto;
+		color: #fff;
+	}
+
+	article p {
+		color: #fff;
+	}
+
+	#intro {
+		display: inline-block;
+		width: 450px;
+	}
+
+	aside {
+		float: right;
+		width: 270px;
+		border-style: solid;
+		border-color: #080808 #202020 #282828 #080808;
+		border-width: 4px;
+		background-color: #101010;
+		font-size: 0.85em;
+		margin: 4px;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+
+	p a, article a {
+		color: #C7C7C7;
+		text-decoration: none;
+	}
+
+	p a:hover, p a:active, article a:hover, article a:active {
+		text-decoration: underline;
+		color: #fff;
+	}
+
+	h4 a {
+		color: #C7C7C7;
+		text-decoration: none;
+	}
+
+	h4 a:hover, p a:active {
+		text-decoration: underline;
+		color: #fff;
+	}
+
+	span.line {
+		text-decoration: line-through;
+	}
+
+	figure.articleimage {
+		width: 100%;
+		height: 250px;
+		overflow: hidden;
+		margin-left: 0;
+	}
+
+	figure.articleimage figcaption {
+		display: none;
+	}
+
+	figure.articleimage img {
+		position: relative;
+		bottom: 200px;
+		width: 100%
+	}
+
+	span.fact {
+		float: right;
+		margin-right: 5px;
+	}
+
+	/* -- gallery--*/
+	div.gallery {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	div.gallery figure {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 2px;
+		padding: 2px;
+		width: 200px;
+		height: 200px;
+		border-style: solid;
+		border-color: #080808 #202020 #282828 #080808;
+		border-width: 4px;
+		background-color: #101010;
+		overflow: hidden;
+	}
+
+	div.gallery figure:hover {
+		border-style: solid;
+		border-color: #101010 #242424 #282828 #101010;
+		border-width: 4px;
+		background-color: #161616;
+	}
+
+	div.gallery img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		max-height: 200px;
+		max-width: 200px;
+	}
+
+	div.gallery img:hover {
+		opacity: 0.7;
+	}
+
+	#article-title {
+		overflow: hidden;
+		display: inline-block;
+		height: 50px;
+		width: 755px;
+		background-image: url(../images/bgweb.jpg);
+		background-repeat: repeat-x;
+		background: #000000; /* For browsers that do not support gradients*/
+		background: -webkit-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.95)); /* For Safari 5.1 to 6.0*/
+		background: -o-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.95)); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.95)); /* For Firefox 3.6 to 15 */
+		background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.95)), url(../images/bgweb.jpg); /* Standard syntax */
+	}
+
+	#article-title h1 {
+		margin-top: 0;
+		margin-left: 0.5em;
+		color: #fff;
+		font-size: 2.5em;
+	}
+}
+
+img#tx:hover {
+	opacity: 1;
+	transform: scale(1.05);
+}
+
+/* Resolution 1024x768 (Viewsize 1010x660)*/
+@media only screen and (min-width: 1010px) {
+
+	article {
+		width: 1010px;
+	}
+
+	#intro {
+		width: 700px;
+	}
+
+	figure.articleimage {
+		height: 300px;
+	}
+
+	figure.articleimage img {
+		bottom: 250px;
+	}
+
+	div.gallery figure {
+		width: 235px;
+	}
+
+	div.gallery img {
+		max-height: 235px;
+		max-width: 235px;
+	}
+
+	div.head {
+		width: 1010px;
+	}
+}
+
+/* Resolution 1366x768*/
+@media only screen and (min-width: 1350px) {
+	h1.logo span {
+		display: inline-block;
+	}
+
+	article {
+		width: 1304px;
+	}
+
+	#intro {
+		width: 1000px;
+	}
+
+	figure.articleimage {
+		height: 500px;
+	}
+
+	div.gallery figure {
+		width: 310px;
+		height: 310px;
+	}
+
+	div.gallery img {
+		max-height: 310px;
+		max-width: 310px;
+	}
+
+	div.head {
+		width: 1304px;
+	}
 }
