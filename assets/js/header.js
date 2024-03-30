@@ -64,7 +64,7 @@ function hideMenu() {
 			let element = menuitems[i];
 			element.style.display = "none";
 		}
-
+		
 		menu.style.width = "44px";
 		menu.style.height = "44px";
 

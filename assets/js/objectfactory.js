@@ -6,7 +6,7 @@
 //     </a>
 // </div>
 
-function createBlogObject(BlogObject) {
+function createBlogObject(BlogObject, i) {
 	let div = document.createElement('div');
 	div.classList.add('tile');
 	div.classList.add(BlogObject.category);
@@ -16,12 +16,28 @@ function createBlogObject(BlogObject) {
 	link.title = BlogObject.description;
 
 	let image = document.createElement('img');
-	image.src = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation, ".jpg");
+	const source = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation);
+	image.src = source.concat(".jpg");
 	image.alt = BlogObject.realname;
 	image.classList.add('te')
 	image.id = BlogObject.abbreviation;
 
-	link.appendChild(image);
+	let picture = document.createElement('picture');
+	if (i > 3) {
+		let small = document.createElement('source');
+		small.media = "(max-width:756px)";
+		small.srcset = source.concat("s.jpg");
+		small.id = BlogObject.abbreviation.concat("s");
+		picture.appendChild(small);
+	}
+	let large = document.createElement('source');
+	large.media = "(min-width:756px)";
+	large.srcset = source.concat(".jpg");
+	
+	picture.appendChild(large);
+	picture.appendChild(image);
+
+	link.appendChild(picture);
 
 	let objectDescription = document.createElement('h3');
 	objectDescription.classList.add('te');

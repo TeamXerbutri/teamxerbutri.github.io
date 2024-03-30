@@ -1,5 +1,5 @@
 ﻿@media only screen and (max-width: 756px) {
-	.tile:nth-child(-n+3) {
+	.tile:nth-child(-n+4) {
 		position: relative;
 		overflow: hidden;
 		display: block;
@@ -8,7 +8,7 @@
 		margin: 2px;
 	}
 
-	.tile:nth-child(-n+3) h2.te {
+	.tile:nth-child(-n+4) h2.te {
 		display: block;
 		position: absolute;
 		top: 158px;
@@ -26,7 +26,7 @@
 		padding-bottom: 10px;
 	}
 
-	.tile:nth-child(-n+3) h3.te {
+	.tile:nth-child(-n+4) h3.te {
 		display: block;
 		position: absolute;
 		top: 113px;
@@ -44,7 +44,7 @@
 		padding-bottom: 0;
 	}
 
-	.tile:nth-child(-n+3) img.te {
+	.tile:nth-child(-n+4) img.te {
 		width: 100%;
 	}
 
@@ -72,15 +72,15 @@
 		margin-right: auto;
 	}
 
-	.rail {
+	.spoor {
 		background-color: #000800;
 	}
 
-	.bridge {
+	.brug {
 		background-color: #000008;
 	}
 
-	.building {
+	.gebouw {
 		background-color: #080000;
 	}
 

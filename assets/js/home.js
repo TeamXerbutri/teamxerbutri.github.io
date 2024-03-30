@@ -6,7 +6,7 @@ import {
 	showBackToTop,
 	showMenu,
 	hideMenu,
-	showMenuItem
+	showMenuItem, uiState
 } from "./header.js";
 import txLogo from "../images/tx.gif"
 import {getHomeData} from "./blogdata.js"
@@ -17,7 +17,8 @@ import {getHomeData} from "./blogdata.js"
 function objectFactory(subjects) {
 	const objectContainer = document.getElementById('oc');
 	for (let i in subjects) {
-		let displayObject = createBlogObject(subjects[i]);
+		let displayObject = createBlogObject(subjects[i],i);
+				
 		objectContainer.appendChild(displayObject);
 	}
 }
@@ -67,18 +68,44 @@ export function initHome() {
 	)
 
 	hideBackToTop();
-	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-	
-	if(viewportWidth <= 755) {
-		document.addEventListener("click", hideMenu);
-		document.getElementById("menu").addEventListener("click", showMenu);
+
+	function initViewportOptions() {
+		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+		if (viewportWidth <= 755) {
+			uiState.hasMenu = true;
+			hideMenu();
+			document.addEventListener("click", hideMenu);
+			document.getElementById("menu").addEventListener("click", showMenu);
+		}
 	}
-	
-	
-	
+
+	initViewportOptions();
+
+
 	document.getElementById("contact").addEventListener("click", function(){showMenuItem("contactpanel")});
 	document.getElementById("privacy").addEventListener("click", function(){showMenuItem("privacypanel")});
 	//document.getElementById("privacy").addEventListener("click", showPrivacyDialog);
+	onresize = (event) => {
+		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		
+		if (viewportWidth <= 755) {
+			initViewportOptions();
+		}
+		
+		if (viewportWidth > 755) {
+			uiState.hasMenu = false;
+			let menu = document.getElementById("menu");
+			menu.removeAttribute("style");
+			let menuitems = menu.getElementsByTagName("a");
+
+
+			for (let i = 0; i < menuitems.length; i++) {
+				let element = menuitems[i];
+				element.removeAttribute("style");
+			}
+		}
+	}
 
 	if (window.scrollY >= 200) {
 		showBackToTop();
