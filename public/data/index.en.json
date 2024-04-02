@@ -3,14 +3,14 @@
 		{
 			"category": "xerbutri",
 			"abbreviation": "map",
-			"shortname": "All locations on the map",
-			"realname": "Show on map",
-			"description": "All locations on map"
+			"shortname": "Locations on map",
+			"realname": "Show all",
+			"description": "Show all locations on the map"
 		},
 		{
 			"category": "gebouw",
 			"abbreviation": "vbmh",
-			"shortname": "Muggenhoeve",
+			"shortname": "Mosquito Farm",
 			"realname": "Melkveehouderij De Win, De Winhoeve",
 			"description": "Team Xerbutri visited the abandoned farm De Winhoeve"
 		},

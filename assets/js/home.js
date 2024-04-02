@@ -11,15 +11,7 @@ import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
 
 
-// Builds the objects
-function objectFactory(subjects) {
-	const objectContainer = document.getElementById('oc');
-	for (let i in subjects) {
-		let displayObject = createBlogObject(subjects[i], i);
 
-		objectContainer.appendChild(displayObject);
-	}
-}
 
 // Initializes the home page
 export function initHome() {
@@ -33,8 +25,7 @@ export function initHome() {
     </div>
 </div>
 <a id="back-to-top" href="#oi">^</a>`
-
-
+	
 	const header = `<img alt="Team Xerbutri Logo" id="tx" src="${txLogo}">
 		<h1 class="logo">Team Xerbutri</h1>
 
@@ -64,16 +55,9 @@ export function initHome() {
 		headerElem.innerHTML = header
 	}
 
-	translator.addMenuOptions();
-	// fetch the objects
-	translator.getHomeData().then(
-		function (value) {
-			objectFactory(value.subjects);
-		},
-		function (error) {
-			console.error(error);
-		}
-	)
+	
+
+	
 
 	hideBackToTop();
 
@@ -87,7 +71,7 @@ export function initHome() {
 			document.getElementById("menu").addEventListener("click", showMenu);
 		}
 	}
-	
+
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -131,8 +115,30 @@ export function initHome() {
 	}
 
 	function setTranslatedContent() {
-		initFilter(translator);
+
+		translator.addMenuOptions();
+		// fetch the objects
+		translator.getHomeData().then(
+			function (value) {
+				objectFactory(value.subjects);
+			},
+			function (error) {
+				console.error(error);
+			}
+		);
+
+		// Builds the objects
+		function objectFactory(subjects) {
+			const objectContainer = document.getElementById('oc');
+			for (let i in subjects) {
+				let displayObject = createBlogObject(translator, subjects[i], i);
+
+				objectContainer.appendChild(displayObject);
+			}
+		}
 		
+		initFilter(translator);
+
 		//TODO Set the right language at some point
 		document
 			.querySelector('meta[name="description"]')
