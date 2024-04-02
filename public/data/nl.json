@@ -1,0 +1,46 @@
+﻿{
+	"maps": {
+		"link" : "Kaart",
+		"title": "Naar de kaart met alle locaties"
+	},
+	"abouttx": {
+		"link": "Over TX",
+		"title": "Over Team Xerbutri urban exploring"
+	},
+	"aboutue": {
+		"link": "Over UE",
+		"title": "Over Urban exploring"
+	},
+	"contact": {
+		"link": "Contact",
+		"title": "Neem contact met ons op",
+		"content": "Heb je vragen, opmerkingen of wil je gewoon iets kwijt? Maak een issue op GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> " 
+	},
+	"privacy": {
+		"link": "Privacy",
+		"title": "Onze privacy declaratie",
+		"content": "We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy."
+	},
+	"filter": {
+		"rail": {
+			"show": "Toon de spoorwegen",
+			"hide": "Verberg de spoorwegen"
+		},
+		"bridge": {
+			"show": "Toon de bruggen",
+			"hide": "Verberg de bruggen"
+		},
+		"tunnel": {
+			"show": "Toon de tunnels",
+			"hide": "Verberg de tunnels"
+		},
+		"building": {
+			"show": "Toon de gebouwen",
+			"hide": "Verberg de gebouwen"
+		}
+	},
+	"back": {
+		"link" : "X",
+		"title": "Terug naar overzicht"
+	}
+}
