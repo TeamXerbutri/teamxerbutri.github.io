@@ -1,0 +1,39 @@
+{
+	"subjects": [
+		{
+			"category": "xerbutri",
+			"abbreviation": "map",
+			"shortname": "All locations on the map",
+			"realname": "Show on map",
+			"description": "Show all locations on map"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "vbmh",
+			"shortname": "Muggenhoeve",
+			"realname": "Melkveehouderij De Win, De Winhoeve",
+			"description": "Team Xerbutri visited the abandoned farm De Winhoeve"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "skfe",
+			"shortname": "Coalmine Lorraine",
+			"realname": "Coalmine Lorraine",
+			"description": "Team Xerbutri got caught in the Sainte-Fontaine coalmine"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "kwh",
+			"shortname": "Chateau Blanc",
+			"realname": "Withof castle",
+			"description": "A storie about bluf, coincidence and a white castle"
+		},
+		{
+			"category": "spoor",
+			"abbreviation": "l126",
+			"shortname": "Line 126 Condroz",
+			"realname": "Line 126; Ligne du Condroz: [Statte] - Marchin - Ciney",
+			"description": "A quick visit in 2007 and a some more photo's from the 2015 visit"
+		}
+	]
+}
