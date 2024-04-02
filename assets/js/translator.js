@@ -2,20 +2,31 @@
 
 class Translator {
 	loaded = false;
+
 	constructor(options = {}) {
 		this._options = Object.assign({}, this.defaultConfig, options);
-		this._lang = this.getLanguage();		
+		this._lang = this.getLanguage();
+		this._basePath = this.getBasePath();
 	}
+
+	getBasePath() {
+		let pathPrefix = "";
+		if (document.location.pathname.startsWith("/avontuur")) {
+			pathPrefix = "../";
+		}
+		return `${pathPrefix}data/`;
+	}
+
 
 	translate(key) {
 		const text = key.split('.').reduce((obj, i) => obj[i], this._translations);
 		return text || key;
 	}
-	
-	translateAll(translations){
+
+	translateAll(translations) {
 		function replace(element) {
 			const text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], translations);
-						
+
 			if (text) {
 				if (element.tagName === "BUTTON") {
 					element.title = text;
@@ -23,10 +34,10 @@ class Translator {
 					element.innerHTML = text;
 				}
 			}
-			
-			if(element.tagName === "A"){
+
+			if (element.tagName === "A") {
 				const title = element.dataset.i18n.split('.')[0].concat(".title").split('.').reduce((obj, i) => obj[i], translations);
-				if(title) {
+				if (title) {
 					element.title = title;
 				}
 			}
@@ -34,19 +45,21 @@ class Translator {
 
 		this._elements.forEach(replace);
 	}
-	
+
 	setLanguage(lang) {
-		
-		if(lang){
+
+		if (lang) {
 			this._lang = lang;
 		}
-				
-		this.load().then(()=>{
+
+		this.load().then(() => {
 			this._options.languages.forEach((language) => {
 				this.showMenuOption(language);
 			});
 			this.hideMenuOption(this._lang);
-		}).catch((error) => {console.error(`An error occured in getting the translations: ${error}`)});
+		}).catch((error) => {
+			console.error(`An error occured in getting the translations: ${error}`)
+		});
 	}
 
 	getLanguage() {
@@ -81,14 +94,10 @@ class Translator {
 
 			this._lang = lang;
 		}
+
+
+		const path = `${this._basePath}${this._lang}.json`;
 		
-		let pathPrefix = "";
-		if(document.location.pathname.startsWith("/avontuur")){
-			pathPrefix = "../";
-		}
-
-		const path =`${pathPrefix}/data/${this._lang}.json`;
-
 		return fetch(path)
 			.then((response) => response.json())
 			.then((translations) => {
@@ -114,25 +123,73 @@ class Translator {
 		const menuItem = document.createElement("a");
 		menuItem.id = `lang-${lang}`;
 		menuItem.innerText = lang.toUpperCase();
-		menuItem.addEventListener("click", ()=> {this.setLanguage(lang)});
+		menuItem.addEventListener("click", () => {
+			this.setLanguage(lang)
+		});
 		menu.appendChild(menuItem);
 	}
-	
+
 	addMenuOptions() {
 		this._options.languages.forEach((lang) => {
 			this.addMenuOption(lang);
 		});
 		this.hideMenuOption(this._lang);
 	}
-	
+
 	showMenuOption(lang) {
 		const menuItem = document.getElementById(`lang-${lang}`);
 		menuItem.style.removeProperty("display");
 	}
-	
+
 	hideMenuOption(lang) {
 		const menuItem = document.getElementById(`lang-${lang}`);
 		menuItem.style.display = "none";
+	}
+	
+	localDate(day, month, year) {
+		const monthFull = this.translate(`month.${month}`)
+		if(this._lang ==="en") {
+			return `${monthFull} ${day} ${year}`;
+		}
+		return `${day} ${monthFull} ${year}`;
+	}
+	
+
+
+	fetchBlogData() {
+		const path = "../".concat(this._basePath, "blogs.", this._lang, ".json");
+		return fetch(path).then((response) => response.json());
+	}
+
+	fetchHomeData() {
+		return fetch(this._basePath.concat("index.", this._lang, ".json")).then((response) => response.json());
+	}
+
+	fetchBlogLanguageContent(category, abbreviation) {
+		const path = "../".concat(this._basePath, category, "/", abbreviation, "/blog.", this._lang, ".json");
+		return fetch(path).then((response) => response.json());
+	}
+
+	getBlogDataById(id) {
+		const blogs = this.fetchBlogData();
+		return blogs.then((data) => {
+			return data[id]
+		});
+	}
+
+	fetchBlogFacts(category, abbreviation) {
+		const path = "../".concat(this._basePath, category, "/", abbreviation, "/blog.json");
+		return fetch(path).then((response) => response.json());
+	}
+
+	getBlogData() {
+		const blogs = this.fetchBlogData();
+		return blogs.then((data) => data);
+	}
+
+	getHomeData() {
+		const home = this.fetchHomeData();
+		return home.then((data) => data);
 	}
 
 	get defaultConfig() {

@@ -1,6 +1,6 @@
 ﻿{
 	"maps": {
-		"link" : "Kaart",
+		"link": "Kaart",
 		"title": "Naar de kaart met alle locaties"
 	},
 	"abouttx": {
@@ -14,7 +14,7 @@
 	"contact": {
 		"link": "Contact",
 		"title": "Neem contact met ons op",
-		"content": "Heb je vragen, opmerkingen of wil je gewoon iets kwijt? Maak een issue op GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> " 
+		"content": "Heb je vragen, opmerkingen of wil je gewoon iets kwijt? Maak een issue op GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> "
 	},
 	"privacy": {
 		"link": "Privacy",
@@ -40,7 +40,46 @@
 		}
 	},
 	"back": {
-		"link" : "X",
+		"link": "X",
 		"title": "Terug naar overzicht"
+	},
+	"month": {
+		"01": "januari",
+		"02": "februari",
+		"03": "maart",
+		"04": "april",
+		"05": "mei",
+		"06": "juni",
+		"07": "juli",
+		"08": "augustus",
+		"09": "september",
+		"10": "oktober",
+		"11": "november",
+		"12": "december"
+	},
+	"adventure": "Avontuur",
+	"history": "Historie",
+	"article": {
+		"lastupdate": "Artikel voor het laatst bijgewerkt "
+	},
+	"facts": {
+		"build": "Bouwjaar",
+		"abandoned": "Verlaten",
+		"visited": "Bezocht",
+		"demolished": "Gesloopt",
+		"reused": "Hergebruikt",
+		"length": "Lengte",
+		"height": "Hoogte",
+		"line": "Lijn nummer",
+		"map": "Overzichtskaart"
+	},
+	"sources": {
+		"title": "Bronnen",
+		"description": "Voor het artikel is gebruikt gemaakt van de volgende bronnen: ",
+		"visited": "Bezocht op "
+	},
+	"gallery": {
+		"title": "Galerij",
+		"description": "Klik op de foto om naar de galerij te gaan"
 	}
 }
