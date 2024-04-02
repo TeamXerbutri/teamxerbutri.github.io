@@ -1,0 +1,51 @@
+{
+	"map": {
+		"category": "xerbutri",
+		"abbreviation": "map",
+		"shortname": "Locations on map",
+		"realname": "Show all",
+		"description": "Show all locations on the map"
+	},
+	"vbmh": {
+		"category": "gebouw",
+		"abbreviation": "vbmh",
+		"shortname": "Mosquito Farm",
+		"realname": "Melkveehouderij De Win, De Winhoeve",
+		"description": "Team Xerbutri visited the abandoned farm De Winhoeve"
+	},
+	"skfe": {
+		"category": "gebouw",
+		"abbreviation": "skfe",
+		"shortname": "Coalmine Lorraine",
+		"realname": "Coalmine Lorraine",
+		"description": "Team Xerbutri got caught in the Sainte-Fontaine coalmine"
+	},
+	"kwh": {
+		"category": "gebouw",
+		"abbreviation": "kwh",
+		"shortname": "Chateau Blanc",
+		"realname": "Withof castle",
+		"description": "A storie about bluf, coincidence and a white castle"
+	},
+	"l126": {
+		"category": "spoor",
+		"abbreviation": "l126",
+		"shortname": "Line 126 Condroz",
+		"realname": "Line 126; Ligne du Condroz: [Statte] - Marchin - Ciney",
+		"description": "A quick visit in 2007 and a some more photo's from the 2015 visit"
+	},
+	"txaue": {
+		"category": "xerbutri",
+		"abbreviation": "txaue",
+		"shortname": "About Urban Exploring",
+		"realname": "About Urban Exploring",
+		"description": "About Urban Exploring"
+	},
+	"txatx": {
+		"category": "xerbutri",
+		"abbreviation": "txatx",
+		"shortname": "About Team Xerbutri",
+		"realname": "About Ons",
+		"description": "About Team Xerbutri"
+	}
+}

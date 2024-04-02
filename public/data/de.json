@@ -1,0 +1,91 @@
+﻿{
+	"maps": {
+		"link" : "Kaart",
+		"title": "Naar de kaart met alle locaties"
+	},
+	"abouttx": {
+		"link": "Over TX",
+		"title": "Over Team Xerbutri urban exploring"
+	},
+	"aboutue": {
+		"link": "Over UE",
+		"title": "Over Urban exploring"
+	},
+	"contact": {
+		"link": "Contact",
+		"title": "Neem contact met ons op",
+		"content": "Heb je vragen, opmerkingen of wil je gewoon iets kwijt? Maak een issue op GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> " 
+	},
+	"privacy": {
+		"link": "Privacy",
+		"title": "Onze privacy declaratie",
+		"content": "We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy."
+	},
+	"filter": {
+		"rail": {
+			"show": "Toon de spoorwegen",
+			"hide": "Verberg de spoorwegen"
+		},
+		"bridge": {
+			"show": "Toon de bruggen",
+			"hide": "Verberg de bruggen"
+		},
+		"tunnel": {
+			"show": "Toon de tunnels",
+			"hide": "Verberg de tunnels"
+		},
+		"building": {
+			"show": "Toon de gebouwen",
+			"hide": "Verberg de gebouwen"
+		}
+	},
+	"back": {
+		"link" : "X",
+		"title": "Terug naar overzicht"
+	},
+	"month": {
+		"01": "Januar",
+		"02": "Februar",
+		"03": "März",
+		"04": "April",
+		"05": "Mai",
+		"06": "Juni",
+		"07": "Juli",
+		"08": "August",
+		"09": "September",
+		"10": "Oktober",
+		"11": "November",
+		"12": "Dezember"
+	},
+	"adventure": "Abenteuer",
+	"history": "Geschichte",
+	"article":{
+		"lastupdate": "Artikel zuletzt aktualisiert "
+	},
+	"facts": {
+		"build": "Gebaut",
+		"abandoned": "Verlassen",
+		"visited": "Besucht",
+		"demolished": "Abgerissen",
+		"reused": "Wiederverwendet",
+		"length": "Länge",
+		"height": "Höhe",
+		"line": "Streckennummer",
+		"map": "Karte"
+	},
+	"sources": {
+		"title": "Quellen",
+		"description": "Für diesen Artikel wurden folgende Quellen verwendet: ",
+		"visited": "Besucht am "
+	},
+	"gallery": {
+		"title": "Galerie",
+		"description": "Klicken Sie auf das Bild, um zur Galerie zu gelangen"
+	},
+	"category": {
+		"spoor": "Eisenbahnen",
+		"brug": "Brücken",
+		"tunnel": "Tunnels",
+		"gebouw": "Verlassene Gebäude"
+	}
+}

@@ -1,40 +1,22 @@
 ﻿import {uiState} from './uistate.js';
 
-function showContactPopover() {
-	let cp = document.getElementById("contactpanel");
-	cp.style.display = "block";
-	window.setTimeout(setContactModalTrue, 1000);
+function showMenuItem(elementId) {
+	document.addEventListener("click", function (evt) {
+		hideMenuItem(elementId, evt)
+	});
+	document.getElementById(elementId).style.display = 'block';
 }
 
-function setContactModalTrue() {
-	uiState.hasContactModal = true;
-}
-
-function hideContactPopover() {
-	if (uiState.hasContactModal) {
-		let cp = document.getElementById("contactpanel");
-		cp.style.display = "none";
-		uiState.hasContactModal = false;
+function hideMenuItem(elementId, evt) {
+	let element = document.getElementById(elementId);
+	if (element.style.display !== 'none' && evt.target.parentNode.id !== "menu") {
+		document.removeEventListener("click", function (evt) {
+			hideMenuItem(elementId, evt)
+		});
+		element.style.display = 'none';
 	}
 }
 
-function showPrivacyDialog() {
-	let pp = document.getElementById("privacypanel");
-	pp.style.display = "block";
-	window.setTimeout(setHasPrivacyModalTrue, 1000);
-}
-
-function setHasPrivacyModalTrue() {
-	uiState.hasPrivacyModal = true;
-}
-
-function hidePrivacyDialog() {
-	if (uiState.hasPrivacyModal === "true") {
-		let pp = document.getElementById("privacypanel");
-		pp.style.display = "none";
-		uiState.hasPrivacyModal = "false";
-	}
-}
 
 function showBackToTop() {
 	let bt = document.getElementById("back-to-top");
@@ -67,7 +49,7 @@ function showMenu() {
 
 	menu.style.width = "100px";
 	menu.style.height = "276px";
-	// Why did I have this again? (double clicks?) Try with onblur instead
+	// TODO Why did I have this again? (double clicks?) Try with onblur instead
 	window.setTimeout(setHasMenuTrue, 1000);
 	document.getElementsByClassName('filter')[0].style.display = 'none';
 }
@@ -98,12 +80,9 @@ function hideMenu() {
 
 export {
 	uiState,
-	showContactPopover,
-	hideContactPopover,
-	showPrivacyDialog,
-	hidePrivacyDialog,
 	showBackToTop,
 	hideBackToTop,
 	showMenu,
-	hideMenu
+	hideMenu,
+	showMenuItem
 };

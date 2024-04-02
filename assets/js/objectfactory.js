@@ -6,7 +6,7 @@
 //     </a>
 // </div>
 
-function createBlogObject(BlogObject) {
+function createBlogObject(translator, BlogObject, i) {
 	let div = document.createElement('div');
 	div.classList.add('tile');
 	div.classList.add(BlogObject.category);
@@ -14,24 +14,47 @@ function createBlogObject(BlogObject) {
 	let link = document.createElement('a');
 	link.href = createLink(BlogObject);
 	link.title = BlogObject.description;
-	//link.onclick = route();
 
 	let image = document.createElement('img');
-	image.src = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation, ".jpg");
+	const source = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation);
+	image.src = source.concat(".jpg");
 	image.alt = BlogObject.realname;
 	image.classList.add('te')
 	image.id = BlogObject.abbreviation;
 
-	link.appendChild(image);
+	let picture = document.createElement('picture');
+	if (i > 3) {
+		let small = document.createElement('source');
+		small.media = "(max-width:756px)";
+		small.srcset = source.concat("s.jpg");
+		small.id = BlogObject.abbreviation.concat("s");
+		picture.appendChild(small);
+	}
+	let large = document.createElement('source');
+	large.media = "(min-width:756px)";
+	large.srcset = source.concat(".jpg");
+
+	picture.appendChild(large);
+	picture.appendChild(image);
+
+	link.appendChild(picture);
 
 	let objectDescription = document.createElement('h3');
 	objectDescription.classList.add('te');
-	objectDescription.innerText = createObjectDescription(BlogObject.category, BlogObject.realname, 'nl');
+	if(BlogObject.category === "xerbutri"){
+		objectDescription.setAttribute('data-i18nix', BlogObject.abbreviation.concat(".realname"));
+	}
+	else {
+		objectDescription.setAttribute('data-i18n', `category.${BlogObject.category}`);
+	}
+	
+	objectDescription.innerText = createObjectDescription(BlogObject.category, BlogObject.realname, translator);
 
 	link.appendChild(objectDescription);
 
 	let name = document.createElement('h2');
 	name.classList.add('te');
+	name.setAttribute('data-i18nix', BlogObject.abbreviation.concat(".shortname"));
 	name.innerText = BlogObject.shortname;
 	link.appendChild(name);
 
@@ -49,38 +72,17 @@ function createLink(BlogObject) {
 	return link;
 }
 
-function createObjectDescription(category, realname, language) {
+function createObjectDescription(category, realname, translator) {
 	let firstline = "";
 	if (category === "xerbutri") {
-		firstline = realname;
-	} else {
-		firstline = getCategoryName(category, language)
+		return realname;
+	}
+	if(category){
+		firstline = translator.translate(`category.${category}`);
 	}
 	return firstline;
 }
 
-function getCategoryName(category, language) {
-	switch (language) {
-		case 'nl':
-			return getCategoryNameNl(category);
-		default:
-			return "Not Found"
-	}
-}
 
-function getCategoryNameNl(category) {
-	switch (category) {
-		case 'gebouw':
-			return "Verlaten Gebouwen";
-		case 'spoor':
-			return "Spoorlijnen";
-		case 'tunnel':
-			return "Tunnels";
-		case 'brug':
-			return "Bruggen";
-		default:
-			return "Not Found"
-	}
-}
 
 export {createBlogObject};

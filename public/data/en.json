@@ -1,0 +1,91 @@
+﻿{
+	"maps": {
+		"link" : "Maps",
+		"title": "To the maps with all locations"
+	},
+	"abouttx": {
+		"link": "About TX",
+		"title": "About Team Xerbutri urban exploring"
+	},
+	"aboutue": {
+		"link": "About UE",
+		"title": "About Urban exploring"
+	},
+	"contact": {
+		"link": "Contact",
+		"title": "Contact us",
+		"content": "For questions, suggestions or anything else, you can contact us by creating an issue on GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> "
+	},
+	"privacy": {
+		"link": "Privacy",
+		"title": "Our privacy declaration",
+		"content": "We respect your privacy. This site is hosted by GitHub pages, and follows the privacy guidelines."
+	},
+	"filter": {
+		"rail": {
+			"show": "Show the railways",
+			"hide": "Hide the railways"
+		},
+		"bridge": {
+			"show": "Show the bridges",
+			"hide": "Hide the bridges"
+		},
+		"tunnel": {
+			"show": "Show the tunnels",
+			"hide": "Hide the tunnels"
+		},
+		"building": {
+			"show": "Show the buildings",
+			"hide": "Hide the buildings"
+		}
+	},
+	"back": {
+		"link" : "X",
+		"title": "Back to overview"
+	}, 
+	"month":{
+		"01": "January",
+		"02": "February",
+		"03": "March",
+		"04": "April",
+		"05": "May",
+		"06": "June",
+		"07": "July",
+		"08": "August",
+		"09": "September",
+		"10": "October",
+		"11": "November",
+		"12": "December"
+	},
+	"adventure": "Adventure",
+	"history": "History",
+	"article":{
+		"lastupdate": "Article last updated "
+	},
+	"facts": {
+		"build": "Built",
+		"abandoned": "Abandoned",
+		"visited": "Visited",
+		"demolished": "Demolished",
+		"reused": "Reused",
+		"length": "Length",
+		"height": "Height",
+		"line": "Line number",
+		"map": "Map"
+	},
+	"sources": {
+		"title": "Sources",
+		"description": "The following sources were used for this article: ",
+		"visited": "Visited on "
+	},
+	"gallery": {
+		"title": "Gallery",
+		"description": "Click the picture to go to the gallery"
+	},
+	"category": {
+		"spoor": "Railtracking",
+		"brug": "Bridges",
+		"tunnel": "Tunnels",
+		"gebouw": "Abandoned Buildings"
+	}
+}
