@@ -172,18 +172,19 @@ export function initBlog() {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
-	
+
 	let abbreviation = window.location.href.split("/").pop();
+
 	function setTranslatedContent() {
-		
+
 
 		translator.getBlogDataById(abbreviation).then(
-			 (value) => {
+			(value) => {
 				document.title = value.shortname + " - Xerbutri Urban Exploring";
 				document.querySelector('meta[name="description"]').setAttribute("content", value.description);
 				document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
 
-				
+
 				translator.fetchBlogLanguageContent(value.category, abbreviation).then(
 					(blogContent) => {
 						// intro
@@ -192,14 +193,14 @@ export function initBlog() {
 						// adventure and history or other
 						if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 							const adventureTitle = translator.translate("adventure");
-							
+
 							document.getElementById("article-content").innerHTML += `<h3>${adventureTitle}</h3>`;
 							document.getElementById("article-content").innerHTML += blogContent.adventure;
 						}
 
 						if (blogContent.history !== undefined && blogContent.history !== "") {
 							let historyTitle = translator.translate("history");
-							
+
 							document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
 							document.getElementById("article-content").innerHTML += blogContent.history;
 						}
@@ -212,17 +213,17 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
-				 translator.fetchBlogFacts(value.category, abbreviation).then(
+				translator.fetchBlogFacts(value.category, abbreviation).then(
 					function (blogFacts) {
 						const year = blogFacts["created"].split("-")[0];
 						const month = blogFacts["created"].split("-")[1];
-						
+
 						let monthBlog = translator.translate(`month.${month}`);
 
 						document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
 
 						let updatedSplit = blogFacts["updated"].split("-");
-												
+
 						document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
 
 						//aside
@@ -236,7 +237,7 @@ export function initBlog() {
 								// Get fact translations
 								if (key === "Build") {
 									let buildKey = translator.translate("facts.build");
-									
+
 									document.getElementById("article-aside").innerHTML += `<li>${buildKey}: <span class="fact">${value}</span> </li>`;
 								}
 
@@ -289,16 +290,15 @@ export function initBlog() {
 
 								let visitedOnDateArray = source.date.split("-");
 								let visitedOn = translator.translate("sources.visited") + translator.localDate(visitedOnDateArray[2], visitedOnDateArray[1], visitedOnDateArray[0]);
-							
+
 								sourceList += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
 							});
 							document.getElementById("article-sources").innerHTML += `<ol>${sourceList}</ol>`;
 						}
 					},
-					
 				).catch((error) => {
-					 console.error(`An error occured in getting the translated blog facts: ${error}`);
-				 });
+					console.error(`An error occured in getting the translated blog facts: ${error}`);
+				});
 			}
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
@@ -307,18 +307,18 @@ export function initBlog() {
 		//gallery
 
 		let galleryTitle = translator.translate("gallery.title");
-		
+
 		let galleryDescription = translator.translate("gallery.description");
-		
+
 		document.getElementById("article-gallery").innerHTML = `<h3>${galleryTitle}</h3> <p>${galleryDescription}</p>`;
-		
+
 		//TODO set a correct translated description
 		document
 			.querySelector('meta[name="description"]')
 			.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
 		document.title = "Xerbutri Urban Exploring";
 	}
-	
+
 	setShare();
 	hideMenu();
 	hideShare();
@@ -327,13 +327,17 @@ export function initBlog() {
 	document.addEventListener("click", hideShare);
 	document.getElementById("menu").addEventListener("click", showMenu);
 	document.getElementById("sharepanel").addEventListener("click", showShare);
-	document.getElementById("contact").addEventListener("click", function(){showMenuItem("contactpanel")});
-	document.getElementById("privacy").addEventListener("click", function(){showMenuItem("privacypanel")});
+	document.getElementById("contact").addEventListener("click", function () {
+		showMenuItem("contactpanel")
+	});
+	document.getElementById("privacy").addEventListener("click", function () {
+		showMenuItem("privacypanel")
+	});
 	if (window.scrollY >= 200) {
-		 //TODO the scroll to top does not show
+		//TODO the scroll to top does not show
 		showBackToTop();
 	} else {
 		hideBackToTop();
 	}
-	
+
 }

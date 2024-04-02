@@ -1,15 +1,18 @@
 ﻿import {uiState} from './uistate.js';
 
-
-function showMenuItem(elementId){
-	document.addEventListener("click", function(evt){hideMenuItem(elementId, evt)});
+function showMenuItem(elementId) {
+	document.addEventListener("click", function (evt) {
+		hideMenuItem(elementId, evt)
+	});
 	document.getElementById(elementId).style.display = 'block';
 }
 
-function hideMenuItem(elementId, evt){
+function hideMenuItem(elementId, evt) {
 	let element = document.getElementById(elementId);
-	if(element.style.display !== 'none' && evt.target.parentNode.id !==  "menu"){
-		document.removeEventListener("click", function(evt){hideMenuItem(elementId, evt)});
+	if (element.style.display !== 'none' && evt.target.parentNode.id !== "menu") {
+		document.removeEventListener("click", function (evt) {
+			hideMenuItem(elementId, evt)
+		});
 		element.style.display = 'none';
 	}
 }
@@ -64,7 +67,7 @@ function hideMenu() {
 			let element = menuitems[i];
 			element.style.display = "none";
 		}
-		
+
 		menu.style.width = "44px";
 		menu.style.height = "44px";
 

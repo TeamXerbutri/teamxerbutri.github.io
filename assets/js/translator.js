@@ -12,7 +12,7 @@ class Translator {
 	getBasePath() {
 		let pathPrefix = "";
 		if (document.location.pathname.startsWith("/avontuur")) {
-			pathPrefix = "../";
+			pathPrefix = "../../";
 		}
 		return `${pathPrefix}data/`;
 	}
@@ -23,7 +23,7 @@ class Translator {
 		return text || key;
 	}
 
-	translateAll(translations) {
+	translateData(translations) {
 		function replace(element) {
 			const text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], translations);
 
@@ -45,6 +45,22 @@ class Translator {
 
 		this._elements.forEach(replace);
 	}
+	
+	translateIndex(translations) {
+		const elements = document.querySelectorAll("[data-i18nix]");
+		console.log(elements);
+		function replace(element) {
+			const text = element.dataset.i18nix.split('.').reduce((obj, i) => obj[i], translations);
+
+			if (text) {
+
+				element.innerHTML = text;
+
+			}
+		}
+		elements.forEach(replace);
+	}
+	
 
 	setLanguage(lang) {
 
@@ -97,17 +113,25 @@ class Translator {
 
 
 		const path = `${this._basePath}${this._lang}.json`;
-		
+
 		return fetch(path)
 			.then((response) => response.json())
 			.then((translations) => {
 				this._translations = translations;
 				this.setLanguageTag();
 				this._elements = document.querySelectorAll("[data-i18n]");
-				this.translateAll(translations);
+				this.translateData(translations);
 				if (this._options.persist) {
 					localStorage.setItem("language", this._lang);
 				}
+				console.log("fetching");
+				console.log(window.location.pathname);
+				if (window.location.pathname.length === 0 || window.location.pathname.startsWith("/vijf")|| window.location.pathname === "/") {
+					console.log("fetching home data");
+					this.fetchBlogData().then((data) => {
+					this.translateIndex(data)});
+				}
+								
 				this.loaded = true;
 			});
 	}
@@ -145,19 +169,18 @@ class Translator {
 		const menuItem = document.getElementById(`lang-${lang}`);
 		menuItem.style.display = "none";
 	}
-	
+
 	localDate(day, month, year) {
 		const monthFull = this.translate(`month.${month}`)
-		if(this._lang ==="en") {
+		if (this._lang === "en") {
 			return `${monthFull} ${day} ${year}`;
 		}
 		return `${day} ${monthFull} ${year}`;
 	}
-	
 
 
 	fetchBlogData() {
-		const path = "../".concat(this._basePath, "blogs.", this._lang, ".json");
+		const path = this._basePath.concat("blogs.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
 
@@ -166,7 +189,7 @@ class Translator {
 	}
 
 	fetchBlogLanguageContent(category, abbreviation) {
-		const path = "../".concat(this._basePath, category, "/", abbreviation, "/blog.", this._lang, ".json");
+		const path = this._basePath.concat(category, "/", abbreviation, "/blog.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
 
@@ -178,7 +201,7 @@ class Translator {
 	}
 
 	fetchBlogFacts(category, abbreviation) {
-		const path = "../".concat(this._basePath, category, "/", abbreviation, "/blog.json");
+		const path = this._basePath.concat(category, "/", abbreviation, "/blog.json");
 		return fetch(path).then((response) => response.json());
 	}
 

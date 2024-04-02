@@ -60,7 +60,7 @@
 	"adventure": "Abenteuer",
 	"history": "Geschichte",
 	"article":{
-		"lastupdate": "Artikel zuletzt aktualisiert ",
+		"lastupdate": "Artikel zuletzt aktualisiert "
 	},
 	"facts": {
 		"build": "Gebaut",
@@ -81,5 +81,11 @@
 	"gallery": {
 		"title": "Galerie",
 		"description": "Klicken Sie auf das Bild, um zur Galerie zu gelangen"
+	},
+	"category": {
+		"spoor": "Eisenbahnen",
+		"brug": "Brücken",
+		"tunnel": "Tunnels",
+		"gebouw": "Verlassene Gebäude"
 	}
 }

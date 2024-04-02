@@ -81,5 +81,11 @@
 	"gallery": {
 		"title": "Galerij",
 		"description": "Klik op de foto om naar de galerij te gaan"
+	},
+	"category": {
+		"spoor": "Spoorlijnen",
+		"brug": "Bruggen",
+		"tunnel": "Tunnels",
+		"gebouw": "Verlaten Gebouwen"
 	}
 }

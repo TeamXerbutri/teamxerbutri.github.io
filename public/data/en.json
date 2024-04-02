@@ -81,5 +81,11 @@
 	"gallery": {
 		"title": "Gallery",
 		"description": "Click the picture to go to the gallery"
+	},
+	"category": {
+		"spoor": "Railtracking",
+		"brug": "Bridges",
+		"tunnel": "Tunnels",
+		"gebouw": "Abandoned Buildings"
 	}
 }

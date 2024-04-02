@@ -81,5 +81,11 @@
 	"gallery": {
 		"title": "Galerie",
 		"description": "Cliquez sur l'image pour accéder à la galerie"
+	},
+	"category": {
+		"spoor": "Chemins de fers",
+		"brug": "Ponts",
+		"tunnel": "Tunnels",
+		"gebouw": "Bâtiments abandonnés"
 	}
 }
