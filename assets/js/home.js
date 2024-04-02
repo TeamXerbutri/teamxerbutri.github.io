@@ -1,5 +1,4 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
-
 import {initFilter} from "./indexfilter.js";
 import {
 	hideBackToTop,
@@ -9,7 +8,6 @@ import {
 	showMenuItem, uiState
 } from "./header.js";
 import txLogo from "../images/tx.gif"
-import {getHomeData} from "./blogdata.js"
 import Translator from "./translator.js";
 
 
@@ -68,7 +66,7 @@ export function initHome() {
 
 	translator.addMenuOptions();
 	// fetch the objects
-	getHomeData().then(
+	translator.getHomeData().then(
 		function (value) {
 			objectFactory(value.subjects);
 		},

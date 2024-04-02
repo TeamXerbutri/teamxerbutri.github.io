@@ -42,5 +42,44 @@
 	"back": {
 		"link" : "X",
 		"title": "Back to overview"
+	}, 
+	"month":{
+		"01": "January",
+		"02": "February",
+		"03": "March",
+		"04": "April",
+		"05": "May",
+		"06": "June",
+		"07": "July",
+		"08": "August",
+		"09": "September",
+		"10": "October",
+		"11": "November",
+		"12": "December"
+	},
+	"adventure": "Adventure",
+	"history": "History",
+	"article":{
+		"lastupdate": "Article last updated "
+	},
+	"facts": {
+		"build": "Built",
+		"abandoned": "Abandoned",
+		"visited": "Visited",
+		"demolished": "Demolished",
+		"reused": "Reused",
+		"length": "Length",
+		"height": "Height",
+		"line": "Line number",
+		"map": "Map"
+	},
+	"sources": {
+		"title": "Sources",
+		"description": "The following sources were used for this article: ",
+		"visited": "Visited on "
+	},
+	"gallery": {
+		"title": "Gallery",
+		"description": "Click the picture to go to the gallery"
 	}
 }
