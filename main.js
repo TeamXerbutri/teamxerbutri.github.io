@@ -5,9 +5,10 @@ import {stateContext} from "./assets/js/statemachine.js";
 
 let navState = new stateContext();
 
-(function () {
-	document.addEventListener('DOMContentLoaded', init);
 
+(function () {
+		
+	document.addEventListener('DOMContentLoaded', init);
 	function init() {
 		// load image
 		document.getElementById("tx").src = `${txLogo}`;
@@ -16,6 +17,7 @@ let navState = new stateContext();
 			const path = window.location.hash.replace('#', '')
 			history.pushState({ page: 1 }, "", '/' + path)
 		}
+		
 		navState.initState();
 	}
 })();

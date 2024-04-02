@@ -60,7 +60,7 @@ h1.logo {
 		text-align: center;
 		display: inline-block;
 		margin: 0;
-		width: 0;
+		width: 60px;
 	}
 
 	#contactpanel, #privacypanel {
@@ -121,11 +121,8 @@ h1.logo {
 	}
 
 	.filter {
-		position: fixed;
+		display: inline-block;
 		padding: 1px;
-		top: 3px;
-		right: 52px;
-		z-index: 2;
 	}
 }
 
@@ -205,6 +202,22 @@ h1.logo {
 	#privacy {
 		cursor: pointer;
 	}
+	
+	#lang-en {
+		cursor: pointer;
+	}
+	
+	#lang-nl {
+		cursor: pointer;
+	}
+	
+	#lang-de {
+		cursor: pointer;
+	}
+	
+	#lang-fr {
+		cursor: pointer;
+	}
 
 	/*icons*/
 	#oi {
@@ -226,11 +239,8 @@ h1.logo {
 	}
 
 	.filter {
-		position: fixed;
+		display: inline-block;
 		padding: 1px;
-		top: 0;
-		right: 27.4em;
-		z-index: 2;
 	}
 }
 
@@ -245,6 +255,7 @@ h1.logo {
 		text-align: center;
 		display: inline-block;
 		margin: 0;
+		width: auto;
 	}
 }
 

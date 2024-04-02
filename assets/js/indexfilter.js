@@ -1,6 +1,6 @@
 import {uiState} from "./uistate.js";
 
-function initFilter() {
+function initFilter(translator) {
 
 	uiState.hasFilter = {bridge: false, building: false, rail: false, tunnel: false};
 
@@ -13,24 +13,28 @@ function initFilter() {
 	const railButton = document.createElement('button');
 	railButton.innerHTML = 'V';
 	railButton.title = 'verberg de spoorwegen';
+	railButton.setAttribute('data-i18n', 'filter.rail.hide');
 	railButton.id = 'railfilter';
 	railButton.addEventListener('click', railFilter);
 
 	const bridgeButton = document.createElement('button');
 	bridgeButton.title = 'verberg de bruggen';
 	bridgeButton.innerHTML = 'V';
+	bridgeButton.setAttribute('data-i18n', 'filter.bridge.hide');
 	bridgeButton.id = 'bridgefilter';
 	bridgeButton.addEventListener('click', bridgeFilter);
 
 	const tunnelButton = document.createElement('button');
 	tunnelButton.innerHTML = 'V';
 	tunnelButton.title = 'verberg de tunnels';
+	tunnelButton.setAttribute('data-i18n', 'filter.tunnel.hide');
 	tunnelButton.id = 'tunnelfilter';
 	tunnelButton.addEventListener('click', tunnelFilter);
 
 	const buildingButton = document.createElement('button');
 	buildingButton.innerHTML = 'V';
 	buildingButton.title = 'verberg de verlaten gebouwen';
+	buildingButton.setAttribute('data-i18n', 'filter.building.hide');
 	buildingButton.id = 'buildingfilter';
 	buildingButton.addEventListener('click', buildingFilter);
 
@@ -40,16 +44,16 @@ function initFilter() {
 	filter.appendChild(tunnelButton);
 	filter.appendChild(railButton);
 	filter.appendChild(buildingButton);
-	document.body.appendChild(filter);
+	document.getElementById("header").appendChild(filter);
 
 	function bridgeFilter() {
 		if (uiState.hasFilter.bridge) {
 			setDisplayFilter("brug", displayString);
-			setFilterStyle(bridgeButton, 'bruggen', uiState.hasFilter.bridge);
+			setFilterStyle(bridgeButton, 'bridge', uiState.hasFilter.bridge);
 			uiState.hasFilter.bridge = false;
 		} else {
 			setDisplayFilter("brug", 'none');
-			setFilterStyle(bridgeButton, 'bruggen', uiState.hasFilter.bridge);
+			setFilterStyle(bridgeButton, 'bridge', uiState.hasFilter.bridge);
 			uiState.hasFilter.bridge = true;
 		}
 	}
@@ -57,11 +61,11 @@ function initFilter() {
 	function tunnelFilter() {
 		if (uiState.hasFilter.tunnel) {
 			setDisplayFilter("tunnel", displayString);
-			setFilterStyle(tunnelButton, 'tunnels', uiState.hasFilter.tunnel);
+			setFilterStyle(tunnelButton, 'tunnel', uiState.hasFilter.tunnel);
 			uiState.hasFilter.tunnel = false;
 		} else {
 			setDisplayFilter("tunnel", 'none');
-			setFilterStyle(tunnelButton, 'tunnels', uiState.hasFilter.tunnel);
+			setFilterStyle(tunnelButton, 'tunnel', uiState.hasFilter.tunnel);
 			uiState.hasFilter.tunnel = true;
 		}
 	}
@@ -69,11 +73,11 @@ function initFilter() {
 	function buildingFilter() {
 		if (uiState.hasFilter.building) {
 			setDisplayFilter("gebouw", displayString);
-			setFilterStyle(buildingButton, 'verlaten gebouwen', uiState.hasFilter.building);
+			setFilterStyle(buildingButton, 'building', uiState.hasFilter.building);
 			uiState.hasFilter.building = false;
 		} else {
 			setDisplayFilter("gebouw", 'none');
-			setFilterStyle(buildingButton, 'verlaten gebouwen', uiState.hasFilter.building);
+			setFilterStyle(buildingButton, 'building', uiState.hasFilter.building);
 			uiState.hasFilter.building = true;
 		}
 	}
@@ -81,25 +85,25 @@ function initFilter() {
 	function railFilter() {
 		if (uiState.hasFilter.rail) {
 			setDisplayFilter("spoor", displayString);
-			setFilterStyle(railButton, 'spoorwegen', uiState.hasFilter.rail);
+			setFilterStyle(railButton, 'rail', uiState.hasFilter.rail);
 			uiState.hasFilter.rail = false
 		} else {
 			setDisplayFilter("spoor", 'none');
-			setFilterStyle(railButton, 'spoorwegen', uiState.hasFilter.rail);
+			setFilterStyle(railButton, 'rail', uiState.hasFilter.rail);
 			uiState.hasFilter.rail = true;
 		}
 	}
 
 	function setFilterStyle(buttonName, categoryName, activeFilter) {
 		let check = '&nbsp;';
-		let title = 'toon de ' + categoryName;
 		let filterStyle = "rgba(30,30,30,0.8)";
+		let key = "show";
 		if (activeFilter) {
 			check = 'V';
-			title = 'verberg de ' + categoryName;
+			key = "hide";
 			filterStyle = "rgba(30,30,30,0.2)";
 		}
-		buttonName.title = title;
+		buttonName.title = translator.translate(`filter.${categoryName}.${key}`);
 		buttonName.innerHTML = check;
 		buttonName.style.backgroundColor = filterStyle;
 	}
