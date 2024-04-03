@@ -48,7 +48,6 @@ class Translator {
 	
 	translateIndex(translations) {
 		const elements = document.querySelectorAll("[data-i18nix]");
-		console.log(elements);
 		function replace(element) {
 			const text = element.dataset.i18nix.split('.').reduce((obj, i) => obj[i], translations);
 
@@ -124,10 +123,7 @@ class Translator {
 				if (this._options.persist) {
 					localStorage.setItem("language", this._lang);
 				}
-				console.log("fetching");
-				console.log(window.location.pathname);
 				if (window.location.pathname.length === 0 || window.location.pathname.startsWith("/vijf")|| window.location.pathname === "/") {
-					console.log("fetching home data");
 					this.fetchBlogData().then((data) => {
 					this.translateIndex(data)});
 				}
