@@ -125,7 +125,7 @@ export function initBlog() {
 	document.querySelector('#app').innerHTML = `
 		<article id="blog">
 		<div id="article-title"></div>
-		<p id="article-created" class="authordate"></p>
+		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
 		<aside id="article-aside"></aside>
 		<section id="article-content"></section>
@@ -215,12 +215,12 @@ export function initBlog() {
 
 				translator.fetchBlogFacts(value.category, abbreviation).then(
 					function (blogFacts) {
-						const year = blogFacts["created"].split("-")[0];
-						const month = blogFacts["created"].split("-")[1];
+						const year = blogFacts["visited"].split("-")[0];
+						const month = blogFacts["visited"].split("-")[1];
 
 						let monthBlog = translator.translate(`month.${month}`);
 
-						document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
+						document.getElementById("article-visited").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
 
 						let updatedSplit = blogFacts["updated"].split("-");
 
