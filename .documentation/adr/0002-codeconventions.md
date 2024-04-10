@@ -8,6 +8,8 @@ Go!
 
 - Use lowercase characters only (no caps) for filenames
 - Use English as language for all code and comments
+- Always end an object definition with a semicolon
+- Use quotes around string values
 
 ## Rationale
 
