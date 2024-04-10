@@ -256,6 +256,9 @@ export function initBlog() {
 							});
 							document.getElementById("article-aside").innerHTML += `</ul>`;
 						}
+						if(countProperties(blogFacts.facts) <=0 ){
+							document.getElementById("article-aside").style.display = "none";
+						}
 
 						if (blogFacts.sources.length > 0) {
 							let sourceTitle = translator.translate("sources.title");
