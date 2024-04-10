@@ -1,0 +1,290 @@
+var items=[
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC000-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC000-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC001-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC001-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC002-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC002-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC003-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC003-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC004-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC004-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC005-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC005-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC006-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC006-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC007-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC007-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC008-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC008-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC009-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC009-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC010-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC010-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC011-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC011-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC012-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC012-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC013-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC013-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC014-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC014-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC015-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC015-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC016-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC016-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC017-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC017-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC018-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC018-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC019-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC019-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC020-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC020-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC021-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC021-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC022-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC022-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/AFC/AFC023-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/AFC/AFC023-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+];

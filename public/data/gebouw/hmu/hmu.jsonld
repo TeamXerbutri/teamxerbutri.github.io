@@ -1,0 +1,13 @@
+{
+"@context" : "http://schema.org",
+"@type" : "Article",
+"name" :"De Haan Fabriek",
+"author" : {
+"@type" : "Person",
+"name" : "Team Xerbutri"
+}
+"datePublished" : "2007-04-01",
+"image" : "https://www.xerbutri.nl/picz/gebouw/HMu/HMu/HMu.jpg",
+"dateModified" : "2018-11-08",
+"articleSection" : "Verlaten Gebouwen"
+}

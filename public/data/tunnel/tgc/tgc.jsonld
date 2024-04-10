@@ -1,0 +1,13 @@
+{
+"@context" : "http://schema.org",
+"@type" : "Article",
+"name" :"Tunnel van Gendron",
+"author" : {
+"@type" : "Person",
+"name" : "Team Xerbutri"
+}
+"datePublished" : "2006-07-01",
+"image" : "https://www.xerbutri.nl/picz/tunnel/TGC/TGC/TGC.jpg",
+"dateModified" : "2018-11-08",
+"articleSection" : "Tunnels"
+}

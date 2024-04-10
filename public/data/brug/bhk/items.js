@@ -1,0 +1,121 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../picz/brug/BHK/BHK000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BHK/BHK000-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BHK/BHK000-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BHK/BHK001-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BHK/BHK001-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BHK/BHK001-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BHK/BHK002-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BHK/BHK002-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BHK/BHK002-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BHK/BHK003-1223x352.jpg', 
+ w:1223, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BHK/BHK003-2293x660.jpg', 
+ w:2293, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BHK/BHK003-2668x768.jpg', 
+ w:2668, 
+ h:768
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BHK/BHK004-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BHK/BHK004-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BHK/BHK004-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BHK/BHK005-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BHK/BHK005-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BHK/BHK005-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BHK/BHK006-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BHK/BHK006-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BHK/BHK006-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+];
