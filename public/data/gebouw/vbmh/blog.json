@@ -3,12 +3,12 @@
 	"visited": "2019-08",
 	"updated": "2024-03-4",
 	"facts": {
-		"Rating": 4,
-		"Build": "1961",
-		"Abandoned": "2015",
-		"Visited": "2019",
-		"Demolished": "-",
-		"Reused": "-"
+		"rating": 4,
+		"build": "1961",
+		"abandoned": "2015",
+		"visited": "2019",
+		"demolished": "-",
+		"reused": "-"
 	},
 	"sources": [
 		{
