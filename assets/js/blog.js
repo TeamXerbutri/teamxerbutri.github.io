@@ -230,50 +230,28 @@ export function initBlog() {
 						if (countProperties(blogFacts.facts) > 0) {
 							document.getElementById("article-aside").innerHTML += `<ul>`;
 							Object.entries(blogFacts.facts).forEach(([key, value]) => {
-								if (key === "Rating") {
-									document.getElementById("article-aside").innerHTML += `<li>${key}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
-								}
-
-								// Get fact translations
-								if (key === "Build") {
-									let buildKey = translator.translate("facts.build");
-
-									document.getElementById("article-aside").innerHTML += `<li>${buildKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Abandoned") {
-									let abandonedKey = translator.translate("facts.abandoned");
-									document.getElementById("article-aside").innerHTML += `<li>${abandonedKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Visited") {
-									let visitedKey = translator.translate("facts.visited");
-
-									document.getElementById("article-aside").innerHTML += `<li>${visitedKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Demolished") {
-									let demolishKey = translator.translate("facts.demolished");
-									document.getElementById("article-aside").innerHTML += `<li>${demolishKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Reused") {
-									let reuseKey = translator.translate("facts.reused");
-									document.getElementById("article-aside").innerHTML += `<li>${reuseKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Length") {
-									let lengthKey = translator.translate("facts.length");
-									document.getElementById("article-aside").innerHTML += `<li>${lengthKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Line") {
-									let lineKey = translator.translate("facts.line");
-									document.getElementById("article-aside").innerHTML += `<li>${lineKey}: <span class="fact">${value}</span> </li>`;
-								}
-								if (key === "Map") {
-									let mapKey = translator.translate("facts.map");
-									document.getElementById("article-aside").innerHTML += `<li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+								switch (key) {
+									case "build":
+									case "abandoned":
+									case "visited":
+									case "demolished":
+									case "reused":
+									case "length":
+									case "height":
+									case "line":
+										const translation = translator.translate(`facts.${key}`);
+										document.getElementById("article-aside").innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
+										break;
+									case "rating":
+										const ratingKey = translator.translate("facts.rating");
+										document.getElementById("article-aside").innerHTML += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
+										break;
+									case "map":
+										let mapKey = translator.translate("facts.map");
+										document.getElementById("article-aside").innerHTML += `<li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+										break;
+									default:
+										break;
 								}
 							});
 							document.getElementById("article-aside").innerHTML += `</ul>`;
