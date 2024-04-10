@@ -1,0 +1,13 @@
+{
+"@context" : "http://schema.org",
+"@type" : "Article",
+"name" :"Haus Knipp Brug",
+"author" : {
+"@type" : "Person",
+"name" : "Team Xerbutri"
+}
+"datePublished" : "2008-03-01",
+"image" : "https://www.xerbutri.nl/picz/brug/BHK/BHK/BHK.jpg",
+"dateModified" : "2018-11-08",
+"articleSection" : "Bruggen"
+}

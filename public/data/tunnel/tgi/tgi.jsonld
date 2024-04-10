@@ -1,0 +1,13 @@
+{
+"@context" : "http://schema.org",
+"@type" : "Article",
+"name" :"Tunnel van Charlemont",
+"author" : {
+"@type" : "Person",
+"name" : "Ferdinand Xerbutri"
+}
+"datePublished" : "2008-08-01",
+"image" : "https://www.xerbutri.nl/picz/tunnel/TGi/TGi/TGi.jpg",
+"dateModified" : "2018-11-08",
+"articleSection" : "Tunnels"
+}

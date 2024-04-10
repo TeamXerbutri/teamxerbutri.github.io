@@ -1,0 +1,13 @@
+{
+"@context" : "http://schema.org",
+"@type" : "Article",
+"name" :"Goudmijn Chatelet",
+"author" : {
+"@type" : "Person",
+"name" : "Team Xerbutri"
+}
+"datePublished" : "2009-09-01",
+"image" : "https://www.xerbutri.nl/picz/gebouw/VGMC/VGMC/VGMC.jpg",
+"dateModified" : "2018-11-08",
+"articleSection" : "Verlaten Gebouwen"
+}

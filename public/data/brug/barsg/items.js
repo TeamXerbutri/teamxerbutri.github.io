@@ -1,0 +1,206 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG000-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG000-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG001-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG001-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG001-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG002-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG002-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG002-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG003-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG003-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG003-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG004-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG004-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG004-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG005-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG005-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG005-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG006-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG006-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG006-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG007-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG007-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG007-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG008-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG008-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG008-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG009-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG009-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG009-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG010-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG010-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG010-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BARSG/BARSG011-1412x352.jpg', 
+ w:1412, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BARSG/BARSG011-2648x660.jpg', 
+ w:2648, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BARSG/BARSG011-4012x1000.jpg', 
+ w:4012, 
+ h:1000
+ } 
+ },
+];

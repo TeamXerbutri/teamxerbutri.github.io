@@ -1,0 +1,444 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4000-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4000-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4001-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4001-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4001-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4002-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4002-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4002-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4003-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4003-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4003-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4004-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4004-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4004-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4005-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4005-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4005-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4006-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4006-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4006-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4007-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4007-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4007-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4008-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4008-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4008-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4009-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4009-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4009-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4010-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4010-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4010-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4011-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4011-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4011-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4012-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4012-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4012-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4013-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4013-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4013-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4014-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4014-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4014-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4015-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4015-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4015-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4016-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4016-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4016-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4017-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4017-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4017-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4018-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4018-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4018-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4019-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4019-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4019-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4020-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4020-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4020-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4021-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4021-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4021-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4022-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4022-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4022-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4023-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4023-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4023-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4024-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4024-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4024-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4025-310x232.jpg', 
+ w:310, 
+ h:232
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4025-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/MDF4/MDF4025-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+];
