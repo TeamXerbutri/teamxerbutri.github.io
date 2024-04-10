@@ -1,0 +1,13 @@
+{
+"@context" : "http://schema.org",
+"@type" : "Article",
+"name" :"Lekbrug Culemborg",
+"author" : {
+"@type" : "Person",
+"name" : "Team Xerbutri"
+}
+"datePublished" : "2004-11-01",
+"image" : "https://www.xerbutri.nl/picz/brug/BC/BC/BC.jpg",
+"dateModified" : "2018-11-08",
+"articleSection" : "Bruggen"
+}

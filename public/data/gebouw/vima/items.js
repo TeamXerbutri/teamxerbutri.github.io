@@ -1,0 +1,386 @@
+var items=[
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma000-1655x660.jpg', 
+ w:1655, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma000-2507x1000.jpg', 
+ w:2507, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma001-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma001-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma002-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma002-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma003-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma003-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma004-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma004-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma005-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma005-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma006-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma006-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma007-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma007-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma008-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma008-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma009-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma009-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma010-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma010-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma011-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma011-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma012-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma012-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma013-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma013-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma014-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma014-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma015-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma015-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma016-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma016-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma017-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma017-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma018-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma018-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma019-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma019-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma020-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma020-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma021-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma021-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma022-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma022-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma023-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma023-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma024-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma024-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma025-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma025-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma026-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma026-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma027-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma027-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma028-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma028-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma029-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma029-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma030-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma030-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ mediumImage:{ 
+ src:'../picz/gebouw/VIma/VIma031-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/VIma/VIma031-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+];
