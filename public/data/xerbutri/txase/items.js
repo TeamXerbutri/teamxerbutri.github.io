@@ -1,0 +1,19 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../picz/xerbutri/TXASE/TXASE000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/xerbutri/TXASE/TXASE000-878x660.jpg', 
+ w:878, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/xerbutri/TXASE/TXASE000-1330x1000.jpg', 
+ w:1330, 
+ h:1000
+ } 
+ },
+];

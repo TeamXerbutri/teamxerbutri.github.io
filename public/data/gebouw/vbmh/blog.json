@@ -1,16 +1,5 @@
-﻿{
-	"author": "Ferdinand Xerbutri",
-	"visited": "2019-08",
-	"updated": "2024-03-4",
-	"facts": {
-		"Rating": 4,
-		"Build": "1961",
-		"Abandoned": "2015",
-		"Visited": "2019",
-		"Demolished": "-",
-		"Reused": "-"
-	},
-	"sources": [
+{"author":"Ferdinand Xerbutri","visited":"2019-08","updated":"2020-06-21","facts":{"rating":4,"build":"1961","abandoned":"2015","visited":"2019"},
+"sources": [
 		{
 			"title": "Basisregistratie Adressen en Gebouwen (BAG)",
 			"language": "nl",
@@ -23,5 +12,5 @@
 			"url": "https://topotijdreis.nl/",
 			"date": "2024-03-4"
 		}
-	]
-}
+	]}
+

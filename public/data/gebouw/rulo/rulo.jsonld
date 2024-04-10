@@ -1,0 +1,13 @@
+{
+"@context" : "http://schema.org",
+"@type" : "Article",
+"name" :"Ru&iuml;ne L&ouml;wenburg",
+"author" : {
+"@type" : "Person",
+"name" : "Team Xerbutri"
+}
+"datePublished" : "2012-05-01",
+"image" : "https://www.xerbutri.nl/picz/gebouw/RuLo/RuLo/RuLo.jpg",
+"dateModified" : "2018-11-08",
+"articleSection" : "Verlaten Gebouwen"
+}

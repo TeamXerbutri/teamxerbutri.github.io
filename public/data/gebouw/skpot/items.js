@@ -1,0 +1,495 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT000-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT000-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT001-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT001-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT001-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT002-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT002-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT002-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT003-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT003-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT003-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT004-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT004-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT004-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT005-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT005-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT005-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT006-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT006-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT006-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT007-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT007-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT007-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT008-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT008-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT008-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT009-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT009-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT009-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT010-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT010-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT010-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT011-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT011-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT011-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT012-310x207.jpg', 
+ w:310, 
+ h:207
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT012-990x660.jpg', 
+ w:990, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT012-1500x1000.jpg', 
+ w:1500, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT013-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT013-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT013-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT014-310x216.jpg', 
+ w:310, 
+ h:216
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT014-948x660.jpg', 
+ w:948, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT014-1437x1000.jpg', 
+ w:1437, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT015-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT015-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT015-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT016-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT016-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT016-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT017-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT017-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT017-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT018-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT018-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT018-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT019-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT019-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT019-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT020-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT020-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT020-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT021-310x207.jpg', 
+ w:310, 
+ h:207
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT021-990x660.jpg', 
+ w:990, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT021-1500x1000.jpg', 
+ w:1500, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT022-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT022-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT022-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT023-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT023-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT023-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT024-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT024-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT024-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT025-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT025-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT025-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT026-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT026-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT026-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT027-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT027-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT027-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT028-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT028-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/gebouw/SKPOT/SKPOT028-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+];

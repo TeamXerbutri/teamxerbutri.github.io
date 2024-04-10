@@ -1,0 +1,189 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN000-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN000-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN001-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN001-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN001-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN002-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN002-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN002-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN003-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN003-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN003-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN004-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN004-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN004-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN005-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN005-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN005-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN006-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN006-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN006-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN007-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN007-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN007-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN008-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN008-496x660.jpg', 
+ w:496, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN008-751x1000.jpg', 
+ w:751, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN009-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN009-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN009-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../picz/brug/BUN/BUN010-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../picz/brug/BUN/BUN010-879x660.jpg', 
+ w:879, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../picz/brug/BUN/BUN010-1332x1000.jpg', 
+ w:1332, 
+ h:1000
+ } 
+ },
+];
