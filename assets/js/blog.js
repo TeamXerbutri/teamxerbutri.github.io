@@ -82,8 +82,8 @@ function setShare() {
 	const urienc = encodeURIComponent(uri);
 	const fburi = "https://www.facebook.com/sharer/sharer.php?u=" + urienc;
 	const wauri = "whatsapp://send?text=" + urienc;
-	let fbElem = document.getElementById('sharefb');
-	let waElem = document.getElementById('sharewa');
+	let fbElem = document.getElementById("sharefb");
+	let waElem = document.getElementById("sharewa");
 	fbElem.href = fburi;
 	waElem.href = wauri;
 }
@@ -122,7 +122,7 @@ export function initBlog() {
 	let translator = new Translator();
 	uiState.hasShareModal = true;
 
-	document.querySelector('#app').innerHTML = `
+	document.querySelector("#app").innerHTML = `
 		<article id="blog">
 		<div id="article-title"></div>
 		<p id="article-visited" class="authordate"></p>
