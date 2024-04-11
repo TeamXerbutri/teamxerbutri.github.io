@@ -314,11 +314,13 @@ export function initBlog() {
 	document.getElementById("privacy").addEventListener("click", function () {
 		showMenuItem("privacypanel")
 	});
-	if (window.scrollY >= 200) {
-		//TODO the scroll to top does not show
-		showBackToTop();
-	} else {
-		hideBackToTop();
+	
+	window.onscroll = function (ev) {
+		if (window.scrollY >= 200) {
+			showBackToTop();
+		} else {
+			hideBackToTop();
+		}
 	}
 
 }
