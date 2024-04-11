@@ -229,7 +229,11 @@ export function initBlog() {
 						//aside
 						if (countProperties(blogFacts.facts) > 0) {
 							document.getElementById("article-aside").innerHTML += `<ul>`;
-							Object.entries(blogFacts.facts).forEach(([key, value]) => {
+							Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
+								if (value === "") {
+									return;
+								}
+
 								switch (key) {
 									case "build":
 									case "abandoned":
@@ -256,7 +260,7 @@ export function initBlog() {
 							});
 							document.getElementById("article-aside").innerHTML += `</ul>`;
 						}
-						if(countProperties(blogFacts.facts) <=0 ){
+						if (countProperties(blogFacts.facts) <= 0) {
 							document.getElementById("article-aside").style.display = "none";
 						}
 
@@ -314,7 +318,7 @@ export function initBlog() {
 	document.getElementById("privacy").addEventListener("click", function () {
 		showMenuItem("privacypanel")
 	});
-	
+
 	window.onscroll = function (ev) {
 		if (window.scrollY >= 200) {
 			showBackToTop();
@@ -322,5 +326,4 @@ export function initBlog() {
 			hideBackToTop();
 		}
 	}
-
 }
