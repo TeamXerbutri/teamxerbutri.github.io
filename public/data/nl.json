@@ -63,6 +63,7 @@
 		"lastupdate": "Artikel voor het laatst bijgewerkt "
 	},
 	"facts": {
+		"rating": "Rating",
 		"build": "Bouwjaar",
 		"abandoned": "Verlaten",
 		"visited": "Bezocht",

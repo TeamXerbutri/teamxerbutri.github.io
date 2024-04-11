@@ -63,6 +63,7 @@
 		"lastupdate": "Article last updated "
 	},
 	"facts": {
+		"rating": "Rating",
 		"build": "Built",
 		"abandoned": "Abandoned",
 		"visited": "Visited",

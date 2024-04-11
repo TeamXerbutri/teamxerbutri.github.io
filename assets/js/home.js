@@ -10,16 +10,13 @@ import {
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
 
-
-
-
 // Initializes the home page
 export function initHome() {
 	let translator = new Translator();
 
 	// Load app
 
-	document.querySelector('#app').innerHTML = `
+	document.querySelector("#app").innerHTML = `
 <div id="oi">
 	<div id="oc">
     </div>
@@ -54,11 +51,7 @@ export function initHome() {
 		headerElem.classList.add("home")
 		headerElem.innerHTML = header
 	}
-
 	
-
-	
-
 	hideBackToTop();
 
 	function initViewportOptions() {
@@ -108,10 +101,12 @@ export function initHome() {
 		}
 	}
 
-	if (window.scrollY >= 200) {
-		showBackToTop();
-	} else {
-		hideBackToTop();
+	window.onscroll = function (ev) {
+		if (window.scrollY >= 200) {
+			showBackToTop();
+		} else {
+			hideBackToTop();
+		}
 	}
 
 	function setTranslatedContent() {
@@ -129,7 +124,7 @@ export function initHome() {
 
 		// Builds the objects
 		function objectFactory(subjects) {
-			const objectContainer = document.getElementById('oc');
+			const objectContainer = document.getElementById("oc");
 			for (let i in subjects) {
 				let displayObject = createBlogObject(translator, subjects[i], i);
 
@@ -145,7 +140,6 @@ export function initHome() {
 			.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
 		document.title = "Xerbutri Urban Exploring";
 	}
-
 }
 
 	

@@ -21,11 +21,11 @@ function countProperties(obj) {
 }
 
 //TODO need to translate FFF to JS
-// 	<script src="../picz/{{@categorie}}/{{@map}}/items.js"></script>
+// 	<script src="../data/{{@categorie}}/{{@map}}/items.js"></script>
 // <script src='../ui/js/photoswipe.min.js'></script>
 // <script src='../ui/js/photoswipe-ui-default.min.js'></script>
 // <!check if="{{@categorieid == 3 }}"><true>
-// 	<script src="../picz/{{@categorie}}/{{@map}}/longlatarray.js"></script>
+// 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
 // 	<script src="../ui/js/reportage.js"></script>
 // </true>
 // 	<false>
@@ -82,8 +82,8 @@ function setShare() {
 	const urienc = encodeURIComponent(uri);
 	const fburi = "https://www.facebook.com/sharer/sharer.php?u=" + urienc;
 	const wauri = "whatsapp://send?text=" + urienc;
-	let fbElem = document.getElementById('sharefb');
-	let waElem = document.getElementById('sharewa');
+	let fbElem = document.getElementById("sharefb");
+	let waElem = document.getElementById("sharewa");
 	fbElem.href = fburi;
 	waElem.href = wauri;
 }
@@ -122,10 +122,10 @@ export function initBlog() {
 	let translator = new Translator();
 	uiState.hasShareModal = true;
 
-	document.querySelector('#app').innerHTML = `
+	document.querySelector("#app").innerHTML = `
 		<article id="blog">
 		<div id="article-title"></div>
-		<p id="article-created" class="authordate"></p>
+		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
 		<aside id="article-aside"></aside>
 		<section id="article-content"></section>
@@ -215,12 +215,12 @@ export function initBlog() {
 
 				translator.fetchBlogFacts(value.category, abbreviation).then(
 					function (blogFacts) {
-						const year = blogFacts["created"].split("-")[0];
-						const month = blogFacts["created"].split("-")[1];
+						const year = blogFacts["visited"].split("-")[0];
+						const month = blogFacts["visited"].split("-")[1];
 
 						let monthBlog = translator.translate(`month.${month}`);
 
-						document.getElementById("article-created").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
+						document.getElementById("article-visited").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
 
 						let updatedSplit = blogFacts["updated"].split("-");
 
@@ -230,53 +230,34 @@ export function initBlog() {
 						if (countProperties(blogFacts.facts) > 0) {
 							document.getElementById("article-aside").innerHTML += `<ul>`;
 							Object.entries(blogFacts.facts).forEach(([key, value]) => {
-								if (key === "Rating") {
-									document.getElementById("article-aside").innerHTML += `<li>${key}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
-								}
-
-								// Get fact translations
-								if (key === "Build") {
-									let buildKey = translator.translate("facts.build");
-
-									document.getElementById("article-aside").innerHTML += `<li>${buildKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Abandoned") {
-									let abandonedKey = translator.translate("facts.abandoned");
-									document.getElementById("article-aside").innerHTML += `<li>${abandonedKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Visited") {
-									let visitedKey = translator.translate("facts.visited");
-
-									document.getElementById("article-aside").innerHTML += `<li>${visitedKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Demolished") {
-									let demolishKey = translator.translate("facts.demolished");
-									document.getElementById("article-aside").innerHTML += `<li>${demolishKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Reused") {
-									let reuseKey = translator.translate("facts.reused");
-									document.getElementById("article-aside").innerHTML += `<li>${reuseKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Length") {
-									let lengthKey = translator.translate("facts.length");
-									document.getElementById("article-aside").innerHTML += `<li>${lengthKey}: <span class="fact">${value}</span> </li>`;
-								}
-
-								if (key === "Line") {
-									let lineKey = translator.translate("facts.line");
-									document.getElementById("article-aside").innerHTML += `<li>${lineKey}: <span class="fact">${value}</span> </li>`;
-								}
-								if (key === "Map") {
-									let mapKey = translator.translate("facts.map");
-									document.getElementById("article-aside").innerHTML += `<li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+								switch (key) {
+									case "build":
+									case "abandoned":
+									case "visited":
+									case "demolished":
+									case "reused":
+									case "length":
+									case "height":
+									case "line":
+										const translation = translator.translate(`facts.${key}`);
+										document.getElementById("article-aside").innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
+										break;
+									case "rating":
+										const ratingKey = translator.translate("facts.rating");
+										document.getElementById("article-aside").innerHTML += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
+										break;
+									case "map":
+										let mapKey = translator.translate("facts.map");
+										document.getElementById("article-aside").innerHTML += `<li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+										break;
+									default:
+										break;
 								}
 							});
 							document.getElementById("article-aside").innerHTML += `</ul>`;
+						}
+						if(countProperties(blogFacts.facts) <=0 ){
+							document.getElementById("article-aside").style.display = "none";
 						}
 
 						if (blogFacts.sources.length > 0) {
@@ -333,11 +314,13 @@ export function initBlog() {
 	document.getElementById("privacy").addEventListener("click", function () {
 		showMenuItem("privacypanel")
 	});
-	if (window.scrollY >= 200) {
-		//TODO the scroll to top does not show
-		showBackToTop();
-	} else {
-		hideBackToTop();
+	
+	window.onscroll = function (ev) {
+		if (window.scrollY >= 200) {
+			showBackToTop();
+		} else {
+			hideBackToTop();
+		}
 	}
 
 }

@@ -1,0 +1,19 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../data/xerbutri/txase/txase000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/xerbutri/txase/txase000-878x660.jpg', 
+ w:878, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/xerbutri/txase/txase000-1330x1000.jpg', 
+ w:1330, 
+ h:1000
+ } 
+ },
+];

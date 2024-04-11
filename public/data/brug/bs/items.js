@@ -1,0 +1,172 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs000-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs000-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs001-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs001-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs001-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs002-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs002-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs002-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs003-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs003-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs003-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs004-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs004-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs004-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs005-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs005-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs005-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs006-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs006-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs006-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs007-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs007-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs007-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs008-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs008-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs008-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/bs/bs009-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/bs/bs009-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/bs/bs009-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+];

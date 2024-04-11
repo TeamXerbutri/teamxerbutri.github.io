@@ -1,0 +1,138 @@
+var items=[
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth000-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth000-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth000-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth001-1170x352.jpg', 
+ w:1170, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth001-2194x660.jpg', 
+ w:2194, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth001-3324x1000.jpg', 
+ w:3324, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth002-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth002-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth002-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth003-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth003-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth003-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth004-264x352.jpg', 
+ w:264, 
+ h:352
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth004-495x660.jpg', 
+ w:495, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth004-750x1000.jpg', 
+ w:750, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth005-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth005-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth005-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth006-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth006-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth006-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+{
+ smallImage:{ 
+ src:'../data/brug/vdth/vdth007-310x233.jpg', 
+ w:310, 
+ h:233
+ }, 
+mediumImage:{ 
+ src:'../data/brug/vdth/vdth007-880x660.jpg', 
+ w:880, 
+ h:660
+ }, 
+largeImage:{ 
+ src:'../data/brug/vdth/vdth007-1333x1000.jpg', 
+ w:1333, 
+ h:1000
+ } 
+ },
+];
