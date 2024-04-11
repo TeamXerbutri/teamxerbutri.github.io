@@ -21,11 +21,11 @@ function countProperties(obj) {
 }
 
 //TODO need to translate FFF to JS
-// 	<script src="../picz/{{@categorie}}/{{@map}}/items.js"></script>
+// 	<script src="../data/{{@categorie}}/{{@map}}/items.js"></script>
 // <script src='../ui/js/photoswipe.min.js'></script>
 // <script src='../ui/js/photoswipe-ui-default.min.js'></script>
 // <!check if="{{@categorieid == 3 }}"><true>
-// 	<script src="../picz/{{@categorie}}/{{@map}}/longlatarray.js"></script>
+// 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
 // 	<script src="../ui/js/reportage.js"></script>
 // </true>
 // 	<false>

@@ -1,102 +1,102 @@
 var items=[
 {
  smallImage:{ 
- src:'../picz/brug/BC/BC000-310x233.jpg', 
+ src:'../data/brug/bc/bc000-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BC/BC000-880x660.jpg', 
+ src:'../data/brug/bc/bc000-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BC/BC000-1333x1000.jpg', 
+ src:'../data/brug/bc/bc000-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BC/BC001-310x233.jpg', 
+ src:'../data/brug/bc/bc001-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BC/BC001-880x660.jpg', 
+ src:'../data/brug/bc/bc001-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BC/BC001-1333x1000.jpg', 
+ src:'../data/brug/bc/bc001-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BC/BC002-310x233.jpg', 
+ src:'../data/brug/bc/bc002-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BC/BC002-880x660.jpg', 
+ src:'../data/brug/bc/bc002-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BC/BC002-1333x1000.jpg', 
+ src:'../data/brug/bc/bc002-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BC/BC003-310x233.jpg', 
+ src:'../data/brug/bc/bc003-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BC/BC003-880x660.jpg', 
+ src:'../data/brug/bc/bc003-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BC/BC003-1333x1000.jpg', 
+ src:'../data/brug/bc/bc003-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BC/BC004-310x233.jpg', 
+ src:'../data/brug/bc/bc004-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BC/BC004-880x660.jpg', 
+ src:'../data/brug/bc/bc004-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BC/BC004-1333x1000.jpg', 
+ src:'../data/brug/bc/bc004-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BC/BC005-310x233.jpg', 
+ src:'../data/brug/bc/bc005-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BC/BC005-880x660.jpg', 
+ src:'../data/brug/bc/bc005-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BC/BC005-1333x1000.jpg', 
+ src:'../data/brug/bc/bc005-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
