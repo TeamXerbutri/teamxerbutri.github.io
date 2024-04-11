@@ -190,7 +190,7 @@ export function initBlog() {
 						// intro
 						document.getElementById("article-intro").innerHTML = blogContent.intro;
 
-						// adventure and history or other
+						// adventure and history
 						if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 							const adventureTitle = translator.translate("adventure");
 
@@ -203,10 +203,6 @@ export function initBlog() {
 
 							document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
 							document.getElementById("article-content").innerHTML += blogContent.history;
-						}
-
-						if (blogContent.other !== undefined && blogContent.other !== "") {
-							document.getElementById("article-content").innerHTML += blogContent.other;
 						}
 					},
 				).catch((error) => {
