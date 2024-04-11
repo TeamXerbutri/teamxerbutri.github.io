@@ -1,16 +1,1 @@
-{"author":"Ferdinand Xerbutri","visited":"2019-08","updated":"2020-06-21","facts":{"rating":4,"build":"1961","abandoned":"2015","visited":"2019"},
-"sources": [
-		{
-			"title": "Basisregistratie Adressen en Gebouwen (BAG)",
-			"language": "nl",
-			"url": "https://bagviewer.kadaster.nl/",
-			"date": "2024-03-4"
-		},
-		{
-			"title": "Kadaster Topo tijdreis",
-			"language": "nl",
-			"url": "https://topotijdreis.nl/",
-			"date": "2024-03-4"
-		}
-	]}
-
+{"author":"Ferdinand Xerbutri","visited":"2019-08","updated":"2020-06-21","facts":{"rating":4,"build":"1961","abandoned":"2015","visited":"2019","length":"","line":"","height":""},"sources":[{"title":"Bagviewer Kadaster","language":"","url":"https://bagviewer.kadaster.nl/","date":"2018-10-21"}]}
