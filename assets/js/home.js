@@ -19,7 +19,7 @@ export function initHome() {
 
 	// Load app
 
-	document.querySelector('#app').innerHTML = `
+	document.querySelector("#app").innerHTML = `
 <div id="oi">
 	<div id="oc">
     </div>
@@ -129,7 +129,7 @@ export function initHome() {
 
 		// Builds the objects
 		function objectFactory(subjects) {
-			const objectContainer = document.getElementById('oc');
+			const objectContainer = document.getElementById("oc");
 			for (let i in subjects) {
 				let displayObject = createBlogObject(translator, subjects[i], i);
 

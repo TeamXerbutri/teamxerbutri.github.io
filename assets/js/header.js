@@ -1,19 +1,19 @@
-﻿import {uiState} from './uistate.js';
+﻿import {uiState} from "./uistate.js";
 
 function showMenuItem(elementId) {
 	document.addEventListener("click", function (evt) {
 		hideMenuItem(elementId, evt)
 	});
-	document.getElementById(elementId).style.display = 'block';
+	document.getElementById(elementId).style.display = "block";
 }
 
 function hideMenuItem(elementId, evt) {
 	let element = document.getElementById(elementId);
-	if (element.style.display !== 'none' && evt.target.parentNode.id !== "menu") {
+	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu") {
 		document.removeEventListener("click", function (evt) {
 			hideMenuItem(elementId, evt)
 		});
-		element.style.display = 'none';
+		element.style.display = "none";
 	}
 }
 
@@ -51,7 +51,7 @@ function showMenu() {
 	menu.style.height = "276px";
 	// TODO Why did I have this again? (double clicks?) Try with onblur instead
 	window.setTimeout(setHasMenuTrue, 1000);
-	document.getElementsByClassName('filter')[0].style.display = 'none';
+	document.getElementsByClassName("filter")[0].style.display = "none";
 }
 
 function setHasMenuTrue() {
@@ -71,8 +71,8 @@ function hideMenu() {
 		menu.style.width = "44px";
 		menu.style.height = "44px";
 
-		if (document.getElementsByClassName('filter')[0]) {
-			document.getElementsByClassName('filter')[0].style.display = 'inline-block';
+		if (document.getElementsByClassName("filter")[0]) {
+			document.getElementsByClassName("filter")[0].style.display = "inline-block";
 		}
 		uiState.hasMenu = false;
 	}

@@ -1,4 +1,4 @@
-﻿import {initHome} from './home.js';
+﻿import {initHome} from "./home.js";
 import {initBlog} from "./blog.js";
 
 let stateContext = function () {
