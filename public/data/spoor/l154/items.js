@@ -1,17 +1,17 @@
 var items=[
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154000-264x352.jpg', 
+ src:'../data/spoor/L154/L154000-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154000-495x660.jpg', 
+ src:'../data/spoor/L154/L154000-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154000-750x1000.jpg', 
+ src:'../data/spoor/L154/L154000-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -20,17 +20,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154001-310x233.jpg', 
+ src:'../data/spoor/L154/L154001-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154001-880x660.jpg', 
+ src:'../data/spoor/L154/L154001-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154001-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154001-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -39,17 +39,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154002-310x233.jpg', 
+ src:'../data/spoor/L154/L154002-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154002-880x660.jpg', 
+ src:'../data/spoor/L154/L154002-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154002-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154002-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -58,17 +58,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154003-264x352.jpg', 
+ src:'../data/spoor/L154/L154003-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154003-495x660.jpg', 
+ src:'../data/spoor/L154/L154003-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154003-750x1000.jpg', 
+ src:'../data/spoor/L154/L154003-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -77,17 +77,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154004-310x233.jpg', 
+ src:'../data/spoor/L154/L154004-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154004-880x660.jpg', 
+ src:'../data/spoor/L154/L154004-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154004-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154004-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -96,17 +96,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154005-264x352.jpg', 
+ src:'../data/spoor/L154/L154005-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154005-495x660.jpg', 
+ src:'../data/spoor/L154/L154005-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154005-750x1000.jpg', 
+ src:'../data/spoor/L154/L154005-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -115,17 +115,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154006-264x352.jpg', 
+ src:'../data/spoor/L154/L154006-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154006-495x660.jpg', 
+ src:'../data/spoor/L154/L154006-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154006-750x1000.jpg', 
+ src:'../data/spoor/L154/L154006-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -134,17 +134,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154007-264x352.jpg', 
+ src:'../data/spoor/L154/L154007-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154007-495x660.jpg', 
+ src:'../data/spoor/L154/L154007-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154007-750x1000.jpg', 
+ src:'../data/spoor/L154/L154007-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -153,17 +153,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154008-264x352.jpg', 
+ src:'../data/spoor/L154/L154008-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154008-495x660.jpg', 
+ src:'../data/spoor/L154/L154008-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154008-750x1000.jpg', 
+ src:'../data/spoor/L154/L154008-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -172,17 +172,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154009-310x233.jpg', 
+ src:'../data/spoor/L154/L154009-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154009-880x660.jpg', 
+ src:'../data/spoor/L154/L154009-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154009-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154009-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -191,17 +191,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154010-264x352.jpg', 
+ src:'../data/spoor/L154/L154010-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154010-495x660.jpg', 
+ src:'../data/spoor/L154/L154010-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154010-750x1000.jpg', 
+ src:'../data/spoor/L154/L154010-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -210,17 +210,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154011-310x233.jpg', 
+ src:'../data/spoor/L154/L154011-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154011-880x660.jpg', 
+ src:'../data/spoor/L154/L154011-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154011-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154011-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -229,17 +229,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154012-310x233.jpg', 
+ src:'../data/spoor/L154/L154012-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154012-880x660.jpg', 
+ src:'../data/spoor/L154/L154012-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154012-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154012-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -248,17 +248,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154013-264x352.jpg', 
+ src:'../data/spoor/L154/L154013-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154013-495x660.jpg', 
+ src:'../data/spoor/L154/L154013-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154013-750x1000.jpg', 
+ src:'../data/spoor/L154/L154013-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -267,17 +267,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154014-264x352.jpg', 
+ src:'../data/spoor/L154/L154014-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154014-495x660.jpg', 
+ src:'../data/spoor/L154/L154014-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154014-750x1000.jpg', 
+ src:'../data/spoor/L154/L154014-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -286,17 +286,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154015-310x233.jpg', 
+ src:'../data/spoor/L154/L154015-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154015-880x660.jpg', 
+ src:'../data/spoor/L154/L154015-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154015-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154015-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -305,17 +305,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154016-310x233.jpg', 
+ src:'../data/spoor/L154/L154016-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154016-880x660.jpg', 
+ src:'../data/spoor/L154/L154016-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154016-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154016-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -324,17 +324,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154017-310x233.jpg', 
+ src:'../data/spoor/L154/L154017-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154017-880x660.jpg', 
+ src:'../data/spoor/L154/L154017-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154017-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154017-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -343,17 +343,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154018-264x352.jpg', 
+ src:'../data/spoor/L154/L154018-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154018-495x660.jpg', 
+ src:'../data/spoor/L154/L154018-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154018-750x1000.jpg', 
+ src:'../data/spoor/L154/L154018-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -362,17 +362,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154019-264x352.jpg', 
+ src:'../data/spoor/L154/L154019-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154019-495x660.jpg', 
+ src:'../data/spoor/L154/L154019-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154019-750x1000.jpg', 
+ src:'../data/spoor/L154/L154019-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -381,17 +381,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154020-310x233.jpg', 
+ src:'../data/spoor/L154/L154020-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154020-880x660.jpg', 
+ src:'../data/spoor/L154/L154020-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154020-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154020-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -400,17 +400,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154021-310x233.jpg', 
+ src:'../data/spoor/L154/L154021-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154021-880x660.jpg', 
+ src:'../data/spoor/L154/L154021-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154021-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154021-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -419,17 +419,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154022-310x233.jpg', 
+ src:'../data/spoor/L154/L154022-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154022-880x660.jpg', 
+ src:'../data/spoor/L154/L154022-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154022-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154022-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -438,17 +438,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154023-310x233.jpg', 
+ src:'../data/spoor/L154/L154023-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154023-880x660.jpg', 
+ src:'../data/spoor/L154/L154023-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154023-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154023-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -457,17 +457,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154024-310x233.jpg', 
+ src:'../data/spoor/L154/L154024-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154024-880x660.jpg', 
+ src:'../data/spoor/L154/L154024-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154024-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154024-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -476,17 +476,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154025-310x233.jpg', 
+ src:'../data/spoor/L154/L154025-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154025-880x660.jpg', 
+ src:'../data/spoor/L154/L154025-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154025-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154025-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -495,17 +495,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154026-310x233.jpg', 
+ src:'../data/spoor/L154/L154026-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154026-880x660.jpg', 
+ src:'../data/spoor/L154/L154026-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154026-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154026-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -514,17 +514,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154027-264x352.jpg', 
+ src:'../data/spoor/L154/L154027-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154027-495x660.jpg', 
+ src:'../data/spoor/L154/L154027-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154027-750x1000.jpg', 
+ src:'../data/spoor/L154/L154027-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -533,17 +533,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154028-310x233.jpg', 
+ src:'../data/spoor/L154/L154028-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154028-880x660.jpg', 
+ src:'../data/spoor/L154/L154028-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154028-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154028-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -552,17 +552,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154029-310x233.jpg', 
+ src:'../data/spoor/L154/L154029-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154029-880x660.jpg', 
+ src:'../data/spoor/L154/L154029-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154029-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154029-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -571,17 +571,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154030-310x233.jpg', 
+ src:'../data/spoor/L154/L154030-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154030-880x660.jpg', 
+ src:'../data/spoor/L154/L154030-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154030-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154030-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -590,17 +590,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154031-310x233.jpg', 
+ src:'../data/spoor/L154/L154031-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154031-880x660.jpg', 
+ src:'../data/spoor/L154/L154031-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154031-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154031-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -609,17 +609,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154032-264x352.jpg', 
+ src:'../data/spoor/L154/L154032-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154032-495x660.jpg', 
+ src:'../data/spoor/L154/L154032-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154032-750x1000.jpg', 
+ src:'../data/spoor/L154/L154032-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -628,17 +628,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154033-310x233.jpg', 
+ src:'../data/spoor/L154/L154033-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154033-880x660.jpg', 
+ src:'../data/spoor/L154/L154033-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154033-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154033-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -647,17 +647,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154034-310x233.jpg', 
+ src:'../data/spoor/L154/L154034-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154034-880x660.jpg', 
+ src:'../data/spoor/L154/L154034-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154034-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154034-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -666,17 +666,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154035-310x233.jpg', 
+ src:'../data/spoor/L154/L154035-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154035-880x660.jpg', 
+ src:'../data/spoor/L154/L154035-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154035-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154035-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -685,17 +685,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154036-264x352.jpg', 
+ src:'../data/spoor/L154/L154036-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154036-495x660.jpg', 
+ src:'../data/spoor/L154/L154036-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154036-750x1000.jpg', 
+ src:'../data/spoor/L154/L154036-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -704,17 +704,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154037-310x233.jpg', 
+ src:'../data/spoor/L154/L154037-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154037-880x660.jpg', 
+ src:'../data/spoor/L154/L154037-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154037-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154037-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -723,17 +723,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154038-264x352.jpg', 
+ src:'../data/spoor/L154/L154038-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154038-495x660.jpg', 
+ src:'../data/spoor/L154/L154038-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154038-750x1000.jpg', 
+ src:'../data/spoor/L154/L154038-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -742,17 +742,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154039-264x352.jpg', 
+ src:'../data/spoor/L154/L154039-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154039-495x660.jpg', 
+ src:'../data/spoor/L154/L154039-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154039-750x1000.jpg', 
+ src:'../data/spoor/L154/L154039-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -761,17 +761,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154040-264x352.jpg', 
+ src:'../data/spoor/L154/L154040-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154040-495x660.jpg', 
+ src:'../data/spoor/L154/L154040-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154040-750x1000.jpg', 
+ src:'../data/spoor/L154/L154040-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -780,17 +780,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154041-264x352.jpg', 
+ src:'../data/spoor/L154/L154041-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154041-495x660.jpg', 
+ src:'../data/spoor/L154/L154041-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154041-750x1000.jpg', 
+ src:'../data/spoor/L154/L154041-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -799,17 +799,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154042-310x233.jpg', 
+ src:'../data/spoor/L154/L154042-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154042-880x660.jpg', 
+ src:'../data/spoor/L154/L154042-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154042-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154042-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -818,17 +818,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154043-310x233.jpg', 
+ src:'../data/spoor/L154/L154043-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154043-880x660.jpg', 
+ src:'../data/spoor/L154/L154043-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154043-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154043-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -837,17 +837,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154044-310x233.jpg', 
+ src:'../data/spoor/L154/L154044-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154044-880x660.jpg', 
+ src:'../data/spoor/L154/L154044-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154044-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154044-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -856,17 +856,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154045-310x233.jpg', 
+ src:'../data/spoor/L154/L154045-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154045-880x660.jpg', 
+ src:'../data/spoor/L154/L154045-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154045-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154045-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -875,17 +875,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154046-310x233.jpg', 
+ src:'../data/spoor/L154/L154046-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154046-880x660.jpg', 
+ src:'../data/spoor/L154/L154046-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154046-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154046-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -894,17 +894,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154047-264x352.jpg', 
+ src:'../data/spoor/L154/L154047-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154047-495x660.jpg', 
+ src:'../data/spoor/L154/L154047-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154047-750x1000.jpg', 
+ src:'../data/spoor/L154/L154047-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -913,17 +913,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154048-310x233.jpg', 
+ src:'../data/spoor/L154/L154048-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154048-880x660.jpg', 
+ src:'../data/spoor/L154/L154048-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154048-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154048-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -932,17 +932,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154049-264x352.jpg', 
+ src:'../data/spoor/L154/L154049-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154049-495x660.jpg', 
+ src:'../data/spoor/L154/L154049-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154049-750x1000.jpg', 
+ src:'../data/spoor/L154/L154049-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -951,17 +951,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154050-264x352.jpg', 
+ src:'../data/spoor/L154/L154050-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154050-495x660.jpg', 
+ src:'../data/spoor/L154/L154050-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154050-750x1000.jpg', 
+ src:'../data/spoor/L154/L154050-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -970,17 +970,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154051-310x233.jpg', 
+ src:'../data/spoor/L154/L154051-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154051-880x660.jpg', 
+ src:'../data/spoor/L154/L154051-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154051-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154051-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -989,17 +989,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154052-310x233.jpg', 
+ src:'../data/spoor/L154/L154052-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154052-880x660.jpg', 
+ src:'../data/spoor/L154/L154052-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154052-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154052-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1008,17 +1008,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154053-310x233.jpg', 
+ src:'../data/spoor/L154/L154053-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154053-880x660.jpg', 
+ src:'../data/spoor/L154/L154053-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154053-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154053-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1027,17 +1027,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154054-310x233.jpg', 
+ src:'../data/spoor/L154/L154054-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154054-880x660.jpg', 
+ src:'../data/spoor/L154/L154054-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154054-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154054-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1046,17 +1046,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154055-264x352.jpg', 
+ src:'../data/spoor/L154/L154055-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154055-495x660.jpg', 
+ src:'../data/spoor/L154/L154055-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154055-750x1000.jpg', 
+ src:'../data/spoor/L154/L154055-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1065,17 +1065,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154056-310x233.jpg', 
+ src:'../data/spoor/L154/L154056-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154056-880x660.jpg', 
+ src:'../data/spoor/L154/L154056-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154056-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154056-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1084,17 +1084,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154057-310x233.jpg', 
+ src:'../data/spoor/L154/L154057-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154057-880x660.jpg', 
+ src:'../data/spoor/L154/L154057-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154057-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154057-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1103,17 +1103,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154058-310x233.jpg', 
+ src:'../data/spoor/L154/L154058-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154058-880x660.jpg', 
+ src:'../data/spoor/L154/L154058-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154058-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154058-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1122,17 +1122,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154059-310x233.jpg', 
+ src:'../data/spoor/L154/L154059-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154059-880x660.jpg', 
+ src:'../data/spoor/L154/L154059-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154059-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154059-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1141,17 +1141,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154060-264x352.jpg', 
+ src:'../data/spoor/L154/L154060-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154060-495x660.jpg', 
+ src:'../data/spoor/L154/L154060-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154060-750x1000.jpg', 
+ src:'../data/spoor/L154/L154060-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1160,17 +1160,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154061-310x233.jpg', 
+ src:'../data/spoor/L154/L154061-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154061-880x660.jpg', 
+ src:'../data/spoor/L154/L154061-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154061-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154061-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1179,17 +1179,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154062-310x233.jpg', 
+ src:'../data/spoor/L154/L154062-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154062-880x660.jpg', 
+ src:'../data/spoor/L154/L154062-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154062-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154062-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1198,17 +1198,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154063-310x233.jpg', 
+ src:'../data/spoor/L154/L154063-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154063-880x660.jpg', 
+ src:'../data/spoor/L154/L154063-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154063-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154063-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1217,17 +1217,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154064-310x233.jpg', 
+ src:'../data/spoor/L154/L154064-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154064-880x660.jpg', 
+ src:'../data/spoor/L154/L154064-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154064-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154064-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1236,17 +1236,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154065-264x352.jpg', 
+ src:'../data/spoor/L154/L154065-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154065-495x660.jpg', 
+ src:'../data/spoor/L154/L154065-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154065-750x1000.jpg', 
+ src:'../data/spoor/L154/L154065-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1255,17 +1255,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154066-310x233.jpg', 
+ src:'../data/spoor/L154/L154066-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154066-880x660.jpg', 
+ src:'../data/spoor/L154/L154066-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154066-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154066-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 
@@ -1274,17 +1274,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154067-264x352.jpg', 
+ src:'../data/spoor/L154/L154067-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154067-495x660.jpg', 
+ src:'../data/spoor/L154/L154067-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154067-750x1000.jpg', 
+ src:'../data/spoor/L154/L154067-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1293,17 +1293,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154068-264x352.jpg', 
+ src:'../data/spoor/L154/L154068-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154068-495x660.jpg', 
+ src:'../data/spoor/L154/L154068-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154068-750x1000.jpg', 
+ src:'../data/spoor/L154/L154068-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1312,17 +1312,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154069-264x352.jpg', 
+ src:'../data/spoor/L154/L154069-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154069-495x660.jpg', 
+ src:'../data/spoor/L154/L154069-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154069-750x1000.jpg', 
+ src:'../data/spoor/L154/L154069-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1331,17 +1331,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154070-264x352.jpg', 
+ src:'../data/spoor/L154/L154070-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154070-495x660.jpg', 
+ src:'../data/spoor/L154/L154070-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154070-750x1000.jpg', 
+ src:'../data/spoor/L154/L154070-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1350,17 +1350,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154071-264x352.jpg', 
+ src:'../data/spoor/L154/L154071-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154071-495x660.jpg', 
+ src:'../data/spoor/L154/L154071-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154071-750x1000.jpg', 
+ src:'../data/spoor/L154/L154071-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1369,17 +1369,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154072-264x352.jpg', 
+ src:'../data/spoor/L154/L154072-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154072-495x660.jpg', 
+ src:'../data/spoor/L154/L154072-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154072-750x1000.jpg', 
+ src:'../data/spoor/L154/L154072-750x1000.jpg', 
  w:750, 
  h:1000
  } , 
@@ -1388,17 +1388,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/L154/L154073-310x233.jpg', 
+ src:'../data/spoor/L154/L154073-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/L154/L154073-880x660.jpg', 
+ src:'../data/spoor/L154/L154073-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/L154/L154073-1333x1000.jpg', 
+ src:'../data/spoor/L154/L154073-1333x1000.jpg', 
  w:1333, 
  h:1000
  } , 

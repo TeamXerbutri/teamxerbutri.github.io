@@ -1,272 +1,272 @@
 var items=[
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG000-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG000-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG000-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG000-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG000-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG000-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG001-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG001-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG001-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG001-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG001-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG001-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG002-264x352.jpg', 
+ src:'../data/gebouw/MFG/MFG002-264x352.jpg', 
  w:264, 
  h:352
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG002-495x660.jpg', 
+ src:'../data/gebouw/MFG/MFG002-495x660.jpg', 
  w:495, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG002-750x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG002-750x1000.jpg', 
  w:750, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG003-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG003-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG003-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG003-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG003-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG003-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG004-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG004-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG004-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG004-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG004-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG004-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG005-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG005-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG005-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG005-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG005-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG005-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG006-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG006-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG006-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG006-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG006-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG006-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG007-310x233.jpg', 
+ src:'../data/gebouw/MFG/MFG007-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG007-880x660.jpg', 
+ src:'../data/gebouw/MFG/MFG007-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG007-1333x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG007-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG008-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG008-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG008-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG008-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG008-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG008-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG009-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG009-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG009-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG009-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG009-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG009-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG010-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG010-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG010-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG010-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG010-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG010-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG011-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG011-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG011-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG011-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG011-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG011-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG012-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG012-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG012-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG012-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG012-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG012-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG013-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG013-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG013-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG013-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG013-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG013-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG014-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG014-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG014-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG014-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG014-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG014-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/gebouw/MFG/MFG015-310x207.jpg', 
+ src:'../data/gebouw/MFG/MFG015-310x207.jpg', 
  w:310, 
  h:207
  }, 
 mediumImage:{ 
- src:'../picz/gebouw/MFG/MFG015-990x660.jpg', 
+ src:'../data/gebouw/MFG/MFG015-990x660.jpg', 
  w:990, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/gebouw/MFG/MFG015-1500x1000.jpg', 
+ src:'../data/gebouw/MFG/MFG015-1500x1000.jpg', 
  w:1500, 
  h:1000
  } 

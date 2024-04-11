@@ -1,119 +1,119 @@
 var items=[
 {
  smallImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX000-310x233.jpg', 
+ src:'../data/xerbutri/txatx/txatx000-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX000-880x660.jpg', 
+ src:'../data/xerbutri/txatx/txatx000-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX000-1333x1000.jpg', 
+ src:'../data/xerbutri/txatx/txatx000-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX001-310x233.jpg', 
+ src:'../data/xerbutri/txatx/txatx001-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX001-880x660.jpg', 
+ src:'../data/xerbutri/txatx/txatx001-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX001-1333x1000.jpg', 
+ src:'../data/xerbutri/txatx/txatx001-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX002-310x233.jpg', 
+ src:'../data/xerbutri/txatx/txatx002-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX002-880x660.jpg', 
+ src:'../data/xerbutri/txatx/txatx002-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX002-1333x1000.jpg', 
+ src:'../data/xerbutri/txatx/txatx002-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX003-310x233.jpg', 
+ src:'../data/xerbutri/txatx/txatx003-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX003-880x660.jpg', 
+ src:'../data/xerbutri/txatx/txatx003-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX003-1333x1000.jpg', 
+ src:'../data/xerbutri/txatx/txatx003-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX004-310x233.jpg', 
+ src:'../data/xerbutri/txatx/txatx004-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX004-879x660.jpg', 
+ src:'../data/xerbutri/txatx/txatx004-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX004-1332x1000.jpg', 
+ src:'../data/xerbutri/txatx/txatx004-1332x1000.jpg', 
  w:1332, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX005-310x233.jpg', 
+ src:'../data/xerbutri/txatx/txatx005-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX005-880x660.jpg', 
+ src:'../data/xerbutri/txatx/txatx005-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX005-1333x1000.jpg', 
+ src:'../data/xerbutri/txatx/txatx005-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX006-310x233.jpg', 
+ src:'../data/xerbutri/txatx/txatx006-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX006-880x660.jpg', 
+ src:'../data/xerbutri/txatx/txatx006-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/xerbutri/TXATX/TXATX006-1333x1000.jpg', 
+ src:'../data/xerbutri/txatx/txatx006-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 

@@ -1,17 +1,17 @@
 var items=[
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME000-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME000-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME000-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME000-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME000-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME000-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 
@@ -20,17 +20,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME001-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME001-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME001-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME001-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME001-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME001-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 
@@ -39,17 +39,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME002-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME002-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME002-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME002-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME002-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME002-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 
@@ -58,17 +58,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME003-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME003-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME003-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME003-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME003-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME003-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 
@@ -77,17 +77,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME004-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME004-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME004-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME004-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME004-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME004-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 
@@ -96,17 +96,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME005-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME005-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME005-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME005-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME005-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME005-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 
@@ -115,17 +115,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME006-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME006-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME006-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME006-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME006-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME006-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 
@@ -134,17 +134,17 @@ largeImage:{
  },
 {
  smallImage:{ 
- src:'../picz/spoor/DBBME/DBBME007-310x233.jpg', 
+ src:'../data/spoor/DBBME/DBBME007-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/spoor/DBBME/DBBME007-879x660.jpg', 
+ src:'../data/spoor/DBBME/DBBME007-879x660.jpg', 
  w:879, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/spoor/DBBME/DBBME007-1332x1000.jpg', 
+ src:'../data/spoor/DBBME/DBBME007-1332x1000.jpg', 
  w:1332, 
  h:1000
  } , 

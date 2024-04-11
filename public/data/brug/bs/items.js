@@ -1,170 +1,170 @@
 var items=[
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS000-310x233.jpg', 
+ src:'../data/brug/bs/bs000-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS000-880x660.jpg', 
+ src:'../data/brug/bs/bs000-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS000-1333x1000.jpg', 
+ src:'../data/brug/bs/bs000-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS001-310x233.jpg', 
+ src:'../data/brug/bs/bs001-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS001-880x660.jpg', 
+ src:'../data/brug/bs/bs001-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS001-1333x1000.jpg', 
+ src:'../data/brug/bs/bs001-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS002-310x233.jpg', 
+ src:'../data/brug/bs/bs002-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS002-880x660.jpg', 
+ src:'../data/brug/bs/bs002-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS002-1333x1000.jpg', 
+ src:'../data/brug/bs/bs002-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS003-310x233.jpg', 
+ src:'../data/brug/bs/bs003-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS003-880x660.jpg', 
+ src:'../data/brug/bs/bs003-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS003-1333x1000.jpg', 
+ src:'../data/brug/bs/bs003-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS004-310x233.jpg', 
+ src:'../data/brug/bs/bs004-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS004-880x660.jpg', 
+ src:'../data/brug/bs/bs004-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS004-1333x1000.jpg', 
+ src:'../data/brug/bs/bs004-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS005-310x233.jpg', 
+ src:'../data/brug/bs/bs005-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS005-880x660.jpg', 
+ src:'../data/brug/bs/bs005-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS005-1333x1000.jpg', 
+ src:'../data/brug/bs/bs005-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS006-310x233.jpg', 
+ src:'../data/brug/bs/bs006-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS006-880x660.jpg', 
+ src:'../data/brug/bs/bs006-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS006-1333x1000.jpg', 
+ src:'../data/brug/bs/bs006-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS007-310x233.jpg', 
+ src:'../data/brug/bs/bs007-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS007-880x660.jpg', 
+ src:'../data/brug/bs/bs007-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS007-1333x1000.jpg', 
+ src:'../data/brug/bs/bs007-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS008-310x233.jpg', 
+ src:'../data/brug/bs/bs008-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS008-880x660.jpg', 
+ src:'../data/brug/bs/bs008-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS008-1333x1000.jpg', 
+ src:'../data/brug/bs/bs008-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
  },
 {
  smallImage:{ 
- src:'../picz/brug/BS/BS009-310x233.jpg', 
+ src:'../data/brug/bs/bs009-310x233.jpg', 
  w:310, 
  h:233
  }, 
 mediumImage:{ 
- src:'../picz/brug/BS/BS009-880x660.jpg', 
+ src:'../data/brug/bs/bs009-880x660.jpg', 
  w:880, 
  h:660
  }, 
 largeImage:{ 
- src:'../picz/brug/BS/BS009-1333x1000.jpg', 
+ src:'../data/brug/bs/bs009-1333x1000.jpg', 
  w:1333, 
  h:1000
  } 
