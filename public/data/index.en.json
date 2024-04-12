@@ -1,13 +1,6 @@
 {
 	"subjects": [
 		{
-			"category": "xerbutri",
-			"abbreviation": "map",
-			"shortname": "Locations on map",
-			"realname": "Show all",
-			"description": "Show all locations on the map"
-		},
-		{
 			"category": "gebouw",
 			"abbreviation": "vbmh",
 			"shortname": "Mosquito Farm",
