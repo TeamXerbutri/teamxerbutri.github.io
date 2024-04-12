@@ -1,4 +1,3 @@
-
 header .blogmenu a, #sharepanel a {
 	display: none;
 	color: #fff;
@@ -170,6 +169,14 @@ div.gallery img:active {
 	font-size: 2em;
 }
 
+#contact {
+	cursor: pointer;
+}
+
+#privacy {
+	cursor: pointer;
+}
+
 div.mobile {
 	display: none;
 }
@@ -286,11 +293,7 @@ div.mobile {
 	#contactpanel p span {
 		display: none;
 	}
-
-	#contact {
-		cursor: pointer;
-	}
-
+	
 	#back-to-top {
 		background-color: rgba(0, 0, 0, .25);
 		border-radius: 0;
@@ -325,7 +328,7 @@ div.mobile {
 		color: #fff;
 	}
 
-	#intro {
+	#article-intro {
 		display: inline-block;
 		width: 450px;
 	}
@@ -466,7 +469,7 @@ img#tx:hover {
 		width: 1010px;
 	}
 
-	#intro {
+	#article-intro {
 		width: 700px;
 	}
 
@@ -487,7 +490,7 @@ img#tx:hover {
 		max-width: 235px;
 	}
 
-	div.head {
+	div.article-title {
 		width: 1010px;
 	}
 }
@@ -502,7 +505,7 @@ img#tx:hover {
 		width: 1304px;
 	}
 
-	#intro {
+	#article-intro {
 		width: 1000px;
 	}
 
@@ -520,7 +523,7 @@ img#tx:hover {
 		max-width: 310px;
 	}
 
-	div.head {
+	div.article-title {
 		width: 1304px;
 	}
 }

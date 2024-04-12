@@ -189,7 +189,7 @@ export function initBlog() {
 						// intro
 						document.getElementById("article-intro").innerHTML = blogContent.intro;
 
-						// adventure and history or other
+						// adventure and history
 						if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 							const adventureTitle = translator.translate("adventure");
 
@@ -202,10 +202,6 @@ export function initBlog() {
 
 							document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
 							document.getElementById("article-content").innerHTML += blogContent.history;
-						}
-
-						if (blogContent.other !== undefined && blogContent.other !== "") {
-							document.getElementById("article-content").innerHTML += blogContent.other;
 						}
 					},
 				).catch((error) => {
@@ -228,7 +224,11 @@ export function initBlog() {
 						//aside
 						if (countProperties(blogFacts.facts) > 0) {
 							document.getElementById("article-aside").innerHTML += `<ul>`;
-							Object.entries(blogFacts.facts).forEach(([key, value]) => {
+							Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
+								if (value === "") {
+									return;
+								}
+
 								switch (key) {
 									case "build":
 									case "abandoned":
@@ -255,7 +255,7 @@ export function initBlog() {
 							});
 							document.getElementById("article-aside").innerHTML += `</ul>`;
 						}
-						if(countProperties(blogFacts.facts) <=0 ){
+						if (countProperties(blogFacts.facts) <= 0) {
 							document.getElementById("article-aside").style.display = "none";
 						}
 
@@ -321,7 +321,7 @@ export function initBlog() {
 	document.getElementById("privacy").addEventListener("click", function () {
 		showMenuItem("privacypanel")
 	});
-	
+
 	window.onscroll = function (ev) {
 		if (window.scrollY >= 200) {
 			showBackToTop();
@@ -329,5 +329,4 @@ export function initBlog() {
 			hideBackToTop();
 		}
 	}
-
 }
