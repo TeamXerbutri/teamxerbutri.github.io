@@ -153,6 +153,7 @@ class Translator {
 		const menuItem = document.createElement("a");
 		menuItem.id = `lang-${lang}`;
 		menuItem.innerText = lang.toUpperCase();
+		menuItem.href = "/";
 		menuItem.addEventListener("click", () => {
 			this.setLanguage(lang)
 		});
