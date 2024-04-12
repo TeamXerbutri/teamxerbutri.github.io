@@ -134,6 +134,7 @@ export function initBlog() {
 		<section id="article-gallery"></section>
 		</article>
 		<a id="back-to-top" href="#blog">^</a>
+		<script id="jsonld" type="application/ld+json"></script>
 		`
 	translator.load().then(() => {
 		setTranslatedContent();
@@ -176,8 +177,6 @@ export function initBlog() {
 	let abbreviation = window.location.href.split("/").pop();
 
 	function setTranslatedContent() {
-
-
 		translator.getBlogDataById(abbreviation).then(
 			(value) => {
 				document.title = value.shortname + " - Xerbutri Urban Exploring";
@@ -210,7 +209,7 @@ export function initBlog() {
 				});
 
 				translator.fetchBlogFacts(value.category, abbreviation).then(
-					function (blogFacts) {
+					(blogFacts) => {
 						const year = blogFacts["visited"].split("-")[0];
 						const month = blogFacts["visited"].split("-")[1];
 
@@ -280,10 +279,18 @@ export function initBlog() {
 				).catch((error) => {
 					console.error(`An error occured in getting the translated blog facts: ${error}`);
 				});
+
+				translator.getBlogJsonLd(value.category, abbreviation).then(
+					(jsonld) => {
+						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
+					}
+				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
 			}
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
 		});
+		
+		
 
 		//gallery
 
