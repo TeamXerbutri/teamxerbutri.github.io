@@ -328,7 +328,7 @@ div.mobile {
 		color: #fff;
 	}
 
-	#intro {
+	#article-intro {
 		display: inline-block;
 		width: 450px;
 	}
@@ -469,7 +469,7 @@ img#tx:hover {
 		width: 1010px;
 	}
 
-	#intro {
+	#article-intro {
 		width: 700px;
 	}
 
@@ -490,7 +490,7 @@ img#tx:hover {
 		max-width: 235px;
 	}
 
-	div.head {
+	div.article-title {
 		width: 1010px;
 	}
 }
@@ -505,7 +505,7 @@ img#tx:hover {
 		width: 1304px;
 	}
 
-	#intro {
+	#article-intro {
 		width: 1000px;
 	}
 
@@ -523,7 +523,7 @@ img#tx:hover {
 		max-width: 310px;
 	}
 
-	div.head {
+	div.article-title {
 		width: 1304px;
 	}
 }
