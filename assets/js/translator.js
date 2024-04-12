@@ -189,6 +189,11 @@ class Translator {
 		return fetch(path).then((response) => response.json());
 	}
 
+	fetchBlogJsonLd(category, abbreviation) {
+		const path = this._basePath.concat(category, "/", abbreviation, "/jsonld.json");
+		return fetch(path).then((response) => response.json());
+	}
+
 	getBlogDataById(id) {
 		const blogs = this.fetchBlogData();
 		return blogs.then((data) => {
@@ -201,9 +206,14 @@ class Translator {
 		return fetch(path).then((response) => response.json());
 	}
 
+	getBlogJsonLd(category, abbreviation) {
+		const jsonld = this.fetchBlogJsonLd(category, abbreviation);
+		return jsonld.then((data) => data);
+	}
+	
 	getBlogData() {
-		const blogs = this.fetchBlogData();
-		return blogs.then((data) => data);
+		const blogData = this.fetchBlogData();
+		return blogData.then((data) => data);
 	}
 
 	getHomeData() {
