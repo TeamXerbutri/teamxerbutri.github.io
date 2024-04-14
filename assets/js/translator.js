@@ -206,10 +206,18 @@ class Translator {
 		const path = this._basePath.concat(category, "/", abbreviation, "/blog.json");
 		return fetch(path).then((response) => response.json());
 	}
+	fetchBlogItems(category, abbreviation) {
+		const path = this._basePath.concat(category, "/", abbreviation, "/items.json");
+		return fetch(path).then((response) => response.json());
+	}
 
 	getBlogJsonLd(category, abbreviation) {
 		const jsonld = this.fetchBlogJsonLd(category, abbreviation);
 		return jsonld.then((data) => data);
+	}
+	getBlogItems(category, abbreviation) {
+		const blogItems = this.fetchBlogItems(category, abbreviation);
+		return blogItems.then((data) => data);
 	}
 	
 	getBlogData() {

@@ -7,5 +7,8 @@
 	},
 	"devDependencies": {
 		"vite": "^5.0.11"
+	},
+	"dependencies": {
+		"photoswipe": "^5.4.3"
 	}
 }
