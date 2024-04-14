@@ -68,12 +68,9 @@ class Translator {
 		}
 
 		this.load().then(() => {
-			this._options.languages.forEach((language) => {
-				this.showMenuOption(language);
-			});
-			this.hideMenuOption(this._lang);
+			this.addMenuOptions();
 		}).catch((error) => {
-			console.error(`An error occured in getting the translations: ${error}`)
+			console.error(`An error occured in loading the translations: ${error}`)
 		});
 	}
 
@@ -110,7 +107,6 @@ class Translator {
 			this._lang = lang;
 		}
 
-
 		const path = `${this._basePath}${this._lang}.json`;
 
 		return fetch(path)
@@ -140,12 +136,28 @@ class Translator {
 
 	addMenuOption(lang) {
 		const menu = document.getElementById("menu");
+		let existingMenuItem = document.getElementById(`lang-${lang}`);
+		
+		// remove existing menu item
+		if(lang === this._lang) {
+			if(existingMenuItem) {
+				menu.removeChild(existingMenuItem);
+			}
+			return;
+		}
+		
+		if(existingMenuItem) {
+			return;
+		}
+		
 		const menuItem = document.createElement("a");
 		menuItem.id = `lang-${lang}`;
 		menuItem.innerText = lang.toUpperCase();
+		menuItem.href = "/";
 		menuItem.addEventListener("click", () => {
 			this.setLanguage(lang)
 		});
+				
 		menu.appendChild(menuItem);
 	}
 
@@ -153,17 +165,6 @@ class Translator {
 		this._options.languages.forEach((lang) => {
 			this.addMenuOption(lang);
 		});
-		this.hideMenuOption(this._lang);
-	}
-
-	showMenuOption(lang) {
-		const menuItem = document.getElementById(`lang-${lang}`);
-		menuItem.style.removeProperty("display");
-	}
-
-	hideMenuOption(lang) {
-		const menuItem = document.getElementById(`lang-${lang}`);
-		menuItem.style.display = "none";
 	}
 
 	localDate(day, month, year) {
@@ -189,6 +190,11 @@ class Translator {
 		return fetch(path).then((response) => response.json());
 	}
 
+	fetchBlogJsonLd(category, abbreviation) {
+		const path = this._basePath.concat(category, "/", abbreviation, "/jsonld.json");
+		return fetch(path).then((response) => response.json());
+	}
+
 	getBlogDataById(id) {
 		const blogs = this.fetchBlogData();
 		return blogs.then((data) => {
@@ -200,10 +206,23 @@ class Translator {
 		const path = this._basePath.concat(category, "/", abbreviation, "/blog.json");
 		return fetch(path).then((response) => response.json());
 	}
+	fetchBlogItems(category, abbreviation) {
+		const path = this._basePath.concat(category, "/", abbreviation, "/items.json");
+		return fetch(path).then((response) => response.json());
+	}
 
+	getBlogJsonLd(category, abbreviation) {
+		const jsonld = this.fetchBlogJsonLd(category, abbreviation);
+		return jsonld.then((data) => data);
+	}
+	getBlogItems(category, abbreviation) {
+		const blogItems = this.fetchBlogItems(category, abbreviation);
+		return blogItems.then((data) => data);
+	}
+	
 	getBlogData() {
-		const blogs = this.fetchBlogData();
-		return blogs.then((data) => data);
+		const blogData = this.fetchBlogData();
+		return blogData.then((data) => data);
 	}
 
 	getHomeData() {
@@ -214,7 +233,7 @@ class Translator {
 	get defaultConfig() {
 		return {
 			persist: true,
-			languages: ["nl", "en", "fr", "de"],
+			languages: ["nl", "en", "fr"],
 			defaultLanguage: "nl",
 		};
 	}

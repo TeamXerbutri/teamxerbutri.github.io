@@ -2,6 +2,9 @@
 import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem} from "./header.js";
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+import {createGallery} from "./galleryfactory.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -134,6 +137,7 @@ export function initBlog() {
 		<section id="article-gallery"></section>
 		</article>
 		<a id="back-to-top" href="#blog">^</a>
+		<script id="jsonld" type="application/ld+json"></script>
 		`
 	translator.load().then(() => {
 		setTranslatedContent();
@@ -176,8 +180,6 @@ export function initBlog() {
 	let abbreviation = window.location.href.split("/").pop();
 
 	function setTranslatedContent() {
-
-
 		translator.getBlogDataById(abbreviation).then(
 			(value) => {
 				document.title = value.shortname + " - Xerbutri Urban Exploring";
@@ -190,7 +192,7 @@ export function initBlog() {
 						// intro
 						document.getElementById("article-intro").innerHTML = blogContent.intro;
 
-						// adventure and history or other
+						// adventure and history
 						if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 							const adventureTitle = translator.translate("adventure");
 
@@ -204,17 +206,13 @@ export function initBlog() {
 							document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
 							document.getElementById("article-content").innerHTML += blogContent.history;
 						}
-
-						if (blogContent.other !== undefined && blogContent.other !== "") {
-							document.getElementById("article-content").innerHTML += blogContent.other;
-						}
 					},
 				).catch((error) => {
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
 				translator.fetchBlogFacts(value.category, abbreviation).then(
-					function (blogFacts) {
+					(blogFacts) => {
 						const year = blogFacts["visited"].split("-")[0];
 						const month = blogFacts["visited"].split("-")[1];
 
@@ -229,7 +227,11 @@ export function initBlog() {
 						//aside
 						if (countProperties(blogFacts.facts) > 0) {
 							document.getElementById("article-aside").innerHTML += `<ul>`;
-							Object.entries(blogFacts.facts).forEach(([key, value]) => {
+							Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
+								if (value === "") {
+									return;
+								}
+
 								switch (key) {
 									case "build":
 									case "abandoned":
@@ -256,7 +258,7 @@ export function initBlog() {
 							});
 							document.getElementById("article-aside").innerHTML += `</ul>`;
 						}
-						if(countProperties(blogFacts.facts) <=0 ){
+						if (countProperties(blogFacts.facts) <= 0) {
 							document.getElementById("article-aside").style.display = "none";
 						}
 
@@ -280,19 +282,40 @@ export function initBlog() {
 				).catch((error) => {
 					console.error(`An error occured in getting the translated blog facts: ${error}`);
 				});
+
+				translator.getBlogJsonLd(value.category, abbreviation).then(
+					(jsonld) => {
+						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
+					}
+				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
+				
+				translator.getBlogItems(value.category, abbreviation).then(
+				 (items) => {
+					 //gallery
+					 
+					 let gallery = createGallery(items, value.category, abbreviation, translator);
+					 document.getElementById("article-gallery").appendChild(gallery);
+					 
+					 const lightbox = new PhotoSwipeLightbox({
+						 gallery: '#gallery--responsive-images',
+						 children: 'a',
+						 pswpModule: () => import('photoswipe')
+					 });
+					 lightbox.init();
+
+
+				 }
+				).catch((error) => {
+					console.error(`An error occured in getting the translated blog items: ${error}`);
+				});
 			}
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
 		});
+		
+		
 
-		//gallery
-
-		let galleryTitle = translator.translate("gallery.title");
-
-		let galleryDescription = translator.translate("gallery.description");
-
-		document.getElementById("article-gallery").innerHTML = `<h3>${galleryTitle}</h3> <p>${galleryDescription}</p>`;
-
+		
 		//TODO set a correct translated description
 		document
 			.querySelector('meta[name="description"]')
@@ -314,7 +337,7 @@ export function initBlog() {
 	document.getElementById("privacy").addEventListener("click", function () {
 		showMenuItem("privacypanel")
 	});
-	
+
 	window.onscroll = function (ev) {
 		if (window.scrollY >= 200) {
 			showBackToTop();
@@ -322,5 +345,4 @@ export function initBlog() {
 			hideBackToTop();
 		}
 	}
-
 }

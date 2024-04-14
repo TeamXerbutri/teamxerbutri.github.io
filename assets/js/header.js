@@ -47,8 +47,8 @@ function showMenu() {
 		element.style.display = "block";
 	}
 
-	menu.style.width = "100px";
-	menu.style.height = "276px";
+	menu.style.removeProperty("width");
+	menu.style.removeProperty("height");
 	// TODO Why did I have this again? (double clicks?) Try with onblur instead
 	window.setTimeout(setHasMenuTrue, 1000);
 	document.getElementsByClassName("filter")[0].style.display = "none";
