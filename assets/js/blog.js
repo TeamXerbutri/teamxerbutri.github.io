@@ -2,6 +2,9 @@
 import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem} from "./header.js";
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+import {createGallery} from "./galleryfactory.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -285,6 +288,26 @@ export function initBlog() {
 						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
 					}
 				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
+				
+				translator.getBlogItems(value.category, abbreviation).then(
+				 (items) => {
+					 //gallery
+					 
+					 let gallery = createGallery(items, value.category, abbreviation, translator);
+					 document.getElementById("article-gallery").appendChild(gallery);
+					 
+					 const lightbox = new PhotoSwipeLightbox({
+						 gallery: '#gallery--responsive-images',
+						 children: 'a',
+						 pswpModule: () => import('photoswipe')
+					 });
+					 lightbox.init();
+
+
+				 }
+				).catch((error) => {
+					console.error(`An error occured in getting the translated blog items: ${error}`);
+				});
 			}
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
@@ -292,14 +315,7 @@ export function initBlog() {
 		
 		
 
-		//gallery
-
-		let galleryTitle = translator.translate("gallery.title");
-
-		let galleryDescription = translator.translate("gallery.description");
-
-		document.getElementById("article-gallery").innerHTML = `<h3>${galleryTitle}</h3> <p>${galleryDescription}</p>`;
-
+		
 		//TODO set a correct translated description
 		document
 			.querySelector('meta[name="description"]')
