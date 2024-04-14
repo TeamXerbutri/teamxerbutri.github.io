@@ -1,32 +1,291 @@
 {
 	"subjects": [
 		{
+			"category": "brug",
+			"abbreviation": "vdt",
+			"shortname": "Viaduc de la Tardes",
+			"realname": "Tardes Viaduct, railwaybridge crossing the Cher",
+			"description": "Tardes Viaduct, railwaybridge crossing the Cher"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "vdf2",
+			"shortname": "Viaduc des Fades II",
+			"realname": "Viaduc des Fades. Second visit to the railwaybridge crossing the Sioule",
+			"description": "Viaduc des Fades. Second visit to the railwaybridge crossing the Sioule"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "badt",
+			"shortname": "Viaduc d'Audin",
+			"realname": "Viaduc d'Audin-le-Tiche, bridge crossing the vally of the village Audin-le-Tiche",
+			"description": "Viaduc d'Audin-le-Tiche, bridge crossing the vally of the village Audin-le-Tiche"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "mtb",
+			"shortname": "Mungstener bridge",
+			"realname": "Mungstener Talbrucke, bridge crossing the Wupper, highest railway bridge of Germany",
+			"description": "Mungstener Talbrucke, bridge crossing the Wupper, highest railway bridge of Germany"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "vdf",
+			"shortname": "Viaduc des Fades",
+			"realname": "Viaduc des Fades, railwaybridge crossing the Sioule",
+			"description": "Viaduc des Fades, railwaybridge crossing the Sioule"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "bma",
+			"shortname": "Maastricht",
+			"realname": "Railwaybridge crossing the Maas at Maastricht",
+			"description": "Railwaybridge crossing the Maas at Maastricht"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "bla",
+			"shortname": "Lanaken",
+			"realname": "Vierendeelbridge at Gellik near Lanaken across the Albertkanaal",
+			"description": "Vierendeelbridge at Gellik near Lanaken across the Albertkanaal"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "db",
+			"shortname": "DEMKA-bridge",
+			"realname": "DEMKA-bridge at Utrecht across the Amsterdam-Rijnkanaal",
+			"description": "DEMKA-bridge at Utrecht across the Amsterdam-Rijnkanaal"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "ws",
+			"shortname": "Werkspoor-bridge",
+			"realname": "Werkspoor-bridge at Utrecht across the Amsterdam-Rijnkanaal",
+			"description": "Werkspoor-bridge at Utrecht across the Amsterdam-Rijnkanaal"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "bc",
+			"shortname": "Lekbridge Culemborg",
+			"realname": "Bridge at Culemborg across the Lek",
+			"description": "Bridge at Culemborg across the Lek"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "bs",
+			"shortname": "Bridge of Schalkwijk",
+			"realname": "Bridge near Schalkwijk across the Amsterdam-Rijnkanaal",
+			"description": "Bridge near Schalkwijk across the Amsterdam-Rijnkanaal"
+		},
+		{
+			"category": "brug",
+			"abbreviation": "barsg",
+			"shortname": "Altrheinbridge Spyck",
+			"realname": "Altrheinbridge Griethausen. Ramshackle railwaybridge near Spyck-Griethausen across the Altrhein",
+			"description": "Altrheinbridge Griethausen. Ramshackle railwaybridge near Spyck-Griethausen across the Altrhein"
+		},
+		{
+			"category": "tunnel",
+			"abbreviation": "tgi",
+			"shortname": "Charlemont",
+			"realname": "Tunnel de Charlemont",
+			"description": "Tunnel de Charlemont"
+		},
+		{
+			"category": "tunnel",
+			"abbreviation": "rt",
+			"shortname": "Rudersdorf",
+			"realname": "Rudersdorfer tunnel",
+			"description": "Rudersdorfer tunnel"
+		},
+		{
+			"category": "tunnel",
+			"abbreviation": "tgc",
+			"shortname": "Gendron",
+			"realname": "Tunnel de Gendron",
+			"description": "Tunnel de Gendron"
+		},
+		{
+			"category": "tunnel",
+			"abbreviation": "bg",
+			"shortname": "Botzelaer",
+			"realname": "Tunnel van Botzelaer, Gemmenicher tunnel",
+			"description": "Tunnel van Botzelaer, Gemmenicher tunnel"
+		},
+		{
+			"category": "tunnel",
+			"abbreviation": "tv",
+			"shortname": "Veurs",
+			"realname": "Tunnel van Veurs",
+			"description": "Tunnel van Veurs"
+		},
+		{
 			"category": "gebouw",
-			"abbreviation": "vbmh",
-			"shortname": "Mosquito Farm",
-			"realname": "Melkveehouderij De Win, De Winhoeve",
-			"description": "Team Xerbutri visited the abandoned farm De Winhoeve"
+			"abbreviation": "hofu",
+			"shortname": "Cat Hotel",
+			"realname": "Hotel Fuenteventura",
+			"description": "Hotel Fuenteventura"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "vgmc",
+			"shortname": "Goldmine Chatelet",
+			"realname": "Goldmine Mines d'or de Chatelet",
+			"description": "Goldmine Mines d'or de Chatelet"
 		},
 		{
 			"category": "gebouw",
 			"abbreviation": "skfe",
-			"shortname": "Coalmine Lorraine",
+			"shortname": "CM Lorraine",
 			"realname": "Coalmine Lorraine",
-			"description": "Team Xerbutri got caught in the Sainte-Fontaine coalmine"
+			"description": "Coalmine Lorraine"
 		},
 		{
 			"category": "gebouw",
-			"abbreviation": "kwh",
-			"shortname": "Chateau Blanc",
-			"realname": "Withof castle",
-			"description": "A storie about bluf, coincidence and a white castle"
+			"abbreviation": "skgr",
+			"shortname": "CM Grube Reden",
+			"realname": "Coalmine Grube Reden",
+			"description": "Coalmine Grube Reden"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "zss",
+			"shortname": "Saar Sanatorium",
+			"realname": "Saar Sanatorium",
+			"description": "Saar Sanatorium"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "pmp",
+			"shortname": "PM Rodolphe",
+			"realname": "Potassium mine Rodolphe",
+			"description": "Potassium mine Rodolphe"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "mdfr",
+			"shortname": "Fort Vosges",
+			"realname": "Fort des Vosges",
+			"description": "Fort des Vosges"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "hfu",
+			"shortname": "Parc 'Uckange",
+			"realname": "Parc de haut fourneaux d'Uckange",
+			"description": "Parc de haut fourneaux d'Uckange"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "hfoa",
+			"shortname": "Montrouge",
+			"realname": "Central workshops Montrouge",
+			"description": "Central workshops Montrouge"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "mdfg",
+			"shortname": "Fort de Meuse",
+			"realname": "Fort de Génicourt",
+			"description": "Fort de Génicourt"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "kti",
+			"shortname": "St Josephchurch",
+			"realname": "The Saint Josephchurch at Tivoli, Eindhoven",
+			"description": "The Saint Josephchurch at Tivoli, Eindhoven"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "hlf",
+			"shortname": "La Carriere",
+			"realname": "Stonequarry La Carriere",
+			"description": "Stonequarry La Carriere"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "zjh",
+			"shortname": "Jugendheim",
+			"realname": "Jugendheim",
+			"description": "Jugendheim"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "mdw2",
+			"shortname": "MD Wolfsschlucht",
+			"realname": "Military domain Wulfsschlucht II",
+			"description": "Military domain Wulfsschlucht II"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "hoha",
+			"shortname": "Haunted Hotel",
+			"realname": "Haunted Hotel",
+			"description": "Haunted Hotel"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "owvo",
+			"shortname": "Willem College",
+			"realname": "Willem van Oranje College, secondary school, Waalwijk",
+			"description": "Willem van Oranje College, secondary school, Waalwijk"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "pzs",
+			"shortname": "Prov. Ziekenhuis",
+			"realname": "Provinciaal Ziekenhuis",
+			"description": "Provinciaal Ziekenhuis"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "hmu",
+			"shortname": "De Haan",
+			"realname": "Factory De Haan",
+			"description": "Factory De Haan"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "afc",
+			"shortname": "AF Coevorden",
+			"realname": "Potato flour factory Coevorden",
+			"description": "Potato flour factory Coevorden"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "kmsn",
+			"shortname": "Castle of Mesen",
+			"realname": "Castle of Mesen",
+			"description": "Castle of Mesen"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "tnh",
+			"shortname": "Traction Nord",
+			"realname": "Traction Nord",
+			"description": "Traction Nord"
+		},
+		{
+			"category": "gebouw",
+			"abbreviation": "fcia",
+			"shortname": "CIA Liege",
+			"realname": "Factory CIA, Liège",
+			"description": "Factory CIA, Liège"
 		},
 		{
 			"category": "spoor",
 			"abbreviation": "l126",
 			"shortname": "Line 126 Condroz",
-			"realname": "Line 126; Ligne du Condroz: [Statte] - Marchin - Ciney",
-			"description": "A quick visit in 2007 and a some more photo's from the 2015 visit"
+			"realname": "Railway 126; Statte - Ciney",
+			"description": "Railway 126; Statte - Ciney"
+		},
+		{
+			"category": "spoor",
+			"abbreviation": "l154",
+			"shortname": "Line 154",
+			"realname": "Railway 154; Dinant - Givet",
+			"description": "Railway 154; Dinant - Givet"
 		}
 	]
 }
