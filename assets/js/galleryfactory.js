@@ -7,6 +7,7 @@
 	//<a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/3-1500x1500.png" data-pswp-width="1500" data-pswp-height="1500" data-pswp-srcset="https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/3-600x600.png 600w, https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/3-1200x1200.png 1200w, https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/3-1500x1500.png 1500w" target="_blank">
 	//     <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/3-300x300.png" alt="">
 	//   </a>
+	let gallerySection = document.getElementById("article-gallery");
 	let galleryTitle = translator.translate("gallery.title");
 
 	let galleryDescription = translator.translate("gallery.description");
@@ -17,11 +18,11 @@
 	
 	let title = document.createElement("h3");
 	title.innerText = galleryTitle;
-	gallery.appendChild(title);
+	gallerySection.appendChild(title);
 	
 	let description = document.createElement("p");
 	description.innerText = galleryDescription;
-	gallery.appendChild(description);
+	gallerySection.appendChild(description);
 	
 	items.forEach((item) => {
 		let link = document.createElement("a");
