@@ -2,7 +2,8 @@
 import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem} from "./header.js";
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import PhotoSwipeLightbox from "photoswipe/lightbox";
+import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import 'photoswipe/style.css';
 import {createGallery} from "./galleryfactory.js";
 
@@ -25,8 +26,6 @@ function countProperties(obj) {
 
 //TODO need to translate FFF to JS
 // 	<script src="../data/{{@categorie}}/{{@map}}/items.js"></script>
-// <script src='../ui/js/photoswipe.min.js'></script>
-// <script src='../ui/js/photoswipe-ui-default.min.js'></script>
 // <!check if="{{@categorieid == 3 }}"><true>
 // 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
 // 	<script src="../ui/js/reportage.js"></script>
@@ -42,42 +41,6 @@ function countProperties(obj) {
 // 	<!check if="{{@categorieid == 3 }}"><true>
 // 	<div id="map" class="map"></div>
 // </true></check>
-// <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-// 	<div class="pswp__bg"></div>
-// 	<div class="pswp__scroll-wrap">
-// 		<div class="pswp__container">
-// 			<div class="pswp__item"></div>
-// 			<div class="pswp__item"></div>
-// 			<div class="pswp__item"></div>
-// 		</div>
-// 		<div class="pswp__ui pswp__ui--hidden">
-// 			<div class="pswp__top-bar">
-// 				<div class="pswp__counter"></div>
-// 				<button class="pswp__button pswp__button--close" title="Sluiten (Esc)"></button>
-// 				<button class="pswp__button pswp__button--share" title="Delen"></button>
-// 				<button class="pswp__button pswp__button--fs" title="Volledig scherm"></button>
-// 				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-// 				<div class="pswp__preloader">
-// 					<div class="pswp__preloader__icn">
-// 						<div class="pswp__preloader__cut">
-// 							<div class="pswp__preloader__donut"></div>
-// 						</div>
-// 					</div>
-// 				</div>
-// 			</div>
-// 			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-// 				<div class="pswp__share-tooltip"></div>
-// 			</div>
-// 			<button class="pswp__button pswp__button--arrow--left" title="Vorige (linkerpijl)">
-// 			</button>
-// 			<button class="pswp__button pswp__button--arrow--right" title="Volgende (rechterpijl)">
-// 			</button>
-// 			<div class="pswp__caption">
-// 				<div class="pswp__caption__center"></div>
-// 			</div>
-// 		</div>
-// 	</div>
-// </div>
 
 
 function setShare() {
@@ -283,24 +246,52 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog facts: ${error}`);
 				});
 
-				translator.getBlogJsonLd(value.category, abbreviation).then(
+				translator.fetchBlogJsonLd(value.category, abbreviation).then(
 					(jsonld) => {
 						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
 					}
 				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
 				
-				translator.getBlogItems(value.category, abbreviation).then(
+				translator.fetchBlogImages(value.category, abbreviation).then(
 				 (items) => {
 					 //gallery
+
+					 let gallerySection = document.getElementById("article-gallery");
+					 let galleryTitle = translator.translate("gallery.title");
+
+					 let galleryDescription = translator.translate("gallery.description");
+
+					 let gallery = document.createElement("div");
+					 gallery.classList.add("gallery");
+					 gallery.id = "gallery--responsive-images";
+
+					 let title = document.createElement("h3");
+					 title.innerText = galleryTitle;
+					 gallerySection.appendChild(title);
+
+					 let description = document.createElement("p");
+					 description.innerText = galleryDescription;
+					 gallerySection.appendChild(description);
+					 					 
+					 // if there are captions
 					 
-					 let gallery = createGallery(items, value.category, abbreviation, translator);
-					 document.getElementById("article-gallery").appendChild(gallery);
+					 
+					 
+					 let galleryPswp = createGallery(items, value.category, abbreviation, gallery);
+					 gallerySection.appendChild(galleryPswp);
 					 
 					 const lightbox = new PhotoSwipeLightbox({
 						 gallery: '#gallery--responsive-images',
 						 children: 'a',
 						 pswpModule: () => import('photoswipe')
 					 });
+					 
+					 // if this items has captions:
+					 const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+						 // Plugins options, for example:
+						 type: 'auto',
+					 });
+					 
 					 lightbox.init();
 
 

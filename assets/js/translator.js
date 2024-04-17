@@ -175,26 +175,27 @@ class Translator {
 		return `${day} ${monthFull} ${year}`;
 	}
 
-
+	fetchBlogLanguageContent(category, abbreviation) {
+		const path = this._basePath.concat(category, "/", abbreviation, "/blog.", this._lang, ".json");
+		return fetch(path).then((response) => response.json());
+	}
+	fetchBlogCaptions(category, abbreviation) {
+		const path = this._basePath.concat(category, "/", abbreviation, "/captions.", this._lang, ".json");
+		return fetch(path).then((response) => response.json());
+	}
+	
+	//TODO does not need to be in translator
 	fetchBlogData() {
 		const path = this._basePath.concat("blogs.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
 
+	//TODO does not need to be in translator
 	fetchHomeData() {
 		return fetch(this._basePath.concat("index.", this._lang, ".json")).then((response) => response.json());
 	}
-
-	fetchBlogLanguageContent(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/blog.", this._lang, ".json");
-		return fetch(path).then((response) => response.json());
-	}
-
-	fetchBlogJsonLd(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/jsonld.json");
-		return fetch(path).then((response) => response.json());
-	}
-
+	
+	//TODO does not need to be in translator
 	getBlogDataById(id) {
 		const blogs = this.fetchBlogData();
 		return blogs.then((data) => {
@@ -202,34 +203,24 @@ class Translator {
 		});
 	}
 
+	//TODO does not need to be in translator
 	fetchBlogFacts(category, abbreviation) {
 		const path = this._basePath.concat(category, "/", abbreviation, "/blog.json");
 		return fetch(path).then((response) => response.json());
 	}
-	fetchBlogItems(category, abbreviation) {
+	
+	//TODO does not need to be in translator
+	fetchBlogJsonLd(category, abbreviation) {
+		const path = this._basePath.concat(category, "/", abbreviation, "/jsonld.json");
+		return fetch(path).then((response) => response.json());
+	}
+	
+	//TODO does not need to be in translator
+	fetchBlogImages(category, abbreviation) {
 		const path = this._basePath.concat(category, "/", abbreviation, "/items.json");
 		return fetch(path).then((response) => response.json());
 	}
-
-	getBlogJsonLd(category, abbreviation) {
-		const jsonld = this.fetchBlogJsonLd(category, abbreviation);
-		return jsonld.then((data) => data);
-	}
-	getBlogItems(category, abbreviation) {
-		const blogItems = this.fetchBlogItems(category, abbreviation);
-		return blogItems.then((data) => data);
-	}
 	
-	getBlogData() {
-		const blogData = this.fetchBlogData();
-		return blogData.then((data) => data);
-	}
-
-	getHomeData() {
-		const home = this.fetchHomeData();
-		return home.then((data) => data);
-	}
-
 	get defaultConfig() {
 		return {
 			persist: true,
