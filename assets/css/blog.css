@@ -401,7 +401,7 @@ div.mobile {
 		padding-left: 0;
 	}
 
-	div.gallery figure {
+	div.gallery a {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -416,7 +416,7 @@ div.mobile {
 		overflow: hidden;
 	}
 
-	div.gallery figure:hover {
+	div.gallery a:hover {
 		border-style: solid;
 		border-color: #101010 #242424 #282828 #101010;
 		border-width: 4px;
@@ -481,7 +481,8 @@ img#tx:hover {
 		bottom: 250px;
 	}
 
-	div.gallery figure {
+	div.gallery a {
+		height: 235px;
 		width: 235px;
 	}
 
@@ -513,7 +514,7 @@ img#tx:hover {
 		height: 500px;
 	}
 
-	div.gallery figure {
+	div.gallery a {
 		width: 310px;
 		height: 310px;
 	}
