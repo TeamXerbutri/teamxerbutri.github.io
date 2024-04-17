@@ -4,8 +4,8 @@ import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
-import 'photoswipe/style.css';
-import {createGallery} from "./galleryfactory.js";
+import "photoswipe/style.css";
+import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -140,17 +140,17 @@ export function initBlog() {
 		headerElem.innerHTML = header
 	}
 
-	let abbreviation = window.location.href.split("/").pop();
+	let routeId = window.location.href.split("/").pop();
 
 	function setTranslatedContent() {
-		translator.getBlogDataById(abbreviation).then(
+		translator.getBlogDataById(routeId).then(
 			(value) => {
 				document.title = value.shortname + " - Xerbutri Urban Exploring";
 				document.querySelector('meta[name="description"]').setAttribute("content", value.description);
 				document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
 
 
-				translator.fetchBlogLanguageContent(value.category, abbreviation).then(
+				translator.fetchBlogLanguageContent(value.category, routeId).then(
 					(blogContent) => {
 						// intro
 						document.getElementById("article-intro").innerHTML = blogContent.intro;
@@ -174,7 +174,7 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
-				translator.fetchBlogFacts(value.category, abbreviation).then(
+				translator.fetchBlogFacts(value.category, routeId).then(
 					(blogFacts) => {
 						const year = blogFacts["visited"].split("-")[0];
 						const month = blogFacts["visited"].split("-")[1];
@@ -246,16 +246,15 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog facts: ${error}`);
 				});
 
-				translator.fetchBlogJsonLd(value.category, abbreviation).then(
+				translator.fetchBlogJsonLd(value.category, routeId).then(
 					(jsonld) => {
 						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
 					}
 				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
 				
-				translator.fetchBlogImages(value.category, abbreviation).then(
+				translator.fetchBlogImages(value.category, routeId).then(
 				 (items) => {
 					 //gallery
-
 					 let gallerySection = document.getElementById("article-gallery");
 					 let galleryTitle = translator.translate("gallery.title");
 
@@ -272,29 +271,51 @@ export function initBlog() {
 					 let description = document.createElement("p");
 					 description.innerText = galleryDescription;
 					 gallerySection.appendChild(description);
-					 					 
+					 
 					 // if there are captions
-					 
-					 
-					 
-					 let galleryPswp = createGallery(items, value.category, abbreviation, gallery);
-					 gallerySection.appendChild(galleryPswp);
-					 
-					 const lightbox = new PhotoSwipeLightbox({
-						 gallery: '#gallery--responsive-images',
-						 children: 'a',
-						 pswpModule: () => import('photoswipe')
-					 });
-					 
-					 // if this items has captions:
-					 const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-						 // Plugins options, for example:
-						 type: 'auto',
-					 });
-					 
-					 lightbox.init();
+					 translator.fetchBlogCaptions(value.category, routeId).then(
+						 (captions) =>{
+							 console.log("Has captions")
+							 
+							 let galleryCaptions = createGalleryWithCaptions(items, captions.captions, value.category, routeId, gallery);
+							 gallerySection.appendChild(galleryCaptions);
 
+							 const smallScreenPadding = {
+								 top: 0, bottom: 0, left: 0, right: 0
+							 };
+							 const largeScreenPadding = {
+								 top: 30, bottom: 30, left: 0, right: 0
+							 };
+														 
+							 const lightbox = new PhotoSwipeLightbox({
+								 gallery: "#gallery--responsive-images",
+								 children: ".pswp-gallery__item",
+								 bgOpacity: 0.95,
+								 // optionaly adjust viewport
+								 paddingFn: (viewportSize) => {
+									 return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+								 },
+								 pswpModule: () => import("photoswipe")
+							 });
 
+							 const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+								 mobileLayoutBreakpoint: 700,
+								 type: "auto",
+								 mobileCaptionOverlapRatio: 1,
+							 });
+							 lightbox.init();
+						 }).catch(() => {
+							 // no captions. Create gallery without captions
+						 const lightbox = new PhotoSwipeLightbox({
+							 gallery: "#gallery--responsive-images",
+							 children: "a",
+							 bgOpacity: 0.90,
+							 pswpModule: () => import("photoswipe")
+						 });
+						 let galleryPswp = createGallery(items, value.category, routeId, gallery);
+						 gallerySection.appendChild(galleryPswp);
+						 lightbox.init();
+					 });
 				 }
 				).catch((error) => {
 					console.error(`An error occured in getting the translated blog items: ${error}`);
