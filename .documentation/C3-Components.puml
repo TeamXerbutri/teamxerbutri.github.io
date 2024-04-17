@@ -5,30 +5,47 @@ LAYOUT_WITH_LEGEND()
 title 3. Component diagram for Xerbutri
 AddRelTag("link", $textColor="blue", $lineColor="blue", $lineStyle = DashedLine())
 
-Container_Boundary(xerbutri, "SPA xerbutri ", "Container: JavaScript", "Single page front end application"){
-    Component(home, "Homepage", "JavaScript - HTML", "Page with the objects and blogs")
-    Component(object, "Blog", "JavaScript - HTML", "Page with the (object) blog")
-    Component(gallery, "Gallery", "JavaScript - HTML", "Page with pictures")
-    Component(map, "Map", "JavaScript - HTML", "Page with all of the objects on a map")
+Container_Boundary(xerbutri, "TX App", "Container: JavaScript", ""){
+	Component(app, "Main - index", "Vite-JavaScript - HTML", "App starting point")
+    Component(index, "Index page", "JavaScript - HTML", "Page with the blogs indexed")
+    Component(blog, "Blog", "JavaScript - HTML", "Page with the (object) blog and gallery")
+    Component(map, "Map", "JavaScript - HTML", "Page with all objects on a map")
+    Component(translator, "Translator", "JavaScript", "Provides translations")
 }
 
 Container_Boundary(data, "Persistance system", "Container: filesystem", "Using the filesystem for persistance"){
-    Component(homedata, "Index.lang.json", "JSON", "File with data for the homepage")
-    Component(mapdata, "Some map file", "JSON", "File with data for the map")
-    Component(objectdata, "Object data", "JSON", "Object data organised per category containing kml, json and md files")
+    Component(homedata, "index.{lang}.json", "JSON", "Files with data for the homepage")
+    Component(transdata, "{lang}.json", "JSON", "Files with translations data")
+    Component(blogstransdata, "blog.{lang}.json", "JSON", "Files with data for the blogpage (get category for path, set title")
+    Component(blogidtransdata, "{cat}/{bid}/blog.{lang}.json", "JSON", "Files with translated data for the blogpage")
+    Component(blogtransdata, "{cat}/{bid}/blog.json", "JSON", "Files with language independent data for the blogpage")
+    Component(imagedata, "{cat}/{bid}/items.json", "JSON", "Files with language independent data for the gallery")
+    'Component(mapdata, "Some map file", "JSON", "File with data for the map")
 }
 
 
 'Rel(xerbutri, data, "gets content")
-Rel(home, homedata, "gets content")
-Rel(object, objectdata, "gets content")
-Rel(gallery, objectdata, "gets content")
-Rel(map, mapdata, "gets content")
+Rel(app, index, "State Machine Router")
+Rel(app, map, "State Machine Router")
+Rel(app, blog, "State Machine Router")
 
-Rel(home, object, "contains links to objects and blogs", $tags="link")
-Rel(home, map, "contains links to map", $tags="link")
-Rel(map, object, "contains links to objects", $tags="link")
-Rel(object, gallery, "contains links to gallery", $tags="link")
-Rel(object, object, "contains links to objects and blogs", $tags="link")
+Rel_U(translator, blog, "sets translations")
+Rel_U(translator, index, "sets translations")
+Rel_U(transdata, translator, "gets translations")
+'Rel(translator, map, "sets translations")
+
+
+Rel_D(index, homedata, "gets content")
+Rel_D(blog, blogstransdata, "1. get category for path\n2. set title")
+Rel_D(blog, blogidtransdata, "Article content")
+Rel_D(blog, blogtransdata, "Facts dates etc")
+Rel_D(blog, imagedata, "Gallery content")
+
+'Rel(map, mapdata, "gets content")
+
+Rel(index, blog, "contains links to blogs", $tags="link")
+Rel(index, map, "contains links to map", $tags="link")
+'Rel(map, blog, "contains links to blogs", $tags="link")
+'Rel(blog, blog, "contains links to blogs", $tags="link")
 
 @enduml
