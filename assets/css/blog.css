@@ -152,7 +152,7 @@ div.gallery img {
 }
 
 div.gallery img:active {
-	opacity: .9;
+	opacity: .7;
 }
 
 #article-title {
