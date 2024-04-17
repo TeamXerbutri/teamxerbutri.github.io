@@ -2,9 +2,10 @@
 import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem} from "./header.js";
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import 'photoswipe/style.css';
-import {createGallery} from "./galleryfactory.js";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
+import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
+import "photoswipe/style.css";
+import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -25,8 +26,6 @@ function countProperties(obj) {
 
 //TODO need to translate FFF to JS
 // 	<script src="../data/{{@categorie}}/{{@map}}/items.js"></script>
-// <script src='../ui/js/photoswipe.min.js'></script>
-// <script src='../ui/js/photoswipe-ui-default.min.js'></script>
 // <!check if="{{@categorieid == 3 }}"><true>
 // 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
 // 	<script src="../ui/js/reportage.js"></script>
@@ -42,42 +41,6 @@ function countProperties(obj) {
 // 	<!check if="{{@categorieid == 3 }}"><true>
 // 	<div id="map" class="map"></div>
 // </true></check>
-// <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-// 	<div class="pswp__bg"></div>
-// 	<div class="pswp__scroll-wrap">
-// 		<div class="pswp__container">
-// 			<div class="pswp__item"></div>
-// 			<div class="pswp__item"></div>
-// 			<div class="pswp__item"></div>
-// 		</div>
-// 		<div class="pswp__ui pswp__ui--hidden">
-// 			<div class="pswp__top-bar">
-// 				<div class="pswp__counter"></div>
-// 				<button class="pswp__button pswp__button--close" title="Sluiten (Esc)"></button>
-// 				<button class="pswp__button pswp__button--share" title="Delen"></button>
-// 				<button class="pswp__button pswp__button--fs" title="Volledig scherm"></button>
-// 				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-// 				<div class="pswp__preloader">
-// 					<div class="pswp__preloader__icn">
-// 						<div class="pswp__preloader__cut">
-// 							<div class="pswp__preloader__donut"></div>
-// 						</div>
-// 					</div>
-// 				</div>
-// 			</div>
-// 			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-// 				<div class="pswp__share-tooltip"></div>
-// 			</div>
-// 			<button class="pswp__button pswp__button--arrow--left" title="Vorige (linkerpijl)">
-// 			</button>
-// 			<button class="pswp__button pswp__button--arrow--right" title="Volgende (rechterpijl)">
-// 			</button>
-// 			<div class="pswp__caption">
-// 				<div class="pswp__caption__center"></div>
-// 			</div>
-// 		</div>
-// 	</div>
-// </div>
 
 
 function setShare() {
@@ -177,17 +140,17 @@ export function initBlog() {
 		headerElem.innerHTML = header
 	}
 
-	let abbreviation = window.location.href.split("/").pop();
+	let routeId = window.location.href.split("/").pop();
 
 	function setTranslatedContent() {
-		translator.getBlogDataById(abbreviation).then(
+		translator.getBlogDataById(routeId).then(
 			(value) => {
 				document.title = value.shortname + " - Xerbutri Urban Exploring";
 				document.querySelector('meta[name="description"]').setAttribute("content", value.description);
 				document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
 
 
-				translator.fetchBlogLanguageContent(value.category, abbreviation).then(
+				translator.fetchBlogLanguageContent(value.category, routeId).then(
 					(blogContent) => {
 						// intro
 						document.getElementById("article-intro").innerHTML = blogContent.intro;
@@ -211,7 +174,7 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
-				translator.fetchBlogFacts(value.category, abbreviation).then(
+				translator.fetchBlogFacts(value.category, routeId).then(
 					(blogFacts) => {
 						const year = blogFacts["visited"].split("-")[0];
 						const month = blogFacts["visited"].split("-")[1];
@@ -283,27 +246,76 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog facts: ${error}`);
 				});
 
-				translator.getBlogJsonLd(value.category, abbreviation).then(
+				translator.fetchBlogJsonLd(value.category, routeId).then(
 					(jsonld) => {
 						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
 					}
 				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
 				
-				translator.getBlogItems(value.category, abbreviation).then(
+				translator.fetchBlogImages(value.category, routeId).then(
 				 (items) => {
 					 //gallery
+					 let gallerySection = document.getElementById("article-gallery");
+					 let galleryTitle = translator.translate("gallery.title");
+
+					 let galleryDescription = translator.translate("gallery.description");
+
+					 let gallery = document.createElement("div");
+					 gallery.classList.add("gallery");
+					 gallery.id = "gallery--responsive-images";
+
+					 let title = document.createElement("h3");
+					 title.innerText = galleryTitle;
+					 gallerySection.appendChild(title);
+
+					 let description = document.createElement("p");
+					 description.innerText = galleryDescription;
+					 gallerySection.appendChild(description);
 					 
-					 let gallery = createGallery(items, value.category, abbreviation, translator);
-					 document.getElementById("article-gallery").appendChild(gallery);
-					 
-					 const lightbox = new PhotoSwipeLightbox({
-						 gallery: '#gallery--responsive-images',
-						 children: 'a',
-						 pswpModule: () => import('photoswipe')
+					 // if there are captions
+					 translator.fetchBlogCaptions(value.category, routeId).then(
+						 (captions) =>{
+							 console.log("Has captions")
+							 
+							 let galleryCaptions = createGalleryWithCaptions(items, captions.captions, value.category, routeId, gallery);
+							 gallerySection.appendChild(galleryCaptions);
+
+							 const smallScreenPadding = {
+								 top: 0, bottom: 0, left: 0, right: 0
+							 };
+							 const largeScreenPadding = {
+								 top: 30, bottom: 30, left: 0, right: 0
+							 };
+														 
+							 const lightbox = new PhotoSwipeLightbox({
+								 gallery: "#gallery--responsive-images",
+								 children: ".pswp-gallery__item",
+								 bgOpacity: 0.95,
+								 // optionaly adjust viewport
+								 paddingFn: (viewportSize) => {
+									 return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+								 },
+								 pswpModule: () => import("photoswipe")
+							 });
+
+							 const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+								 mobileLayoutBreakpoint: 700,
+								 type: "auto",
+								 mobileCaptionOverlapRatio: 1,
+							 });
+							 lightbox.init();
+						 }).catch(() => {
+							 // no captions. Create gallery without captions
+						 const lightbox = new PhotoSwipeLightbox({
+							 gallery: "#gallery--responsive-images",
+							 children: "a",
+							 bgOpacity: 0.90,
+							 pswpModule: () => import("photoswipe")
+						 });
+						 let galleryPswp = createGallery(items, value.category, routeId, gallery);
+						 gallerySection.appendChild(galleryPswp);
+						 lightbox.init();
 					 });
-					 lightbox.init();
-
-
 				 }
 				).catch((error) => {
 					console.error(`An error occured in getting the translated blog items: ${error}`);
