@@ -217,7 +217,7 @@ class Translator {
 	
 	//TODO does not need to be in translator
 	fetchBlogImages(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/items.json");
+		const path = this._basePath.concat(category, "/", abbreviation, "/images.json");
 		return fetch(path).then((response) => response.json());
 	}
 	
