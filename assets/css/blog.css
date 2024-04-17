@@ -181,6 +181,59 @@ div.mobile {
 	display: none;
 }
 
+.pswp__dynamic-caption {
+	color: #fff;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	transition: opacity 120ms linear !important; /* override default */
+}
+
+.pswp-caption-content {
+	display: none;
+}
+
+.pswp__dynamic-caption a {
+	color: #fff;
+}
+
+.pswp__dynamic-caption--faded {
+	opacity: 0 !important;
+}
+
+.pswp__dynamic-caption--aside {
+	width: auto;
+	max-width: 300px;
+	padding: 20px 15px 20px 20px;
+	margin-top: 70px;
+}
+
+.pswp__dynamic-caption--below {
+	width: auto;
+	max-width: 700px;
+	padding: 15px 0 0;
+}
+
+.pswp__dynamic-caption--on-hor-edge {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.pswp__dynamic-caption--mobile {
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+	padding: 10px 15px;
+
+	right: 0;
+	bottom: 0;
+
+	/* override styles that were set via JS.
+	  as they interfere with size measurement */
+	top: auto !important;
+	left: 0 !important;
+}
+
 /*CSS file for the Avontuur design (Tablets and up)*/
 @media only screen and (min-width: 756px) {
 	body {
@@ -401,7 +454,7 @@ div.mobile {
 		padding-left: 0;
 	}
 
-	div.gallery figure {
+	div.gallery a {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -416,7 +469,7 @@ div.mobile {
 		overflow: hidden;
 	}
 
-	div.gallery figure:hover {
+	div.gallery a:hover {
 		border-style: solid;
 		border-color: #101010 #242424 #282828 #101010;
 		border-width: 4px;
@@ -481,7 +534,8 @@ img#tx:hover {
 		bottom: 250px;
 	}
 
-	div.gallery figure {
+	div.gallery a {
+		height: 235px;
 		width: 235px;
 	}
 
@@ -513,7 +567,7 @@ img#tx:hover {
 		height: 500px;
 	}
 
-	div.gallery figure {
+	div.gallery a {
 		width: 310px;
 		height: 310px;
 	}

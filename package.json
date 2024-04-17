@@ -9,6 +9,7 @@
 		"vite": "^5.0.11"
 	},
 	"dependencies": {
-		"photoswipe": "^5.4.3"
+		"photoswipe": "^5.4.3",
+		"photoswipe-dynamic-caption-plugin": "^1.2.7"
 	}
 }

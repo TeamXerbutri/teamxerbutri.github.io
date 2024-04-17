@@ -113,7 +113,7 @@ export function initHome() {
 
 		translator.addMenuOptions();
 		// fetch the objects
-		translator.getHomeData().then(
+		translator.fetchHomeData().then(
 			function (value) {
 				objectFactory(value.subjects);
 			},
