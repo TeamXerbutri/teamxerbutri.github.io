@@ -13,16 +13,16 @@
 	let smallestIndex = heights.indexOf(smallest);
 	let smallestSize = sizes[smallestIndex];
 
-	link.href = "https://teamxerbutri.github.io/data/".concat(category, "/", routeId, "/", routeId, item.name, "-", largest.width, "x", largest.height, ".jpg");
+	link.href = "../data/".concat(category, "/", routeId, "/", routeId, item.name, "-", largest.width, "x", largest.height, ".jpg");
 	link.title = ""; //TODO later, add a title to the image
 	link.target = "_blank";
 
 	link.setAttribute("data-pswp-width", largest.width);
 	link.setAttribute("data-pswp-height", largest.height);
-	link.setAttribute("data-pswp-srcset", sizes.map((size) => "https://teamxerbutri.github.io/data/".concat(category, "/", routeId, "/", routeId, item.name, "-", size.width, "x", size.height, ".jpg ", size.width, "w"),).join(", "));
+	link.setAttribute("data-pswp-srcset", sizes.map((size) => "../data/".concat(category, "/", routeId, "/", routeId, item.name, "-", size.width, "x", size.height, ".jpg ", size.width, "w"),).join(", "));
 
 	let image = document.createElement("img");
-	image.src = "https://teamxerbutri.github.io/data/".concat(category, "/", routeId, "/", routeId, item.name, "-", smallestSize.width, "x", smallestSize.height, ".jpg");
+	image.src = "../data/".concat(category, "/", routeId, "/", routeId, item.name, "-", smallestSize.width, "x", smallestSize.height, ".jpg");
 	image.alt = ""; //TODO add a title to the image
 
 	link.appendChild(image);
@@ -45,11 +45,13 @@ function createGalleryWithCaptions(items, captions, category, routeId, gallery){
 		const link = createLink(item, category, routeId, gallery);
 		itemDiv.appendChild(link);
 		
-		let captionDiv = document.createElement("div");
-		captionDiv.classList.add("pswp-caption-content");
-		
-		captionDiv.innerText = captions[item.name];
-		itemDiv.appendChild(captionDiv);
+		if(captions[item.name]) {
+			let captionDiv = document.createElement("div");
+			captionDiv.classList.add("pswp-caption-content");
+
+			captionDiv.innerText = captions[item.name];
+			itemDiv.appendChild(captionDiv);
+		}
 		gallery.appendChild(itemDiv);
 	});
 	return gallery;
