@@ -175,12 +175,12 @@ class Translator {
 		return `${day} ${monthFull} ${year}`;
 	}
 
-	fetchBlogLanguageContent(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/blog.", this._lang, ".json");
+	fetchBlogLanguageContent(category, route) {
+		const path = this._basePath.concat(category, "/", route, "/blog.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
-	fetchBlogCaptions(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/captions.", this._lang, ".json");
+	fetchBlogCaptions(category, route) {
+		const path = this._basePath.concat(category, "/", route, "/captions.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
 	
@@ -204,20 +204,20 @@ class Translator {
 	}
 
 	//TODO does not need to be in translator
-	fetchBlogFacts(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/blog.json");
+	fetchBlogFacts(category, route) {
+		const path = this._basePath.concat(category, "/", route, "/blog.json");
 		return fetch(path).then((response) => response.json());
 	}
 	
 	
-	fetchBlogJsonLd(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/",abbreviation,".",this._lang,".jsonld");
+	fetchBlogJsonLd(category, route) {
+		const path = this._basePath.concat(category, "/", route, "/",route,".",this._lang,".jsonld");
 		return fetch(path).then((response) => response.json());
 	}
 	
 	//TODO does not need to be in translator
-	fetchBlogImages(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/images.json");
+	fetchBlogImages(category, route) {
+		const path = this._basePath.concat(category, "/", route, "/images.json");
 		return fetch(path).then((response) => response.json());
 	}
 	

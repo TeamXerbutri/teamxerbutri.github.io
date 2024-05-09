@@ -145,15 +145,15 @@ export function initBlog() {
 	function setTranslatedContent() {
 		translator.getBlogDataById(routeId).then(
 			(value) => {
-				let author;
-				translator.fetchBlogLanguageContent(value.value, routeId).then(
+				
+				
+				translator.fetchBlogLanguageContent(value, routeId).then(
 					(blogContent) => {
 						document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
 						document.querySelector('meta[name="description"]').setAttribute("content", blogContent.description);
 						document.getElementById("article-title").innerHTML = `<h1>${blogContent.title}</h1>`;
 						// intro
 						document.getElementById("article-intro").innerHTML = blogContent.intro;
-						author = blogContent.author;
 
 						// adventure and history
 						if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
@@ -169,24 +169,25 @@ export function initBlog() {
 							document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
 							document.getElementById("article-content").innerHTML += blogContent.history;
 						}
+
+						const year = blogContent.created.split("-")[0];
+						const month = blogContent.created.split("-")[1];
+
+						let monthBlog = translator.translate(`month.${month}`);
+
+						document.getElementById("article-visited").innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
+						
+						let updatedSplit = blogContent.updated.split("-");
+
+						document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
 					},
 				).catch((error) => {
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
-				translator.fetchBlogFacts(value.value, routeId).then(
+				translator.fetchBlogFacts(value, routeId).then(
 					(blogFacts) => {
-						const year = blogFacts["visited"].split("-")[0];
-						const month = blogFacts["visited"].split("-")[1];
-
-						let monthBlog = translator.translate(`month.${month}`);
-
-						document.getElementById("article-visited").innerHTML = `${author} -  ${monthBlog} ${year}`;
-
-						let updatedSplit = blogFacts["updated"].split("-");
-
-						document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
-
+						
 						//aside
 						if (countProperties(blogFacts.facts) > 0) {
 							document.getElementById("article-aside").innerHTML += `<ul>`;
@@ -246,13 +247,13 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog facts: ${error}`);
 				});
 
-				translator.fetchBlogJsonLd(value.category, routeId).then(
+				translator.fetchBlogJsonLd(value, routeId).then(
 					(jsonld) => {
 						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
 					}
 				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
 				
-				translator.fetchBlogImages(value.category, routeId).then(
+				translator.fetchBlogImages(value, routeId).then(
 				 (items) => {
 					 //gallery
 					 let gallerySection = document.getElementById("article-gallery");
@@ -273,11 +274,11 @@ export function initBlog() {
 					 gallerySection.appendChild(description);
 					 
 					 // if there are captions
-					 translator.fetchBlogCaptions(value.category, routeId).then(
+					 translator.fetchBlogCaptions(value, routeId).then(
 						 (captions) =>{
 							 console.log("Has captions")
 							 
-							 let galleryCaptions = createGalleryWithCaptions(items, captions.captions, value.category, routeId, gallery);
+							 let galleryCaptions = createGalleryWithCaptions(items, captions.captions, value, routeId, gallery);
 							 gallerySection.appendChild(galleryCaptions);
 
 							 const smallScreenPadding = {
@@ -312,7 +313,7 @@ export function initBlog() {
 							 bgOpacity: 0.90,
 							 pswpModule: () => import("photoswipe")
 						 });
-						 let galleryPswp = createGallery(items, value.category, routeId, gallery);
+						 let galleryPswp = createGallery(items, value, routeId, gallery);
 						 gallerySection.appendChild(galleryPswp);
 						 lightbox.init();
 					 });
