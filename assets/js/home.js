@@ -115,7 +115,7 @@ export function initHome() {
 		// fetch the objects
 		translator.fetchHomeData().then(
 			function (value) {
-				objectFactory(value.subjects);
+				objectFactory(value);
 			},
 			function (error) {
 				console.error(error);

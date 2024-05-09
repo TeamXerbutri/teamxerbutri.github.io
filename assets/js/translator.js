@@ -209,9 +209,9 @@ class Translator {
 		return fetch(path).then((response) => response.json());
 	}
 	
-	//TODO does not need to be in translator
+	
 	fetchBlogJsonLd(category, abbreviation) {
-		const path = this._basePath.concat(category, "/", abbreviation, "/jsonld.json");
+		const path = this._basePath.concat(category, "/", abbreviation, "/",abbreviation,".",this._lang,".jsonld");
 		return fetch(path).then((response) => response.json());
 	}
 	

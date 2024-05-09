@@ -145,15 +145,15 @@ export function initBlog() {
 	function setTranslatedContent() {
 		translator.getBlogDataById(routeId).then(
 			(value) => {
-				document.title = value.shortname + " - Xerbutri Urban Exploring";
-				document.querySelector('meta[name="description"]').setAttribute("content", value.description);
-				document.getElementById("article-title").innerHTML = `<h1>${value.shortname}</h1>`;
-
-
-				translator.fetchBlogLanguageContent(value.category, routeId).then(
+				let author;
+				translator.fetchBlogLanguageContent(value.value, routeId).then(
 					(blogContent) => {
+						document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
+						document.querySelector('meta[name="description"]').setAttribute("content", blogContent.description);
+						document.getElementById("article-title").innerHTML = `<h1>${blogContent.title}</h1>`;
 						// intro
 						document.getElementById("article-intro").innerHTML = blogContent.intro;
+						author = blogContent.author;
 
 						// adventure and history
 						if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
@@ -174,14 +174,14 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
-				translator.fetchBlogFacts(value.category, routeId).then(
+				translator.fetchBlogFacts(value.value, routeId).then(
 					(blogFacts) => {
 						const year = blogFacts["visited"].split("-")[0];
 						const month = blogFacts["visited"].split("-")[1];
 
 						let monthBlog = translator.translate(`month.${month}`);
 
-						document.getElementById("article-visited").innerHTML = `${blogFacts.author} -  ${monthBlog} ${year}`;
+						document.getElementById("article-visited").innerHTML = `${author} -  ${monthBlog} ${year}`;
 
 						let updatedSplit = blogFacts["updated"].split("-");
 

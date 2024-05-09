@@ -16,18 +16,18 @@ function createBlogObject(translator, BlogObject, i) {
 	link.title = BlogObject.description;
 
 	let image = document.createElement("img");
-	const source = "data/".concat(BlogObject.category, "/", BlogObject.abbreviation, "/", BlogObject.abbreviation);
+	const source = "data/".concat(BlogObject.category, "/", BlogObject.routeid, "/", BlogObject.routeid);
 	image.src = source.concat(".jpg");
-	image.alt = BlogObject.realname;
+	image.alt = BlogObject.name;
 	image.classList.add("te")
-	image.id = BlogObject.abbreviation;
+	image.id = BlogObject.routeid;
 
 	let picture = document.createElement("picture");
 	if (i > 3) {
 		let small = document.createElement("source");
 		small.media = "(max-width:756px)";
 		small.srcset = source.concat("s.jpg");
-		small.id = BlogObject.abbreviation.concat("s");
+		small.id = BlogObject.routeid.concat("s");
 		picture.appendChild(small);
 	}
 	let large = document.createElement("source");
@@ -42,20 +42,20 @@ function createBlogObject(translator, BlogObject, i) {
 	let objectDescription = document.createElement("h3");
 	objectDescription.classList.add("te");
 	if(BlogObject.category === "xerbutri"){
-		objectDescription.setAttribute("data-i18nix", BlogObject.abbreviation.concat(".realname"));
+		objectDescription.setAttribute("data-i18nix", BlogObject.routeid.concat(".realname"));
 	}
 	else {
 		objectDescription.setAttribute("data-i18n", `category.${BlogObject.category}`);
 	}
 	
-	objectDescription.innerText = createObjectDescription(BlogObject.category, BlogObject.realname, translator);
+	objectDescription.innerText = createObjectDescription(BlogObject.category, BlogObject.name, translator);
 
 	link.appendChild(objectDescription);
 
 	let name = document.createElement("h2");
 	name.classList.add("te");
-	name.setAttribute("data-i18nix", BlogObject.abbreviation.concat(".shortname"));
-	name.innerText = BlogObject.shortname;
+	name.setAttribute("data-i18nix", BlogObject.routeid.concat(".shortname"));
+	name.innerText = BlogObject.tilename;
 	link.appendChild(name);
 
 	div.appendChild(link);
@@ -64,10 +64,10 @@ function createBlogObject(translator, BlogObject, i) {
 
 function createLink(BlogObject) {
 	let link = "";
-	if (BlogObject.abbreviation === "map") {
+	if (BlogObject.routeid === "map") {
 		link = "map";
 	} else {
-		link = "avontuur/".concat(BlogObject.abbreviation)
+		link = "avontuur/".concat(BlogObject.routeid)
 	}
 	return link;
 }
