@@ -199,7 +199,6 @@ export function initBlog() {
 								switch (key) {
 									case "build":
 									case "abandoned":
-									case "visited":
 									case "demolished":
 									case "reused":
 									case "length":
@@ -207,6 +206,10 @@ export function initBlog() {
 									case "line":
 										const translation = translator.translate(`facts.${key}`);
 										document.getElementById("article-aside").innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
+										break;
+									case "visited":
+										const translationVis = translator.translate(`facts.${key}`);
+										document.getElementById("article-aside").innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0,4)}</span> </li>`;
 										break;
 									case "rating":
 										const ratingKey = translator.translate("facts.rating");
