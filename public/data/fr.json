@@ -1,47 +1,47 @@
 ﻿{
 	"maps": {
-		"link" : "Kaart",
-		"title": "Naar de kaart met alle locaties"
+		"link" : "Geoportail",
+		"title": "Sur la carte"
 	},
 	"abouttx": {
-		"link": "Over TX",
-		"title": "Over Team Xerbutri urban exploring"
+		"link": "Sur TX",
+		"title": "Sur Team Xerbutri urban exploring"
 	},
 	"aboutue": {
-		"link": "Over UE",
-		"title": "Over Urban exploring"
+		"link": "Sur UE",
+		"title": "Exploration urbaine"
 	},
 	"contact": {
 		"link": "Contact",
-		"title": "Neem contact met ons op",
-		"content": "Heb je vragen, opmerkingen of wil je gewoon iets kwijt? Maak een issue op GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> " 
+		"title": "Contactez-nous",
+		"content": "Avez-vous des questions, des commentaires ou souhaitez-vous simplement nous faire part de quelque chose? Créez un issue sur GitHub :<a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> " 
 	},
 	"privacy": {
 		"link": "Privacy",
-		"title": "Onze privacy declaratie",
-		"content": "We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy."
+		"title": "Notre déclaration de confidentialité",
+		"content": "Nous respectons la vie privée. Ce site est hébergé sur GitHub Pages et est soumis à sa politique de confidentialité."
 	},
 	"filter": {
 		"rail": {
-			"show": "Toon de spoorwegen",
-			"hide": "Verberg de spoorwegen"
+			"show": "Afficher les chemins de fer",
+			"hide": "Masquer les chemins de fer"
 		},
 		"bridge": {
-			"show": "Toon de bruggen",
-			"hide": "Verberg de bruggen"
+			"show": "Afficher les ponts",
+			"hide": "Masquer les ponts"
 		},
 		"tunnel": {
-			"show": "Toon de tunnels",
-			"hide": "Verberg de tunnels"
+			"show": "Afficher les tunnels",
+			"hide": "Masquer les tunnels"
 		},
 		"building": {
-			"show": "Toon de gebouwen",
-			"hide": "Verberg de gebouwen"
+			"show": "Afficher les bâtiments",
+			"hide": "Masquer les bâtiments"
 		}
 	},
 	"back": {
 		"link" : "X",
-		"title": "Terug naar overzicht"
+		"title": "Retour à la page d'accueil"
 	},
 	"month": {
 		"01": "janvier",
