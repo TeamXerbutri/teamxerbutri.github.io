@@ -12,13 +12,13 @@ function initFilter(translator) {
 
 	const railButton = document.createElement("button");
 	railButton.innerHTML = "V";
-	railButton.title = "verberg de spoorwegen";
+	railButton.title = translator.translate("filter.rail.hide");
 	railButton.setAttribute("data-i18n", "filter.rail.hide");
 	railButton.id = "railfilter";
 	railButton.addEventListener("click", railFilter);
 
 	const bridgeButton = document.createElement("button");
-	bridgeButton.title = "verberg de bruggen";
+	bridgeButton.title = translator.translate("filter.bridge.hide");
 	bridgeButton.innerHTML = "V";
 	bridgeButton.setAttribute("data-i18n", "filter.bridge.hide");
 	bridgeButton.id = "bridgefilter";
@@ -26,14 +26,14 @@ function initFilter(translator) {
 
 	const tunnelButton = document.createElement("button");
 	tunnelButton.innerHTML = "V";
-	tunnelButton.title = "verberg de tunnels";
+	tunnelButton.title = translator.translate("filter.tunnel.hide");
 	tunnelButton.setAttribute("data-i18n", "filter.tunnel.hide");
 	tunnelButton.id = "tunnelfilter";
 	tunnelButton.addEventListener("click", tunnelFilter);
 
 	const buildingButton = document.createElement("button");
 	buildingButton.innerHTML = "V";
-	buildingButton.title = "verberg de verlaten gebouwen";
+	buildingButton.title = translator.translate("filter.building.hide");
 	buildingButton.setAttribute("data-i18n", "filter.building.hide");
 	buildingButton.id = "buildingfilter";
 	buildingButton.addEventListener("click", buildingFilter);
@@ -118,19 +118,5 @@ function setDisplayFilter(className, display) {
 	}
 }
 
-function filterObjects() {
-	if (uiState.hasFilter.bridge) {
-		setDisplayFilter("bridge", "none");
-	}
-	if (uiState.hasFilter.building) {
-		setDisplayFilter("building", "none");
-	}
-	if (uiState.hasFilter.rail) {
-		setDisplayFilter("rail", "none");
-	}
-	if (uiState.hasFilter.tunnel) {
-		setDisplayFilter("tunnel", "none");
-	}
-}
 
-export {initFilter, filterObjects};
+export {initFilter};
