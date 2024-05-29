@@ -39,6 +39,10 @@ function createBlogObject(translator, BlogObject, i) {
 
 	link.appendChild(picture);
 
+	let textWrapper = document.createElement("div");
+	textWrapper.classList.add("tile-text-wrapper");
+	link.appendChild(textWrapper);
+	
 	let objectDescription = document.createElement("h3");
 	objectDescription.classList.add("te");
 	if(BlogObject.category === "xerbutri"){
@@ -50,13 +54,13 @@ function createBlogObject(translator, BlogObject, i) {
 	
 	objectDescription.innerText = createObjectDescription(BlogObject.category, BlogObject.name, translator);
 
-	link.appendChild(objectDescription);
+	textWrapper.appendChild(objectDescription);
 
 	let name = document.createElement("h2");
 	name.classList.add("te");
 	name.setAttribute("data-i18nix", BlogObject.routeid.concat(".shortname"));
 	name.innerText = BlogObject.tilename;
-	link.appendChild(name);
+	textWrapper.appendChild(name);
 
 	div.appendChild(link);
 	return div;
