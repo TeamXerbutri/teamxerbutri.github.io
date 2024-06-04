@@ -30,12 +30,6 @@ function countProperties(obj) {
 // 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
 // 	<script src="../ui/js/reportage.js"></script>
 // </true>
-// 	<false>
-// 		<script  src="../ui/js/gallery.js"></script>
-// 		<script type="application/ld+json">
-// 			<include href="{{@jsonld}}"/>
-// 		</script>
-// 	</false>
 // </check>
 
 // 	<!check if="{{@categorieid == 3 }}"><true>

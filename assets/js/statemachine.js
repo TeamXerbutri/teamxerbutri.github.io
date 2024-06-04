@@ -1,5 +1,7 @@
 ﻿import {initHome} from "./home.js";
 import {initBlog} from "./blog.js";
+import {initMap} from "./map.js";
+
 
 let stateContext = function () {
 	let currentState = new homeState(this);
@@ -35,11 +37,10 @@ let homeState = function (context) {
 	this.navigate = function () {
 		let path = window.location.pathname;
 		if (path.length === 0 || path.startsWith("/vijf")) {
-			// do nothing, I am already @home TODO redirect (sorta) to home by pushing empty path to history
+			// do nothing, I am already @home
 			return;
 		}
 		if (path.startsWith("/avontuur")) {
-			//TODO context.navigationInfo = {category: "avontuur", abbreviation: "avontuur"}; or something along these lines
 			this.context.transitionTo(new blogState(this.context));
 			return;
 		}
@@ -73,6 +74,7 @@ let blogState = function (context) {
 let mapState = function (context) {
 	this.context = context;
 	this.enterState = function () {
+		initMap();
 	}
 	this.navigate = function () {
 		let path = window.location.pathname;
