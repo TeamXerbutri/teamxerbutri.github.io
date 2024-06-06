@@ -46,6 +46,11 @@ export function initHome() {
 		headerElem.classList.add("home")
 		headerElem.innerHTML = header
 	}
+	if (headerElem.classList.contains("map-header")) {
+		headerElem.classList.remove("map-header");
+		headerElem.classList.add("home")
+		headerElem.innerHTML = header
+	}
 
 	if (!headerElem.classList.contains("home")) {
 		headerElem.classList.add("home")

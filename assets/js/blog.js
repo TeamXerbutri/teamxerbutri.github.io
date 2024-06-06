@@ -129,6 +129,12 @@ export function initBlog() {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
+	if (headerElem.classList.contains("map-header")) {
+		headerElem.classList.remove("map-header");
+		headerElem.classList.add("blog")
+		headerElem.innerHTML = header
+	}
+	
 	if (!headerElem.classList.contains("blog")) {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header

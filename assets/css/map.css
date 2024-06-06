@@ -4,6 +4,9 @@ html,
 body {
 	margin: 0;
 	height: 100%;
+	background-color: #000;
+	font-family: Verdana, Tahoma, sans-serif;
+	font-size: 100%;
 }
 
 #map {
@@ -11,5 +14,141 @@ body {
 	top: 0;
 	bottom: 0;
 	width: 100%;
+	height: 100vh;
+	background-color: #fff;
+	color: #000;
 }
 
+/*filters*/
+.filters{
+	position:absolute;
+	background-color:rgba(255,255,255,.4);
+	border-radius:4px;
+	padding:2px;
+	bottom: 0.5em;
+	left: 0.5em;
+}
+.filters:hover, .filters:active{
+	background-color:rgba(255,255,255,.6)
+}
+.filters button{
+	display:inline-block;
+	margin:1px;
+	padding:0;
+	color:rgba(255,255,255,.4);
+	font-size:2.14em;
+	font-weight:700;
+	text-decoration:none;
+	text-align:center;
+	height:1.375em;
+	width:1.375em;
+	line-height:.4em;
+	background-color:rgba(0,0,0,.5);/*afwijking in kleurvan 0,60,136*/
+	border:none;
+	border-radius:2px;
+}
+.filters button::-moz-focus-inner{border:none;padding:0;}
+.filters button:focus,.filters button:hover,.filters button:active{/*afwijking in kleurvan 0,60,136*/
+	text-decoration:none;
+	background-color:rgba(0,0,0,.7);
+}
+.filters button:hover,.filters button:active{
+	cursor: pointer;
+}
+.filters img{
+	border-radius: 2px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 4px 8px;
+	transition: opacity 0.4s;
+}
+#bridgeFilter{
+	background-image: url("../images/bridgeFilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#tunnelFilter{
+	background-image: url("../images/tunnelFilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#railFilter{
+	background-image: url("../images/railFilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#buildingFilter{
+	background-image: url("../images/buildingFilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/*box*/
+#menubox{
+	width: 100%;
+	background-color:rgba(255,255,255,.4);
+	border-radius:4px;
+	padding: 2px;
+}
+#menubox a{
+	padding: 2px;
+	background-color: rgba(0,0,0,.5);
+	display: block;
+	color:#fff;
+	text-decoration: none;
+	margin: 1px 1px 2px;
+}
+#menubox a:hover, #menubox a:active{
+	color:#fff;
+	background-color:rgba(0,0,0,.8);
+}
+
+/*info*/
+#mapbox{
+	position: relative;
+}
+#clickbox{
+	position:absolute;
+	top: 0;
+	left: 0;
+	background-color:rgba(255,255,255,.4);
+	border-radius:4px;
+	padding: 2px;
+	z-index: 2;
+	width: 100%;
+}
+#hoverbox{
+	display:none;
+}
+
+#hoverinfo, #clickinfo{
+	background-color:rgba(0,0,0,.5);
+	overflow: hidden;
+	display: block;
+	height:2.375em;
+	width: 100%;
+}
+
+#hoverinfo a, #clickinfo a{
+	text-decoration: none;
+	color: #fff;
+}
+
+img.map-tile{
+	display: inline;
+	vertical-align: middle;
+}
+
+h2.map-tile{
+	display: inline;
+	font-size: 1.5em;
+	overflow: hidden;
+}
+h3.map-tile{
+	display: none;
+}

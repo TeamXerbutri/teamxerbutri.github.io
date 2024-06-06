@@ -156,6 +156,10 @@ h1.logo {
 		margin: 0;
 	}
 	
+	.map-header {
+		display: none;
+	}
+	
 	header .menu a {
 		display: inline-block;
 		color: #fff;
