@@ -152,3 +152,29 @@ h2.map-tile{
 h3.map-tile{
 	display: none;
 }
+
+/*ol*/
+
+.ol-rotate{/*Afwijken in locatie*/
+	bottom:3.6em;
+	right:.5em;
+	transition:opacity .25s linear,visibility 0s linear
+}
+
+.ol-control button {
+	display: inline-block;
+	color: #fff;
+	background-color:rgba(0,0,0,.5);
+	font-size: 1.6em;
+}
+
+.ol-control button:focus,.ol-control button:hover { 
+	color: #fff;
+	background-color: rgba(0, 0, 0, .8);
+}
+
+@media only screen and (min-width: 756px) {
+	.ol-control button:hover { 
+		cursor: pointer;
+	}
+}
