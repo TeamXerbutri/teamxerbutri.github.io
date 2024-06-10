@@ -161,12 +161,23 @@ h3.map-tile{
 	transition:opacity .25s linear,visibility 0s linear
 }
 
+.ol-zoom{
+	top: revert;
+	bottom:0.5em;
+	left:.5em;
+}
+
 .ol-control button {
 	display: inline-block;
+	text-align: center;
 	color: #fff;
 	background-color:rgba(0,0,0,.5);
 	font-size: 1.6em;
+	width: 1.8em;
+	height: 1.8em;
 }
+
+
 
 .ol-control button:focus,.ol-control button:hover { 
 	color: #fff;

@@ -1,9 +1,11 @@
 ﻿import '../css/map.css';
+import KML from 'ol/format/KML';
 import {Map, View} from 'ol';
-import TileLayer from 'ol/layer/Tile';
+import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 import OSM from 'ol/source/OSM';
 import {useGeographic} from 'ol/proj';
 import {defaults as defaultControls} from 'ol/control';
+import VectorSource from "ol/source/Vector.js";
 
 let map;
 export function initMap() {
@@ -18,6 +20,20 @@ export function initMap() {
 	}
 	
 	useGeographic();
+	
+	// vectors
+	const tunnelVector = new VectorLayer({
+		source: new VectorSource({
+			url: 'ui/kml/tunnel.kml',
+			format: new KML({
+				extractStyles: false,
+				showPointNames: false
+			})
+		})
+	});
+	
+	// map
+	
 	map = new Map({
 		target: 'map',
 		layers: [
@@ -35,6 +51,9 @@ export function initMap() {
 		controls: defaultControls()
 	});
 	
+	
+	
+	// Filter box
 
 	document
 		.querySelector('meta[name="description"]')
