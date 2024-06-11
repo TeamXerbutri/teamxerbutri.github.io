@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <kml> 
+ <Document> 
+<Placemark> 
+ <name>Loreley</name> 
+ <description>tunnel,TL</description>
+ <Point> 
+ <coordinates>7.729240246117116,50.13932886815542</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Charlemont</name> 
+ <description>tunnel,TGi</description>
+ <Point> 
+ <coordinates>4.816560745239258,50.13659414894911</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Rudersdorf</name> 
+ <description>tunnel,RT</description>
+ <Point> 
+ <coordinates>8.17202568054199,50.82042320031783</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Gendron</name> 
+ <description>tunnel,TGC</description>
+ <Point> 
+ <coordinates>4.96633529663086,50.20448820101683</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Botzelaer</name> 
+ <description>tunnel,BG</description>
+ <Point> 
+ <coordinates>6.021215915679932,50.75340242030506</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Veurs</name> 
+ <description>tunnel,TV</description>
+ <Point> 
+ <coordinates>5.85322380065918,50.741406596268064</coordinates> 
+ </Point> 
+ </Placemark> 
+</Document>
+</kml>

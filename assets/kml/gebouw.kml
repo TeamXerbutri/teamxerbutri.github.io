@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <kml> 
+ <Document> 
+<Placemark> 
+ <name>Borschemich</name> 
+ <description>gebouw,VBo</description>
+ <Point> 
+ <coordinates>6.430667191743851,51.07991859487981</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Kinderparty Bus</name> 
+ <description>gebouw,VPB</description>
+ <Point> 
+ <coordinates>6.55623748898506,51.478237431310646</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Immerath</name> 
+ <description>gebouw,VIma</description>
+ <Point> 
+ <coordinates>6.43746055662632,51.051461827965966</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Spookdorp Pesch</name> 
+ <description>gebouw,VPe</description>
+ <Point> 
+ <coordinates>6.4573605358600625,51.0554315706627</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Fort 4 Antwerpen</name> 
+ <description>gebouw,MDF4</description>
+ <Point> 
+ <coordinates>4.45941288024187,51.17413906178905</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Ruïne Löwenburg</name> 
+ <description>gebouw,RuLo</description>
+ <Point> 
+ <coordinates>7.250562496483326,50.66401825986818</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Goudmijn Châtelet</name> 
+ <description>gebouw,VGMC</description>
+ <Point> 
+ <coordinates>2.470335960388183,46.19406411474779</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Groeve Madame</name> 
+ <description>gebouw,HLF</description>
+ <Point> 
+ <coordinates>4.619229622185229,50.17929130156980</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Villa Petite Terre</name> 
+ <description>gebouw,HoHa</description>
+ <Point> 
+ <coordinates>5.427074432373046,49.91390403203226</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>De Haan Fabriek</name> 
+ <description>gebouw,HMu</description>
+ <Point> 
+ <coordinates>6.979343891143799,52.95769464557384</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>De Centrale Coevorden</name> 
+ <description>gebouw,AFC</description>
+ <Point> 
+ <coordinates>6.739661693572998,52.65637543473494</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Montzen station</name> 
+ <description>gebouw,SMo</description>
+ <Point> 
+ <coordinates>5.956207886338235,50.72067640196968</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Bunkerpark Groede</name> 
+ <description>gebouw,MFG</description>
+ <Point> 
+ <coordinates>3.494725227355957,51.38635628580604</coordinates> 
+ </Point> 
+ </Placemark> 
+<Placemark> 
+ <name>Schacht Polsum II</name> 
+ <description>gebouw,SKPOT</description>
+ <Point> 
+ <coordinates>7.035541534423828,51.6262394852655</coordinates> 
+ </Point> 
+ </Placemark> 
+</Document>
+</kml>
