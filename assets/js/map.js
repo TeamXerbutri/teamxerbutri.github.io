@@ -1,12 +1,15 @@
 ﻿import '../css/map.css';
 import KML from 'ol/format/KML';
-import {Map, View} from 'ol';
+import Feature from 'ol/Feature';
+import Map from 'ol/Map';
+import View from 'ol/View';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 import OSM from 'ol/source/OSM';
 import {useGeographic} from 'ol/proj';
 import {defaults as defaultControls} from 'ol/control';
 import VectorSource from "ol/source/Vector";
-import {Icon, Stroke, Style} from "ol/style";
+import {Circle, Fill, Icon, Stroke, Style} from "ol/style";
+import {Point} from "ol/geom";
 
 
 let map;
@@ -24,23 +27,23 @@ export function initMap() {
 	useGeographic();
 	
 	// vectors
-	const tunnelVector = new VectorLayer({
+	const vector = new VectorLayer({
 		source: new VectorSource({
-			url: '../kml/tunnel.kml',
+			//url: '../kml/tunnel.kml',
+			url: 'https://openlayers.org/en/latest/examples/data/kml/2012-02-10.kml',
 			format: new KML({
-				extractStyles: false,
-				showPointNames: false
 			})
 		}),
-		style: new Style({
-				image: new Icon({
-					size: [52, 52],
-					opacity: 0.9,
-					scale: 0.9,
-					src: '../images/tunnelmarker.png'
-				})
-		})
 	});
+	// 	style: new Style({
+	// 			image: new Icon({
+	// 				size: [52, 52],
+	// 				opacity: 0.9,
+	// 				scale: 0.9,
+	// 				src: '../images/tunnelmarker.png'
+	// 			})
+	// 	})
+	// });
 
 	
 	
@@ -50,11 +53,9 @@ export function initMap() {
 		})
 	});
 	
-	// map
-	
 	map = new Map({
 		target: 'map',
-		layers: [raster, tunnelVector],
+		layers: [raster],
 		view: new View({
 			projection: 'EPSG:3857',
 			center: [6, 51.7],
@@ -62,9 +63,44 @@ export function initMap() {
 		}),
 		controls: defaultControls()
 	});
+		
+	const marker = new Feature({
+		type: 'tunnel',
+		geometry: new Point([6, 51.7])
+	})
 	
+	const styles = {
+		'icon': new Style({
+			image: new Circle({
+				radius: 7,
+				fill: new Fill({color: 'rgba(255, 0, 0, 1)'}),
+				stroke: new Stroke({
+					color: 'rgba(255, 255, 255, 1)',
+					width: 2,
+				}),
+			}),
+		}),
+		'tunnel': new Style({
+			image: new Icon({
+				anchor: [0.5, 46],
+				anchorXUnits: 'fraction',
+				anchorYUnits: 'pixels',
+				src: 'assets/images/bridgemarker.png',
+			}),
+		})
+	}
 	
-	
+	const markerLayer = new VectorLayer({
+		source: new VectorSource({
+			features: [marker],
+		}),
+		style: function (feature) {
+			return styles[feature.get('type')];
+		},
+		
+	});
+	map.addLayer(markerLayer);
+	map.addLayer(tunnelVector);
 	// Filter box
 
 	
@@ -88,19 +124,19 @@ export function initMap() {
 	// mapbox.appendChild(hoverbox);
 	// gcDivParent.appendChild(mapbox);
 
-	const redStroke = new Style({
-		stroke: new Stroke({
-			width: 7, color: 'rgba(255, 0, 0, 1)',
-		}),
-		zIndex: 2
-	});
-	const whiteDash = new Style({
-		stroke: new Stroke({
-			width: 5, color: 'rgba(255, 255, 255, 1)',
-			lineDash: [16, 28]
-		}),
-		zIndex: 3
-	});
+	// const redStroke = new Style({
+	// 	stroke: new Stroke({
+	// 		width: 7, color: 'rgba(255, 0, 0, 1)',
+	// 	}),
+	// 	zIndex: 2
+	// });
+	// const whiteDash = new Style({
+	// 	stroke: new Stroke({
+	// 		width: 5, color: 'rgba(255, 255, 255, 1)',
+	// 		lineDash: [16, 28]
+	// 	}),
+	// 	zIndex: 3
+	// });
 
 	// const railVector = new Vector({
 	// 	source: new VectorSource({
