@@ -14,8 +14,7 @@ import {Point} from "ol/geom";
 
 let map;
 export function initMap() {
-	
-	
+		
 	document.querySelector("#app").innerHTML = `<div id="map"></div>`;
 	const header = ``;
 	const headerElem = document.getElementById("header");
@@ -25,27 +24,145 @@ export function initMap() {
 	}
 	
 	useGeographic();
+
+	// the styles
+	const styles = {
+		'icon': new Style({
+			image: new Circle({
+				radius: 7,
+				fill: new Fill({color: 'rgba(255, 0, 0, 1)'}),
+				stroke: new Stroke({
+					color: 'rgba(255, 255, 255, 1)',
+					width: 2,
+				}),
+			}),
+		}), // TODO Delete bridge example
+		'bridge-example': new Style({
+			image: new Icon({
+				anchor: [0.5, 46],
+				anchorXUnits: 'fraction',
+				anchorYUnits: 'pixels',
+				src: 'assets/images/bridgemarker.png',
+			}),
+		}),
+		'bridge': new Style({
+			image: new Icon({
+				opacity: 0.9,
+				scale: 0.9,
+				size: [52, 52],
+				src: 'assets/images/bridgemarker.png',
+			}),
+		}),
+		'tunnel': new Style({
+			image: new Icon({
+				opacity: 0.9,
+				scale: 0.9,
+				size: [52, 52],
+				src: 'assets/images/tunnelmarker.png',
+			}),
+		}),
+		'building': new Style({
+			image: new Icon({
+				opacity: 0.9,
+				scale: 0.9,
+				size: [52, 52],
+				src: 'assets/images/buildingmarker.png',
+			}),
+		}),
+		'rail': new Style({
+			stroke: new Stroke({
+				width: 7, color: 'rgba(255, 0, 0, 1)',
+			}),
+			zIndex: 2,
+		}),
+		'whiteDash': new Style({
+			stroke: new Stroke({
+				width: 5, color: 'rgba(255, 255, 255, 1)',
+				lineDash: [16, 28]
+			}),
+			zIndex: 3
+		}),
+		//'rail': ['redStroke', 'whiteDash']
+	}
 	
 	// vectors
-	const vector = new VectorLayer({
+	const tunnelVector = new VectorLayer({
 		source: new VectorSource({
-			//url: '../kml/tunnel.kml',
-			url: 'https://openlayers.org/en/latest/examples/data/kml/2012-02-10.kml',
+			url: 'assets/kml/tunnel.kml',
 			format: new KML({
+				extractStyles: false,
+				showPointNames: false
 			})
 		}),
+		style: function (feature) {
+			return styles[feature.get('type')];}
 	});
-	// 	style: new Style({
-	// 			image: new Icon({
-	// 				size: [52, 52],
-	// 				opacity: 0.9,
-	// 				scale: 0.9,
-	// 				src: '../images/tunnelmarker.png'
-	// 			})
-	// 	})
-	// });
+
+	const buildingVector = new VectorLayer({
+		source: new VectorSource({
+			url: 'assets/kml/building.kml',
+			format: new KML({
+				extractStyles: false,
+				showPointNames: false
+			})
+		}),
+		style: function (feature) {
+			return styles[feature.get('type')];}
+	});
+
+	const railVector = new VectorLayer({
+		source: new VectorSource({
+			url: 'assets/kml/rail.kml',
+			format: new KML({
+				extractStyles: false,
+				showPointNames: false
+			})
+		}),
+		style: function (feature) {
+			return styles[feature.get('type')];}
+	});
+
+	const bridgeVector = new VectorLayer({
+		source: new VectorSource({
+			url: 'assets/kml/bridge.kml',
+			format: new KML({
+				extractStyles: false,
+				showPointNames: false
+			})
+		}),
+		style: function (feature) {
+			return styles[feature.get('type')];}
+	});
+
+
+	// load styles
+	tunnelVector.getSource().on('featuresloadend', function (event) {
+		event.features.forEach(function (feature) {
+			feature.set('type', 'tunnel');
+		});
+	});
+
+	bridgeVector.getSource().on('featuresloadend', function (event) {
+		event.features.forEach(function (feature) {
+			feature.set('type', 'bridge');
+		});
+	});
+	
+	buildingVector.getSource().on('featuresloadend', function (event) {
+		event.features.forEach(function (feature) {
+			feature.set('type', 'building');
+		});
+	});
+	
+	railVector.getSource().on('featuresloadend', function (event) {
+		event.features.forEach(function (feature) {
+			feature.set('type', 'rail');
+		});
+	});
+	
 
 	
+	// raster (the base map or background)
 	
 	const raster = new TileLayer({
 		source: new OSM({
@@ -63,44 +180,14 @@ export function initMap() {
 		}),
 		controls: defaultControls()
 	});
-		
-	const marker = new Feature({
-		type: 'tunnel',
-		geometry: new Point([6, 51.7])
-	})
 	
-	const styles = {
-		'icon': new Style({
-			image: new Circle({
-				radius: 7,
-				fill: new Fill({color: 'rgba(255, 0, 0, 1)'}),
-				stroke: new Stroke({
-					color: 'rgba(255, 255, 255, 1)',
-					width: 2,
-				}),
-			}),
-		}),
-		'tunnel': new Style({
-			image: new Icon({
-				anchor: [0.5, 46],
-				anchorXUnits: 'fraction',
-				anchorYUnits: 'pixels',
-				src: 'assets/images/bridgemarker.png',
-			}),
-		})
-	}
 	
-	const markerLayer = new VectorLayer({
-		source: new VectorSource({
-			features: [marker],
-		}),
-		style: function (feature) {
-			return styles[feature.get('type')];
-		},
-		
-	});
-	map.addLayer(markerLayer);
+
+	
 	map.addLayer(tunnelVector);
+	map.addLayer(bridgeVector);
+	map.addLayer(buildingVector);
+	map.addLayer(railVector);
 	// Filter box
 
 	
@@ -124,19 +211,7 @@ export function initMap() {
 	// mapbox.appendChild(hoverbox);
 	// gcDivParent.appendChild(mapbox);
 
-	// const redStroke = new Style({
-	// 	stroke: new Stroke({
-	// 		width: 7, color: 'rgba(255, 0, 0, 1)',
-	// 	}),
-	// 	zIndex: 2
-	// });
-	// const whiteDash = new Style({
-	// 	stroke: new Stroke({
-	// 		width: 5, color: 'rgba(255, 255, 255, 1)',
-	// 		lineDash: [16, 28]
-	// 	}),
-	// 	zIndex: 3
-	// });
+	
 
 	// const railVector = new Vector({
 	// 	source: new VectorSource({
