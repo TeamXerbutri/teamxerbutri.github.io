@@ -1,15 +1,14 @@
 ﻿import '../css/map.css';
 import KML from 'ol/format/KML';
-import Feature from 'ol/Feature';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 import OSM from 'ol/source/OSM';
-import {useGeographic} from 'ol/proj';
+import {fromLonLat, toLonLat, useGeographic} from 'ol/proj';
 import {defaults as defaultControls} from 'ol/control';
 import VectorSource from "ol/source/Vector";
 import {Circle, Fill, Icon, Stroke, Style} from "ol/style";
-import {Point} from "ol/geom";
+
 
 
 let map;
@@ -116,7 +115,6 @@ export function initMap() {
 			url: 'assets/kml/rail.kml',
 			format: new KML({
 				extractStyles: false,
-				showPointNames: false
 			})
 		}),
 		style: function (feature) {
@@ -161,7 +159,6 @@ export function initMap() {
 		});
 	});
 	
-
 	
 	// raster (the base map or background)
 	
@@ -181,12 +178,13 @@ export function initMap() {
 		}),
 		controls: defaultControls()
 	});
-	
-		
+
+	map.addLayer(railVector);	
 	map.addLayer(tunnelVector);
 	map.addLayer(bridgeVector);
 	map.addLayer(buildingVector);
-	map.addLayer(railVector);
+	
+	
 	
 	// Filter box
 

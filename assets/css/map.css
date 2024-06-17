@@ -63,26 +63,26 @@ body {
 	transition: opacity 0.4s;
 }
 #bridgeFilter{
-	background-image: url("../images/bridgeFilter.jpg");
+	background-image: url("../images/bridgefilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 #tunnelFilter{
-	background-image: url("../images/tunnelFilter.jpg");
+	background-image: url("../images/tunnelfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 #railFilter{
-	background-image: url("../images/railFilter.jpg");
+	background-image: url("../images/railfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 #buildingFilter{
-	background-image: url("../images/buildingFilter.jpg");
+	background-image: url("../images/buildingfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -176,7 +176,6 @@ h3.map-tile{
 	width: 1.8em;
 	height: 1.8em;
 }
-
 
 
 .ol-control button:focus,.ol-control button:hover { 
