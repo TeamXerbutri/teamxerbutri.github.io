@@ -69,7 +69,7 @@ export function initMap() {
 				src: 'assets/images/buildingmarker.png',
 			}),
 		}),
-		'rail': new Style({
+		'redLine': new Style({
 			stroke: new Stroke({
 				width: 7, color: 'rgba(255, 0, 0, 1)',
 			}),
@@ -82,8 +82,9 @@ export function initMap() {
 			}),
 			zIndex: 3
 		}),
-		//'rail': ['redStroke', 'whiteDash']
 	}
+	styles['rail'] = [styles['redLine'], styles['whiteDash']];
+	
 	
 	// vectors
 	const tunnelVector = new VectorLayer({
@@ -181,13 +182,12 @@ export function initMap() {
 		controls: defaultControls()
 	});
 	
-	
-
-	
+		
 	map.addLayer(tunnelVector);
 	map.addLayer(bridgeVector);
 	map.addLayer(buildingVector);
 	map.addLayer(railVector);
+	
 	// Filter box
 
 	
