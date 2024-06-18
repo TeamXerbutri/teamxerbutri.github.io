@@ -43,12 +43,12 @@ body {
 	height:1.375em;
 	width:1.375em;
 	line-height:.4em;
-	background-color:rgba(0,0,0,.5);/*afwijking in kleurvan 0,60,136*/
+	background-color:rgba(0,0,0,.5);
 	border:none;
 	border-radius:2px;
 }
 .filters button::-moz-focus-inner{border:none;padding:0;}
-.filters button:focus,.filters button:hover,.filters button:active{/*afwijking in kleurvan 0,60,136*/
+.filters button:focus,.filters button:hover,.filters button:active{
 	text-decoration:none;
 	background-color:rgba(0,0,0,.7);
 }
@@ -88,14 +88,14 @@ body {
 	background-position: center;
 }
 
-/*box*/
-#menubox{
+/* menu-container */
+#menu-container{
 	width: 100%;
 	background-color:rgba(255,255,255,.4);
 	border-radius:4px;
 	padding: 2px;
 }
-#menubox a{
+#menu-container a{
 	padding: 2px;
 	background-color: rgba(0,0,0,.5);
 	display: block;
@@ -103,16 +103,16 @@ body {
 	text-decoration: none;
 	margin: 1px 1px 2px;
 }
-#menubox a:hover, #menubox a:active{
+#menu-container a:hover, #menu-container a:active{
 	color:#fff;
 	background-color:rgba(0,0,0,.8);
 }
 
 /*info*/
-#mapbox{
+#feature-info-container{
 	position: relative;
 }
-#clickbox{
+#feature-info-clicked{
 	position:absolute;
 	top: 0;
 	left: 0;
@@ -122,11 +122,11 @@ body {
 	z-index: 2;
 	width: 100%;
 }
-#hoverbox{
+#feature-info-hovered{
 	display:none;
 }
 
-#hoverinfo, #clickinfo{
+#feature-info-hovered-info, #feature-info-clicked-info{
 	background-color:rgba(0,0,0,.5);
 	overflow: hidden;
 	display: block;
@@ -134,7 +134,7 @@ body {
 	width: 100%;
 }
 
-#hoverinfo a, #clickinfo a{
+#feature-info-clicked-info a, #feature-info-clicked-info a{
 	text-decoration: none;
 	color: #fff;
 }
@@ -183,8 +183,48 @@ h3.map-tile{
 	background-color: rgba(0, 0, 0, .8);
 }
 
+#top-bar {
+	position: absolute;
+	width: 95%;
+	height: 2.375em;
+	top: .5em;
+	left: 0.5em;
+	box-sizing: border-box;
+	background-color:rgba(255,255,255,.4);
+	border-radius:4px;
+	padding:2px;
+}
+
+#feature-info {
+	position: absolute;
+	height: auto;
+	width: auto;
+	z-index: 100;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 4px;
+	padding: 5px;
+	left: 50%;
+	transform: translateX(3%);
+	visibility: hidden;
+	pointer-events: none;
+}
+
 @media only screen and (min-width: 756px) {
 	.ol-control button:hover { 
 		cursor: pointer;
+	}
+
+	#top-bar {
+		position: absolute;
+		width: 318px;
+		height: 2.375em;
+		top: .5em;
+		left: 0.5em;
+		box-sizing: border-box;
+		background-color:rgba(255,255,255,.4);
+		border-radius:4px;
+		padding:2px;
 	}
 }

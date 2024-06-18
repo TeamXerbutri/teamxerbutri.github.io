@@ -4,11 +4,13 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 import OSM from 'ol/source/OSM';
-import {fromLonLat, toLonLat, useGeographic} from 'ol/proj';
+import {useGeographic} from 'ol/proj';
 import {defaults as defaultControls} from 'ol/control';
 import VectorSource from "ol/source/Vector";
 import {Circle, Fill, Icon, Stroke, Style} from "ol/style";
-
+import {TopBarControl} from "./topbarcontrol.js";
+import {Select} from "ol/interaction";
+import {pointerMove} from "ol/events/condition";
 
 
 let map;
@@ -168,6 +170,8 @@ export function initMap() {
 		})
 	});
 	
+	// map 
+	
 	map = new Map({
 		target: 'map',
 		layers: [raster],
@@ -176,7 +180,7 @@ export function initMap() {
 			center: [6, 51.7],
 			zoom: 8
 		}),
-		controls: defaultControls()
+		controls: defaultControls().extend([new TopBarControl()])
 	});
 
 	map.addLayer(railVector);	
@@ -186,58 +190,54 @@ export function initMap() {
 	
 	
 	
-	// Filter box
+	
+	
+	
+	// feature-info-container
+	
+	
+	let featureInfo = document.createElement("div");
+	featureInfo.id = "feature-info";
+	document.getElementById("map").appendChild(featureInfo);
+
+	// ToDO An overlay is nice, but also very heavy!! 
+	// const popover = new Overlay({
+	// 	element: featureInfo,
+	// });
+	// map.addOverlay(popover);
+
+	const selectPointerMove = new Select({
+		condition: pointerMove,
+		style: function (feature) {
+			return styles[feature.get('type')];
+		},
+	});
+	map.addInteraction(selectPointerMove);
+	
+	const hoveredFeatures = selectPointerMove.getFeatures();
+	
+	hoveredFeatures.on('add', function (event) {
+		const feature = event.element;
+		const name = feature.get('name');
+		console.log("Hovered over: ", name);
+		const description = feature.get('description');
+		const coordinates = feature.getGeometry().getCoordinates();
+		const pixel = map.getPixelFromCoordinate(coordinates);
+		featureInfo.innerHTML = `<h1>${name}</h1><p>${description}</p>`;
+		featureInfo.style.left = pixel[0] + "px";
+		featureInfo.style.top = pixel[1] + "px";
+		featureInfo.style.visibility = "visible";
+	});
+	hoveredFeatures.on('remove', function (event) {
+		featureInfo.style.visibility = "hidden";
+	});
 
 	
-	//TODO improve:
-
-	// var mapbox = document.createElement("DIV");
-	// mapbox.id = "mapbox";
-	// var clickbox = document.createElement("DIV");
-	// clickbox.id = "clickbox";
-	// clickbox.style.display = "none";
-	// var clickinfo = document.createElement("DIV");
-	// clickinfo.id = "clickinfo";
-	// clickbox.appendChild(clickinfo);
-	// mapbox.appendChild(clickbox);
-	// var hoverbox = document.createElement("DIV");
-	// hoverbox.id = "hoverbox";
-	// hoverbox.style.display = "none";
-	// var hoverinfo = document.createElement("DIV");
-	// hoverinfo.id = "hoverinfo";
-	// hoverbox.appendChild(hoverinfo);
-	// mapbox.appendChild(hoverbox);
-	// gcDivParent.appendChild(mapbox);
+	// Filter container
+	
+	//TODO this should extend ol map control
 
 	
-
-	// const railVector = new Vector({
-	// 	source: new VectorSource({
-	// 		projection: 'EPSG:4326',
-	// 		url: 'ui/kml/spoor.kml',
-	// 		format: new ol.format.KML({
-	// 			extractStyles: false
-	// 		})
-	// 	}),
-	// 	style: [redStroke, whiteDash]
-	// });
-	// var gebouwVector = new ol.layer.Vector({
-	// 	source: new ol.source.Vector({
-	// 		url: 'ui/kml/gebouw.kml',
-	// 		format: new ol.format.KML({
-	// 			showPointNames: false,
-	// 			extractStyles: false
-	// 		})
-	// 	}),
-	// 	style: new ol.style.Style({
-	// 		image: new ol.style.Icon({
-	// 			size: [52, 52],
-	// 			opacity: 0.9,
-	// 			scale: 0.9,
-	// 			src: 'ui/pics/gebouwMarker.png'
-	// 		})
-	// 	})
-	// });
 	
 	
 	
