@@ -10,7 +10,7 @@ import VectorSource from "ol/source/Vector";
 import {Circle, Fill, Icon, Stroke, Style} from "ol/style";
 import {TopBarControl} from "./topbarcontrol.js";
 import {Select} from "ol/interaction";
-import {pointerMove} from "ol/events/condition";
+import {click, pointerMove} from "ol/events/condition";
 
 
 let map;
@@ -197,10 +197,11 @@ export function initMap() {
 	
 	
 	let featureInfo = document.createElement("div");
+	featureInfo.pinned = false;
 	featureInfo.id = "feature-info";
 	document.getElementById("map").appendChild(featureInfo);
 
-	// ToDO An overlay is nice, but also very heavy!! 
+	// ToDO Remove An overlay is nice, but also very heavy!! 
 	// const popover = new Overlay({
 	// 	element: featureInfo,
 	// });
@@ -217,21 +218,62 @@ export function initMap() {
 	const hoveredFeatures = selectPointerMove.getFeatures();
 	
 	hoveredFeatures.on('add', function (event) {
-		const feature = event.element;
-		const name = feature.get('name');
-		console.log("Hovered over: ", name);
-		const description = feature.get('description');
-		const coordinates = feature.getGeometry().getCoordinates();
-		const pixel = map.getPixelFromCoordinate(coordinates);
-		featureInfo.innerHTML = `<h1>${name}</h1><p>${description}</p>`;
-		featureInfo.style.left = pixel[0] + "px";
-		featureInfo.style.top = pixel[1] + "px";
-		featureInfo.style.visibility = "visible";
+		showFeature(event)
 	});
 	hoveredFeatures.on('remove', function (event) {
+		if(!featureInfo.pinned)
+			featureInfo.style.visibility = "hidden";
+	});
+	
+	const selectClick = new Select({
+		condition: click,
+		style: function (feature) {
+			return styles[feature.get('type')];
+		}
+	});
+	map.addInteraction(selectClick);
+	const clickedFeatures = selectClick.getFeatures();
+	
+	clickedFeatures.on('add', function (event) {
+		featureInfo.pinned = true;
+		showFeature(event)
+	});
+	clickedFeatures.on('remove', function (event) {
+		featureInfo.pinned = false;
 		featureInfo.style.visibility = "hidden";
 	});
+	function showFeature(event){
+		const feature = event.element;
+		const name = feature.get('name');
+		const description = feature.get('description');
+		const category = description.split(",")[0];
+		const routeId = description.split(",")[1];
+		const coordinates = feature.getGeometry().getCoordinates();
+		const pixel = map.getPixelFromCoordinate(coordinates);
 
+		//TODO this is not ok in general. Calculate the size and decide style based on screensize
+		featureInfo.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="map-tile" src="data/${category}/${routeId}/${routeId}.jpg" alt="${name}" > <h2 class="map-tile">${name}</h2></a>`;
+		if(featureInfo.pinned)
+			featureInfo.innerHTML += `<img class="map-tile-pinned" src="ui/pics//pin.svg" alt="pin" >`;
+		
+		const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		// width large = 310px
+		if(viewportWidth - pixel[0] < 310)
+			featureInfo.style.left = pixel[0] - 310 + "px";
+		else
+			featureInfo.style.left = pixel[0] + "px";
+		
+		const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		// height large = 233px
+		if(viewportHeight - pixel[1] < 233)
+			featureInfo.style.top = pixel[1] -233 + "px";
+		else
+			featureInfo.style.top = pixel[1] + "px";
+				
+		featureInfo.style.visibility = "visible";
+	}
+
+	
 	
 	// Filter container
 	
