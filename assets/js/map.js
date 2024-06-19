@@ -210,7 +210,7 @@ export function initMap() {
 	hoveredFeatures.on('add', function (event) {
 		showFeature(event)
 	});
-	hoveredFeatures.on('remove', function (event) {
+	hoveredFeatures.on('remove', function () {
 		if(!featureInfo.pinned)
 			featureInfo.style.visibility = "hidden";
 	});
@@ -228,7 +228,7 @@ export function initMap() {
 		featureInfo.pinned = true;
 		showFeature(event)
 	});
-	clickedFeatures.on('remove', function (event) {
+	clickedFeatures.on('remove', function () {
 		featureInfo.pinned = false;
 		featureInfo.style.visibility = "hidden";
 	});
@@ -250,16 +250,14 @@ export function initMap() {
 		else {
 			featureInfo.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="map-tile" src="data/${category}/${routeId}/${routeId}.jpg" alt="${name}" > <h2 class="map-tile">${name}</h2></a>`;
 			if (featureInfo.pinned)
-				featureInfo.innerHTML += `<img class="map-tile-pinned" src="ui/pics//pin.svg" alt="pin" >`;
-
-
+				featureInfo.innerHTML += `<img class="map-tile-pinned" src="../images/pin.svg" alt="pin" >`;
+			
 			// width large = 310px
 			if (viewportWidth - pixel[0] < 310)
 				featureInfo.style.left = pixel[0] - 310 + "px";
 			else
 				featureInfo.style.left = pixel[0] + "px";
-
-
+			
 			// height large = 233px
 			if (viewportHeight - pixel[1] < 233)
 				featureInfo.style.top = pixel[1] - 233 + "px";
@@ -271,7 +269,7 @@ export function initMap() {
 	
 	// Filter container
 	
-	//TODO this should extend ol map control
+	//TODO this should extend ol map control This is about the same as the indexfilter, but language-independent
 
 	
 	

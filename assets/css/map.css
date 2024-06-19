@@ -189,10 +189,18 @@ h2.map-tile{
 }
 
 .ol-zoomslider-thumb{
-	background-image: url("../images/plusmin-b.svg");
+	background-image: url("../images/zoom-b.svg");
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 1.0em;
+	background-size: 1.8em;
+	color: #fff;
+}
+
+.ol-zoomslider-thumb:focus,.ol-zoomslider-thumb:active,.ol-zoomslider-thumb:hover{
+	background-image: url("../images/zoomslider-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.6em;
 	color: #fff;
 }
 
@@ -290,7 +298,7 @@ h2.map-tile{
 	}
 
 	.ol-zoomslider-thumb{
-		background-image: url("../images/plusmin.svg");
+		background-image: url("../images/zoom.svg");
 	}
 	
 		
@@ -305,5 +313,13 @@ h2.map-tile{
 		top: 0.5em;
 		height: 50%;
 		background-color: revert;
+	}
+	
+	.ol-zoomslider-thumb:focus,.ol-zoomslider-thumb:active,.ol-zoomslider-thumb:hover{
+		background-image: url("../images/zoomslider.svg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 1.6em;
+		color: #fff;
 	}
 }
