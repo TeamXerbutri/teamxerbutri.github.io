@@ -93,6 +93,7 @@ body {
 }
 
 /* menu-container */
+
 #menu-container{
 	width: 100%;
 	background-color:rgba(255,255,255,.8);
@@ -114,7 +115,6 @@ body {
 
 /*feature-info*/
 
-/*ToDo max width*/
 .feature-info {
 	transition: all .5s ease-in-out;
 	position: absolute;
@@ -125,7 +125,7 @@ body {
 	color: #000;
 	border-radius: 4px;
 	padding: 2px;
-	left: 59px; /* TODO This should be an em value */
+	left: 59px;
 	bottom: 5px;
 	visibility: hidden;
 	overflow: hidden;
@@ -168,25 +168,32 @@ h2.map-tile{
 }
 
 .ol-zoom{
-	top: revert;
-	bottom:0.5em;
-	left:.5em;
+	display: none;
 }
 
 .ol-control button {
-	display: inline-block;
-	text-align: center;
-	color: #fff;
-	background-color:rgba(0,0,0,.5);
+	color: #000;
+	background-color:rgba(255,255,255,.8);
+	/*border-radius:25px;*/
 	font-size: 1.6em;
 	width: 1.8em;
 	height: 1.8em;
 }
 
+.ol-zoomslider{
+	left: revert;
+	right: 5px;
+	top: 60px;
+	height: 50%;
+	background-color: revert;
+}
 
-.ol-control button:focus,.ol-control button:hover { 
+.ol-zoomslider-thumb{
+	background-image: url("../images/plusmin-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.0em;
 	color: #fff;
-	background-color: rgba(0, 0, 0, .8);
 }
 
 #top-bar {
@@ -200,8 +207,6 @@ h2.map-tile{
 	border-radius:4px;
 	padding:2px;
 }
-
-
 
 @media only screen and (min-width: 756px) {
 	.ol-control button:hover { 
@@ -277,5 +282,28 @@ h2.map-tile{
 	#menu-container a:hover, #menu-container a:active{
 		color:#fff;
 		background-color:rgba(0,0,0,.8);
+	}
+
+	.ol-control button {
+		color: #fff;
+		background-color:rgba(0,0,0,.5);
+	}
+
+	.ol-zoomslider-thumb{
+		background-image: url("../images/plusmin.svg");
+	}
+	
+		
+	.ol-control button:focus,.ol-control button:hover {
+		color: #fff;
+		background-color: rgba(0, 0, 0, .8);
+	}
+
+	.ol-zoomslider{
+		left: revert;
+		right: 0.5em;
+		top: 0.5em;
+		height: 50%;
+		background-color: revert;
 	}
 }

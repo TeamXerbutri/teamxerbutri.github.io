@@ -5,7 +5,7 @@ import View from 'ol/View';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 import OSM from 'ol/source/OSM';
 import {useGeographic} from 'ol/proj';
-import {defaults as defaultControls} from 'ol/control';
+import {defaults as defaultControls, ZoomSlider} from 'ol/control';
 import VectorSource from "ol/source/Vector";
 import {Circle, Fill, Icon, Stroke, Style} from "ol/style";
 import {TopBarControl} from "./topbarcontrol.js";
@@ -91,7 +91,6 @@ export function initMap() {
 	}
 	styles['rail'] = [styles['redLine'], styles['whiteDash']];
 	
-	
 	// vectors
 	const tunnelVector = new VectorLayer({
 		source: new VectorSource({
@@ -139,8 +138,7 @@ export function initMap() {
 		style: function (feature) {
 			return styles[feature.get('type')];}
 	});
-
-
+	
 	// load styles
 	tunnelVector.getSource().on('featuresloadend', function (event) {
 		event.features.forEach(function (feature) {
@@ -166,7 +164,6 @@ export function initMap() {
 		});
 	});
 	
-	
 	// raster (the base map or background)
 	
 	const raster = new TileLayer({
@@ -175,8 +172,7 @@ export function initMap() {
 		})
 	});
 	
-	// map 
-	
+	// map	
 	map = new Map({
 		target: 'map',
 		layers: [raster],
@@ -185,7 +181,7 @@ export function initMap() {
 			center: [6, 51.7],
 			zoom: 8
 		}),
-		controls: defaultControls().extend([new TopBarControl()])
+		controls: defaultControls().extend([new TopBarControl(), new ZoomSlider()])
 	});
 
 	map.addLayer(railVector);	
@@ -193,26 +189,13 @@ export function initMap() {
 	map.addLayer(bridgeVector);
 	map.addLayer(buildingVector);
 	
-	
-	
-	
-	
-	
 	// feature-info-container
-
-	
 	
 	let featureInfo = document.createElement("div");
 	featureInfo.pinned = false;
 	featureInfo.id = "feature-info";
 	featureInfo.classList.add("feature-info");
 	document.getElementById("map").appendChild(featureInfo);
-
-	// ToDO Remove An overlay is nice, but also very heavy!! 
-	// const popover = new Overlay({
-	// 	element: featureInfo,
-	// });
-	// map.addOverlay(popover);
 
 	const selectPointerMove = new Select({
 		condition: pointerMove,
@@ -285,8 +268,6 @@ export function initMap() {
 		}
 		featureInfo.style.visibility = "visible";
 	}
-
-	
 	
 	// Filter container
 	
