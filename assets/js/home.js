@@ -56,6 +56,11 @@ export function initHome() {
 		headerElem.classList.add("home")
 		headerElem.innerHTML = header
 	}
+
+	const htmlElement = document.querySelector("html");
+	if(htmlElement.classList.contains("map-html")){
+		htmlElement.classList.remove("map-html");
+	}
 	
 	hideBackToTop();
 

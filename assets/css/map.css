@@ -9,6 +9,10 @@ body {
 	font-size: 100%;
 }
 
+.map-html {
+	overflow: hidden;
+}
+
 #map {
 	position: absolute;
 	top: 0;
@@ -91,83 +95,68 @@ body {
 /* menu-container */
 #menu-container{
 	width: 100%;
-	background-color:rgba(255,255,255,.4);
+	background-color:rgba(255,255,255,.8);
 	border-radius:4px;
 	padding: 2px;
 }
 #menu-container a{
 	padding: 2px;
-	background-color: rgba(0,0,0,.5);
+	background-color: rgba(255,255,255,.8);
 	display: block;
-	color:#fff;
+	color:#000;
 	text-decoration: none;
 	margin: 1px 1px 2px;
 }
 #menu-container a:hover, #menu-container a:active{
-	color:#fff;
-	background-color:rgba(0,0,0,.8);
+	color:#000;
+	background-color:rgba(255,255,255,.8);
 }
 
 /*feature-info*/
 
-#feature-info {
+/*ToDo max width*/
+.feature-info {
 	transition: all .5s ease-in-out;
 	position: absolute;
-	height:233px;
-	width: 310px;
+	height:50px;
+	width: calc(100% - 70px);
 	z-index: 100;
-	background-color:rgba(255,255,255,.4);
-	color: #fff;
+	background-color:rgba(255,255,255,.8);
+	color: #000;
 	border-radius: 4px;
 	padding: 2px;
-	left: 50%;
-	/*transform: translateX(3%);*/
+	left: 59px; /* TODO This should be an em value */
+	bottom: 5px;
 	visibility: hidden;
 	overflow: hidden;
 	display: block;
 }
+
 #feature-info a {
 	text-decoration: none;
-	color: #fff;
+	color: #000;
 }
 
 
 .map-tile-pinned{
 	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-#feature-info-hovered-info, #feature-info-clicked-info{
-	background-color:rgba(0,0,0,.5);
-	height:2.375em;
-	width: 100%;
-}
-
-#feature-info-clicked-info a, #feature-info-clicked-info a{
-	text-decoration: none;
-	color: #fff;
+	top: -7px;
+	right: -7px;
+	scale: 60%;
 }
 
 img.map-tile{
-	width: 310px;
-	height: 238px;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 h2.map-tile{
-	display: block;
-	position: relative;
-	top: -72px;
-	left: 0;
-	font-size: 1.5em;
-	width: auto;
-	background: #000000; /* For browsers that do not support gradients*/
-	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Safari 5.1 to 6.0*/
-	background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* Standard syntax */
-	padding-top: 10px;
-	padding-bottom: 10px;
+	display: inline-block;
+	font-size: 1em;
+	padding-left: 10px;
+	vertical-align: middle;
+	line-height: 50px;
+	margin: 0;
 }
 
 /*ol*/
@@ -229,5 +218,64 @@ h2.map-tile{
 		background-color:rgba(255,255,255,.4);
 		border-radius:4px;
 		padding:2px;
+	}
+
+	.feature-info {
+		transition: all .5s ease-in-out;
+		position: absolute;
+		height:233px;
+		width: 310px;
+		z-index: 100;
+		background-color:rgba(255,255,255,.4);
+		color: #fff;
+		border-radius: 4px;
+		padding: 2px;
+		left: 10%;
+		bottom: revert;
+		visibility: hidden;
+		overflow: hidden;
+		display: block;
+	}
+
+	#feature-info a {
+		color: #fff;
+	}
+
+	img.map-tile{
+		display: block;
+		width: 310px;
+		height: 238px;
+	}
+
+	h2.map-tile{
+		display: block;
+		position: relative;
+		top: -51px;
+		left: 0;
+		font-size: 1.4em;
+		width: auto;
+		background: #000000; /* For browsers that do not support gradients*/
+		background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Safari 5.1 to 6.0*/
+		background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)); /* Standard syntax */
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		line-height: normal;
+	}
+
+	#menu-container{
+		background-color:rgba(255,255,255,.5);
+	}
+	
+	#menu-container a{
+		color:#fff;
+		background-color: rgba(0,0,0,.5);
+	}
+	
+	#menu-container a:hover, #menu-container a:active{
+		color:#fff;
+		background-color:rgba(0,0,0,.8);
 	}
 }

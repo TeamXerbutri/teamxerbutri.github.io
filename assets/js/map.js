@@ -24,6 +24,11 @@ export function initMap() {
 		headerElem.innerHTML = header
 	}
 	
+	const htmlElement = document.querySelector("html");
+	if(!htmlElement.classList.contains("map-html")){
+		htmlElement.classList.add("map-html");
+	}
+	
 	useGeographic();
 
 	// the styles
@@ -194,11 +199,13 @@ export function initMap() {
 	
 	
 	// feature-info-container
+
 	
 	
 	let featureInfo = document.createElement("div");
 	featureInfo.pinned = false;
 	featureInfo.id = "feature-info";
+	featureInfo.classList.add("feature-info");
 	document.getElementById("map").appendChild(featureInfo);
 
 	// ToDO Remove An overlay is nice, but also very heavy!! 
@@ -251,25 +258,31 @@ export function initMap() {
 		const coordinates = feature.getGeometry().getCoordinates();
 		const pixel = map.getPixelFromCoordinate(coordinates);
 
-		//TODO this is not ok in general. Calculate the size and decide style based on screensize
-		featureInfo.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="map-tile" src="data/${category}/${routeId}/${routeId}.jpg" alt="${name}" > <h2 class="map-tile">${name}</h2></a>`;
-		if(featureInfo.pinned)
-			featureInfo.innerHTML += `<img class="map-tile-pinned" src="ui/pics//pin.svg" alt="pin" >`;
-		
 		const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-		// width large = 310px
-		if(viewportWidth - pixel[0] < 310)
-			featureInfo.style.left = pixel[0] - 310 + "px";
-		else
-			featureInfo.style.left = pixel[0] + "px";
-		
 		const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-		// height large = 233px
-		if(viewportHeight - pixel[1] < 233)
-			featureInfo.style.top = pixel[1] -233 + "px";
-		else
-			featureInfo.style.top = pixel[1] + "px";
-				
+		
+		if(viewportWidth < 756 || viewportHeight < 500){
+			featureInfo.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="map-tile" src="data/${category}/${routeId}/${routeId}s.jpg" alt="${name}" > <h2 class="map-tile">${name}</h2></a>`;
+		}
+		else {
+			featureInfo.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="map-tile" src="data/${category}/${routeId}/${routeId}.jpg" alt="${name}" > <h2 class="map-tile">${name}</h2></a>`;
+			if (featureInfo.pinned)
+				featureInfo.innerHTML += `<img class="map-tile-pinned" src="ui/pics//pin.svg" alt="pin" >`;
+
+
+			// width large = 310px
+			if (viewportWidth - pixel[0] < 310)
+				featureInfo.style.left = pixel[0] - 310 + "px";
+			else
+				featureInfo.style.left = pixel[0] + "px";
+
+
+			// height large = 233px
+			if (viewportHeight - pixel[1] < 233)
+				featureInfo.style.top = pixel[1] - 233 + "px";
+			else
+				featureInfo.style.top = pixel[1] + "px";
+		}
 		featureInfo.style.visibility = "visible";
 	}
 

@@ -102,6 +102,11 @@ export function initBlog() {
 		console.error(`An error occured in getting the translations: ${error}`);
 	});
 
+	const htmlElement = document.querySelector("html");
+	if(htmlElement.classList.contains("map-html")){
+		htmlElement.classList.remove("map-html");
+	}
+	
 	// init header
 	const header = `<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
 		<h1 class="logo">Team Xerbutri</h1>
