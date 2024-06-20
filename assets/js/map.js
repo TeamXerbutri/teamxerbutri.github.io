@@ -11,12 +11,13 @@ import {Circle, Fill, Icon, Stroke, Style} from "ol/style";
 import {TopBarControl} from "./topbarcontrol.js";
 import {Select} from "ol/interaction";
 import {click, pointerMove} from "ol/events/condition";
+import {MapFilterControl} from "./mapfiltercontrol.js";
 
 
 let map;
 export function initMap() {
 		
-	document.querySelector("#app").innerHTML = `<div id="map"></div>`;
+	document.querySelector("#app").innerHTML = `<div id="map"><div id="map-overlay" class="map-overlay"></div> </div>`;
 	const header = ``;
 	const headerElem = document.getElementById("header");
 	if (!headerElem.classList.contains("map-header")) {
@@ -188,6 +189,7 @@ export function initMap() {
 	map.addLayer(tunnelVector);
 	map.addLayer(bridgeVector);
 	map.addLayer(buildingVector);
+	map.addControl(new MapFilterControl(bridgeVector, buildingVector, railVector, tunnelVector));
 	
 	// feature-info-container
 	

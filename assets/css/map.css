@@ -23,69 +23,133 @@ body {
 	color: #000;
 }
 
-/*filters*/
-.filters{
-	position:absolute;
+/* geocoder */
+#top-bar {
+	position: absolute;
+	width: calc(100% - 14px);
+	height: 2.375em;
+	top: .5em;
+	box-sizing: border-box;
 	background-color:rgba(255,255,255,.4);
 	border-radius:4px;
+	margin-left: 5px;
+	margin-right: 5px;
 	padding:2px;
+}
+
+
+/*layers*/
+
+.map-overlay{
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 100; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.map-layers{
+	position: absolute;
 	bottom: 0.5em;
 	left: 0.5em;
 }
-.filters:hover, .filters:active{
-	background-color:rgba(255,255,255,.6)
+
+.map-layers > button{
+	background-image: url("../images/layers-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.5em;
 }
-.filters button{
+
+.layer-filter{
+	background-color:rgba(255,255,255);
+	border-radius:4px;
+	width: calc(100% - 22px); 
+	padding: 2px 2px 10px 10px;
+	position: fixed;
+	bottom: 0.5em;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.layer-filter > button{
 	display:inline-block;
-	margin:1px;
+	margin: 10px 20px 10px 0;
 	padding:0;
-	color:rgba(255,255,255,.4);
-	font-size:2.14em;
-	font-weight:700;
-	text-decoration:none;
-	text-align:center;
-	height:1.375em;
-	width:1.375em;
-	line-height:.4em;
-	background-color:rgba(0,0,0,.5);
+	color: #fff;
+	height:48px;
+	width: 48px;
+	background-color:rgba(0,0,0,.2);
 	border:none;
 	border-radius:2px;
+	vertical-align: middle;
 }
-.filters button::-moz-focus-inner{border:none;padding:0;}
-.filters button:focus,.filters button:hover,.filters button:active{
+
+.layer-active-icon{
+	color: #fff;
+	display:inline-block;
+	background-color:rgba(0,0,0,.8);
+	padding: 4px;
+	border-radius: 16px;
+	vertical-align: middle;
+	font-size:1em;
+	font-weight:400;
+	line-height: 15px;
+	width: 16px;
+	height: 16px;
+	position: relative;
+    bottom: 16px;
+	left: 16px;
+}
+
+.layer-filter > button::-moz-focus-inner{
+	border:none;
+	padding:0;
+}
+
+.layer-filter > button:focus,.layer-filter > button:hover{
 	text-decoration:none;
-	background-color:rgba(0,0,0,.7);
+	box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
 }
-.filters button:hover,.filters button:active{
+
+.layer-filter > button:hover{
 	cursor: pointer;
 }
-.filters img{
+
+.layer-filter img{
 	border-radius: 2px;
 	display: inline-block;
 	vertical-align: middle;
 	margin: 4px 8px;
 	transition: opacity 0.4s;
 }
-#bridgeFilter{
+
+#bridge-layer-filter{
 	background-image: url("../images/bridgefilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
-#tunnelFilter{
+#tunnel-layer-filter{
 	background-image: url("../images/tunnelfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-#railFilter{
+#rail-layer-filter{
 	background-image: url("../images/railfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-#buildingFilter{
+#building-layer-filter{
 	background-image: url("../images/buildingfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
@@ -159,11 +223,13 @@ h2.map-tile{
 	margin: 0;
 }
 
-/*ol*/
+/*ol default controls*/
 
 .ol-rotate{
+	top: revert;
+	right: revert;
 	bottom:3.6em;
-	right:.5em;
+	left:.5em;
 	transition:opacity .25s linear,visibility 0s linear
 }
 
@@ -171,7 +237,7 @@ h2.map-tile{
 	display: none;
 }
 
-.ol-control button {
+.ol-control > button {
 	color: #000;
 	background-color:rgba(255,255,255,.8);
 	/*border-radius:25px;*/
@@ -193,7 +259,6 @@ h2.map-tile{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 1.8em;
-	color: #fff;
 }
 
 .ol-zoomslider-thumb:focus,.ol-zoomslider-thumb:active,.ol-zoomslider-thumb:hover{
@@ -201,19 +266,10 @@ h2.map-tile{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 1.6em;
-	color: #fff;
 }
 
-#top-bar {
-	position: absolute;
-	width: 95%;
-	height: 2.375em;
-	top: .5em;
-	left: 0.5em;
-	box-sizing: border-box;
-	background-color:rgba(255,255,255,.4);
-	border-radius:4px;
-	padding:2px;
+.ol-control > button:focus,.ol-control> button:hover {
+	cursor: pointer;
 }
 
 @media only screen and (min-width: 756px) {
@@ -225,7 +281,7 @@ h2.map-tile{
 		position: absolute;
 		width: 318px;
 		height: 2.375em;
-		top: .5em;
+		top: 0.5em;
 		left: 0.5em;
 		box-sizing: border-box;
 		background-color:rgba(255,255,255,.4);
@@ -291,6 +347,11 @@ h2.map-tile{
 		color:#fff;
 		background-color:rgba(0,0,0,.8);
 	}
+	
+	.map-layers button{
+		background-image: url("../images/layers.svg");
+	}
+	
 
 	.ol-control button {
 		color: #fff;
@@ -302,9 +363,10 @@ h2.map-tile{
 	}
 	
 		
-	.ol-control button:focus,.ol-control button:hover {
+	.ol-control > button:focus,.ol-control> button:hover {
 		color: #fff;
 		background-color: rgba(0, 0, 0, .8);
+		cursor: pointer;
 	}
 
 	.ol-zoomslider{
