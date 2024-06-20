@@ -1,48 +1,50 @@
 ﻿import {Control} from "ol/control";
 
-export class MapFilterControl extends Control {
+export class MapLayerControl extends Control {
 	// TODO I can use an array as parameter, and foreach to create the buttons using a vector property
 	constructor(bridgeVector, buildingVector, railVector, tunnelVector, opt_options) {
 		const options = opt_options || {};
 
 		// layer control element
 		const element = document.createElement("div");
-		element.id = "map-layers";
-		element.className = "map-layers ol-unselectable ol-control";
+		element.id = "tx-layer";
+		element.className = "tx-layer ol-unselectable ol-control";
 		
 		// button for layer control
 		const button = document.createElement("button");
-		button.id = "tx-layers";
+		button.id = "tx-layer_button";
 		button.classList.add("ol-unselectable");
-		button.classList.add("tx-layers");
+		button.classList.add("tx-layer_button");
 		button.title = "Kaartlagen wijzigen"; //TODO translate => use i18n
 		button.onclick = function() {
-			toggleFilter();
+			this.toggleModal();
 		};
 				
 		element.appendChild(button);
 		
 		//overlay for layer modal
-		const overlay = document.getElementById("map-overlay");
+		const overlay = document.getElementById("tx-layer-overlay");
 		overlay.style.display = "none";
 		
 		window.onclick = function(event) {
 			if (event.target === overlay) {
-				overlay.style.display = "none";
-				layerFilter.isActive = false;
+				this.toggleModal()
 			}
 		}
 		
+		
+		
 		// modal for filtering layers
-		const layerFilter = document.createElement("div");
-		layerFilter.id = "layer-filter";
-		layerFilter.classList.add("layer-filter");
-		layerFilter.isActive = false;
-		layerFilter.innerHTML = `<h3>Kaartlagen aanpassen</h3>`; //TODO translate => use i18n
+		const layerModal = document.createElement("div");
+		layerModal.id = "tx-layer-modal";
+		layerModal.style.display = "none";
+		layerModal.classList.add("tx-layer-modal");
+		layerModal.isActive = false;
+		layerModal.innerHTML = `<h3>Kaartlagen aanpassen</h3>`; //TODO translate => use i18n
 		
 		// create buttons for layer filters
 		const bridgeButton = document.createElement("button");
-		bridgeButton.id = "bridge-layer-filter";
+		bridgeButton.id = "tx-layer-modal-button_bridge";
 		bridgeButton.isActive = false;
 		toggleButton(bridgeButton, "bruggen"); //TODO translate => use i18n
 		
@@ -52,7 +54,7 @@ export class MapFilterControl extends Control {
 		};
 		
 		const buildingButton = document.createElement("button");
-		buildingButton.id = "building-layer-filter";
+		buildingButton.id = "tx-layer-modal-button_building";
 		buildingButton.isActive = false;
 		toggleButton(buildingButton, "gebouwen"); //TODO translate => use i18n
 		
@@ -62,7 +64,7 @@ export class MapFilterControl extends Control {
 		}
 		
 		const railButton = document.createElement("button");
-		railButton.id = "rail-layer-filter";
+		railButton.id = "tx-layer-modal-button_rail";
 		railButton.isActive = false;
 		toggleButton(railButton, "spoorwegen"); //TODO translate => use i18n
 		
@@ -72,7 +74,7 @@ export class MapFilterControl extends Control {
 		}
 		
 		const tunnelButton = document.createElement("button");
-		tunnelButton.id = "tunnel-layer-filter";
+		tunnelButton.id = "tx-layer-modal-button_tunnel";
 		tunnelButton.isActive = false;
 		toggleButton(tunnelButton, "tunnels"); //TODO translate => use i18n
 		
@@ -81,36 +83,39 @@ export class MapFilterControl extends Control {
 			toggleButton(tunnelButton, "tunnels"); //TODO translate => use i18n
 		}
 				
-		layerFilter.appendChild(bridgeButton);
-		layerFilter.appendChild(buildingButton);
-		layerFilter.appendChild(railButton);
-		layerFilter.appendChild(tunnelButton);
+		layerModal.appendChild(bridgeButton);
+		layerModal.appendChild(buildingButton);
+		layerModal.appendChild(railButton);
+		layerModal.appendChild(tunnelButton);
 		
-		overlay.appendChild(layerFilter);
+		overlay.appendChild(layerModal);
 		
-		function toggleFilter() {
-			if(layerFilter.isActive){
-				overlay.style.display = "none";
-				layerFilter.isActive = false;
-			}
-			else {
-				overlay.style.display = "block";
-				layerFilter.isActive = true;
-			}
-		}
 		
 		function toggleButton(button, categoryName) {
 			if(button.isActive){
-				button.classList.remove("layer-active");
 				button.title = "Toon "+ categoryName + " op kaart"; //TODO translate => use i18n
 				button.innerHTML = "";
 				button.isActive = false;
 			}
 			else {
-				button.classList.add("layer-active");
 				button.title = "Verberg "+ categoryName + " op kaart"; //TODO translate => use i18n
-				button.innerHTML = `<span class="layer-active-icon">✔</span>`;
+				button.innerHTML = `<span class="tx-layer-active-icon">✔</span>`;
 				button.isActive = true;
+			}
+		}
+		
+		function toggleModal() {
+			if(this.layerModal.isActive){
+				overlay.style.display = "none";
+				layerModal.style.display = "none";
+				overlay.style.zIndex = "1";
+				layerModal.isActive = false;
+			}
+			else {
+				overlay.style.display = "block";
+				layerModal.style.display = "block";
+				overlay.style.zIndex = "200";
+				layerModal.isActive = true;
 			}
 		}
 
@@ -126,8 +131,12 @@ export class MapFilterControl extends Control {
 			element: element,
 			target: options.target,
 		});
+		
+		
 	}
+
 	
-	
+	//TODO Solve window onclick registration problem, should be done in one place, or just ADD it
+		
 }
 

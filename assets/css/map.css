@@ -40,7 +40,7 @@ body {
 
 /*layers*/
 
-.map-overlay{
+.tx-overlay{
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
 	z-index: 100; /* Sit on top */
@@ -54,20 +54,20 @@ body {
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.map-layers{
+.tx-layer{
 	position: absolute;
-	bottom: 0.5em;
+	bottom: 3.6em;
 	left: 0.5em;
 }
 
-.map-layers > button{
+.tx-layer > button{
 	background-image: url("../images/layers-b.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 1.5em;
 }
 
-.layer-filter{
+.tx-layer-modal{
 	background-color:rgba(255,255,255);
 	border-radius:4px;
 	width: calc(100% - 22px); 
@@ -78,7 +78,7 @@ body {
 	margin-right: 5px;
 }
 
-.layer-filter > button{
+.tx-layer-modal > button{
 	display:inline-block;
 	margin: 10px 20px 10px 0;
 	padding:0;
@@ -91,7 +91,7 @@ body {
 	vertical-align: middle;
 }
 
-.layer-active-icon{
+.tx-layer-active-icon{
 	color: #fff;
 	display:inline-block;
 	background-color:rgba(0,0,0,.8);
@@ -108,21 +108,21 @@ body {
 	left: 16px;
 }
 
-.layer-filter > button::-moz-focus-inner{
+.tx-layer-modal > button::-moz-focus-inner{
 	border:none;
 	padding:0;
 }
 
-.layer-filter > button:focus,.layer-filter > button:hover{
+.tx-layer-modal > button:focus,.tx-layer-modal > button:hover{
 	text-decoration:none;
 	box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
 }
 
-.layer-filter > button:hover{
+.tx-layer-modal > button:hover{
 	cursor: pointer;
 }
 
-.layer-filter img{
+.tx-layer-modal img{
 	border-radius: 2px;
 	display: inline-block;
 	vertical-align: middle;
@@ -130,26 +130,26 @@ body {
 	transition: opacity 0.4s;
 }
 
-#bridge-layer-filter{
+#tx-layer-modal-button_bridge{
 	background-image: url("../images/bridgefilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
-#tunnel-layer-filter{
+#tx-layer-modal-button_tunnel{
 	background-image: url("../images/tunnelfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-#rail-layer-filter{
+#tx-layer-modal-button_rail{
 	background-image: url("../images/railfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
-#building-layer-filter{
+#tx-layer-modal-button_building{
 	background-image: url("../images/buildingfilter.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
@@ -157,6 +157,30 @@ body {
 }
 
 /* menu-container */
+
+.tx-menu{
+	position: absolute;
+	bottom: 0.5em;
+	left: 0.5em;
+}
+
+.tx-menu > button{
+	background-image: url("../images/menu-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.2em;
+}
+
+.tx-menu-modal{
+	background-color:rgba(255,255,255);
+	border-radius:4px;
+	width: calc(100% - 22px);
+	padding: 2px 2px 10px 10px;
+	position: fixed;
+	bottom: 0.5em;
+	margin-left: 5px;
+	margin-right: 5px;
+}
 
 #menu-container{
 	width: 100%;
@@ -228,7 +252,7 @@ h2.map-tile{
 .ol-rotate{
 	top: revert;
 	right: revert;
-	bottom:3.6em;
+	bottom:7.2em;
 	left:.5em;
 	transition:opacity .25s linear,visibility 0s linear
 }
@@ -348,10 +372,13 @@ h2.map-tile{
 		background-color:rgba(0,0,0,.8);
 	}
 	
-	.map-layers button{
+	.tx-layer button{
 		background-image: url("../images/layers.svg");
 	}
-	
+
+	.tx-menu button{
+		background-image: url("../images/menu.svg");
+	}
 
 	.ol-control button {
 		color: #fff;
