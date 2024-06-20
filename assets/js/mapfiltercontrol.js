@@ -1,6 +1,7 @@
 ﻿import {Control} from "ol/control";
 
 export class MapFilterControl extends Control {
+	// TODO I can use an array as parameter, and foreach to create the buttons using a vector property
 	constructor(bridgeVector, buildingVector, railVector, tunnelVector, opt_options) {
 		const options = opt_options || {};
 
