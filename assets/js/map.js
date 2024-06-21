@@ -86,7 +86,27 @@ export function initMap() {
 	}
 	styles["rail"] = [styles["redLine"], styles["whiteDash"]];
 	
-	// vectors
+	// raster (the base map or background)
+	
+	const raster = new TileLayer({
+		source: new OSM({
+			projection: "EPSG:4326"
+		})
+	});
+	
+	// map	
+	map = new Map({
+		target: "map",
+		layers: [raster],
+		view: new View({
+			projection: "EPSG:3857",
+			center: [6, 51.7],
+			zoom: 8
+		}),
+		controls: defaultControls().extend([new TopBarControl(), new ZoomSlider(), new MapMenuControl()])
+	});
+
+	// vectors //TODO: this is more of the same. I want it to be separate layers, but can I loop over multiple geojson sources? => take on in GeoJson story 106
 	const tunnelVector = new VectorLayer({
 		source: new VectorSource({
 			url: "assets/kml/tunnel.kml",
@@ -133,7 +153,7 @@ export function initMap() {
 		style: function (feature) {
 			return styles[feature.get("type")];}
 	});
-	
+
 	// load styles
 	tunnelVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
@@ -146,37 +166,17 @@ export function initMap() {
 			feature.set("type", "bridge");
 		});
 	});
-	
+
 	buildingVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
 			feature.set("type", "building");
 		});
 	});
-	
+
 	railVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
 			feature.set("type", "rail");
 		});
-	});
-	
-	// raster (the base map or background)
-	
-	const raster = new TileLayer({
-		source: new OSM({
-			projection: "EPSG:4326"
-		})
-	});
-	
-	// map	
-	map = new Map({
-		target: "map",
-		layers: [raster],
-		view: new View({
-			projection: "EPSG:3857",
-			center: [6, 51.7],
-			zoom: 8
-		}),
-		controls: defaultControls().extend([new TopBarControl(), new ZoomSlider(), new MapMenuControl()])
 	});
 
 	map.addLayer(railVector);	
