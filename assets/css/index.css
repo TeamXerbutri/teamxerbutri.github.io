@@ -53,7 +53,7 @@ h1.logo {
 		font-size: 100%;
 		margin: 0;
 	}
-	
+
 	header .menu a {
 		display: none;
 	}
@@ -125,7 +125,7 @@ h1.logo {
 		transition: all 0.3s ease 0s;
 		font-size: 1.1em;
 	}
-	
+
 	#oi {
 		padding-top: 50px;
 		color: #fff;
@@ -159,7 +159,7 @@ h1.logo {
 		font-size: 100%;
 		margin: 0;
 	}
-	
+
 	header .menu a {
 		display: inline-block;
 		color: #fff;
@@ -201,7 +201,7 @@ h1.logo {
 	#contactpanel p span {
 		display: none;
 	}
-	
+
 
 	#back-to-top {
 		background-color: rgba(0, 0, 0, .25);
@@ -249,7 +249,7 @@ h1.logo {
 	#oc {
 		width: 1010px;
 	}
-	
+
 	h1.logo {
 		font: normal normal bold 2.7em sans-serif; /*Verdana, Tahoma,*/
 		color: #fff;

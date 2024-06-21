@@ -37,6 +37,7 @@ export class MapLayerControl extends Control {
 		// modal for filtering layers
 		const layerModal = document.createElement("div");
 		layerModal.id = "tx-layer-modal";
+		layerModal.classList.add("tx-modal");
 		layerModal.style.display = "none";
 		layerModal.classList.add("tx-layer-modal");
 		layerModal.isActive = false;

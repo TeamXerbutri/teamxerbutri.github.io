@@ -1,12 +1,6 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {initFilter} from "./indexfilter.js";
-import {
-	hideBackToTop,
-	showBackToTop,
-	showMenu,
-	hideMenu,
-	showMenuItem, uiState
-} from "./header.js";
+import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem, uiState} from "./header.js";
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
 

@@ -38,6 +38,7 @@ export class MapMenuControl extends Control {
 		const menuModal = document.createElement("div");
 		menuModal.id = "tx-menu-modal";
 		menuModal.classList.add("tx-menu-modal");
+		menuModal.classList.add("tx-modal");
 		menuModal.style.display = "none";
 		menuModal.isActive = false;
 		menuModal.innerHTML = `<h3>Menu</h3>`; //TODO translate => use i18n
@@ -45,7 +46,7 @@ export class MapMenuControl extends Control {
 		
 		const menuContainer = document.createElement("div");
 		menuContainer.id = "tx-menu-container";
-		menuContainer.innerHTML = `<a href="" title="Bezoek de nieuwste webpagina van Team Xerbutri, met alle recent bezochte locaties">Naar de index-pagina van TX5</a>`;
+		menuContainer.innerHTML = `<a href="" title="Bezoek de webpagina van Team Xerbutri, met alle bezochte locaties">Naar de index-pagina van Team Xerbutri</a>`; //TODO translate => use i18n
 		
 		menuModal.appendChild(menuContainer);
 		menuOverlay.appendChild(menuModal);
