@@ -26,12 +26,12 @@ export class MapMenuControl extends Control {
 		//overlay
 		const menuOverlay = document.getElementById("tx-menu-overlay");
 		menuOverlay.style.display = "none";
-
-		window.onclick = function(event) {
+		
+		window.addEventListener("click", function(event) {
 			if (event.target === menuOverlay) {
 				toggleModal()
 			}
-		}
+		});
 		
 		// modal for menu
 

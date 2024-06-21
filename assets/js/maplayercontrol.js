@@ -17,7 +17,7 @@ export class MapLayerControl extends Control {
 		button.classList.add("tx-layer_button");
 		button.title = "Kaartlagen wijzigen"; //TODO translate => use i18n
 		button.onclick = function() {
-			this.toggleModal();
+			toggleModal();
 		};
 				
 		element.appendChild(button);
@@ -26,11 +26,11 @@ export class MapLayerControl extends Control {
 		const overlay = document.getElementById("tx-layer-overlay");
 		overlay.style.display = "none";
 		
-		window.onclick = function(event) {
+		window.addEventListener("click", function(event) {
 			if (event.target === overlay) {
-				this.toggleModal()
+				toggleModal()
 			}
-		}
+		});
 		
 		
 		
@@ -105,7 +105,7 @@ export class MapLayerControl extends Control {
 		}
 		
 		function toggleModal() {
-			if(this.layerModal.isActive){
+			if(layerModal.isActive){
 				overlay.style.display = "none";
 				layerModal.style.display = "none";
 				overlay.style.zIndex = "1";
