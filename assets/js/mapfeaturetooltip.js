@@ -13,17 +13,17 @@ export class MapFeatureTooltip {
 		const selectPointerMove = new Select({
 			condition: pointerMove,
 			style: function (feature) {
-				return styles[feature.get('type')];
+				return styles[feature.get("type")];
 			},
 		});
 		map.addInteraction(selectPointerMove);
 
 		const hoveredFeatures = selectPointerMove.getFeatures();
 
-		hoveredFeatures.on('add', function (event) {
+		hoveredFeatures.on("add", function (event) {
 			showFeature(event)
 		});
-		hoveredFeatures.on('remove', function () {
+		hoveredFeatures.on("remove", function () {
 			if(!featureTooltip.pinned)
 				featureTooltip.style.visibility = "hidden";
 		});
@@ -31,24 +31,24 @@ export class MapFeatureTooltip {
 		const selectClick = new Select({
 			condition: click,
 			style: function (feature) {
-				return styles[feature.get('type')];
+				return styles[feature.get("type")];
 			}
 		});
 		map.addInteraction(selectClick);
 		const clickedFeatures = selectClick.getFeatures();
 
-		clickedFeatures.on('add', function (event) {
+		clickedFeatures.on("add", function (event) {
 			featureTooltip.pinned = true;
 			showFeature(event)
 		});
-		clickedFeatures.on('remove', function () {
+		clickedFeatures.on("remove", function () {
 			featureTooltip.pinned = false;
 			featureTooltip.style.visibility = "hidden";
 		});
 		function showFeature(event){
 			const feature = event.element;
-			const name = feature.get('name');
-			const description = feature.get('description');
+			const name = feature.get("name");
+			const description = feature.get("description");
 			const category = description.split(",")[0];
 			const routeId = description.split(",")[1];
 			const coordinates = feature.getGeometry().getCoordinates();

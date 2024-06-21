@@ -108,54 +108,54 @@ export function initMap() {
 			})
 		}),
 		style: function (feature) {
-			return styles[feature.get('type')];}
+			return styles[feature.get("type")];}
 	});
 
 	const railVector = new VectorLayer({
 		source: new VectorSource({
-			url: 'assets/kml/rail.kml',
+			url: "assets/kml/rail.kml",
 			format: new KML({
 				extractStyles: false,
 			})
 		}),
 		style: function (feature) {
-			return styles[feature.get('type')];}
+			return styles[feature.get("type")];}
 	});
 
 	const bridgeVector = new VectorLayer({
 		source: new VectorSource({
-			url: 'assets/kml/bridge.kml',
+			url: "assets/kml/bridge.kml",
 			format: new KML({
 				extractStyles: false,
 				showPointNames: false
 			})
 		}),
 		style: function (feature) {
-			return styles[feature.get('type')];}
+			return styles[feature.get("type")];}
 	});
 	
 	// load styles
-	tunnelVector.getSource().on('featuresloadend', function (event) {
+	tunnelVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
-			feature.set('type', 'tunnel');
+			feature.set("type", "tunnel");
 		});
 	});
 
-	bridgeVector.getSource().on('featuresloadend', function (event) {
+	bridgeVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
-			feature.set('type', 'bridge');
+			feature.set("type", "bridge");
 		});
 	});
 	
-	buildingVector.getSource().on('featuresloadend', function (event) {
+	buildingVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
-			feature.set('type', 'building');
+			feature.set("type", "building");
 		});
 	});
 	
-	railVector.getSource().on('featuresloadend', function (event) {
+	railVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
-			feature.set('type', 'rail');
+			feature.set("type", "rail");
 		});
 	});
 	
@@ -163,16 +163,16 @@ export function initMap() {
 	
 	const raster = new TileLayer({
 		source: new OSM({
-			projection: 'EPSG:4326'
+			projection: "EPSG:4326"
 		})
 	});
 	
 	// map	
 	map = new Map({
-		target: 'map',
+		target: "map",
 		layers: [raster],
 		view: new View({
-			projection: 'EPSG:3857',
+			projection: "EPSG:3857",
 			center: [6, 51.7],
 			zoom: 8
 		}),
