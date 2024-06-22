@@ -1,0 +1,101 @@
+/*CSS for the MapLayerControl*/
+
+.tx-layer {
+	position: absolute;
+	bottom: 3.6em;
+	left: 0.5em;
+}
+
+.tx-layer > button {
+	background-image: url("../images/layers-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.5em;
+}
+
+.tx-layer-modal > button {
+	display: inline-block;
+	margin: 10px 20px 10px 0;
+	padding: 0;
+	color: #fff;
+	height: 48px;
+	width: 48px;
+	background-color: rgba(0, 0, 0, .2);
+	border: none;
+	border-radius: 2px;
+	vertical-align: middle;
+}
+
+.tx-layer-active-icon {
+	color: #fff;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, .8);
+	padding: 4px;
+	border-radius: 16px;
+	vertical-align: middle;
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 15px;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	bottom: 16px;
+	left: 16px;
+}
+
+.tx-layer-modal > button::-moz-focus-inner {
+	border: none;
+	padding: 0;
+}
+
+.tx-layer-modal > button:focus, .tx-layer-modal > button:hover {
+	text-decoration: none;
+	box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
+}
+
+.tx-layer-modal > button:hover {
+	cursor: pointer;
+}
+
+.tx-layer-modal img {
+	border-radius: 2px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 4px 8px;
+	transition: opacity 0.4s;
+}
+
+#tx-layer-modal-button_bridge {
+	background-image: url("../images/bridgefilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#tx-layer-modal-button_tunnel {
+	background-image: url("../images/tunnelfilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#tx-layer-modal-button_rail {
+	background-image: url("../images/railfilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#tx-layer-modal-button_building {
+	background-image: url("../images/buildingfilter.jpg");
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+@media only screen and (min-width: 756px) {
+
+	.tx-layer button {
+		background-image: url("../images/layers.svg");
+	}
+}

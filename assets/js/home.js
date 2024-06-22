@@ -1,12 +1,6 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {initFilter} from "./indexfilter.js";
-import {
-	hideBackToTop,
-	showBackToTop,
-	showMenu,
-	hideMenu,
-	showMenuItem, uiState
-} from "./header.js";
+import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem, uiState} from "./header.js";
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
 
@@ -43,13 +37,21 @@ export function initHome() {
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("blog")) {
 		headerElem.classList.remove("blog");
-		headerElem.classList.add("home")
+		headerElem.innerHTML = header
+	}
+	if (headerElem.classList.contains("map-header")) {
+		headerElem.classList.remove("map-header");
 		headerElem.innerHTML = header
 	}
 
 	if (!headerElem.classList.contains("home")) {
 		headerElem.classList.add("home")
 		headerElem.innerHTML = header
+	}
+
+	const htmlElement = document.querySelector("html");
+	if(htmlElement.classList.contains("map-html")){
+		htmlElement.classList.remove("map-html");
 	}
 	
 	hideBackToTop();
