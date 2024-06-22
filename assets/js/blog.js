@@ -131,12 +131,10 @@ export function initBlog() {
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("home")) {
 		headerElem.classList.remove("home");
-		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
 	if (headerElem.classList.contains("map-header")) {
 		headerElem.classList.remove("map-header");
-		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
 	
@@ -333,10 +331,7 @@ export function initBlog() {
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
 		});
-		
-		
-
-		
+				
 		//TODO set a correct translated description
 		document
 			.querySelector('meta[name="description"]')

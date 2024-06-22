@@ -37,12 +37,10 @@ export function initHome() {
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("blog")) {
 		headerElem.classList.remove("blog");
-		headerElem.classList.add("home")
 		headerElem.innerHTML = header
 	}
 	if (headerElem.classList.contains("map-header")) {
 		headerElem.classList.remove("map-header");
-		headerElem.classList.add("home")
 		headerElem.innerHTML = header
 	}
 

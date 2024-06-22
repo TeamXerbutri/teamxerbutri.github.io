@@ -183,6 +183,7 @@ export function initMap() {
 	map.addLayer(tunnelVector);
 	map.addLayer(bridgeVector);
 	map.addLayer(buildingVector);
+		
 	map.addControl(new MapLayerControl(bridgeVector, buildingVector, railVector, tunnelVector));
 	
 	new MapFeatureTooltip(map, styles);

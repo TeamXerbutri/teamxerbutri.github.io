@@ -32,8 +32,6 @@ export class MapLayerControl extends Control {
 			}
 		});
 		
-		
-		
 		// modal for filtering layers
 		const layerModal = document.createElement("div");
 		layerModal.id = "tx-layer-modal";
@@ -91,7 +89,6 @@ export class MapLayerControl extends Control {
 		
 		overlay.appendChild(layerModal);
 		
-		
 		function toggleButton(button, categoryName) {
 			if(button.isActive){
 				button.title = "Toon "+ categoryName + " op kaart"; //TODO translate => use i18n
@@ -132,12 +129,6 @@ export class MapLayerControl extends Control {
 			element: element,
 			target: options.target,
 		});
-		
-		
 	}
-
-	
-	//TODO Solve window onclick registration problem, should be done in one place, or just ADD it
-		
 }
 

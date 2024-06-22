@@ -13,10 +13,6 @@ header {
 	z-index: 1;
 }
 
-.map-header {
-	display: none;
-}
-
 h1.logo {
 	font: normal normal bold 1em sans-serif;
 	color: #fff;
