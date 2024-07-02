@@ -49,8 +49,8 @@ export class MapFeatureTooltip {
 			const feature = event.element;
 			const name = feature.get("name");
 			const description = feature.get("description");
-			const category = description.split(",")[0];
-			const routeId = description.split(",")[1];
+			const route = feature.get("route");
+			const category = feature.get("category");
 			const coordinates = feature.getGeometry().getCoordinates();
 			const pixel = map.getPixelFromCoordinate(coordinates);
 
@@ -58,10 +58,10 @@ export class MapFeatureTooltip {
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 			if(viewportWidth < 756 || viewportHeight < 500){
-				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${routeId}/${routeId}s.jpg" alt="${name}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 			}
 			else {
-				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${routeId}/${routeId}.jpg" alt="${name}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${routeId}.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 				if (featureTooltip.pinned)
 					featureTooltip.innerHTML += `<img class="tx-feature-tooltip-pinned" src="assets/images/pin.svg" alt="pin" >`;
 
