@@ -13,8 +13,6 @@ import {MapMenuControl} from "./mapmenucontrol.js";
 import {MapLayerControl} from "./maplayercontrol.js";
 import {MapFeatureTooltip} from "./mapfeaturetooltip.js";
 import GeoJSON from "ol/format/GeoJSON";
-import {Point} from "ol/geom";
-import {Feature} from "ol";
 
 
 let map;
@@ -113,7 +111,7 @@ export function initMap() {
 	// vectors //TODO: this is more of the same. I want it to be separate layers, but can I loop over multiple geojson sources? => take on in GeoJson story 106
 	
 	//TODO Test: remove.
-		
+	//	
 	const urlVector = new VectorLayer({
 		source: new VectorSource({
 			url: "data/testgeo.json",
@@ -123,116 +121,116 @@ export function initMap() {
 			return styles[feature.getGeometry().getType()];
 		},
 	});
-	const geojsonObject = {
-		'type': 'FeatureCollection',
-		'features': [
-			{
-				'type': 'Feature',
-				'geometry': {
-					'type': 'Point',
-					'coordinates': [6.2, 52.5],
-				},
-			}],
-	};
-	const testVector = new VectorLayer({
-		source: new VectorSource({
-			features: new GeoJSON().readFeatures(geojsonObject),
-		}),
-		style: function (feature) {
-			return styles[feature.getGeometry().getType()];
-		},
-	});
-
-	const marker = new Feature({
-		geometry: new Point([6, 51.7])
-	})
-	const markerLayer = new VectorLayer({
-		source: new VectorSource({
-			features: [marker],
-		}),
-		style: function (feature) {
-			return styles[feature.getGeometry().getType()];
-		},
-	});
-	//map.addLayer(markerLayer);
-
-
-	//map.addLayer(testVector);
+	// const geojsonObject = {
+	// 	'type': 'FeatureCollection',
+	// 	'features': [
+	// 		{
+	// 			'type': 'Feature',
+	// 			'geometry': {
+	// 				'type': 'Point',
+	// 				'coordinates': [6.2, 52.5],
+	// 			},
+	// 		}],
+	// };
+	// const testVector = new VectorLayer({
+	// 	source: new VectorSource({
+	// 		features: new GeoJSON().readFeatures(geojsonObject),
+	// 	}),
+	// 	style: function (feature) {
+	// 		return styles[feature.getGeometry().getType()];
+	// 	},
+	// });
+	//
+	// const marker = new Feature({
+	// 	geometry: new Point([6, 51.7])
+	// })
+	// const markerLayer = new VectorLayer({
+	// 	source: new VectorSource({
+	// 		features: [marker],
+	// 	}),
+	// 	style: function (feature) {
+	// 		return styles[feature.getGeometry().getType()];
+	// 	},
+	// });
+	// //map.addLayer(markerLayer);
+	//
+	//
+	// //map.addLayer(testVector);
 	map.addLayer(urlVector);
 
-	// const tunnelVector = new VectorLayer({
-	// 	source: new VectorSource({
-	// 		url: "assets/kml/map.tunnel.json",
-	// 		format: new GeoJSON(),
-	// 	}),
-	// 	style: function (feature) {
-	// 		return styles[feature.get("type")];
-	// 	}
-	// });
-	//
-	// const buildingVector = new VectorLayer({
-	// 	source: new VectorSource({
-	// 		url: "data/map.gebouw.json",
-	// 		format: new GeoJSON(),
-	// 	}),
-	// 	style: function (feature) {
-	// 		return styles[feature.get("type")];
-	// 	}
-	// });
-	//
-	// const railVector = new VectorLayer({
-	// 	source: new VectorSource({
-	// 		url: "assets/kml/map.spoor.json",
-	// 		format: new GeoJSON(),
-	// 	}),
-	// 	style: function (feature) {
-	// 		return styles[feature.get("type")];
-	// 	}
-	// });
-	//
-	// const bridgeVector = new VectorLayer({
-	// 	source: new VectorSource({
-	// 		url: "assets/kml/mapbrug.json",
-	// 		format: new GeoJSON(),
-	// 	}),
-	// 	style: function (feature) {
-	// 		return styles[feature.get("type")];
-	// 	}
-	// });
-	//
-	// // load styles
-	// tunnelVector.getSource().on("featuresloadend", function (event) {
-	// 	event.features.forEach(function (feature) {
-	// 		feature.set("type", "tunnel");
-	// 	});
-	// });
-	//
-	// bridgeVector.getSource().on("featuresloadend", function (event) {
-	// 	event.features.forEach(function (feature) {
-	// 		feature.set("type", "bridge");
-	// 	});
-	// });
-	//
-	// buildingVector.getSource().on("featuresloadend", function (event) {
-	// 	event.features.forEach(function (feature) {
-	// 		feature.set("type", "building");
-	// 	});
-	// });
-	//
-	// railVector.getSource().on("featuresloadend", function (event) {
-	// 	event.features.forEach(function (feature) {
-	// 		feature.set("type", "rail");
-	// 	});
-	// });
-	//
-	// map.addLayer(railVector);
-	// map.addLayer(tunnelVector);
-	// map.addLayer(bridgeVector);
-	// map.addLayer(buildingVector);
-	//
-	// map.addControl(new MapLayerControl(bridgeVector, buildingVector, railVector, tunnelVector));
+	const tunnelVector = new VectorLayer({
+		source: new VectorSource({
+			url: "data/geo-tunnel.json",
+			format: new GeoJSON(),
+		}),
+		style: function (feature) {
+			return styles[feature.get("type")];
+		}
+	});
+
+	const buildingVector = new VectorLayer({
+		source: new VectorSource({
+			url: "data/geo-gebouw.json",
+			format: new GeoJSON(),
+		}),
+		style: function (feature) {
+			return styles[feature.get("type")];
+		}
+	});
+
+	const railVector = new VectorLayer({
+		source: new VectorSource({
+			url: "data/geo-spoor.json",
+			format: new GeoJSON(),
+		}),
+		style: function (feature) {
+			return styles[feature.get("type")];
+		}
+	});
+
+	const bridgeVector = new VectorLayer({
+		source: new VectorSource({
+			url: "data/geo-brug.json",
+			format: new GeoJSON(),
+		}),
+		style: function (feature) {
+			return styles[feature.getGeometry().getType()];
+		}
+	});
+
+	// load styles
+	tunnelVector.getSource().on("featuresloadend", function (event) {
+		event.features.forEach(function (feature) {
+			feature.set("type", "tunnel");
+		});
+	});
+
+	bridgeVector.getSource().on("featuresloadend", function (event) {
+		event.features.forEach(function (feature) {
+			feature.set("type", "bridge");
+		});
+	});
+
+	buildingVector.getSource().on("featuresloadend", function (event) {
+		event.features.forEach(function (feature) {
+			feature.set("type", "building");
+		});
+	});
+
+	railVector.getSource().on("featuresloadend", function (event) {
+		event.features.forEach(function (feature) {
+			feature.set("type", "rail");
+		});
+	});
+
+	map.addLayer(railVector);
+	map.addLayer(tunnelVector);
+	map.addLayer(bridgeVector);
+	map.addLayer(buildingVector);
+
+	map.addControl(new MapLayerControl(bridgeVector, buildingVector, railVector, tunnelVector));
 	
-	//new MapFeatureTooltip(map, styles);
+	new MapFeatureTooltip(map, styles);
 		
 	document
 		.querySelector('meta[name="description"]')

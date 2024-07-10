@@ -47,21 +47,23 @@ export class MapFeatureTooltip {
 		});
 		function showFeature(event){
 			const feature = event.element;
-			const name = feature.get("name");
-			const description = feature.get("description");
-			const route = feature.get("route");
-			const category = feature.get("category");
+			console.log("Feature: ", feature)
+			const name = feature.get("Name");
+			const description = feature.get("Description");
+			const route = feature.get("Route");
+			const category = feature.get("Category");
 			const coordinates = feature.getGeometry().getCoordinates();
+			console.log("Coordinates: ", coordinates)
 			const pixel = map.getPixelFromCoordinate(coordinates);
 
 			const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 			if(viewportWidth < 756 || viewportHeight < 500){
-				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 			}
 			else {
-				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${routeId}.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 				if (featureTooltip.pinned)
 					featureTooltip.innerHTML += `<img class="tx-feature-tooltip-pinned" src="assets/images/pin.svg" alt="pin" >`;
 
