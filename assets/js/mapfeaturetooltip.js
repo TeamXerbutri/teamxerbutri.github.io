@@ -47,13 +47,18 @@ export class MapFeatureTooltip {
 		});
 		function showFeature(event){
 			const feature = event.element;
-			console.log("Feature: ", feature)
 			const name = feature.get("Name");
 			const description = feature.get("Description");
 			const route = feature.get("Route");
 			const category = feature.get("Category");
-			const coordinates = feature.getGeometry().getCoordinates();
-			console.log("Coordinates: ", coordinates)
+			
+			let coordinates;
+			if(feature.getGeometry().getType() === "Point")
+				coordinates = feature.getGeometry().getCoordinates();
+			
+			if(feature.getGeometry().getType() === "LineString")
+				coordinates = feature.getGeometry().getCoordinateAt(0.5);
+			
 			const pixel = map.getPixelFromCoordinate(coordinates);
 
 			const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);

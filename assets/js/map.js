@@ -37,16 +37,6 @@ export function initMap() {
 
 	// the styles
 	const styles = {
-		"Point": new Style({
-			image: new Circle({
-				radius: 7,
-				fill: new Fill({color: "rgba(255, 0, 0, 1)"}),
-				stroke: new Stroke({
-					color: "rgba(255, 255, 255, 1)",
-					width: 2,
-				}),
-			}),
-		}),
 		"bridge": new Style({
 			image: new Icon({
 				opacity: 0.9,
@@ -86,8 +76,7 @@ export function initMap() {
 		}),
 	}
 	styles["rail"] = [styles["redLine"], styles["whiteDash"]];
-	styles["LineString"] = [styles["redLine"], styles["whiteDash"]];
-	
+
 	// raster (the base map or background)
 	
 	const raster = new TileLayer({
@@ -108,56 +97,8 @@ export function initMap() {
 		controls: defaultControls().extend([new TopBarControl(), new ZoomSlider(), new MapMenuControl()])
 	});
 
-	// vectors //TODO: this is more of the same. I want it to be separate layers, but can I loop over multiple geojson sources? => take on in GeoJson story 106
+	// vectors
 	
-	//TODO Test: remove.
-	//	
-	const urlVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/testgeo.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.getGeometry().getType()];
-		},
-	});
-	// const geojsonObject = {
-	// 	'type': 'FeatureCollection',
-	// 	'features': [
-	// 		{
-	// 			'type': 'Feature',
-	// 			'geometry': {
-	// 				'type': 'Point',
-	// 				'coordinates': [6.2, 52.5],
-	// 			},
-	// 		}],
-	// };
-	// const testVector = new VectorLayer({
-	// 	source: new VectorSource({
-	// 		features: new GeoJSON().readFeatures(geojsonObject),
-	// 	}),
-	// 	style: function (feature) {
-	// 		return styles[feature.getGeometry().getType()];
-	// 	},
-	// });
-	//
-	// const marker = new Feature({
-	// 	geometry: new Point([6, 51.7])
-	// })
-	// const markerLayer = new VectorLayer({
-	// 	source: new VectorSource({
-	// 		features: [marker],
-	// 	}),
-	// 	style: function (feature) {
-	// 		return styles[feature.getGeometry().getType()];
-	// 	},
-	// });
-	// //map.addLayer(markerLayer);
-	//
-	//
-	// //map.addLayer(testVector);
-	map.addLayer(urlVector);
-
 	const tunnelVector = new VectorLayer({
 		source: new VectorSource({
 			url: "data/geo-tunnel.json",
@@ -194,7 +135,7 @@ export function initMap() {
 			format: new GeoJSON(),
 		}),
 		style: function (feature) {
-			return styles[feature.getGeometry().getType()];
+			return styles[feature.get("type")];
 		}
 	});
 
