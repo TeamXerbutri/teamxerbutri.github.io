@@ -8,7 +8,7 @@ export class MapFeatureTooltip {
 		featureTooltip.pinned = false;
 		featureTooltip.id = "tx-feature-tooltip";
 		featureTooltip.classList.add("tx-feature-tooltip");
-		document.getElementById("map").appendChild(featureTooltip);
+		document.getElementById("txmap").appendChild(featureTooltip);
 
 		const selectPointerMove = new Select({
 			condition: pointerMove,
@@ -24,7 +24,7 @@ export class MapFeatureTooltip {
 			showFeature(event)
 		});
 		hoveredFeatures.on("remove", function () {
-			if(!featureTooltip.pinned)
+			if (!featureTooltip.pinned)
 				featureTooltip.style.visibility = "hidden";
 		});
 
@@ -45,32 +45,32 @@ export class MapFeatureTooltip {
 			featureTooltip.pinned = false;
 			featureTooltip.style.visibility = "hidden";
 		});
-		function showFeature(event){
+
+		function showFeature(event) {
 			const feature = event.element;
 			const name = feature.get("Name");
 			const description = feature.get("Description");
 			const route = feature.get("Route");
 			const category = feature.get("Category");
-			
+
 			let coordinates;
-			if(feature.getGeometry().getType() === "Point")
+			if (feature.getGeometry().getType() === "Point")
 				coordinates = feature.getGeometry().getCoordinates();
-			
-			if(feature.getGeometry().getType() === "LineString")
+
+			if (feature.getGeometry().getType() === "LineString")
 				coordinates = feature.getGeometry().getCoordinateAt(0.5);
-			
+
 			const pixel = map.getPixelFromCoordinate(coordinates);
 
 			const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-			if(viewportWidth < 756 || viewportHeight < 500){
+			if (viewportWidth < 756 || viewportHeight < 500) {
 				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
-			}
-			else {
+			} else {
 				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 				if (featureTooltip.pinned)
-					featureTooltip.innerHTML += `<img class="tx-feature-tooltip-pinned" src="assets/images/pin.svg" alt="pin" >`;
+					featureTooltip.innerHTML += `<img class="tx-feature-tooltip-pinned" src="ui/pics/pin.svg" alt="pin" >`;
 
 				// width large = 310px
 				if (viewportWidth - pixel[0] < 310)

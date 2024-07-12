@@ -46,7 +46,7 @@ export class MapMenuControl extends Control {
 		
 		const menuContainer = document.createElement("div");
 		menuContainer.id = "tx-menu-container";
-		menuContainer.innerHTML = `<a href="" title="Bezoek de webpagina van Team Xerbutri, met alle bezochte locaties">Naar de index-pagina van Team Xerbutri</a>`; //TODO translate => use i18n
+		menuContainer.innerHTML = `<a href="../" title="Bezoek de webpagina van Team Xerbutri, met alle bezochte locaties">Naar de index-pagina van Team Xerbutri</a>`; //TODO translate => use i18n
 		
 		menuModal.appendChild(menuContainer);
 		menuOverlay.appendChild(menuModal);
