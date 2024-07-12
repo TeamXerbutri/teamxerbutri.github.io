@@ -42,7 +42,7 @@ export function initMap() {
 				opacity: 0.9,
 				scale: 0.9,
 				size: [52, 52],
-				src: "assets/images/bridgemarker.png",
+				src: "ui/pics/bridgemarker.png",
 			}),
 		}),
 		"tunnel": new Style({
@@ -50,7 +50,7 @@ export function initMap() {
 				opacity: 0.9,
 				scale: 0.9,
 				size: [52, 52],
-				src: "assets/images/tunnelmarker.png",
+				src: "ui/pics/tunnelmarker.png",
 			}),
 		}),
 		"building": new Style({
@@ -58,7 +58,7 @@ export function initMap() {
 				opacity: 0.9,
 				scale: 0.9,
 				size: [52, 52],
-				src: "assets/images/buildingmarker.png",
+				src: "ui/pics/buildingmarker.png",
 			}),
 		}),
 		"redLine": new Style({
