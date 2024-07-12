@@ -18,7 +18,7 @@ import GeoJSON from "ol/format/GeoJSON";
 let map;
 export function initMap() {
 		
-	document.querySelector("#app").innerHTML = `<div id="map"><div id="tx-menu-overlay" class="tx-overlay"></div> <div id="tx-layer-overlay" class="tx-overlay"></div></div>`;
+	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-overlay" class="tx-overlay"></div> <div id="tx-layer-overlay" class="tx-overlay"></div></div>`;
 	
 	// do not show header in map
 	const headerElem = document.getElementById("header");
@@ -87,7 +87,7 @@ export function initMap() {
 	
 	// map	
 	map = new Map({
-		target: "map",
+		target: "txmap",
 		layers: [raster],
 		view: new View({
 			projection: "EPSG:3857",
