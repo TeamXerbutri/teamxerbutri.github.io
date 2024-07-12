@@ -1,0 +1,55 @@
+/*CSS for the MapMenuControl*/
+
+.tx-menu {
+	position: absolute;
+	bottom: 0.5em;
+	left: 0.5em;
+}
+
+.tx-menu > button {
+	background-image: url("../images/menu-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.2em;
+}
+
+#tx-menu-container {
+	width: 100%;
+	background-color: rgba(255, 255, 255, .8);
+	border-radius: 4px;
+	padding: 2px;
+}
+
+#tx-menu-container a {
+	padding: 2px;
+	background-color: rgba(255, 255, 255, .8);
+	display: block;
+	color: #000;
+	text-decoration: none;
+	margin: 1px 1px 2px;
+}
+
+#tx-menu-container a:hover, #tx-menu-container a:active {
+	color: #000;
+	background-color: rgba(255, 255, 255, .8);
+}
+
+@media only screen and (min-width: 756px) {
+	#tx-menu-container {
+		background-color: rgba(255, 255, 255, .5);
+	}
+
+	#tx-menu-container a {
+		color: #fff;
+		background-color: rgba(0, 0, 0, .5);
+	}
+
+	#tx-menu-container a:hover, #tx-menu-container a:active {
+		color: #fff;
+		background-color: rgba(0, 0, 0, .8);
+	}
+
+	.tx-menu button {
+		background-image: url("../images/menu.svg");
+	}
+}

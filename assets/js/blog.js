@@ -30,12 +30,6 @@ function countProperties(obj) {
 // 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
 // 	<script src="../ui/js/reportage.js"></script>
 // </true>
-// 	<false>
-// 		<script  src="../ui/js/gallery.js"></script>
-// 		<script type="application/ld+json">
-// 			<include href="{{@jsonld}}"/>
-// 		</script>
-// 	</false>
 // </check>
 
 // 	<!check if="{{@categorieid == 3 }}"><true>
@@ -108,6 +102,11 @@ export function initBlog() {
 		console.error(`An error occured in getting the translations: ${error}`);
 	});
 
+	const htmlElement = document.querySelector("html");
+	if(htmlElement.classList.contains("map-html")){
+		htmlElement.classList.remove("map-html");
+	}
+	
 	// init header
 	const header = `<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
 		<h1 class="logo">Team Xerbutri</h1>
@@ -132,9 +131,13 @@ export function initBlog() {
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("home")) {
 		headerElem.classList.remove("home");
-		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
+	if (headerElem.classList.contains("map-header")) {
+		headerElem.classList.remove("map-header");
+		headerElem.innerHTML = header
+	}
+	
 	if (!headerElem.classList.contains("blog")) {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
@@ -328,10 +331,7 @@ export function initBlog() {
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
 		});
-		
-		
-
-		
+				
 		//TODO set a correct translated description
 		document
 			.querySelector('meta[name="description"]')

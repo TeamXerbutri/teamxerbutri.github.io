@@ -19,7 +19,7 @@
 		background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
 		background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* Standard syntax */
 	}
-	
+
 	.tile:nth-child(-n+4) h2.te {
 		font-size: 1.2em;
 		padding-left: 0;
@@ -52,7 +52,7 @@
 	.tile-text-wrapper {
 		display: inline-block;
 	}
-	
+
 	h2.te {
 		display: inline-block;
 		padding-left: 10px;
@@ -133,7 +133,7 @@
 		background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
 		background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* Standard syntax */
 	}
-	
+
 	h2.te {
 		font-size: 1.2em;
 		width: auto;
@@ -163,12 +163,12 @@
 	.tile-text-wrapper {
 		top: -97px;
 	}
-	
+
 	.tile {
 		height: 238px;
 		width: 310px;
 	}
-	
+
 	h2.te {
 		font-size: 1.5em;
 	}
