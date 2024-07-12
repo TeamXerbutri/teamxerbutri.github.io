@@ -47,21 +47,28 @@ export class MapFeatureTooltip {
 		});
 		function showFeature(event){
 			const feature = event.element;
-			const name = feature.get("name");
-			const description = feature.get("description");
-			const category = description.split(",")[0];
-			const routeId = description.split(",")[1];
-			const coordinates = feature.getGeometry().getCoordinates();
+			const name = feature.get("Name");
+			const description = feature.get("Description");
+			const route = feature.get("Route");
+			const category = feature.get("Category");
+			
+			let coordinates;
+			if(feature.getGeometry().getType() === "Point")
+				coordinates = feature.getGeometry().getCoordinates();
+			
+			if(feature.getGeometry().getType() === "LineString")
+				coordinates = feature.getGeometry().getCoordinateAt(0.5);
+			
 			const pixel = map.getPixelFromCoordinate(coordinates);
 
 			const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 			if(viewportWidth < 756 || viewportHeight < 500){
-				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${routeId}/${routeId}s.jpg" alt="${name}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 			}
 			else {
-				featureTooltip.innerHTML = `<a href="avontuur/${routeId}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${routeId}/${routeId}.jpg" alt="${name}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 				if (featureTooltip.pinned)
 					featureTooltip.innerHTML += `<img class="tx-feature-tooltip-pinned" src="assets/images/pin.svg" alt="pin" >`;
 

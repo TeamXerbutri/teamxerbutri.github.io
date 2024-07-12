@@ -12,6 +12,7 @@ import {TopBarControl} from "./topbarcontrol.js";
 import {MapMenuControl} from "./mapmenucontrol.js";
 import {MapLayerControl} from "./maplayercontrol.js";
 import {MapFeatureTooltip} from "./mapfeaturetooltip.js";
+import GeoJSON from "ol/format/GeoJSON";
 
 
 let map;
@@ -36,16 +37,6 @@ export function initMap() {
 
 	// the styles
 	const styles = {
-		"icon": new Style({
-			image: new Circle({
-				radius: 7,
-				fill: new Fill({color: "rgba(255, 0, 0, 1)"}),
-				stroke: new Stroke({
-					color: "rgba(255, 255, 255, 1)",
-					width: 2,
-				}),
-			}),
-		}),
 		"bridge": new Style({
 			image: new Icon({
 				opacity: 0.9,
@@ -85,7 +76,7 @@ export function initMap() {
 		}),
 	}
 	styles["rail"] = [styles["redLine"], styles["whiteDash"]];
-	
+
 	// raster (the base map or background)
 	
 	const raster = new TileLayer({
@@ -106,52 +97,46 @@ export function initMap() {
 		controls: defaultControls().extend([new TopBarControl(), new ZoomSlider(), new MapMenuControl()])
 	});
 
-	// vectors //TODO: this is more of the same. I want it to be separate layers, but can I loop over multiple geojson sources? => take on in GeoJson story 106
+	// vectors
+	
 	const tunnelVector = new VectorLayer({
 		source: new VectorSource({
-			url: "assets/kml/tunnel.kml",
-			format: new KML({
-				extractStyles: false,
-				showPointNames: false
-			})
+			url: "data/geo-tunnel.json",
+			format: new GeoJSON(),
 		}),
 		style: function (feature) {
-			return styles[feature.get("type")];}
+			return styles[feature.get("type")];
+		}
 	});
 
 	const buildingVector = new VectorLayer({
 		source: new VectorSource({
-			url: "assets/kml/building.kml",
-			format: new KML({
-				extractStyles: false,
-				showPointNames: false
-			})
+			url: "data/geo-gebouw.json",
+			format: new GeoJSON(),
 		}),
 		style: function (feature) {
-			return styles[feature.get("type")];}
+			return styles[feature.get("type")];
+		}
 	});
 
 	const railVector = new VectorLayer({
 		source: new VectorSource({
-			url: "assets/kml/rail.kml",
-			format: new KML({
-				extractStyles: false,
-			})
+			url: "data/geo-spoor.json",
+			format: new GeoJSON(),
 		}),
 		style: function (feature) {
-			return styles[feature.get("type")];}
+			return styles[feature.get("type")];
+		}
 	});
 
 	const bridgeVector = new VectorLayer({
 		source: new VectorSource({
-			url: "assets/kml/bridge.kml",
-			format: new KML({
-				extractStyles: false,
-				showPointNames: false
-			})
+			url: "data/geo-brug.json",
+			format: new GeoJSON(),
 		}),
 		style: function (feature) {
-			return styles[feature.get("type")];}
+			return styles[feature.get("type")];
+		}
 	});
 
 	// load styles
@@ -179,11 +164,11 @@ export function initMap() {
 		});
 	});
 
-	map.addLayer(railVector);	
+	map.addLayer(railVector);
 	map.addLayer(tunnelVector);
 	map.addLayer(bridgeVector);
 	map.addLayer(buildingVector);
-		
+
 	map.addControl(new MapLayerControl(bridgeVector, buildingVector, railVector, tunnelVector));
 	
 	new MapFeatureTooltip(map, styles);
