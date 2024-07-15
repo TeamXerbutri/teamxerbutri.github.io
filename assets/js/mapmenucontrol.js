@@ -8,7 +8,6 @@ export class MapMenuControl extends Control {
 		const element = document.createElement("div");
 		element.id = "tx-menu";
 		element.className = "tx-menu ol-unselectable ol-control";
-		element.innerText = "Menu";
 
 		// button for menu control
 		const button = document.createElement("button");
