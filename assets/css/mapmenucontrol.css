@@ -39,14 +39,8 @@
 		background-color: rgba(255, 255, 255, .5);
 	}
 
-	#tx-menu-container a {
-		color: #fff;
-		background-color: rgba(0, 0, 0, .5);
-	}
-
-	#tx-menu-container a:hover, #tx-menu-container a:active {
-		color: #fff;
-		background-color: rgba(0, 0, 0, .8);
+		#tx-menu-container a:hover, #tx-menu-container a:active {
+		background-color: rgba(0, 0, 0, .1);
 	}
 
 	.tx-menu button {
