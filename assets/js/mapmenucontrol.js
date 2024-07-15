@@ -8,7 +8,6 @@ export class MapMenuControl extends Control {
 		const element = document.createElement("div");
 		element.id = "tx-menu";
 		element.className = "tx-menu ol-unselectable ol-control";
-		element.innerText = "Menu";
 
 		// button for menu control
 		const button = document.createElement("button");
@@ -27,7 +26,7 @@ export class MapMenuControl extends Control {
 		const menuOverlay = document.getElementById("tx-menu-overlay");
 		menuOverlay.style.display = "none";
 		
-		window.addEventListener("click", function(event) {
+		window.addEventListener("mousedown", function(event) {
 			if (event.target === menuOverlay) {
 				toggleModal()
 			}

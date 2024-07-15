@@ -2,18 +2,18 @@
 	 width="30" height="30">
 
 	<rect x="0" y="0" width="14" height="30" fill="none"></rect>
-	<g transform="translate(1 16) rotate(0 5 10)">
-		<text x="0" y="0" font-family="Tahoma" font-size="16px" font-weight="700" fill="#fff" text-anchor="start"
+	<g transform="translate(2.5 16) rotate(0 5 10)">
+		<text x="0" y="0" font-family="Tahoma" font-size="12px" font-weight="700" fill="#fff" text-anchor="start"
 			  style="white-space: pre;" direction="ltr" dominant-baseline="alphabetic">+
 		</text>
 	</g>
-	<g transform="translate(2 5) rotate(0 3.2866666316986084 10)">
-		<text x="0" y="20" font-family="Tahoma" font-size="16px" font-weight="700" fill="#fff" text-anchor="start"
+	<g transform="translate(3.5 3) rotate(0 3.2866666316986084 10)">
+		<text x="0" y="20" font-family="Tahoma" font-size="12px" font-weight="700" fill="#fff" text-anchor="start"
 			  style="white-space: pre;" direction="ltr" dominant-baseline="alphabetic">-
 		</text>
 	</g>
-	<g transform="translate(6 5) rotate(0 3.2866666316986084 10)">
-		<text x="0" y="20" font-family="Tahoma" fill="#fff" font-weight="700" font-size="16px" text-anchor="start"
+	<g transform="translate(6.5 3) rotate(0 3.2866666316986084 10)">
+		<text x="0" y="20" font-family="Tahoma" fill="#fff" font-weight="700" font-size="12px" text-anchor="start"
 			  style="white-space: pre;" direction="ltr" dominant-baseline="alphabetic">-
 		</text>
 	</g>
