@@ -26,7 +26,7 @@ export class MapLayerControl extends Control {
 		const overlay = document.getElementById("tx-layer-overlay");
 		overlay.style.display = "none";
 		
-		window.addEventListener("click", function(event) {
+		window.addEventListener("mousedown", function(event) {
 			if (event.target === overlay) {
 				toggleModal()
 			}
