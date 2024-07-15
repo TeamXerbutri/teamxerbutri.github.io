@@ -1,5 +1,4 @@
 ﻿import "../css/map.css";
-import KML from "ol/format/KML";
 import Map from "ol/Map";
 import View from "ol/View";
 import {Tile as TileLayer, Vector as VectorLayer} from "ol/layer";
@@ -7,18 +6,28 @@ import OSM from "ol/source/OSM";
 import {useGeographic} from "ol/proj";
 import {defaults as defaultControls, ZoomSlider} from "ol/control";
 import VectorSource from "ol/source/Vector";
-import {Circle, Fill, Icon, Stroke, Style} from "ol/style";
+import {Icon, Stroke, Style} from "ol/style";
 import {TopBarControl} from "./topbarcontrol.js";
 import {MapMenuControl} from "./mapmenucontrol.js";
 import {MapLayerControl} from "./maplayercontrol.js";
 import {MapFeatureTooltip} from "./mapfeaturetooltip.js";
 import GeoJSON from "ol/format/GeoJSON";
 
-
 let map;
 export function initMap() {
 		
 	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-overlay" class="tx-overlay"></div> <div id="tx-layer-overlay" class="tx-overlay"></div></div>`;
+
+	// First we get the viewport height and we multiply it by 1% to get a value for a vh unit
+	let vh = window.innerHeight * 0.01;
+	// Then we set the value in the --vh custom property to the root of the document
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+	window.addEventListener('resize', () => {
+		// We execute the same script as before
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	});
 	
 	// do not show header in map
 	const headerElem = document.getElementById("header");
