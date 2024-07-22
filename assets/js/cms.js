@@ -1,14 +1,15 @@
 ﻿import "../css/cms.css";
+import {defaults as defaultControls, MousePosition, ZoomSlider} from "ol/control";
 import Map from "ol/Map";
 import View from "ol/View";
 import {Tile as TileLayer, Vector as VectorLayer} from "ol/layer";
 import OSM from "ol/source/OSM";
 import {useGeographic} from "ol/proj";
-import {defaults as defaultControls, ZoomSlider} from "ol/control";
 import VectorSource from "ol/source/Vector";
 import {Stroke, Style} from "ol/style";
-import {TopBarControl} from "./topbarcontrol.js";
+
 import GeoJSON from "ol/format/GeoJSON";
+import {createStringXY} from 'ol/coordinate.js';
 
 let map;
 export function initCms() {
@@ -65,6 +66,15 @@ export function initCms() {
 			projection: "EPSG:4326"
 		})
 	});
+
+	// mouse position
+	const mousePositionControl = new MousePosition({
+		coordinateFormat: createStringXY(14),
+		projection: 'EPSG:4326',
+
+		className: 'custom-mouse-position',
+		target: document.getElementById('mouse-position'),
+	});
 	
 	// map	
 	map = new Map({
@@ -75,7 +85,7 @@ export function initCms() {
 			center: [6, 51.7],
 			zoom: 8
 		}),
-		controls: defaultControls().extend([new TopBarControl(), new ZoomSlider()])
+		controls: defaultControls().extend([ new ZoomSlider(), mousePositionControl])
 	});
 
 	// vectors
@@ -95,8 +105,29 @@ export function initCms() {
 			feature.set("type", "rail");
 		});
 	});
+	
+	
+	
+	
 
 	map.addLayer(railVector);
+
+	// top bar
+	const topbar = document.createElement("div");
+	topbar.id = "tx-top-bar";
+	topbar.className = "tx-top-bar ol-unselectable ol-control";
+
+
+	topbar.innerHTML = `<input type="text" value="" id="tx-mouse-position"><button id="tx-copy-button" onclick="copyText()">Copy</button>`;
+
+	map.addEventListener("click", function(event) {
+		const element = document.getElementById("tx-mouse-position");
+		element.value = document.getElementsByClassName("custom-mouse-position")[0].innerHTML;
+		copyText();
+	})
+	
+
+	document.querySelector("#app").appendChild(topbar);
 	
 	document
 		.querySelector('meta[name="description"]')
@@ -104,3 +135,15 @@ export function initCms() {
 	document.title = "TX-The tunnel: CMS";
 	
 }
+
+function copyText() {
+	// Get the text field
+	let copiedText = document.getElementById("tx-mouse-position");
+
+	// Select the text field
+	copiedText.select();
+	copiedText.setSelectionRange(0, 99999); // For mobile devices
+
+	// Copy the text inside the text field
+	navigator.clipboard.writeText(copiedText.value);
+} 

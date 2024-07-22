@@ -31,7 +31,6 @@ body {
 	color: #000;
 }
 
-/* geocoder */
 #tx-top-bar {
 	position: absolute;
 	width: calc(100% - 14px);
@@ -39,6 +38,32 @@ body {
 	top: .5em;
 	box-sizing: border-box;
 	background-color: rgba(255, 255, 255, .4);
+	border-radius: 4px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 2px;
+	z-index: 200;
+}
+
+#tx-mouse-position{
+	width: 300px;
+	height: 25px;
+}
+
+#tx-copy-button{
+	display: inline-block;
+	font-size: 1em;
+	width: 60px;
+}
+
+
+.custom-mouse-position {
+	position: absolute;
+	width: calc(100% - 14px);
+	height: 2.375em;
+	top: 3.5em;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, .8);
 	border-radius: 4px;
 	margin-left: 5px;
 	margin-right: 5px;
@@ -105,12 +130,24 @@ body {
 
 	#tx-top-bar {
 		position: absolute;
-		width: 318px;
+		width: 400px;
 		height: 2.375em;
 		top: 0.5em;
 		left: 0.5em;
 		box-sizing: border-box;
-		background-color: rgba(255, 255, 255, .4);
+		background-color: rgba(255, 255, 255, .8);
+		border-radius: 4px;
+		padding: 2px;
+	}
+
+	.custom-mouse-position {
+		position: absolute;
+		width: 400px;
+		height: 2.375em;
+		top: 3.5em;
+		left: 0.5em;
+		box-sizing: border-box;
+		background-color: rgba(255, 255, 255, .8);
 		border-radius: 4px;
 		padding: 2px;
 	}
