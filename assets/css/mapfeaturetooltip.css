@@ -43,7 +43,7 @@
 	margin: 0;
 }
 
-@media only screen and (min-width: 756px) {
+@media only screen and (min-width: 756px) and (min-height: 500px){
 	.tx-feature-tooltip {
 		transition: all .5s ease-in-out;
 		position: absolute;
