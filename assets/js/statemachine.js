@@ -1,6 +1,7 @@
 ﻿import {initHome} from "./home.js";
 import {initBlog} from "./blog.js";
 import {initMap} from "./map.js";
+import {initCms} from "./cms.js";
 
 
 let stateContext = function () {
@@ -17,6 +18,10 @@ let stateContext = function () {
 
 	this.initState = function () {
 		let path = window.location.pathname;
+		if (path.startsWith("/cms")) {
+			this.transitionTo(new cmsState(this.context));
+			return;
+		}
 		if (path.startsWith("/map")) {
 			this.transitionTo(new mapState(this.context));
 			return;
@@ -47,6 +52,9 @@ let homeState = function (context) {
 		if (path.startsWith("/map")) {
 			this.context.transitionTo(new mapState(this.context));
 		}
+		if (path.startsWith("/cms")) {
+			this.context.transitionTo(new cmsState(this.context));
+		}
 	}
 }
 
@@ -67,6 +75,9 @@ let blogState = function (context) {
 		}
 		if (path.startsWith("/avontuur")) {
 			this.context.transitionTo(new blogState(this.context));
+		}
+		if (path.startsWith("/cms")) {
+			this.context.transitionTo(new cmsState(this.context));
 		}
 	}
 }
@@ -89,7 +100,34 @@ let mapState = function (context) {
 		if (path.startsWith("/avontuur")) {
 			this.context.transitionTo(new blogState(this.context));
 		}
+		if (path.startsWith("/cms")) {
+			this.context.transitionTo(new cmsState(this.context));
+		}
 	}
 }
 
-export {stateContext, homeState, blogState, mapState};
+let cmsState = function (context) {
+	this.context = context;
+	this.enterState = function () {
+		initCms();
+	}
+	this.navigate = function () {
+		let path = window.location.pathname;
+		if (path.length === 0 || path.startsWith("/vijf")) {
+			this.context.transitionTo(new homeState(this.context));
+			return;
+		}
+		if (path.startsWith("/map")) {
+			this.context.transitionTo(new mapState(this.context));
+			return;
+		}
+		if (path.startsWith("/avontuur")) {
+			this.context.transitionTo(new blogState(this.context));
+		}
+		if (path.startsWith("/cms")) {
+			// do nothing, I am already @cms
+		}
+	}
+}
+
+export {stateContext, homeState, blogState, mapState, cmsState};
