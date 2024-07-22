@@ -18,9 +18,8 @@ export function initMap() {
 		
 	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-overlay" class="tx-overlay"></div> <div id="tx-layer-overlay" class="tx-overlay"></div></div>`;
 
-	// First we get the viewport height and we multiply it by 1% to get a value for a vh unit
+	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;
-	// Then we set the value in the --vh custom property to the root of the document
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 	window.addEventListener('resize', () => {
