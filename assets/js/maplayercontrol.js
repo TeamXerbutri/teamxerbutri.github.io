@@ -25,12 +25,17 @@ export class MapLayerControl extends Control {
 		//overlay for layer modal
 		const overlay = document.getElementById("tx-layer-overlay");
 		overlay.style.display = "none";
-		
-		window.addEventListener("mousedown", function(event) {
+		overlay.addEventListener("click", function(event) {
 			if (event.target === overlay) {
 				toggleModal()
 			}
 		});
+		
+		// window.addEventListener("mousedown", function(event) {
+		// 	if (event.target === overlay) {
+		// 		toggleModal()
+		// 	}
+		// });
 		
 		// modal for filtering layers
 		const layerModal = document.createElement("div");
