@@ -25,8 +25,8 @@ export class MapMenuControl extends Control {
 		//overlay
 		const menuOverlay = document.getElementById("tx-menu-overlay");
 		menuOverlay.style.display = "none";
-		
-		window.addEventListener("click", function(event) {
+
+		menuOverlay.addEventListener("click", function(event) {
 			if (event.target === menuOverlay) {
 				toggleModal()
 			}

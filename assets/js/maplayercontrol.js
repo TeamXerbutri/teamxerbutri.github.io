@@ -31,12 +31,6 @@ export class MapLayerControl extends Control {
 			}
 		});
 		
-		// window.addEventListener("mousedown", function(event) {
-		// 	if (event.target === overlay) {
-		// 		toggleModal()
-		// 	}
-		// });
-		
 		// modal for filtering layers
 		const layerModal = document.createElement("div");
 		layerModal.id = "tx-layer-modal";
