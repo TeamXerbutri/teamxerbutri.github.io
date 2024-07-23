@@ -7,9 +7,9 @@ import OSM from "ol/source/OSM";
 import {useGeographic} from "ol/proj";
 import VectorSource from "ol/source/Vector";
 import {Stroke, Style} from "ol/style";
-
 import GeoJSON from "ol/format/GeoJSON";
-import {createStringXY} from 'ol/coordinate.js';
+import {createStringXY} from 'ol/coordinate';
+import {CmsFeatureTooltip} from "./cmsfeaturetooltip.js";
 
 let map;
 export function initCms() {
@@ -92,7 +92,7 @@ export function initCms() {
 	
 	const railVector = new VectorLayer({
 		source: new VectorSource({
-			url: "data/geo-spoor.json",
+			url: "data/cms-spoor.json",
 			format: new GeoJSON(),
 		}),
 		style: function (feature) {
@@ -106,18 +106,14 @@ export function initCms() {
 		});
 	});
 	
-	
-	
-	
-
 	map.addLayer(railVector);
 
+	new CmsFeatureTooltip(map, styles);
+	
 	// top bar
 	const topbar = document.createElement("div");
 	topbar.id = "tx-top-bar";
 	topbar.className = "tx-top-bar ol-unselectable ol-control";
-
-
 	topbar.innerHTML = `<input type="text" value="" id="tx-mouse-position"><button id="tx-copy-button" onclick="copyText()">Copy</button>`;
 
 	map.addEventListener("click", function(event) {
@@ -126,14 +122,12 @@ export function initCms() {
 		copyText();
 	})
 	
-
 	document.querySelector("#app").appendChild(topbar);
 	
 	document
 		.querySelector('meta[name="description"]')
 		.setAttribute("content", "Team Xerbutri, content for future blogs.");
 	document.title = "TX-The tunnel: CMS";
-	
 }
 
 function copyText() {
