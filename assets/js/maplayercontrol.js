@@ -10,6 +10,8 @@ export class MapLayerControl extends Control {
 		element.id = "tx-layer";
 		element.className = "tx-layer ol-unselectable ol-control";
 		
+		
+		
 		// button for layer control
 		const button = document.createElement("button");
 		button.id = "tx-layer_button";
@@ -22,23 +24,38 @@ export class MapLayerControl extends Control {
 				
 		element.appendChild(button);
 		
-		//overlay for layer modal
+		// dismiss for layer modal
 		const overlay = document.getElementById("tx-layer-dismiss");
 		overlay.style.display = "none";
 		overlay.addEventListener("click", function(event) {
+			console.log("triggered dismiss");
 			if (event.target === overlay) {
 				toggleModal()
 			}
 		});
 		
+		
 		// modal for filtering layers
+
+		// draghandle closing the bottom sheet
+		// ToDo make the grab work
+		const dragHandle = document.createElement("div")
+		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
+		dragHandle.innerHTML = `<img src="ui/pics/drag-b.svg" alt="Drag handle" />`;
+
+		dragHandle.addEventListener("mousedown", function() { console.log("triggered mousedown draghandle"); toggleModal() });
+
 		const layerModal = document.createElement("div");
 		layerModal.id = "tx-layer-modal";
-		layerModal.classList.add("tx-modal");
+		layerModal.classList.add("mat-bottom-sheet");
 		layerModal.style.display = "none";
 		layerModal.classList.add("tx-layer-modal");
 		layerModal.isActive = false;
-		layerModal.innerHTML = `<h3>Kaartlagen aanpassen</h3>`; //TODO translate => use i18n
+		layerModal.appendChild(dragHandle);
+		layerModal.innerHTML +=`<h3>Kaartlagen aanpassen</h3>`; //TODO translate => use i18n
+
+		
+		
 		
 		// create buttons for layer filters
 		const bridgeButton = document.createElement("button");

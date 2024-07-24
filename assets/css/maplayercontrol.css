@@ -9,11 +9,16 @@
 }
 
 .tx-layer > button {
-	background-image: url("../images/layers-b.svg");
+	background-image: url("../images/layers.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 1.5em;
 }
+
+.tx-layer.dark {
+	background-image: url("../images/layers-b.svg");
+}
+
 
 .tx-layer-modal > button {
 	display: inline-block;
