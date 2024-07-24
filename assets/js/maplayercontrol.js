@@ -23,7 +23,7 @@ export class MapLayerControl extends Control {
 		element.appendChild(button);
 		
 		//overlay for layer modal
-		const overlay = document.getElementById("tx-layer-overlay");
+		const overlay = document.getElementById("tx-layer-dismiss");
 		overlay.style.display = "none";
 		overlay.addEventListener("click", function(event) {
 			if (event.target === overlay) {

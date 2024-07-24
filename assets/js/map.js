@@ -16,7 +16,7 @@ import GeoJSON from "ol/format/GeoJSON";
 let map;
 export function initMap() {
 		
-	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-overlay" class="tx-overlay"></div> <div id="tx-layer-overlay" class="tx-overlay"></div></div>`;
+	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-overlay" class="tx-dismiss"></div> <div id="tx-layer-dismiss" class="tx-dismiss"></div></div>`;
 
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;

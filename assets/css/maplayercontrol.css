@@ -1,4 +1,6 @@
 /*CSS for the MapLayerControl*/
+@import "mat/bottomsheet.css";
+
 
 .tx-layer {
 	position: absolute;

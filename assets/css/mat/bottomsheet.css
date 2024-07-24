@@ -1,0 +1,45 @@
+﻿@import "overlay.css";
+
+.mat-bottom-sheet {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	transition: transform 0.3s ease-in-out;
+	transform: translateY(100%);
+	z-index: 1000;
+}
+
+.mat-bottom-sheet.active {
+	transform: translateY(0);
+}
+
+.mat-bottom-sheet-header {
+	padding: 16px;
+	border-bottom: 1px solid #e0e0e0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mat-bottom-sheet-title {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.mat-bottom-sheet-close {
+	background: none;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.mat-bottom-sheet-content {
+	padding: 16px;
+	max-height: 60vh;
+	overflow-y: auto;
+}
