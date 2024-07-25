@@ -37,13 +37,7 @@ export class MapLayerControl extends Control {
 		
 		// modal for filtering layers
 
-		// draghandle closing the bottom sheet
-		// ToDo make the grab work
-		const dragHandle = document.createElement("div")
-		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
-		dragHandle.innerHTML = `<img src="ui/pics/drag-b.svg" alt="Drag handle" />`;
-
-		dragHandle.addEventListener("mousedown", function() { console.log("triggered mousedown draghandle"); toggleModal() });
+		
 
 		const layerModal = document.createElement("div");
 		layerModal.id = "tx-layer-modal";
@@ -51,11 +45,21 @@ export class MapLayerControl extends Control {
 		layerModal.style.display = "none";
 		layerModal.classList.add("tx-layer-modal");
 		layerModal.isActive = false;
-		layerModal.appendChild(dragHandle);
-		layerModal.innerHTML +=`<h3>Kaartlagen aanpassen</h3>`; //TODO translate => use i18n
+		
+		const layerModalHeader = document.createElement("h3");
+		layerModalHeader.innerHTML = "Kaartlagen aanpassen"; //TODO translate => use i18n
 
-		
-		
+		// draghandle closing the bottom sheet
+		const dragHandle = document.createElement("div")
+		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
+		dragHandle.id = "drag-handle";
+		dragHandle.title = "drag";//;
+		dragHandle.innerHTML = `<img src="ui/pics/drag.svg" alt="Drag handle" />`;
+
+		//dragHandle.addEventListener("click", function() { console.log("triggered mousedown draghandle"); toggleModal() });
+		dragHandle.onmousedown = function() {
+			toggleModal();
+		};
 		
 		// create buttons for layer filters
 		const bridgeButton = document.createElement("button");
@@ -97,7 +101,9 @@ export class MapLayerControl extends Control {
 			toggleLayer(tunnelVector);
 			toggleButton(tunnelButton, "tunnels"); //TODO translate => use i18n
 		}
-				
+		
+		layerModal.appendChild(dragHandle);
+		layerModal.appendChild(layerModalHeader);
 		layerModal.appendChild(bridgeButton);
 		layerModal.appendChild(buildingButton);
 		layerModal.appendChild(railButton);
@@ -124,12 +130,14 @@ export class MapLayerControl extends Control {
 				layerModal.style.display = "none";
 				overlay.style.zIndex = "1";
 				layerModal.isActive = false;
+				layerModal.classList.remove("active");
 			}
 			else {
 				overlay.style.display = "block";
 				layerModal.style.display = "block";
 				overlay.style.zIndex = "200";
 				layerModal.isActive = true;
+				layerModal.classList.add("active");
 			}
 		}
 
