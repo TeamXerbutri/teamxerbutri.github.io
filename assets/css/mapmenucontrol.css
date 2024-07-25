@@ -1,4 +1,5 @@
 /*CSS for the MapMenuControl*/
+@import "mat/button.css";
 
 .tx-menu {
 	position: absolute;
@@ -18,32 +19,4 @@
 	background-color: rgba(255, 255, 255, .8);
 	border-radius: 4px;
 	padding: 2px;
-}
-
-#tx-menu-container a {
-	padding: 2px;
-	background-color: rgba(255, 255, 255, .8);
-	display: block;
-	color: #000;
-	text-decoration: none;
-	margin: 1px 1px 2px;
-}
-
-#tx-menu-container a:hover, #tx-menu-container a:active {
-	color: #000;
-	background-color: rgba(255, 255, 255, .8);
-}
-
-@media only screen and (min-width: 756px) and (min-height: 500px) {
-	#tx-menu-container {
-		background-color: rgba(255, 255, 255, .5);
-	}
-
-		#tx-menu-container a:hover, #tx-menu-container a:active {
-		background-color: rgba(0, 0, 0, .1);
-	}
-
-	.tx-menu button {
-		background-image: url("../images/menu-b.svg");
-	}
 }

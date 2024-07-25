@@ -1,4 +1,5 @@
 ﻿import {Control} from "ol/control";
+import {initRipple} from "./buttonripple.js";
 
 export class MapMenuControl extends Control {
 	constructor(opt_options) {
@@ -22,8 +23,8 @@ export class MapMenuControl extends Control {
 		
 		element.appendChild(button);
 
-		//overlay
-		const menuOverlay = document.getElementById("tx-menu-overlay");
+		// dismiss overlay
+		const menuOverlay = document.getElementById("tx-menu-dismiss");
 		menuOverlay.style.display = "none";
 
 		menuOverlay.addEventListener("click", function(event) {
@@ -37,18 +38,35 @@ export class MapMenuControl extends Control {
 		const menuModal = document.createElement("div");
 		menuModal.id = "tx-menu-modal";
 		menuModal.classList.add("tx-menu-modal");
-		menuModal.classList.add("tx-modal");
+		menuModal.classList.add("mat-bottom-sheet");
 		menuModal.style.display = "none";
 		menuModal.isActive = false;
-		menuModal.innerHTML = `<h3>Menu</h3>`; //TODO translate => use i18n
 		
+		//header
+		const modalHeader = document.createElement("h3");
+		modalHeader.innerHTML = "Menu"; //TODO translate => use i18n
+		
+		// drag handle closing the bottom sheet
+		const dragHandle = document.createElement("div")
+		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
+		dragHandle.id = "drag-handle";
+		dragHandle.title = "drag";//;
+		dragHandle.innerHTML = `<img src="ui/pics/drag.svg" alt="Drag handle" />`;
+
+		dragHandle.onmousedown = function() {
+			toggleModal();
+		};
 		
 		const menuContainer = document.createElement("div");
 		menuContainer.id = "tx-menu-container";
-		menuContainer.innerHTML = `<a href="../" title="Bezoek de webpagina van Team Xerbutri, met alle bezochte locaties">Naar de index-pagina van Team Xerbutri</a>`; //TODO translate => use i18n
+		menuContainer.innerHTML = `<a class="mat-button" href="../" title="Bezoek de webpagina van Team Xerbutri, met alle bezochte locaties">Naar de index-pagina van Team Xerbutri</a>`; //TODO translate => use i18n
 		
+		menuModal.appendChild(dragHandle);
+		menuModal.appendChild(modalHeader);
 		menuModal.appendChild(menuContainer);
 		menuOverlay.appendChild(menuModal);
+		
+		initRipple();
 
 		function toggleModal() {
 			if (menuModal.isActive) {

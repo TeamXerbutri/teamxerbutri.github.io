@@ -9,9 +9,7 @@ export class MapLayerControl extends Control {
 		const element = document.createElement("div");
 		element.id = "tx-layer";
 		element.className = "tx-layer ol-unselectable ol-control";
-		
-		
-		
+
 		// button for layer control
 		const button = document.createElement("button");
 		button.id = "tx-layer_button";
@@ -28,17 +26,12 @@ export class MapLayerControl extends Control {
 		const overlay = document.getElementById("tx-layer-dismiss");
 		overlay.style.display = "none";
 		overlay.addEventListener("click", function(event) {
-			console.log("triggered dismiss");
 			if (event.target === overlay) {
 				toggleModal()
 			}
 		});
 		
-		
 		// modal for filtering layers
-
-		
-
 		const layerModal = document.createElement("div");
 		layerModal.id = "tx-layer-modal";
 		layerModal.classList.add("mat-bottom-sheet");
@@ -55,8 +48,7 @@ export class MapLayerControl extends Control {
 		dragHandle.id = "drag-handle";
 		dragHandle.title = "drag";//;
 		dragHandle.innerHTML = `<img src="ui/pics/drag.svg" alt="Drag handle" />`;
-
-		//dragHandle.addEventListener("click", function() { console.log("triggered mousedown draghandle"); toggleModal() });
+		
 		dragHandle.onmousedown = function() {
 			toggleModal();
 		};
@@ -130,14 +122,12 @@ export class MapLayerControl extends Control {
 				layerModal.style.display = "none";
 				overlay.style.zIndex = "1";
 				layerModal.isActive = false;
-				layerModal.classList.remove("active");
 			}
 			else {
 				overlay.style.display = "block";
 				layerModal.style.display = "block";
 				overlay.style.zIndex = "200";
 				layerModal.isActive = true;
-				layerModal.classList.add("active");
 			}
 		}
 
