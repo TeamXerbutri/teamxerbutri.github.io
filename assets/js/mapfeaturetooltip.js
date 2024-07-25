@@ -67,7 +67,8 @@ export class MapFeatureTooltip {
 
 			if (viewportWidth < 756 || viewportHeight < 500) {
 				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
-			} else {
+			}
+			else {
 				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
 				if (featureTooltip.pinned)
 					featureTooltip.innerHTML += `<img class="tx-feature-tooltip-pinned" src="ui/pics/pin.svg" alt="pin" >`;
