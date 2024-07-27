@@ -9,7 +9,7 @@ export class MapLayerControl extends Control {
 		const element = document.createElement("div");
 		element.id = "tx-layer";
 		element.className = "tx-layer ol-unselectable ol-control";
-		
+
 		// button for layer control
 		const button = document.createElement("button");
 		button.id = "tx-layer_button";
@@ -22,8 +22,8 @@ export class MapLayerControl extends Control {
 				
 		element.appendChild(button);
 		
-		//overlay for layer modal
-		const overlay = document.getElementById("tx-layer-overlay");
+		// dismiss for layer modal
+		const overlay = document.getElementById("tx-layer-dismiss");
 		overlay.style.display = "none";
 		overlay.addEventListener("click", function(event) {
 			if (event.target === overlay) {
@@ -34,11 +34,24 @@ export class MapLayerControl extends Control {
 		// modal for filtering layers
 		const layerModal = document.createElement("div");
 		layerModal.id = "tx-layer-modal";
-		layerModal.classList.add("tx-modal");
+		layerModal.classList.add("mat-bottom-sheet");
 		layerModal.style.display = "none";
 		layerModal.classList.add("tx-layer-modal");
 		layerModal.isActive = false;
-		layerModal.innerHTML = `<h3>Kaartlagen aanpassen</h3>`; //TODO translate => use i18n
+		
+		const layerModalHeader = document.createElement("h3");
+		layerModalHeader.innerHTML = "Kaartlagen aanpassen"; //TODO translate => use i18n
+
+		// draghandle closing the bottom sheet
+		const dragHandle = document.createElement("div")
+		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
+		dragHandle.id = "drag-handle";
+		dragHandle.title = "drag";//;
+		dragHandle.innerHTML = `<img src="ui/pics/drag.svg" alt="Drag handle" />`;
+		
+		dragHandle.onmousedown = function() {
+			toggleModal();
+		};
 		
 		// create buttons for layer filters
 		const bridgeButton = document.createElement("button");
@@ -80,7 +93,9 @@ export class MapLayerControl extends Control {
 			toggleLayer(tunnelVector);
 			toggleButton(tunnelButton, "tunnels"); //TODO translate => use i18n
 		}
-				
+		
+		layerModal.appendChild(dragHandle);
+		layerModal.appendChild(layerModalHeader);
 		layerModal.appendChild(bridgeButton);
 		layerModal.appendChild(buildingButton);
 		layerModal.appendChild(railButton);

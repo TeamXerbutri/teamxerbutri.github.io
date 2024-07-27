@@ -16,7 +16,7 @@ import GeoJSON from "ol/format/GeoJSON";
 let map;
 export function initMap() {
 		
-	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-overlay" class="tx-overlay"></div> <div id="tx-layer-overlay" class="tx-overlay"></div></div>`;
+	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-dismiss" class="tx-dismiss"></div> <div id="tx-layer-dismiss" class="tx-dismiss"></div></div>`;
 
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;
@@ -93,7 +93,7 @@ export function initMap() {
 		})
 	});
 	
-	// map	
+	// map	// TODO later add new TopBarControl(), in the list below
 	map = new Map({
 		target: "txmap",
 		layers: [raster],
@@ -102,7 +102,7 @@ export function initMap() {
 			center: [6, 51.7],
 			zoom: 8
 		}),
-		controls: defaultControls().extend([new TopBarControl(), new ZoomSlider(), new MapMenuControl()])
+		controls: defaultControls().extend([new ZoomSlider(), new MapMenuControl()])
 	});
 
 	// vectors
@@ -185,5 +185,4 @@ export function initMap() {
 		.querySelector('meta[name="description"]')
 		.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
 	document.title = "Xerbutri Urban Exploring";
-	
 }

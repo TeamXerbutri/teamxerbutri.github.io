@@ -1,14 +1,14 @@
 ﻿import {Select} from "ol/interaction";
 import {click, pointerMove} from "ol/events/condition";
 
-export class MapFeatureTooltip {
+export class CmsFeatureTooltip {
 	constructor(map, styles) {
 
 		let featureTooltip = document.createElement("div");
 		featureTooltip.pinned = false;
-		featureTooltip.id = "tx-feature-tooltip";
-		featureTooltip.classList.add("tx-feature-tooltip");
-		document.getElementById("txmap").appendChild(featureTooltip);
+		featureTooltip.id = "cms-feature-tooltip";
+		featureTooltip.classList.add("cms-feature-tooltip");
+		document.getElementById("cmsmap").appendChild(featureTooltip);
 
 		const selectPointerMove = new Select({
 			condition: pointerMove,
@@ -49,9 +49,7 @@ export class MapFeatureTooltip {
 		function showFeature(event) {
 			const feature = event.element;
 			const name = feature.get("Name");
-			const description = feature.get("Description");
 			const route = feature.get("Route");
-			const category = feature.get("Category");
 
 			let coordinates;
 			if (feature.getGeometry().getType() === "Point")
@@ -64,15 +62,10 @@ export class MapFeatureTooltip {
 
 			const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-
-			if (viewportWidth < 756 || viewportHeight < 500) {
-				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
-			}
-			else {
-				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="tx-feature-tooltip_img" src="data/${category}/${route}/${route}.jpg" alt="${description}" > <h2 class="tx-feature-tooltip_h2">${name}</h2></a>`;
-				if (featureTooltip.pinned)
-					featureTooltip.innerHTML += `<img class="tx-feature-tooltip-pinned" src="ui/pics/pin.svg" alt="pin" >`;
-
+			
+			featureTooltip.innerHTML = `<h2 class="cms-feature-tooltip_h2">${route} - ${name}</h2>`;
+			if (viewportWidth > 756 || viewportHeight > 500) {
+								
 				// width large = 310px
 				if (viewportWidth - pixel[0] < 310)
 					featureTooltip.style.left = pixel[0] - 310 + "px";
