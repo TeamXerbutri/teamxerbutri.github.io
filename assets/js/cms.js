@@ -112,11 +112,11 @@ export function initCms() {
 	
 	// top bar
 	const topbar = document.createElement("div");
-	topbar.id = "tx-top-bar";
+	topbar.id = "tx-cms-top-bar";
 	topbar.className = "tx-top-bar ol-unselectable ol-control";
 	topbar.innerHTML = `<input type="text" value="" id="tx-mouse-position"><button id="tx-copy-button" onclick="copyText()">Copy</button>`;
 
-	map.addEventListener("click", function(event) {
+	map.addEventListener("click", function() {
 		const element = document.getElementById("tx-mouse-position");
 		element.value = document.getElementsByClassName("custom-mouse-position")[0].innerHTML;
 		copyText();
