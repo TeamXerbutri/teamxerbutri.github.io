@@ -42,6 +42,12 @@ header .blogmenu a, #sharepanel a {
 	float: right;
 }
 
+#omap{
+	width: 100%;
+	height: 260px;
+	background-color: #fff;
+	color: #000;
+}
 
 .authordate {
 	font-style: italic;
@@ -71,6 +77,10 @@ aside {
 	margin: 4px;
 	padding-left: 8px;
 	padding-right: 8px;
+}
+
+aside ul {
+	padding-inline-start: 8px;
 }
 
 aside li {
@@ -425,7 +435,7 @@ div.mobile {
 
 	figure.articleimage {
 		width: 100%;
-		height: 250px;
+		height: 260px;
 		overflow: hidden;
 		margin-left: 0;
 	}

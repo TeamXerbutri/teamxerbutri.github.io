@@ -1,4 +1,5 @@
 ﻿import {uiState} from "./uistate.js";
+import Map from "ol/Map";
 import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem} from "./header.js";
 import txLogo from "../images/tx.gif"
 import Translator from "./translator.js";
@@ -6,6 +7,16 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import "photoswipe/style.css";
 import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
+import {useGeographic} from "ol/proj";
+import {Icon, Stroke, Style} from "ol/style";
+import {Tile as TileLayer} from "ol/layer";
+import OSM from "ol/source/OSM";
+import View from "ol/View";
+import {Vector as VectorLayer} from "ol/layer.js";
+import VectorSource from "ol/source/Vector.js";
+import GeoJSON from "ol/format/GeoJSON.js";
+
+
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -23,6 +34,99 @@ function countProperties(obj) {
 
 	return count;
 }
+let omap;
+function loadFactsMap(route) {
+		
+	useGeographic();
+
+	// the styles
+	const styles = {
+		"bridge": new Style({
+			image: new Icon({
+				opacity: 0.9,
+				scale: 0.9,
+				size: [52, 52],
+				src: "ui/pics/bridgemarker.png",
+			}),
+		}),
+		"tunnel": new Style({
+			image: new Icon({
+				opacity: 0.9,
+				scale: 0.9,
+				size: [52, 52],
+				src: "ui/pics/tunnelmarker.png",
+			}),
+		}),
+		"building": new Style({
+			image: new Icon({
+				opacity: 0.9,
+				scale: 0.9,
+				size: [52, 52],
+				src: "ui/pics/buildingmarker.png",
+			}),
+		}),
+		"redLine": new Style({
+			stroke: new Stroke({
+				width: 7, color: "rgba(255, 0, 0, 1)",
+			}),
+			zIndex: 2,
+		}),
+		"whiteDash": new Style({
+			stroke: new Stroke({
+				width: 5, color: "rgba(255, 255, 255, 1)",
+				lineDash: [16, 28]
+			}),
+			zIndex: 3
+		}),
+	}
+	styles["rail"] = [styles["redLine"], styles["whiteDash"]];
+
+	// raster (the base map or background)
+
+	const raster = new TileLayer({
+		source: new OSM({
+			projection: "EPSG:4326"
+		})
+	});
+
+	const view = new View({
+		projection: "EPSG:3857",
+		center: [6, 51.7],
+		zoom: 8
+	});
+	// map
+	omap = new Map({
+		target: "omap",
+		layers: [raster],
+		view: view
+	});
+
+	const railVector = new VectorLayer({
+		source: new VectorSource({
+			url: "../data/geo-spoor.json",
+			format: new GeoJSON(),
+		}),
+		style: function (feature) {
+			return styles[feature.get("type")];
+		}
+	});
+	
+	// TODO for now: heavy lifting in the browser by filtering on the huge geo-spoor object. In future, take the layer source by creating geo-json geometries for each route
+	railVector.getSource().on("featuresloadend", function (event) {
+		event.features.forEach(function (feature) {
+			
+			if(feature.get("Route") === route) {
+				feature.set("type", "rail");
+				let center = feature.getGeometry().getCoordinateAt(0.5);
+				view.centerOn(center, omap.getSize(), [omap.getSize()[0] / 2, omap.getSize()[1] / 2]);
+				view.fit(feature.getGeometry(), {padding: [50, 50, 50, 50]});
+			}
+		});
+	});
+
+	omap.addLayer(railVector);
+}
+
 
 //TODO need to translate FFF to JS
 // 	<script src="../data/{{@categorie}}/{{@map}}/items.js"></script>
@@ -149,7 +253,6 @@ export function initBlog() {
 		translator.getBlogDataById(routeId).then(
 			(value) => {
 				
-				
 				translator.fetchBlogLanguageContent(value, routeId).then(
 					(blogContent) => {
 						document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
@@ -193,7 +296,8 @@ export function initBlog() {
 						
 						//aside
 						if (countProperties(blogFacts.facts) > 0) {
-							document.getElementById("article-aside").innerHTML += `<ul>`;
+							let ul = document.createElement("ul");
+							
 							Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
 								if (value === "") {
 									return;
@@ -208,25 +312,25 @@ export function initBlog() {
 									case "height":
 									case "line":
 										const translation = translator.translate(`facts.${key}`);
-										document.getElementById("article-aside").innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
+										ul.innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
 										break;
 									case "visited":
 										const translationVis = translator.translate(`facts.${key}`);
-										document.getElementById("article-aside").innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0,4)}</span> </li>`;
+										ul.innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0,4)}</span> </li>`;
 										break;
 									case "rating":
 										const ratingKey = translator.translate("facts.rating");
-										document.getElementById("article-aside").innerHTML += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
+										ul.innerHTML += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
 										break;
 									case "map":
 										let mapKey = translator.translate("facts.map");
-										document.getElementById("article-aside").innerHTML += `<li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+										ul.innerHTML += `</br><li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
 										break;
 									default:
 										break;
 								}
 							});
-							document.getElementById("article-aside").innerHTML += `</ul>`;
+							document.getElementById("article-aside").appendChild(ul);
 						}
 						if (countProperties(blogFacts.facts) <= 0) {
 							document.getElementById("article-aside").style.display = "none";
@@ -247,6 +351,10 @@ export function initBlog() {
 								sourceList += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
 							});
 							document.getElementById("article-sources").innerHTML += `<ol>${sourceList}</ol>`;
+						}
+						
+						if (document.getElementById("omap")) {
+							loadFactsMap(routeId);
 						}
 					},
 				).catch((error) => {
@@ -282,8 +390,6 @@ export function initBlog() {
 					 // if there are captions
 					 translator.fetchBlogCaptions(value, routeId).then(
 						 (captions) =>{
-							 console.log("Has captions")
-							 
 							 let galleryCaptions = createGalleryWithCaptions(items, captions.captions, value, routeId, gallery);
 							 gallerySection.appendChild(galleryCaptions);
 
@@ -331,7 +437,7 @@ export function initBlog() {
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
 		});
-				
+		
 		//TODO set a correct translated description
 		document
 			.querySelector('meta[name="description"]')
