@@ -40,7 +40,7 @@
 		}
 	},
 	"back": {
-		"link" : "X",
+		"link" : "<",
 		"title": "Terug naar overzicht"
 	},
 	"month": {

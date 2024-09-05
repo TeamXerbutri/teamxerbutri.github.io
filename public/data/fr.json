@@ -40,7 +40,7 @@
 		}
 	},
 	"back": {
-		"link" : "X",
+		"link" : "<",
 		"title": "Retour à la page d'accueil"
 	},
 	"month": {

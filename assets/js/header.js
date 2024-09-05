@@ -21,10 +21,10 @@ function hideMenuItem(elementId, evt) {
 function showBackToTop() {
 	let bt = document.getElementById("back-to-top");
 	bt.style.display = "inline";
-	window.setTimeout(setBacktoTopTrue, 1000);
+	window.setTimeout(setBackToTopTrue, 1000);
 }
 
-function setBacktoTopTrue() {
+function setBackToTopTrue() {
 	uiState.hasBackToTop = true;
 }
 

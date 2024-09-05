@@ -49,7 +49,7 @@ function createGalleryWithCaptions(items, captions, category, routeId, gallery){
 			let captionDiv = document.createElement("div");
 			captionDiv.classList.add("pswp-caption-content");
 
-			captionDiv.innerText = captions[item.name];
+			captionDiv.innerText = decodeHtml(captions[item.name]);
 			itemDiv.appendChild(captionDiv);
 		}
 		gallery.appendChild(itemDiv);
@@ -57,5 +57,10 @@ function createGalleryWithCaptions(items, captions, category, routeId, gallery){
 	return gallery;
 }
 
+function decodeHtml(html) {
+	let txt = document.createElement("textarea");
+	txt.innerHTML = html;
+	return txt.value;
+}
 
 export { createGallery, createGalleryWithCaptions };

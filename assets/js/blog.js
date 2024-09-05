@@ -12,9 +12,9 @@ import {Icon, Stroke, Style} from "ol/style";
 import {Tile as TileLayer} from "ol/layer";
 import OSM from "ol/source/OSM";
 import View from "ol/View";
-import {Vector as VectorLayer} from "ol/layer.js";
-import VectorSource from "ol/source/Vector.js";
-import GeoJSON from "ol/format/GeoJSON.js";
+import {Vector as VectorLayer} from "ol/layer";
+import VectorSource from "ol/source/Vector";
+import GeoJSON from "ol/format/GeoJSON";
 
 
 
@@ -34,6 +34,7 @@ function countProperties(obj) {
 
 	return count;
 }
+
 let omap;
 function loadFactsMap(route) {
 		
@@ -212,8 +213,9 @@ export function initBlog() {
 	}
 	
 	// init header
-	const header = `<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
-		<h1 class="logo">Team Xerbutri</h1>
+	const header = `
+		<a class="overview" href="../" data-i18n="back.title"><div class="topbar-icon" data-i18n="back.link"><</div></a>
+		<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
 		<div id="sharepanel">
 			<a href="" target="_blank" id="sharefb">Facebook</a>
 			<a href="" target="_blank" id="sharewa">Whatsapp</a>
@@ -225,7 +227,7 @@ export function initBlog() {
 			<a id="contact" data-i18n="contact.link">Contact</a>
 			<a id="privacy" data-i18n="privacy.link">Privacy</a>
 		</div>
-		<a class="overview" href="../" data-i18n="back.link">X</a>
+		
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
 		</div>

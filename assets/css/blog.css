@@ -8,6 +8,10 @@ header .blogmenu a, #sharepanel a {
 	border-bottom: 1px solid #000;
 }
 
+header {
+	height: 64px;
+}
+
 .blogmenu {
 	background-image: url(../images/menu.png);
 	display: inline-block;
@@ -30,16 +34,16 @@ header .blogmenu a, #sharepanel a {
 }
 
 .overview {
-	color: #909090;
+	color: #fff;
 	text-decoration: none;
-	margin-top: 3px;
-	margin-right: 5px;
-	height: 33px;
+	margin-right: 16px;
+	margin-left: 16px;
+	vertical-align: middle;
 	background-color: #000;
-	padding: 11px 13px 0 13px;
-	min-width: 20px;
-	text-align: center;
-	float: right;
+	padding: 0 10px 2px 10px;
+	font-weight: 1000;
+	font-family: Georgia, serif;
+	font-size: 40px;
 }
 
 #omap{
