@@ -101,3 +101,124 @@
 		background-image: url("../images/layers-b.svg");
 	}
 }
+
+
+/*top-bar*/
+
+header .blogmenu a, #sharepanel a {
+	display: none;
+	color: #f2f7fa;
+	text-decoration: none;
+	width: 100px;
+	background-color: #242424;
+	padding: 13px 8px 13px 8px;
+	border-bottom: 1px solid #000;
+}
+
+.blogmenu a:hover, #sharepanel a:hover {
+	background-color: #330000;
+	color: #fff;
+}
+
+#topbar {
+	height: 64px;
+}
+
+header.blog {
+	height: 112px;
+}
+
+.nav-home {
+	display: inline-block;
+	position: absolute;
+	right: 112px;
+	margin-top: 8px;
+	border-radius: 24px;
+}
+
+.nav-home:hover {
+	background-color: #330000;
+}
+
+.blogmenu {
+	background-image: url(../images/dotmenu.svg);
+	background-repeat: no-repeat;
+	display: inline-block;
+	position: absolute;
+	right: 4px;
+	margin-top: 8px;
+	overflow: visible;
+	cursor: pointer;
+	border-radius: 24px;
+}
+
+
+.blogmenu:hover {
+	background-image: url(../images/dotmenu-hover.svg);
+	background-repeat: no-repeat;
+	background-color: #330000;
+}
+
+#sharepanel {
+	background-image: url(../images/share.svg);
+	display: inline-block;
+	background-color: #000;
+	position: absolute;
+	right: 56px;
+	overflow: visible;
+	cursor: pointer;
+	vertical-align: middle;
+	border-radius: 24px;
+	margin-top: 8px;
+}
+
+#sharepanel:hover {
+	background-image: url(../images/share-hover.svg);
+	background-color: #330000;
+}
+
+.overview {
+	color: #f2f7fa;
+	text-decoration: none;
+	margin-top: 8px;
+	margin-left: 4px;
+	display: inline-block;
+	background-color: #000;
+	padding: 9px 15px 11px 15px;
+	font-weight: 1000;
+	font-family: Georgia, serif;
+	font-size: 25px;
+	border-radius: 24px;
+}
+
+.overview:hover {
+	color: #fff;
+	background-color: #330000;
+}
+
+.header-scroll {
+	background-image: url(../images/bgweb.jpg);
+	background-repeat: repeat-x;
+	background: #000;
+	background-image: linear-gradient(rgba(0, 0, 0, .95), rgba(0, 0, 0, .4)), url(../images/bgweb.jpg);
+}
+
+
+#article-title{
+	display: inline-block;
+}
+
+#article-title h1 {
+	margin-left: 4px;
+	margin-top: 0;
+	color: #fff;
+	font-size: 2em;
+}
+
+#contact {
+	cursor: pointer;
+}
+
+#privacy {
+	cursor: pointer;
+}

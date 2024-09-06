@@ -177,8 +177,8 @@ function hideShare() {
 			const element = shareitems[i];
 			element.style.display = "none"
 		}
-		share.style.width = "44px";
-		share.style.height = "44px";
+		share.style.width = "48px";
+		share.style.height = "48px";
 		uiState.hasShareModal = false
 	}
 }
@@ -189,7 +189,6 @@ export function initBlog() {
 
 	document.querySelector("#app").innerHTML = `
 		<article id="blog">
-		<div id="article-title"></div>
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
 		<aside id="article-aside"></aside>
@@ -214,8 +213,9 @@ export function initBlog() {
 	
 	// init header
 	const header = `
-		<a class="overview" href="../" data-i18n="back.title"><div class="topbar-icon" data-i18n="back.link"><</div></a>
-		<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
+		<div id="topbar">
+		<a class="overview" href="../" data-i18n="back.link"><</a>
+		<a class="nav-home" href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
 		<div id="sharepanel">
 			<a href="" target="_blank" id="sharefb">Facebook</a>
 			<a href="" target="_blank" id="sharewa">Whatsapp</a>
@@ -233,7 +233,10 @@ export function initBlog() {
 		</div>
 		<div id="privacypanel">
 			<p data-i18n="privacy.content">Privacy</p>
-		</div>`
+		</div>
+		</div>
+		<div id="article-title"></div>
+		`
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("home")) {
 		headerElem.classList.remove("home");
@@ -467,6 +470,10 @@ export function initBlog() {
 			showBackToTop();
 		} else {
 			hideBackToTop();
+			headerElem.classList.remove("header-scroll");
+		}
+		if (window.scrollY >= 1) {
+			headerElem.classList.add("header-scroll");
 		}
 	}
 }
