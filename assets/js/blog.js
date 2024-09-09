@@ -214,7 +214,7 @@ export function initBlog() {
 	// init header
 	const header = `
 		<div id="topbar">
-		<a class="overview" href="../" data-i18n="back.link"><</a>
+		<a class="nav-back" href="../" data-i18n="back.link"><</a>
 		<a class="nav-home" href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
 		<div id="sharepanel">
 			<a href="" target="_blank" id="sharefb">Facebook</a>
@@ -408,8 +408,8 @@ export function initBlog() {
 							 const lightbox = new PhotoSwipeLightbox({
 								 gallery: "#gallery--responsive-images",
 								 children: ".pswp-gallery__item",
-								 bgOpacity: 0.95,
-								 // optionaly adjust viewport
+								 bgOpacity: 1,
+								 // optionally adjust viewport
 								 paddingFn: (viewportSize) => {
 									 return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
 								 },
@@ -427,7 +427,7 @@ export function initBlog() {
 						 const lightbox = new PhotoSwipeLightbox({
 							 gallery: "#gallery--responsive-images",
 							 children: "a",
-							 bgOpacity: 0.90,
+							 bgOpacity: 1,
 							 pswpModule: () => import("photoswipe")
 						 });
 						 let galleryPswp = createGallery(items, value, routeId, gallery);

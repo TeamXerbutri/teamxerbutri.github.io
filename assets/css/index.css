@@ -11,6 +11,11 @@ img#tx {
 	padding-left: 4px;
 }
 
+img#tx:hover {
+	opacity: 1;
+	transform: scale(1.05);
+}
+
 /* -header- */
 header {
 	width: 100%;
@@ -73,6 +78,28 @@ h1.logo {
 	box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.22);
 }
 
+#contactpanel, #privacypanel {
+	display: none;
+	border-style: solid;
+	width: 180px;
+	position: absolute;
+	right: 0;
+	top: 52px;
+	color: #fff;
+	border-color: #242424;
+	border-width: 4px;
+	background-color: #303030;
+	font-size: .85em;
+	margin-top: 2px;
+	margin-right: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+#contactpanel p span {
+	display: none;
+}
+
 /* Mobile */
 @media only screen and (max-width: 756px) {
 	body {
@@ -114,29 +141,7 @@ h1.logo {
 		margin: 0;
 		width: 60px;
 	}
-
-	#contactpanel, #privacypanel {
-		display: none;
-		border-style: solid;
-		width: 180px;
-		position: absolute;
-		right: 0;
-		top: 52px;
-		color: #fff;
-		border-color: #242424;
-		border-width: 4px;
-		background-color: #303030;
-		font-size: .85em;
-		margin-top: 2px;
-		margin-right: 4px;
-		padding-left: 8px;
-		padding-right: 8px;
-	}
-
-	#contactpanel p span {
-		display: none;
-	}
-
+	
 	#oi {
 		padding-top: 50px;
 		color: #fff;
@@ -191,28 +196,7 @@ h1.logo {
 		height: 50px;
 		overflow: hidden;
 	}
-
-	#contactpanel, #privacypanel {
-		display: none;
-		border-style: solid;
-		width: 180px;
-		position: absolute;
-		right: 0;
-		color: #fff;
-		border-color: #242424;
-		border-width: 4px;
-		background-color: #303030;
-		font-size: 0.85em;
-		margin-top: 2px;
-		margin-right: 4px;
-		padding-left: 8px;
-		padding-right: 8px;
-	}
-
-	#contactpanel p span {
-		display: none;
-	}
-
+	
 	/*icons*/
 	#oi {
 		padding-top: 50px;
