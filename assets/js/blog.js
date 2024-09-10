@@ -395,7 +395,7 @@ export function initBlog() {
 					 // if there are captions
 					 translator.fetchBlogCaptions(value, routeId).then(
 						 (captions) =>{
-							 let galleryCaptions = createGalleryWithCaptions(items, captions.captions, value, routeId, gallery);
+							 let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
 							 gallerySection.appendChild(galleryCaptions);
 
 							 const smallScreenPadding = {
