@@ -21,22 +21,24 @@ header.blog {
 
 .nav-back {
 	text-decoration: none;
-	margin-top: 8px;
 	margin-left: 4px;
 	display: inline-block;
 	padding: 9px 15px 11px 15px;
 	font-weight: 1000;
 	font-family: Georgia, serif;
 	font-size: 25px;
-	border-radius: 24px;
 }
 
 .nav-home {
 	display: inline-block;
+	height: 48px;
+	width: 48px;
 	position: absolute;
 	right: 112px;
-	margin-top: 8px;
-	border-radius: 24px;
+}
+
+.nav-home .tx-icon {
+	padding-top: 12px;
 }
 
 .share{
@@ -45,14 +47,9 @@ header.blog {
 }
 
 .share-btn {
-	background-image: url(../images/share.svg);
-	background-repeat: no-repeat;
 	z-index: 2;
 }
 
-.share-btn:hover {
-	background-image: url(../images/share-hover.svg);
-}
 
 .share-content {
 	display: none;
@@ -72,16 +69,6 @@ header.blog {
 	right: 4px;
 }
 
-.menu-blog-btn {
-	
-	background-image: url(../images/dotmenu.svg);
-	background-repeat: no-repeat;
-}
-
-.menu-blog-btn:hover {
-	background-image: url(../images/dotmenu-hover.svg);
-}
-
 .menu-blog-content {
 	display: none;
 	position: absolute;
@@ -97,7 +84,6 @@ header.blog {
 }
 
 .menu-blog:hover .menu-blog-btn{
-	background-image: url(../images/dotmenu-hover.svg);
 	margin-left: 64px;
 }
 
@@ -272,58 +258,6 @@ div.mobile {
 	display: none;
 }
 
-.pswp__dynamic-caption {
-	color: #fff;
-	position: absolute;
-	width: 100%;
-	left: 0;
-	top: 0;
-	transition: opacity 120ms linear !important; /* override default */
-}
-
-.pswp-caption-content {
-	display: none;
-}
-
-.pswp__dynamic-caption a {
-	color: #fff;
-}
-
-.pswp__dynamic-caption--faded {
-	opacity: 0 !important;
-}
-
-.pswp__dynamic-caption--aside {
-	width: auto;
-	max-width: 300px;
-	padding: 20px 15px 20px 20px;
-	margin-top: 70px;
-}
-
-.pswp__dynamic-caption--below {
-	width: auto;
-	max-width: 700px;
-	padding: 15px 0 0;
-}
-
-.pswp__dynamic-caption--on-hor-edge {
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-.pswp__dynamic-caption--mobile {
-	width: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	padding: 10px 15px;
-
-	right: 0;
-	bottom: 0;
-
-	/* override styles that were set via JS.
-	  as they interfere with size measurement */
-	top: auto !important;
-	left: 0 !important;
-}
 
 /*CSS file for the Avontuur design (Tablets and up)*/
 @media only screen and (min-width: 756px) {

@@ -81,7 +81,13 @@
 	},
 	"gallery": {
 		"title": "Galerie",
-		"description": "Cliquez sur l'image pour accéder à la galerie"
+		"description": "Cliquez sur l'image pour accéder à la galerie",
+		"back": "Retour à l'article",
+		"next": "Image suivante",
+		"prev": "Image précédente",
+		"zoom": "Zoomer",
+		"fullscreen": "Plein écran",
+		"error": "Erreur lors du chargement de l'image"
 	},
 	"category": {
 		"spoor": "Chemins de fers",

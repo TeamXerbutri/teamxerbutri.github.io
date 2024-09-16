@@ -81,7 +81,13 @@
 	},
 	"gallery": {
 		"title": "Gallery",
-		"description": "Click the picture to go to the gallery"
+		"description": "Click the picture to go to the gallery",
+		"back": "Back to the article",
+		"next": "Next picture",
+		"prev": "Previous picture",
+		"zoom": "Zoom the picture",
+		"fullscreen": "Full screen",
+		"error": "Error loading the picture"
 	},
 	"category": {
 		"spoor": "Railtracking",

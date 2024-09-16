@@ -81,7 +81,13 @@
 	},
 	"gallery": {
 		"title": "Galerij",
-		"description": "Klik op de foto om naar de galerij te gaan"
+		"description": "Klik op de foto om naar de galerij te gaan",
+		"back": "Terug naar artikel",
+		"next": "Volgende foto",
+		"prev": "Vorige foto",
+		"zoom": "Zoom in",
+		"fullscreen": "Volledig scherm",
+		"error": "De foto kan niet worden geladen"
 	},
 	"category": {
 		"spoor": "Spoorlijnen",
