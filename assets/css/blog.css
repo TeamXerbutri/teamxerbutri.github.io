@@ -19,18 +19,11 @@ header.blog {
 	font-size: 2em;
 }
 
-.blogmenu a:hover, #sharepanel a:hover {
-	background-color: #330000;
-	color: #fff;
-}
-
 .nav-back {
-	color: #f2f7fa;
 	text-decoration: none;
 	margin-top: 8px;
 	margin-left: 4px;
 	display: inline-block;
-	background-color: #000;
 	padding: 9px 15px 11px 15px;
 	font-weight: 1000;
 	font-family: Georgia, serif;
@@ -38,71 +31,82 @@ header.blog {
 	border-radius: 24px;
 }
 
-.nav-back:hover {
-	color: #fff;
-	background-color: #330000;
-}
-
 .nav-home {
 	display: inline-block;
 	position: absolute;
-	background-color: #000;
 	right: 112px;
 	margin-top: 8px;
 	border-radius: 24px;
 }
 
-.nav-home:hover {
-	background-color: #330000;
+.share{
+	right: 56px;
+	z-index: 1;
 }
 
-.blogmenu {
+.share-btn {
+	background-image: url(../images/share.svg);
+	background-repeat: no-repeat;
+	z-index: 2;
+}
+
+.share-btn:hover {
+	background-image: url(../images/share-hover.svg);
+}
+
+.share-content {
+	display: none;
+	position: absolute;
+	z-index: 1;
+}
+
+.share:hover .share-content{
+	display: block;
+}
+
+.share:focus .share-content{
+	display: block;
+}
+
+.menu-blog{
+	right: 4px;
+}
+
+.menu-blog-btn {
+	
 	background-image: url(../images/dotmenu.svg);
 	background-repeat: no-repeat;
-	display: inline-block;
-	position: absolute;
-	right: 4px;
-	margin-top: 8px;
-	overflow: visible;
-	cursor: pointer;
-	border-radius: 24px;
-	background-color: #000;
-	transition: background-color 0.4s;
 }
 
-.blogmenu:hover {
+.menu-blog-btn:hover {
 	background-image: url(../images/dotmenu-hover.svg);
-	background-repeat: no-repeat;
-	background-color: #330000;
 }
 
-#sharepanel {
-	background-image: url(../images/share.svg);
-	display: inline-block;
-	background-color: #000;
-	transition: background-color 0.4s;
-	position: absolute;
-	right: 56px;
-	overflow: visible;
-	cursor: pointer;
-	vertical-align: middle;
-	border-radius: 24px;
-	margin-top: 8px;
-}
-
-#sharepanel:hover {
-	background-image: url(../images/share-hover.svg);
-	background-color: #330000;
-}
-
-header .blogmenu a, #sharepanel a {
+.menu-blog-content {
 	display: none;
-	color: #f2f7fa;
-	text-decoration: none;
-	width: 100px;
-	background-color: #242424;
-	padding: 13px 8px 13px 8px;
-	border-bottom: 1px solid #000;
+	position: absolute;
+	z-index: 1;
+}
+
+.menu-blog:hover .menu-blog-content{
+	display: block;
+}
+
+.menu-blog:hover{
+	width: 112px;
+}
+
+.menu-blog:hover .menu-blog-btn{
+	background-image: url(../images/dotmenu-hover.svg);
+	margin-left: 64px;
+}
+
+.menu-blog:focus .menu-blog-content{
+	display: block;
+}
+
+.menu-blog:focus{
+	width: 112px;
 }
 
 .header-scroll {

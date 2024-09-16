@@ -16,8 +16,6 @@ import {Vector as VectorLayer} from "ol/layer";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 
-
-
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
 uiState.hasPrivacyModal = false;
@@ -33,6 +31,23 @@ function countProperties(obj) {
 	}
 
 	return count;
+}
+
+function showItem(elementId) {
+	document.addEventListener("click", function (evt) {
+		hideItem(elementId, evt)
+	});
+	document.getElementById(elementId).style.display = "block";
+}
+
+function hideItem(elementId, evt) {
+	let element = document.getElementById(elementId);
+	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu-blog") {
+		document.removeEventListener("click", function (evt) {
+			hideItem(elementId, evt)
+		});
+		element.style.display = "none";
+	}
 }
 
 let omap;
@@ -153,35 +168,6 @@ function setShare() {
 	waElem.href = wauri;
 }
 
-function showShare() {
-	let share = document.getElementById("sharepanel");
-	let shareitems = share.getElementsByTagName("a");
-	for (let i = 0; i < shareitems.length; i += 1) {
-		const element = shareitems[i];
-		element.style.display = "block"
-	}
-	share.style.width = "116px";
-	share.style.height = "91px";
-	window.setTimeout(setShareActive, 1000)
-}
-
-function setShareActive() {
-	uiState.hasShareModal = true
-}
-
-function hideShare() {
-	if (uiState.hasShareModal) {
-		const share = document.getElementById("sharepanel");
-		const shareitems = share.getElementsByTagName("a");
-		for (let i = 0; i < shareitems.length; i += 1) {
-			const element = shareitems[i];
-			element.style.display = "none"
-		}
-		share.style.width = "48px";
-		share.style.height = "48px";
-		uiState.hasShareModal = false
-	}
-}
 
 export function initBlog() {
 	let translator = new Translator();
@@ -214,18 +200,24 @@ export function initBlog() {
 	// init header
 	const header = `
 		<div id="topbar">
-		<a class="nav-back" href="../" data-i18n="back.link"><</a>
-		<a class="nav-home" href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
-		<div id="sharepanel">
-			<a href="" target="_blank" id="sharefb">Facebook</a>
-			<a href="" target="_blank" id="sharewa">Whatsapp</a>
+		<a class="nav-back top-nav" href="../" data-i18n="back.link"><</a>
+		<a class="nav-home top-nav" href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
+		<div class="share dropdown">
+			<button class="drop-btn top-nav share-btn" data-i18n="share"></button>
+			<div class="share-content mat-menu">
+				<a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a>
+				<a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a>
+			</div>
 		</div>
-		<div class="blogmenu" id="menu">
-			<a href="../map" data-i18n="maps.link">Maps</a>
-			<a href="../avontuur/txatx" data-i18n="abouttx.link">Over TX</a>
-			<a href="../avontuur/txaue" data-i18n="aboutue.link">Over UE</a>
-			<a id="contact" data-i18n="contact.link">Contact</a>
-			<a id="privacy" data-i18n="privacy.link">Privacy</a>
+		<div class="menu-blog dropdown">
+			<button class="drop-btn top-nav menu-blog-btn" data-i18n="menu"></button>
+			<div class="menu-blog-content mat-menu" id="menu-blog">
+				<a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a>
+				<a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a>
+				<a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a>
+				<a id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</a>
+				<a id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</a>
+			</div>
 		</div>
 		
 		<div id="contactpanel">
@@ -399,17 +391,17 @@ export function initBlog() {
 							 gallerySection.appendChild(galleryCaptions);
 
 							 const smallScreenPadding = {
-								 top: 0, bottom: 0, left: 0, right: 0
+								 top: 64, bottom: 0, left: 0, right: 0
 							 };
 							 const largeScreenPadding = {
-								 top: 30, bottom: 30, left: 0, right: 0
+								 top: 64, bottom: 0, left: 52, right: 52
 							 };
 														 
 							 const lightbox = new PhotoSwipeLightbox({
 								 gallery: "#gallery--responsive-images",
 								 children: ".pswp-gallery__item",
 								 bgOpacity: 1,
-								 // optionally adjust viewport
+								 // adjust viewport for design
 								 paddingFn: (viewportSize) => {
 									 return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
 								 },
@@ -424,10 +416,19 @@ export function initBlog() {
 							 lightbox.init();
 						 }).catch(() => {
 							 // no captions. Create gallery without captions
+						 const smallScreenPadding = {
+							 top: 64, bottom: 0, left: 0, right: 0
+						 };
+						 const largeScreenPadding = {
+							 top: 64, bottom: 0, left: 52, right: 52
+						 };
 						 const lightbox = new PhotoSwipeLightbox({
 							 gallery: "#gallery--responsive-images",
 							 children: "a",
 							 bgOpacity: 1,
+							 paddingFn: (viewportSize) => {
+								 return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+							 },
 							 pswpModule: () => import("photoswipe")
 						 });
 						 let galleryPswp = createGallery(items, value, routeId, gallery);
@@ -451,18 +452,12 @@ export function initBlog() {
 	}
 
 	setShare();
-	hideMenu();
-	hideShare();
 	hideBackToTop();
-	document.addEventListener("click", hideMenu);
-	document.addEventListener("click", hideShare);
-	document.getElementById("menu").addEventListener("click", showMenu);
-	document.getElementById("sharepanel").addEventListener("click", showShare);
 	document.getElementById("contact").addEventListener("click", function () {
-		showMenuItem("contactpanel")
+		showItem("contactpanel")
 	});
 	document.getElementById("privacy").addEventListener("click", function () {
-		showMenuItem("privacypanel")
+		showItem("privacypanel")
 	});
 
 	window.onscroll = function (ev) {

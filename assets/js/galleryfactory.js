@@ -1,4 +1,4 @@
-﻿function createLink(item, category, routeId, gallery) {
+﻿function createLink(item, category, routeId) {
 	let link = document.createElement("a");
 
 	// largest size
@@ -31,7 +31,7 @@
 
 function createGallery(items, category, routeId, gallery){
 	items.forEach((item) => {
-		const link = createLink(item, category, routeId, gallery);
+		const link = createLink(item, category, routeId);
 		gallery.appendChild(link);
 	});
 	return gallery;
@@ -42,14 +42,15 @@ function createGalleryWithCaptions(items, captions, category, routeId, gallery){
 		let itemDiv = document.createElement("div");
 		itemDiv.classList.add("pswp-gallery__item");
 		
-		const link = createLink(item, category, routeId, gallery);
+		const link = createLink(item, category, routeId);
 		itemDiv.appendChild(link);
 		
 		if(captions[item.name]) {
 			let captionDiv = document.createElement("div");
 			captionDiv.classList.add("pswp-caption-content");
-
-			captionDiv.innerText = decodeHtml(captions[item.name]);
+			const caption = decodeHtml(captions[item.name]);
+			link.title = caption
+			captionDiv.innerText = caption;
 			itemDiv.appendChild(captionDiv);
 		}
 		gallery.appendChild(itemDiv);
