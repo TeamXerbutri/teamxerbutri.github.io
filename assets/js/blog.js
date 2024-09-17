@@ -17,7 +17,7 @@ import {Vector as VectorLayer} from "ol/layer";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {dotsMenu, leftArrow, share, zoomIn, txLogo} from "./icons.js";
+import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow} from "./icons.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -204,17 +204,17 @@ export function initBlog() {
 	// init header
 	const header = `
 		<div id="topbar">
-		<a class="nav-back top-nav" href="../" data-i18n="back.link"><</a>
-		<a class="nav-home top-nav" href="../" title="Team Xerbutri Overzichts pagina">${txLogo}</a>
+		<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a>
 		<div class="share dropdown">
-			<button class="drop-btn top-nav share-btn" data-i18n="share">${share}</button>
+			<button class="drop-btn top-nav share-btn" data-i18n="navigation.share">${share}</button>
 			<div class="share-content mat-menu">
 				<a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a>
 				<a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a>
 			</div>
 		</div>
 		<div class="menu-blog dropdown">
-			<button class="drop-btn top-nav menu-blog-btn" data-i18n="menu">${dotsMenu}</button>
+			<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
 			<div class="menu-blog-content mat-menu" id="menu-blog">
 				<a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a>
 				<a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a>
@@ -410,6 +410,8 @@ export function initBlog() {
 									bgOpacity: 1,
 									closeSVG: leftArrow,
 									zoomSVG: zoomIn,
+									arrowNextSVG: nextArrow,
+									arrowPrevSVG: prevArrow,
 									// adjust viewport for design
 									paddingFn: (viewportSize) => {
 										return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
@@ -432,13 +434,17 @@ export function initBlog() {
 								top: 64, bottom: 0, left: 0, right: 0
 							};
 							const largeScreenPadding = {
-								top: 64, bottom: 24, left: 52, right: 52
+								top: 64, bottom: 24, left: 0, right: 0
 							};
 							const lightbox = new PhotoSwipeLightbox({
 								gallery: "#gallery--responsive-images",
 								children: "a",
 								counter: false,
 								bgOpacity: 1,
+								closeSVG: leftArrow,
+								zoomSVG: zoomIn,
+								arrowNextSVG: nextArrow,
+								arrowPrevSVG: prevArrow,
 								paddingFn: (viewportSize) => {
 									return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
 								},

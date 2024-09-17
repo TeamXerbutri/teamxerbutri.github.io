@@ -5,10 +5,11 @@
 	margin-top: 8px !important;
 }
 
-.top-nav:hover, .top-nav:focus{
+.top-nav:hover{
 	color: #fff;
 	background-color: #330000 !important;
 }
+
 .top-nav:focus{
 	color: #fff;
 	background-color: #220000  !important;

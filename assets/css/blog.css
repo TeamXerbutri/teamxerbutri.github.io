@@ -23,10 +23,8 @@ header.blog {
 	text-decoration: none;
 	margin-left: 4px;
 	display: inline-block;
-	padding: 9px 15px 11px 15px;
-	font-weight: 1000;
-	font-family: Georgia, serif;
-	font-size: 25px;
+	height: 48px;
+	width: 48px;
 }
 
 .nav-home {
@@ -35,6 +33,10 @@ header.blog {
 	width: 48px;
 	position: absolute;
 	right: 112px;
+}
+
+.nav-back .tx-icon {
+	padding-top: 12px;
 }
 
 .nav-home .tx-icon {

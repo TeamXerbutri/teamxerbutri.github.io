@@ -39,10 +39,6 @@
 			"hide": "Verberg de gebouwen"
 		}
 	},
-	"back": {
-		"link": "<",
-		"title": "Terug naar overzicht"
-	},
 	"month": {
 		"01": "januari",
 		"02": "februari",
@@ -95,6 +91,11 @@
 		"tunnel": "Tunnels",
 		"gebouw": "Verlaten Gebouwen"
 	},
-	"share": "Deel deze pagina",
-	"menu": "Menu"
+	"navigation": {
+		"share": "Deel deze pagina",
+		"menu": "Menu",
+		"top": "Terug naar boven",
+		"back": "Terug naar de vorige pagina",
+		"home": "Terug naar de Team Xerbutri overzichtspagina"
+	}
 }

@@ -9,38 +9,27 @@ class PhotoswipeMatDesignPlugin {
 		
 		this.lightbox.on('init', () => {
 			this.pswp = this.lightbox.pswp;
-			
-			//this.initMatDesign();
 		});
 		
 		this.lightbox.addFilter('uiElement', (element, data) => {
 			if(data.name === 'close') {
-				// is not going to work
-				data.order = 0;
-				data.html.inner = '<path d="M29 43l-3 3-16-16 16-16 3 3-13 13 13 13z" id="pswp__icn-close"/>'
 				// TODO set translation here, does not work this way because translator did not discover elements not being in DOM
 				element.setAttribute('data-i18n', 'gallery.back');
 				
 				element.classList.add('top-nav');
-				
 			}
 			if(data.name === 'zoom') {
 				element.classList.add('top-nav');
 			}
-			
-			
-			if(data.name === 'preloader') {
-				data.order = 1;
-			}
-			this.lightbox.pswp.ui.uiElementsData.sort();
 			return element;
 		})
-		this.lightbox.on('uiRegister', function() {
 
-			//console.log(lightbox.pswp.topBar);
-			
+		// change the order
+		lightbox.on('firstUpdate', () => {
+			const closeEl = this.pswp.topBar.querySelector('.pswp__button--close');
+			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
 		});
-
+		
 		// add new counter to the bottom //TODO add alternative screenreadable text
 		this.lightbox.on('uiRegister', function() {
 			lightbox.pswp.ui.registerElement({
@@ -65,15 +54,7 @@ class PhotoswipeMatDesignPlugin {
 			});
 		});
 		
-	}
-	
-	initMatDesign() {
-		const { pswp } = this;
-		
-	}
-
-	
-	
+	}	
 }
 
 

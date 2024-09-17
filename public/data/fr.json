@@ -95,6 +95,11 @@
 		"tunnel": "Tunnels",
 		"gebouw": "Bâtiments abandonnés"
 	},
-	"share": "Partager",
-	"menu": "Menu"
+	"navigation": {
+		"share": "Partager cette page",
+		"menu": "Menu",
+		"top": "Retour en haut",
+		"back": "Retour à la page précédente",
+		"home": "Retour à la page d'accueil de Team Xerbutri"
+	}
 }
