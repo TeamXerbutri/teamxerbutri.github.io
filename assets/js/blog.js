@@ -1,13 +1,12 @@
 ﻿import {uiState} from "./uistate.js";
 import Map from "ol/Map";
 import {hideBackToTop, showBackToTop} from "./header.js";
-import txGifLogo from "../images/tx.gif"
 import Translator from "./translator.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import "../css/mat/lightbox.css"
 import "photoswipe/style.css";
-import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
+import {createGallery, createGalleryWithCaptions, createOpenLayersGallery} from "./galleryfactory.js";
 import {useGeographic} from "ol/proj";
 import {Icon, Stroke, Style} from "ol/style";
 import {Tile as TileLayer} from "ol/layer";
@@ -18,6 +17,7 @@ import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow} from "./icons.js";
+import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -147,20 +147,6 @@ function loadFactsMap(route) {
 	omap.addLayer(railVector);
 }
 
-
-//TODO need to translate FFF to JS
-// 	<script src="../data/{{@categorie}}/{{@map}}/items.js"></script>
-// <!check if="{{@categorieid == 3 }}"><true>
-// 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
-// 	<script src="../ui/js/reportage.js"></script>
-// </true>
-// </check>
-
-// 	<!check if="{{@categorieid == 3 }}"><true>
-// 	<div id="map" class="map"></div>
-// </true></check>
-
-
 function setShare() {
 	const uri = location.href;
 	const urienc = encodeURIComponent(uri);
@@ -171,7 +157,6 @@ function setShare() {
 	fbElem.href = fburi;
 	waElem.href = wauri;
 }
-
 
 export function initBlog() {
 	let translator = new Translator();
@@ -393,40 +378,79 @@ export function initBlog() {
 						// if there are captions
 						translator.fetchBlogCaptions(value, routeId).then(
 							(captions) => {
-								let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
-								gallerySection.appendChild(galleryCaptions);
+								
+								//if any item has coordinates, create gallery with captions and openlayers map
+								
+								if (items.some(item => item.coordinate)) {
+									// TODO REMOVE
+									console.log("items with coordinates");
+									
+									let openLayersGallery = createOpenLayersGallery(items, captions, value, routeId, gallery);
+									gallerySection.appendChild(openLayersGallery);
 
-								const smallScreenPadding = {
-									top: 64, bottom: 0, left: 0, right: 0
-								};
-								const largeScreenPadding = {
-									top: 64, bottom: 24, left: 52, right: 52
-								};
+									const smallScreenPadding = {
+										top: 64, bottom: 0, left: 0, right: 0
+									};
+									const largeScreenPadding = {
+										top: 64, bottom: 24, left: 52, right: 52
+									};
 
-								const lightbox = new PhotoSwipeLightbox({
-									gallery: "#gallery--responsive-images",
-									children: ".pswp-gallery__item",
-									counter: false,
-									bgOpacity: 1,
-									closeSVG: leftArrow,
-									zoomSVG: zoomIn,
-									arrowNextSVG: nextArrow,
-									arrowPrevSVG: prevArrow,
-									// adjust viewport for design
-									paddingFn: (viewportSize) => {
-										return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-									},
-									pswpModule: () => import("photoswipe")
-								});
+									const lightbox = new PhotoSwipeLightbox({
+										gallery: "#gallery--responsive-images",
+										children: ".pswp-gallery__item",
+										counter: false,
+										bgOpacity: 1,
+										closeSVG: leftArrow,
+										zoomSVG: zoomIn,
+										arrowNextSVG: nextArrow,
+										arrowPrevSVG: prevArrow,
+										// adjust viewport for design
+										paddingFn: (viewportSize) => {
+											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+										},
+										pswpModule: () => import("photoswipe")
+									});
+									
+									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, {});
+									lightbox.init();
+								}
+								else {
+									// create gallery with captions
+									let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+									gallerySection.appendChild(galleryCaptions);
 
-								const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
+									const smallScreenPadding = {
+										top: 64, bottom: 0, left: 0, right: 0
+									};
+									const largeScreenPadding = {
+										top: 64, bottom: 24, left: 52, right: 52
+									};
 
-								const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-									mobileLayoutBreakpoint: 700,
-									type: "auto",
-									mobileCaptionOverlapRatio: 1,
-								});
-								lightbox.init();
+									const lightbox = new PhotoSwipeLightbox({
+										gallery: "#gallery--responsive-images",
+										children: ".pswp-gallery__item",
+										counter: false,
+										bgOpacity: 1,
+										closeSVG: leftArrow,
+										zoomSVG: zoomIn,
+										arrowNextSVG: nextArrow,
+										arrowPrevSVG: prevArrow,
+										// adjust viewport for design
+										paddingFn: (viewportSize) => {
+											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+										},
+										pswpModule: () => import("photoswipe")
+									});
+
+									const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
+
+									const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+										mobileLayoutBreakpoint: 700,
+										type: "auto",
+										mobileCaptionOverlapRatio: 1,
+									});
+									lightbox.init();
+								}
 							}).catch(() => {
 
 							// no captions. Create gallery without captions

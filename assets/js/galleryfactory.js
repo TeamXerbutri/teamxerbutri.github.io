@@ -44,6 +44,33 @@ function createGalleryWithCaptions(items, captions, category, routeId, gallery){
 		
 		const link = createLink(item, category, routeId);
 		itemDiv.appendChild(link);
+				
+		if(captions[item.name]) {
+			let captionDiv = document.createElement("div");
+			captionDiv.classList.add("pswp-caption-content");
+			const caption = decodeHtml(captions[item.name]);
+			link.title = caption
+			captionDiv.innerText = caption;
+			itemDiv.appendChild(captionDiv);
+		}
+		gallery.appendChild(itemDiv);
+	});
+	return gallery;
+}
+
+function createOpenLayersGallery(items, captions, category, routeId, gallery){
+	items.forEach((item) => {
+		let itemDiv = document.createElement("div");
+		itemDiv.classList.add("pswp-gallery__item");
+
+		const link = createLink(item, category, routeId);
+		itemDiv.appendChild(link);
+
+		// not sure I will need this!
+		const coordDiv = document.createElement("div");
+		coordDiv.classList.add("pswp-coord-content");
+		const lat = document.createElement("div");
+		lat.innerText = item.coordinate.latitude;
 		
 		if(captions[item.name]) {
 			let captionDiv = document.createElement("div");
@@ -58,10 +85,11 @@ function createGalleryWithCaptions(items, captions, category, routeId, gallery){
 	return gallery;
 }
 
+
 function decodeHtml(html) {
 	let txt = document.createElement("textarea");
 	txt.innerHTML = html;
 	return txt.value;
 }
 
-export { createGallery, createGalleryWithCaptions };
+export { createGallery, createGalleryWithCaptions, createOpenLayersGallery };
