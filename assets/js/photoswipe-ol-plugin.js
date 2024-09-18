@@ -1,17 +1,32 @@
 import "../css/photoswipe-ol.css"
+import Map from "ol/Map";
+import {useGeographic} from "ol/proj";
+import {Icon, Stroke, Style} from "ol/style";
+import {Tile as TileLayer} from "ol/layer";
+import OSM from "ol/source/OSM";
+import View from "ol/View";
+import {Vector as VectorLayer} from "ol/layer";
+import VectorSource from "ol/source/Vector";
+import GeoJSON from "ol/format/GeoJSON";
 
 const defaultOptions = {
 	captionContent: ".pswp-caption-content",
 };
 
 class PhotoswipeOpenLayersPlugin {
-	constructor(lightbox, options) {
+	constructor(lightbox, route, options) {
 		this.lightbox = lightbox;
 		this.options = {...defaultOptions, ...options};
+		this.route = route;
 
 		this.lightbox.on("init", () => {
 			this.pswp = this.lightbox.pswp;
-			this.initSheet();
+			this.initSheet();			
+		});
+
+		this.lightbox.on('afterInit', () => {
+			console.log('afterInit');
+			this.loadNavMap(this.route);
 		});
 
 		this.lightbox.addFilter("uiElement", (element, data) => {
@@ -31,6 +46,7 @@ class PhotoswipeOpenLayersPlugin {
 		this.lightbox.on("firstUpdate", () => {
 			const closeEl = this.pswp.topBar.querySelector(".pswp__button--close");
 			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
+			
 		});
 	}
 	
@@ -41,7 +57,7 @@ class PhotoswipeOpenLayersPlugin {
 		pswp.on("change", () => {
 			
 			// make sure caption is displayed after slides are switched TODO
-			this.showCaption(this.pswp.currSlide);
+			this.showSheet(this.pswp.currSlide);
 		});
 
 		pswp.on("calcSlideSize", (e) => this.onCalcSlideSize(e));
@@ -59,9 +75,9 @@ class PhotoswipeOpenLayersPlugin {
 		pswp.on("zoomPanUpdate", ({ slide }) => {
 			if (pswp.opener.isOpen && slide.infoSheet) {
 				if (slide.currZoomLevel > slide.zoomLevels.initial) {
-					this.hideCaption(slide);
+					this.hideSheet(slide);
 				} else {
-					this.showCaption(slide);
+					this.showSheet(slide);
 				}
 
 				// move caption on vertical drag
@@ -124,13 +140,16 @@ class PhotoswipeOpenLayersPlugin {
 	// 	return false;
 	// }
 
-	hideCaption(slide) {
+	hideSheet(slide) {
 		if (slide.infoSheet && !slide.infoSheet.hidden) {
 			const sheetElement = slide.infoSheet.element;
 
 			if (!sheetElement) {
 				return;
 			}
+			
+			const sheetMap = document.getElementById("galnavmap");
+			sheetMap.style.display = "none";
 
 			slide.infoSheet.hidden = true;
 			sheetElement.classList.add("pswp__sheet--faded"); 
@@ -150,13 +169,16 @@ class PhotoswipeOpenLayersPlugin {
 		el.style.transform = `translateY(${y}px)`;
 	}
 
-	showCaption(slide) {
+	showSheet(slide) {
 		if (slide.infoSheet && slide.infoSheet.hidden) {
 			const sheetElement = slide.infoSheet.element;
 
 			if (!sheetElement) {
 				return;
 			}
+
+			const sheetMap = document.getElementById("galnavmap");
+			sheetMap.style.display = "block";
 
 			slide.infoSheet.hidden = false;
 			sheetElement.style.visibility = "visible";
@@ -274,11 +296,18 @@ class PhotoswipeOpenLayersPlugin {
 			captionContainer.innerHTML = captionHTML;
 			slide.infoSheet.element.appendChild(captionContainer);
 			
+			// let mapContainer = document.getElementById("galnavmap");
+			// mapContainer.style.display = "block";
 			let mapContainer = document.createElement("div");
 			mapContainer.className = "pswp__sheet-map";
 			mapContainer.id = "galnavmap";
-			
 			slide.infoSheet.element.appendChild(mapContainer);
+			
+			let indicatorContainer = document.createElement("div");
+			indicatorContainer.className = "pswp__sheet-indicator";
+			indicatorContainer.appendChild(this.createIndicator());
+			slide.infoSheet.element.appendChild(indicatorContainer);
+
 			
 			this.pswp.dispatch("infoSheetUpdateHTML", {
 				sheetElement: slide.infoSheet.element,
@@ -390,10 +419,102 @@ class PhotoswipeOpenLayersPlugin {
 		slide.bounds.update(slide.zoomLevels.initial);
 	}
 
-	
+	createIndicator(){
+		const total = this.pswp.getNumItems();
+		let index = this.pswp.currIndex + 1;
+
+		let indicator = document.createElement("p");
+		indicator.className = "pswp__indicator__text";
+		indicator.innerText = index + " / " + total;
+
+		
+
+		this.pswp.on("change", (a,) => {
+			index = this.pswp.currIndex + 1;
+			indicator.innerText = index + " / " + total;
+		});
+		
+		return indicator;
+	}
 
 	
 	// This part is OK!!
+
+	loadNavMap(route) {
+		let navMap;
+
+		useGeographic();
+
+		// the styles
+		const styles = {
+			"picture": new Style({
+				image: new Icon({
+					opacity: 0.9,
+					scale: 0.9,
+					size: [52, 52],
+					src: "ui/pics/photomarker.png",
+				}),
+			}),
+			"redLine": new Style({
+				stroke: new Stroke({
+					width: 7, color: "rgba(255, 0, 0, 1)",
+				}),
+				zIndex: 2,
+			}),
+			"whiteDash": new Style({
+				stroke: new Stroke({
+					width: 5, color: "rgba(255, 255, 255, 1)",
+					lineDash: [16, 28]
+				}),
+				zIndex: 3
+			}),
+		}
+		styles["rail"] = [styles["redLine"], styles["whiteDash"]];
+
+		// raster (the base map or background)
+
+		const raster = new TileLayer({
+			source: new OSM({
+				projection: "EPSG:4326"
+			})
+		});
+
+		const view = new View({
+			projection: "EPSG:3857",
+			center: [6, 51.7],
+			zoom: 8
+		});
+		
+		// map
+		navMap = new Map({
+			target: "galnavmap",
+			layers: [raster],
+			view: view
+		});
+
+		const railVector = new VectorLayer({
+			source: new VectorSource({
+				url: "../data/spoor/"+route+"/geometry.json",
+				format: new GeoJSON(),
+			}),
+			style: function (feature) {
+				return styles[feature.get("type")];
+			}
+		});
+
+		// TODO: focus on item
+		railVector.getSource().on("featuresloadend", function (event) {
+			event.features.forEach(function (feature) {
+				feature.set("type", "rail");
+				let center = feature.getGeometry().getCoordinateAt(0.5);
+				view.centerOn(center, navMap.getSize(), [navMap.getSize()[0] / 2, navMap.getSize()[1] / 2]);
+				view.fit(feature.getGeometry(), {padding: [50, 50, 50, 50]});
+			});
+		});
+
+		navMap.addLayer(railVector);
+	}
+	
 	storeAdjustedPanAreaSize(slide) {
 		if (slide.infoSheet) {
 			if (!slide.infoSheet.adjustedPanAreaSize) {

@@ -33,12 +33,19 @@
 }
 
 .pswp__sheet-map{
+	/*display: none;*/
 	width: calc(100% - 16px);
 	height: 260px;
 	background-color: #fff;
 	color: #000;
 	border-radius: 16px;
 	position: fixed;
-	bottom: 8px;
+	bottom: 40px;
 	right: 8px;
 	}
+
+.pswp__sheet-indicator{
+	position: fixed;
+	bottom: 0px;
+	right: 8px;
+}

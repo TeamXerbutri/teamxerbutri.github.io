@@ -382,11 +382,14 @@ export function initBlog() {
 								//if any item has coordinates, create gallery with captions and openlayers map
 								
 								if (items.some(item => item.coordinate)) {
-									// TODO REMOVE
-									console.log("items with coordinates");
 									
 									let openLayersGallery = createOpenLayersGallery(items, captions, value, routeId, gallery);
 									gallerySection.appendChild(openLayersGallery);
+
+									// let mapContainer = document.createElement("div");
+									// mapContainer.className = "pswp__sheet-map";
+									// mapContainer.id = "galnavmap";
+									// gallerySection.appendChild(mapContainer);
 
 									const smallScreenPadding = {
 										top: 64, bottom: 0, left: 0, right: 0
@@ -411,8 +414,9 @@ export function initBlog() {
 										pswpModule: () => import("photoswipe")
 									});
 									
-									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, {});
+									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
 									lightbox.init();
+									olPlugin.loadNavMap(routeId);
 								}
 								else {
 									// create gallery with captions
