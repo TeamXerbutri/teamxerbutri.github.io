@@ -416,7 +416,6 @@ export function initBlog() {
 									
 									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
 									lightbox.init();
-									olPlugin.loadNavMap(routeId);
 								}
 								else {
 									// create gallery with captions

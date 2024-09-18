@@ -9,7 +9,7 @@ class PhotoswipeMatDesignPlugin {
 			this.pswp = this.lightbox.pswp;
 		});
 		
-		this.lightbox.addFilter("uiElement", (element, data) => {
+		lightbox.addFilter("uiElement", (element, data) => {
 			if(data.name === "close") {
 				// TODO set translation here, does not work this way because translator did not discover elements not being in DOM
 				element.setAttribute("data-i18n", "gallery.back");
@@ -23,13 +23,13 @@ class PhotoswipeMatDesignPlugin {
 		})
 
 		// change the order
-		this.lightbox.on("firstUpdate", () => {
+		lightbox.on("firstUpdate", () => {
 			const closeEl = this.pswp.topBar.querySelector(".pswp__button--close");
 			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
 		});
 		
 		// add new counter to the bottom //TODO add alternative screenreadable text
-		this.lightbox.on("uiRegister", function() {
+		lightbox.on("uiRegister", function() {
 			lightbox.pswp.ui.registerElement({
 				name: "indicator",
 				className: "pswp__indicator",

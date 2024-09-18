@@ -12,8 +12,7 @@
 	position: absolute;
 	right: 4px;
 	top: 68px;
-	width: auto;
-	max-width: 400px;
+	width: 300px;
 	padding: 24px;
 	border-radius: 16px;
 	margin-right: 4px;
@@ -33,19 +32,28 @@
 }
 
 .pswp__sheet-map{
-	/*display: none;*/
-	width: calc(100% - 16px);
+	width: 284px; 
 	height: 260px;
 	background-color: #fff;
 	color: #000;
 	border-radius: 16px;
 	position: fixed;
 	bottom: 40px;
-	right: 8px;
+	right: 16px;
 	}
 
 .pswp__sheet-indicator{
 	position: fixed;
-	bottom: 0px;
-	right: 8px;
+	bottom: 0;
+	right: 16px;
+}
+
+@media only screen and (min-width: 1200px) {
+	.pswp__sheet--side{
+		width: 400px;
+	}
+
+	.pswp__sheet-map{
+		width: 384px;
+	}
 }
