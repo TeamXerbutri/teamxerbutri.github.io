@@ -45,9 +45,12 @@ class PhotoswipeOpenLayersPlugin {
 		lightbox.on("firstUpdate", () => {
 			const closeEl = this.pswp.topBar.querySelector(".pswp__button--close");
 			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
-			this.loadNavMap(route);
-
 		});
+		
+		lightbox.on("afterInit", () => {
+			this.loadNavMap(route);
+			}
+		)
 
 		lightbox.on("uiRegister", function() {
 			lightbox.pswp.ui.registerElement({
@@ -395,7 +398,6 @@ class PhotoswipeOpenLayersPlugin {
 	}
 	
 	setSheetType(sheetElement, type) {
-		console.log("Setting sheet type");
 		const prevType = sheetElement.dataset.pswpSheetType;
 		if(type !== prevType) {
 			sheetElement.classList.add("pswp__sheet--" + type);
@@ -406,6 +408,7 @@ class PhotoswipeOpenLayersPlugin {
 	
 	loadNavMap(route) {
 		let navMap;
+		let featuresLoaded = false;
 		useGeographic();
 
 		// the styles
@@ -497,11 +500,13 @@ class PhotoswipeOpenLayersPlugin {
 			event.features.forEach(function (feature) {
 				feature.set("type", "picture");
 				
-				if(index && feature.get("Index")===index){
+				if(feature.get("Index")===index){
 					feature.set("type", "pictureselect");
 					navMap.getView().setCenter(feature.getGeometry().getCoordinates());
 				}
 			});
+			
+			featuresLoaded = true;
 		});
 
 		navMap.addLayer(railVector);
@@ -551,9 +556,17 @@ class PhotoswipeOpenLayersPlugin {
 		});
 		
 		this.pswp.on("change", () => {
+
 			// reset styling
-			const index = this.pswp.currSlide.index;
+			const index = pswp.currSlide.index;
+
 			photoVectorSource.forEachFeature(feature => {
+				
+				if(!featuresLoaded){
+					console.warn("No features loaded on photoSwipe change event fired");
+					return;
+				}
+				
 				if(feature)
 					feature.set("type", "picture");
 				
