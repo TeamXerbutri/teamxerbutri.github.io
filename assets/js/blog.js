@@ -121,9 +121,19 @@ function loadFactsMap(route) {
 		view: view
 	});
 
+	// const railVector = new VectorLayer({
+	// 	source: new VectorSource({
+	// 		url: "../data/geo-spoor.json",
+	// 		format: new GeoJSON(),
+	// 	}),
+	// 	style: function (feature) {
+	// 		return styles[feature.get("type")];
+	// 	}
+	// });
+
 	const railVector = new VectorLayer({
 		source: new VectorSource({
-			url: "../data/geo-spoor.json",
+			url: "../data/spoor/"+route+"/geometry.json",
 			format: new GeoJSON(),
 		}),
 		style: function (feature) {
@@ -131,16 +141,12 @@ function loadFactsMap(route) {
 		}
 	});
 
-	// TODO for now: heavy lifting in the browser by filtering on the huge geo-spoor object. In future, take the layer source by creating geo-json geometries for each route
 	railVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
-
-			if (feature.get("Route") === route) {
-				feature.set("type", "rail");
-				let center = feature.getGeometry().getCoordinateAt(0.5);
-				view.centerOn(center, omap.getSize(), [omap.getSize()[0] / 2, omap.getSize()[1] / 2]);
-				view.fit(feature.getGeometry(), {padding: [50, 50, 50, 50]});
-			}
+			feature.set("type", "rail");
+			let center = feature.getGeometry().getCoordinateAt(0.5);
+			view.centerOn(center, omap.getSize(), [omap.getSize()[0] / 2, omap.getSize()[1] / 2]);
+			view.fit(feature.getGeometry(), {padding: [50, 50, 50, 50]});
 		});
 	});
 

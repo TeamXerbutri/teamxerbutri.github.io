@@ -7,6 +7,8 @@ import OSM from "ol/source/OSM";
 import View from "ol/View";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
+import {Select} from "ol/interaction";
+import {click, pointerMove} from "ol/events/condition";
 
 const defaultOptions = {
 	captionContent: ".pswp-caption-content",
@@ -22,18 +24,11 @@ class PhotoswipeOpenLayersPlugin {
 		this.type = this.usePortraitLayout() ? "bottom" : "side";
 
 		lightbox.on("init", () => {
-			console.log('init');
 			this.pswp = this._lightbox.pswp;
 			this.initSheet();			
 		});
 
-		lightbox.on('afterInit', () => {
-			console.log('afterInit (load map)');
-			this.loadNavMap(route);
-		});
-
 		lightbox.addFilter("uiElement", (element, data) => {
-			console.log("add Filter (topbar style)");
 			if(data.name === "close") {
 				// TODO set translation here, does not work this way because translator did not discover elements not being in DOM
 				element.setAttribute("data-i18n", "gallery.back");
@@ -48,9 +43,9 @@ class PhotoswipeOpenLayersPlugin {
 
 		// change the order
 		lightbox.on("firstUpdate", () => {
-			console.log("first update (reorder topbar)");
 			const closeEl = this.pswp.topBar.querySelector(".pswp__button--close");
 			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
+			this.loadNavMap(route);
 
 		});
 
@@ -60,7 +55,6 @@ class PhotoswipeOpenLayersPlugin {
 				className: "pswp__sheet",
 				appendTo: "wrapper",
 				onInit: (el, pswp) => {
-					console.log("registering UI sheet");
 					let captionContainer = document.createElement("div");
 					captionContainer.className = "pswp__sheet-caption";
 					el.appendChild(captionContainer);
@@ -101,7 +95,6 @@ class PhotoswipeOpenLayersPlugin {
 		
 		
 		pswp.on("change", () => {
-			console.log("pswp change event ");			
 			// make sure caption is displayed after slides are switched
 			this.showSheet(this.pswp.currSlide);
 			this.loadCaption(this.pswp.currSlide);
@@ -148,42 +141,47 @@ class PhotoswipeOpenLayersPlugin {
 		// 	this.adjustPanArea(pswp.currSlide, e.destZoomLevel);
 		// });
 		//
-		// // Stop default action of tap when tapping on the caption
-		// pswp.on("tapAction", (e) => {
-		// 	if (e.originalEvent.target.closest(".pswp__dynamic-caption")) {
-		// 		e.preventDefault();
-		// 	}
-		// });
+		
+		// Stop default action of tap when tapping on the sheet
+		pswp.on("tapAction", (e) => {
+			if (e.originalEvent.target.closest(".pswp__sheet")) {
+				e.preventDefault();
+			}
+		});
+		
+		// Stop colliding actions on map
+		pswp.on("pointerMove",(e) => {
+			if (e.originalEvent.target.closest(".pswp__sheet-map")) {
+				e.preventDefault();
+			}
+		});
+
+		pswp.on("verticalDrag",(e) => {
+			if (e.originalEvent.target.closest(".pswp__sheet-map")) {
+				e.preventDefault();
+			}
+		});
+
+		pswp.on("pinchClose",(e) => {
+			if (e.originalEvent.target.closest(".pswp__sheet-map")) {
+				e.preventDefault();
+			}
+		});
 	}
 
 	adjustPanArea(slide, zoomLevel) {
-		if (this.infoSheet && this.infoSheet.adjustedPanAreaSize) {
+		let infoSheet= document.querySelector(".pswp__sheet");
+		if (infoSheet && infoSheet.adjustedPanAreaSize) {
 			if (zoomLevel > slide.zoomLevels.initial) {
-				slide.panAreaSize.x = this.infoSheet.originalPanAreaSize.x;
-				slide.panAreaSize.y = this.infoSheet.originalPanAreaSize.y;
+				slide.panAreaSize.x = infoSheet.originalPanAreaSize.x;
+				slide.panAreaSize.y = infoSheet.originalPanAreaSize.y;
 			} else {
 				// Restore panAreaSize after we zoom back to initial position
-				slide.panAreaSize.x = this.infoSheet.adjustedPanAreaSize.x;
-				slide.panAreaSize.y = this.infoSheet.adjustedPanAreaSize.y;
+				slide.panAreaSize.x = infoSheet.adjustedPanAreaSize.x;
+				slide.panAreaSize.y = infoSheet.adjustedPanAreaSize.y;
 			}
 		}
 	}
-	
-	
-
-	// useMobileLayout() {
-	// 	const { mobileLayoutBreakpoint } = this._options;
-	//
-	// 	if (typeof mobileLayoutBreakpoint === "function") {
-	// 		return mobileLayoutBreakpoint.call(this);
-	// 	} else if (typeof mobileLayoutBreakpoint === "number") {
-	// 		if (window.innerWidth < mobileLayoutBreakpoint) {
-	// 			return true;
-	// 		}
-	// 	}
-	//
-	// 	return false;
-	// }
 
 	hideSheet(slide) {
 		let infoSheet= document.querySelector(".pswp__sheet");
@@ -221,26 +219,6 @@ class PhotoswipeOpenLayersPlugin {
 		}
 	}
 
-	// TODO Remove this, the position of the sheet is fixed
-	// setCaptionPosition(sheetElement, x, y) {
-	// 	
-	// 	const isOnHorizontalEdge = (x <= this._options.horizontalEdgeThreshold);
-	// 	sheetElement.classList[
-	// 		isOnHorizontalEdge ? "add" : "remove"
-	// 		]("pswp__dynamic-caption--on-hor-edge");
-	//
-	// 	sheetElement.style.left = x + "px";
-	// 	sheetElement.style.top = y + "px";
-	// }
-
-	// setsheetWidth(sheetElement, width) {
-	// 	if (!width) {
-	// 		sheetElement.style.removeProperty("width");
-	// 	} else {
-	// 		sheetElement.style.width = width + "px";
-	// 	}
-	// }
-
 	setSheetWidth(sheetElement, width) {
 		if (!width) {
 			sheetElement.style.removeProperty("width");
@@ -248,12 +226,8 @@ class PhotoswipeOpenLayersPlugin {
 			sheetElement.style.width = width + "px";
 		}
 	}
-
-
-
-	updateSheetPosition(slide, infoSheet) {
-		console.log("Updating position");
-		
+	
+	updateSheetPosition(slide, infoSheet) {		
 		if (!infoSheet ) {
 			console.error("No info sheet found, cannot reposition");
 			return;
@@ -309,8 +283,6 @@ class PhotoswipeOpenLayersPlugin {
 		const { slide } = e;
 		let sheetSize;
 		let usePortraitLayout = this.usePortraitLayout();
-	
-		console.log("Calculating slide size");
 		
 		let infoSheet= document.querySelector(".pswp__sheet");
 		
@@ -318,12 +290,6 @@ class PhotoswipeOpenLayersPlugin {
 			console.error("No info sheet element found on calculation of size");
 			return;
 		}
-
-		// let hasCaption = document.querySelector(".pswp__sheet-caption").innerHTML.length > 0;
-		// if(!hasCaption){
-		// 	console.log("Loading caption from slide calculating size");
-		// 	this.loadCaption(slide);
-		// }
 		
 		this.setSheetType(infoSheet, this.type);
 		
@@ -357,12 +323,12 @@ class PhotoswipeOpenLayersPlugin {
 		}
 		// bottomSheet
 		if (usePortraitLayout) {
-			this.setsheetWidth(
-				this.infoSheet.element,
-				useMobileVersion ? this.pswp.viewportSize.x : imageWidth
+			this.setSheetWidth(
+				infoSheet,
+				usePortraitLayout ? this.pswp.viewportSize.x : imageWidth
 			);
 
-			sheetSize = this.measureSheetSize(this.infoSheet.element, e.slide);
+			sheetSize = this.measureSheetSize(infoSheet, e.slide);
 			const captionHeight = sheetSize.y;
 
 			if (this._options.verticallyCenterImage) {
@@ -380,7 +346,7 @@ class PhotoswipeOpenLayersPlugin {
 				const initialPanAreaHeight = slide.panAreaSize.y;
 
 				if (verticalLeftover <= captionHeight) {
-					// lift up the image to give more space for caption
+					// lift the image to give more space for caption
 					slide.panAreaSize.y -= Math.min((captionHeight - verticalLeftover) * 2, captionHeight);
 
 					// we reduce viewport size, thus we need to update zoom level and pan bounds
@@ -389,7 +355,7 @@ class PhotoswipeOpenLayersPlugin {
 					const maxPositionX = slide.panAreaSize.x * this._options.mobileCaptionOverlapRatio / 2;
 
 					// Do not reduce viewport height if too few space available
-					if (useMobileVersion
+					if (usePortraitLayout
 						&& slide.bounds.center.x > maxPositionX) {
 						// Restore the default position
 						slide.panAreaSize.y = initialPanAreaHeight;
@@ -440,17 +406,24 @@ class PhotoswipeOpenLayersPlugin {
 	
 	loadNavMap(route) {
 		let navMap;
-
 		useGeographic();
 
 		// the styles
 		const styles = {
 			"picture": new Style({
 				image: new Icon({
-					opacity: 0.9,
-					scale: 0.9,
+					opacity: 0.7,
+					scale: 0.7,
 					size: [52, 52],
-					src: "ui/pics/photomarker.png",
+					src: "../ui/pics/photomarker.png",
+				}),
+			}),
+			"pictureselect": new Style({
+				image: new Icon({
+					opacity: 1,
+					scale: 1,
+					size: [52, 52],
+					src: "../ui/pics/photomarker.png",
 				}),
 			}),
 			"redLine": new Style({
@@ -480,14 +453,14 @@ class PhotoswipeOpenLayersPlugin {
 		const view = new View({
 			projection: "EPSG:3857",
 			center: [6, 51.7],
-			zoom: 8
+			zoom: 14
 		});
 		
 		// map
 		navMap = new Map({
 			target: "galnavmap",
 			layers: [raster],
-			view: view
+			view: view,
 		});
 
 		const railVector = new VectorLayer({
@@ -499,18 +472,97 @@ class PhotoswipeOpenLayersPlugin {
 				return styles[feature.get("type")];
 			}
 		});
-
-		// TODO: focus on item
+		
+		const photoVectorSource = new VectorSource({
+			url: "../data/spoor/"+route+"/photos.json",
+			format: new GeoJSON(),
+		})
+		
+		const photoVector = new VectorLayer({
+			source: photoVectorSource,
+			style: function (feature) {
+				return styles[feature.get("type")];
+			}
+		});
+		
 		railVector.getSource().on("featuresloadend", function (event) {
 			event.features.forEach(function (feature) {
 				feature.set("type", "rail");
-				let center = feature.getGeometry().getCoordinateAt(0.5);
-				view.centerOn(center, navMap.getSize(), [navMap.getSize()[0] / 2, navMap.getSize()[1] / 2]);
-				view.fit(feature.getGeometry(), {padding: [50, 50, 50, 50]});
+			});
+		});
+
+		photoVector.getSource().on("featuresloadend", function (event) {
+			const index = pswp.currSlide.index;
+			
+			event.features.forEach(function (feature) {
+				feature.set("type", "picture");
+				
+				if(index && feature.get("Index")===index){
+					feature.set("type", "pictureselect");
+					navMap.getView().setCenter(feature.getGeometry().getCoordinates());
+				}
 			});
 		});
 
 		navMap.addLayer(railVector);
+		navMap.addLayer(photoVector);
+		
+		// select, selected and hover functionality
+
+		const selectPointerMove = new Select({
+			condition: pointerMove,
+			layers: [photoVector],
+			style: function (feature) {
+				return styles["pictureselect"];
+			},
+		});
+		navMap.addInteraction(selectPointerMove);
+		
+		
+		navMap.on("pointermove", function (event) {
+			if(event.dragging){
+				return;
+			}
+			const pixel = navMap.getEventPixel(event.originalEvent);
+			photoVector.getFeatures(pixel).then(function (features) {
+				const feature = features.length ? features[0] : undefined;
+
+				navMap.getViewport().style.cursor = feature ? "pointer" : "";
+			});
+		});
+
+		const selectClick = new Select({
+			condition: click,
+			style: function (feature) {
+				return styles[feature.get("type")];
+			}
+		});
+		navMap.addInteraction(selectClick);
+		const clickedFeatures = selectClick.getFeatures();
+
+		clickedFeatures.on("add", function (event) {
+			const feature = event.element;
+			feature.set("type", "pictureselect");
+			pswp.goTo(feature.get("Index"));
+		});
+		clickedFeatures.on("remove", function (event) {
+			const feature = event.element;
+			feature.set("type", "picture");
+		});
+		
+		this.pswp.on("change", () => {
+			// reset styling
+			const index = this.pswp.currSlide.index;
+			photoVectorSource.forEachFeature(feature => {
+				if(feature)
+					feature.set("type", "picture");
+				
+				if(feature && feature.get("Index")===index){
+					feature.set("type", "pictureselect");
+					navMap.getView().setCenter(feature.getGeometry().getCoordinates());
+				}
+			});
+		});
 	}
 	
 	storeAdjustedPanAreaSize(slide, infoSheet) {
