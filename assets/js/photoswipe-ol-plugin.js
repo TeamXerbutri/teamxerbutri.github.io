@@ -45,12 +45,11 @@ class PhotoswipeOpenLayersPlugin {
 		lightbox.on("firstUpdate", () => {
 			const closeEl = this.pswp.topBar.querySelector(".pswp__button--close");
 			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
-		});
+		})
 
 		lightbox.on("afterInit", () => {
-				this.loadNavMap(route);
-			}
-		)
+			this.loadNavMap(route);
+		})
 
 		lightbox.on("uiRegister", function () {
 			lightbox.pswp.ui.registerElement({
@@ -278,8 +277,6 @@ class PhotoswipeOpenLayersPlugin {
 				hidden: false
 			}
 		}
-		
-		
 		
 		let infoSheet = document.querySelector(".pswp__sheet");
 

@@ -6,7 +6,7 @@ import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import "../css/mat/lightbox.css"
 import "photoswipe/style.css";
-import {createGallery, createGalleryWithCaptions, createOpenLayersGallery} from "./galleryfactory.js";
+import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
 import {useGeographic} from "ol/proj";
 import {Icon, Stroke, Style} from "ol/style";
 import {Tile as TileLayer} from "ol/layer";
@@ -120,16 +120,6 @@ function loadFactsMap(route) {
 		layers: [raster],
 		view: view
 	});
-
-	// const railVector = new VectorLayer({
-	// 	source: new VectorSource({
-	// 		url: "../data/geo-spoor.json",
-	// 		format: new GeoJSON(),
-	// 	}),
-	// 	style: function (feature) {
-	// 		return styles[feature.get("type")];
-	// 	}
-	// });
 
 	const railVector = new VectorLayer({
 		source: new VectorSource({
@@ -386,16 +376,11 @@ export function initBlog() {
 							(captions) => {
 								
 								//if any item has coordinates, create gallery with captions and openlayers map
-								
+								//TODO In the future, check if there is a photos.json file
 								if (items.some(item => item.coordinate)) {
 									
-									let openLayersGallery = createOpenLayersGallery(items, captions, value, routeId, gallery);
+									let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
 									gallerySection.appendChild(openLayersGallery);
-
-									// let mapContainer = document.createElement("div");
-									// mapContainer.className = "pswp__sheet-map";
-									// mapContainer.id = "galnavmap";
-									// gallerySection.appendChild(mapContainer);
 
 									const smallScreenPadding = {
 										top: 64, bottom: 0, left: 0, right: 0
