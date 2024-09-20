@@ -40,7 +40,7 @@
 		}
 	},
 	"back": {
-		"link" : "X",
+		"link" : "<",
 		"title": "Back to overview"
 	}, 
 	"month":{
@@ -81,12 +81,25 @@
 	},
 	"gallery": {
 		"title": "Gallery",
-		"description": "Click the picture to go to the gallery"
+		"description": "Click the picture to go to the gallery",
+		"back": "Back to the article",
+		"next": "Next picture",
+		"prev": "Previous picture",
+		"zoom": "Zoom the picture",
+		"fullscreen": "Full screen",
+		"error": "Error loading the picture"
 	},
 	"category": {
 		"spoor": "Railtracking",
 		"brug": "Bridges",
 		"tunnel": "Tunnels",
 		"gebouw": "Abandoned Buildings"
+	},
+	"navigation": {
+		"share": "Share this page",
+		"menu": "Menu",
+		"top": "Back to top",
+		"back": "Back to the previous page",
+		"home": "Back to the Team Xerbutri overview page"
 	}
 }

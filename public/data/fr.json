@@ -40,7 +40,7 @@
 		}
 	},
 	"back": {
-		"link" : "X",
+		"link" : "<",
 		"title": "Retour à la page d'accueil"
 	},
 	"month": {
@@ -81,12 +81,25 @@
 	},
 	"gallery": {
 		"title": "Galerie",
-		"description": "Cliquez sur l'image pour accéder à la galerie"
+		"description": "Cliquez sur l'image pour accéder à la galerie",
+		"back": "Retour à l'article",
+		"next": "Image suivante",
+		"prev": "Image précédente",
+		"zoom": "Zoomer",
+		"fullscreen": "Plein écran",
+		"error": "Erreur lors du chargement de l'image"
 	},
 	"category": {
 		"spoor": "Chemins de fers",
 		"brug": "Ponts",
 		"tunnel": "Tunnels",
 		"gebouw": "Bâtiments abandonnés"
+	},
+	"navigation": {
+		"share": "Partager cette page",
+		"menu": "Menu",
+		"top": "Retour en haut",
+		"back": "Retour à la page précédente",
+		"home": "Retour à la page d'accueil de Team Xerbutri"
 	}
 }
