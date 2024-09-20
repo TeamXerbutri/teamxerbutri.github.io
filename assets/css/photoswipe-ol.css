@@ -1,13 +1,9 @@
-
 .pswp__sheet{
 	color: #f2f7fa;
-	
 	width: 100%;
-
 	background-color: #211F26;
 }
 
-/* mat side sheet*/
 .pswp__sheet--side{
 	position: absolute;
 	right: 4px;
@@ -27,33 +23,52 @@
 	box-shadow: 0 19px 38px rgba(100, 100, 100, 0.3);
 	border-top-left-radius: 16px;
 	border-top-right-radius: 16px;
-	width: calc(100% - 32px);
+	width: 100%;
 	max-width: 640px;
 }
 
+.pswp__sheet--bottom .pswp__sheet-caption{
+	margin-top: 8px;
+}
+
 .pswp__sheet-map{
-	width: 284px; 
-	height: 260px;
 	background-color: #fff;
 	color: #000;
 	border-radius: 16px;
+	}
+
+.pswp__sheet-map--side{
+	height: 260px;
+	width: 284px;
 	position: fixed;
 	bottom: 40px;
 	right: 16px;
-	}
+}
 
-.pswp__sheet-indicator{
+.pswp__sheet-map--bottom{
+	margin-top: 16px;
+	height: 120px;
+}
+
+.pswp__sheet--side .pswp__sheet-indicator{
 	position: fixed;
 	bottom: 0;
 	right: 16px;
+}
+
+.pswp__sheet--bottom .pswp__sheet-indicator{
+	position: fixed;
+	bottom: 0;
+	left: 16px;
+	color: #000 !important;
 }
 
 @media only screen and (min-width: 1200px) {
 	.pswp__sheet--side{
 		width: 400px;
 	}
-
-	.pswp__sheet-map{
+	
+	.pswp__sheet-map--side{
 		width: 384px;
 	}
 }
