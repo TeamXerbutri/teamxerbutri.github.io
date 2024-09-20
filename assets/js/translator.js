@@ -27,20 +27,31 @@ class Translator {
 		function replace(element) {
 			const text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], translations);
 
-			if (text) {
-				if (element.tagName === "BUTTON") {
-					element.title = text;
-				} else {
-					element.innerHTML = text;
-				}
+			if (!text)
+				return;
+
+
+			if (element.tagName === "BUTTON") {
+				element.title = text;
+				return;
 			}
 
 			if (element.tagName === "A") {
+				
+				if (!element.dataset.i18n.endsWith("link")) {
+					element.title = text;
+					return;
+				}
+				
+				// if a dataset ends with link, it has link text and title
+								
 				const title = element.dataset.i18n.split('.')[0].concat(".title").split('.').reduce((obj, i) => obj[i], translations);
 				if (title) {
 					element.title = title;
 				}
 			}
+			
+			element.innerHTML = text;
 		}
 
 		this._elements.forEach(replace);

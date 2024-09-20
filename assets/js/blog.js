@@ -1,10 +1,10 @@
 ﻿import {uiState} from "./uistate.js";
 import Map from "ol/Map";
-import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem} from "./header.js";
-import txLogo from "../images/tx.gif"
+import {hideBackToTop, showBackToTop} from "./header.js";
 import Translator from "./translator.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
+import "../css/mat/lightbox.css"
 import "photoswipe/style.css";
 import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
 import {useGeographic} from "ol/proj";
@@ -12,11 +12,12 @@ import {Icon, Stroke, Style} from "ol/style";
 import {Tile as TileLayer} from "ol/layer";
 import OSM from "ol/source/OSM";
 import View from "ol/View";
-import {Vector as VectorLayer} from "ol/layer.js";
-import VectorSource from "ol/source/Vector.js";
-import GeoJSON from "ol/format/GeoJSON.js";
-
-
+import {Vector as VectorLayer} from "ol/layer";
+import VectorSource from "ol/source/Vector";
+import GeoJSON from "ol/format/GeoJSON";
+import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
+import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow} from "./icons.js";
+import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 
 uiState.hasMenu = true;
 uiState.hasContactModal = false;
@@ -34,9 +35,28 @@ function countProperties(obj) {
 
 	return count;
 }
+
+function showItem(elementId) {
+	document.addEventListener("click", function (evt) {
+		hideItem(elementId, evt)
+	});
+	document.getElementById(elementId).style.display = "block";
+}
+
+function hideItem(elementId, evt) {
+	let element = document.getElementById(elementId);
+	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu-blog") {
+		document.removeEventListener("click", function (evt) {
+			hideItem(elementId, evt)
+		});
+		element.style.display = "none";
+	}
+}
+
 let omap;
+
 function loadFactsMap(route) {
-		
+
 	useGeographic();
 
 	// the styles
@@ -103,43 +123,25 @@ function loadFactsMap(route) {
 
 	const railVector = new VectorLayer({
 		source: new VectorSource({
-			url: "../data/geo-spoor.json",
+			url: "../data/spoor/"+route+"/geometry.json",
 			format: new GeoJSON(),
 		}),
 		style: function (feature) {
 			return styles[feature.get("type")];
 		}
 	});
-	
-	// TODO for now: heavy lifting in the browser by filtering on the huge geo-spoor object. In future, take the layer source by creating geo-json geometries for each route
+
 	railVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
-			
-			if(feature.get("Route") === route) {
-				feature.set("type", "rail");
-				let center = feature.getGeometry().getCoordinateAt(0.5);
-				view.centerOn(center, omap.getSize(), [omap.getSize()[0] / 2, omap.getSize()[1] / 2]);
-				view.fit(feature.getGeometry(), {padding: [50, 50, 50, 50]});
-			}
+			feature.set("type", "rail");
+			let center = feature.getGeometry().getCoordinateAt(0.5);
+			view.centerOn(center, omap.getSize(), [omap.getSize()[0] / 2, omap.getSize()[1] / 2]);
+			view.fit(feature.getGeometry(), {padding: [50, 50, 50, 50]});
 		});
 	});
 
 	omap.addLayer(railVector);
 }
-
-
-//TODO need to translate FFF to JS
-// 	<script src="../data/{{@categorie}}/{{@map}}/items.js"></script>
-// <!check if="{{@categorieid == 3 }}"><true>
-// 	<script src="../data/{{@categorie}}/{{@map}}/longlatarray.js"></script>
-// 	<script src="../ui/js/reportage.js"></script>
-// </true>
-// </check>
-
-// 	<!check if="{{@categorieid == 3 }}"><true>
-// 	<div id="map" class="map"></div>
-// </true></check>
-
 
 function setShare() {
 	const uri = location.href;
@@ -152,43 +154,12 @@ function setShare() {
 	waElem.href = wauri;
 }
 
-function showShare() {
-	let share = document.getElementById("sharepanel");
-	let shareitems = share.getElementsByTagName("a");
-	for (let i = 0; i < shareitems.length; i += 1) {
-		const element = shareitems[i];
-		element.style.display = "block"
-	}
-	share.style.width = "116px";
-	share.style.height = "91px";
-	window.setTimeout(setShareActive, 1000)
-}
-
-function setShareActive() {
-	uiState.hasShareModal = true
-}
-
-function hideShare() {
-	if (uiState.hasShareModal) {
-		const share = document.getElementById("sharepanel");
-		const shareitems = share.getElementsByTagName("a");
-		for (let i = 0; i < shareitems.length; i += 1) {
-			const element = shareitems[i];
-			element.style.display = "none"
-		}
-		share.style.width = "44px";
-		share.style.height = "44px";
-		uiState.hasShareModal = false
-	}
-}
-
 export function initBlog() {
 	let translator = new Translator();
 	uiState.hasShareModal = true;
 
 	document.querySelector("#app").innerHTML = `
 		<article id="blog">
-		<div id="article-title"></div>
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
 		<aside id="article-aside"></aside>
@@ -207,31 +178,42 @@ export function initBlog() {
 	});
 
 	const htmlElement = document.querySelector("html");
-	if(htmlElement.classList.contains("map-html")){
+	if (htmlElement.classList.contains("map-html")) {
 		htmlElement.classList.remove("map-html");
 	}
-	
+
 	// init header
-	const header = `<a href="../" title="Team Xerbutri Overzichts pagina"><img alt="Team Xerbutri Logo" id="tx" src="${txLogo}"></a>
-		<h1 class="logo">Team Xerbutri</h1>
-		<div id="sharepanel">
-			<a href="" target="_blank" id="sharefb">Facebook</a>
-			<a href="" target="_blank" id="sharewa">Whatsapp</a>
+	const header = `
+		<div id="topbar">
+		<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a>
+		<div class="share dropdown">
+			<button class="drop-btn top-nav share-btn" data-i18n="navigation.share">${share}</button>
+			<div class="share-content mat-menu">
+				<a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a>
+				<a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a>
+			</div>
 		</div>
-		<div class="blogmenu" id="menu">
-			<a href="../map" data-i18n="maps.link">Maps</a>
-			<a href="../avontuur/txatx" data-i18n="abouttx.link">Over TX</a>
-			<a href="../avontuur/txaue" data-i18n="aboutue.link">Over UE</a>
-			<a id="contact" data-i18n="contact.link">Contact</a>
-			<a id="privacy" data-i18n="privacy.link">Privacy</a>
+		<div class="menu-blog dropdown">
+			<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
+			<div class="menu-blog-content mat-menu" id="menu-blog">
+				<a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a>
+				<a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a>
+				<a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a>
+				<a id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</a>
+				<a id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</a>
+			</div>
 		</div>
-		<a class="overview" href="../" data-i18n="back.link">X</a>
+		
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
 		</div>
 		<div id="privacypanel">
 			<p data-i18n="privacy.content">Privacy</p>
-		</div>`
+		</div>
+		</div>
+		<div id="article-title"></div>
+		`
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("home")) {
 		headerElem.classList.remove("home");
@@ -241,7 +223,7 @@ export function initBlog() {
 		headerElem.classList.remove("map-header");
 		headerElem.innerHTML = header
 	}
-	
+
 	if (!headerElem.classList.contains("blog")) {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
@@ -252,7 +234,7 @@ export function initBlog() {
 	function setTranslatedContent() {
 		translator.getBlogDataById(routeId).then(
 			(value) => {
-				
+
 				translator.fetchBlogLanguageContent(value, routeId).then(
 					(blogContent) => {
 						document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
@@ -282,7 +264,7 @@ export function initBlog() {
 						let monthBlog = translator.translate(`month.${month}`);
 
 						document.getElementById("article-visited").innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
-						
+
 						let updatedSplit = blogContent.updated.split("-");
 
 						document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
@@ -293,11 +275,11 @@ export function initBlog() {
 
 				translator.fetchBlogFacts(value, routeId).then(
 					(blogFacts) => {
-						
+
 						//aside
 						if (countProperties(blogFacts.facts) > 0) {
 							let ul = document.createElement("ul");
-							
+
 							Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
 								if (value === "") {
 									return;
@@ -316,7 +298,7 @@ export function initBlog() {
 										break;
 									case "visited":
 										const translationVis = translator.translate(`facts.${key}`);
-										ul.innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0,4)}</span> </li>`;
+										ul.innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0, 4)}</span> </li>`;
 										break;
 									case "rating":
 										const ratingKey = translator.translate("facts.rating");
@@ -352,7 +334,7 @@ export function initBlog() {
 							});
 							document.getElementById("article-sources").innerHTML += `<ol>${sourceList}</ol>`;
 						}
-						
+
 						if (document.getElementById("omap")) {
 							loadFactsMap(routeId);
 						}
@@ -365,71 +347,135 @@ export function initBlog() {
 					(jsonld) => {
 						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
 					}
-				).catch((error) => { console.error(`An error occured in getting the JSON-LD: ${error}`); });
-				
+				).catch((error) => {
+					console.error(`An error occured in getting the JSON-LD: ${error}`);
+				});
+
 				translator.fetchBlogImages(value, routeId).then(
-				 (items) => {
-					 //gallery
-					 let gallerySection = document.getElementById("article-gallery");
-					 let galleryTitle = translator.translate("gallery.title");
+					(items) => {
+						//gallery
+						let gallerySection = document.getElementById("article-gallery");
+						let galleryTitle = translator.translate("gallery.title");
 
-					 let galleryDescription = translator.translate("gallery.description");
+						let galleryDescription = translator.translate("gallery.description");
 
-					 let gallery = document.createElement("div");
-					 gallery.classList.add("gallery");
-					 gallery.id = "gallery--responsive-images";
+						let gallery = document.createElement("div");
+						gallery.classList.add("gallery");
+						gallery.id = "gallery--responsive-images";
 
-					 let title = document.createElement("h3");
-					 title.innerText = galleryTitle;
-					 gallerySection.appendChild(title);
+						let title = document.createElement("h3");
+						title.innerText = galleryTitle;
+						gallerySection.appendChild(title);
 
-					 let description = document.createElement("p");
-					 description.innerText = galleryDescription;
-					 gallerySection.appendChild(description);
-					 
-					 // if there are captions
-					 translator.fetchBlogCaptions(value, routeId).then(
-						 (captions) =>{
-							 let galleryCaptions = createGalleryWithCaptions(items, captions.captions, value, routeId, gallery);
-							 gallerySection.appendChild(galleryCaptions);
+						let description = document.createElement("p");
+						description.innerText = galleryDescription;
+						gallerySection.appendChild(description);
 
-							 const smallScreenPadding = {
-								 top: 0, bottom: 0, left: 0, right: 0
-							 };
-							 const largeScreenPadding = {
-								 top: 30, bottom: 30, left: 0, right: 0
-							 };
-														 
-							 const lightbox = new PhotoSwipeLightbox({
-								 gallery: "#gallery--responsive-images",
-								 children: ".pswp-gallery__item",
-								 bgOpacity: 0.95,
-								 // optionaly adjust viewport
-								 paddingFn: (viewportSize) => {
-									 return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-								 },
-								 pswpModule: () => import("photoswipe")
-							 });
+						// if there are captions
+						translator.fetchBlogCaptions(value, routeId).then(
+							(captions) => {
+								
+								//if any item has coordinates, create gallery with captions and openlayers map
+								//TODO In the future, check if there is a photos.json file
+								if (items.some(item => item.coordinate)) {
+									
+									let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+									gallerySection.appendChild(openLayersGallery);
 
-							 const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-								 mobileLayoutBreakpoint: 700,
-								 type: "auto",
-								 mobileCaptionOverlapRatio: 1,
-							 });
-							 lightbox.init();
-						 }).catch(() => {
-							 // no captions. Create gallery without captions
-						 const lightbox = new PhotoSwipeLightbox({
-							 gallery: "#gallery--responsive-images",
-							 children: "a",
-							 bgOpacity: 0.90,
-							 pswpModule: () => import("photoswipe")
-						 });
-						 let galleryPswp = createGallery(items, value, routeId, gallery);
-						 gallerySection.appendChild(galleryPswp);
-						 lightbox.init();
-					 });
-				 }
+									const smallScreenPadding = {
+										top: 64, bottom: 0, left: 0, right: 0
+									};
+									const largeScreenPadding = {
+										top: 64, bottom: 24, left: 52, right: 52
+									};
+
+									const lightbox = new PhotoSwipeLightbox({
+										gallery: "#gallery--responsive-images",
+										children: ".pswp-gallery__item",
+										counter: false,
+										bgOpacity: 1,
+										closeSVG: leftArrow,
+										zoomSVG: zoomIn,
+										arrowNextSVG: nextArrow,
+										arrowPrevSVG: prevArrow,
+										// adjust viewport for design
+										paddingFn: (viewportSize) => {
+											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+										},
+										pswpModule: () => import("photoswipe")
+									});
+									
+									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
+									lightbox.init();
+								}
+								else {
+									// create gallery with captions
+									let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+									gallerySection.appendChild(galleryCaptions);
+
+									const smallScreenPadding = {
+										top: 64, bottom: 0, left: 0, right: 0
+									};
+									const largeScreenPadding = {
+										top: 64, bottom: 24, left: 52, right: 52
+									};
+
+									const lightbox = new PhotoSwipeLightbox({
+										gallery: "#gallery--responsive-images",
+										children: ".pswp-gallery__item",
+										counter: false,
+										bgOpacity: 1,
+										closeSVG: leftArrow,
+										zoomSVG: zoomIn,
+										arrowNextSVG: nextArrow,
+										arrowPrevSVG: prevArrow,
+										// adjust viewport for design
+										paddingFn: (viewportSize) => {
+											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+										},
+										pswpModule: () => import("photoswipe")
+									});
+
+									const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
+
+									const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+										mobileLayoutBreakpoint: 700,
+										type: "auto",
+										mobileCaptionOverlapRatio: 1,
+									});
+									lightbox.init();
+								}
+							}).catch(() => {
+
+							// no captions. Create gallery without captions
+							const smallScreenPadding = {
+								top: 64, bottom: 0, left: 0, right: 0
+							};
+							const largeScreenPadding = {
+								top: 64, bottom: 24, left: 0, right: 0
+							};
+							const lightbox = new PhotoSwipeLightbox({
+								gallery: "#gallery--responsive-images",
+								children: "a",
+								counter: false,
+								bgOpacity: 1,
+								closeSVG: leftArrow,
+								zoomSVG: zoomIn,
+								arrowNextSVG: nextArrow,
+								arrowPrevSVG: prevArrow,
+								paddingFn: (viewportSize) => {
+									return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+								},
+								pswpModule: () => import("photoswipe")
+							});
+							
+							const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
+							
+							let galleryPswp = createGallery(items, value, routeId, gallery);
+							gallerySection.appendChild(galleryPswp);
+							lightbox.init();
+						});
+					}
 				).catch((error) => {
 					console.error(`An error occured in getting the translated blog items: ${error}`);
 				});
@@ -437,7 +483,7 @@ export function initBlog() {
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data: ${error}`);
 		});
-		
+
 		//TODO set a correct translated description
 		document
 			.querySelector('meta[name="description"]')
@@ -446,18 +492,12 @@ export function initBlog() {
 	}
 
 	setShare();
-	hideMenu();
-	hideShare();
 	hideBackToTop();
-	document.addEventListener("click", hideMenu);
-	document.addEventListener("click", hideShare);
-	document.getElementById("menu").addEventListener("click", showMenu);
-	document.getElementById("sharepanel").addEventListener("click", showShare);
 	document.getElementById("contact").addEventListener("click", function () {
-		showMenuItem("contactpanel")
+		showItem("contactpanel")
 	});
 	document.getElementById("privacy").addEventListener("click", function () {
-		showMenuItem("privacypanel")
+		showItem("privacypanel")
 	});
 
 	window.onscroll = function (ev) {
@@ -465,6 +505,10 @@ export function initBlog() {
 			showBackToTop();
 		} else {
 			hideBackToTop();
+			headerElem.classList.remove("header-scroll");
+		}
+		if (window.scrollY >= 1) {
+			headerElem.classList.add("header-scroll");
 		}
 	}
 }

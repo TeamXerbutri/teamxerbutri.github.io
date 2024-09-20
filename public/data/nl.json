@@ -39,10 +39,6 @@
 			"hide": "Verberg de gebouwen"
 		}
 	},
-	"back": {
-		"link": "X",
-		"title": "Terug naar overzicht"
-	},
 	"month": {
 		"01": "januari",
 		"02": "februari",
@@ -81,12 +77,25 @@
 	},
 	"gallery": {
 		"title": "Galerij",
-		"description": "Klik op de foto om naar de galerij te gaan"
+		"description": "Klik op de foto om naar de galerij te gaan",
+		"back": "Terug naar artikel",
+		"next": "Volgende foto",
+		"prev": "Vorige foto",
+		"zoom": "Zoom in",
+		"fullscreen": "Volledig scherm",
+		"error": "De foto kan niet worden geladen"
 	},
 	"category": {
 		"spoor": "Spoorlijnen",
 		"brug": "Bruggen",
 		"tunnel": "Tunnels",
 		"gebouw": "Verlaten Gebouwen"
+	},
+	"navigation": {
+		"share": "Deel deze pagina",
+		"menu": "Menu",
+		"top": "Terug naar boven",
+		"back": "Terug naar de vorige pagina",
+		"home": "Terug naar de Team Xerbutri overzichtspagina"
 	}
 }

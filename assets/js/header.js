@@ -21,10 +21,10 @@ function hideMenuItem(elementId, evt) {
 function showBackToTop() {
 	let bt = document.getElementById("back-to-top");
 	bt.style.display = "inline";
-	window.setTimeout(setBacktoTopTrue, 1000);
+	window.setTimeout(setBackToTopTrue, 1000);
 }
 
-function setBacktoTopTrue() {
+function setBackToTopTrue() {
 	uiState.hasBackToTop = true;
 }
 
@@ -51,7 +51,7 @@ function showMenu() {
 	menu.style.removeProperty("height");
 	// TODO Why did I have this again? (double clicks?) Try with onblur instead
 	window.setTimeout(setHasMenuTrue, 1000);
-	document.getElementsByClassName("filter")[0].style.display = "none";
+	// document.getElementsByClassName("filter")[0].style.display = "none";
 }
 
 function setHasMenuTrue() {
@@ -68,8 +68,8 @@ function hideMenu() {
 			element.style.display = "none";
 		}
 
-		menu.style.width = "44px";
-		menu.style.height = "44px";
+		menu.style.width = "48px";
+		menu.style.height = "48px";
 
 		if (document.getElementsByClassName("filter")[0]) {
 			document.getElementsByClassName("filter")[0].style.display = "inline-block";
