@@ -11,7 +11,7 @@ class Translator {
 
 	getBasePath() {
 		let pathPrefix = "";
-		if (document.location.pathname.startsWith("/avontuur")) {
+		if (document.location.pathname.toLowerCase().startsWith("/avontuur")) {
 			pathPrefix = "../../";
 		}
 		return `${pathPrefix}data/`;
@@ -130,7 +130,8 @@ class Translator {
 				if (this._options.persist) {
 					localStorage.setItem("language", this._lang);
 				}
-				if (window.location.pathname.length === 0 || window.location.pathname.startsWith("/vijf")|| window.location.pathname === "/") {
+				const locationPath = window.location.pathname.toLowerCase();
+				if (locationPath.length === 0 || locationPath.startsWith("/vijf")|| locationPath.pathname === "/") {
 					this.fetchBlogData().then((data) => {
 					this.translateIndex(data)});
 				}

@@ -228,8 +228,14 @@ export function initBlog() {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
-
-	let routeId = window.location.href.split("/").pop();
+	
+	let url = window.location.href;
+	if(window.location.hash.length>1){
+		// everything before the hash
+		url = window.location.href.split("#")[0];
+	}
+	
+	let routeId = url.split("/").pop().toLowerCase();
 
 	function setTranslatedContent() {
 		translator.getBlogDataById(routeId).then(
