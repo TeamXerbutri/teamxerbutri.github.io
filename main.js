@@ -15,15 +15,26 @@ let navState = new stateContext();
 		// exclude from production
 		if (import.meta.env.DEV) {
 			console.warn('dev mode');
-						
-			return;
+			window.location.href = '/#' + window.location.pathname.toLowerCase().replace('/', '')
+			
+			console.log(window.location);
+			// avontuur
+			if(window.location.href.includes('geef=')) {
+				// extract route
+				const last = window.location.href.split('geef=')[1].split("&")[0].toLowerCase();
+				console.log('last', last);
+				//window.location.href = 'avontuur/' + last;
+				history.pushState({page: 1}, "", 'avontuur/' + last);
+				return;
+			}
+			
 		}
 		
 		// TODO routing table? I need solution for:
 		// - vier/xerbutri.php
 		// - vier/bruggen.php or verlaten or whatever
 		// - old links like vier/verdwenen/info.php?geef=StM&lang=1 need a table old=>new
-		// more recent links like 
+		// 
 		
 		if (window.location.hash.length > 1) {
 			const hashParts = window.location.hash.split('#');
