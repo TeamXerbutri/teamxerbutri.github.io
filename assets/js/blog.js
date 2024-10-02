@@ -276,6 +276,7 @@ export function initBlog() {
 						document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
 					},
 				).catch((error) => {
+					//TODO: Show a NotFound page
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 

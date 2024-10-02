@@ -19,6 +19,12 @@ let navState = new stateContext();
 			return;
 		}
 		
+		// TODO routing table? I need solution for:
+		// - vier/xerbutri.php
+		// - vier/bruggen.php or verlaten or whatever
+		// - old links like vier/verdwenen/info.php?geef=StM&lang=1 need a table old=>new
+		// more recent links like 
+		
 		if (window.location.hash.length > 1) {
 			const hashParts = window.location.hash.split('#');
 			const path = hashParts.slice(1).join('#').toLowerCase();
