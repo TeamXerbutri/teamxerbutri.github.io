@@ -15,18 +15,23 @@ let navState = new stateContext();
 		// exclude from production
 		if (import.meta.env.DEV) {
 			console.warn('dev mode');
-			window.location.href = '/#' + window.location.pathname.toLowerCase().replace('/', '')
-			
-			console.log(window.location);
-			// avontuur
+
+			// avontuur => I need this stuff IN the 404!  
 			if(window.location.href.includes('geef=')) {
 				// extract route
 				const last = window.location.href.split('geef=')[1].split("&")[0].toLowerCase();
 				console.log('last', last);
-				//window.location.href = 'avontuur/' + last;
-				history.pushState({page: 1}, "", 'avontuur/' + last);
-				return;
+
+				window.location.href = '/#avontuur/' + last;
+				//history.pushState({page: 1}, "", 'avontuur/' + last);
 			}
+			
+			// mimmick redirecting behaviour of github pages. It strips off the query AND any hash
+			else if (window.location.pathname.length > 1) 
+				window.location.href = '/#' + window.location.pathname.toLowerCase().replace('/', '')
+			
+		
+			
 			
 		}
 		
@@ -35,11 +40,10 @@ let navState = new stateContext();
 		// - vier/bruggen.php or verlaten or whatever
 		// - old links like vier/verdwenen/info.php?geef=StM&lang=1 need a table old=>new
 		// 
-		
+
 		if (window.location.hash.length > 1) {
-			const hashParts = window.location.hash.split('#');
-			const path = hashParts.slice(1).join('#').toLowerCase();
-			history.pushState({page: 1}, "", '/' + path);
+			const path = window.location.hash.replace('#', '')
+			history.pushState({page: 1}, "", '/' + path)
 		}
 	}
 
