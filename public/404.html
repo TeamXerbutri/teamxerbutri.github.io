@@ -5,6 +5,14 @@
 </head>
 <body></body>
 <script>
-	window.location.href = '/#' + window.location.pathname.toLowerCase().replace('/', '')
+	if(window.location.href.includes("geef=")) {
+		const route = window.location.href.split("geef=")[1].split("&")[0].toLowerCase();
+		window.location.href = "/#avontuur/" + route;
+	}
+	else if (window.location.pathname.includes(".php")) {
+		window.location.href = "/";
+	}
+	else if (window.location.pathname.length > 1)
+		window.location.href = "/#" + window.location.pathname.toLowerCase().replace("/", "")
 </script>
 </html>

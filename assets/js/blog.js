@@ -1,4 +1,5 @@
 ﻿import {uiState} from "./uistate.js";
+import {routes} from "./routes.js";
 import Map from "ol/Map";
 import {hideBackToTop, showBackToTop} from "./header.js";
 import Translator from "./translator.js";
@@ -236,7 +237,12 @@ export function initBlog() {
 	}
 	
 	let routeId = url.split("/").pop().toLowerCase();
-
+	if(routes[routeId] !== undefined)
+	{
+		routeId = routes[routeId];
+		history.pushState({page: 1}, "", "/avontuur/" + routeId)
+	}
+	
 	function setTranslatedContent() {
 		translator.getBlogDataById(routeId).then(
 			(value) => {
