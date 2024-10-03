@@ -17,7 +17,7 @@ let stateContext = function () {
 	}
 
 	this.initState = function () {
-		let path = window.location.pathname;
+		const path = window.location.pathname.toLowerCase();
 		if (path.startsWith("/cms")) {
 			this.transitionTo(new cmsState(this.context));
 			return;
@@ -40,7 +40,7 @@ let homeState = function (context) {
 		initHome();
 	}
 	this.navigate = function () {
-		let path = window.location.pathname;
+		let path = window.location.pathname.toLowerCase();
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			// do nothing, I am already @home
 			return;
@@ -64,7 +64,7 @@ let blogState = function (context) {
 		initBlog();
 	}
 	this.navigate = function () {
-		let path = window.location.pathname;
+		let path = window.location.pathname.toLowerCase();
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
@@ -88,7 +88,7 @@ let mapState = function (context) {
 		initMap();
 	}
 	this.navigate = function () {
-		let path = window.location.pathname;
+		let path = window.location.pathname.toLowerCase();
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
@@ -112,7 +112,7 @@ let cmsState = function (context) {
 		initCms();
 	}
 	this.navigate = function () {
-		let path = window.location.pathname;
+		let path = window.location.pathname.toLowerCase();
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
