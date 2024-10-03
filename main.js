@@ -1,10 +1,8 @@
 import "./style.css"
 import txLogo from "./assets/images/tx.gif"
-
 import {stateContext} from "./assets/js/statemachine.js";
 
 let navState = new stateContext();
-
 
 (function () {
 
