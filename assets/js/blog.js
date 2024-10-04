@@ -1,4 +1,5 @@
 ﻿import {uiState} from "./uistate.js";
+import {routes} from "./routes.js";
 import Map from "ol/Map";
 import {hideBackToTop, showBackToTop} from "./header.js";
 import Translator from "./translator.js";
@@ -228,9 +229,20 @@ export function initBlog() {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
-
-	let routeId = window.location.href.split("/").pop();
-
+	
+	let url = window.location.href;
+	if(window.location.hash.length>1){
+		// everything before the hash
+		url = window.location.href.split("#")[0];
+	}
+	
+	let routeId = url.split("/").pop().toLowerCase();
+	if(routes[routeId] !== undefined)
+	{
+		routeId = routes[routeId];
+		history.pushState({page: 1}, "", "/avontuur/" + routeId)
+	}
+	
 	function setTranslatedContent() {
 		translator.getBlogDataById(routeId).then(
 			(value) => {
@@ -270,6 +282,7 @@ export function initBlog() {
 						document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
 					},
 				).catch((error) => {
+					//TODO: Show a NotFound page
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
