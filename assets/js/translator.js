@@ -16,8 +16,7 @@ class Translator {
 		}
 		return `${pathPrefix}data/`;
 	}
-
-
+	
 	translate(key) {
 		const text = key.split('.').reduce((obj, i) => obj[i], this._translations);
 		return text || key;
@@ -196,40 +195,24 @@ class Translator {
 		return fetch(path).then((response) => response.json());
 	}
 	
-	//TODO does not need to be in translator
 	fetchBlogData() {
 		const path = this._basePath.concat("blogs.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
-
-	//TODO does not need to be in translator
+	
 	fetchHomeData() {
 		return fetch(this._basePath.concat("index.", this._lang, ".json")).then((response) => response.json());
 	}
 	
-	//TODO does not need to be in translator
 	getBlogDataById(id) {
 		const blogs = this.fetchBlogData();
 		return blogs.then((data) => {
 			return data[id]
 		});
 	}
-
-	//TODO does not need to be in translator
-	fetchBlogFacts(category, route) {
-		const path = this._basePath.concat(category, "/", route, "/blog.json");
-		return fetch(path).then((response) => response.json());
-	}
-	
-	
+		
 	fetchBlogJsonLd(category, route) {
 		const path = this._basePath.concat(category, "/", route, "/",route,".",this._lang,".jsonld");
-		return fetch(path).then((response) => response.json());
-	}
-	
-	//TODO does not need to be in translator
-	fetchBlogImages(category, route) {
-		const path = this._basePath.concat(category, "/", route, "/images.json");
 		return fetch(path).then((response) => response.json());
 	}
 	
