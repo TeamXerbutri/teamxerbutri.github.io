@@ -3,6 +3,7 @@ import {routes} from "./routes.js";
 import Map from "ol/Map";
 import {hideBackToTop, showBackToTop} from "./header.js";
 import Translator from "./translator.js";
+import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import "../css/mat/lightbox.css"
@@ -157,6 +158,7 @@ function setShare() {
 
 export function initBlog() {
 	let translator = new Translator();
+	let jsonhelper = new JsonHelper();
 	uiState.hasShareModal = true;
 
 	document.querySelector("#app").innerHTML = `
@@ -286,7 +288,7 @@ export function initBlog() {
 					console.error(`An error occured in getting the translated blog content: ${error}`);
 				});
 
-				translator.fetchBlogFacts(value, routeId).then(
+				jsonhelper.fetchBlogFacts(value, routeId).then(
 					(blogFacts) => {
 
 						//aside
@@ -364,7 +366,7 @@ export function initBlog() {
 					console.error(`An error occured in getting the JSON-LD: ${error}`);
 				});
 
-				translator.fetchBlogImages(value, routeId).then(
+				jsonhelper.fetchBlogImages(value, routeId).then(
 					(items) => {
 						//gallery
 						let gallerySection = document.getElementById("article-gallery");
@@ -388,12 +390,11 @@ export function initBlog() {
 						translator.fetchBlogCaptions(value, routeId).then(
 							(captions) => {
 								
-								//if any item has coordinates, create gallery with captions and openlayers map
-								//TODO In the future, check if there is a photos.json file
-								if (items.some(item => item.coordinate)) {
-									
-									let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
-									gallerySection.appendChild(openLayersGallery);
+								//if the object has coordinates, create gallery with captions and openlayers map
+								jsonhelper.fetchBlogPhotos(value, routeId).then(
+									(photos) => {
+										let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+										gallerySection.appendChild(openLayersGallery);
 
 									const smallScreenPadding = {
 										top: 64, bottom: 0, left: 0, right: 0
@@ -420,8 +421,8 @@ export function initBlog() {
 									
 									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
 									lightbox.init();
-								}
-								else {
+								}).catch(() =>{
+								
 									// create gallery with captions
 									let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
 									gallerySection.appendChild(galleryCaptions);
@@ -457,7 +458,7 @@ export function initBlog() {
 										mobileCaptionOverlapRatio: 1,
 									});
 									lightbox.init();
-								}
+								});
 							}).catch(() => {
 
 							// no captions. Create gallery without captions
