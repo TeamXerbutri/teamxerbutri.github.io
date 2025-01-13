@@ -125,7 +125,7 @@ function loadFactsMap(route) {
 
 	const railVector = new VectorLayer({
 		source: new VectorSource({
-			url: "../data/spoor/"+route+"/geometry.json",
+			url: "../data/spoor/" + route + "/geometry.json",
 			format: new GeoJSON(),
 		}),
 		style: function (feature) {
@@ -154,6 +154,14 @@ function setShare() {
 	let waElem = document.getElementById("sharewa");
 	fbElem.href = fburi;
 	waElem.href = wauri;
+}
+
+function showNotFound() {
+	document.title = "404 Not found - Xerbutri Urban Exploring";
+	document.querySelector('meta[name="description"]').setAttribute("content", "This Xerbutri blog was not found");
+	document.getElementById("article-title").innerHTML = `<h1>Not found</h1>`;
+	// intro
+	document.getElementById("article-intro").innerHTML = "Deze Xerbutri blog is niet gevonden.";
 }
 
 export function initBlog() {
@@ -231,278 +239,279 @@ export function initBlog() {
 		headerElem.classList.add("blog")
 		headerElem.innerHTML = header
 	}
-	
+
 	let url = window.location.href;
-	if(window.location.hash.length>1){
+	if (window.location.hash.length > 1) {
 		// everything before the hash
 		url = window.location.href.split("#")[0];
 	}
-	
+
 	let routeId = url.split("/").pop().toLowerCase();
-	if(routes[routeId] !== undefined)
-	{
+	if (routes[routeId] !== undefined) {
 		routeId = routes[routeId];
 		history.pushState({page: 1}, "", "/avontuur/" + routeId)
 	}
-	
+
 	function setTranslatedContent() {
+		function constructBlog(value) {
+			translator.fetchBlogLanguageContent(value, routeId).then(
+				(blogContent) => {
+					document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
+					document.querySelector('meta[name="description"]').setAttribute("content", blogContent.description);
+					document.getElementById("article-title").innerHTML = `<h1>${blogContent.title}</h1>`;
+					// intro
+					document.getElementById("article-intro").innerHTML = blogContent.intro;
+
+					// adventure and history
+					if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
+						const adventureTitle = translator.translate("adventure");
+
+						document.getElementById("article-content").innerHTML += `<h3>${adventureTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += blogContent.adventure;
+					}
+
+					if (blogContent.history !== undefined && blogContent.history !== "") {
+						let historyTitle = translator.translate("history");
+
+						document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += blogContent.history;
+					}
+
+					const year = blogContent.created.split("-")[0];
+					const month = blogContent.created.split("-")[1];
+
+					let monthBlog = translator.translate(`month.${month}`);
+
+					document.getElementById("article-visited").innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
+
+					let updatedSplit = blogContent.updated.split("-");
+
+					document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
+				},
+			).catch((error) => {
+				console.error(`An error occured in getting the translated blog content: ${error}`);
+			});
+
+			jsonhelper.fetchBlogFacts(value, routeId).then(
+				(blogFacts) => {
+
+					//aside
+					if (countProperties(blogFacts.facts) > 0) {
+						let ul = document.createElement("ul");
+
+						Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
+							if (value === "") {
+								return;
+							}
+
+							switch (key) {
+								case "build":
+								case "abandoned":
+								case "demolished":
+								case "reused":
+								case "length":
+								case "height":
+								case "line":
+									const translation = translator.translate(`facts.${key}`);
+									ul.innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
+									break;
+								case "visited":
+									const translationVis = translator.translate(`facts.${key}`);
+									ul.innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0, 4)}</span> </li>`;
+									break;
+								case "rating":
+									const ratingKey = translator.translate("facts.rating");
+									ul.innerHTML += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
+									break;
+								case "map":
+									let mapKey = translator.translate("facts.map");
+									ul.innerHTML += `</br><li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+									break;
+								default:
+									break;
+							}
+						});
+						document.getElementById("article-aside").appendChild(ul);
+					}
+					if (countProperties(blogFacts.facts) <= 0) {
+						document.getElementById("article-aside").style.display = "none";
+					}
+
+					if (blogFacts.sources.length > 0) {
+						let sourceTitle = translator.translate("sources.title");
+						let sourceDescription = translator.translate("sources.description");
+
+						document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
+						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
+						let sourceList = "";
+						blogFacts.sources.forEach(function (source) {
+
+							let visitedOnDateArray = source.date.split("-");
+							let visitedOn = translator.translate("sources.visited") + translator.localDate(visitedOnDateArray[2], visitedOnDateArray[1], visitedOnDateArray[0]);
+
+							sourceList += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
+						});
+						document.getElementById("article-sources").innerHTML += `<ol>${sourceList}</ol>`;
+					}
+
+					if (document.getElementById("omap")) {
+						loadFactsMap(routeId);
+					}
+				},
+			).catch((error) => {
+				console.error(`An error occured in getting the translated blog facts: ${error}`);
+			});
+
+			translator.fetchBlogJsonLd(value, routeId).then(
+				(jsonld) => {
+					document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
+				}
+			).catch((error) => {
+				console.error(`An error occured in getting the JSON-LD: ${error}`);
+			});
+
+			jsonhelper.fetchBlogImages(value, routeId).then(
+				(items) => {
+					//gallery
+					let gallerySection = document.getElementById("article-gallery");
+					let galleryTitle = translator.translate("gallery.title");
+
+					let galleryDescription = translator.translate("gallery.description");
+
+					let gallery = document.createElement("div");
+					gallery.classList.add("gallery");
+					gallery.id = "gallery--responsive-images";
+
+					let title = document.createElement("h3");
+					title.innerText = galleryTitle;
+					gallerySection.appendChild(title);
+
+					let description = document.createElement("p");
+					description.innerText = galleryDescription;
+					gallerySection.appendChild(description);
+
+					// if there are captions
+					translator.fetchBlogCaptions(value, routeId).then(
+						(captions) => {
+
+							//if the object has coordinates, create gallery with captions and openlayers map
+							jsonhelper.fetchBlogPhotos(value, routeId).then(
+								(photos) => {
+									let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+									gallerySection.appendChild(openLayersGallery);
+
+									const smallScreenPadding = {
+										top: 64, bottom: 0, left: 0, right: 0
+									};
+									const largeScreenPadding = {
+										top: 64, bottom: 24, left: 52, right: 52
+									};
+
+									const lightbox = new PhotoSwipeLightbox({
+										gallery: "#gallery--responsive-images",
+										children: ".pswp-gallery__item",
+										counter: false,
+										bgOpacity: 1,
+										closeSVG: leftArrow,
+										zoomSVG: zoomIn,
+										arrowNextSVG: nextArrow,
+										arrowPrevSVG: prevArrow,
+										// adjust viewport for design
+										paddingFn: (viewportSize) => {
+											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+										},
+										pswpModule: () => import("photoswipe")
+									});
+
+									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
+									lightbox.init();
+								}).catch(() => {
+
+								// create gallery with captions
+								let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+								gallerySection.appendChild(galleryCaptions);
+
+								const smallScreenPadding = {
+									top: 64, bottom: 0, left: 0, right: 0
+								};
+								const largeScreenPadding = {
+									top: 64, bottom: 24, left: 52, right: 52
+								};
+
+								const lightbox = new PhotoSwipeLightbox({
+									gallery: "#gallery--responsive-images",
+									children: ".pswp-gallery__item",
+									counter: false,
+									bgOpacity: 1,
+									closeSVG: leftArrow,
+									zoomSVG: zoomIn,
+									arrowNextSVG: nextArrow,
+									arrowPrevSVG: prevArrow,
+									// adjust viewport for design
+									paddingFn: (viewportSize) => {
+										return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+									},
+									pswpModule: () => import("photoswipe")
+								});
+
+								const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
+
+								const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+									mobileLayoutBreakpoint: 700,
+									type: "auto",
+									mobileCaptionOverlapRatio: 1,
+								});
+								lightbox.init();
+							});
+						}).catch(() => {
+
+						// no captions. Create gallery without captions
+						const smallScreenPadding = {
+							top: 64, bottom: 0, left: 0, right: 0
+						};
+						const largeScreenPadding = {
+							top: 64, bottom: 24, left: 0, right: 0
+						};
+						const lightbox = new PhotoSwipeLightbox({
+							gallery: "#gallery--responsive-images",
+							children: "a",
+							counter: false,
+							bgOpacity: 1,
+							closeSVG: leftArrow,
+							zoomSVG: zoomIn,
+							arrowNextSVG: nextArrow,
+							arrowPrevSVG: prevArrow,
+							paddingFn: (viewportSize) => {
+								return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
+							},
+							pswpModule: () => import("photoswipe")
+						});
+
+						const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
+
+						let galleryPswp = createGallery(items, value, routeId, gallery);
+						gallerySection.appendChild(galleryPswp);
+						lightbox.init();
+					});
+				}
+			).catch((error) => {
+				console.error(`An error occured in getting the translated blog items: ${error}`);
+			});
+		}
+
 		translator.getBlogDataById(routeId).then(
 			(value) => {
 
-				translator.fetchBlogLanguageContent(value, routeId).then(
-					(blogContent) => {
-						document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
-						document.querySelector('meta[name="description"]').setAttribute("content", blogContent.description);
-						document.getElementById("article-title").innerHTML = `<h1>${blogContent.title}</h1>`;
-						// intro
-						document.getElementById("article-intro").innerHTML = blogContent.intro;
+				if (!value) {
+					showNotFound();
+					return;
+				}
 
-						// adventure and history
-						if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
-							const adventureTitle = translator.translate("adventure");
-
-							document.getElementById("article-content").innerHTML += `<h3>${adventureTitle}</h3>`;
-							document.getElementById("article-content").innerHTML += blogContent.adventure;
-						}
-
-						if (blogContent.history !== undefined && blogContent.history !== "") {
-							let historyTitle = translator.translate("history");
-
-							document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
-							document.getElementById("article-content").innerHTML += blogContent.history;
-						}
-
-						const year = blogContent.created.split("-")[0];
-						const month = blogContent.created.split("-")[1];
-
-						let monthBlog = translator.translate(`month.${month}`);
-
-						document.getElementById("article-visited").innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
-
-						let updatedSplit = blogContent.updated.split("-");
-
-						document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
-					},
-				).catch((error) => {
-					//TODO: Show a NotFound page
-					console.error(`An error occured in getting the translated blog content: ${error}`);
-				});
-
-				jsonhelper.fetchBlogFacts(value, routeId).then(
-					(blogFacts) => {
-
-						//aside
-						if (countProperties(blogFacts.facts) > 0) {
-							let ul = document.createElement("ul");
-
-							Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
-								if (value === "") {
-									return;
-								}
-
-								switch (key) {
-									case "build":
-									case "abandoned":
-									case "demolished":
-									case "reused":
-									case "length":
-									case "height":
-									case "line":
-										const translation = translator.translate(`facts.${key}`);
-										ul.innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
-										break;
-									case "visited":
-										const translationVis = translator.translate(`facts.${key}`);
-										ul.innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0, 4)}</span> </li>`;
-										break;
-									case "rating":
-										const ratingKey = translator.translate("facts.rating");
-										ul.innerHTML += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
-										break;
-									case "map":
-										let mapKey = translator.translate("facts.map");
-										ul.innerHTML += `</br><li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
-										break;
-									default:
-										break;
-								}
-							});
-							document.getElementById("article-aside").appendChild(ul);
-						}
-						if (countProperties(blogFacts.facts) <= 0) {
-							document.getElementById("article-aside").style.display = "none";
-						}
-
-						if (blogFacts.sources.length > 0) {
-							let sourceTitle = translator.translate("sources.title");
-							let sourceDescription = translator.translate("sources.description");
-
-							document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
-							document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
-							let sourceList = "";
-							blogFacts.sources.forEach(function (source) {
-
-								let visitedOnDateArray = source.date.split("-");
-								let visitedOn = translator.translate("sources.visited") + translator.localDate(visitedOnDateArray[2], visitedOnDateArray[1], visitedOnDateArray[0]);
-
-								sourceList += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
-							});
-							document.getElementById("article-sources").innerHTML += `<ol>${sourceList}</ol>`;
-						}
-
-						if (document.getElementById("omap")) {
-							loadFactsMap(routeId);
-						}
-					},
-				).catch((error) => {
-					console.error(`An error occured in getting the translated blog facts: ${error}`);
-				});
-
-				translator.fetchBlogJsonLd(value, routeId).then(
-					(jsonld) => {
-						document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
-					}
-				).catch((error) => {
-					console.error(`An error occured in getting the JSON-LD: ${error}`);
-				});
-
-				jsonhelper.fetchBlogImages(value, routeId).then(
-					(items) => {
-						//gallery
-						let gallerySection = document.getElementById("article-gallery");
-						let galleryTitle = translator.translate("gallery.title");
-
-						let galleryDescription = translator.translate("gallery.description");
-
-						let gallery = document.createElement("div");
-						gallery.classList.add("gallery");
-						gallery.id = "gallery--responsive-images";
-
-						let title = document.createElement("h3");
-						title.innerText = galleryTitle;
-						gallerySection.appendChild(title);
-
-						let description = document.createElement("p");
-						description.innerText = galleryDescription;
-						gallerySection.appendChild(description);
-
-						// if there are captions
-						translator.fetchBlogCaptions(value, routeId).then(
-							(captions) => {
-								
-								//if the object has coordinates, create gallery with captions and openlayers map
-								jsonhelper.fetchBlogPhotos(value, routeId).then(
-									(photos) => {
-										let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
-										gallerySection.appendChild(openLayersGallery);
-
-									const smallScreenPadding = {
-										top: 64, bottom: 0, left: 0, right: 0
-									};
-									const largeScreenPadding = {
-										top: 64, bottom: 24, left: 52, right: 52
-									};
-
-									const lightbox = new PhotoSwipeLightbox({
-										gallery: "#gallery--responsive-images",
-										children: ".pswp-gallery__item",
-										counter: false,
-										bgOpacity: 1,
-										closeSVG: leftArrow,
-										zoomSVG: zoomIn,
-										arrowNextSVG: nextArrow,
-										arrowPrevSVG: prevArrow,
-										// adjust viewport for design
-										paddingFn: (viewportSize) => {
-											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-										},
-										pswpModule: () => import("photoswipe")
-									});
-									
-									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
-									lightbox.init();
-								}).catch(() =>{
-								
-									// create gallery with captions
-									let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
-									gallerySection.appendChild(galleryCaptions);
-
-									const smallScreenPadding = {
-										top: 64, bottom: 0, left: 0, right: 0
-									};
-									const largeScreenPadding = {
-										top: 64, bottom: 24, left: 52, right: 52
-									};
-
-									const lightbox = new PhotoSwipeLightbox({
-										gallery: "#gallery--responsive-images",
-										children: ".pswp-gallery__item",
-										counter: false,
-										bgOpacity: 1,
-										closeSVG: leftArrow,
-										zoomSVG: zoomIn,
-										arrowNextSVG: nextArrow,
-										arrowPrevSVG: prevArrow,
-										// adjust viewport for design
-										paddingFn: (viewportSize) => {
-											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-										},
-										pswpModule: () => import("photoswipe")
-									});
-
-									const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
-
-									const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-										mobileLayoutBreakpoint: 700,
-										type: "auto",
-										mobileCaptionOverlapRatio: 1,
-									});
-									lightbox.init();
-								});
-							}).catch(() => {
-
-							// no captions. Create gallery without captions
-							const smallScreenPadding = {
-								top: 64, bottom: 0, left: 0, right: 0
-							};
-							const largeScreenPadding = {
-								top: 64, bottom: 24, left: 0, right: 0
-							};
-							const lightbox = new PhotoSwipeLightbox({
-								gallery: "#gallery--responsive-images",
-								children: "a",
-								counter: false,
-								bgOpacity: 1,
-								closeSVG: leftArrow,
-								zoomSVG: zoomIn,
-								arrowNextSVG: nextArrow,
-								arrowPrevSVG: prevArrow,
-								paddingFn: (viewportSize) => {
-									return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-								},
-								pswpModule: () => import("photoswipe")
-							});
-							
-							const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
-							
-							let galleryPswp = createGallery(items, value, routeId, gallery);
-							gallerySection.appendChild(galleryPswp);
-							lightbox.init();
-						});
-					}
-				).catch((error) => {
-					console.error(`An error occured in getting the translated blog items: ${error}`);
-				});
+				constructBlog(value);
 			}
 		).catch((error) => {
-			console.error(`An error occured in getting the translated blog data: ${error}`);
+			console.error(`An error occured in getting the translated blog data ${error}`);
 		});
-
-		//TODO set a correct translated description
-		document
-			.querySelector('meta[name="description"]')
-			.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
-		document.title = "Xerbutri Urban Exploring";
 	}
 
 	setShare();
