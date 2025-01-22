@@ -155,12 +155,20 @@ class PhotoswipeOpenLayersPlugin {
 		});
 
 		pswp.on("verticalDrag", (e) => {
+			if(!e.originalEvent){
+				e.preventDefault();
+				return;
+			}
 			if (e.originalEvent.target.closest(".pswp__sheet-map")) {
 				e.preventDefault();
 			}
 		});
 
 		pswp.on("pinchClose", (e) => {
+			if(!e.originalEvent){
+				e.preventDefault();
+				return;
+			}
 			if (e.originalEvent.target.closest(".pswp__sheet-map")) {
 				e.preventDefault();
 			}
@@ -546,11 +554,21 @@ class PhotoswipeOpenLayersPlugin {
 
 		clickedFeatures.on("add", function (event) {
 			const feature = event.element;
+			
+			if(feature.get("type") === "rail"){
+				return;
+			}
+			
 			feature.set("type", "pictureselect");
 			pswp.goTo(feature.get("Index"));
 		});
 		clickedFeatures.on("remove", function (event) {
 			const feature = event.element;
+			
+			if(feature.get("type") === "rail"){
+				return;
+			}
+			
 			feature.set("type", "picture");
 		});
 
