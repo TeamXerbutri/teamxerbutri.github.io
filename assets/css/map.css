@@ -61,7 +61,7 @@ body {
 .ol-rotate {
 	top: revert;
 	right: revert;
-	bottom: 7.2em;
+	bottom: 8.3em;
 	left: .5em;
 	transition: opacity .25s linear, visibility 0s linear
 }
