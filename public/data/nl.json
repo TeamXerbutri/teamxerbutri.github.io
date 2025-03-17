@@ -97,5 +97,11 @@
 		"top": "Terug naar boven",
 		"back": "Terug naar de vorige pagina",
 		"home": "Terug naar de Team Xerbutri overzichtspagina"
+	},
+	"errors": {
+		"404": {
+			"title": "Blog niet gevonden",
+			"content": "Er is iets mis gegaan, de blog is niet gevonden. Ga terug naar de <a href=\"/\" title=\"Terug naar de Team Xerbutri overzichtspagina\">overzichtspagina</a>."
+		}
 	}
 }

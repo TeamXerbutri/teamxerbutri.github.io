@@ -101,5 +101,11 @@
 		"top": "Retour en haut",
 		"back": "Retour à la page précédente",
 		"home": "Retour à la page d'accueil de Team Xerbutri"
+	},
+	"errors": {
+		"404": {
+			"title": "Page non trouvée",
+			"content": "La page que vous recherchez n'existe pas. Revenir à la page d'accueil."
+		}
 	}
 }
