@@ -252,9 +252,9 @@ export function initBlog() {
 				const errorDescription = translator.translate("errors.404.content");
 				document.title = "404 "+errorTitle+" - Xerbutri Urban Exploring";
 				document.querySelector('meta[name="description"]').setAttribute("content", "This Xerbutri blog was not found");
-				document.getElementById("article-title").innerHTML = `<h1 data-i18n="errors.404.title" >${errorTitle}</h1>`;
+				document.getElementById("article-title").innerHTML = `<h1>${errorTitle}</h1>`;
 				// intro
-				document.getElementById("article-intro").innerHTML = `<p data-i18n="errors.404.content">${errorDescription}</p>`;
+				document.getElementById("article-intro").innerHTML = `<p>${errorDescription}</p>`;
 				return;
 			}
 			
