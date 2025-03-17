@@ -101,7 +101,7 @@
 	"errors": {
 		"404": {
 			"title": "Blog niet gevonden",
-			"content": "De blog die je zoekt kunnen we niet vinden. Ga terug naar de <a href=\"/\" title=\"Terug naar de Team Xerbutri overzichtspagina\">overzichtspagina</a>."
+			"content": "Er is iets mis gegaan, de blog is niet gevonden. Ga terug naar de <a href=\"/\" title=\"Terug naar de Team Xerbutri overzichtspagina\">overzichtspagina</a>."
 		}
 	}
 }
