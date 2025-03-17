@@ -156,17 +156,9 @@ function setShare() {
 	waElem.href = wauri;
 }
 
-function showNotFound() {
-	document.title = "404 Not found - Xerbutri Urban Exploring";
-	document.querySelector('meta[name="description"]').setAttribute("content", "This Xerbutri blog was not found");
-	document.getElementById("article-title").innerHTML = `<h1>Not found</h1>`;
-	// intro
-	document.getElementById("article-intro").innerHTML = "Deze Xerbutri blog is niet gevonden.";
-}
-
 export function initBlog() {
 	let translator = new Translator();
-	let jsonhelper = new JsonHelper();
+	let jsonHelper = new JsonHelper();
 	uiState.hasShareModal = true;
 
 	document.querySelector("#app").innerHTML = `
@@ -254,6 +246,18 @@ export function initBlog() {
 
 	function setTranslatedContent() {
 		function constructBlog(value) {
+			
+			if(!value){
+				const errorTitle = translator.translate("errors.404.title");
+				const errorDescription = translator.translate("errors.404.content");
+				document.title = "404 "+errorTitle+" - Xerbutri Urban Exploring";
+				document.querySelector('meta[name="description"]').setAttribute("content", "This Xerbutri blog was not found");
+				document.getElementById("article-title").innerHTML = `<h1 data-i18n="errors.404.title" >${errorTitle}</h1>`;
+				// intro
+				document.getElementById("article-intro").innerHTML = `<p data-i18n="errors.404.content">${errorDescription}</p>`;
+				return;
+			}
+			
 			translator.fetchBlogLanguageContent(value, routeId).then(
 				(blogContent) => {
 					document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
@@ -292,7 +296,7 @@ export function initBlog() {
 				console.error(`An error occured in getting the translated blog content: ${error}`);
 			});
 
-			jsonhelper.fetchBlogFacts(value, routeId).then(
+			jsonHelper.fetchBlogFacts(value, routeId).then(
 				(blogFacts) => {
 
 					//aside
@@ -370,7 +374,7 @@ export function initBlog() {
 				console.error(`An error occured in getting the JSON-LD: ${error}`);
 			});
 
-			jsonhelper.fetchBlogImages(value, routeId).then(
+			jsonHelper.fetchBlogImages(value, routeId).then(
 				(items) => {
 					//gallery
 					let gallerySection = document.getElementById("article-gallery");
@@ -395,7 +399,7 @@ export function initBlog() {
 						(captions) => {
 
 							//if the object has coordinates, create gallery with captions and openlayers map
-							jsonhelper.fetchBlogPhotos(value, routeId).then(
+							jsonHelper.fetchBlogPhotos(value, routeId).then(
 								(photos) => {
 									let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
 									gallerySection.appendChild(openLayersGallery);
@@ -501,15 +505,10 @@ export function initBlog() {
 
 		translator.getBlogDataById(routeId).then(
 			(value) => {
-
-				if (!value) {
-					showNotFound();
-					return;
-				}
-
 				constructBlog(value);
 			}
 		).catch((error) => {
+			// TODO if the blog is not found, show the 404 page
 			console.error(`An error occured in getting the translated blog data ${error}`);
 		});
 	}

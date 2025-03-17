@@ -1,6 +1,6 @@
 ﻿{
 	"maps": {
-		"link" : "Kaart",
+		"link" : "Karten",
 		"title": "Naar de kaart met alle locaties"
 	},
 	"abouttx": {
@@ -81,7 +81,13 @@
 	},
 	"gallery": {
 		"title": "Galerie",
-		"description": "Klicken Sie auf das Bild, um zur Galerie zu gelangen"
+		"description": "Klicken Sie auf das Bild, um zur Galerie zu gelangen",
+		"back": "Zurück zum Artikel",
+		"next": "Nächstes Bild",
+		"prev": "Vorheriges Bild",
+		"zoom": "Vergrößern",
+		"fullscreen": "Vollbild",
+		"error": "Fehler beim Laden des Bildes"
 	},
 	"category": {
 		"spoor": "Eisenbahnen",
@@ -89,6 +95,19 @@
 		"tunnel": "Tunnels",
 		"gebouw": "Verlassene Gebäude"
 	},
-	"share": "Teilen",
-	"menu": "Menu"
+	"navigation": {
+		"share": "Diese Seite teilen",
+		"menu": "Menü",
+		"top": "Zurück nach oben",
+		"back": "Zurück zur vorherigen Seite",
+		"home": "Startseite"
+	},
+	"errors": {
+		"404": {
+			"title": "Seite nicht gefunden",
+			"content": "Die Seite, die Sie suchen, wurde nicht gefunden."
+		}
+	}
+	
+	
 }
