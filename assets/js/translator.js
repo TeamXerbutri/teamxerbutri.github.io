@@ -5,8 +5,17 @@ class Translator {
 
 	constructor(options = {}) {
 		this._options = Object.assign({}, this.defaultConfig, options);
+		this._hasLocalStorage = this.hasLocalStorage();
 		this._lang = this.getLanguage();
 		this._basePath = this.getBasePath();
+	}
+
+	get defaultConfig() {
+		return {
+			persist: true,
+			languages: ["nl", "en", "fr"],
+			defaultLanguage: "nl",
+		};
 	}
 
 	getBasePath() {
@@ -16,7 +25,7 @@ class Translator {
 		}
 		return `${pathPrefix}data/`;
 	}
-	
+
 	translate(key) {
 		const text = key.split('.').reduce((obj, i) => obj[i], this._translations);
 		return text || key;
@@ -36,28 +45,29 @@ class Translator {
 			}
 
 			if (element.tagName === "A") {
-				
+
 				if (!element.dataset.i18n.endsWith("link")) {
 					element.title = text;
 					return;
 				}
-				
+
 				// if a dataset ends with link, it has link text and title
-								
+
 				const title = element.dataset.i18n.split('.')[0].concat(".title").split('.').reduce((obj, i) => obj[i], translations);
 				if (title) {
 					element.title = title;
 				}
 			}
-			
+
 			element.innerHTML = text;
 		}
 
 		this._elements.forEach(replace);
 	}
-	
+
 	translateIndex(translations) {
 		const elements = document.querySelectorAll("[data-i18nix]");
+
 		function replace(element) {
 			const text = element.dataset.i18nix.split('.').reduce((obj, i) => obj[i], translations);
 
@@ -67,9 +77,9 @@ class Translator {
 
 			}
 		}
+
 		elements.forEach(replace);
 	}
-	
 
 	setLanguage(lang) {
 
@@ -77,7 +87,12 @@ class Translator {
 			this._lang = lang;
 		}
 
-		this.load().then(() => {
+		if (this._options.persist) {
+			localStorage.setItem("language", this._lang);
+		}
+
+		// TODO: At this moment, the functionality reloads the full page.
+		this.load(lang).then(() => {
 			this.addMenuOptions();
 		}).catch((error) => {
 			console.error(`An error occured in loading the translations: ${error}`)
@@ -85,6 +100,10 @@ class Translator {
 	}
 
 	getLanguage() {
+		
+		if (!this._hasLocalStorage)
+			return this._options.defaultLanguage;
+		
 		const storedLanguage = localStorage.getItem("language");
 
 		if (storedLanguage) {
@@ -95,6 +114,7 @@ class Translator {
 
 		// default fallback to nl
 		if (!browserLanguage) {
+			console.warn("Fallback to default language");
 			return this._options.defaultLanguage;
 		}
 
@@ -130,11 +150,11 @@ class Translator {
 					localStorage.setItem("language", this._lang);
 				}
 				const locationPath = window.location.pathname.toLowerCase();
-				if (locationPath.length === 0 || locationPath.startsWith("/vijf")|| locationPath.pathname === "/") {
+				if (locationPath.length === 0 || locationPath.startsWith("/vijf") || locationPath.pathname === "/") {
 					this.fetchBlogData().then((data) => {
-					this.translateIndex(data)});
+						this.translateIndex(data)
+					});
 				}
-								
 				this.loaded = true;
 			});
 	}
@@ -148,19 +168,19 @@ class Translator {
 	addMenuOption(lang) {
 		const menu = document.getElementById("menu");
 		let existingMenuItem = document.getElementById(`lang-${lang}`);
-		
+
 		// remove existing menu item
-		if(lang === this._lang) {
-			if(existingMenuItem) {
+		if (lang === this._lang) {
+			if (existingMenuItem) {
 				menu.removeChild(existingMenuItem);
 			}
 			return;
 		}
-		
-		if(existingMenuItem) {
+
+		if (existingMenuItem) {
 			return;
 		}
-		
+
 		const menuItem = document.createElement("a");
 		menuItem.id = `lang-${lang}`;
 		menuItem.innerText = lang.toUpperCase();
@@ -168,7 +188,7 @@ class Translator {
 		menuItem.addEventListener("click", () => {
 			this.setLanguage(lang)
 		});
-				
+
 		menu.appendChild(menuItem);
 	}
 
@@ -190,38 +210,44 @@ class Translator {
 		const path = this._basePath.concat(category, "/", route, "/blog.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
+
 	fetchBlogCaptions(category, route) {
 		const path = this._basePath.concat(category, "/", route, "/captions.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
-	
+
 	fetchBlogData() {
 		const path = this._basePath.concat("blogs.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
-	
+
 	fetchHomeData() {
 		return fetch(this._basePath.concat("index.", this._lang, ".json")).then((response) => response.json());
 	}
-	
+
 	getBlogDataById(id) {
 		const blogs = this.fetchBlogData();
 		return blogs.then((data) => {
 			return data[id]
 		});
 	}
-		
+
 	fetchBlogJsonLd(category, route) {
-		const path = this._basePath.concat(category, "/", route, "/",route,".",this._lang,".jsonld");
+		const path = this._basePath.concat(category, "/", route, "/", route, ".", this._lang, ".jsonld");
 		return fetch(path).then((response) => response.json());
 	}
-	
-	get defaultConfig() {
-		return {
-			persist: true,
-			languages: ["nl", "en", "fr"],
-			defaultLanguage: "nl",
-		};
+
+	hasLocalStorage() {
+		try {
+			localStorage.getItem("language");
+			return true;
+		}
+		catch(error) {
+			console.warn(`An error occured in loading the translations, loading default language: ${error}`);
+			this._options.persist = false;
+			this._options.languages = ["nl"];
+			return false;
+		}
 	}
 }
 
