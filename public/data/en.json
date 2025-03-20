@@ -101,5 +101,11 @@
 		"top": "Back to top",
 		"back": "Back to the previous page",
 		"home": "Back to the Team Xerbutri overview page"
+	},
+	"errors": {
+		"404": {
+			"title": "Blog not found",
+			"content": "Sorry, we cannot find the blog you are looking for. It might exist in another language. You can change the language in the <a href=\"/\" title=\"Back to the Team Xerbutri index page\">homepage</a>."
+		}
 	}
 }
