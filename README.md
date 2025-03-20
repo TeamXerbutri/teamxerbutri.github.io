@@ -15,3 +15,12 @@ these up for us, because the browser won't do this for us.
 Go to the terminal.  
 Type: "npm run dev"  
 It will start up a localhost and serve the files.
+
+## Color scheme
+
+Basics:  
+White font on black background: #000000, #FFFFFF  
+
+FAB Button lighter colors should have:  
+Background: #B7865E
+and font: #481E05

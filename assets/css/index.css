@@ -5,6 +5,10 @@ body {
 	margin: 0;
 }
 
+#shell{
+	display: none;
+}
+
 img#tx {
 	display: inline-block;
 	padding-top: 4px;
