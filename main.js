@@ -33,7 +33,7 @@ let navState = new stateContext();
 			const redirect = sessionStorage.redirect;
 			delete sessionStorage.redirect;
 			if (redirect && redirect !== location.href) {
-				history.replaceState(null, null, redirect); // TODO check if this is the correct way to do this I might want pushState
+				history.replaceState(null, null, redirect);
 			}
 		})();
 	}
