@@ -1,8 +1,9 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {initFilter} from "./indexfilter.js";
-import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem, uiState} from "./header.js";
-import txLogo from "../images/tx.gif"
+import {hideBackToTop, showBackToTop } from "./backtotop.js";
+import {dotsMenu} from "./icons.js";
 import Translator from "./translator.js";
+import {initializeMenu} from "./headermenu.js";
 
 // Initializes the home page
 export function initHome() {
@@ -16,16 +17,17 @@ export function initHome() {
     </div>
 </div>
 <a id="back-to-top" href="#oi">^</a>`
-	
-	const header = `<img alt="Team Xerbutri Logo" id="tx" src="${txLogo}">
-		<h1 class="logo">Team Xerbutri</h1>
 
-		<div class="menu" id="menu">
-			<a href="map" data-i18n="maps.link">Maps</a>
-			<a href="avontuur/txatx" data-i18n="abouttx.link">About TX</a>
-			<a href="avontuur/txaue" data-i18n="aboutue.link">About UE</a>
-			<a id="contact" data-i18n="contact.link">Contact</a>
-			<a id="privacy" data-i18n="privacy.link">Privacy</a>
+	const header = `<h1>Team Xerbutri</h1>
+		<div class="menu-blog dropdown">
+		<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
+			<div class="menu-blog-content mat-menu" id="menu-blog">
+			<a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a>
+			<a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a>
+			<a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a>
+			<a id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</a>
+			<a id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</a>
+			</div>
 		</div>
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
@@ -50,20 +52,17 @@ export function initHome() {
 	}
 
 	const htmlElement = document.querySelector("html");
-	if(htmlElement.classList.contains("map-html")){
+	if (htmlElement.classList.contains("map-html")) {
 		htmlElement.classList.remove("map-html");
 	}
-	
+
 	hideBackToTop();
 
 	function initViewportOptions() {
 		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 		if (viewportWidth <= 755) {
-			uiState.hasMenu = true;
-			hideMenu();
-			document.addEventListener("click", hideMenu);
-			document.getElementById("menu").addEventListener("click", showMenu);
+			// TODO Does nothing at the moment
 		}
 	}
 
@@ -76,12 +75,7 @@ export function initHome() {
 	// UI stuff
 
 	initViewportOptions();
-	document.getElementById("contact").addEventListener("click", function () {
-		showMenuItem("contactpanel")
-	});
-	document.getElementById("privacy").addEventListener("click", function () {
-		showMenuItem("privacypanel")
-	});
+	initializeMenu();
 
 	onresize = (event) => {
 		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -91,15 +85,7 @@ export function initHome() {
 		}
 
 		if (viewportWidth > 755) {
-			uiState.hasMenu = false;
-			let menu = document.getElementById("menu");
-			menu.removeAttribute("style");
-			let menuitems = menu.getElementsByTagName("a");
-
-			for (let i = 0; i < menuitems.length; i++) {
-				let element = menuitems[i];
-				element.removeAttribute("style");
-			}
+			// TODO Does nothing at the moment
 		}
 	}
 
@@ -133,7 +119,7 @@ export function initHome() {
 				objectContainer.appendChild(displayObject);
 			}
 		}
-		
+
 		initFilter(translator);
 
 		//TODO Set the right language at some point

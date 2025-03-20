@@ -1,5 +1,3 @@
-import {uiState} from "./uistate.js";
-
 function initFilter(translator) {
 
 	uiState.hasFilter = {bridge: false, building: false, rail: false, tunnel: false};

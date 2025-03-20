@@ -1,7 +1,7 @@
-﻿import {uiState} from "./uistate.js";
-import {routes} from "./routes.js";
+﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {hideBackToTop, showBackToTop} from "./header.js";
+import {hideBackToTop, showBackToTop} from "./backtotop.js";
+import {initializeMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -21,12 +21,6 @@ import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow} from "./icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 
-uiState.hasMenu = true;
-uiState.hasContactModal = false;
-uiState.hasPrivacyModal = false;
-uiState.hasShareModal = false;
-uiState.hasBackToTop = false;
-
 function countProperties(obj) {
 	let count = 0;
 
@@ -36,23 +30,6 @@ function countProperties(obj) {
 	}
 
 	return count;
-}
-
-function showItem(elementId) {
-	document.addEventListener("click", function (evt) {
-		hideItem(elementId, evt)
-	});
-	document.getElementById(elementId).style.display = "block";
-}
-
-function hideItem(elementId, evt) {
-	let element = document.getElementById(elementId);
-	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu-blog") {
-		document.removeEventListener("click", function (evt) {
-			hideItem(elementId, evt)
-		});
-		element.style.display = "none";
-	}
 }
 
 let omap;
@@ -515,12 +492,7 @@ export function initBlog() {
 
 	setShare();
 	hideBackToTop();
-	document.getElementById("contact").addEventListener("click", function () {
-		showItem("contactpanel")
-	});
-	document.getElementById("privacy").addEventListener("click", function () {
-		showItem("privacypanel")
-	});
+	initializeMenu();
 
 	window.onscroll = function (ev) {
 		if (window.scrollY >= 200) {

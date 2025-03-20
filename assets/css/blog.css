@@ -402,10 +402,6 @@ div.mobile {
 
 /* Resolution 1366x768*/
 @media only screen and (min-width: 1418px) {
-	h1.logo span {
-		display: inline-block;
-	}
-
 	#article-title {
 		left: calc((50% - 652px));
 	}
