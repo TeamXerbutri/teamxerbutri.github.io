@@ -14,35 +14,26 @@
 	border: none;
 	border-radius: 10px;
 	vertical-align: middle;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	box-shadow: 0 2px 4px rgba(255,255,255,0.4), 0 1px 2px rgba(255,255,255,0.6);
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-	background-color: #E6A87A;
-	background-blend-mode: hard-light;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
-#tx-filter > button:hover {
-	box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.22);
+#tx-filter > button:focus, #tx-filter > button:hover {
+	box-shadow: 0 2px 4px rgba(255,255,255,0.6), 0 1px 2px rgba(255,255,255,0.8);
 	cursor: pointer;
 	background-blend-mode: normal;
 }
 
-.tx-filter-active-icon {
-	color: #E6A87A;
-	display: inline-block;
-	background-color: #481E05;
-	padding: 4px;
-	border-radius: 16px;
-	vertical-align: middle;
-	font-size: 1em;
-	font-weight: 400;
-	line-height: 15px;
-	width: 16px;
-	height: 16px;
-	position: relative;
-	bottom: 16px;
-	left: 16px;
+.tx-filter_active {
+	background-color: #e6ba8f;
+	background-blend-mode: multiply;
+}
+
+.tx-filter_off {
+	background-blend-mode: overlay;
+	background-color: #afafaf;
 }
 
 #tx-filter > button::-moz-focus-inner {
@@ -50,14 +41,8 @@
 	padding: 0;
 }
 
-#tx-filter > button:focus, #tx-filter > button:hover {
-	text-decoration: none;
-	box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
-}
-
 #tx-filter-button_bridge {
 	background-image: url("../images/bridgefilter.jpg");
-	
 }
 
 #tx-filter-button_tunnel {

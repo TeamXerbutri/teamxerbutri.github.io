@@ -73,7 +73,6 @@
 /* Mobile */
 @media only screen and (max-width: 756px) {
 	#oi {
-		padding-top: 50px;
 		color: #fff;
 		background-color: #242424;
 		overflow: hidden;
@@ -99,7 +98,6 @@
 	
 	/*icons*/
 	#oi {
-		padding-top: 50px;
 		color: #fff;
 		background-color: #000;
 		overflow: hidden;

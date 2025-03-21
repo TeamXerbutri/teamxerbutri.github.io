@@ -52,7 +52,6 @@ header.blog {
 	z-index: 2;
 }
 
-
 .share-content {
 	display: none;
 	position: absolute;
@@ -68,6 +67,7 @@ header.blog {
 }
 
 .menu-blog{
+	top:0;
 	right: 4px;
 }
 
@@ -121,7 +121,7 @@ header.blog {
 }
 
 article {
-	padding-top: 112px;
+	padding-top: 48px;
 	width: 100%;
 	color: #fff;
 }
@@ -273,7 +273,7 @@ div.mobile {
 	}
 
 	article {
-		padding-top: 64px;
+		padding-top: 0;
 		width: 756px;
 		margin-left: auto;
 		margin-right: auto;
@@ -370,6 +370,7 @@ div.mobile {
 	}
 		
 	article {
+		padding-top: 0;
 		width: 1010px;
 	}
 
@@ -407,6 +408,7 @@ div.mobile {
 	}
 
 	article {
+		padding-top: 0;
 		width: 1304px;
 	}
 

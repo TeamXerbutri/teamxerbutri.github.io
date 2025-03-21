@@ -56,14 +56,16 @@ function initFilter(translator) {
 	function toggleButton(button, translationKey, categoryName) {
 		if(button.isActive){
 			button.title = translator.translate("filter."+translationKey+".show");
-			button.innerHTML = "";
+			button.classList.add("tx-filter_off");
+			button.classList.remove("tx-filter_active");
 			button.isActive = false;
 			setDisplayFilter(categoryName, "none");
 		}
 		else {
 			button.title = translator.translate("filter."+translationKey+".hide");
-			button.innerHTML = `<span class="tx-filter-active-icon">✔</span>`;
 			button.isActive = true;
+			button.classList.remove("tx-filter_off");
+			button.classList.add("tx-filter_active");
 			setDisplayFilter(categoryName, displayString);
 			
 		}

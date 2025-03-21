@@ -19,7 +19,7 @@ export function initHome() {
 </div>
 <a id="back-to-top" href="#oi">^</a>`
 
-	const header = `<h1>Team Xerbutri</h1>
+	const header = `<h1 id="header_index">Team Xerbutri</h1>
 		<div class="menu-blog dropdown">
 		<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
 			<ul class="menu-blog-content mat-menu" id="menu-blog">

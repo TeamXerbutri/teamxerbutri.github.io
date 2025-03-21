@@ -136,7 +136,6 @@ function setShare() {
 export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
-	uiState.hasShareModal = true;
 
 	document.querySelector("#app").innerHTML = `
 		<article id="blog">

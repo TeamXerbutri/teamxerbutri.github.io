@@ -47,7 +47,7 @@ noscript {
 }
 
 /*Header title centered*/
-header h1 {
+#header_index {
 	width: 220px;
 	font-size: 2em;
 	color: #fff;
