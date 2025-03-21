@@ -13,6 +13,7 @@ export function initHome() {
 
 	document.querySelector("#app").innerHTML = `
 <div id="oi">
+	<div id="tx-filter"></div>
 	<div id="oc">
     </div>
 </div>
@@ -21,13 +22,13 @@ export function initHome() {
 	const header = `<h1>Team Xerbutri</h1>
 		<div class="menu-blog dropdown">
 		<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<div class="menu-blog-content mat-menu" id="menu-blog">
-			<a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a>
-			<a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a>
-			<a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a>
-			<a id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</a>
-			<a id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</a>
-			</div>
+			<ul class="menu-blog-content mat-menu" id="menu-blog">
+			<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
+			<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+			<li><a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+			<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
+			<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
+			</ul>
 		</div>
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>

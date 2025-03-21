@@ -22,5 +22,5 @@ Basics:
 White font on black background: #000000, #FFFFFF  
 
 FAB Button lighter colors should have:  
-Background: #B7865E
+Background: #B7865E or #E0C28D
 and font: #481E05

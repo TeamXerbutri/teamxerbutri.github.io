@@ -1,4 +1,10 @@
 /* assets/css/mat/menu.css */
+ul.mat-menu  {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 .mat-menu {
 	background-color: #211F26;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);

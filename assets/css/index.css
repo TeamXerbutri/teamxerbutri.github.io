@@ -72,30 +72,6 @@
 
 /* Mobile */
 @media only screen and (max-width: 756px) {
-	header .menu a {
-		display: none;
-	}
-
-	header .menu a {
-		color: #fff;
-		text-decoration: none;
-		width: 100px;
-		background-color: #303030;
-		padding: 13px 8px 13px 8px;
-		transition: background-color 0.4s;
-		border-bottom: 1px solid #000;
-	}
-
-	.menu {
-		background-image: url(../images/menu.png);
-		display: inline-block;
-		position: absolute;
-		right: 0;
-		margin-top: 3px;
-		margin-right: 8px;
-		overflow: visible;
-	}
-	
 	#oi {
 		padding-top: 50px;
 		color: #fff;
@@ -113,35 +89,12 @@
 		text-decoration: none;
 		color: #fff;
 	}
-
-	.filter {
-		display: inline-block;
-		padding: 1px;
-	}
 }
-
 
 /*CSS file for the Homepage (Resolution 1024x768 (Viewsize 1010x660) and up)*/
 @media only screen and (min-width: 756px) {
-	header .menu a {
-		display: inline-block;
-		color: #fff;
-		text-decoration: none;
-		height: 50px;
-		background-color: #303030;
-		padding: 13px 8px 0 8px;
-		transition: background-color 0.4s;
-	}
-
 	header a:hover {
 		background-color: #404040;
-	}
-
-	.menu {
-		display: inline-block;
-		float: right;
-		height: 50px;
-		overflow: hidden;
 	}
 	
 	/*icons*/
@@ -161,11 +114,6 @@
 	#oi a {
 		text-decoration: none;
 		color: #fff;
-	}
-
-	.filter {
-		display: inline-block;
-		padding: 1px;
 	}
 }
 
