@@ -73,8 +73,6 @@
 /* Mobile */
 @media only screen and (max-width: 756px) {
 	#oi {
-		color: #fff;
-		background-color: #242424;
 		overflow: hidden;
 		border: solid #242424 5px;
 	}
@@ -86,20 +84,13 @@
 
 	#oi a {
 		text-decoration: none;
-		color: #fff;
 	}
 }
 
 /*CSS file for the Homepage (Resolution 1024x768 (Viewsize 1010x660) and up)*/
 @media only screen and (min-width: 756px) {
-	header a:hover {
-		background-color: #404040;
-	}
-	
 	/*icons*/
 	#oi {
-		color: #fff;
-		background-color: #000;
 		overflow: hidden;
 	}
 
@@ -111,7 +102,6 @@
 
 	#oi a {
 		text-decoration: none;
-		color: #fff;
 	}
 }
 

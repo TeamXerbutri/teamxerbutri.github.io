@@ -1,20 +1,47 @@
 .top-nav{
-	color: #f7f2fa;
-	background-color: #000;
+	/*color: #f7f2fa;*/
+	color: #F9F0DC;
+	fill: #F9F0DC;
+	background-color: #0A080D !important;
 	border-radius: 24px;
 	margin-top: 8px !important;
 }
 
-.top-nav:hover{
-	color: #fff;
-	background-color: #330000 !important;
-}
-
 .top-nav:focus{
 	color: #fff;
-	background-color: #220000  !important;
-	border: #f2f7fa 1px solid  !important;
+	outline: none;
+	border: #18121E solid 2px;
+	box-shadow: 0 0 4px 2px #EAC67A, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.10);
 }
+
+.top-nav:focus .tx-icon {
+	fill: #FCF8ED;
+}
+
+.top-nav:focus-visible {
+	outline: #984B43 solid 2px;
+}
+
+.top-nav:hover{
+	color: #fff;
+	box-shadow: -2px 2px 8px 4px #000, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.08);
+	transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+}
+
+.top-nav:hover .tx-icon {
+	fill: #FCF8ED;
+}
+
+.top-nav:active{
+	border: none;
+	box-shadow: 0 0 4px 2px #000, inset -3px 3px 8px 8px rgba(0, 0, 0, 0.70);
+}
+
+.top-nav:active .tx-icon {
+	fill: #EAC67A;
+}
+
+
 
 .drop-btn{
 	cursor: pointer;
@@ -24,7 +51,7 @@
 }
 
 .drop-btn:active{
-	background-color: #220000;
+	background-color: #233237;
 }
 
 .dropdown {
