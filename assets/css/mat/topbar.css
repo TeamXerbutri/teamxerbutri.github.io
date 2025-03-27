@@ -1,5 +1,4 @@
 .top-nav{
-	/*color: #f7f2fa;*/
 	color: #F9F0DC;
 	fill: #F9F0DC;
 	background-color: #0A080D !important;
@@ -40,8 +39,6 @@
 .top-nav:active .tx-icon {
 	fill: #EAC67A;
 }
-
-
 
 .drop-btn{
 	cursor: pointer;

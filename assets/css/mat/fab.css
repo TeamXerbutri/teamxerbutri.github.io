@@ -1,35 +1,47 @@
 /* Floating action button */
 
 .fab {
-	color: #000;
-	background-color: #f2f7fa;
+	color: #F9F0DC;
+	fill: #F9F0DC;
+	background-color: #233237;
 	font-size: 1.6em;
 	width: 56px;
 	height: 56px;
-	border-radius: 16px;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	border-radius: 10px;
+	box-shadow: 0 0 4px 2px rgba(234, 198, 122, 0.4), inset 0 0 8px 8px rgba(0, 0, 0, 0.20);
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-.fab:focus, .fab:hover {
-	color: #000;
-	background-color: #fff;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.22);
+
+.fab:focus {
+	color: #FCF8ED;
+	outline: none;
+	border: #18121E solid 2px;
+	box-shadow: 0 0 4px 2px #EAC67A, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.10);
 }
 
-.fab-small {
-	color: #000;
-	background-color: #f2f7fa;
-	font-size: 1.6em;
-	width: 40px;
-	height: 40px;
-	border-radius: 12px;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+.fab:focus .tx-icon {
+	fill: #FCF8ED;
 }
 
-.fab-small:focus, .fab-small:hover {
-	color: #000;
-	background-color: #fff;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.22);
+.fab:focus-visible {
+	outline: #984B43 solid 2px;
+}
+
+.fab:hover {
+	color: #FCF8ED;
+	box-shadow: -2px 2px 8px 4px #000, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.08)
+}
+
+.fab:hover .tx-icon {
+	fill: #FCF8ED;
+}
+
+.fab:active {
+	border: none;
+	box-shadow: 0 0 4px 2px #000, inset -3px 3px 8px 8px rgba(0, 0, 0, 0.70);
+}
+
+.fab:active .tx-icon {
+	fill: #EAC67A;
 }

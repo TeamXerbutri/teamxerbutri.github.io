@@ -11,6 +11,7 @@ function initFilter(translator) {
 	// create buttons for filters
 	const bridgeButton = document.createElement("button");
 	bridgeButton.id = "tx-filter-button_bridge";
+	bridgeButton.classList.add("fab");
 	bridgeButton.isActive = false;
 	bridgeButton.setAttribute("data-i18n", "filter.bridge.hide");
 	bridgeButton.title = translator.translate("filter.bridge.hide");
@@ -22,6 +23,7 @@ function initFilter(translator) {
 
 	const buildingButton = document.createElement("button");
 	buildingButton.id = "tx-filter-button_building";
+	buildingButton.classList.add("fab");
 	buildingButton.isActive = false;
 	buildingButton.title = translator.translate("filter.building.hide");
 	buildingButton.setAttribute("data-i18n", "filter.building.hide");
@@ -33,6 +35,7 @@ function initFilter(translator) {
 
 	const railButton = document.createElement("button");
 	railButton.id = "tx-filter-button_rail";
+	railButton.classList.add("fab");
 	railButton.isActive = false;
 	railButton.title = translator.translate("filter.rail.hide");
 	railButton.setAttribute("data-i18n", "filter.rail.hide");
@@ -44,6 +47,7 @@ function initFilter(translator) {
 
 	const tunnelButton = document.createElement("button");
 	tunnelButton.id = "tx-filter-button_tunnel";
+	tunnelButton.classList.add("fab");
 	tunnelButton.isActive = false;
 	tunnelButton.title = translator.translate("filter.tunnel.hide");
 	tunnelButton.setAttribute("data-i18n", "filter.tunnel.hide");

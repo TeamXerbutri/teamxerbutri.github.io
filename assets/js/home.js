@@ -17,7 +17,7 @@ export function initHome() {
 	<div id="oc">
     </div>
 </div>
-<a id="back-to-top" href="#oi">^</a>`
+<a id="back-to-top" class="fab" href="#oi">^</a>`
 
 	const header = `<h1 id="header_index">Team Xerbutri</h1>
 		<div class="menu-blog dropdown">

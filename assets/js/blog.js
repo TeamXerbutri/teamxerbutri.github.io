@@ -147,7 +147,7 @@ export function initBlog() {
 		<section id="article-sources"></section>
 		<section id="article-gallery"></section>
 		</article>
-		<a id="back-to-top" href="#blog">^</a>
+		<a id="back-to-top" class="fab" href="#blog">^</a>
 		<script id="jsonld" type="application/ld+json"></script>
 		`
 	translator.load().then(() => {
