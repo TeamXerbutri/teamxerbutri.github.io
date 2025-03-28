@@ -13,13 +13,13 @@
 	image.id = BlogObject.routeid;
 
 	let picture = document.createElement("picture");
-	if (i > 3) {
-		let small = document.createElement("source");
-		small.media = "(max-width:756px)";
-		small.srcset = source.concat("s.jpg");
-		small.id = BlogObject.routeid.concat("s");
-		picture.appendChild(small);
-	}
+	// if (i > 3) {
+	// 	let small = document.createElement("source");
+	// 	small.media = "(max-width:756px)";
+	// 	small.srcset = source.concat("s.jpg");
+	// 	small.id = BlogObject.routeid.concat("s");
+	// 	picture.appendChild(small);
+	// }
 	let large = document.createElement("source");
 	large.media = "(min-width:756px)";
 	large.srcset = source.concat(".jpg");
