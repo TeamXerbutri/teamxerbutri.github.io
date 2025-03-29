@@ -1,6 +1,6 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {initFilter} from "./indexfilter.js";
-import {hideBackToTop, showBackToTop } from "./backtotop.js";
+import {hideBackToTop, showBackToTop} from "./backtotop.js";
 import {dotsMenu} from "./icons.js";
 import Translator from "./translator.js";
 import {initializeMenu} from "./headermenu.js";
@@ -23,11 +23,11 @@ export function initHome() {
 		<div class="menu-blog dropdown">
 		<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
 			<ul class="menu-blog-content mat-menu" id="menu-blog">
-			<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
-			<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
-			<li><a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
-			<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
-			<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
+				<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
+				<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+				<li><a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
+				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
 			</ul>
 		</div>
 		<div id="contactpanel">
@@ -59,14 +59,6 @@ export function initHome() {
 
 	hideBackToTop();
 
-	function initViewportOptions() {
-		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-		if (viewportWidth <= 755) {
-			// TODO Does nothing at the moment
-		}
-	}
-
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -75,20 +67,7 @@ export function initHome() {
 
 	// UI stuff
 
-	initViewportOptions();
 	initializeMenu();
-
-	onresize = (event) => {
-		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-		if (viewportWidth <= 755) {
-			initViewportOptions();
-		}
-
-		if (viewportWidth > 755) {
-			// TODO Does nothing at the moment
-		}
-	}
 
 	window.onscroll = function (ev) {
 		if (window.scrollY >= 200) {

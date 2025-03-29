@@ -5,9 +5,9 @@ function initFilter(translator) {
 	if (viewportWidth <= 755) {
 		displayString = "block";
 	}
-	
+
 	const filterElement = document.getElementById("tx-filter");
-	
+
 	// create buttons for filters
 	const bridgeButton = document.createElement("button");
 	bridgeButton.id = "tx-filter-button_bridge";
@@ -17,9 +17,9 @@ function initFilter(translator) {
 	bridgeButton.title = translator.translate("filter.bridge.hide");
 	toggleButton(bridgeButton, "bridge", "brug");
 
-	bridgeButton.onclick = function() {
+	bridgeButton.onclick = function () {
 		toggleButton(bridgeButton, "bridge", "brug");
-	};
+	}
 
 	const buildingButton = document.createElement("button");
 	buildingButton.id = "tx-filter-button_building";
@@ -29,7 +29,7 @@ function initFilter(translator) {
 	buildingButton.setAttribute("data-i18n", "filter.building.hide");
 	toggleButton(buildingButton, "building", "gebouw");
 
-	buildingButton.onclick = function() {
+	buildingButton.onclick = function () {
 		toggleButton(buildingButton, "building", "gebouw");
 	}
 
@@ -41,7 +41,7 @@ function initFilter(translator) {
 	railButton.setAttribute("data-i18n", "filter.rail.hide");
 	toggleButton(railButton, "rail", "spoor");
 
-	railButton.onclick = function() {
+	railButton.onclick = function () {
 		toggleButton(railButton, "rail", "spoor");
 	}
 
@@ -53,28 +53,27 @@ function initFilter(translator) {
 	tunnelButton.setAttribute("data-i18n", "filter.tunnel.hide");
 	toggleButton(tunnelButton, "tunnel", "tunnel");
 
-	tunnelButton.onclick = function() {
+	tunnelButton.onclick = function () {
 		toggleButton(tunnelButton, "tunnel", "tunnel");
 	}
 
 	function toggleButton(button, translationKey, categoryName) {
-		if(button.isActive){
-			button.title = translator.translate("filter."+translationKey+".show");
+		if (button.isActive) {
+			button.title = translator.translate("filter." + translationKey + ".show");
 			button.classList.add("tx-filter_off");
 			button.classList.remove("tx-filter_active");
 			button.isActive = false;
 			setDisplayFilter(categoryName, "none");
-		}
-		else {
-			button.title = translator.translate("filter."+translationKey+".hide");
+		} else {
+			button.title = translator.translate("filter." + translationKey + ".hide");
 			button.isActive = true;
 			button.classList.remove("tx-filter_off");
 			button.classList.add("tx-filter_active");
 			setDisplayFilter(categoryName, displayString);
-			
+
 		}
 	}
-	
+
 	filterElement.appendChild(bridgeButton);
 	filterElement.appendChild(tunnelButton);
 	filterElement.appendChild(railButton);
