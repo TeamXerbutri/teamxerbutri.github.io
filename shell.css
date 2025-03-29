@@ -1,0 +1,79 @@
+body {
+	background-color: #0A080D;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubunti, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 100%;
+	margin: 0;
+}
+
+header {
+	width: 100%;
+	height: 64px;
+	position: fixed;
+	background-color: #18121e;
+	z-index: 1;
+	color: #FCF8ED;
+}
+
+header h1 {
+	margin-top: 16px;
+}
+
+noscript {
+	display: block;
+	color: #000;
+	background-color: #EAC67A;
+	width: 360px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 64px;
+	padding: 16px;
+}
+
+#app {
+	padding-top: 64px;
+}
+
+#shell{
+	background-color: #000;
+	color: #fff;
+	width: 220px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 64px;
+}
+
+#shell_logo{
+	width: 200px;
+	height: 200px;
+	background-color: #18121e;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+}
+
+/*Header title centered*/
+#header_index {
+	width: 290px;
+	font-size: 24px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
+@media only screen and (min-width: 1124px) {
+	header h1 {
+		position: fixed;
+		top: 0;
+		left: calc((50% - 505px));
+	}
+	
+}
+
+@media only screen and (min-width: 1418px) {
+	header h1 {
+		position: fixed;
+		top: 0;
+		left: calc((50% - 652px));
+	}
+}
+

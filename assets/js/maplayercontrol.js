@@ -1,4 +1,5 @@
 ﻿import {Control} from "ol/control";
+import {dragIcon} from "./icons.js";
 
 export class MapLayerControl extends Control {
 	// TODO I can use an array as parameter, and foreach to create the buttons using a vector property
@@ -47,7 +48,7 @@ export class MapLayerControl extends Control {
 		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
 		dragHandle.id = "drag-handle";
 		dragHandle.title = "drag";//;
-		dragHandle.innerHTML = `<img src="ui/pics/drag.svg" alt="Drag handle" />`;
+		dragHandle.innerHTML = `${dragIcon}`;
 		
 		dragHandle.onmousedown = function() {
 			toggleModal();

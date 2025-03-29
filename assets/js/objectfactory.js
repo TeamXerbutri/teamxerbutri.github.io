@@ -1,17 +1,7 @@
-﻿// <div class="tile">
-//     <a href="avontuur/">
-//         <img class="te" />    
-//         <h3 class="te"></h3>
-//         <h2 class="te"></h2>
-//     </a>
-// </div>
-
-function createBlogObject(translator, BlogObject, i) {
-	let div = document.createElement("div");
-	div.classList.add("tile");
-	div.classList.add(BlogObject.category);
-
+﻿function createBlogObject(translator, BlogObject, i) {
 	let link = document.createElement("a");
+	link.classList.add("tile");
+	link.classList.add(BlogObject.category);
 	link.href = createLink(BlogObject);
 	link.title = BlogObject.description;
 
@@ -23,13 +13,13 @@ function createBlogObject(translator, BlogObject, i) {
 	image.id = BlogObject.routeid;
 
 	let picture = document.createElement("picture");
-	if (i > 3) {
-		let small = document.createElement("source");
-		small.media = "(max-width:756px)";
-		small.srcset = source.concat("s.jpg");
-		small.id = BlogObject.routeid.concat("s");
-		picture.appendChild(small);
-	}
+	// if (i > 3) {
+	// 	let small = document.createElement("source");
+	// 	small.media = "(max-width:756px)";
+	// 	small.srcset = source.concat("s.jpg");
+	// 	small.id = BlogObject.routeid.concat("s");
+	// 	picture.appendChild(small);
+	// }
 	let large = document.createElement("source");
 	large.media = "(min-width:756px)";
 	large.srcset = source.concat(".jpg");
@@ -61,30 +51,29 @@ function createBlogObject(translator, BlogObject, i) {
 	name.setAttribute("data-i18nix", BlogObject.routeid.concat(".shortname"));
 	name.innerText = BlogObject.tilename;
 	textWrapper.appendChild(name);
-
-	div.appendChild(link);
-	return div;
-}
-
-function createLink(BlogObject) {
-	let link = "";
-	if (BlogObject.routeid === "map") {
-		link = "map";
-	} else {
-		link = "avontuur/".concat(BlogObject.routeid)
-	}
+	
 	return link;
 }
 
+function createLink(BlogObject) {
+	let url;
+	if (BlogObject.routeid === "map") {
+		url = "map";
+	} else {
+		url = "avontuur/".concat(BlogObject.routeid)
+	}
+	return url;
+}
+
 function createObjectDescription(category, realname, translator) {
-	let firstline = "";
+	let firstLine = "";
 	if (category === "xerbutri") {
 		return realname;
 	}
 	if(category){
-		firstline = translator.translate(`category.${category}`);
+		firstLine = translator.translate(`category.${category}`);
 	}
-	return firstline;
+	return firstLine;
 }
 
 

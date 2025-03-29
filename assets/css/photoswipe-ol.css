@@ -1,10 +1,10 @@
-.pswp__sheet{
+.pswp__sheet {
 	color: #f2f7fa;
 	width: 100%;
 	background-color: #211F26;
 }
 
-.pswp__sheet--side{
+.pswp__sheet--side {
 	position: absolute;
 	right: 4px;
 	top: 68px;
@@ -15,7 +15,7 @@
 	height: calc(100% - 72px);
 }
 
-.pswp__sheet--bottom{
+.pswp__sheet--bottom {
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -27,17 +27,17 @@
 	max-width: 640px;
 }
 
-.pswp__sheet--bottom .pswp__sheet-caption{
+.pswp__sheet--bottom .pswp__sheet-caption {
 	margin-top: 8px;
 }
 
-.pswp__sheet-map{
+.pswp__sheet-map {
 	background-color: #fff;
 	color: #000;
 	border-radius: 16px;
-	}
+}
 
-.pswp__sheet-map--side{
+.pswp__sheet-map--side {
 	height: 260px;
 	width: 284px;
 	position: fixed;
@@ -45,18 +45,18 @@
 	right: 16px;
 }
 
-.pswp__sheet-map--bottom{
+.pswp__sheet-map--bottom {
 	margin-top: 16px;
 	height: 120px;
 }
 
-.pswp__sheet--side .pswp__sheet-indicator{
+.pswp__sheet--side .pswp__sheet-indicator {
 	position: fixed;
 	bottom: 0;
 	right: 16px;
 }
 
-.pswp__sheet--bottom .pswp__sheet-indicator{
+.pswp__sheet--bottom .pswp__sheet-indicator {
 	position: fixed;
 	bottom: 0;
 	left: 16px;
@@ -64,11 +64,11 @@
 }
 
 @media only screen and (min-width: 1200px) {
-	.pswp__sheet--side{
+	.pswp__sheet--side {
 		width: 400px;
 	}
-	
-	.pswp__sheet-map--side{
+
+	.pswp__sheet-map--side {
 		width: 384px;
 	}
 }

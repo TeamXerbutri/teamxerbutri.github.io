@@ -1,5 +1,6 @@
 ﻿import {Control} from "ol/control";
 import {initRipple} from "./buttonripple.js";
+import {dragIcon} from "./icons.js";
 
 export class MapMenuControl extends Control {
 	constructor(opt_options) {
@@ -51,7 +52,7 @@ export class MapMenuControl extends Control {
 		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
 		dragHandle.id = "drag-handle";
 		dragHandle.title = "drag";//;
-		dragHandle.innerHTML = `<img src="ui/pics/drag.svg" alt="Drag handle" />`;
+		dragHandle.innerHTML = `${dragIcon}`;
 
 		dragHandle.onmousedown = function() {
 			toggleModal();

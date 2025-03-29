@@ -1,179 +1,203 @@
-﻿@media only screen and (max-width: 756px) {
-	.tile:nth-child(-n+4) {
-		position: relative;
-		overflow: hidden;
-		display: block;
-		height: 200px;
-		background-color: #181818;
-		margin: 2px;
-	}
+﻿.tile {
+	overflow: hidden;
+	display: inline-block;
+	height: 177px;
+	width: 236px;
+	margin: 8px;
+	border-radius: 16px;
+	background-color: #000;
+	box-shadow: 0 0 4px 2px rgba(35, 50, 55, 0.7);
+	border: none;
+	padding: 0;
+	text-align: initial;
+}
 
-	.tile:nth-child(-n+4) .tile-text-wrapper {
-		display: block;
-		position: absolute;
-		top: 121px;
-		width: 100%;
-		background: #000000; /* For browsers that do not support gradients*/
-		background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Safari 5.1 to 6.0*/
-		background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Opera 11.1 to 12.0 */
-		background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
-		background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* Standard syntax */
-	}
+img.te {
+	transition: all .5s ease-in-out;
+	height: 177px;
+	width: 236px;
+	opacity: 0.8;
+}
 
-	.tile:nth-child(-n+4) h2.te {
-		font-size: 1.2em;
-		padding-left: 0;
-		padding-top: 0;
-		padding-bottom: 0;
-		margin-top: 0;
-		margin-bottom: 0;
-	}
+.tile-text-wrapper {
+	display: block;
+	position: relative;
+	top: -98px;
+	left: 0;
+	background: #000000; /* For browsers that do not support gradients*/
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)); /* For Safari 5.1 to 6.0*/
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)); /* Standard syntax */
+}
 
-	.tile:nth-child(-n+4) h3.te {
-		display: block;
-		font-size: 1em;
-		font-weight: normal;
-		color: #c7c7c7;
-		padding-top: 0;
-		padding-bottom: 0;
-		margin-top: 10px;
-		margin-bottom: 0;
-	}
+h2.te {
+	font-size: 24px;
+	width: auto;
+	color: #F9F0DC;
+	padding-top: 0;
+	padding-bottom: 10px;
+	padding-left: 16px;
+	margin-top: 0;
+}
 
-	.tile:nth-child(-n+4) img.te {
-		width: 100%;
-	}
+h3.te {
+	font-size: 16px;
+	font-weight: normal;
+	color: #f4e1b8;
+	width: auto;
+	padding-top: 10px;
+	padding-bottom: 0;
+	padding-left: 16px;
+	margin-bottom: 10px;
+}
 
-	/*rows*/
-	h3.te {
-		display: none;
-	}
+.tile:visited .tile-text-wrapper {
+	background: #181818; /* For browsers that do not support gradients*/
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* For Safari 5.1 to 6.0*/
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* Standard syntax */
+}
 
-	.tile-text-wrapper {
-		display: inline-block;
-	}
+.tile:visited h2.te {
+	color: #83a4af;
+}
 
-	h2.te {
-		display: inline-block;
-		padding-left: 10px;
-		font-size: 1.0em;
-		margin: 0;
-		color: #CCCCCC;
-		vertical-align: middle;
-		line-height: 50px;
-	}
+.tile:visited h3.te {
+	color: #f4e1b8;
+}
 
+.tile:visited img.te {
+	opacity: 0.5;
+}
+
+.tile:focus {
+	outline: none;
+	box-shadow: 0 0 4px 2px #EAC67A;
+}
+
+.tile:focus img.te {
+	transform: scale(1.05);
+}
+
+.tile:focus .tile-text-wrapper {
+	background: #181818; /* For browsers that do not support gradients*/
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Safari 5.1 to 6.0*/
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* Standard syntax */
+}
+
+.tile:focus-visible {
+	box-shadow: none;
+	outline: #984B43 solid 2px;
+}
+
+.tile:focus h2.te {
+	color: #FCF8ED;
+}
+
+.tile:focus h3.te {
+	color: #f7e9ca;
+}
+
+.tile:hover img.te {
+	opacity: 0.92;
+	transform: scale(1.05);
+}
+
+.tile:hover {
+	box-shadow: 0 0 4px 4px rgba(35, 50, 55, 0.2);
+}
+
+.tile:hover .tile-text-wrapper {
+	background: #181818; /* For browsers that do not support gradients*/
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Safari 5.1 to 6.0*/
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* Standard syntax */
+}
+
+.tile:hover h2.te {
+	color: #FCF8ED;
+}
+
+.tile:hover h3.te {
+	color: #f7e9ca;
+}
+
+.tile:active .tile-text-wrapper {
+	background: #181818; /* For browsers that do not support gradients*/
+	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* For Safari 5.1 to 6.0*/
+	background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* Standard syntax */
+}
+
+.tile:active h2.te {
+	color: #EAC67A;
+}
+
+.tile:active h3.te {
+	color: #E9C372;
+}
+
+.tile:active img.te {
+	opacity: 0.4;
+}
+
+@media only screen and (max-width: 756px) {
 	.tile {
-		display: block;
-		height: 50px;
-		margin-top: 5px;
-		width: auto;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.spoor {
-		background-color: #000800;
-	}
-
-	.brug {
-		background-color: #000008;
-	}
-
-	.gebouw {
-		background-color: #080000;
-	}
-
-	.tunnel {
-		background-color: #080808;
-	}
-
-	.xerbutri {
-		background: #000000;
+		height: 123px;
+		width: 164px;
+		border-radius: 10px;
 	}
 
 	img.te {
-		vertical-align: middle;
+		height: 123px;
+		width: 164px;
 	}
 
-	a:hover, a:active {
-		background-color: #000000;
-		color: #fff;
+	.tile-text-wrapper {
+		top: -33px;
+	}
+
+	h2.te {
+		font-size: 14px;
+		padding-left: 8px;
+	}
+
+	h3.te {
+		display: none;
 	}
 }
 
 @media only screen and (min-width: 756px) {
 	.tile {
-		overflow: hidden;
-		display: inline-block;
-		height: 190px;
-		width: 248px;
-		background-color: #181818;
-		margin: 2px;
+		height: 177px;
+		width: 236px;
 	}
 
 	img.te {
-		transition: all .5s ease-in-out;
-		height: 190px;
-		width: 248px;
-	}
-
-	a:hover img.te {
-		transform: scale(1.05);
-	}
-
-	.tile-text-wrapper {
-		display: block;
-		position: relative;
-		top: -91px;
-		left: 0;
-		background: #000000; /* For browsers that do not support gradients*/
-		background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Safari 5.1 to 6.0*/
-		background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Opera 11.1 to 12.0 */
-		background: -moz-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* For Firefox 3.6 to 15 */
-		background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)); /* Standard syntax */
+		height: 177px;
+		width: 236px;
 	}
 
 	h2.te {
-		font-size: 1.2em;
-		width: auto;
-		padding-top: 0;
-		padding-bottom: 10px;
-		margin-top: 0;
-	}
-
-	h3.te {
-		font-size: 1em;
-		font-weight: normal;
-		color: #c7c7c7;
-		width: auto;
-		padding-top: 10px;
-		padding-bottom: 0;
-		margin-bottom: 10px;
+		font-size: 20px;
 	}
 }
 
 /* Resolution 1366x768*/
 @media only screen and (min-width: 1350px) {
 	img.te {
-		height: 238px;
+		height: 233px;
 		width: 310px;
-	}
-
-	.tile-text-wrapper {
-		top: -97px;
 	}
 
 	.tile {
-		height: 238px;
+		height: 233px;
 		width: 310px;
-	}
-
-	h2.te {
-		font-size: 1.5em;
-	}
-
-	h3.te {
-		font-size: 1em;
 	}
 }

@@ -1,7 +1,7 @@
-﻿import {uiState} from "./uistate.js";
-import {routes} from "./routes.js";
+﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {hideBackToTop, showBackToTop} from "./header.js";
+import {hideBackToTop, showBackToTop} from "./backtotop.js";
+import {initializeMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -21,12 +21,6 @@ import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow} from "./icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 
-uiState.hasMenu = true;
-uiState.hasContactModal = false;
-uiState.hasPrivacyModal = false;
-uiState.hasShareModal = false;
-uiState.hasBackToTop = false;
-
 function countProperties(obj) {
 	let count = 0;
 
@@ -36,23 +30,6 @@ function countProperties(obj) {
 	}
 
 	return count;
-}
-
-function showItem(elementId) {
-	document.addEventListener("click", function (evt) {
-		hideItem(elementId, evt)
-	});
-	document.getElementById(elementId).style.display = "block";
-}
-
-function hideItem(elementId, evt) {
-	let element = document.getElementById(elementId);
-	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu-blog") {
-		document.removeEventListener("click", function (evt) {
-			hideItem(elementId, evt)
-		});
-		element.style.display = "none";
-	}
 }
 
 let omap;
@@ -159,7 +136,6 @@ function setShare() {
 export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
-	uiState.hasShareModal = true;
 
 	document.querySelector("#app").innerHTML = `
 		<article id="blog">
@@ -171,7 +147,7 @@ export function initBlog() {
 		<section id="article-sources"></section>
 		<section id="article-gallery"></section>
 		</article>
-		<a id="back-to-top" href="#blog">^</a>
+		<a id="back-to-top" class="fab" href="#blog">^</a>
 		<script id="jsonld" type="application/ld+json"></script>
 		`
 	translator.load().then(() => {
@@ -199,13 +175,13 @@ export function initBlog() {
 		</div>
 		<div class="menu-blog dropdown">
 			<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<div class="menu-blog-content mat-menu" id="menu-blog">
-				<a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a>
-				<a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a>
-				<a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a>
-				<a id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</a>
-				<a id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</a>
-			</div>
+			<ul class="menu-blog-content mat-menu" id="menu-blog">
+				<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
+				<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+				<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
+				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
+			</ul>
 		</div>
 		
 		<div id="contactpanel">
@@ -515,12 +491,7 @@ export function initBlog() {
 
 	setShare();
 	hideBackToTop();
-	document.getElementById("contact").addEventListener("click", function () {
-		showItem("contactpanel")
-	});
-	document.getElementById("privacy").addEventListener("click", function () {
-		showItem("privacypanel")
-	});
+	initializeMenu();
 
 	window.onscroll = function (ev) {
 		if (window.scrollY >= 200) {

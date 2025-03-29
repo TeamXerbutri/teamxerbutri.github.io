@@ -166,7 +166,7 @@ class Translator {
 	}
 
 	addMenuOption(lang) {
-		const menu = document.getElementById("menu");
+		const menu = document.getElementById("menu-blog");
 		let existingMenuItem = document.getElementById(`lang-${lang}`);
 
 		// remove existing menu item
@@ -181,15 +181,18 @@ class Translator {
 			return;
 		}
 
+		const menuListItem = document.createElement("li");
 		const menuItem = document.createElement("a");
 		menuItem.id = `lang-${lang}`;
 		menuItem.innerText = lang.toUpperCase();
+		menuItem.classList.add("mat-menu-item");
 		menuItem.href = "/";
 		menuItem.addEventListener("click", () => {
 			this.setLanguage(lang)
 		});
-
-		menu.appendChild(menuItem);
+		
+		menuListItem.appendChild(menuItem);
+		menu.appendChild(menuListItem);
 	}
 
 	addMenuOptions() {

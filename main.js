@@ -39,11 +39,7 @@ let navState = new stateContext();
 	}
 
 	function init() {
-		// load image
-		document.getElementById("tx").src = `${txLogo}`;
-
 		manipulateHref();
-
 		navState.initState();
 	}
 })();

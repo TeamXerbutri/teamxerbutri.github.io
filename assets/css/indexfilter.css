@@ -1,92 +1,51 @@
-.filter button {
+#tx-filter {
+	margin-left: auto;
+	margin-right: auto;
+	width: 304px;
+}
+
+#tx-filter > button {
 	display: inline-block;
-	margin: 1px 2px 1px 2px;
+	margin: 10px 10px 10px 10px;
 	padding: 0;
-	color: rgba(255, 255, 255, .1);
-	font-size: 2.14em;
-	font-weight: 700;
-	text-decoration: none;
-	text-align: center;
-	height: 1.2em;
-	width: 1.2em;
-	line-height: .4em;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
 	border: none;
-	border-radius: 2px;
 }
 
-#bridgefilter {
-	background-image: url(../images/bridgefilter.jpg);
-	background-color: rgba(30, 30, 30, .2);
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
+#tx-filter > button:focus-visible, #tx-filter > button:hover {
+	background-blend-mode: normal;
 }
 
-#tunnelfilter {
-	background-image: url(../images/tunnelfilter.jpg);
-	background-color: rgba(30, 30, 30, .2);
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
+.tx-filter_active {
+	background-blend-mode: hard-light;
 }
 
-#railfilter {
-	background-image: url(../images/railfilter.jpg);
-	background-color: rgba(30, 30, 30, .2);
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
+.tx-filter_off, .tx-filter_off:focus {
+	background-blend-mode: overlay;
+	background-color: #afafaf;
+	box-shadow: 0 0 4px 2px rgba(234, 198, 122, 0.2), inset 0 0 16px 16px rgba(0, 0, 0, 0.40);
 }
 
-#buildingfilter {
-	background-image: url(../images/buildingfilter.jpg);
-	background-color: rgba(30, 30, 30, .2);
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
+#tx-filter > button::-moz-focus-inner {
+	border: none;
+	padding: 0;
 }
 
-@media only screen and (min-width: 756px) {
-	.filter button {
-		height: 1.375em;
-		width: 1.375em;
-		transition: all .3s ease-in-out;
-	}
+#tx-filter-button_bridge {
+	background-image: url("../images/bridgefilter.jpg");
+}
 
-	.filter button:hover {
-		cursor: pointer;
-		transform: scale(1.05);
-	}
+#tx-filter-button_tunnel {
+	background-image: url("../images/tunnelfilter.jpg");
+}
 
-	#railfilter:focus {
-		background-color: rgba(255, 255, 255, .5);
-	}
+#tx-filter-button_rail {
+	background-image: url("../images/railfilter.jpg");
+}
 
-	#railfilter:hover {
-		background-color: rgba(255, 255, 255, .5);
-	}
-
-	#buildingfilter:focus {
-		background-color: rgba(255, 255, 255, .5);
-	}
-
-	#buildingfilter:hover {
-		background-color: rgba(255, 255, 255, .5);
-	}
-
-	#tunnelfilter:focus {
-		background-color: rgba(255, 255, 255, .5);
-	}
-
-	#tunnelfilter:hover {
-		background-color: rgba(255, 255, 255, .5);
-	}
-
-	#bridgefilter:hover {
-		background-color: rgba(255, 255, 255, .5);
-	}
-
-	#bridgefilter:focus {
-		background-color: rgba(255, 255, 255, .5);
-	}
+#tx-filter-button_building {
+	background-image: url("../images/buildingfilter.jpg");
 }
