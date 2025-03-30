@@ -93,8 +93,9 @@ export function initHome() {
 		// Builds the objects
 		function objectFactory(subjects) {
 			const objectContainer = document.getElementById("oc");
+						
 			for (let i in subjects) {
-				let displayObject = createBlogObject(translator, subjects[i], i);
+				let displayObject = createBlogObject(translator, subjects[i]);
 
 				objectContainer.appendChild(displayObject);
 			}

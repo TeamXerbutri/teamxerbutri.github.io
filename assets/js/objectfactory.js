@@ -1,4 +1,4 @@
-﻿function createBlogObject(translator, BlogObject, i) {
+﻿function createBlogObject(translator, BlogObject) {
 	let link = document.createElement("a");
 	link.classList.add("tile");
 	link.classList.add(BlogObject.category);
