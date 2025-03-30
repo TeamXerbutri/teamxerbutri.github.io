@@ -19,6 +19,8 @@ export function initHome() {
 </div>
 <a id="back-to-top" class="fab" href="#oi">^</a>`
 
+	let subjects;
+	
 	const header = `<h1 id="header_index">Team Xerbutri</h1>
 		<div class="menu-blog dropdown">
 		<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
@@ -83,7 +85,42 @@ export function initHome() {
 		// fetch the objects
 		translator.fetchHomeData().then(
 			function (value) {
-				objectFactory(value);
+				subjects = value;
+				// First load.
+				const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				
+				let columns = 4;
+				if (viewWidth < 500) {
+					columns = 2;
+				}
+				
+				let cardHeight =  177;
+				if (viewWidth < 765) {
+					cardHeight = 123;
+				}
+				if (viewWidth > 1350) {
+					cardHeight = 233;
+				}
+				
+				const viewHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+				
+				const rows = Math.ceil(viewHeight / cardHeight);
+				let maxObjects = rows * columns;
+				
+				if (subjects.length < maxObjects) {
+					maxObjects = subjects.length;
+				}
+				
+				// I want the first maxObjects to be shown and instantly deleted from the list
+				const objectsToShow = subjects.splice(0, maxObjects);
+				
+				// On scroll I want to load more objects
+				window.onscroll = function (ev) {
+					objectFactory(subjects);
+					subjects = [];
+				}
+								
+				objectFactory(objectsToShow);
 			},
 			function (error) {
 				console.error(error);
@@ -102,6 +139,12 @@ export function initHome() {
 		}
 
 		initFilter(translator);
+		const filterElement = document.getElementById("tx-filter");
+
+		filterElement.onclick = function () {
+			objectFactory(subjects);
+			subjects = [];
+		}
 
 		//TODO Set the right language at some point
 		document
