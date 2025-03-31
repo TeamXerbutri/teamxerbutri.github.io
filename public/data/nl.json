@@ -5,7 +5,7 @@
 	},
 	"abouttx": {
 		"link": "Over TX",
-		"title": "Over Team Xerbutri urban exploring"
+		"title": "Over Team Xerbutri"
 	},
 	"aboutue": {
 		"link": "Over UE",
@@ -103,5 +103,16 @@
 			"title": "Blog niet gevonden",
 			"content": "Er is iets mis gegaan, de blog is niet gevonden. Ga terug naar de <a href=\"/\" title=\"Terug naar de Team Xerbutri overzichtspagina\">overzichtspagina</a>."
 		}
+	},
+	"language": {
+		"name": "Nederlands",
+		"visit": "Bezoek deze pagina in het Nederlands"
+	},
+	"version": {
+		"update": "Er is een nieuwere versie beschikbaar! Werk de applicatie bij door deze opnieuw te installeren op jouw apparaat."
+	},
+	"metadata": {
+		"title": "Team Xerbutri - Urban Adventure",
+		"content": "Lees over onze avonturen. We bezoeken verlaten gebouwen, tunnels, bruggen en volgen verlaten spoorlijnen. Geniet van de foto's!"
 	}
 }

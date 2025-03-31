@@ -107,5 +107,16 @@
 			"title": "Blog not found",
 			"content": "Sorry, we cannot find the blog you are looking for. It might exist in another language. You can change the language in the <a href=\"/\" title=\"Back to the Team Xerbutri index page\">homepage</a>."
 		}
+	},
+	"language": {
+		"name": "English",
+		"visit": "Visit this page in English"
+	},
+	"version": {
+		"update": "A new version is available! Please reinstall this application to your device."
+	},
+	"metadata": {
+		"title": "Team Xerbutri - Urban Adventure",
+		"content": "Read about our adventures. We love exploring abandoned places, infiltrating tunnels, climbing bridges and tracking old railways. Enjoy the pictures!"
 	}
 }

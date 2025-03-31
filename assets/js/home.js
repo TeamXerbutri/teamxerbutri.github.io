@@ -4,15 +4,17 @@ import {hideBackToTop, showBackToTop} from "./backtotop.js";
 import {dotsMenu} from "./icons.js";
 import Translator from "./translator.js";
 import {initializeMenu} from "./headermenu.js";
+import {checkVersion} from "./version.js";
 
 // Initializes the home page
 export function initHome() {
 	let translator = new Translator();
-
+	
 	// Load app
 
 	document.querySelector("#app").innerHTML = `
 <div id="oi">
+	<div id="message-bar"></div>
 	<div id="tx-filter"></div>
 	<div id="oc">
     </div>
@@ -111,10 +113,8 @@ export function initHome() {
 					maxObjects = subjects.length;
 				}
 				
-				// I want the first maxObjects to be shown and instantly deleted from the list
 				const objectsToShow = subjects.splice(0, maxObjects);
 				
-				// On scroll I want to load more objects
 				window.onscroll = function (ev) {
 					objectFactory(subjects);
 					subjects = [];
@@ -139,18 +139,19 @@ export function initHome() {
 		}
 
 		initFilter(translator);
-		const filterElement = document.getElementById("tx-filter");
 
+		const filterElement = document.getElementById("tx-filter");
 		filterElement.onclick = function () {
 			objectFactory(subjects);
 			subjects = [];
 		}
-
-		//TODO Set the right language at some point
+		
+		checkVersion(translator);
+		
 		document
 			.querySelector('meta[name="description"]')
-			.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
-		document.title = "Xerbutri Urban Exploring";
+			.setAttribute("content", translator.translate("metadata.content"));
+		document.title = translator.translate("metadata.title");
 	}
 }
 
