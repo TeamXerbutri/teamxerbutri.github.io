@@ -1,11 +1,5 @@
 function initFilter(translator) {
-
-	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-	let displayString = "inline-block";
-	if (viewportWidth <= 755) {
-		displayString = "block";
-	}
-
+	
 	const filterElement = document.getElementById("tx-filter");
 
 	// create buttons for filters
@@ -69,7 +63,7 @@ function initFilter(translator) {
 			button.isActive = true;
 			button.classList.remove("tx-filter_off");
 			button.classList.add("tx-filter_active");
-			setDisplayFilter(categoryName, displayString);
+			setDisplayFilter(categoryName);
 
 		}
 	}
@@ -80,12 +74,12 @@ function initFilter(translator) {
 	filterElement.appendChild(buildingButton);
 }
 
-function setDisplayFilter(className, display) {
+function setDisplayFilter(className) {
 	let categories = document.getElementsByClassName(className);
 	let i;
 
 	for (i = 0; i < categories.length; i++) {
-		categories[i].style.display = display;
+		categories[i].style.display = "inline-block";
 	}
 }
 
