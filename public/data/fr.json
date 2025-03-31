@@ -1,11 +1,11 @@
 ﻿{
 	"maps": {
-		"link" : "Geoportail",
+		"link": "Geoportail",
 		"title": "Sur la carte"
 	},
 	"abouttx": {
 		"link": "Sur TX",
-		"title": "Sur Team Xerbutri urban exploring"
+		"title": "Sur Team Xerbutri"
 	},
 	"aboutue": {
 		"link": "Sur UE",
@@ -14,7 +14,7 @@
 	"contact": {
 		"link": "Contact",
 		"title": "Contactez-nous",
-		"content": "Avez-vous des questions, des commentaires ou souhaitez-vous simplement nous faire part de quelque chose? Créez un issue sur GitHub :<a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> " 
+		"content": "Avez-vous des questions, des commentaires ou souhaitez-vous simplement nous faire part de quelque chose? Créez un issue sur GitHub :<a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> "
 	},
 	"privacy": {
 		"link": "Privacy",
@@ -40,7 +40,7 @@
 		}
 	},
 	"back": {
-		"link" : "<",
+		"link": "<",
 		"title": "Retour à la page d'accueil"
 	},
 	"month": {
@@ -59,7 +59,7 @@
 	},
 	"adventure": "Aventure",
 	"history": "Histoire",
-	"article":{
+	"article": {
 		"lastupdate": "Article mis à jour pour la dernière fois "
 	},
 	"facts": {
@@ -107,5 +107,16 @@
 			"title": "Page non trouvée",
 			"content": "La page que vous recherchez n'existe pas. Revenir à la page d'accueil."
 		}
+	},
+	"language": {
+		"name": "Français",
+		"visit": "Visitez cette page en français"
+	},
+	"version": {
+		"update": "Une nouvelle version est disponible! Veuillez réinstaller cette application sur votre appareil."
+	},
+	"metadata": {
+		"title": "Team Xerbutri - Exploration urbaine",
+		"content": "Découvrez nos aventures. Nous aimons explorer les lieux abandonnés, infiltrer les tunnels, escalader les ponts et suivre les anciennes voies ferrées."
 	}
 }
