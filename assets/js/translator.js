@@ -166,7 +166,7 @@ class Translator {
 	}
 
 	addMenuOption(lang) {
-		const menu = document.getElementById("menu-blog");
+		const menu = document.getElementById("menu");
 		let existingMenuItem = document.getElementById(`lang-${lang}`);
 
 		// remove existing menu item

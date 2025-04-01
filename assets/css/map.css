@@ -3,6 +3,12 @@
 @import "mapmenucontrol.css";
 @import "mapfeaturetooltip.css";
 
+body{
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubunti, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 100%;
+}
+
 .map-html {
 	overflow: hidden;
 }

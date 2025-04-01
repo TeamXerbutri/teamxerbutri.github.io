@@ -7,7 +7,7 @@ function showItem(elementId) {
 
 function hideItem(elementId, evt) {
 	let element = document.getElementById(elementId);
-	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu-blog") {
+	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu") {
 		document.removeEventListener("click", function (evt) {
 			hideItem(elementId, evt)
 		});
