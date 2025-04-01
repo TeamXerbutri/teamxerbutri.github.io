@@ -173,9 +173,9 @@ export function initBlog() {
 				<a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a>
 			</div>
 		</div>
-		<div class="menu-blog dropdown">
-			<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<ul class="menu-blog-content mat-menu" id="menu-blog">
+		<div class="menu dropdown">
+			<button class="drop-btn top-nav menu-btn" data-i18n="navigation.menu">${dotsMenu}</button>
+			<ul class="menu-content mat-menu" id="menu">
 				<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
 				<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
 				<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>

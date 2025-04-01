@@ -1,0 +1,39 @@
+.menu {
+	top: 0;
+	right: 8px;
+	z-index: 200;
+}
+
+.menu-content {
+	display: none;
+	position: absolute;
+	z-index: 200;
+}
+
+.menu:focus .menu-content {
+	display: block;
+}
+
+.menu:focus {
+	width: 112px;
+}
+
+.menu:hover .menu-content {
+	display: block;
+}
+
+.menu:hover {
+	width: 112px;
+}
+
+.menu:hover .menu-btn {
+	margin-left: 64px;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}

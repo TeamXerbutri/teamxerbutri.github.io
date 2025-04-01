@@ -13,6 +13,7 @@ export function initHome() {
 	// Load app
 
 	document.querySelector("#app").innerHTML = `
+<div id="dismiss-layer" class="tx-dismiss"></div>
 <div id="oi">
 	<div id="message-bar"></div>
 	<div id="tx-filter"></div>
@@ -24,9 +25,9 @@ export function initHome() {
 	let subjects;
 	
 	const header = `<h1 id="header_index">Team Xerbutri</h1>
-		<div class="menu-blog dropdown">
-		<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<ul class="menu-blog-content mat-menu" id="menu-blog">
+		<div class="menu dropdown">
+		<button id="menu-ctrl" class="drop-btn top-nav menu-btn" data-i18n="navigation.menu">${dotsMenu}</button>
+			<ul class="menu-content mat-menu" id="menu">
 				<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
 				<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
 				<li><a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
@@ -34,6 +35,7 @@ export function initHome() {
 				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
 			</ul>
 		</div>
+		
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
 		</div>

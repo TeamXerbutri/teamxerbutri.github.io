@@ -64,37 +64,6 @@ header.blog {
 	display: block;
 }
 
-.menu-blog {
-	top: 0;
-	right: 8px;
-}
-
-.menu-blog-content {
-	display: none;
-	position: absolute;
-	z-index: 1;
-}
-
-.menu-blog:hover .menu-blog-content {
-	display: block;
-}
-
-.menu-blog:hover {
-	width: 112px;
-}
-
-.menu-blog:hover .menu-blog-btn {
-	margin-left: 64px;
-}
-
-.menu-blog:focus .menu-blog-content {
-	display: block;
-}
-
-.menu-blog:focus {
-	width: 112px;
-}
-
 .header-scroll {
 	background-image: url(../images/bgweb.jpg);
 	background-repeat: repeat-x;
