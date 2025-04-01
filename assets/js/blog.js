@@ -163,24 +163,25 @@ export function initBlog() {
 
 	// init header
 	const header = `
-		<div id="topbar">
-		<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
-		<a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a>
-		<div class="share dropdown">
-			<button class="drop-btn top-nav share-btn" data-i18n="navigation.share">${share}</button>
-			<div class="share-content mat-menu">
-				<a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a>
-				<a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a>
-			</div>
-		</div>
-		<div class="menu dropdown">
-			<button class="drop-btn top-nav menu-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<ul class="menu-content mat-menu" id="menu">
-				<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
-				<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
-				<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
-				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
-				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
+		<div class="top-bar">
+			<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+			<ul class="main-menu">
+				<li class="menu-item"><a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
+				<li class="menu-item menu-item-has-children"><a class="top-nav" href="#" data-i18n="navigation.share">${share}</a>
+					<ul class="sub-menu mat-menu">
+						<li class="menu-item"><a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a></li>
+						<li class="menu-item"><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
+					</ul>
+				</li>
+				<li class="menu-item menu-item-has-children"><a class="top-nav" href="#" data-i18n="navigation.menu">${dotsMenu}</a>
+					<ul class="sub-menu mat-menu" id="menu">
+						<li class="menu-item"><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
+						<li class="menu-item"><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+						<li class="menu-item"><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+						<li id="contact" class="mat-menu-item menu-item" data-i18n="contact.link">Contact</li>
+						<li id="privacy" class="mat-menu-item menu-item" data-i18n="privacy.link">Privacy</li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 		
@@ -190,7 +191,7 @@ export function initBlog() {
 		<div id="privacypanel">
 			<p data-i18n="privacy.content">Privacy</p>
 		</div>
-		</div>
+		
 		<div id="article-title"></div>
 		`
 	const headerElem = document.getElementById("header");

@@ -24,6 +24,7 @@ export function initHome() {
 	let subjects;
 	
 	const header = `<h1 id="header_index">Team Xerbutri</h1>
+		<div class="menu-wrapper">
 		<div class="menu dropdown">
 		<button class="drop-btn top-nav menu-btn" data-i18n="navigation.menu">${dotsMenu}</button>
 			<ul class="menu-content mat-menu" id="menu">
@@ -33,6 +34,7 @@ export function initHome() {
 				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
 				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
 			</ul>
+		</div>
 		</div>
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>

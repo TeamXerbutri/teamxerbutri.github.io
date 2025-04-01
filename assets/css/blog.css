@@ -4,7 +4,7 @@ header.blog {
 	height: 112px;
 }
 
-#topbar {
+.top-bar {
 	height: 64px;
 }
 
@@ -25,13 +25,13 @@ header.blog {
 	width: 48px;
 }
 
-.nav-home {
-	display: inline-block;
-	height: 48px;
-	width: 48px;
-	position: absolute;
-	right: 120px;
-}
+/*.nav-home {*/
+/*	display: inline-block;*/
+/*	height: 48px;*/
+/*	width: 48px;*/
+/*	position: absolute;*/
+/*	right: 120px;*/
+/*}*/
 
 .nav-back .tx-icon {
 	padding-top: 12px;
@@ -41,28 +41,28 @@ header.blog {
 	padding-top: 12px;
 }
 
-.share {
-	right: 64px;
-	z-index: 1;
-}
+/*.share {*/
+/*	right: 64px;*/
+/*	z-index: 1;*/
+/*}*/
 
-.share-btn {
-	z-index: 2;
-}
+/*.share-btn {*/
+/*	z-index: 2;*/
+/*}*/
 
-.share-content {
-	display: none;
-	position: absolute;
-	z-index: 1;
-}
+/*.share-content {*/
+/*	display: none;*/
+/*	position: absolute;*/
+/*	z-index: 1;*/
+/*}*/
 
-.share:hover .share-content {
-	display: block;
-}
+/*.share:hover .share-content {*/
+/*	display: block;*/
+/*}*/
 
-.share:focus .share-content {
-	display: block;
-}
+/*.share:focus .share-content {*/
+/*	display: block;*/
+/*}*/
 
 .header-scroll {
 	background-image: url(../images/bgweb.jpg);
@@ -320,6 +320,12 @@ div.mobile {
 	}
 }
 
+@media only screen and (max-width: 1124px) {
+	#article-title h1 {
+		margin-top: 0;
+	}
+}
+
 
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
@@ -373,7 +379,6 @@ div.mobile {
 	}
 
 	article {
-		padding-top: 0;
 		width: 1304px;
 	}
 
