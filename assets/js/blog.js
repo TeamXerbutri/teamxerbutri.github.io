@@ -1,6 +1,6 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {hideBackToTop, showBackToTop} from "./backtotop.js";
+import {initializeBackToTop} from "./backtotop.js";
 import {initializeMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
@@ -491,18 +491,7 @@ export function initBlog() {
 	}
 
 	setShare();
-	hideBackToTop();
+	
 	initializeMenu();
-
-	window.onscroll = function (ev) {
-		if (window.scrollY >= 200) {
-			showBackToTop();
-		} else {
-			hideBackToTop();
-			headerElem.classList.remove("header-scroll");
-		}
-		if (window.scrollY >= 1) {
-			headerElem.classList.add("header-scroll");
-		}
-	}
+	initializeBackToTop();
 }

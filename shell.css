@@ -5,17 +5,22 @@ body {
 	margin: 0;
 }
 
+main{
+	height: 100vh;	
+}
+
 header {
-	width: 100%;
-	height: 64px;
-	position: fixed;
+	height: 56px;
+	padding-top: 8px;
 	background-color: #18121e;
-	z-index: 1;
 	color: #FCF8ED;
+	display: flex;
+	justify-content: center;
 }
 
 header h1 {
-	margin-top: 16px;
+	margin-top: 8px;
+	font-size: 24px;
 }
 
 noscript {
@@ -29,17 +34,19 @@ noscript {
 	padding: 16px;
 }
 
-#app {
-	padding-top: 64px;
+#app{
+	overflow-y: auto;
+	height: calc(100% - 64px);
 }
 
 #shell{
 	background-color: #000;
 	color: #fff;
-	width: 220px;
+	width: 240px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 64px;
+	text-align: center;
 }
 
 #shell_logo{
@@ -50,30 +57,3 @@ noscript {
 	margin-right: auto;
 	padding: 20px;
 }
-
-/*Header title centered*/
-#header_index {
-	width: 290px;
-	font-size: 24px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-/* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
-@media only screen and (min-width: 1124px) {
-	header h1 {
-		position: fixed;
-		top: 0;
-		left: calc((50% - 505px));
-	}
-	
-}
-
-@media only screen and (min-width: 1418px) {
-	header h1 {
-		position: fixed;
-		top: 0;
-		left: calc((50% - 652px));
-	}
-}
-

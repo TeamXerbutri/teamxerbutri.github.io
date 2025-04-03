@@ -1,0 +1,39 @@
+#back-to-top {
+	display: none;
+	position: fixed;
+	right: 8px;
+	text-align: center;
+	padding-top: 16px;
+	text-decoration: none;
+	text-transform: uppercase;
+	top: 85%;
+	height: 40px;
+	width: 56px;
+	font-size: 24px;
+}
+
+#contactpanel, #privacypanel {
+	display: none;
+	border-style: solid;
+	width: 180px;
+	position: absolute;
+	right: 0;
+	top: 52px;
+	color: #fff;
+	border-color: #242424;
+	border-width: 4px;
+	background-color: #303030;
+	font-size: .85em;
+	margin-top: 2px;
+	margin-right: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+#contactpanel p span {
+	display: none;
+}
+
+#shell {
+	display: none;
+}

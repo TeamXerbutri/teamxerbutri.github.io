@@ -1,6 +1,6 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {initFilter} from "./indexfilter.js";
-import {hideBackToTop, showBackToTop} from "./backtotop.js";
+import {initializeBackToTop} from "./backtotop.js";
 import {dotsMenu} from "./icons.js";
 import Translator from "./translator.js";
 import {initializeMenu} from "./headermenu.js";
@@ -11,8 +11,10 @@ export function initHome() {
 	let translator = new Translator();
 	
 	// Load app
+	
+	let app = document.getElementById("app");
 
-	document.querySelector("#app").innerHTML = `
+	app.innerHTML = `
 <div id="oi">
 	<div id="message-bar"></div>
 	<div id="tx-filter"></div>
@@ -23,7 +25,7 @@ export function initHome() {
 
 	let subjects;
 	
-	const header = `<h1 id="header_index">Team Xerbutri</h1>
+	const header = `<h1>Team Xerbutri</h1>
 		<div class="menu-wrapper">
 		<div class="menu dropdown">
 		<button class="drop-btn top-nav menu-btn" data-i18n="navigation.menu">${dotsMenu}</button>
@@ -62,9 +64,7 @@ export function initHome() {
 	if (htmlElement.classList.contains("map-html")) {
 		htmlElement.classList.remove("map-html");
 	}
-
-	hideBackToTop();
-
+	
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -74,14 +74,7 @@ export function initHome() {
 	// UI stuff
 
 	initializeMenu();
-
-	window.onscroll = function (ev) {
-		if (window.scrollY >= 200) {
-			showBackToTop();
-		} else {
-			hideBackToTop();
-		}
-	}
+	initializeBackToTop();
 
 	function setTranslatedContent() {
 
