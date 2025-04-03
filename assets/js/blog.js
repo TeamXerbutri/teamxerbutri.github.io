@@ -138,6 +138,7 @@ export function initBlog() {
 	let jsonHelper = new JsonHelper();
 
 	document.querySelector("#app").innerHTML = `
+		<div id="article-title"></div>
 		<article id="blog">
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
@@ -163,17 +164,17 @@ export function initBlog() {
 
 	// init header
 	const header = `
-		<div class="top-bar">
-			<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<nav role="navigation">
 			<ul class="main-menu">
-				<li class="menu-item"><a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
-				<li class="menu-item menu-item-has-children"><a class="top-nav" href="#" data-i18n="navigation.share">${share}</a>
+				<li><a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
+				<li class="dropdown"><button class="top-nav" data-i18n="navigation.share">${share}</button>
 					<ul class="sub-menu mat-menu">
-						<li class="menu-item"><a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a></li>
-						<li class="menu-item"><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
+						<li><a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a></li>
+						<li><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
 					</ul>
 				</li>
-				<li class="menu-item menu-item-has-children"><a class="top-nav" href="#" data-i18n="navigation.menu">${dotsMenu}</a>
+				<li class="menu-item dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
 					<ul class="sub-menu mat-menu" id="menu">
 						<li class="menu-item"><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
 						<li class="menu-item"><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
@@ -183,7 +184,7 @@ export function initBlog() {
 					</ul>
 				</li>
 			</ul>
-		</div>
+		</nav>
 		
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
@@ -191,8 +192,6 @@ export function initBlog() {
 		<div id="privacypanel">
 			<p data-i18n="privacy.content">Privacy</p>
 		</div>
-		
-		<div id="article-title"></div>
 		`
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("home")) {

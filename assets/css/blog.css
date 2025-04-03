@@ -1,37 +1,32 @@
 /*top-bar*/
 
-header.blog {
-	height: 112px;
-}
-
-.top-bar {
-	height: 64px;
-}
-
 #article-title {
 	display: inline-block;
+	height: 48px;
+	background-color: #18121e;
+	color: #FCF8ED;
+	width: 100%;
+	position: fixed;
+	margin-top: -2px;
 }
 
 #article-title h1 {
-	margin-left: 8px;
+	margin-left: 16px;
 	font-size: 24px;
 }
 
 .nav-back {
 	text-decoration: none;
-	margin-left: 8px;
 	display: inline-block;
 	height: 48px;
 	width: 48px;
 }
 
-/*.nav-home {*/
-/*	display: inline-block;*/
-/*	height: 48px;*/
-/*	width: 48px;*/
-/*	position: absolute;*/
-/*	right: 120px;*/
-/*}*/
+.nav-home {
+	display: inline-block;
+	height: 48px;
+	width: 48px;
+}
 
 .nav-back .tx-icon {
 	padding-top: 12px;
@@ -64,12 +59,6 @@ header.blog {
 /*	display: block;*/
 /*}*/
 
-.header-scroll {
-	background-image: url(../images/bgweb.jpg);
-	background-repeat: repeat-x;
-	background: #000;
-	background-image: linear-gradient(rgba(0, 0, 0, .95), rgba(0, 0, 0, .4)), url(../images/bgweb.jpg);
-}
 
 #contact {
 	cursor: pointer;
@@ -239,7 +228,6 @@ div.mobile {
 	}
 
 	article {
-		padding-top: 0;
 		width: 756px;
 		margin-left: auto;
 		margin-right: auto;
@@ -329,15 +317,16 @@ div.mobile {
 
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
-
-	header.blog {
-		height: 64px;
-	}
-
 	#article-title {
 		position: fixed;
 		top: 8px;
 		left: calc((50% - 505px));
+		width: auto;
+	}
+	
+	#article-title h1 {
+		margin-left: 0;
+		margin-top: 8px;
 	}
 
 	article {
