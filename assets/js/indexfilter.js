@@ -57,14 +57,13 @@ function initFilter(translator) {
 			button.classList.add("tx-filter_off");
 			button.classList.remove("tx-filter_active");
 			button.isActive = false;
-			setDisplayFilter(categoryName, "none");
+			hideCategory(categoryName);
 		} else {
 			button.title = translator.translate("filter." + translationKey + ".hide");
 			button.isActive = true;
 			button.classList.remove("tx-filter_off");
 			button.classList.add("tx-filter_active");
-			setDisplayFilter(categoryName);
-
+			showCategory(categoryName);
 		}
 	}
 
@@ -74,14 +73,55 @@ function initFilter(translator) {
 	filterElement.appendChild(buildingButton);
 }
 
-function setDisplayFilter(className) {
+function hideCategory(className) {
 	let categories = document.getElementsByClassName(className);
 	let i;
 
 	for (i = 0; i < categories.length; i++) {
-		categories[i].style.display = "inline-block";
+		categories[i].classList.add("hidden");
+		categories[i].classList.remove("show-ib");
+	}
+}
+function showCategory(className) {
+	let categories = document.getElementsByClassName(className);
+	let i;
+
+	for (i = 0; i < categories.length; i++) {
+		categories[i].classList.add("show-ib");
+		categories[i].classList.remove("hidden");
 	}
 }
 
+function filter(){
+	const tunnel = document.getElementById("tx-filter-button_tunnel");
+	const bridge = document.getElementById("tx-filter-button_bridge");
+	const rail = document.getElementById("tx-filter-button_rail");
+	const building = document.getElementById("tx-filter-button_building");
+	
+	if(tunnel.isActive) {
+		showCategory("tunnel");
+	}
+	else {
+		hideCategory("tunnel");
+	}
+	if(bridge.isActive) {
+		showCategory("brug");
+	}
+	else {
+		hideCategory("brug");
+	}
+	if(rail.isActive) {
+		showCategory("spoor");
+	}
+	else {
+		hideCategory("spoor");
+	}
+	if(building.isActive) {
+		showCategory("gebouw");
+	}
+	else {
+		hideCategory("gebouw");
+	}
+}
 
-export {initFilter};
+export {initFilter, filter};

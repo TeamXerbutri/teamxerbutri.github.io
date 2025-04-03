@@ -1,7 +1,7 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
-import {initFilter} from "./indexfilter.js";
+import {initFilter, filter} from "./indexfilter.js";
 import {initializeBackToTop} from "./backtotop.js";
-import {dotsMenu} from "./icons.js";
+import {dotsMenu, txLogo} from "./icons.js";
 import Translator from "./translator.js";
 import {initializeMenu} from "./headermenu.js";
 import {checkVersion} from "./version.js";
@@ -25,18 +25,20 @@ export function initHome() {
 
 	let subjects;
 	
-	const header = `<h1>Team Xerbutri</h1>
-		<div class="menu-wrapper">
-		<div class="menu dropdown">
-		<button class="drop-btn top-nav menu-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<ul class="menu-content mat-menu" id="menu">
+	const header = `<div class="tx-logo">${txLogo}</div><h1>Team Xerbutri</h1>
+	<nav role="navigation">
+		<ul class="main-menu">
+			<li class="dropdown"><button class="drop-btn top-nav menu-btn" data-i18n="navigation.menu">${dotsMenu}</button>
+			<ul class="sub-menu mat-menu" id="menu">
 				<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
 				<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
 				<li><a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
 				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
 				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
 			</ul>
-		</div>
+			</li>
+		</ul>
+	</nav>
 		</div>
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
@@ -110,10 +112,14 @@ export function initHome() {
 				
 				const objectsToShow = subjects.splice(0, maxObjects);
 				
-				window.onscroll = function (ev) {
-					objectFactory(subjects);
-					subjects = [];
-				}
+				app.addEventListener("scroll", function () {
+					if (app.scrollTop + app.clientHeight >= app.scrollHeight) {
+						let objectsToShow = subjects.splice(0, maxObjects);
+						if (objectsToShow.length > 0) {
+							objectFactory(objectsToShow);
+						}
+					}
+				})
 								
 				objectFactory(objectsToShow);
 			},
@@ -136,9 +142,10 @@ export function initHome() {
 		initFilter(translator);
 
 		const filterElement = document.getElementById("tx-filter");
-		filterElement.onclick = function () {
+		filterElement.onclick = function (ev) {
 			objectFactory(subjects);
 			subjects = [];
+			filter();
 		}
 		
 		checkVersion(translator);

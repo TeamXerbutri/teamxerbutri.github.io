@@ -1,3 +1,9 @@
+header{
+	justify-content: space-between;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
 #back-to-top {
 	display: none;
 	position: fixed;
@@ -36,4 +42,12 @@
 
 #shell {
 	display: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.show-ib {
+	display: inline-block;
 }
