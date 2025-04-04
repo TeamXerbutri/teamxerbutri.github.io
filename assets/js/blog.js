@@ -18,7 +18,7 @@ import {Vector as VectorLayer} from "ol/layer";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow} from "./icons.js";
+import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow, upArrow} from "./icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 
 function countProperties(obj) {
@@ -149,7 +149,7 @@ export function initBlog() {
 		<section id="article-sources"></section>
 		<section id="article-gallery"></section>
 		</article>
-		<a id="back-to-top" class="fab" href="#blog">^</a>
+		<a id="back-to-top" class="fab" href="#blog">${upArrow}</a>
 		<script id="jsonld" type="application/ld+json"></script>
 		`
 	app.classList.add('blog');
