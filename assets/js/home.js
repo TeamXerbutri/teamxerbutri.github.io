@@ -1,7 +1,7 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {initFilter, filter} from "./indexfilter.js";
 import {initializeBackToTop} from "./backtotop.js";
-import {dotsMenu, txLogo} from "./icons.js";
+import {dotsMenu, txLogo, upArrow} from "./icons.js";
 import Translator from "./translator.js";
 import {initializeMenu} from "./headermenu.js";
 import {checkVersion} from "./version.js";
@@ -22,7 +22,7 @@ export function initHome() {
 	<div id="oc">
     </div>
 </div>
-<a id="back-to-top" class="fab" href="#oi">^</a>`
+<a id="back-to-top" class="fab" href="#oi">${upArrow}</a>`
 
 	let subjects;
 	
@@ -143,7 +143,7 @@ export function initHome() {
 		initFilter(translator);
 
 		const filterElement = document.getElementById("tx-filter");
-		filterElement.onclick = function (ev) {
+		filterElement.onclick = function () {
 			objectFactory(subjects);
 			subjects = [];
 			filter();
