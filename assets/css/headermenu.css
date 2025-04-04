@@ -39,6 +39,7 @@
 }
 
 .main-menu li button{
+	font-size: 0;
 	border: none;
 }
 
