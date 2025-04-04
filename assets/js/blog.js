@@ -249,14 +249,14 @@ export function initBlog() {
 					if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 						const adventureTitle = translator.translate("adventure");
 
-						document.getElementById("article-content").innerHTML += `<h3>${adventureTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += `<h2>${adventureTitle}</h2>`;
 						document.getElementById("article-content").innerHTML += blogContent.adventure;
 					}
 
 					if (blogContent.history !== undefined && blogContent.history !== "") {
 						let historyTitle = translator.translate("history");
 
-						document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += `<h2>${historyTitle}</h2>`;
 						document.getElementById("article-content").innerHTML += blogContent.history;
 					}
 
@@ -324,7 +324,7 @@ export function initBlog() {
 						let sourceTitle = translator.translate("sources.title");
 						let sourceDescription = translator.translate("sources.description");
 
-						document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
+						document.getElementById("article-sources").innerHTML += `<h2>${sourceTitle}</h2>`;
 						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
 						let sourceList = "";
 						blogFacts.sources.forEach(function (source) {
@@ -365,7 +365,7 @@ export function initBlog() {
 					gallery.classList.add("gallery");
 					gallery.id = "gallery--responsive-images";
 
-					let title = document.createElement("h3");
+					let title = document.createElement("h2");
 					title.innerText = galleryTitle;
 					gallerySection.appendChild(title);
 
