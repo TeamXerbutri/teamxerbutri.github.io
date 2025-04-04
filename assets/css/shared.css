@@ -40,6 +40,14 @@ header{
 	display: none;
 }
 
+#contact {
+	cursor: pointer;
+}
+
+#privacy {
+	cursor: pointer;
+}
+
 #shell {
 	display: none;
 }

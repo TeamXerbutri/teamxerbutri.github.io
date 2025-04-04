@@ -13,6 +13,7 @@ export function initHome() {
 	// Load app
 	
 	let app = document.getElementById("app");
+	app.classList.remove("blog");
 
 	app.innerHTML = `
 <div id="oi">

@@ -15,8 +15,11 @@ import GeoJSON from "ol/format/GeoJSON";
 
 let map;
 export function initMap() {
-		
-	document.querySelector("#app").innerHTML = `<div id="txmap"><div id="tx-menu-dismiss" class="tx-dismiss"></div> <div id="tx-layer-dismiss" class="tx-dismiss"></div></div>`;
+	
+	let app = document.getElementById("app");
+	
+	app.innerHTML = `<div id="txmap"><div id="tx-menu-dismiss" class="tx-dismiss"></div> <div id="tx-layer-dismiss" class="tx-dismiss"></div></div>`;
+	app.classList.remove("blog");
 
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;

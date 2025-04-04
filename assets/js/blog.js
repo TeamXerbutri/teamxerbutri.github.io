@@ -137,7 +137,8 @@ export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
 
-	document.querySelector("#app").innerHTML = `
+	let app = document.getElementById("app");
+	app.innerHTML = `
 		<div id="article-title"></div>
 		<article id="blog">
 		<p id="article-visited" class="authordate"></p>
@@ -151,6 +152,8 @@ export function initBlog() {
 		<a id="back-to-top" class="fab" href="#blog">^</a>
 		<script id="jsonld" type="application/ld+json"></script>
 		`
+	app.classList.add('blog');
+	
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -174,11 +177,11 @@ export function initBlog() {
 						<li><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
 					</ul>
 				</li>
-				<li class="menu-item dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
+				<li class="dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
 					<ul class="sub-menu mat-menu" id="menu">
-						<li class="menu-item"><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
-						<li class="menu-item"><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
-						<li class="menu-item"><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+						<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
+						<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+						<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
 						<li id="contact" class="mat-menu-item menu-item" data-i18n="contact.link">Contact</li>
 						<li id="privacy" class="mat-menu-item menu-item" data-i18n="privacy.link">Privacy</li>
 					</ul>

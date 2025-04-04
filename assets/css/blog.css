@@ -1,5 +1,13 @@
 /*top-bar*/
 
+header.blog {
+	margin-bottom: 48px;
+}
+
+#app.blog {
+	height: calc(100vh - 112px);
+}
+
 #article-title {
 	display: inline-block;
 	height: 48px;
@@ -7,7 +15,7 @@
 	color: #FCF8ED;
 	width: 100%;
 	position: fixed;
-	margin-top: -2px;
+	margin-top: -49px;
 }
 
 #article-title h1 {
@@ -36,30 +44,6 @@
 	padding-top: 12px;
 }
 
-/*.share {*/
-/*	right: 64px;*/
-/*	z-index: 1;*/
-/*}*/
-
-/*.share-btn {*/
-/*	z-index: 2;*/
-/*}*/
-
-/*.share-content {*/
-/*	display: none;*/
-/*	position: absolute;*/
-/*	z-index: 1;*/
-/*}*/
-
-/*.share:hover .share-content {*/
-/*	display: block;*/
-/*}*/
-
-/*.share:focus .share-content {*/
-/*	display: block;*/
-/*}*/
-
-
 #contact {
 	cursor: pointer;
 }
@@ -77,7 +61,6 @@
 }
 
 article {
-	padding-top: 48px;
 	width: 100%;
 	color: #fff;
 }
@@ -317,11 +300,20 @@ div.mobile {
 
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
+	#app.blog {
+		height: calc(100vh - 64px);
+	}
+
+	header.blog {
+		margin-bottom: 0;
+	}
+	
 	#article-title {
 		position: fixed;
 		top: 8px;
 		left: calc((50% - 505px));
 		width: auto;
+		margin-top: 0;
 	}
 	
 	#article-title h1 {
