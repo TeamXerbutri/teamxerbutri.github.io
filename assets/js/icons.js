@@ -1,6 +1,6 @@
 import "../css/icons.css"
 
-export const leftArrow = '<svg aria-hidden="true" class="tx-icon" viewBox="0 0 24 24" width="24" height="24"><path d="m24,18 l0,6 l-24,-12 l24,-12 l0,6 l-12,6 l12,6 Z"/></svg>';
+export const leftArrow = '<svg aria-hidden="true" class="tx-icon" viewBox="0 0 24 24" width="24" height="24"><path d="m24,24 l-12,0 l-12,-12 l12,-12 l12,0 l-12,12 l12,12 Z"/></svg>';
 
 export const upArrow = '<svg aria-hidden="true" class="tx-icon" viewBox="0 0 24 24" width="24" height="24"><path d="m0,24 l0,-12 l12,-12 l12,12 l0,12 l-12,-12 l-12,12 Z"/></svg>';
 
