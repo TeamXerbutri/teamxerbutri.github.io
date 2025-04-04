@@ -10,7 +10,6 @@
 	const source = "data/".concat(BlogObject.category, "/", BlogObject.routeid, "/", BlogObject.routeid);
 	image.src = source.concat("m.jpg");
 	image.alt = BlogObject.name;
-	image.classList.add("te")
 	image.srcset = source.concat("m.jpg") + " 164w, " + source.concat("l.jpg") + " 237w, " + source.concat(".jpg") + " 310w";
 	image.sizes = "(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px";
 	image.id = BlogObject.routeid; // TODO: Can this be removed?
@@ -21,8 +20,8 @@
 	textWrapper.classList.add("tile-text-wrapper");
 	link.appendChild(textWrapper);
 
-	let objectDescription = document.createElement("h3");
-	objectDescription.classList.add("te");
+	let objectDescription = document.createElement("span");
+	objectDescription.classList.add("category");
 	if (BlogObject.category === "xerbutri") {
 		objectDescription.setAttribute("data-i18nix", BlogObject.routeid.concat(".realname"));
 	} else {
@@ -33,8 +32,8 @@
 
 	textWrapper.appendChild(objectDescription);
 
-	let name = document.createElement("h2");
-	name.classList.add("te");
+	let name = document.createElement("span");
+	name.classList.add("name");
 	name.setAttribute("data-i18nix", BlogObject.routeid.concat(".shortname"));
 	name.innerText = BlogObject.tilename;
 	textWrapper.appendChild(name);

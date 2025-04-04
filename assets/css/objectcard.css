@@ -11,7 +11,7 @@
 	text-align: initial;
 }
 
-img.te {
+.tile img {
 	transition: all .5s ease-in-out;
 	height: 177px;
 	width: 236px;
@@ -21,7 +21,7 @@ img.te {
 .tile-text-wrapper {
 	display: block;
 	position: relative;
-	top: -98px;
+	top: -82px;
 	left: 0;
 	background: #000000; /* For browsers that do not support gradients*/
 	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)); /* For Safari 5.1 to 6.0*/
@@ -30,8 +30,10 @@ img.te {
 	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)); /* Standard syntax */
 }
 
-h2.te {
+.name {
+	display: block;
 	font-size: 24px;
+	font-weight: bold;
 	width: auto;
 	color: #F9F0DC;
 	padding-top: 0;
@@ -40,9 +42,10 @@ h2.te {
 	margin-top: 0;
 }
 
-h3.te {
+.category {
+	display: block;
 	font-size: 16px;
-	font-weight: normal;
+	font-weight: 400;
 	color: #f4e1b8;
 	width: auto;
 	padding-top: 10px;
@@ -59,15 +62,15 @@ h3.te {
 	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* Standard syntax */
 }
 
-.tile:visited h2.te {
+.tile:visited .name {
 	color: #83a4af;
 }
 
-.tile:visited h3.te {
+.tile:visited .category {
 	color: #f4e1b8;
 }
 
-.tile:visited img.te {
+.tile:visited img {
 	opacity: 0.5;
 }
 
@@ -76,7 +79,7 @@ h3.te {
 	box-shadow: 0 0 4px 2px #EAC67A;
 }
 
-.tile:focus img.te {
+.tile:focus img {
 	transform: scale(1.05);
 }
 
@@ -93,15 +96,15 @@ h3.te {
 	outline: #984B43 solid 2px;
 }
 
-.tile:focus h2.te {
+.tile:focus .name {
 	color: #FCF8ED;
 }
 
-.tile:focus h3.te {
+.tile:focus .category {
 	color: #f7e9ca;
 }
 
-.tile:hover img.te {
+.tile:hover img {
 	opacity: 0.92;
 	transform: scale(1.05);
 }
@@ -118,11 +121,11 @@ h3.te {
 	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* Standard syntax */
 }
 
-.tile:hover h2.te {
+.tile:hover .name {
 	color: #FCF8ED;
 }
 
-.tile:hover h3.te {
+.tile:hover .category {
 	color: #f7e9ca;
 }
 
@@ -134,68 +137,53 @@ h3.te {
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* Standard syntax */
 }
 
-.tile:active h2.te {
+.tile:active .name {
 	color: #EAC67A;
 }
 
-.tile:active h3.te {
+.tile:active .category {
 	color: #E9C372;
 }
 
-.tile:active img.te {
+.tile:active img {
 	opacity: 0.4;
 }
 
 @media only screen and (max-width: 756px) {
-	.tile {
+	.tile, .tile img {
 		height: 123px;
 		width: 164px;
 		border-radius: 10px;
-	}
-
-	img.te {
-		height: 123px;
-		width: 164px;
 	}
 
 	.tile-text-wrapper {
 		top: -33px;
 	}
 
-	h2.te {
+	.name {
 		font-size: 14px;
 		padding-left: 8px;
 	}
 
-	h3.te {
+	.category {
 		display: none;
 	}
 }
 
 @media only screen and (min-width: 756px) {
-	.tile {
+	.tile, .tile img {
 		height: 177px;
 		width: 236px;
 	}
-
-	img.te {
-		height: 177px;
-		width: 236px;
-	}
-
-	h2.te {
+	
+	.name {
 		font-size: 20px;
 	}
 }
 
 /* Resolution 1366x768*/
 @media only screen and (min-width: 1350px) {
-	img.te {
-		height: 233px;
-		width: 310px;
-	}
-
-	.tile {
+	.tile, .tile img {
 		height: 233px;
 		width: 310px;
 	}
