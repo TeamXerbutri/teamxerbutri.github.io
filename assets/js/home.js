@@ -143,7 +143,7 @@ export function initHome() {
 		initFilter(translator);
 
 		const filterElement = document.getElementById("tx-filter");
-		filterElement.onclick = function (ev) {
+		filterElement.onclick = function () {
 			objectFactory(subjects);
 			subjects = [];
 			filter();
