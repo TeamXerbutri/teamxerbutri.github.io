@@ -38,7 +38,14 @@
 	width: 100%;
 }
 
-
 .main-menu li button{
 	border: none;
+}
+
+.main-menu li:hover > ul,
+.main-menu li:focus-within >ul,
+.main-menu li ul:hover {
+	visibility: visible;
+	opacity: 1;
+	display: block;
 }
