@@ -11,6 +11,8 @@
 .main-menu li button{
 	width: 48px;
 	height: 48px;
+	margin: 0;
+	padding: 0;
 }
 
 .main-menu li:hover{
