@@ -1,5 +1,6 @@
 ﻿import {Control} from "ol/control";
 import {initRipple} from "./buttonripple.js";
+import {dragIcon} from "./icons.js";
 
 export class MapMenuControl extends Control {
 	constructor(opt_options) {
@@ -51,7 +52,7 @@ export class MapMenuControl extends Control {
 		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
 		dragHandle.id = "drag-handle";
 		dragHandle.title = "drag";//;
-		dragHandle.innerHTML = `<img src="ui/pics/drag.svg" alt="Drag handle" />`;
+		dragHandle.innerHTML = `${dragIcon}`;
 
 		dragHandle.onmousedown = function() {
 			toggleModal();
@@ -59,7 +60,7 @@ export class MapMenuControl extends Control {
 		
 		const menuContainer = document.createElement("div");
 		menuContainer.id = "tx-menu-container";
-		menuContainer.innerHTML = `<a class="mat-button light" href="../" title="Bezoek de webpagina van Team Xerbutri, met alle bezochte locaties">Naar de index-pagina van Team Xerbutri</a>`; //TODO translate => use i18n
+		menuContainer.innerHTML = `<a class="mat-button light" href="../" title="Ga naar het index-overzicht van Team Xerbutri, met alle bezochte locaties">Naar het index-overzicht van Team Xerbutri</a>`; //TODO translate => use i18n
 		
 		menuModal.appendChild(dragHandle);
 		menuModal.appendChild(modalHeader);

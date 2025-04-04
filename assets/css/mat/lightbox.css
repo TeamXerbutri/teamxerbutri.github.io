@@ -1,54 +1,79 @@
+.pswp__top-bar{
+	padding-top: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
 .pswp__indicator {
 	position: absolute;
 	bottom: 8px;
 	right: 8px;
 }
 
-.pswp__indicator p{
+.pswp__indicator p {
 	color: #fff;
 	font-size: 12px;
 }
 
 .pswp__button--close {
-	margin-left: 4px !important;
 	height: 48px !important;
 	width: 48px !important;
 }
 
 .pswp__button--zoom {
-	margin-right: 4px !important;
 	height: 48px !important;
 	width: 48px !important;
 }
 
-.pswp__button--arrow{
+.pswp__button--arrow {
 	height: 56px !important;
 	width: 56px !important;
-	background-color: #110000 !important;
-	color: #f2f7fa !important;
+	background-color: #233237 !important;
+	color: #F9F0DC !important;
+	fill: #F9F0DC;
 	border-radius: 16px;
-	box-shadow: 0 2px 4px rgba(100,100,100,0.12), 0 1px 2px rgba(100,100,100,0.24)  !important;
+	box-shadow: 0 0 4px 2px rgba(234, 198, 122, 0.4), inset 0 0 8px 8px rgba(0, 0, 0, 0.20) !important;
+	transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .pswp__button--arrow:focus {
-	color: #afafaf;
-	background-color: #220000 !important;
-	box-shadow: 0 0 0 3px rgba(190,190,190, 0.5) !important;
-	border: #f2f7fa 1px solid  !important;
+	color: #FCF8ED;
+	box-shadow: 0 0 4px 2px #EAC67A, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.10) !important;
+}
+
+.pswp__button--arrow:focus .tx-icon {
+	fill: #FCF8ED;
+}
+
+.pswp__button--arrow:focus-visible {
+	box-shadow: none;
+	outline: #984B43 solid 2px;
 }
 
 .pswp__button--arrow:hover {
-	color: #fff;
-	background-color: #220000 !important;
-	box-shadow: 0 2px 4px rgba(190,190,190,0.25), 0 1px 2px rgba(190,190,190,0.22)  !important;
+	color: #FCF8ED;
+	box-shadow: -2px 2px 8px 4px #000, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.08) !important;
 }
 
-.pswp__button--arrow--next{
-	right: 4px !important;
+.pswp__button--arrow:hover .tx-icon {
+	fill: #FCF8ED;
 }
 
-.pswp__button--arrow--prev{
-	left: 4px !important;
+.pswp__button--arrow:active {
+	border: none;
+	box-shadow: 0 0 4px 2px #000, inset -3px 3px 8px 8px rgba(0, 0, 0, 0.70);
+}
+
+.pswp__button--arrow:active .tx-icon {
+	fill: #EAC67A;
+}
+
+.pswp__button--arrow--next {
+	right: 8px !important;
+}
+
+.pswp__button--arrow--prev {
+	left: 8px !important;
 }
 
 /* Captions */

@@ -1,5 +1,4 @@
 import "./style.css"
-import txLogo from "./assets/images/tx.gif"
 import {stateContext} from "./assets/js/statemachine.js";
 
 let navState = new stateContext();
@@ -39,11 +38,7 @@ let navState = new stateContext();
 	}
 
 	function init() {
-		// load image
-		document.getElementById("tx").src = `${txLogo}`;
-
 		manipulateHref();
-
 		navState.initState();
 	}
 })();

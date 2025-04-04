@@ -1,122 +1,127 @@
-import {uiState} from "./uistate.js";
-
 function initFilter(translator) {
+	
+	const filterElement = document.getElementById("tx-filter");
 
-	uiState.hasFilter = {bridge: false, building: false, rail: false, tunnel: false};
+	// create buttons for filters
+	const bridgeButton = document.createElement("button");
+	bridgeButton.id = "tx-filter-button_bridge";
+	bridgeButton.classList.add("fab");
+	bridgeButton.isActive = false;
+	bridgeButton.setAttribute("data-i18n", "filter.bridge.hide");
+	bridgeButton.title = translator.translate("filter.bridge.hide");
+	toggleButton(bridgeButton, "bridge", "brug");
 
-	let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-	let displayString = "inline-block";
-	if (viewportWidth <= 755) {
-		displayString = "block";
+	bridgeButton.onclick = function () {
+		toggleButton(bridgeButton, "bridge", "brug");
+	}
+
+	const buildingButton = document.createElement("button");
+	buildingButton.id = "tx-filter-button_building";
+	buildingButton.classList.add("fab");
+	buildingButton.isActive = false;
+	buildingButton.title = translator.translate("filter.building.hide");
+	buildingButton.setAttribute("data-i18n", "filter.building.hide");
+	toggleButton(buildingButton, "building", "gebouw");
+
+	buildingButton.onclick = function () {
+		toggleButton(buildingButton, "building", "gebouw");
 	}
 
 	const railButton = document.createElement("button");
-	railButton.innerHTML = "V";
+	railButton.id = "tx-filter-button_rail";
+	railButton.classList.add("fab");
+	railButton.isActive = false;
 	railButton.title = translator.translate("filter.rail.hide");
 	railButton.setAttribute("data-i18n", "filter.rail.hide");
-	railButton.id = "railfilter";
-	railButton.addEventListener("click", railFilter);
+	toggleButton(railButton, "rail", "spoor");
 
-	const bridgeButton = document.createElement("button");
-	bridgeButton.title = translator.translate("filter.bridge.hide");
-	bridgeButton.innerHTML = "V";
-	bridgeButton.setAttribute("data-i18n", "filter.bridge.hide");
-	bridgeButton.id = "bridgefilter";
-	bridgeButton.addEventListener("click", bridgeFilter);
+	railButton.onclick = function () {
+		toggleButton(railButton, "rail", "spoor");
+	}
 
 	const tunnelButton = document.createElement("button");
-	tunnelButton.innerHTML = "V";
+	tunnelButton.id = "tx-filter-button_tunnel";
+	tunnelButton.classList.add("fab");
+	tunnelButton.isActive = false;
 	tunnelButton.title = translator.translate("filter.tunnel.hide");
 	tunnelButton.setAttribute("data-i18n", "filter.tunnel.hide");
-	tunnelButton.id = "tunnelfilter";
-	tunnelButton.addEventListener("click", tunnelFilter);
+	toggleButton(tunnelButton, "tunnel", "tunnel");
 
-	const buildingButton = document.createElement("button");
-	buildingButton.innerHTML = "V";
-	buildingButton.title = translator.translate("filter.building.hide");
-	buildingButton.setAttribute("data-i18n", "filter.building.hide");
-	buildingButton.id = "buildingfilter";
-	buildingButton.addEventListener("click", buildingFilter);
+	tunnelButton.onclick = function () {
+		toggleButton(tunnelButton, "tunnel", "tunnel");
+	}
 
-	const filter = document.createElement("div");
-	filter.className = "filter";
-	filter.appendChild(bridgeButton);
-	filter.appendChild(tunnelButton);
-	filter.appendChild(railButton);
-	filter.appendChild(buildingButton);
-	document.getElementById("header").appendChild(filter);
-
-	function bridgeFilter() {
-		if (uiState.hasFilter.bridge) {
-			setDisplayFilter("brug", displayString);
-			setFilterStyle(bridgeButton, "bridge", uiState.hasFilter.bridge);
-			uiState.hasFilter.bridge = false;
+	function toggleButton(button, translationKey, categoryName) {
+		if (button.isActive) {
+			button.title = translator.translate("filter." + translationKey + ".show");
+			button.classList.add("tx-filter_off");
+			button.classList.remove("tx-filter_active");
+			button.isActive = false;
+			hideCategory(categoryName);
 		} else {
-			setDisplayFilter("brug", "none");
-			setFilterStyle(bridgeButton, "bridge", uiState.hasFilter.bridge);
-			uiState.hasFilter.bridge = true;
+			button.title = translator.translate("filter." + translationKey + ".hide");
+			button.isActive = true;
+			button.classList.remove("tx-filter_off");
+			button.classList.add("tx-filter_active");
+			showCategory(categoryName);
 		}
 	}
 
-	function tunnelFilter() {
-		if (uiState.hasFilter.tunnel) {
-			setDisplayFilter("tunnel", displayString);
-			setFilterStyle(tunnelButton, "tunnel", uiState.hasFilter.tunnel);
-			uiState.hasFilter.tunnel = false;
-		} else {
-			setDisplayFilter("tunnel", "none");
-			setFilterStyle(tunnelButton, "tunnel", uiState.hasFilter.tunnel);
-			uiState.hasFilter.tunnel = true;
-		}
-	}
-
-	function buildingFilter() {
-		if (uiState.hasFilter.building) {
-			setDisplayFilter("gebouw", displayString);
-			setFilterStyle(buildingButton, "building", uiState.hasFilter.building);
-			uiState.hasFilter.building = false;
-		} else {
-			setDisplayFilter("gebouw", "none");
-			setFilterStyle(buildingButton, "building", uiState.hasFilter.building);
-			uiState.hasFilter.building = true;
-		}
-	}
-
-	function railFilter() {
-		if (uiState.hasFilter.rail) {
-			setDisplayFilter("spoor", displayString);
-			setFilterStyle(railButton, "rail", uiState.hasFilter.rail);
-			uiState.hasFilter.rail = false
-		} else {
-			setDisplayFilter("spoor", "none");
-			setFilterStyle(railButton, "rail", uiState.hasFilter.rail);
-			uiState.hasFilter.rail = true;
-		}
-	}
-
-	function setFilterStyle(buttonName, categoryName, activeFilter) {
-		let check = "&nbsp;";
-		let filterStyle = "rgba(30,30,30,0.8)";
-		let key = "show";
-		if (activeFilter) {
-			check = "V";
-			key = "hide";
-			filterStyle = "rgba(30,30,30,0.2)";
-		}
-		buttonName.title = translator.translate(`filter.${categoryName}.${key}`);
-		buttonName.innerHTML = check;
-		buttonName.style.backgroundColor = filterStyle;
-	}
+	filterElement.appendChild(bridgeButton);
+	filterElement.appendChild(tunnelButton);
+	filterElement.appendChild(railButton);
+	filterElement.appendChild(buildingButton);
 }
 
-function setDisplayFilter(className, display) {
+function hideCategory(className) {
 	let categories = document.getElementsByClassName(className);
 	let i;
 
 	for (i = 0; i < categories.length; i++) {
-		categories[i].style.display = display;
+		categories[i].classList.add("hidden");
+		categories[i].classList.remove("show-ib");
+	}
+}
+function showCategory(className) {
+	let categories = document.getElementsByClassName(className);
+	let i;
+
+	for (i = 0; i < categories.length; i++) {
+		categories[i].classList.add("show-ib");
+		categories[i].classList.remove("hidden");
 	}
 }
 
+function filter(){
+	const tunnel = document.getElementById("tx-filter-button_tunnel");
+	const bridge = document.getElementById("tx-filter-button_bridge");
+	const rail = document.getElementById("tx-filter-button_rail");
+	const building = document.getElementById("tx-filter-button_building");
+	
+	if(tunnel.isActive) {
+		showCategory("tunnel");
+	}
+	else {
+		hideCategory("tunnel");
+	}
+	if(bridge.isActive) {
+		showCategory("brug");
+	}
+	else {
+		hideCategory("brug");
+	}
+	if(rail.isActive) {
+		showCategory("spoor");
+	}
+	else {
+		hideCategory("spoor");
+	}
+	if(building.isActive) {
+		showCategory("gebouw");
+	}
+	else {
+		hideCategory("gebouw");
+	}
+}
 
-export {initFilter};
+export {initFilter, filter};

@@ -1,31 +1,45 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
-import {initFilter} from "./indexfilter.js";
-import {hideBackToTop, hideMenu, showBackToTop, showMenu, showMenuItem, uiState} from "./header.js";
-import txLogo from "../images/tx.gif"
+import {initFilter, filter} from "./indexfilter.js";
+import {initializeBackToTop} from "./backtotop.js";
+import {dotsMenu, txLogo, upArrow} from "./icons.js";
 import Translator from "./translator.js";
+import {initializeMenu} from "./headermenu.js";
+import {checkVersion} from "./version.js";
 
 // Initializes the home page
 export function initHome() {
 	let translator = new Translator();
-
+	
 	// Load app
+	
+	let app = document.getElementById("app");
+	app.classList.remove("blog");
 
-	document.querySelector("#app").innerHTML = `
+	app.innerHTML = `
 <div id="oi">
+	<div id="message-bar"></div>
+	<div id="tx-filter"></div>
 	<div id="oc">
     </div>
 </div>
-<a id="back-to-top" href="#oi">^</a>`
-	
-	const header = `<img alt="Team Xerbutri Logo" id="tx" src="${txLogo}">
-		<h1 class="logo">Team Xerbutri</h1>
+<a id="back-to-top" class="fab" href="#oi">${upArrow}</a>`
 
-		<div class="menu" id="menu">
-			<a href="map" data-i18n="maps.link">Maps</a>
-			<a href="avontuur/txatx" data-i18n="abouttx.link">About TX</a>
-			<a href="avontuur/txaue" data-i18n="aboutue.link">About UE</a>
-			<a id="contact" data-i18n="contact.link">Contact</a>
-			<a id="privacy" data-i18n="privacy.link">Privacy</a>
+	let subjects;
+	
+	const header = `<div class="tx-logo">${txLogo}</div><h1>Team Xerbutri</h1>
+	<nav role="navigation">
+		<ul class="main-menu">
+			<li class="dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
+			<ul class="sub-menu mat-menu" id="menu">
+				<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
+				<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+				<li><a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
+				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
+			</ul>
+			</li>
+		</ul>
+	</nav>
 		</div>
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
@@ -50,23 +64,10 @@ export function initHome() {
 	}
 
 	const htmlElement = document.querySelector("html");
-	if(htmlElement.classList.contains("map-html")){
+	if (htmlElement.classList.contains("map-html")) {
 		htmlElement.classList.remove("map-html");
 	}
 	
-	hideBackToTop();
-
-	function initViewportOptions() {
-		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-		if (viewportWidth <= 755) {
-			uiState.hasMenu = true;
-			hideMenu();
-			document.addEventListener("click", hideMenu);
-			document.getElementById("menu").addEventListener("click", showMenu);
-		}
-	}
-
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -75,41 +76,8 @@ export function initHome() {
 
 	// UI stuff
 
-	initViewportOptions();
-	document.getElementById("contact").addEventListener("click", function () {
-		showMenuItem("contactpanel")
-	});
-	document.getElementById("privacy").addEventListener("click", function () {
-		showMenuItem("privacypanel")
-	});
-
-	onresize = (event) => {
-		let viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-		if (viewportWidth <= 755) {
-			initViewportOptions();
-		}
-
-		if (viewportWidth > 755) {
-			uiState.hasMenu = false;
-			let menu = document.getElementById("menu");
-			menu.removeAttribute("style");
-			let menuitems = menu.getElementsByTagName("a");
-
-			for (let i = 0; i < menuitems.length; i++) {
-				let element = menuitems[i];
-				element.removeAttribute("style");
-			}
-		}
-	}
-
-	window.onscroll = function (ev) {
-		if (window.scrollY >= 200) {
-			showBackToTop();
-		} else {
-			hideBackToTop();
-		}
-	}
+	initializeMenu();
+	initializeBackToTop();
 
 	function setTranslatedContent() {
 
@@ -117,7 +85,44 @@ export function initHome() {
 		// fetch the objects
 		translator.fetchHomeData().then(
 			function (value) {
-				objectFactory(value);
+				subjects = value;
+				// First load.
+				const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				
+				let columns = 4;
+				if (viewWidth < 500) {
+					columns = 2;
+				}
+				
+				let cardHeight =  177;
+				if (viewWidth < 765) {
+					cardHeight = 123;
+				}
+				if (viewWidth > 1350) {
+					cardHeight = 233;
+				}
+				
+				const viewHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+				
+				const rows = Math.ceil(viewHeight / cardHeight);
+				let maxObjects = rows * columns;
+				
+				if (subjects.length < maxObjects) {
+					maxObjects = subjects.length;
+				}
+				
+				const objectsToShow = subjects.splice(0, maxObjects);
+				
+				app.addEventListener("scroll", function () {
+					if (app.scrollTop + app.clientHeight >= app.scrollHeight) {
+						let objectsToShow = subjects.splice(0, maxObjects);
+						if (objectsToShow.length > 0) {
+							objectFactory(objectsToShow);
+						}
+					}
+				})
+								
+				objectFactory(objectsToShow);
 			},
 			function (error) {
 				console.error(error);
@@ -127,20 +132,29 @@ export function initHome() {
 		// Builds the objects
 		function objectFactory(subjects) {
 			const objectContainer = document.getElementById("oc");
+						
 			for (let i in subjects) {
-				let displayObject = createBlogObject(translator, subjects[i], i);
+				let displayObject = createBlogObject(translator, subjects[i]);
 
 				objectContainer.appendChild(displayObject);
 			}
 		}
-		
+
 		initFilter(translator);
 
-		//TODO Set the right language at some point
+		const filterElement = document.getElementById("tx-filter");
+		filterElement.onclick = function () {
+			objectFactory(subjects);
+			subjects = [];
+			filter();
+		}
+		
+		checkVersion(translator);
+		
 		document
 			.querySelector('meta[name="description"]')
-			.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
-		document.title = "Xerbutri Urban Exploring";
+			.setAttribute("content", translator.translate("metadata.content"));
+		document.title = translator.translate("metadata.title");
 	}
 }
 

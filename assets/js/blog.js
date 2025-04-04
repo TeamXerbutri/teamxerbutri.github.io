@@ -1,7 +1,7 @@
-﻿import {uiState} from "./uistate.js";
-import {routes} from "./routes.js";
+﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {hideBackToTop, showBackToTop} from "./header.js";
+import {initializeBackToTop} from "./backtotop.js";
+import {initializeMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -18,14 +18,8 @@ import {Vector as VectorLayer} from "ol/layer";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow} from "./icons.js";
+import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow, upArrow} from "./icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
-
-uiState.hasMenu = true;
-uiState.hasContactModal = false;
-uiState.hasPrivacyModal = false;
-uiState.hasShareModal = false;
-uiState.hasBackToTop = false;
 
 function countProperties(obj) {
 	let count = 0;
@@ -36,23 +30,6 @@ function countProperties(obj) {
 	}
 
 	return count;
-}
-
-function showItem(elementId) {
-	document.addEventListener("click", function (evt) {
-		hideItem(elementId, evt)
-	});
-	document.getElementById(elementId).style.display = "block";
-}
-
-function hideItem(elementId, evt) {
-	let element = document.getElementById(elementId);
-	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu-blog") {
-		document.removeEventListener("click", function (evt) {
-			hideItem(elementId, evt)
-		});
-		element.style.display = "none";
-	}
 }
 
 let omap;
@@ -159,9 +136,10 @@ function setShare() {
 export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
-	uiState.hasShareModal = true;
 
-	document.querySelector("#app").innerHTML = `
+	let app = document.getElementById("app");
+	app.innerHTML = `
+		<div id="article-title"></div>
 		<article id="blog">
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
@@ -171,9 +149,11 @@ export function initBlog() {
 		<section id="article-sources"></section>
 		<section id="article-gallery"></section>
 		</article>
-		<a id="back-to-top" href="#blog">^</a>
+		<a id="back-to-top" class="fab" href="#blog">${upArrow}</a>
 		<script id="jsonld" type="application/ld+json"></script>
 		`
+	app.classList.add('blog');
+	
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -187,26 +167,27 @@ export function initBlog() {
 
 	// init header
 	const header = `
-		<div id="topbar">
 		<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
-		<a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a>
-		<div class="share dropdown">
-			<button class="drop-btn top-nav share-btn" data-i18n="navigation.share">${share}</button>
-			<div class="share-content mat-menu">
-				<a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a>
-				<a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a>
-			</div>
-		</div>
-		<div class="menu-blog dropdown">
-			<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<div class="menu-blog-content mat-menu" id="menu-blog">
-				<a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a>
-				<a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a>
-				<a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a>
-				<a id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</a>
-				<a id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</a>
-			</div>
-		</div>
+		<nav role="navigation">
+			<ul class="main-menu">
+				<li><a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
+				<li class="dropdown"><button class="top-nav" data-i18n="navigation.share">${share}</button>
+					<ul class="sub-menu mat-menu">
+						<li><a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a></li>
+						<li><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
+					<ul class="sub-menu mat-menu" id="menu">
+						<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
+						<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+						<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+						<li id="contact" class="mat-menu-item menu-item" data-i18n="contact.link">Contact</li>
+						<li id="privacy" class="mat-menu-item menu-item" data-i18n="privacy.link">Privacy</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
 		
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
@@ -214,8 +195,6 @@ export function initBlog() {
 		<div id="privacypanel">
 			<p data-i18n="privacy.content">Privacy</p>
 		</div>
-		</div>
-		<div id="article-title"></div>
 		`
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("home")) {
@@ -270,14 +249,14 @@ export function initBlog() {
 					if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 						const adventureTitle = translator.translate("adventure");
 
-						document.getElementById("article-content").innerHTML += `<h3>${adventureTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += `<h2>${adventureTitle}</h2>`;
 						document.getElementById("article-content").innerHTML += blogContent.adventure;
 					}
 
 					if (blogContent.history !== undefined && blogContent.history !== "") {
 						let historyTitle = translator.translate("history");
 
-						document.getElementById("article-content").innerHTML += `<h3>${historyTitle}</h3>`;
+						document.getElementById("article-content").innerHTML += `<h2>${historyTitle}</h2>`;
 						document.getElementById("article-content").innerHTML += blogContent.history;
 					}
 
@@ -345,7 +324,7 @@ export function initBlog() {
 						let sourceTitle = translator.translate("sources.title");
 						let sourceDescription = translator.translate("sources.description");
 
-						document.getElementById("article-sources").innerHTML += `<h3>${sourceTitle}</h3>`;
+						document.getElementById("article-sources").innerHTML += `<h2>${sourceTitle}</h2>`;
 						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
 						let sourceList = "";
 						blogFacts.sources.forEach(function (source) {
@@ -386,7 +365,7 @@ export function initBlog() {
 					gallery.classList.add("gallery");
 					gallery.id = "gallery--responsive-images";
 
-					let title = document.createElement("h3");
+					let title = document.createElement("h2");
 					title.innerText = galleryTitle;
 					gallerySection.appendChild(title);
 
@@ -514,23 +493,7 @@ export function initBlog() {
 	}
 
 	setShare();
-	hideBackToTop();
-	document.getElementById("contact").addEventListener("click", function () {
-		showItem("contactpanel")
-	});
-	document.getElementById("privacy").addEventListener("click", function () {
-		showItem("privacypanel")
-	});
-
-	window.onscroll = function (ev) {
-		if (window.scrollY >= 200) {
-			showBackToTop();
-		} else {
-			hideBackToTop();
-			headerElem.classList.remove("header-scroll");
-		}
-		if (window.scrollY >= 1) {
-			headerElem.classList.add("header-scroll");
-		}
-	}
+	
+	initializeMenu();
+	initializeBackToTop();
 }
