@@ -1,0 +1,51 @@
+.main-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0 12px 0 0;
+}
+
+.main-menu li{
+	display: inline-block;
+}
+
+.main-menu li button{
+	width: 48px;
+	height: 48px;
+}
+
+.main-menu li:hover{
+	cursor: pointer;
+}
+
+.main-menu li ul {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	right:16px;
+	z-index: 1;
+	display: none;
+}
+
+.main-menu li:hover ul {
+	visibility: visible;
+	opacity: 1;
+	display: block;
+	width: 112px;
+}
+
+.main-menu li ul li {
+	display: block;
+	width: 100%;
+}
+
+.main-menu li button{
+	border: none;
+}
+
+.main-menu li:hover > ul,
+.main-menu li:focus-within >ul,
+.main-menu li ul:hover {
+	visibility: visible;
+	opacity: 1;
+	display: block;
+}

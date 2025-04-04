@@ -1,6 +1,6 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {hideBackToTop, showBackToTop} from "./backtotop.js";
+import {initializeBackToTop} from "./backtotop.js";
 import {initializeMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
@@ -137,7 +137,9 @@ export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
 
-	document.querySelector("#app").innerHTML = `
+	let app = document.getElementById("app");
+	app.innerHTML = `
+		<div id="article-title"></div>
 		<article id="blog">
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
@@ -150,6 +152,8 @@ export function initBlog() {
 		<a id="back-to-top" class="fab" href="#blog">^</a>
 		<script id="jsonld" type="application/ld+json"></script>
 		`
+	app.classList.add('blog');
+	
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -163,26 +167,27 @@ export function initBlog() {
 
 	// init header
 	const header = `
-		<div id="topbar">
 		<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
-		<a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a>
-		<div class="share dropdown">
-			<button class="drop-btn top-nav share-btn" data-i18n="navigation.share">${share}</button>
-			<div class="share-content mat-menu">
-				<a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a>
-				<a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a>
-			</div>
-		</div>
-		<div class="menu-blog dropdown">
-			<button class="drop-btn top-nav menu-blog-btn" data-i18n="navigation.menu">${dotsMenu}</button>
-			<ul class="menu-blog-content mat-menu" id="menu-blog">
-				<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
-				<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
-				<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
-				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
-				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
+		<nav role="navigation">
+			<ul class="main-menu">
+				<li><a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
+				<li class="dropdown"><button class="top-nav" data-i18n="navigation.share">${share}</button>
+					<ul class="sub-menu mat-menu">
+						<li><a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a></li>
+						<li><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
+					<ul class="sub-menu mat-menu" id="menu">
+						<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
+						<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
+						<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
+						<li id="contact" class="mat-menu-item menu-item" data-i18n="contact.link">Contact</li>
+						<li id="privacy" class="mat-menu-item menu-item" data-i18n="privacy.link">Privacy</li>
+					</ul>
+				</li>
 			</ul>
-		</div>
+		</nav>
 		
 		<div id="contactpanel">
 			<p data-i18n="contact.content">Contact</p>
@@ -190,8 +195,6 @@ export function initBlog() {
 		<div id="privacypanel">
 			<p data-i18n="privacy.content">Privacy</p>
 		</div>
-		</div>
-		<div id="article-title"></div>
 		`
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("home")) {
@@ -490,18 +493,7 @@ export function initBlog() {
 	}
 
 	setShare();
-	hideBackToTop();
+	
 	initializeMenu();
-
-	window.onscroll = function (ev) {
-		if (window.scrollY >= 200) {
-			showBackToTop();
-		} else {
-			hideBackToTop();
-			headerElem.classList.remove("header-scroll");
-		}
-		if (window.scrollY >= 1) {
-			headerElem.classList.add("header-scroll");
-		}
-	}
+	initializeBackToTop();
 }

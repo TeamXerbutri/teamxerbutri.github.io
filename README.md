@@ -16,6 +16,11 @@ Go to the terminal.
 Type: "npm run dev"  
 It will start up a localhost and serve the files.
 
+## Testing preview
+
+Type: "vite build"
+When building is ready, type: "npm run preview"
+
 ## Style guide
 
 There are:  

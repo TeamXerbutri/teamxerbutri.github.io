@@ -1,3 +1,9 @@
+.pswp__top-bar{
+	padding-top: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
 .pswp__indicator {
 	position: absolute;
 	bottom: 8px;
@@ -10,13 +16,11 @@
 }
 
 .pswp__button--close {
-	margin-left: 4px !important;
 	height: 48px !important;
 	width: 48px !important;
 }
 
 .pswp__button--zoom {
-	margin-right: 4px !important;
 	height: 48px !important;
 	width: 48px !important;
 }

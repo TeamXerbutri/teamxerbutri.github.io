@@ -1,6 +1,7 @@
 ﻿function createBlogObject(translator, BlogObject) {
 	let link = document.createElement("a");
 	link.classList.add("tile");
+	link.classList.add("show-ib");
 	link.classList.add(BlogObject.category);
 	link.href = createLink(BlogObject);
 	link.title = BlogObject.description;
