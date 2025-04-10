@@ -23,27 +23,6 @@ header.blog {
 	font-size: 24px;
 }
 
-.nav-back {
-	text-decoration: none;
-	display: inline-block;
-	height: 48px;
-	width: 48px;
-}
-
-.nav-home {
-	display: inline-block;
-	height: 48px;
-	width: 48px;
-}
-
-.nav-back .tx-icon {
-	padding-top: 12px;
-}
-
-.nav-home .tx-icon {
-	padding-top: 12px;
-}
-
 #contact {
 	cursor: pointer;
 }

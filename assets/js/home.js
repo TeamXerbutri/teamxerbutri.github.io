@@ -29,7 +29,7 @@ export function initHome() {
 	const header = `<div class="tx-logo">${txLogo}</div><h1>Team Xerbutri</h1>
 	<nav role="navigation">
 		<ul class="main-menu">
-			<li class="dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
+			<li class="dropdown"><a href="#" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
 			<ul class="sub-menu mat-menu" id="menu">
 				<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
 				<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>

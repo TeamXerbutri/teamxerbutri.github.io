@@ -167,17 +167,17 @@ export function initBlog() {
 
 	// init header
 	const header = `
-		<a class="nav-back top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<a class="top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
 		<nav role="navigation">
 			<ul class="main-menu">
-				<li><a class="nav-home top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
-				<li class="dropdown"><button class="top-nav" data-i18n="navigation.share">${share}</button>
+				<li><a class="top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
+				<li class="dropdown"><a href="#" class="top-nav" data-i18n="navigation.share">${share}</a>
 					<ul class="sub-menu mat-menu">
 						<li><a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a></li>
 						<li><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
 					</ul>
 				</li>
-				<li class="dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
+				<li class="dropdown"><a href="#" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
 					<ul class="sub-menu mat-menu" id="menu">
 						<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
 						<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
