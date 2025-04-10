@@ -5,7 +5,7 @@ header.blog {
 }
 
 #app.blog {
-	height: calc(100vh - 112px);
+	height: calc(100% - 112px);
 }
 
 #article-title {
@@ -270,7 +270,7 @@ div.mobile {
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
 	#app.blog {
-		height: calc(100vh - 64px);
+		height: calc(100% - 64px);
 	}
 
 	header.blog {

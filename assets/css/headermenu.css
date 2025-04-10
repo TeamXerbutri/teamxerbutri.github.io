@@ -16,9 +16,7 @@
 	position: relative;
 }
 
-.main-menu li ul {
-	visibility: hidden;
-	opacity: 0;
+.sub-menu {
 	position: absolute;
 	right: 0;
 	z-index: 100;
@@ -26,9 +24,11 @@
 	overflow: hidden;
 }
 
+.sub-menu.show {
+	width: 112px;
+}
+
 .no-touch .main-menu li:hover ul {
-	visibility: visible;
-	opacity: 1;
 	display: block;
 	width: 112px;
 }
@@ -41,7 +41,5 @@
 .no-touch .main-menu li:hover > ul,
 .no-touch .main-menu li:focus-within >ul,
 .no-touch .main-menu li ul:hover {
-	visibility: visible;
-	opacity: 1;
 	display: block;
 }

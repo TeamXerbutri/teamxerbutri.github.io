@@ -1,7 +1,7 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
 import {initializeBackToTop} from "./backtotop.js";
-import {initializeMenu} from "./headermenu.js";
+import {initializeMenu, initializeShareMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -11,14 +11,13 @@ import "photoswipe/style.css";
 import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
 import {useGeographic} from "ol/proj";
 import {Icon, Stroke, Style} from "ol/style";
-import {Tile as TileLayer} from "ol/layer";
+import {Tile as TileLayer, Vector as VectorLayer} from "ol/layer";
 import OSM from "ol/source/OSM";
 import View from "ol/View";
-import {Vector as VectorLayer} from "ol/layer";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {dotsMenu, leftArrow, share, zoomIn, txLogo, nextArrow, prevArrow, upArrow} from "./icons.js";
+import {dotsMenu, leftArrow, nextArrow, prevArrow, share, txLogo, upArrow, zoomIn} from "./icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 
 function countProperties(obj) {
@@ -122,17 +121,6 @@ function loadFactsMap(route) {
 	omap.addLayer(railVector);
 }
 
-function setShare() {
-	const uri = location.href;
-	const urienc = encodeURIComponent(uri);
-	const fburi = "https://www.facebook.com/sharer/sharer.php?u=" + urienc;
-	const wauri = "whatsapp://send?text=" + urienc;
-	let fbElem = document.getElementById("sharefb");
-	let waElem = document.getElementById("sharewa");
-	fbElem.href = fburi;
-	waElem.href = wauri;
-}
-
 export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
@@ -153,7 +141,7 @@ export function initBlog() {
 		<script id="jsonld" type="application/ld+json"></script>
 		`
 	app.classList.add('blog');
-	
+
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -171,19 +159,12 @@ export function initBlog() {
 		<nav role="navigation">
 			<ul class="main-menu">
 				<li><a class="top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
-				<li class="dropdown"><a href="#" role="button" class="top-nav" data-i18n="navigation.share">${share}</a>
-					<ul class="sub-menu mat-menu">
-						<li><a href="" class="mat-menu-item" target="_blank" id="sharefb">Facebook</a></li>
-						<li><a href="" class="mat-menu-item" target="_blank" id="sharewa">Whatsapp</a></li>
+				<li class="dropdown"><a href="#" id="share-button" role="button" class="top-nav" data-i18n="navigation.share">${share}</a>
+					<ul class="sub-menu mat-menu" id="share-menu">
 					</ul>
 				</li>
-				<li class="dropdown"><a href="#" role="button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
+				<li class="dropdown"><a href="#" role="button" id="menu-button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
 					<ul class="sub-menu mat-menu" id="menu">
-						<li><a href="../map" class="mat-menu-item" data-i18n="maps.link">Maps</a></li>
-						<li><a href="../avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
-						<li><a href="../avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
-						<li id="contact" class="mat-menu-item menu-item" data-i18n="contact.link">Contact</li>
-						<li id="privacy" class="mat-menu-item menu-item" data-i18n="privacy.link">Privacy</li>
 					</ul>
 				</li>
 			</ul>
@@ -223,20 +204,23 @@ export function initBlog() {
 		history.pushState({page: 1}, "", "/avontuur/" + routeId)
 	}
 
+	initializeMenu("../");
+	initializeShareMenu();
+
 	function setTranslatedContent() {
 		function constructBlog(value) {
-			
-			if(!value){
+
+			if (!value) {
 				const errorTitle = translator.translate("errors.404.title");
 				const errorDescription = translator.translate("errors.404.content");
-				document.title = "404 "+errorTitle+" - Xerbutri Urban Exploring";
+				document.title = "404 " + errorTitle + " - Xerbutri Urban Exploring";
 				document.querySelector('meta[name="description"]').setAttribute("content", "This Xerbutri blog was not found");
 				document.getElementById("article-title").innerHTML = `<h1>${errorTitle}</h1>`;
 				// intro
 				document.getElementById("article-intro").innerHTML = `<p>${errorDescription}</p>`;
 				return;
 			}
-			
+
 			translator.fetchBlogLanguageContent(value, routeId).then(
 				(blogContent) => {
 					document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
@@ -491,9 +475,6 @@ export function initBlog() {
 			console.error(`An error occured in getting the translated blog data ${error}`);
 		});
 	}
-
-	setShare();
 	
-	initializeMenu();
 	initializeBackToTop();
 }
