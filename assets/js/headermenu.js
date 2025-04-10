@@ -22,6 +22,10 @@ function initializeMenu() {
 	document.getElementById("privacy").addEventListener("click", function () {
 		showItem("privacypanel")
 	});
+	
+	if(!("ontouchstart" in document.documentElement)) {
+		document.documentElement.classList.add("no-touch");
+		}
 }
 
 export {
