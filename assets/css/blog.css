@@ -132,7 +132,7 @@ span.fact {
 
 /* gallery */
 
-div.gallery {
+.gallery {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -140,23 +140,41 @@ div.gallery {
 	padding-left: 0;
 }
 
-div.gallery a {
+.gallery a {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: 2px;
-	padding: 2px;
-	width: 200px;
-	height: 200px;
-	border-style: solid;
-	border-color: #080808 #202020 #282828 #080808;
-	border-width: 4px;
 	background-color: #101010;
 	overflow: hidden;
+	margin: 8px;
+	border-radius: 16px;
+	box-shadow: 0 0 4px 2px rgba(35, 50, 55, 0.7);
 }
 
-div.gallery img:active {
-	opacity: .7;
+.gallery img {
+	transition: all .5s ease-in-out;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 0.8;
+	max-height: 200px;
+	max-width: 200px;
+}
+
+
+
+.gallery a:visited {
+	background: #181818;
+}
+
+.gallery a:visited img {
+	opacity: 0.5;
+}
+
+/* TODO Hier verder! */
+
+.gallery img:active {
+	opacity: 0.5;
 }
 
 div.gallery a:hover {
@@ -166,13 +184,7 @@ div.gallery a:hover {
 	background-color: #202020;
 }
 
-div.gallery img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	max-height: 200px;
-	max-width: 200px;
-}
+
 
 div.mobile {
 	display: none;
@@ -308,8 +320,6 @@ div.mobile {
 	}
 
 	div.gallery a {
-		height: 235px;
-		width: 235px;
 	}
 
 	div.gallery img {
@@ -341,8 +351,6 @@ div.mobile {
 	}
 
 	div.gallery a {
-		width: 310px;
-		height: 310px;
 	}
 
 	div.gallery img {
