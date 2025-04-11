@@ -127,6 +127,7 @@ export function initBlog() {
 
 	let app = document.getElementById("app");
 	app.innerHTML = `
+		<div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
 		<div id="article-title"></div>
 		<article id="blog">
 		<p id="article-visited" class="authordate"></p>
@@ -159,21 +160,23 @@ export function initBlog() {
 		<nav role="navigation">
 			<ul class="main-menu">
 				<li><a class="top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
-				<li class="dropdown"><a href="#" id="share-button" role="button" class="top-nav" data-i18n="navigation.share">${share}</a>
+				<li class="dropdown"><a href="javascript:void(0);" id="share-button" role="button" class="top-nav" data-i18n="navigation.share">${share}</a>
 					<ul class="sub-menu mat-menu" id="share-menu">
 					</ul>
 				</li>
-				<li class="dropdown"><a href="#" role="button" id="menu-button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
+				<li class="dropdown"><a href="javascript:void(0);" role="button" id="menu-button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
 					<ul class="sub-menu mat-menu" id="menu">
 					</ul>
 				</li>
 			</ul>
 		</nav>
 		
-		<div id="contactpanel">
+		<div id="contact-panel" class="panel hide">
+			<h2 data-i18n="contact.link">Contact</h2>
 			<p data-i18n="contact.content">Contact</p>
 		</div>
-		<div id="privacypanel">
+		<div id="privacy-panel" class="panel hide">
+			<h2 data-i18n="privacy.link">Privacy</h2>
 			<p data-i18n="privacy.content">Privacy</p>
 		</div>
 		`
@@ -475,6 +478,6 @@ export function initBlog() {
 			console.error(`An error occured in getting the translated blog data ${error}`);
 		});
 	}
-	
+
 	initializeBackToTop();
 }

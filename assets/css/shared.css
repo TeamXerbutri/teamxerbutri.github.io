@@ -18,26 +18,22 @@ header{
 	font-size: 24px;
 }
 
-#contactpanel, #privacypanel {
-	display: none;
-	border-style: solid;
-	width: 180px;
+.panel{
+	width: 200px;
 	position: absolute;
-	right: 0;
-	top: 52px;
-	color: #fff;
-	border-color: #242424;
-	border-width: 4px;
-	background-color: #303030;
+	right: calc(50% - 116px);
+	top: 72px;
+	color: #FCF8ED;
+	background-color: #18121e;
+	z-index: 600;
 	font-size: .85em;
-	margin-top: 2px;
-	margin-right: 4px;
-	padding-left: 8px;
-	padding-right: 8px;
+	padding: 16px;
+	border-radius: 12px;
+	box-shadow: 0 0 4px 2px rgba(234, 198, 122, 0.4), inset -3px 3px 8px 8px rgba(0, 0, 0, 0.10);
 }
 
-#contactpanel p span {
-	display: none;
+.panel > h2{
+	margin-top: 0;
 }
 
 #contact {
