@@ -1,21 +1,32 @@
-function showItem(elementId) {
+function showElement(elementId) {
 	console.log("Showing item " + elementId);
-	document.addEventListener("click", function (evt) {
-		hideItem(elementId, evt)
-	});
-	document.getElementById(elementId).style.display = "block";
+	let element = document.getElementById(elementId);
+	let dismiss = document.getElementById("tx-panel-dismiss");
+	element.classList.add("show");
+	dismiss.classList.add("show");
+	dismiss.addEventListener("click", function () {
+		handleDismiss(elementId)
+	}, true);
 }
 
-function hideItem(elementId, evt) {
+
+function handleDismiss(elementId) {
 	console.log("Hiding item " + elementId);
 	let element = document.getElementById(elementId);
-	if (element.style.display !== "none" && evt.target.parentNode.id !== "menu") {
-		document.removeEventListener("click", function (evt) {
-			hideItem(elementId, evt)
-		});
-		element.style.display = "none";
+	let dismiss = document.getElementById("tx-panel-dismiss");
+	
+	if (dismiss.classList.contains("show")) {
+		dismiss.classList.remove("show");
+	}
+
+	if (element.classList.contains("show")) {
+		element.classList.remove("show");
+		document.removeEventListener("click", function () {
+			handleDismiss(elementId)
+		}, true);
 	}
 }
+
 
 function handleMenuDismiss() {
 	let menu = document.getElementById("menu");
@@ -38,13 +49,8 @@ function initializeMenu(basePath) {
 	menu.appendChild(menuItemFactory(basePath + "map", "Maps", "maps.link"));
 	menu.appendChild(menuItemFactory(basePath + "avontuur/txatx", "Over TX", "abouttx.link"));
 	menu.appendChild(menuItemFactory(basePath + "avontuur/txaue", "Over UE", "aboutue.link"));
-
-	let contact = menuItemFactory("#", "Contact", "contact.link", "contactpanel")
-
-	let privacy = menuItemFactory("#", "Privacy", "privacy.link", "privacypanel")
-
-	menu.appendChild(contact);
-	menu.appendChild(privacy);
+	menu.appendChild(menuItemFactory("#", "Contact", "contact.link"));
+	menu.appendChild(menuItemFactory("#", "Privacy", "privacy.link"));
 
 	if (!("ontouchstart" in document.documentElement)) {
 		document.documentElement.classList.add("no-touch");
@@ -57,7 +63,7 @@ function initializeMenu(basePath) {
 	}
 }
 
-function menuItemFactory(url, title, langLink, extraElementId) {
+function menuItemFactory(url, title, langLink) {
 	let item = document.createElement("li");
 	let link = document.createElement("a");
 	link.classList.add("mat-menu-item");
@@ -67,8 +73,10 @@ function menuItemFactory(url, title, langLink, extraElementId) {
 
 	if (url === "#") {
 		link.setAttribute("role", "button");
+		link.href = "javascript:void(0);";
 		link.addEventListener("click", function () {
-			showItem(extraElementId);
+			const elementId = title.toLowerCase() + "-panel";
+			showElement(elementId);
 		})
 	}
 
