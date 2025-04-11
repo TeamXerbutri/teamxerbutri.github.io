@@ -1,36 +1,34 @@
 .main-menu {
 	list-style: none;
 	margin: 0;
-	padding: 0 12px 0 0;
+	padding: 0;
 }
 
 .main-menu li{
 	display: inline-block;
 }
 
-.main-menu li button{
-	width: 48px;
-	height: 48px;
-	margin: 0;
-	padding: 0;
-}
-
-.main-menu li:hover{
+.no-touch .main-menu li:hover{
 	cursor: pointer;
 }
 
-.main-menu li ul {
-	visibility: hidden;
-	opacity: 0;
-	position: absolute;
-	right:16px;
-	z-index: 1;
-	display: none;
+.dropdown{
+	position: relative;
 }
 
-.main-menu li:hover ul {
-	visibility: visible;
-	opacity: 1;
+.sub-menu {
+	position: absolute;
+	right: 0;
+	z-index: 100;
+	display: none;
+	overflow: hidden;
+}
+
+.sub-menu.show {
+	width: 112px;
+}
+
+.no-touch .main-menu li:hover ul {
 	display: block;
 	width: 112px;
 }
@@ -40,15 +38,8 @@
 	width: 100%;
 }
 
-.main-menu li button{
-	font-size: 0;
-	border: none;
-}
-
-.main-menu li:hover > ul,
-.main-menu li:focus-within >ul,
-.main-menu li ul:hover {
-	visibility: visible;
-	opacity: 1;
+.no-touch .main-menu li:hover > ul,
+.no-touch .main-menu li:focus-within >ul,
+.no-touch .main-menu li ul:hover {
 	display: block;
 }

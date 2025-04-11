@@ -5,7 +5,7 @@ header.blog {
 }
 
 #app.blog {
-	height: calc(100vh - 112px);
+	height: calc(100% - 112px);
 }
 
 #article-title {
@@ -21,27 +21,6 @@ header.blog {
 #article-title h1 {
 	margin-left: 16px;
 	font-size: 24px;
-}
-
-.nav-back {
-	text-decoration: none;
-	display: inline-block;
-	height: 48px;
-	width: 48px;
-}
-
-.nav-home {
-	display: inline-block;
-	height: 48px;
-	width: 48px;
-}
-
-.nav-back .tx-icon {
-	padding-top: 12px;
-}
-
-.nav-home .tx-icon {
-	padding-top: 12px;
 }
 
 #contact {
@@ -153,57 +132,79 @@ span.fact {
 
 /* gallery */
 
-div.gallery {
+.gallery {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	list-style-type: none;
-	padding-left: 0;
+	padding-left: 4px;
 }
 
-div.gallery a {
+.gallery a {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: 2px;
-	padding: 2px;
-	width: 200px;
-	height: 200px;
-	border-style: solid;
-	border-color: #080808 #202020 #282828 #080808;
-	border-width: 4px;
 	background-color: #101010;
 	overflow: hidden;
+	margin: 8px;
+	border-radius: 16px;
+	box-shadow: 0 0 4px 2px rgba(35, 50, 55, 0.7);
 }
 
-div.gallery img:active {
-	opacity: .7;
-}
-
-div.gallery a:hover {
-	border-style: solid;
-	border-color: #101010 #242424 #282828 #101010;
-	border-width: 4px;
-	background-color: #202020;
-}
-
-div.gallery img {
+.gallery img {
+	transition: all .5s ease-in-out;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	max-height: 200px;
-	max-width: 200px;
+	opacity: 0.8;
+	max-height: 160px;
+	max-width: 160px;
 }
 
-div.mobile {
-	display: none;
+.gallery a:visited {
+	background: #181818;
 }
 
+.gallery a:visited img {
+	opacity: 0.5;
+}
+
+.gallery a:focus {
+	outline: none;
+	box-shadow: 0 0 4px 2px #EAC67A;
+}
+
+.gallery a:focus img {
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+.gallery a:focus-visible {
+	opacity: 1;
+	box-shadow: none;
+	outline: #984B43 solid 2px;
+}
+
+.gallery a:hover {
+	background-color: #202020;
+	box-shadow: 0 0 4px 4px rgba(35, 50, 55, 0.2);
+}
+
+.gallery a:hover img {
+	opacity: 0.92;
+	transform: scale(1.05);
+}
+
+.gallery img:active {
+	opacity: 0.5;
+}
 
 /*CSS file for the Avontuur design (Tablets and up)*/
 @media only screen and (min-width: 756px) {
-
-	/* top-bar */
+	.gallery {
+		padding-left: 0;
+	}
+	
 	/* -article-*/
 	.authordate {
 		font-style: italic;
@@ -291,7 +292,7 @@ div.mobile {
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
 	#app.blog {
-		height: calc(100vh - 64px);
+		height: calc(100% - 64px);
 	}
 
 	header.blog {
@@ -328,12 +329,7 @@ div.mobile {
 		bottom: 250px;
 	}
 
-	div.gallery a {
-		height: 235px;
-		width: 235px;
-	}
-
-	div.gallery img {
+	.gallery img {
 		max-height: 235px;
 		max-width: 235px;
 	}
@@ -361,12 +357,7 @@ div.mobile {
 		height: 500px;
 	}
 
-	div.gallery a {
-		width: 310px;
-		height: 310px;
-	}
-
-	div.gallery img {
+	.gallery img {
 		max-height: 310px;
 		max-width: 310px;
 	}

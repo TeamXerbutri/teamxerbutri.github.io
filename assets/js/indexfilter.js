@@ -78,7 +78,7 @@ function hideCategory(className) {
 	let i;
 
 	for (i = 0; i < categories.length; i++) {
-		categories[i].classList.add("hidden");
+		categories[i].classList.add("hide");
 		categories[i].classList.remove("show-ib");
 	}
 }
@@ -88,7 +88,7 @@ function showCategory(className) {
 
 	for (i = 0; i < categories.length; i++) {
 		categories[i].classList.add("show-ib");
-		categories[i].classList.remove("hidden");
+		categories[i].classList.remove("hide");
 	}
 }
 
