@@ -137,7 +137,7 @@ span.fact {
 	flex-direction: row;
 	flex-wrap: wrap;
 	list-style-type: none;
-	padding-left: 0;
+	padding-left: 4px;
 }
 
 .gallery a {
@@ -157,11 +157,9 @@ span.fact {
 	margin-left: auto;
 	margin-right: auto;
 	opacity: 0.8;
-	max-height: 200px;
-	max-width: 200px;
+	max-height: 160px;
+	max-width: 160px;
 }
-
-
 
 .gallery a:visited {
 	background: #181818;
@@ -171,30 +169,42 @@ span.fact {
 	opacity: 0.5;
 }
 
-/* TODO Hier verder! */
+.gallery a:focus {
+	outline: none;
+	box-shadow: 0 0 4px 2px #EAC67A;
+}
+
+.gallery a:focus img {
+	transform: scale(1.05);
+	opacity: 1;
+}
+
+.gallery a:focus-visible {
+	opacity: 1;
+	box-shadow: none;
+	outline: #984B43 solid 2px;
+}
+
+.gallery a:hover {
+	background-color: #202020;
+	box-shadow: 0 0 4px 4px rgba(35, 50, 55, 0.2);
+}
+
+.gallery a:hover img {
+	opacity: 0.92;
+	transform: scale(1.05);
+}
 
 .gallery img:active {
 	opacity: 0.5;
 }
 
-div.gallery a:hover {
-	border-style: solid;
-	border-color: #101010 #242424 #282828 #101010;
-	border-width: 4px;
-	background-color: #202020;
-}
-
-
-
-div.mobile {
-	display: none;
-}
-
-
 /*CSS file for the Avontuur design (Tablets and up)*/
 @media only screen and (min-width: 756px) {
-
-	/* top-bar */
+	.gallery {
+		padding-left: 0;
+	}
+	
 	/* -article-*/
 	.authordate {
 		font-style: italic;
@@ -319,10 +329,7 @@ div.mobile {
 		bottom: 250px;
 	}
 
-	div.gallery a {
-	}
-
-	div.gallery img {
+	.gallery img {
 		max-height: 235px;
 		max-width: 235px;
 	}
@@ -350,10 +357,7 @@ div.mobile {
 		height: 500px;
 	}
 
-	div.gallery a {
-	}
-
-	div.gallery img {
+	.gallery img {
 		max-height: 310px;
 		max-width: 310px;
 	}
