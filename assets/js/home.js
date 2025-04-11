@@ -16,26 +16,21 @@ export function initHome() {
 	app.classList.remove("blog");
 
 	app.innerHTML = `
-<div id="oi">
+<div id="top">
 	<div id="message-bar"></div>
-	<div id="tx-filter"></div>
-	<div id="oc">
+	<div id="tx-filter" role="toolbar"></div>
+	<div id="tile-wrapper" role="feed">
     </div>
 </div>
-<a id="back-to-top" class="fab" href="#oi">${upArrow}</a>`
+<a id="back-to-top" class="fab" href="#top">${upArrow}</a>`
 
 	let subjects;
 	
 	const header = `<div class="tx-logo">${txLogo}</div><h1>Team Xerbutri</h1>
 	<nav role="navigation">
 		<ul class="main-menu">
-			<li class="dropdown"><button class="top-nav" data-i18n="navigation.menu">${dotsMenu}</button>
+			<li class="dropdown"><a href="#" role="button" id="menu-button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
 			<ul class="sub-menu mat-menu" id="menu">
-				<li><a href="map" class="mat-menu-item" data-i18n="maps.link">Kaart</a></li>
-				<li><a href="avontuur/txatx" class="mat-menu-item" data-i18n="abouttx.link">Over TX</a></li>
-				<li><a href="avontuur/txaue" class="mat-menu-item" data-i18n="aboutue.link">Over UE</a></li>
-				<li id="contact" class="mat-menu-item" data-i18n="contact.link">Contact</li>
-				<li id="privacy" class="mat-menu-item" data-i18n="privacy.link">Privacy</li>
 			</ul>
 			</li>
 		</ul>
@@ -76,7 +71,7 @@ export function initHome() {
 
 	// UI stuff
 
-	initializeMenu();
+	initializeMenu("");
 	initializeBackToTop();
 
 	function setTranslatedContent() {
@@ -131,7 +126,7 @@ export function initHome() {
 
 		// Builds the objects
 		function objectFactory(subjects) {
-			const objectContainer = document.getElementById("oc");
+			const objectContainer = document.getElementById("tile-wrapper");
 						
 			for (let i in subjects) {
 				let displayObject = createBlogObject(translator, subjects[i]);

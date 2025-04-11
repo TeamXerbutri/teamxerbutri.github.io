@@ -45,18 +45,18 @@
 
 /* Mobile */
 @media only screen and (max-width: 756px) {
-	#oi {
+	#top {
 		overflow: hidden;
 		padding-bottom: env(safe-area-inset-bottom);
 	}
 
-	#oc {
+	#tile-wrapper {
 		margin-left: auto;
 		margin-right: auto;
 		width: 360px;
 	}
 
-	#oi a {
+	#top a {
 		text-decoration: none;
 	}
 }
@@ -64,31 +64,31 @@
 
 @media only screen and (min-width: 756px) {
 	/*icons*/
-	#oi {
+	#top {
 		overflow: hidden;
 	}
 
-	#oc {
+	#tile-wrapper {
 		margin-left: auto;
 		margin-right: auto;
 		width: 756px;
 	}
 
-	#oi a {
+	#top a {
 		text-decoration: none;
 	}
 }
 
 /*CSS file for the Homepage (Resolution 1024x768 (Viewsize 1010x660) and up)*/
 @media only screen and (min-width: 1024px) {
-	#oc {
+	#tile-wrapper {
 		width: 1010px;
 	}
 }
 
 /* Resolution 1366x768*/
 @media only screen and (min-width: 1350px) {
-	#oc {
+	#tile-wrapper {
 		width: 1308px;
 	}
 }

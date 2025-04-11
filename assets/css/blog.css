@@ -5,7 +5,7 @@ header.blog {
 }
 
 #app.blog {
-	height: calc(100vh - 112px);
+	height: calc(100% - 112px);
 }
 
 #article-title {
@@ -21,27 +21,6 @@ header.blog {
 #article-title h1 {
 	margin-left: 16px;
 	font-size: 24px;
-}
-
-.nav-back {
-	text-decoration: none;
-	display: inline-block;
-	height: 48px;
-	width: 48px;
-}
-
-.nav-home {
-	display: inline-block;
-	height: 48px;
-	width: 48px;
-}
-
-.nav-back .tx-icon {
-	padding-top: 12px;
-}
-
-.nav-home .tx-icon {
-	padding-top: 12px;
 }
 
 #contact {
@@ -291,7 +270,7 @@ div.mobile {
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
 	#app.blog {
-		height: calc(100vh - 64px);
+		height: calc(100% - 64px);
 	}
 
 	header.blog {

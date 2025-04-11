@@ -52,10 +52,14 @@ header{
 	display: none;
 }
 
-.hidden {
+.hide {
 	display: none;
 }
 
 .show-ib {
 	display: inline-block;
+}
+
+.show {
+	display: block;
 }
