@@ -1,5 +1,4 @@
 function showElement(elementId) {
-	console.log("Showing item " + elementId);
 	let element = document.getElementById(elementId);
 	let dismiss = document.getElementById("tx-panel-dismiss");
 	element.classList.add("show");
@@ -11,7 +10,6 @@ function showElement(elementId) {
 
 
 function handleDismiss(elementId) {
-	console.log("Hiding item " + elementId);
 	let element = document.getElementById(elementId);
 	let dismiss = document.getElementById("tx-panel-dismiss");
 	
