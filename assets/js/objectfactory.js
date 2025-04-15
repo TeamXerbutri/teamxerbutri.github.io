@@ -1,10 +1,19 @@
-﻿function createBlogObject(translator, BlogObject) {
+﻿import {init} from "../../main.js";
+
+function createBlogObject(translator, BlogObject) {
 	let link = document.createElement("a");
 	link.classList.add("tile");
 	link.classList.add("show-ib");
 	link.classList.add(BlogObject.category);
-	link.href = createLink(BlogObject);
+	const url = createLink(BlogObject);
+	link.href = url;
 	link.title = BlogObject.description;
+	link.onclick = function (ev) {
+		ev.preventDefault();
+		console.log("clicked!");
+		location.href = url;
+		init();
+	}
 
 	let image = document.createElement("img");
 	const source = "data/".concat(BlogObject.category, "/", BlogObject.routeid, "/", BlogObject.routeid);
