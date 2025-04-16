@@ -1,10 +1,9 @@
 import "./style.css"
-import {stateContext} from "./assets/js/statemachine.js";
+import {stateContext} from "./assets/js/pathrouter.js";
 
 let navState = new stateContext();
 
 (function () {
-
 	document.addEventListener("DOMContentLoaded", init);
 })();
 
@@ -32,9 +31,12 @@ function manipulateHref() {
 	(function () {
 		const redirect = sessionStorage.redirect;
 		delete sessionStorage.redirect;
-		if (redirect && redirect !== location.href) {
+		
+		if(redirect)
+			sessionStorage.currentUrl = redirect.toLowerCase();
+		
+		if (redirect && redirect !== location.href) 
 			history.replaceState(null, null, redirect);
-		}
 	})();
 }
 
@@ -43,4 +45,4 @@ function init() {
 	navState.initState();
 }
 
-export {init}
+export {navState}

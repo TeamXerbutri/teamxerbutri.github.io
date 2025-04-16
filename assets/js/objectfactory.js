@@ -1,4 +1,4 @@
-﻿import {init} from "../../main.js";
+﻿import {navState} from "../../main.js";
 
 function createBlogObject(translator, BlogObject) {
 	let link = document.createElement("a");
@@ -10,9 +10,9 @@ function createBlogObject(translator, BlogObject) {
 	link.title = BlogObject.description;
 	link.onclick = function (ev) {
 		ev.preventDefault();
-		console.log("clicked!");
-		location.href = url;
-		init();
+		console.log("clicked " + url);
+		navState.navigate("/" + url);
+		history.replaceState(null, null, url);
 	}
 
 	let image = document.createElement("img");

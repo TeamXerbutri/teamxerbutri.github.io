@@ -20,7 +20,7 @@ class Translator {
 
 	getBasePath() {
 		let pathPrefix = "";
-		if (document.location.pathname.toLowerCase().startsWith("/avontuur")) {
+		if (sessionStorage.currentUrl.startsWith("/avontuur")) {
 			pathPrefix = "../../";
 		}
 		return `${pathPrefix}data/`;
@@ -149,7 +149,7 @@ class Translator {
 				if (this._options.persist) {
 					localStorage.setItem("language", this._lang);
 				}
-				const locationPath = window.location.pathname.toLowerCase();
+				const locationPath = sessionStorage.currentUrl;
 				if (locationPath.length === 0 || locationPath.startsWith("/vijf") || locationPath.pathname === "/") {
 					this.fetchBlogData().then((data) => {
 						this.translateIndex(data)

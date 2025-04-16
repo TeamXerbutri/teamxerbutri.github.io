@@ -3,7 +3,6 @@ import {initBlog} from "./blog.js";
 import {initMap} from "./map.js";
 import {initCms} from "./cms.js";
 
-
 let stateContext = function () {
 	let currentState = new homeState(this);
 
@@ -12,8 +11,19 @@ let stateContext = function () {
 		currentState.enterState();
 	}
 
-	this.navigate = function () {
-		currentState.navigate();
+	this.navigate = function (path) {
+		
+		if(!path)
+			path = window.location.pathname.toLowerCase();
+		
+		const previousUrl = sessionStorage.currentUrl;
+		
+		if (previousUrl && previousUrl !== path)
+			sessionStorage.previousUrl = previousUrl;
+		
+		sessionStorage.currentUrl = path.toLowerCase();
+		
+		currentState.navigate(path);
 	}
 
 	this.initState = function () {
@@ -39,8 +49,8 @@ let homeState = function (context) {
 	this.enterState = function () {
 		initHome();
 	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
+	this.navigate = function (path) {
+		console.log("home navigating to " + path);
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			// do nothing, I am already @home
 			return;
@@ -61,10 +71,10 @@ let homeState = function (context) {
 let blogState = function (context) {
 	this.context = context;
 	this.enterState = function () {
+		console.log("init blog");
 		initBlog();
 	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
+	this.navigate = function (path) {
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
@@ -87,8 +97,7 @@ let mapState = function (context) {
 	this.enterState = function () {
 		initMap();
 	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
+	this.navigate = function (path) {
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
@@ -111,8 +120,7 @@ let cmsState = function (context) {
 	this.enterState = function () {
 		initCms();
 	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
+	this.navigate = function (path) {
 		if (path.length === 0 || path.startsWith("/vijf")) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
@@ -130,4 +138,4 @@ let cmsState = function (context) {
 	}
 }
 
-export {stateContext, homeState, blogState, mapState, cmsState};
+export {stateContext};

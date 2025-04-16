@@ -7,7 +7,7 @@ class JsonHelper{
 	// TODO: code multiplication from Translator
 	getBasePath() {
 		let pathPrefix = "";
-		if (document.location.pathname.toLowerCase().startsWith("/avontuur")) {
+		if (sessionStorage.currentUrl.startsWith("/avontuur")) {
 			pathPrefix = "../../";
 		}
 		return `${pathPrefix}data/`;
