@@ -1,5 +1,6 @@
 import "./style.css"
 import {stateContext} from "./assets/js/pathrouter.js";
+import {initHistory} from "./assets/js/navigator.js";
 
 let navState = new stateContext();
 
@@ -41,6 +42,7 @@ function manipulateHref() {
 }
 
 function init() {
+	initHistory();
 	manipulateHref();
 	navState.initState();
 }

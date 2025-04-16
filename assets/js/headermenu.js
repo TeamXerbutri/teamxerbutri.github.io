@@ -1,3 +1,6 @@
+import {lastUrl} from "./navigator.js";
+import {navState} from "../../main.js";
+
 function showElement(elementId) {
 	let element = document.getElementById(elementId);
 	let dismiss = document.getElementById("tx-panel-dismiss");
@@ -115,6 +118,18 @@ function initializeShareMenu() {
 	}
 }
 
+function initializeNavBack() {
+	let backNavigation = document.getElementById("nav-back");
+	backNavigation.addEventListener("click", function (e) {
+		e.preventDefault();
+		console.log("hit back nav")
+		let url = lastUrl();
+		console.log("navigating to url: " + url);
+		navState.navigate("/" + url);
+		history.pushState(null, null, "/" + url);
+	});
+}
+
 export {
-	initializeMenu, initializeShareMenu
+	initializeMenu, initializeShareMenu, initializeNavBack
 }

@@ -12,16 +12,15 @@ let stateContext = function () {
 	}
 
 	this.navigate = function (path) {
-		
+		console.log("navigate with url " + path);
 		if(!path)
 			path = window.location.pathname.toLowerCase();
 		
-		const previousUrl = sessionStorage.currentUrl;
+		path = path.toLowerCase();
 		
-		if (previousUrl && previousUrl !== path)
-			sessionStorage.previousUrl = previousUrl;
+		addToHistory(path);
 		
-		sessionStorage.currentUrl = path.toLowerCase();
+		sessionStorage.currentUrl = path;
 		
 		currentState.navigate(path);
 	}
@@ -58,7 +57,7 @@ let homeState = function (context) {
 	
 	this.navigate = function (path) {
 		
-		if (path.length === 0 || path.startsWith("/vijf")) {
+		if (isHome(path)) {
 			// do nothing, I am already @home
 			return;
 		}
@@ -87,8 +86,8 @@ let blogState = function (context) {
 	}
 	
 	this.navigate = function (path) {
-		
-		if (path.length === 0 || path.startsWith("/vijf")) {
+		console.log("blog with url " + path);
+		if (isHome(path)) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
 		}
@@ -114,7 +113,7 @@ let mapState = function (context) {
 		initMap();
 	}
 	this.navigate = function (path) {
-		if (path.length === 0 || path.startsWith("/vijf")) {
+		if (isHome(path)) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
 		}
@@ -142,7 +141,7 @@ let cmsState = function (context) {
 	}
 	
 	this.navigate = function (path) {
-		if (path.length === 0 || path.startsWith("/vijf")) {
+		if (isHome(path)) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
 		}
@@ -160,6 +159,24 @@ let cmsState = function (context) {
 			// do nothing, I am already @cms
 		}
 	}
+}
+
+function isHome(path) {
+	return path.length === 0 || path.startsWith("/vijf") || path === "/";
+}
+
+function addToHistory(newUrl){
+	let urls = JSON.parse(sessionStorage.urlHistory);
+
+	if (urls.length > 0) {
+		let lastUrl = urls[urls.length - 1];
+
+		if (lastUrl === newUrl) {
+			return;
+		}
+	}
+
+	urls.push(newUrl);
 }
 
 export {stateContext};

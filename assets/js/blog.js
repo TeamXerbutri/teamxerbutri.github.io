@@ -1,7 +1,7 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
 import {initializeBackToTop} from "./backtotop.js";
-import {initializeMenu, initializeShareMenu} from "./headermenu.js";
+import {initializeMenu, initializeNavBack, initializeShareMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -19,6 +19,8 @@ import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {dotsMenu, leftArrow, nextArrow, prevArrow, share, txLogo, upArrow, zoomIn} from "./icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
+import {lastUrl} from "./navigator.js";
+import {navState} from "../../main.js";
 
 function countProperties(obj) {
 	let count = 0;
@@ -121,6 +123,8 @@ function loadFactsMap(route) {
 	omap.addLayer(railVector);
 }
 
+
+
 export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
@@ -153,10 +157,11 @@ export function initBlog() {
 	if (htmlElement.classList.contains("map-html")) {
 		htmlElement.classList.remove("map-html");
 	}
+	
 
 	// init header
 	const header = `
-		<a class="top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<a class="top-nav" href="../" id="nav-back" data-i18n="navigation.back">${leftArrow}</a>
 		<nav role="navigation">
 			<ul class="main-menu">
 				<li><a class="top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
@@ -212,6 +217,7 @@ export function initBlog() {
 
 	initializeMenu("../");
 	initializeShareMenu();
+	initializeNavBack();
 
 	function setTranslatedContent() {
 		function constructBlog(value) {

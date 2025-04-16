@@ -10,9 +10,8 @@ function createBlogObject(translator, BlogObject) {
 	link.title = BlogObject.description;
 	link.onclick = function (ev) {
 		ev.preventDefault();
-		console.log("clicked " + url);
 		navState.navigate("/" + url);
-		history.replaceState(null, null, url);
+		history.pushState(null, null, url);
 	}
 
 	let image = document.createElement("img");
