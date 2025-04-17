@@ -202,10 +202,8 @@ export function initBlog() {
 
 	let url = sessionStorage.currentUrl;
 	
-	// TODO remove this if
 	if (window.location.hash.length > 1) {
 		// everything before the hash
-		console.log("this should not be hit!!")
 		url = window.location.href.split("#")[0];
 	}
 

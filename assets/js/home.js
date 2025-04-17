@@ -8,7 +8,6 @@ import {checkVersion} from "./version.js";
 
 // Initializes the home page
 export function initHome() {
-	console.log("initHome")
 	let translator = new Translator();
 
 	// Load app
@@ -65,8 +64,7 @@ export function initHome() {
 	if (htmlElement.classList.contains("map-html")) {
 		htmlElement.classList.remove("map-html");
 	}
-	console.log("html element")
-
+	
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
@@ -78,10 +76,8 @@ export function initHome() {
 	initializeBackToTop();
 
 	function setTranslatedContent() {
-		console.log("started setting translated content");
-
 		translator.addMenuOptions();
-		console.log("added menu options");
+		
 		// fetch the objects
 		translator.fetchHomeData().then(
 			function (value) {

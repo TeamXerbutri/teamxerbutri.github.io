@@ -19,13 +19,11 @@ class Translator {
 	}
 
 	getBasePath() {
-		let pathPrefix = "";
-		if (sessionStorage.currentUrl.startsWith("/avontuur")) {
-			pathPrefix = "../../";
-		}
-		return `${pathPrefix}data/`;
+		const base = window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
+		
+		return `${base}data/`;
 	}
-
+	
 	translate(key) {
 		const text = key.split('.').reduce((obj, i) => obj[i], this._translations);
 		return text || key;
@@ -137,15 +135,11 @@ class Translator {
 			this._lang = lang;
 		}
 		
-		console.log("Load. The base path is ", this._basePath);
-
 		const path = `${this._basePath}${this._lang}.json`;
-		console.log("Loading translations from ", path);
-
+		
 		return fetch(path)
 			.then((response) => response.json())
 			.then((translations) => {
-				console.log("loaded translations");
 				this._translations = translations;
 				this.setLanguageTag();
 				this._elements = document.querySelectorAll("[data-i18n]");
@@ -159,7 +153,6 @@ class Translator {
 						this.translateIndex(data)
 					});
 				}
-				console.log("translator loaded");
 				this.loaded = true;
 			});
 	}
@@ -225,13 +218,11 @@ class Translator {
 	}
 
 	fetchBlogData() {
-		console.log("fetching blog data");
 		const path = this._basePath.concat("blogs.", this._lang, ".json");
 		return fetch(path).then((response) => response.json());
 	}
 
 	fetchHomeData() {
-		console.log("base path ", this._basePath);
 		return fetch(this._basePath.concat("index.", this._lang, ".json")).then((response) => response.json());
 	}
 

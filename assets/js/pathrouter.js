@@ -12,7 +12,6 @@ let stateContext = function () {
 	}
 
 	this.navigate = function (path) {
-		console.log("navigate with url " + path);
 		if(!path)
 			path = window.location.pathname.toLowerCase();
 		
@@ -86,7 +85,6 @@ let blogState = function (context) {
 	}
 	
 	this.navigate = function (path) {
-		console.log("blog with url " + path);
 		if (isHome(path)) {
 			this.context.transitionTo(new homeState(this.context));
 			return;
