@@ -4,20 +4,6 @@ header{
 	padding-right: 8px;
 }
 
-#back-to-top {
-	display: none;
-	position: fixed;
-	right: 8px;
-	text-align: center;
-	padding-top: 16px;
-	text-decoration: none;
-	text-transform: uppercase;
-	top: 85%;
-	height: 40px;
-	width: 56px;
-	font-size: 24px;
-}
-
 .panel{
 	width: 200px;
 	position: absolute;
