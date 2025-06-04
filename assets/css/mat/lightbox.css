@@ -41,7 +41,7 @@
 	box-shadow: 0 0 4px 2px #EAC67A, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.10) !important;
 }
 
-.pswp__button--arrow:focus .tx-icon {
+.pswp__button--arrow:focus .icon_dark {
 	fill: #FCF8ED;
 }
 
@@ -55,7 +55,7 @@
 	box-shadow: -2px 2px 8px 4px #000, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.08) !important;
 }
 
-.pswp__button--arrow:hover .tx-icon {
+.pswp__button--arrow:hover .icon_dark {
 	fill: #FCF8ED;
 }
 
@@ -64,7 +64,7 @@
 	box-shadow: 0 0 4px 2px #000, inset -3px 3px 8px 8px rgba(0, 0, 0, 0.70);
 }
 
-.pswp__button--arrow:active .tx-icon {
+.pswp__button--arrow:active .icon_dark {
 	fill: #EAC67A;
 }
 

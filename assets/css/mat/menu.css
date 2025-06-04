@@ -47,7 +47,7 @@ ul.mat-menu  {
 	width: 48px;
 }
 
-a.top-nav .tx-icon {
+a.top-nav .icon_dark {
 	padding-top: 12px;
 }
 
@@ -57,7 +57,7 @@ a.top-nav .tx-icon {
 	box-shadow: 0 0 4px 2px #EAC67A, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.10);
 }
 
-.top-nav:focus .tx-icon {
+.top-nav:focus .icon_dark {
 	fill: #FCF8ED;
 }
 
@@ -72,7 +72,7 @@ a.top-nav .tx-icon {
 	transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
 }
 
-.top-nav:hover .tx-icon {
+.top-nav:hover .icon_dark {
 	fill: #FCF8ED;
 }
 
@@ -80,6 +80,6 @@ a.top-nav .tx-icon {
 	box-shadow: 0 0 4px 2px #000, inset -3px 3px 8px 8px rgba(0, 0, 0, 0.70);
 }
 
-.top-nav:active .tx-icon {
+.top-nav:active .icon_dark {
 	fill: #EAC67A;
 }

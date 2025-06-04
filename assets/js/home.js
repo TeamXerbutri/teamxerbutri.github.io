@@ -1,10 +1,10 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {filter, initFilter} from "./indexfilter.js";
 import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
-import {dotsMenu, txLogo} from "./icons.js";
 import Translator from "./translator.js";
 import {initializeMenu} from "./headermenu.js";
 import {checkVersion} from "../version/version.js";
+import {homeHeaderHtml} from "../header/header.js";
 
 // Initializes the home page
 export function initHome() {
@@ -26,24 +26,7 @@ ${backToTopHtml}`
 
 	let subjects;
 
-	const header = `<div class="tx-logo">${txLogo}</div><h1>Team Xerbutri</h1>
-	<nav role="navigation">
-		<ul class="main-menu">
-			<li class="dropdown"><a href="javascript:void(0);" role="button" id="menu-button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
-			<ul class="sub-menu mat-menu" id="menu">
-			</ul>
-			</li>
-		</ul>
-	</nav>
-		</div>
-		<div id="contact-panel" class="panel hide">
-			<h2 data-i18n="contact.link">Contact</h2>
-			<p data-i18n="contact.content">Contact</p>
-		</div>
-		<div id="privacy-panel" class="panel hide">
-			<h2 data-i18n="privacy.link">Privacy</h2>
-			<p data-i18n="privacy.content">Privacy</p>
-		</div>`
+	const header = homeHeaderHtml;
 
 	const headerElem = document.getElementById("header");
 	if (headerElem.classList.contains("blog")) {
