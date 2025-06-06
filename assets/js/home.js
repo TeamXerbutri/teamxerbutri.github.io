@@ -2,7 +2,6 @@
 import {filter, initFilter} from "./indexfilter.js";
 import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
 import Translator from "./translator.js";
-import {initializeMenu} from "./headermenu.js";
 import {checkVersion} from "../version/version.js";
 import {homeHeaderHtml} from "../header/header.js";
 
@@ -25,29 +24,25 @@ export function initHome() {
 ${backToTopHtml}`
 
 	let subjects;
-
-	const header = homeHeaderHtml;
-
-	const headerElem = document.getElementById("header");
-	if (headerElem.classList.contains("blog")) {
+	
+	const headerElem = document.querySelector("header");
+	
+	if (headerElem.classList.contains("blog")) 
 		headerElem.classList.remove("blog");
-		headerElem.innerHTML = header
-	}
-	if (headerElem.classList.contains("map-header")) {
+		
+	if (headerElem.classList.contains("map-header")) 
 		headerElem.classList.remove("map-header");
-		headerElem.innerHTML = header
-	}
 
-	if (!headerElem.classList.contains("home")) {
+	if (!headerElem.classList.contains("home")) 
 		headerElem.classList.add("home")
-		headerElem.innerHTML = header
-	}
+
+	headerElem.innerHTML = homeHeaderHtml
 
 	const htmlElement = document.querySelector("html");
-	if (htmlElement.classList.contains("map-html")) {
+	
+	if (htmlElement.classList.contains("map-html")) 
 		htmlElement.classList.remove("map-html");
-	}
-
+	
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {

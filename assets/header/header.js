@@ -1,4 +1,5 @@
 import {leftArrow} from "../icons/icons.js";
+import {initializeMenu, initializeShareMenu} from "./menu/menu.js";
 
 const dotsMenu= '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><circle r="3" cx="12" cy="3"/><circle r="3" cx="12" cy="12"/><circle r="3" cx="12" cy="21"/></svg>';
 
@@ -16,15 +17,20 @@ const contactHtml = `<div id="contact-panel" class="panel hide">
 			<p data-i18n="contact.content">Contact</p>
 		</div>`
 
-const menuHtml = `<li class="dropdown"><a href="javascript:void(0);" role="button" id="menu-button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
-					<ul class="sub-menu mat-menu" id="menu">
+const dotsMenuHtml = `<li class="menu__dropdown menu__dots"><a href="javascript:void(0);" role="button" class="link_mat-app-bar" data-i18n="navigation.menu">${dotsMenu}</a>
+					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__dots">
+					</ul>
+				</li>`
+
+const shareButtonHtml = `<li class="menu__dropdown menu__share"><a href="javascript:void(0);" role="button" class="link_mat-app-bar" data-i18n="navigation.share">${share}</a>
+					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__share">
 					</ul>
 				</li>`
 
 const homeHeaderHtml = `<div class="header__logo">${txLogo}</div><h1>Team Xerbutri</h1>
 	<nav role="navigation">
-		<ul class="main-menu">
-			${menuHtml}
+		<ul class="nav__menu">
+			${dotsMenuHtml}
 		</ul>
 	</nav>
 		${contactHtml}
@@ -32,21 +38,56 @@ const homeHeaderHtml = `<div class="header__logo">${txLogo}</div><h1>Team Xerbut
 		`
 
 const blogHeaderHtml = `
-		<a class="top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<a class="link_mat-app-bar" href="../" data-i18n="navigation.back">${leftArrow}</a>
 		<nav role="navigation">
-			<ul class="main-menu">
-				<li><a class="top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
-				<li class="dropdown"><a href="javascript:void(0);" id="share-button" role="button" class="top-nav" data-i18n="navigation.share">${share}</a>
-					<ul class="sub-menu mat-menu" id="share-menu">
-					</ul>
-				</li>
-				${menuHtml}
+			<ul class="nav__menu">
+				<li><a class="link_mat-app-bar" href="../" data-i18n="navigation.home">${txLogo}</a></li>
+				${shareButtonHtml}
+				${dotsMenuHtml}
 			</ul>
 		</nav>
 		${contactHtml}
 		${privacyHtml}
 		`
+function initializeBlogHeader(){
+	// init header
+	const headerElem = document.querySelector("header");
+
+	if (headerElem.classList.contains("home"))
+		headerElem.classList.remove("home");
+
+	if (headerElem.classList.contains("map-header"))
+		headerElem.classList.remove("map-header");
+
+	if (!headerElem.classList.contains("blog"))
+		headerElem.classList.add("blog")
+
+	headerElem.innerHTML = blogHeaderHtml
+
+	initializeMenu("../");
+	initializeShareMenu();
+}
+
+function initializeHomeHeader() {
+	// init header
+	const headerElem = document.querySelector("header");
+
+	if (headerElem.classList.contains("blog"))
+		headerElem.classList.remove("blog");
+
+	if (headerElem.classList.contains("map-header"))
+		headerElem.classList.remove("map-header");
+
+	if (!headerElem.classList.contains("home"))
+		headerElem.classList.add("home")
+
+	headerElem.innerHTML = homeHeaderHtml
+
+	initializeMenu("");
+	initializeShareMenu();
+}
+
 
 export {
-	blogHeaderHtml, homeHeaderHtml
+	initializeBlogHeader, homeHeaderHtml
 };

@@ -1,7 +1,6 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
 import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
-import {initializeMenu, initializeShareMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -19,7 +18,7 @@ import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {leftArrow, nextArrow, prevArrow, zoomIn} from "../icons/icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
-import { blogHeaderHtml} from "../header/header.js";
+import { initializeBlogHeader} from "../header/header.js";
 
 function countProperties(obj) {
 	let count = 0;
@@ -151,28 +150,12 @@ export function initBlog() {
 	});
 
 	const htmlElement = document.querySelector("html");
-	if (htmlElement.classList.contains("map-html")) {
-		htmlElement.classList.remove("map-html");
-	}
-
-	// init header
-	const header = blogHeaderHtml;
 	
-	const headerElem = document.getElementById("header");
-	if (headerElem.classList.contains("home")) {
-		headerElem.classList.remove("home");
-		headerElem.innerHTML = header
-	}
-	if (headerElem.classList.contains("map-header")) {
-		headerElem.classList.remove("map-header");
-		headerElem.innerHTML = header
-	}
-
-	if (!headerElem.classList.contains("blog")) {
-		headerElem.classList.add("blog")
-		headerElem.innerHTML = header
-	}
-
+	if (htmlElement.classList.contains("map-html")) 
+		htmlElement.classList.remove("map-html");
+	
+	initializeBlogHeader();
+	
 	let url = window.location.href;
 	if (window.location.hash.length > 1) {
 		// everything before the hash
@@ -184,10 +167,7 @@ export function initBlog() {
 		routeId = routes[routeId];
 		history.pushState({page: 1}, "", "/avontuur/" + routeId)
 	}
-
-	initializeMenu("../");
-	initializeShareMenu();
-
+	
 	function setTranslatedContent() {
 		function constructBlog(value) {
 

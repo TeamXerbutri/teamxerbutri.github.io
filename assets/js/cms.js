@@ -27,7 +27,7 @@ export function initCms() {
 	});
 	
 	// do not show header in map
-	const headerElem = document.getElementById("header");
+	const headerElem = document.querySelector("header");
 	if (!headerElem.classList.contains("cms-header")) {
 		headerElem.classList.add("cms-header")
 		headerElem.innerHTML = "";

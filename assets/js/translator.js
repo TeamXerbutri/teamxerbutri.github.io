@@ -166,7 +166,7 @@ class Translator {
 	}
 
 	addMenuOption(lang) {
-		const menu = document.getElementById("menu");
+		const menu = document.querySelector(".sub-menu__dots");
 		let existingMenuItem = document.getElementById(`lang-${lang}`);
 
 		// remove existing menu item
@@ -185,7 +185,7 @@ class Translator {
 		const menuItem = document.createElement("a");
 		menuItem.id = `lang-${lang}`;
 		menuItem.innerText = lang.toUpperCase();
-		menuItem.classList.add("mat-menu-item");
+		menuItem.classList.add("li_mat-menu");
 		menuItem.href = "/";
 		menuItem.addEventListener("click", () => {
 			this.setLanguage(lang)

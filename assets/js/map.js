@@ -32,7 +32,7 @@ export function initMap() {
 	});
 	
 	// do not show header in map
-	const headerElem = document.getElementById("header");
+	const headerElem = document.querySelector("header");
 	if (!headerElem.classList.contains("map-header")) {
 		headerElem.classList.add("map-header")
 		headerElem.innerHTML = "";

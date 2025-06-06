@@ -43,7 +43,7 @@ export class MapMenuControl extends Control {
 		menuModal.style.display = "none";
 		menuModal.isActive = false;
 		
-		//header
+		// menu title
 		const modalHeader = document.createElement("h3");
 		modalHeader.innerHTML = "Menu"; //TODO translate => use i18n
 		
