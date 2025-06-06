@@ -3,7 +3,7 @@ import {filter, initFilter} from "./indexfilter.js";
 import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
 import Translator from "./translator.js";
 import {checkVersion} from "../version/version.js";
-import {homeHeaderHtml} from "../header/header.js";
+import {initializeHomeHeader} from "../header/header.js";
 
 // Initializes the home page
 export function initHome() {
@@ -24,34 +24,20 @@ export function initHome() {
 ${backToTopHtml}`
 
 	let subjects;
-	
-	const headerElem = document.querySelector("header");
-	
-	if (headerElem.classList.contains("blog")) 
-		headerElem.classList.remove("blog");
-		
-	if (headerElem.classList.contains("map-header")) 
-		headerElem.classList.remove("map-header");
-
-	if (!headerElem.classList.contains("home")) 
-		headerElem.classList.add("home")
-
-	headerElem.innerHTML = homeHeaderHtml
 
 	const htmlElement = document.querySelector("html");
 	
 	if (htmlElement.classList.contains("map-html")) 
 		htmlElement.classList.remove("map-html");
 	
+	initializeHomeHeader();
+	
 	translator.load().then(() => {
 		setTranslatedContent();
 	}).catch((error) => {
 		console.error(`An error occured in getting the translations: ${error}`);
 	});
-
-	// UI stuff
-	initializeMenu("");
-	initializeBackToTop();
+	
 
 	function setTranslatedContent() {
 
@@ -127,6 +113,8 @@ ${backToTopHtml}`
 
 		checkVersion(translator);
 
+		initializeBackToTop();
+		
 		document
 			.querySelector('meta[name="description"]')
 			.setAttribute("content", translator.translate("metadata.content"));

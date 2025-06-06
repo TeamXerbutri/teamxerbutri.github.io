@@ -84,10 +84,9 @@ function initializeHomeHeader() {
 	headerElem.innerHTML = homeHeaderHtml
 
 	initializeMenu("");
-	initializeShareMenu();
 }
 
 
 export {
-	initializeBlogHeader, homeHeaderHtml
+	initializeBlogHeader, initializeHomeHeader
 };
