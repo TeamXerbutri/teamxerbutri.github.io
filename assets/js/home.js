@@ -1,10 +1,10 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
 import {filter, initFilter} from "./indexfilter.js";
-import {initializeBackToTop} from "./backtotop.js";
-import {dotsMenu, txLogo, upArrow} from "./icons.js";
+import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
+import {dotsMenu, txLogo} from "./icons.js";
 import Translator from "./translator.js";
 import {initializeMenu} from "./headermenu.js";
-import {checkVersion} from "./version.js";
+import {checkVersion} from "../version/version.js";
 
 // Initializes the home page
 export function initHome() {
@@ -22,7 +22,7 @@ export function initHome() {
 	<div id="tile-wrapper" role="feed">
     </div>
 </div>
-<a id="back-to-top" class="fab" href="#top">${upArrow}</a>`
+${backToTopHtml}`
 
 	let subjects;
 

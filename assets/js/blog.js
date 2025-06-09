@@ -1,6 +1,6 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {initializeBackToTop} from "./backtotop.js";
+import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
 import {initializeMenu, initializeShareMenu} from "./headermenu.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
@@ -17,7 +17,7 @@ import View from "ol/View";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {dotsMenu, leftArrow, nextArrow, prevArrow, share, txLogo, upArrow, zoomIn} from "./icons.js";
+import {dotsMenu, leftArrow, nextArrow, prevArrow, share, txLogo, zoomIn} from "./icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 
 function countProperties(obj) {
@@ -129,7 +129,7 @@ export function initBlog() {
 	app.innerHTML = `
 		<div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
 		<div id="article-title"></div>
-		<article id="blog">
+		<article id="top">
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
 		<aside id="article-aside"></aside>
@@ -138,7 +138,7 @@ export function initBlog() {
 		<section id="article-sources"></section>
 		<section id="article-gallery"></section>
 		</article>
-		<a id="back-to-top" class="fab" href="#blog">${upArrow}</a>
+		${backToTopHtml}
 		<script id="jsonld" type="application/ld+json"></script>
 		`
 	app.classList.add('blog');
