@@ -86,7 +86,6 @@ function initializeHomeHeader() {
 	initializeMenu("");
 }
 
-
 export {
 	initializeBlogHeader, initializeHomeHeader
 };
