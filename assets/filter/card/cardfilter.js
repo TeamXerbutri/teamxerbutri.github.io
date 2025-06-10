@@ -1,10 +1,10 @@
 function initFilter(translator) {
 	
-	const filterElement = document.getElementById("tx-filter");
+	const filterElement = document.querySelector(".card-filter");
 
 	// create buttons for filters
 	const bridgeButton = document.createElement("button");
-	bridgeButton.id = "tx-filter-button_bridge";
+	bridgeButton.classList.add("card-filter__button_bridge");
 	bridgeButton.classList.add("fab");
 	bridgeButton.isActive = false;
 	bridgeButton.setAttribute("data-i18n", "filter.bridge.hide");
@@ -16,7 +16,7 @@ function initFilter(translator) {
 	}
 
 	const buildingButton = document.createElement("button");
-	buildingButton.id = "tx-filter-button_building";
+	buildingButton.classList.add("card-filter__button_building");
 	buildingButton.classList.add("fab");
 	buildingButton.isActive = false;
 	buildingButton.title = translator.translate("filter.building.hide");
@@ -28,7 +28,7 @@ function initFilter(translator) {
 	}
 
 	const railButton = document.createElement("button");
-	railButton.id = "tx-filter-button_rail";
+	railButton.classList.add("card-filter__button_rail");
 	railButton.classList.add("fab");
 	railButton.isActive = false;
 	railButton.title = translator.translate("filter.rail.hide");
@@ -40,7 +40,7 @@ function initFilter(translator) {
 	}
 
 	const tunnelButton = document.createElement("button");
-	tunnelButton.id = "tx-filter-button_tunnel";
+	tunnelButton.classList.add("card-filter__button_tunnel");
 	tunnelButton.classList.add("fab");
 	tunnelButton.isActive = false;
 	tunnelButton.title = translator.translate("filter.tunnel.hide");
@@ -54,15 +54,15 @@ function initFilter(translator) {
 	function toggleButton(button, translationKey, categoryName) {
 		if (button.isActive) {
 			button.title = translator.translate("filter." + translationKey + ".show");
-			button.classList.add("tx-filter_off");
-			button.classList.remove("tx-filter_active");
+			button.classList.add("card-filter__button_off");
+			button.classList.remove("card-filter__button_active");
 			button.isActive = false;
 			hideCategory(categoryName);
 		} else {
 			button.title = translator.translate("filter." + translationKey + ".hide");
 			button.isActive = true;
-			button.classList.remove("tx-filter_off");
-			button.classList.add("tx-filter_active");
+			button.classList.remove("card-filter__button_off");
+			button.classList.add("card-filter__button_active");
 			showCategory(categoryName);
 		}
 	}
@@ -93,10 +93,10 @@ function showCategory(className) {
 }
 
 function filter(){
-	const tunnel = document.getElementById("tx-filter-button_tunnel");
-	const bridge = document.getElementById("tx-filter-button_bridge");
-	const rail = document.getElementById("tx-filter-button_rail");
-	const building = document.getElementById("tx-filter-button_building");
+	const tunnel = document.querySelector(".card-filter__button_tunnel");
+	const bridge = document.querySelector(".card-filter__button_bridge");
+	const rail = document.querySelector(".card-filter__button_rail");
+	const building = document.querySelector(".card-filter__button_building");
 	
 	if(tunnel.isActive) {
 		showCategory("tunnel");
