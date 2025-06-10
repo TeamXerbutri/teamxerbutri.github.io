@@ -18,7 +18,7 @@
 	box-shadow: 0 0 4px 2px #EAC67A, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.10);
 }
 
-.fab:focus .tx-icon {
+.fab:focus .icon_dark {
 	fill: #FCF8ED;
 }
 
@@ -32,7 +32,7 @@
 	box-shadow: -2px 2px 8px 4px #000, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.08);
 }
 
-.fab:hover .tx-icon {
+.fab:hover .icon_dark {
 	fill: #FCF8ED;
 }
 
@@ -41,6 +41,6 @@
 	box-shadow: 0 0 4px 2px #000, inset -3px 3px 8px 8px rgba(0, 0, 0, 0.70);
 }
 
-.fab:active .tx-icon {
+.fab:active .icon_dark {
 	fill: #EAC67A;
 }

@@ -33,10 +33,10 @@ class PhotoswipeOpenLayersPlugin {
 				// TODO set translation here, does not work this way because translator did not discover elements not being in DOM
 				element.setAttribute("data-i18n", "gallery.back");
 
-				element.classList.add("top-nav");
+				element.classList.add("link_mat-app-bar");
 			}
 			if (data.name === "zoom") {
-				element.classList.add("top-nav");
+				element.classList.add("link_mat-app-bar");
 			}
 			return element;
 		})

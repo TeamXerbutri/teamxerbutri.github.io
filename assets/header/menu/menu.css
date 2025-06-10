@@ -1,22 +1,22 @@
-.main-menu {
+.nav__menu {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-.main-menu li{
+.nav__menu li{
 	display: inline-block;
 }
 
-.no-touch .main-menu li:hover{
+.no-touch .nav__menu li:hover{
 	cursor: pointer;
 }
 
-.dropdown{
+.menu__dropdown{
 	position: relative;
 }
 
-.sub-menu {
+.dropdown__sub-menu {
 	position: absolute;
 	right: 0;
 	z-index: 100;
@@ -24,22 +24,22 @@
 	overflow: hidden;
 }
 
-.sub-menu.show {
+.dropdown__sub-menu.show {
 	width: 112px;
 }
 
-.no-touch .main-menu li:hover ul {
+.no-touch .nav__menu li:hover ul {
 	display: block;
 	width: 112px;
 }
 
-.main-menu li ul li {
+.nav__menu li ul li {
 	display: block;
 	width: 100%;
 }
 
-.no-touch .main-menu li:hover > ul,
-.no-touch .main-menu li:focus-within >ul,
-.no-touch .main-menu li ul:hover {
+.no-touch .nav__menu li:hover > ul,
+.no-touch .nav__menu li:focus-within >ul,
+.no-touch .nav__menu li ul:hover {
 	display: block;
 }

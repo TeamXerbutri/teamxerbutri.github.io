@@ -1,5 +1,5 @@
 ﻿import {Control} from "ol/control";
-import {dragIcon} from "./icons.js";
+import {dragIcon} from "../icons/icons.js";
 
 export class MapLayerControl extends Control {
 	// TODO I can use an array as parameter, and foreach to create the buttons using a vector property
