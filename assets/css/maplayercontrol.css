@@ -68,28 +68,28 @@
 }
 
 #tx-layer-modal-button_bridge {
-	background-image: url("../filter/subject/bridgefilter.jpg");
+	background-image: url("../shared/filter/bridge.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 #tx-layer-modal-button_tunnel {
-	background-image: url("../filter/subject/tunnelfilter.jpg");
+	background-image: url("../shared/filter/tunnel.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 #tx-layer-modal-button_rail {
-	background-image: url("../filter/subject/railfilter.jpg");
+	background-image: url("../shared/filter/rail.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 #tx-layer-modal-button_building {
-	background-image: url("../filter/subject/buildingfilter.jpg");
+	background-image: url("../shared/filter/building.jpg");
 	background-blend-mode: multiply;
 	background-repeat: no-repeat;
 	background-position: center;

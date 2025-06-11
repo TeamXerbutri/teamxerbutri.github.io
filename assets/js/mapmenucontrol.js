@@ -1,6 +1,6 @@
 ﻿import {Control} from "ol/control";
 import {initRipple} from "./buttonripple.js";
-import {dragIcon} from "../icons/icons.js";
+import {dragIcon} from "../shared/icons/icons.js";
 
 export class MapMenuControl extends Control {
 	constructor(opt_options) {

@@ -35,17 +35,17 @@
 }
 
 .card-filter__button_bridge {
-	background-image: url("../subject/bridgefilter.jpg");
+	background-image: url("../../../shared/filter/bridge.jpg");
 }
 
 .card-filter__button_tunnel {
-	background-image: url("../subject/tunnelfilter.jpg");
+	background-image: url("../../../shared/filter/tunnel.jpg");
 }
 
 .card-filter__button_rail {
-	background-image: url("../subject/railfilter.jpg");
+	background-image: url("../../../shared/filter/rail.jpg");
 }
 
 .card-filter__button_building {
-	background-image: url("../subject/buildingfilter.jpg");
+	background-image: url("../../../shared/filter/building.jpg");
 }

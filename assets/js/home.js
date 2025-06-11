@@ -1,9 +1,9 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
-import {filter, initFilter} from "../filter/card/cardfilter.js";
-import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
+import {filter, initFilter} from "../index/card/filter/cardfilter.js";
+import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
 import Translator from "./translator.js";
 import {checkVersion} from "../version/version.js";
-import {initializeHomeHeader} from "../header/header.js";
+import {initializeHomeHeader} from "../shared/header/header.js";
 
 // Initializes the home page
 export function initHome() {
