@@ -18,7 +18,7 @@ export function initHome() {
 <div id="href-top" class="index">
 	<div class="index__message-bar hide"></div>
 	<div class="card-filter" role="toolbar"></div>
-	<nav id="tile-wrapper" class="card-feed"></nav>
+	<nav class="card-feed"></nav>
 </div>
 ${backToTopHtml}`
 
