@@ -125,11 +125,11 @@ export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
 
-	let app = document.getElementById("app");
+	let app = document.getElementById("js-app");
 	app.innerHTML = `
 		<div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
 		<div id="article-title"></div>
-		<article id="top">
+		<article id="href-top">
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
 		<aside id="article-aside"></aside>

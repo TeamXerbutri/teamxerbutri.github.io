@@ -13,7 +13,7 @@ function hideBackToTop() {
 }
 
 function initializeBackToTop() {
-	let app = document.querySelector("#app");
+	let app = document.getElementById("js-app");
 	hideBackToTop();
 
 	app.onscroll = function (ev) {
@@ -30,7 +30,7 @@ function initializeBackToTop() {
 
 const upArrow = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><path d="m0,24 l0,-12 l12,-12 l12,12 l0,12 l-12,-12 l-12,12 Z"/></svg>';
 
-const backToTopHtml = `<a class="back-to-top fab hide" href="#top">${upArrow}</a>`
+const backToTopHtml = `<a class="back-to-top fab hide" href="#href-top">${upArrow}</a>`
 
 export {
 	initializeBackToTop, backToTopHtml

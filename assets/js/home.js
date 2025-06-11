@@ -10,16 +10,15 @@ export function initHome() {
 	let translator = new Translator();
 
 	// Load app
-	let app = document.getElementById("app");
+	let app = document.getElementById("js-app");
 	app.classList.remove("blog");
 
 	app.innerHTML = `
 <div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
-<div id="top">
+<div id="href-top">
 	<div id="message-bar"></div>
 	<div class="card-filter" role="toolbar"></div>
-	<div id="tile-wrapper" role="feed">
-    </div>
+	<div id="tile-wrapper" role="feed"></div>
 </div>
 ${backToTopHtml}`
 
