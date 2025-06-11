@@ -2,7 +2,7 @@
 import {filter, initFilter} from "../index/card/filter/cardfilter.js";
 import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
 import Translator from "./translator.js";
-import {checkVersion} from "../version/version.js";
+import {checkVersion} from "../index/version/version.js";
 import {initializeHomeHeader} from "../shared/header/header.js";
 
 // Initializes the home page
@@ -15,8 +15,8 @@ export function initHome() {
 
 	app.innerHTML = `
 <div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
-<div id="href-top">
-	<div id="message-bar"></div>
+<div id="href-top" class="index">
+	<div class="index__message-bar hide"></div>
 	<div class="card-filter" role="toolbar"></div>
 	<div id="tile-wrapper" role="feed"></div>
 </div>
