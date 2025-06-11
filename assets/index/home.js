@@ -40,32 +40,36 @@ ${backToTopHtml}`
 	function setTranslatedContent() {
 
 		translator.addMenuOptions();
-		
-		// fetch the objects
+
+		function calculateMaxCards() {
+			const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+			let columns = 4;
+			if (viewWidth < 500) {
+				columns = 2;
+			}
+
+			let cardHeight = 177;
+			if (viewWidth < 765) {
+				cardHeight = 123;
+			}
+			if (viewWidth > 1350) {
+				cardHeight = 233;
+			}
+
+			const viewHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+			const rows = Math.ceil(viewHeight / cardHeight);
+			return rows * columns;
+		}
+
+// fetch the objects
 		translator.fetchHomeData().then(
 			function (value) {
 				subjects = value;
 				
 				// First load.
-				const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-				let columns = 4;
-				if (viewWidth < 500) {
-					columns = 2;
-				}
-
-				let cardHeight = 177;
-				if (viewWidth < 765) {
-					cardHeight = 123;
-				}
-				if (viewWidth > 1350) {
-					cardHeight = 233;
-				}
-
-				const viewHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-				const rows = Math.ceil(viewHeight / cardHeight);
-				let maxCards = rows * columns;
+				let maxCards = calculateMaxCards();
 
 				if (subjects.length < maxCards) {
 					maxCards = subjects.length;
