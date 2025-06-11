@@ -2,7 +2,7 @@
 @import url("assets/css/mat/menu.css");
 
 @import url("assets/css/shared.css");
-@import url("assets/css/index.css");
+
 
 @import url("assets/css/objectcard.css");
 @import url("assets/css/blog.css");
@@ -11,4 +11,5 @@
 @import url("assets/shared/icons/icons.css");
 @import url("assets/shared/header/header.css");
 @import url("assets/shared/header/menu/menu.css");
+@import url("assets/index/index.css");
 @import url("assets/index/card/filter/cardfilter.css");

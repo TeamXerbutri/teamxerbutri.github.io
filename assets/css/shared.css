@@ -45,3 +45,25 @@ header{
 .show {
 	display: block;
 }
+
+/* -header- */
+
+#contact {
+	cursor: pointer;
+}
+
+#privacy {
+	cursor: pointer;
+}
+
+#lang-en {
+	cursor: pointer;
+}
+
+#lang-nl {
+	cursor: pointer;
+}
+
+#lang-fr {
+	cursor: pointer;
+}

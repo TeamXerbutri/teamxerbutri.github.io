@@ -1,4 +1,4 @@
-﻿function createBlogObject(translator, BlogObject) {
+﻿function createCard(translator, BlogObject) {
 	let link = document.createElement("a");
 	link.classList.add("tile");
 	link.classList.add("show-ib");
@@ -63,4 +63,4 @@ function createObjectDescription(category, realname, translator) {
 }
 
 
-export {createBlogObject};
+export {createCard};

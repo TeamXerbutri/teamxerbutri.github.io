@@ -1,41 +1,18 @@
-/* -header- */
-
-#contact {
-	cursor: pointer;
-}
-
-#privacy {
-	cursor: pointer;
-}
-
-#lang-en {
-	cursor: pointer;
-}
-
-#lang-nl {
-	cursor: pointer;
-}
-
-#lang-fr {
-	cursor: pointer;
-}
-
-#tile-wrapper a{
+.card-feed a{
 	text-decoration: none;
 }
 
 /* Mobile */
 @media only screen and (max-width: 756px) {
-	#tile-wrapper {
+	.card-feed {
 		margin-left: auto;
 		margin-right: auto;
 		width: 360px;
 	}
 }
 
-
 @media only screen and (min-width: 756px) {
-	#tile-wrapper {
+	.card-feed {
 		margin-left: auto;
 		margin-right: auto;
 		width: 756px;
@@ -44,14 +21,14 @@
 
 /*CSS file for the Homepage (Resolution 1024x768 (Viewsize 1010x660) and up)*/
 @media only screen and (min-width: 1024px) {
-	#tile-wrapper {
+	.card-feed {
 		width: 1010px;
 	}
 }
 
 /* Resolution 1366x768*/
 @media only screen and (min-width: 1350px) {
-	#tile-wrapper {
+	.card-feed {
 		width: 1308px;
 	}
 }
