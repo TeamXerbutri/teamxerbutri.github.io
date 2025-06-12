@@ -1,4 +1,4 @@
-﻿function BlogObject(category, routeid, tilename, realname, description) {
+﻿function BlogObject(category, routeid, tilename, name, description) {
 	this.category = category;
 	this.routeid = routeid;
 	this.tilename = tilename;

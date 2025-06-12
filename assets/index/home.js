@@ -45,14 +45,17 @@ ${backToTopHtml}`
 			const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
 			let columns = 4;
+			
 			if (viewWidth < 500) {
 				columns = 2;
 			}
 
 			let cardHeight = 177;
+			
 			if (viewWidth < 765) {
 				cardHeight = 123;
 			}
+			
 			if (viewWidth > 1350) {
 				cardHeight = 233;
 			}

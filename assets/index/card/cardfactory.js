@@ -3,7 +3,7 @@
 	link.classList.add("card");
 	link.classList.add("show-ib");
 	link.classList.add(BlogObject.category);
-	link.href = createLink(BlogObject);
+	link.href = createLink(BlogObject.routeid);
 	link.title = BlogObject.description;
 
 	let image = document.createElement("img");
@@ -27,7 +27,7 @@
 		objectDescription.setAttribute("data-i18n", `category.${BlogObject.category}`);
 	}
 
-	objectDescription.innerText = createObjectDescription(BlogObject.category, BlogObject.name, translator);
+	objectDescription.innerText = createCardTag(BlogObject.category, BlogObject.name, translator);
 
 	textWrapper.appendChild(objectDescription);
 
@@ -40,25 +40,25 @@
 	return link;
 }
 
-function createLink(BlogObject) {
+function createLink(routeid) {
 	let url;
-	if (BlogObject.routeid === "map") {
+	if (routeid === "map") {
 		url = "map";
 	} else {
-		url = "avontuur/".concat(BlogObject.routeid)
+		url = "avontuur/".concat(routeid)
 	}
 	return url;
 }
 
-function createObjectDescription(category, realname, translator) {
-	let firstLine = "";
-	if (category === "xerbutri") {
-		return realname;
-	}
-	if (category) {
-		firstLine = translator.translate(`category.${category}`);
-	}
-	return firstLine;
+function createCardTag(category, name, translator) {
+
+	if (category === "xerbutri")
+		return name;
+
+	if (category)
+		return translator.translate(`category.${category}`);
+	
+	return "";
 }
 
 
