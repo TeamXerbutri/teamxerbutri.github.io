@@ -1,6 +1,6 @@
 ﻿import {Control} from "ol/control";
 import {initRipple} from "./buttonripple.js";
-import {dragIcon} from "./icons.js";
+import {dragIcon} from "../shared/icons/icons.js";
 
 export class MapMenuControl extends Control {
 	constructor(opt_options) {
@@ -43,7 +43,7 @@ export class MapMenuControl extends Control {
 		menuModal.style.display = "none";
 		menuModal.isActive = false;
 		
-		//header
+		// menu title
 		const modalHeader = document.createElement("h3");
 		modalHeader.innerHTML = "Menu"; //TODO translate => use i18n
 		

@@ -1,7 +1,6 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {initializeBackToTop} from "./backtotop.js";
-import {initializeMenu, initializeShareMenu} from "./headermenu.js";
+import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -17,8 +16,9 @@ import View from "ol/View";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {dotsMenu, leftArrow, nextArrow, prevArrow, share, txLogo, upArrow, zoomIn} from "./icons.js";
+import {leftArrow, nextArrow, prevArrow, zoomIn} from "../shared/icons/icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
+import { initializeBlogHeader} from "../shared/header/header.js";
 
 function countProperties(obj) {
 	let count = 0;
@@ -125,11 +125,11 @@ export function initBlog() {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
 
-	let app = document.getElementById("app");
+	let app = document.getElementById("js-app");
 	app.innerHTML = `
 		<div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
 		<div id="article-title"></div>
-		<article id="blog">
+		<article id="href-top">
 		<p id="article-visited" class="authordate"></p>
 		<p id="article-intro"></p>
 		<aside id="article-aside"></aside>
@@ -138,7 +138,7 @@ export function initBlog() {
 		<section id="article-sources"></section>
 		<section id="article-gallery"></section>
 		</article>
-		<a id="back-to-top" class="fab" href="#blog">${upArrow}</a>
+		${backToTopHtml}
 		<script id="jsonld" type="application/ld+json"></script>
 		`
 	app.classList.add('blog');
@@ -150,51 +150,12 @@ export function initBlog() {
 	});
 
 	const htmlElement = document.querySelector("html");
-	if (htmlElement.classList.contains("map-html")) {
+	
+	if (htmlElement.classList.contains("map-html")) 
 		htmlElement.classList.remove("map-html");
-	}
-
-	// init header
-	const header = `
-		<a class="top-nav" href="../" data-i18n="navigation.back">${leftArrow}</a>
-		<nav role="navigation">
-			<ul class="main-menu">
-				<li><a class="top-nav" href="../" data-i18n="navigation.home">${txLogo}</a></li>
-				<li class="dropdown"><a href="javascript:void(0);" id="share-button" role="button" class="top-nav" data-i18n="navigation.share">${share}</a>
-					<ul class="sub-menu mat-menu" id="share-menu">
-					</ul>
-				</li>
-				<li class="dropdown"><a href="javascript:void(0);" role="button" id="menu-button" class="top-nav" data-i18n="navigation.menu">${dotsMenu}</a>
-					<ul class="sub-menu mat-menu" id="menu">
-					</ul>
-				</li>
-			</ul>
-		</nav>
-		
-		<div id="contact-panel" class="panel hide">
-			<h2 data-i18n="contact.link">Contact</h2>
-			<p data-i18n="contact.content">Contact</p>
-		</div>
-		<div id="privacy-panel" class="panel hide">
-			<h2 data-i18n="privacy.link">Privacy</h2>
-			<p data-i18n="privacy.content">Privacy</p>
-		</div>
-		`
-	const headerElem = document.getElementById("header");
-	if (headerElem.classList.contains("home")) {
-		headerElem.classList.remove("home");
-		headerElem.innerHTML = header
-	}
-	if (headerElem.classList.contains("map-header")) {
-		headerElem.classList.remove("map-header");
-		headerElem.innerHTML = header
-	}
-
-	if (!headerElem.classList.contains("blog")) {
-		headerElem.classList.add("blog")
-		headerElem.innerHTML = header
-	}
-
+	
+	initializeBlogHeader();
+	
 	let url = window.location.href;
 	if (window.location.hash.length > 1) {
 		// everything before the hash
@@ -206,10 +167,7 @@ export function initBlog() {
 		routeId = routes[routeId];
 		history.pushState({page: 1}, "", "/avontuur/" + routeId)
 	}
-
-	initializeMenu("../");
-	initializeShareMenu();
-
+	
 	function setTranslatedContent() {
 		function constructBlog(value) {
 

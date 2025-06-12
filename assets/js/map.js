@@ -16,7 +16,7 @@ import GeoJSON from "ol/format/GeoJSON";
 let map;
 export function initMap() {
 	
-	let app = document.getElementById("app");
+	let app = document.getElementById("js-app");
 	
 	app.innerHTML = `<div id="txmap"><div id="tx-menu-dismiss" class="tx-dismiss"></div> <div id="tx-layer-dismiss" class="tx-dismiss"></div></div>`;
 	app.classList.remove("blog");
@@ -32,7 +32,7 @@ export function initMap() {
 	});
 	
 	// do not show header in map
-	const headerElem = document.getElementById("header");
+	const headerElem = document.querySelector("header");
 	if (!headerElem.classList.contains("map-header")) {
 		headerElem.classList.add("map-header")
 		headerElem.innerHTML = "";

@@ -14,7 +14,7 @@ import {CmsFeatureTooltip} from "./cmsfeaturetooltip.js";
 let map;
 export function initCms() {
 		
-	document.querySelector("#app").innerHTML = `<div id="cmsmap"></div>`;
+	document.getElementById("js-app").innerHTML = `<div id="cmsmap"></div>`;
 
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;
@@ -27,7 +27,7 @@ export function initCms() {
 	});
 	
 	// do not show header in map
-	const headerElem = document.getElementById("header");
+	const headerElem = document.querySelector("header");
 	if (!headerElem.classList.contains("cms-header")) {
 		headerElem.classList.add("cms-header")
 		headerElem.innerHTML = "";
@@ -122,7 +122,7 @@ export function initCms() {
 		copyText();
 	})
 	
-	document.querySelector("#app").appendChild(topbar);
+	document.getElementById("js-app").appendChild(topbar);
 	
 	document
 		.querySelector('meta[name="description"]')

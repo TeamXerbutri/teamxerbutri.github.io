@@ -4,7 +4,7 @@ header.blog {
 	margin-bottom: 48px;
 }
 
-#app.blog {
+.shell.blog {
 	height: calc(100% - 112px);
 }
 
@@ -291,7 +291,7 @@ span.fact {
 
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
-	#app.blog {
+	.shell.blog {
 		height: calc(100% - 64px);
 	}
 

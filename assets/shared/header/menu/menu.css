@@ -1,0 +1,45 @@
+.nav__menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav__menu li{
+	display: inline-block;
+}
+
+.no-touch .nav__menu li:hover{
+	cursor: pointer;
+}
+
+.menu__dropdown{
+	position: relative;
+}
+
+.dropdown__sub-menu {
+	position: absolute;
+	right: 0;
+	z-index: 100;
+	display: none;
+	overflow: hidden;
+}
+
+.dropdown__sub-menu.show {
+	width: 112px;
+}
+
+.no-touch .nav__menu li:hover ul {
+	display: block;
+	width: 112px;
+}
+
+.nav__menu li ul li {
+	display: block;
+	width: 100%;
+}
+
+.no-touch .nav__menu li:hover > ul,
+.no-touch .nav__menu li:focus-within >ul,
+.no-touch .nav__menu li ul:hover {
+	display: block;
+}

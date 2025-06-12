@@ -1,0 +1,34 @@
+.card-feed a{
+	text-decoration: none;
+}
+
+/* Mobile */
+@media only screen and (max-width: 756px) {
+	.card-feed {
+		margin-left: auto;
+		margin-right: auto;
+		width: 360px;
+	}
+}
+
+@media only screen and (min-width: 756px) {
+	.card-feed {
+		margin-left: auto;
+		margin-right: auto;
+		width: 756px;
+	}
+}
+
+/*CSS file for the Homepage (Resolution 1024x768 (Viewsize 1010x660) and up)*/
+@media only screen and (min-width: 1024px) {
+	.card-feed {
+		width: 1010px;
+	}
+}
+
+/* Resolution 1366x768*/
+@media only screen and (min-width: 1350px) {
+	.card-feed {
+		width: 1308px;
+	}
+}
