@@ -30,7 +30,7 @@ header{
 	cursor: pointer;
 }
 
-#shell {
+.welcome {
 	display: none;
 }
 

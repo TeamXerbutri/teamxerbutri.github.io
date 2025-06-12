@@ -12,10 +12,11 @@ function checkVersion(translator) {
 			return;
 
 		if (serverVersion.version !== version) {
-			let messageBar = document.getElementById("message-bar");
-			messageBar.innerHTML = `<p>${translator.translate("version.update")}</p>`;
+			let messageBar = document.querySelector(".index__message-bar");
+			messageBar.innerHTML = `<p class="message-bar__content">${translator.translate("version.update")}</p>`;
 			messageBar.setAttribute("data-i18n", "version.update");
-			messageBar.style.display = "block";
+			messageBar.classList.remove("hide");
+			messageBar.classList.add("show");
 		}
 	});
 }

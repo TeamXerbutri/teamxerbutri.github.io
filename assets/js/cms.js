@@ -14,7 +14,7 @@ import {CmsFeatureTooltip} from "./cmsfeaturetooltip.js";
 let map;
 export function initCms() {
 		
-	document.querySelector("#app").innerHTML = `<div id="cmsmap"></div>`;
+	document.getElementById("js-app").innerHTML = `<div id="cmsmap"></div>`;
 
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;
@@ -122,7 +122,7 @@ export function initCms() {
 		copyText();
 	})
 	
-	document.querySelector("#app").appendChild(topbar);
+	document.getElementById("js-app").appendChild(topbar);
 	
 	document
 		.querySelector('meta[name="description"]')
