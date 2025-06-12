@@ -25,6 +25,7 @@
 }
 
 .dropdown__sub-menu.show {
+	display: block;
 	width: 112px;
 }
 
