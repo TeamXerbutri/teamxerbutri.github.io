@@ -1,10 +1,10 @@
 ﻿function createCard(translator, BlogObject) {
-	let link = document.createElement("a");
-	link.classList.add("card");
-	link.classList.add("show-ib");
-	link.classList.add(BlogObject.category);
-	link.href = createLink(BlogObject.routeid);
-	link.title = BlogObject.description;
+	let card = document.createElement("a");
+	card.classList.add("card");
+	card.classList.add("show-ib");
+	card.classList.add(BlogObject.category);
+	card.href = createLink(BlogObject.routeid);
+	card.title = BlogObject.description;
 
 	let image = document.createElement("img");
 	const source = "data/".concat(BlogObject.category, "/", BlogObject.routeid, "/", BlogObject.routeid);
@@ -13,31 +13,31 @@
 	image.srcset = source.concat("m.jpg") + " 164w, " + source.concat("l.jpg") + " 237w, " + source.concat(".jpg") + " 310w";
 	image.sizes = "(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px";
 
-	link.appendChild(image);
+	card.appendChild(image);
 
-	let textWrapper = document.createElement("div");
-	textWrapper.classList.add("card__card-tag");
-	link.appendChild(textWrapper);
+	let cardTag = document.createElement("div");
+	cardTag.classList.add("card__card-tag");
+	card.appendChild(cardTag);
 
-	let objectDescription = document.createElement("span");
-	objectDescription.classList.add("card-tag__category");
+	let cardTagCategory = document.createElement("span");
+	cardTagCategory.classList.add("card-tag__category");
 	if (BlogObject.category === "xerbutri") {
-		objectDescription.setAttribute("data-i18nix", BlogObject.routeid.concat(".realname"));
+		cardTagCategory.setAttribute("data-i18nix", BlogObject.routeid.concat(".realname"));
 	} else {
-		objectDescription.setAttribute("data-i18n", `category.${BlogObject.category}`);
+		cardTagCategory.setAttribute("data-i18n", `category.${BlogObject.category}`);
 	}
 
-	objectDescription.innerText = createCardTag(BlogObject.category, BlogObject.name, translator);
+	cardTagCategory.innerText = createCardTag(BlogObject.category, BlogObject.name, translator);
 
-	textWrapper.appendChild(objectDescription);
+	cardTag.appendChild(cardTagCategory);
 
-	let name = document.createElement("span");
-	name.classList.add("card-tag__title");
-	name.setAttribute("data-i18nix", BlogObject.routeid.concat(".shortname"));
-	name.innerText = BlogObject.tilename;
-	textWrapper.appendChild(name);
+	let cardTagTitle = document.createElement("span");
+	cardTagTitle.classList.add("card-tag__title");
+	cardTagTitle.setAttribute("data-i18nix", BlogObject.routeid.concat(".shortname"));
+	cardTagTitle.innerText = BlogObject.tilename;
+	cardTag.appendChild(cardTagTitle);
 
-	return link;
+	return card;
 }
 
 function createLink(routeid) {
