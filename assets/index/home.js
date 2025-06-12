@@ -1,8 +1,8 @@
-﻿import {createBlogObject} from "./objectfactory.js"
-import {filter, initFilter} from "../index/card/filter/cardfilter.js";
+﻿import {createCard} from "./card/cardfactory.js"
+import {filter, initFilter} from "./card/filter/cardfilter.js";
 import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
-import Translator from "./translator.js";
-import {checkVersion} from "../index/version/version.js";
+import Translator from "../js/translator.js";
+import {checkVersion} from "./version/version.js";
 import {initializeHomeHeader} from "../shared/header/header.js";
 
 // Initializes the home page
@@ -18,7 +18,7 @@ export function initHome() {
 <div id="href-top" class="index">
 	<div class="index__message-bar hide"></div>
 	<div class="card-filter" role="toolbar"></div>
-	<div id="tile-wrapper" role="feed"></div>
+	<nav class="card-feed"></nav>
 </div>
 ${backToTopHtml}`
 
@@ -37,67 +37,73 @@ ${backToTopHtml}`
 		console.error(`An error occured in getting the translations: ${error}`);
 	});
 	
-
 	function setTranslatedContent() {
 
 		translator.addMenuOptions();
-		
-		// fetch the objects
+
+		function calculateMaxCards() {
+			const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+			let columns = 4;
+			
+			if (viewWidth < 500) {
+				columns = 2;
+			}
+
+			let cardHeight = 177;
+			
+			if (viewWidth < 765) {
+				cardHeight = 123;
+			}
+			
+			if (viewWidth > 1350) {
+				cardHeight = 233;
+			}
+
+			const viewHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+			const rows = Math.ceil(viewHeight / cardHeight);
+			return rows * columns;
+		}
+
+// fetch the objects
 		translator.fetchHomeData().then(
 			function (value) {
 				subjects = value;
 				
 				// First load.
-				const viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				let maxCards = calculateMaxCards();
 
-				let columns = 4;
-				if (viewWidth < 500) {
-					columns = 2;
+				if (subjects.length < maxCards) {
+					maxCards = subjects.length;
 				}
 
-				let cardHeight = 177;
-				if (viewWidth < 765) {
-					cardHeight = 123;
-				}
-				if (viewWidth > 1350) {
-					cardHeight = 233;
-				}
-
-				const viewHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-				const rows = Math.ceil(viewHeight / cardHeight);
-				let maxObjects = rows * columns;
-
-				if (subjects.length < maxObjects) {
-					maxObjects = subjects.length;
-				}
-
-				const objectsToShow = subjects.splice(0, maxObjects);
+				const cardsToShow = subjects.splice(0, maxCards);
 
 				app.addEventListener("scroll", function () {
 					if (app.scrollTop + app.clientHeight >= app.scrollHeight) {
-						let objectsToShow = subjects.splice(0, maxObjects);
-						if (objectsToShow.length > 0) {
-							objectFactory(objectsToShow);
+						let cardsToShow = subjects.splice(0, maxCards);
+						if (cardsToShow.length > 0) {
+							cardFactory(cardsToShow);
 						}
 					}
 				})
 
-				objectFactory(objectsToShow);
+				cardFactory(cardsToShow);
 			},
 			function (error) {
 				console.error(error);
 			}
 		);
 
-		// Builds the objects
-		function objectFactory(subjects) {
-			const objectContainer = document.getElementById("tile-wrapper");
+		// Builds the cards
+		function cardFactory(subjects) {
+			const cardContainer = document.querySelector(".card-feed");
 
 			for (let i in subjects) {
-				let displayObject = createBlogObject(translator, subjects[i]);
+				let displayCard = createCard(translator, subjects[i]);
 
-				objectContainer.appendChild(displayObject);
+				cardContainer.appendChild(displayCard);
 			}
 		}
 
@@ -105,7 +111,7 @@ ${backToTopHtml}`
 
 		const filterElement = document.querySelector(".card-filter");
 		filterElement.onclick = function () {
-			objectFactory(subjects);
+			cardFactory(subjects);
 			subjects = [];
 			filter();
 		}

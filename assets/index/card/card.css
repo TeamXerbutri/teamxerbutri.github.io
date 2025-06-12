@@ -1,4 +1,4 @@
-﻿.tile {
+﻿.card {
 	overflow: hidden;
 	height: 177px;
 	width: 236px;
@@ -11,14 +11,14 @@
 	text-align: initial;
 }
 
-.tile img {
+.card img {
 	transition: all .5s ease-in-out;
 	height: 177px;
 	width: 236px;
 	opacity: 0.8;
 }
 
-.tile-text-wrapper {
+.card__card-tag {
 	display: block;
 	position: relative;
 	top: -82px;
@@ -31,7 +31,7 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)); /* Standard syntax */
 }
 
-.name {
+.card-tag__title {
 	display: block;
 	font-size: 24px;
 	font-weight: bold;
@@ -43,7 +43,7 @@
 	margin-top: 0;
 }
 
-.category {
+.card-tag__category {
 	display: block;
 	font-size: 16px;
 	font-weight: 400;
@@ -55,7 +55,7 @@
 	margin-bottom: 10px;
 }
 
-.tile:visited .tile-text-wrapper {
+.card:visited .card__card-tag {
 	background: #181818; /* For browsers that do not support gradients*/
 	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* For Safari 5.1 to 6.0*/
 	background: -o-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* For Opera 11.1 to 12.0 */
@@ -63,28 +63,28 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)); /* Standard syntax */
 }
 
-.tile:visited .name {
+.card:visited .card-tag__title {
 	color: #83a4af;
 }
 
-.tile:visited .category {
+.card:visited .card-tag__category {
 	color: #f4e1b8;
 }
 
-.tile:visited img {
+.card:visited img {
 	opacity: 0.5;
 }
 
-.tile:focus {
+.card:focus {
 	outline: none;
 	box-shadow: 0 0 4px 2px #EAC67A;
 }
 
-.tile:focus img {
+.card:focus img {
 	transform: scale(1.05);
 }
 
-.tile:focus .tile-text-wrapper {
+.card:focus .card__card-tag {
 	background: #181818; /* For browsers that do not support gradients*/
 	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Safari 5.1 to 6.0*/
 	background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Opera 11.1 to 12.0 */
@@ -92,29 +92,29 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* Standard syntax */
 }
 
-.tile:focus-visible {
+.card:focus-visible {
 	box-shadow: none;
 	outline: #984B43 solid 2px;
 }
 
-.tile:focus .name {
+.card:focus .card-tag__title {
 	color: #FCF8ED;
 }
 
-.tile:focus .category {
+.card:focus .card-tag__category {
 	color: #f7e9ca;
 }
 
-.tile:hover img {
+.card:hover img {
 	opacity: 0.92;
 	transform: scale(1.05);
 }
 
-.tile:hover {
+.card:hover {
 	box-shadow: 0 0 4px 4px rgba(35, 50, 55, 0.2);
 }
 
-.tile:hover .tile-text-wrapper {
+.card:hover .card__card-tag {
 	background: #181818; /* For browsers that do not support gradients*/
 	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Safari 5.1 to 6.0*/
 	background: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* For Opera 11.1 to 12.0 */
@@ -122,15 +122,15 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)); /* Standard syntax */
 }
 
-.tile:hover .name {
+.card:hover .card-tag__title {
 	color: #FCF8ED;
 }
 
-.tile:hover .category {
+.card:hover .card-tag__category {
 	color: #f7e9ca;
 }
 
-.tile:active .tile-text-wrapper {
+.card:active .card__card-tag {
 	background: #181818; /* For browsers that do not support gradients*/
 	background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* For Safari 5.1 to 6.0*/
 	background: -o-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* For Opera 11.1 to 12.0 */
@@ -138,54 +138,54 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); /* Standard syntax */
 }
 
-.tile:active .name {
+.card:active .card-tag__title {
 	color: #EAC67A;
 }
 
-.tile:active .category {
+.card:active .card-tag__category {
 	color: #E9C372;
 }
 
-.tile:active img {
+.card:active img {
 	opacity: 0.4;
 }
 
 @media only screen and (max-width: 756px) {
-	.tile, .tile img {
+	.card, .card img {
 		height: 123px;
 		width: 164px;
 		border-radius: 10px;
 	}
 
-	.tile-text-wrapper {
+	.card__card-tag {
 		top: -33px;
 		height: 29px;
 	}
 
-	.name {
+	.card-tag__title {
 		font-size: 14px;
 		padding-left: 8px;
 	}
 
-	.category {
+	.card-tag__category {
 		display: none;
 	}
 }
 
 @media only screen and (min-width: 756px) {
-	.tile, .tile img {
+	.card, .card img {
 		height: 177px;
 		width: 236px;
 	}
 	
-	.name {
+	.card-tag__title {
 		font-size: 20px;
 	}
 }
 
 /* Resolution 1366x768*/
 @media only screen and (min-width: 1350px) {
-	.tile, .tile img {
+	.card, .card img {
 		height: 233px;
 		width: 310px;
 	}

@@ -1,4 +1,4 @@
-﻿import {initHome} from "./home.js";
+﻿import {initHome} from "../index/home.js";
 import {initBlog} from "./blog.js";
 import {initMap} from "./map.js";
 import {initCms} from "./cms.js";
