@@ -1,9 +1,9 @@
 ﻿import {createBlogObject} from "./objectfactory.js"
-import {filter, initFilter} from "./indexfilter.js";
-import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
+import {filter, initFilter} from "../index/card/filter/cardfilter.js";
+import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
 import Translator from "./translator.js";
 import {checkVersion} from "../version/version.js";
-import {initializeHomeHeader} from "../header/header.js";
+import {initializeHomeHeader} from "../shared/header/header.js";
 
 // Initializes the home page
 export function initHome() {
@@ -17,7 +17,7 @@ export function initHome() {
 <div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
 <div id="top">
 	<div id="message-bar"></div>
-	<div id="tx-filter" role="toolbar"></div>
+	<div class="card-filter" role="toolbar"></div>
 	<div id="tile-wrapper" role="feed">
     </div>
 </div>
@@ -104,7 +104,7 @@ ${backToTopHtml}`
 
 		initFilter(translator);
 
-		const filterElement = document.getElementById("tx-filter");
+		const filterElement = document.querySelector(".card-filter");
 		filterElement.onclick = function () {
 			objectFactory(subjects);
 			subjects = [];

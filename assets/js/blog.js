@@ -1,6 +1,6 @@
 ﻿import {routes} from "./routes.js";
 import Map from "ol/Map";
-import {initializeBackToTop, backToTopHtml} from "../backtotop/backtotop.js";
+import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
 import Translator from "./translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
@@ -16,9 +16,9 @@ import View from "ol/View";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {leftArrow, nextArrow, prevArrow, zoomIn} from "../icons/icons.js";
+import {leftArrow, nextArrow, prevArrow, zoomIn} from "../shared/icons/icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
-import { initializeBlogHeader} from "../header/header.js";
+import { initializeBlogHeader} from "../shared/header/header.js";
 
 function countProperties(obj) {
 	let count = 0;

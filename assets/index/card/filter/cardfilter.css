@@ -1,0 +1,51 @@
+.card-filter {
+	margin-left: auto;
+	margin-right: auto;
+	width: 304px;
+}
+
+.card-filter > button {
+	display: inline-block;
+	margin: 10px 10px 10px 10px;
+	padding: 0;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+	border: none;
+}
+
+.card-filter > button:focus-visible, .card-filter > button:hover {
+	background-blend-mode: normal;
+}
+
+.card-filter__button_active {
+	background-blend-mode: hard-light;
+}
+
+.card-filter__button_off, .card-filter__button_off:focus {
+	background-blend-mode: overlay;
+	background-color: #afafaf;
+	box-shadow: 0 0 4px 2px rgba(234, 198, 122, 0.2), inset 0 0 16px 16px rgba(0, 0, 0, 0.40);
+}
+
+.card-filter > button::-moz-focus-inner {
+	border: none;
+	padding: 0;
+}
+
+.card-filter__button_bridge {
+	background-image: url("../../../shared/filter/bridge.jpg");
+}
+
+.card-filter__button_tunnel {
+	background-image: url("../../../shared/filter/tunnel.jpg");
+}
+
+.card-filter__button_rail {
+	background-image: url("../../../shared/filter/rail.jpg");
+}
+
+.card-filter__button_building {
+	background-image: url("../../../shared/filter/building.jpg");
+}
