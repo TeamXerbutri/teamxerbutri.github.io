@@ -1,5 +1,5 @@
 ﻿import {Control} from "ol/control";
-import {dragIcon} from "../shared/icons/icons.js";
+import {dragIcon} from "../../shared/icons/icons.js";
 
 export class MapLayerControl extends Control {
 	// TODO I can use an array as parameter, and foreach to create the buttons using a vector property
@@ -24,8 +24,8 @@ export class MapLayerControl extends Control {
 		element.appendChild(button);
 		
 		// dismiss for layer modal
-		const overlay = document.getElementById("tx-layer-dismiss");
-		overlay.style.display = "none";
+		const overlay = document.querySelector(".layer-control__dismiss");
+		
 		overlay.addEventListener("click", function(event) {
 			if (event.target === overlay) {
 				toggleModal()
@@ -34,10 +34,9 @@ export class MapLayerControl extends Control {
 		
 		// modal for filtering layers
 		const layerModal = document.createElement("div");
-		layerModal.id = "tx-layer-modal";
 		layerModal.classList.add("mat-bottom-sheet");
-		layerModal.style.display = "none";
-		layerModal.classList.add("tx-layer-modal");
+		layerModal.classList.add("layer-control__modal");
+		layerModal.classList.add("hide");
 		layerModal.isActive = false;
 		
 		const layerModalHeader = document.createElement("h3");
@@ -45,8 +44,7 @@ export class MapLayerControl extends Control {
 
 		// draghandle closing the bottom sheet
 		const dragHandle = document.createElement("div")
-		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
-		dragHandle.id = "drag-handle";
+		dragHandle.classList.add("mat-bottom-sheet__drag-handle");
 		dragHandle.title = "drag";//;
 		dragHandle.innerHTML = `${dragIcon}`;
 		
@@ -56,7 +54,7 @@ export class MapLayerControl extends Control {
 		
 		// create buttons for layer filters
 		const bridgeButton = document.createElement("button");
-		bridgeButton.id = "tx-layer-modal-button_bridge";
+		bridgeButton.id = "layer-control__modal-button_bridge";
 		bridgeButton.isActive = false;
 		toggleButton(bridgeButton, "bruggen"); //TODO translate => use i18n
 		
@@ -66,7 +64,7 @@ export class MapLayerControl extends Control {
 		};
 		
 		const buildingButton = document.createElement("button");
-		buildingButton.id = "tx-layer-modal-button_building";
+		buildingButton.id = "layer-control__modal-button_building";
 		buildingButton.isActive = false;
 		toggleButton(buildingButton, "gebouwen"); //TODO translate => use i18n
 		
@@ -76,7 +74,7 @@ export class MapLayerControl extends Control {
 		}
 		
 		const railButton = document.createElement("button");
-		railButton.id = "tx-layer-modal-button_rail";
+		railButton.id = "layer-control__modal-button_rail";
 		railButton.isActive = false;
 		toggleButton(railButton, "spoorwegen"); //TODO translate => use i18n
 		
@@ -86,7 +84,7 @@ export class MapLayerControl extends Control {
 		}
 		
 		const tunnelButton = document.createElement("button");
-		tunnelButton.id = "tx-layer-modal-button_tunnel";
+		tunnelButton.id = "layer-control__modal-button_tunnel";
 		tunnelButton.isActive = false;
 		toggleButton(tunnelButton, "tunnels"); //TODO translate => use i18n
 		
@@ -119,15 +117,17 @@ export class MapLayerControl extends Control {
 		
 		function toggleModal() {
 			if(layerModal.isActive){
-				overlay.style.display = "none";
-				layerModal.style.display = "none";
-				overlay.style.zIndex = "1";
+				overlay.classList.add("hide");
+				overlay.classList.remove("show");
+				layerModal.classList.add("hide");
+				layerModal.classList.remove("show");
 				layerModal.isActive = false;
 			}
 			else {
-				overlay.style.display = "block";
-				layerModal.style.display = "block";
-				overlay.style.zIndex = "200";
+				overlay.classList.remove("hide");
+				overlay.classList.add("show");
+				layerModal.classList.remove("hide");
+				layerModal.classList.add("show");
 				layerModal.isActive = true;
 			}
 		}

@@ -151,8 +151,8 @@ export function initBlog() {
 
 	const htmlElement = document.querySelector("html");
 	
-	if (htmlElement.classList.contains("map-html")) 
-		htmlElement.classList.remove("map-html");
+	if (htmlElement.classList.contains("html_hide-overflow")) 
+		htmlElement.classList.remove("html_hide-overflow");
 	
 	initializeBlogHeader();
 	

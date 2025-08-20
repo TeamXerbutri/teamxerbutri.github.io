@@ -1,4 +1,4 @@
-﻿import "../css/map.css";
+﻿import "./map.css";
 import Map from "ol/Map";
 import View from "ol/View";
 import {Tile as TileLayer, Vector as VectorLayer} from "ol/layer";
@@ -7,10 +7,10 @@ import {useGeographic} from "ol/proj";
 import {defaults as defaultControls, ZoomSlider} from "ol/control";
 import VectorSource from "ol/source/Vector";
 import {Icon, Stroke, Style} from "ol/style";
-import {TopBarControl} from "./topbarcontrol.js";
-import {MapMenuControl} from "./mapmenucontrol.js";
-import {MapLayerControl} from "./maplayercontrol.js";
-import {MapFeatureTooltip} from "./mapfeaturetooltip.js";
+import {TopBarControl} from "./control/topbar.js";
+import {MapMenuControl} from "./control/menu.js";
+import {MapLayerControl} from "./control/layer.js";
+import {MapFeatureTooltip} from "./tooltip/feature.js";
 import GeoJSON from "ol/format/GeoJSON";
 
 let map;
@@ -18,7 +18,7 @@ export function initMap() {
 	
 	let app = document.getElementById("js-app");
 	
-	app.innerHTML = `<div id="txmap"><div id="tx-menu-dismiss" class="tx-dismiss"></div> <div id="tx-layer-dismiss" class="tx-dismiss"></div></div>`;
+	app.innerHTML = `<div id="js-map" class="map"><div class="menu-control__dismiss hide dismiss"></div> <div class="layer-control__dismiss hide dismiss"></div></div>`;
 	app.classList.remove("blog");
 
 	// The vertical height fix for mobile devices
@@ -40,8 +40,8 @@ export function initMap() {
 	
 	// correct the overflow in mobile
 	const htmlElement = document.querySelector("html");
-	if(!htmlElement.classList.contains("map-html")){
-		htmlElement.classList.add("map-html");
+	if(!htmlElement.classList.contains("html_hide-overflow")){
+		htmlElement.classList.add("html_hide-overflow");
 	}
 	
 	useGeographic();
@@ -98,7 +98,7 @@ export function initMap() {
 	
 	// map	// TODO later add new TopBarControl(), in the list below
 	map = new Map({
-		target: "txmap",
+		target: "js-map",
 		layers: [raster],
 		view: new View({
 			projection: "EPSG:3857",

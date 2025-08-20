@@ -35,8 +35,8 @@ export function initCms() {
 	
 	// correct the overflow in mobile
 	const htmlElement = document.querySelector("html");
-	if(!htmlElement.classList.contains("map-html")){
-		htmlElement.classList.add("map-html");
+	if(!htmlElement.classList.contains("html_hide-overflow")){
+		htmlElement.classList.add("html_hide-overflow");
 	}
 	
 	useGeographic();

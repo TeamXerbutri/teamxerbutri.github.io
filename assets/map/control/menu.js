@@ -1,6 +1,6 @@
 ﻿import {Control} from "ol/control";
 import {initRipple} from "./buttonripple.js";
-import {dragIcon} from "../shared/icons/icons.js";
+import {dragIcon} from "../../shared/icons/icons.js";
 
 export class MapMenuControl extends Control {
 	constructor(opt_options) {
@@ -25,8 +25,7 @@ export class MapMenuControl extends Control {
 		element.appendChild(button);
 
 		// dismiss overlay
-		const menuOverlay = document.getElementById("tx-menu-dismiss");
-		menuOverlay.style.display = "none";
+		const menuOverlay = document.querySelector(".menu-control__dismiss");
 
 		menuOverlay.addEventListener("click", function(event) {
 			if (event.target === menuOverlay) {
@@ -37,10 +36,9 @@ export class MapMenuControl extends Control {
 		// modal for menu
 
 		const menuModal = document.createElement("div");
-		menuModal.id = "tx-menu-modal";
-		menuModal.classList.add("tx-menu-modal");
+		menuModal.classList.add("menu-control__modal");
 		menuModal.classList.add("mat-bottom-sheet");
-		menuModal.style.display = "none";
+		menuModal.classList.add("hide");
 		menuModal.isActive = false;
 		
 		// menu title
@@ -49,8 +47,7 @@ export class MapMenuControl extends Control {
 		
 		// drag handle closing the bottom sheet
 		const dragHandle = document.createElement("div")
-		dragHandle.classList.add("mat-bottom-sheet-drag-handle");
-		dragHandle.id = "drag-handle";
+		dragHandle.classList.add("mat-bottom-sheet__drag-handle");
 		dragHandle.title = "drag";//;
 		dragHandle.innerHTML = `${dragIcon}`;
 
@@ -71,14 +68,16 @@ export class MapMenuControl extends Control {
 
 		function toggleModal() {
 			if (menuModal.isActive) {
-				menuModal.style.display = "none";
-				menuOverlay.style.display = "none";
-				menuOverlay.style.zIndex = "1";
+				menuOverlay.classList.add("hide");
+				menuOverlay.classList.remove("show");
+				menuModal.classList.add("hide");
+				menuModal.classList.remove("show");
 				menuModal.isActive = false;
 			} else {
-				menuOverlay.style.display = "block";
-				menuModal.style.display = "block";
-				menuOverlay.style.zIndex = "200";
+				menuOverlay.classList.remove("hide");
+				menuOverlay.classList.add("show");
+				menuModal.classList.remove("hide");
+				menuModal.classList.add("show");
 				menuModal.isActive = true;
 			}
 		}

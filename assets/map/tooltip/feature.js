@@ -8,7 +8,7 @@ export class MapFeatureTooltip {
 		featureTooltip.pinned = false;
 		featureTooltip.id = "tx-feature-tooltip";
 		featureTooltip.classList.add("tx-feature-tooltip");
-		document.getElementById("txmap").appendChild(featureTooltip);
+		document.getElementById("js-map").appendChild(featureTooltip);
 
 		const selectPointerMove = new Select({
 			condition: pointerMove,

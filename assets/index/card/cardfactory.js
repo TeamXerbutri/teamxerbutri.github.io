@@ -1,7 +1,7 @@
 ﻿function createCard(translator, BlogObject) {
 	let card = document.createElement("a");
 	card.classList.add("card");
-	card.classList.add("show-ib");
+	card.classList.add("show_inline-block");
 	card.classList.add(BlogObject.category);
 	card.href = createLink(BlogObject.routeid);
 	card.title = BlogObject.description;

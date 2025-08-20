@@ -1,0 +1,48 @@
+/*ol default controls*/
+
+.ol-rotate {
+	top: revert;
+	right: revert;
+	bottom: 8.3em;
+	left: .5em;
+	transition: opacity .25s linear, visibility 0s linear
+}
+
+.ol-control {
+	background-color: revert;
+}
+
+/* material design FAB style*/
+.ol-control > button {
+	color: #000;
+	background-color: #f2f7fa;
+	/*border-radius:25px;*/
+	font-size: 1.6em;
+	width: 56px;
+	height: 56px;
+	border-radius: 16px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.ol-control > button:focus, .ol-control > button:hover {
+	color: #000;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.22);
+}
+
+.ol-control > button:focus, .ol-control > button:hover {
+	cursor: pointer;
+}
+
+@media only screen and (min-width: 756px) and (min-height: 500px) {
+	.ol-control button:hover {
+		cursor: pointer;
+	}
+
+	.ol-control > button:focus, .ol-control > button:hover {
+		color: #000;
+		background-color: #f2f7fa;
+		cursor: pointer;
+	}
+}

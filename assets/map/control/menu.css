@@ -1,5 +1,5 @@
 /*CSS for the MapMenuControl*/
-@import "mat/button.css";
+@import "./button.css";
 
 .tx-menu {
 	position: absolute;
@@ -8,7 +8,7 @@
 }
 
 .tx-menu > button {
-	background-image: url("../images/menu-b.svg");
+	background-image: url("./menu-b.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 1.2em;
