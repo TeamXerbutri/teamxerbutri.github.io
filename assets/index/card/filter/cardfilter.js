@@ -79,7 +79,7 @@ function hideCategory(className) {
 
 	for (i = 0; i < categories.length; i++) {
 		categories[i].classList.add("hide");
-		categories[i].classList.remove("show-ib");
+		categories[i].classList.remove("show_inline-block");
 	}
 }
 function showCategory(className) {
@@ -87,7 +87,7 @@ function showCategory(className) {
 	let i;
 
 	for (i = 0; i < categories.length; i++) {
-		categories[i].classList.add("show-ib");
+		categories[i].classList.add("show_inline-block");
 		categories[i].classList.remove("hide");
 	}
 }

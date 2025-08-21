@@ -14,7 +14,7 @@ export function initHome() {
 	app.classList.remove("blog");
 
 	app.innerHTML = `
-<div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
+<div id="tx-panel-dismiss" class="backdrop hide"></div>
 <div id="href-top" class="index">
 	<div class="index__message-bar hide"></div>
 	<div class="card-filter" role="toolbar"></div>
@@ -26,8 +26,8 @@ ${backToTopHtml}`
 
 	const htmlElement = document.querySelector("html");
 	
-	if (htmlElement.classList.contains("map-html")) 
-		htmlElement.classList.remove("map-html");
+	if (htmlElement.classList.contains("overflow-hidden")) 
+		htmlElement.classList.remove("overflow-hidden");
 	
 	initializeHomeHeader();
 	

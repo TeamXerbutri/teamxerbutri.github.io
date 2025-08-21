@@ -63,7 +63,7 @@ export class CmsFeatureTooltip {
 			const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 			
-			featureTooltip.innerHTML = `<h2 class="cms-feature-tooltip_h2">${route} - ${name}</h2>`;
+			featureTooltip.innerHTML = `<h2 class="cms-feature-tooltip__h2">${route} - ${name}</h2>`;
 			if (viewportWidth > 756 || viewportHeight > 500) {
 								
 				// width large = 310px

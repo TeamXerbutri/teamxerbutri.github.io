@@ -6,8 +6,7 @@ export class TopBarControl extends Control {
 		const options = opt_options || {};
 		
 		const element = document.createElement("div");
-		element.id = "tx-top-bar";
-		element.className = "tx-top-bar ol-unselectable ol-control";
+		element.className = "top-bar-control ol-unselectable ol-control";
 		
 		super({
 			element: element,
