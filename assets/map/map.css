@@ -4,13 +4,10 @@
 @import "tooltip/feature.css";
 @import "control/zoomslider.css";
 @import "control/default.css";
+@import "control/topbar.css";
 
-.html_hide-overflow {
+.overflow-hidden {
 	overflow: hidden;
-}
-
-.map-header {
-	display: none;
 }
 
 .map {
@@ -22,20 +19,6 @@
 	height: calc(var(--vh, 1vh) * 100);
 	background-color: #fff;
 	color: #000;
-}
-
-/* geocoder */
-#tx-top-bar {
-	position: absolute;
-	width: calc(100% - 14px);
-	height: 2.375em;
-	top: .5em;
-	box-sizing: border-box;
-	background-color: rgba(255, 255, 255, .4);
-	border-radius: 4px;
-	margin-left: 5px;
-	margin-right: 5px;
-	padding: 2px;
 }
 
 .tx-modal {
@@ -52,17 +35,5 @@
 @media only screen and (min-width: 756px) and (min-height: 500px) {
 	.map {
 		height: 100vh;
-	}
-
-	#tx-top-bar {
-		position: absolute;
-		width: 318px;
-		height: 2.375em;
-		top: 0.5em;
-		left: 0.5em;
-		box-sizing: border-box;
-		background-color: rgba(255, 255, 255, .4);
-		border-radius: 4px;
-		padding: 2px;
 	}
 }

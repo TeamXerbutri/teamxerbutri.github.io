@@ -18,7 +18,7 @@ export function initMap() {
 	
 	let app = document.getElementById("js-app");
 	
-	app.innerHTML = `<div id="js-map" class="map"><div class="menu-control__dismiss hide dismiss"></div> <div class="layer-control__dismiss hide dismiss"></div></div>`;
+	app.innerHTML = `<div id="js-map" class="map"><div class="menu-modal__dismiss hide dismiss"></div> <div class="layer-modal__dismiss hide dismiss"></div></div>`;
 	app.classList.remove("blog");
 
 	// The vertical height fix for mobile devices
@@ -33,15 +33,15 @@ export function initMap() {
 	
 	// do not show header in map
 	const headerElem = document.querySelector("header");
-	if (!headerElem.classList.contains("map-header")) {
-		headerElem.classList.add("map-header")
+	if (!headerElem.classList.contains("hide")) {
+		headerElem.classList.add("hide")
 		headerElem.innerHTML = "";
 	}
 	
 	// correct the overflow in mobile
 	const htmlElement = document.querySelector("html");
-	if(!htmlElement.classList.contains("html_hide-overflow")){
-		htmlElement.classList.add("html_hide-overflow");
+	if(!htmlElement.classList.contains("overflow-hidden")){
+		htmlElement.classList.add("overflow-hidden");
 	}
 	
 	useGeographic();

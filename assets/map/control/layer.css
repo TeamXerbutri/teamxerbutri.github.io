@@ -1,24 +1,19 @@
 /*CSS for the MapLayerControl*/
-@import "bottomsheet.css";
+@import "../../shared/bottomsheet.css";
 
-.tx-layer {
+.layer-control {
 	position: absolute;
 	bottom: 4.4em;
 	left: 0.5em;
 }
 
-.tx-layer > button {
-	background-image: url("./layers-b.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 1.5em;
+.layer-control__icon {
+	fill: #060606;
+	width: 24px;
+	height: 24px;
 }
 
-.tx-layer.dark {
-	background-image: url("./layers.svg");
-}
-
-.layer-control__modal > button {
+.layer-modal > button {
 	display: inline-block;
 	margin: 10px 20px 10px 0;
 	padding: 0;
@@ -32,11 +27,11 @@
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
-.layer-control__modal > button:hover {
+.layer-modal > button:hover {
 	box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.22);
 }
 
-.tx-layer-active-icon {
+.layer-modal__button_active {
 	color: #fff;
 	display: inline-block;
 	background-color: rgba(0, 0, 0, .8);
@@ -53,51 +48,38 @@
 	left: 16px;
 }
 
-.layer-control__modal > button::-moz-focus-inner {
+.layer-modal > button::-moz-focus-inner {
 	border: none;
 	padding: 0;
 }
 
-.layer-control__modal > button:focus, .layer-control__modal > button:hover {
+.layer-modal > button:focus, .layer-modal > button:hover {
 	text-decoration: none;
 	box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
 }
 
-.layer-control__modal > button:hover {
+.layer-modal > button:hover {
 	cursor: pointer;
 }
 
-#layer-control__modal-button_bridge {
+.layer-modal__button{
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.layer-modal__button_bridge {
 	background-image: url("../../shared/filter/bridge.jpg");
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
-#layer-control__modal-button_tunnel {
+.layer-modal__button_tunnel {
 	background-image: url("../../shared/filter/tunnel.jpg");
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
-#layer-control__modal-button_rail {
+.layer-modal__button_rail {
 	background-image: url("../../shared/filter/rail.jpg");
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
-#layer-control__modal-button_building {
+.layer-modal__button_building {
 	background-image: url("../../shared/filter/building.jpg");
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-@media only screen and (min-width: 756px) and (min-height: 500px){
-
-	.tx-layer button {
-		background-image: url("./layers-b.svg");
-	}
 }

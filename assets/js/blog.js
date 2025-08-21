@@ -127,7 +127,7 @@ export function initBlog() {
 
 	let app = document.getElementById("js-app");
 	app.innerHTML = `
-		<div id="tx-panel-dismiss" class="tx-backdrop hide"></div>
+		<div id="tx-panel-dismiss" class="backdrop hide"></div>
 		<div id="article-title"></div>
 		<article id="href-top">
 		<p id="article-visited" class="authordate"></p>
@@ -151,8 +151,8 @@ export function initBlog() {
 
 	const htmlElement = document.querySelector("html");
 	
-	if (htmlElement.classList.contains("html_hide-overflow")) 
-		htmlElement.classList.remove("html_hide-overflow");
+	if (htmlElement.classList.contains("overflow-hidden")) 
+		htmlElement.classList.remove("overflow-hidden");
 	
 	initializeBlogHeader();
 	

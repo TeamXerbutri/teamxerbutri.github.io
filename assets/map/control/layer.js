@@ -2,21 +2,20 @@
 import {dragIcon} from "../../shared/icons/icons.js";
 
 export class MapLayerControl extends Control {
-	// TODO I can use an array as parameter, and foreach to create the buttons using a vector property
 	constructor(bridgeVector, buildingVector, railVector, tunnelVector, opt_options) {
 		const options = opt_options || {};
 
 		// layer control element
+		const layerIcon = '<svg aria-hidden="true" class="layer-control__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M0,10 l24,-10 l24,10 l0,2 l-24,10 l-24,-10 Z M0,23 l6,-2.5 l18,7.5 l18,-7.5 l6,2.5 l0,2 l-24,10 l-24,-10 Z M0,36 l6,-2.5 l18,7.5 l18,-7.5 l6,2.5 l0,2 l-24,10 l-24,-10"></path></svg>';
+		
 		const element = document.createElement("div");
-		element.id = "tx-layer";
-		element.className = "tx-layer ol-unselectable ol-control";
+		element.className = "layer-control ol-unselectable ol-control";
 
 		// button for layer control
 		const button = document.createElement("button");
-		button.id = "tx-layer_button";
 		button.classList.add("ol-unselectable");
-		button.classList.add("tx-layer_button");
 		button.title = "Kaartlagen wijzigen"; //TODO translate => use i18n
+		button.innerHTML = layerIcon;
 		button.onclick = function() {
 			toggleModal();
 		};
@@ -24,7 +23,7 @@ export class MapLayerControl extends Control {
 		element.appendChild(button);
 		
 		// dismiss for layer modal
-		const overlay = document.querySelector(".layer-control__dismiss");
+		const overlay = document.querySelector(".layer-modal__dismiss");
 		
 		overlay.addEventListener("click", function(event) {
 			if (event.target === overlay) {
@@ -34,8 +33,8 @@ export class MapLayerControl extends Control {
 		
 		// modal for filtering layers
 		const layerModal = document.createElement("div");
-		layerModal.classList.add("mat-bottom-sheet");
-		layerModal.classList.add("layer-control__modal");
+		layerModal.classList.add("layer-modal");
+		layerModal.classList.add("bottom-sheet");
 		layerModal.classList.add("hide");
 		layerModal.isActive = false;
 		
@@ -44,7 +43,7 @@ export class MapLayerControl extends Control {
 
 		// draghandle closing the bottom sheet
 		const dragHandle = document.createElement("div")
-		dragHandle.classList.add("mat-bottom-sheet__drag-handle");
+		dragHandle.classList.add("bottom-sheet__drag-handle");
 		dragHandle.title = "drag";//;
 		dragHandle.innerHTML = `${dragIcon}`;
 		
@@ -54,7 +53,8 @@ export class MapLayerControl extends Control {
 		
 		// create buttons for layer filters
 		const bridgeButton = document.createElement("button");
-		bridgeButton.id = "layer-control__modal-button_bridge";
+		bridgeButton.classList.add("layer-modal__button_bridge");
+		bridgeButton.classList.add("layer-modal__button");
 		bridgeButton.isActive = false;
 		toggleButton(bridgeButton, "bruggen"); //TODO translate => use i18n
 		
@@ -64,7 +64,8 @@ export class MapLayerControl extends Control {
 		};
 		
 		const buildingButton = document.createElement("button");
-		buildingButton.id = "layer-control__modal-button_building";
+		buildingButton.classList.add("layer-modal__button_building");
+		buildingButton.classList.add("layer-modal__button");
 		buildingButton.isActive = false;
 		toggleButton(buildingButton, "gebouwen"); //TODO translate => use i18n
 		
@@ -74,7 +75,8 @@ export class MapLayerControl extends Control {
 		}
 		
 		const railButton = document.createElement("button");
-		railButton.id = "layer-control__modal-button_rail";
+		railButton.classList.add("layer-modal__button_rail");
+		railButton.classList.add("layer-modal__button");
 		railButton.isActive = false;
 		toggleButton(railButton, "spoorwegen"); //TODO translate => use i18n
 		
@@ -84,7 +86,8 @@ export class MapLayerControl extends Control {
 		}
 		
 		const tunnelButton = document.createElement("button");
-		tunnelButton.id = "layer-control__modal-button_tunnel";
+		tunnelButton.classList.add("layer-modal__button_tunnel");
+		tunnelButton.classList.add("layer-modal__button");
 		tunnelButton.isActive = false;
 		toggleButton(tunnelButton, "tunnels"); //TODO translate => use i18n
 		
@@ -110,7 +113,7 @@ export class MapLayerControl extends Control {
 			}
 			else {
 				button.title = "Verberg "+ categoryName + " op kaart"; //TODO translate => use i18n
-				button.innerHTML = `<span class="tx-layer-active-icon">✔</span>`;
+				button.innerHTML = `<span class="layer-modal__button_active">✔</span>`;
 				button.isActive = true;
 			}
 		}

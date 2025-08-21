@@ -1,22 +1,22 @@
 /*CSS for the MapMenuControl*/
 @import "./button.css";
 
-.tx-menu {
+.menu-control {
 	position: absolute;
 	bottom: 0.5em;
 	left: 0.5em;
 }
 
-.tx-menu > button {
-	background-image: url("./menu-b.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 1.2em;
-}
-
-#tx-menu-container {
+.menu-modal__item {
 	width: 100%;
 	background-color: rgba(255, 255, 255, .8);
 	border-radius: 4px;
 	padding: 2px;
 }
+
+.menu-control__icon {
+	fill: #060606;
+	width: 24px;
+	height: 24px;
+}
+

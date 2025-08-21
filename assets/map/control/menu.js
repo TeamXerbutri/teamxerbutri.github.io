@@ -7,15 +7,15 @@ export class MapMenuControl extends Control {
 		const options = opt_options || {};
 
 		// menu control element
+		const menuIcon = '<svg aria-hidden="true" class="menu-control__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"> <path d="M4,2 A4,4,0,0,0,4,10 l40,0 a4,4,0,0,0,0,-8 l-40,0 Z M4,20 A4,4,0,0,0,4,28 l40,0 a4,4,0,0,0,0,-8 l-40,0 Z M4,38 A4,4,0,0,0,4,46 l40,0 a4,4,0,0,0,0,-8 l-40,0"></path></svg>';
+		
 		const element = document.createElement("div");
-		element.id = "tx-menu";
-		element.className = "tx-menu ol-unselectable ol-control";
+		element.className = "menu-control ol-unselectable ol-control";
 
 		// button for menu control
 		const button = document.createElement("button");
-		button.id = "tx-menu_button";
 		button.classList.add("ol-unselectable");
-		button.classList.add("tx-menu_button");
+		button.innerHTML = menuIcon;
 		button.title = "Menu openen"; //TODO translate => use i18n
 		
 		button.onclick = function() {
@@ -25,7 +25,7 @@ export class MapMenuControl extends Control {
 		element.appendChild(button);
 
 		// dismiss overlay
-		const menuOverlay = document.querySelector(".menu-control__dismiss");
+		const menuOverlay = document.querySelector(".menu-modal__dismiss");
 
 		menuOverlay.addEventListener("click", function(event) {
 			if (event.target === menuOverlay) {
@@ -36,8 +36,7 @@ export class MapMenuControl extends Control {
 		// modal for menu
 
 		const menuModal = document.createElement("div");
-		menuModal.classList.add("menu-control__modal");
-		menuModal.classList.add("mat-bottom-sheet");
+		menuModal.classList.add("bottom-sheet");
 		menuModal.classList.add("hide");
 		menuModal.isActive = false;
 		
@@ -47,7 +46,7 @@ export class MapMenuControl extends Control {
 		
 		// drag handle closing the bottom sheet
 		const dragHandle = document.createElement("div")
-		dragHandle.classList.add("mat-bottom-sheet__drag-handle");
+		dragHandle.classList.add("bottom-sheet__drag-handle");
 		dragHandle.title = "drag";//;
 		dragHandle.innerHTML = `${dragIcon}`;
 
@@ -56,7 +55,7 @@ export class MapMenuControl extends Control {
 		};
 		
 		const menuContainer = document.createElement("div");
-		menuContainer.id = "tx-menu-container";
+		menuContainer.classList.add("menu-modal__item");
 		menuContainer.innerHTML = `<a class="mat-button light" href="../" title="Ga naar het index-overzicht van Team Xerbutri, met alle bezochte locaties">Naar het index-overzicht van Team Xerbutri</a>`; //TODO translate => use i18n
 		
 		menuModal.appendChild(dragHandle);
