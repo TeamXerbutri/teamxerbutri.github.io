@@ -1,6 +1,6 @@
 ﻿@import "overlay.css";
 
-.mat-bottom-sheet {
+.bottom-sheet {
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -13,7 +13,7 @@
 	max-width: 756px; /* in specs 640px, but this just looks better*/
 }
 
-.mat-bottom-sheet__drag-handle {
+.bottom-sheet__drag-handle {
 	width: 22px;
 	height: 22px;
 	padding: 5px 22px;
@@ -22,12 +22,12 @@
 	cursor: grab;
 }
 
-.mat-drag-handle {
+.drag-handle {
 	fill: #49454F;
 }
 
 @media only screen and (min-width: 756px) {
-	.mat-bottom-sheet {
+	.bottom-sheet {
 		position: fixed;
 		bottom: 0;
 		left: 50%;
