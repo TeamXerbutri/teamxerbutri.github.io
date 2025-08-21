@@ -1,5 +1,5 @@
 /* geocoder */
-#tx-top-bar {
+.top-bar-control {
 	position: absolute;
 	width: calc(100% - 14px);
 	height: 2.375em;
@@ -13,7 +13,7 @@
 }
 
 @media only screen and (min-width: 756px) and (min-height: 500px) {
-	#tx-top-bar {
+	.top-bar-control {
 		position: absolute;
 		width: 318px;
 		height: 2.375em;
