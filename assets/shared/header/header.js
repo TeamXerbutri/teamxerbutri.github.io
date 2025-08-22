@@ -56,8 +56,8 @@ function initializeBlogHeader(){
 	if (headerElem.classList.contains("home"))
 		headerElem.classList.remove("home");
 
-	if (headerElem.classList.contains("map-header"))
-		headerElem.classList.remove("map-header");
+	if (headerElem.classList.contains("hide"))
+		headerElem.classList.remove("hide");
 
 	if (!headerElem.classList.contains("blog"))
 		headerElem.classList.add("blog")
@@ -75,8 +75,8 @@ function initializeHomeHeader() {
 	if (headerElem.classList.contains("blog"))
 		headerElem.classList.remove("blog");
 
-	if (headerElem.classList.contains("map-header"))
-		headerElem.classList.remove("map-header");
+	if (headerElem.classList.contains("hide"))
+		headerElem.classList.remove("hide");
 
 	if (!headerElem.classList.contains("home"))
 		headerElem.classList.add("home")

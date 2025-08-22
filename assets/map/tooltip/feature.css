@@ -1,6 +1,6 @@
 /*CSS for the MapFeatureTooltip*/
 
-.tx-feature-tooltip, .cms-feature-tooltip {
+.feature-tooltip, .cms-feature-tooltip {
 	transition: all .5s ease-in-out;
 	position: absolute;
 	left: 50%;
@@ -19,36 +19,36 @@
 	box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.tx-feature-tooltip:hover{
+.feature-tooltip:hover{
 	background-color: #fff;
 	color: #000;
 }
 
-#tx-feature-tooltip a {
+.feature-tooltip a {
 	text-decoration: none;
 	color: #373737;
 }
 
-#tx-feature-tooltip a:hover {
+.feature-tooltip a:hover {
 	text-decoration: none;
 	background-color: #fff;
 	color: #000;
 }
 
-.tx-feature-tooltip-pinned {
+.feature-tooltip_pinned {
 	position: absolute;
 	top: -7px;
 	right: -7px;
 	scale: 60%;
 }
 
-.tx-feature-tooltip_img {
+.feature-tooltip__img {
 	display: inline-block;
 	vertical-align: middle;
 	padding-top: 4px;
 }
 
-.tx-feature-tooltip_h2, .cms-feature-tooltip_h2 {
+.feature-tooltip__h2, .cms-feature-tooltip__h2 {
 	display: inline-block;
 	font-size: 1em;
 	padding-left: 10px;
@@ -58,7 +58,7 @@
 }
 
 @media only screen and (min-width: 756px) and (min-height: 500px){
-	.tx-feature-tooltip {
+	.feature-tooltip {
 		transition: all .5s ease-in-out;
 		position: absolute;
 		height: 233px;
@@ -66,7 +66,7 @@
 		z-index: 100;
 		background-color: rgba(255, 255, 255, .4);
 		color: #fff;
-		border-radius: 0px;
+		border-radius: 0;
 		padding: 0;
 		bottom: revert;
 		visibility: hidden;
@@ -91,22 +91,22 @@
 		display: block;
 	}
 
-	#tx-feature-tooltip a {
+	.feature-tooltip a {
 		color: #f2f7fa;
 	}
 
-	#tx-feature-tooltip a:hover {
+	.feature-tooltip a:hover {
 		color: #fff;
 	}
 
-	.tx-feature-tooltip_img {
+	.feature-tooltip__img {
 		display: block;
 		width: 310px;
 		height: 238px;
 		padding-top: 0;
 	}
 
-	.tx-feature-tooltip_h2 {
+	.feature-tooltip__h2 {
 		display: block;
 		position: relative;
 		top: -51px;
@@ -124,7 +124,7 @@
 		line-height: normal;
 	}
 	
-	.cms-feature-tooltip_h2 {
+	.cms-feature-tooltip__h2 {
 		display: block;
 		position: relative;
 		top: 0;

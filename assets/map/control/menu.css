@@ -1,0 +1,22 @@
+/*CSS for the MapMenuControl*/
+@import "./button.css";
+
+.menu-control {
+	position: absolute;
+	bottom: 0.5em;
+	left: 0.5em;
+}
+
+.menu-modal__item {
+	width: 100%;
+	background-color: rgba(255, 255, 255, .8);
+	border-radius: 4px;
+	padding: 2px;
+}
+
+.menu-control__icon {
+	fill: #060606;
+	width: 24px;
+	height: 24px;
+}
+

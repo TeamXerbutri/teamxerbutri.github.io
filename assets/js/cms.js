@@ -35,8 +35,8 @@ export function initCms() {
 	
 	// correct the overflow in mobile
 	const htmlElement = document.querySelector("html");
-	if(!htmlElement.classList.contains("map-html")){
-		htmlElement.classList.add("map-html");
+	if(!htmlElement.classList.contains("overflow-hidden")){
+		htmlElement.classList.add("overflow-hidden");
 	}
 	
 	useGeographic();
@@ -113,7 +113,7 @@ export function initCms() {
 	// top bar
 	const topbar = document.createElement("div");
 	topbar.id = "tx-cms-top-bar";
-	topbar.className = "tx-top-bar ol-unselectable ol-control";
+	topbar.className = "ol-unselectable ol-control";
 	topbar.innerHTML = `<input type="text" value="" id="tx-mouse-position"><button id="tx-copy-button" onclick="copyText()">Copy</button>`;
 
 	map.addEventListener("click", function() {
