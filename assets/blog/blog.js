@@ -14,9 +14,9 @@ import OSM from "ol/source/OSM";
 import View from "ol/View";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
-import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
+import PhotoswipeMatDesignPlugin from "./gallery/photoswipe-mat-design-plugin.js";
 import {leftArrow, nextArrow, prevArrow, zoomIn} from "../shared/icons/icons.js";
-import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
+import PhotoswipeOpenLayersPlugin from "./gallery/photoswipe-ol-plugin.js";
 import { initializeBlogHeader} from "../shared/header/header.js";
 import handleNotFound from "./notfound/notfound.js";
 
@@ -136,7 +136,7 @@ export function initBlog() {
 		<section class="blog__content"></section>
 		<p class="blog__updated blog_ital"></p>
 		<section class="blog__sources"></section>
-		<section id="article-gallery"></section>
+		<section class="blog__gallery"></section>
 		</article>
 		${backToTopHtml}
 		<script id="jsonld" type="application/ld+json"></script>
@@ -288,14 +288,14 @@ export function initBlog() {
 			jsonHelper.fetchBlogImages(value, routeId).then(
 				(items) => {
 					//gallery
-					let gallerySection = document.getElementById("article-gallery");
+					let gallerySection = document.querySelector(".blog__gallery");
 					let galleryTitle = translator.translate("gallery.title");
 
 					let galleryDescription = translator.translate("gallery.description");
 
 					let gallery = document.createElement("div");
 					gallery.classList.add("gallery");
-					gallery.id = "gallery--responsive-images";
+					gallery.id = "gallery__responsive-images";
 
 					let title = document.createElement("h2");
 					title.innerText = galleryTitle;
@@ -323,7 +323,7 @@ export function initBlog() {
 									};
 
 									const lightbox = new PhotoSwipeLightbox({
-										gallery: "#gallery--responsive-images",
+										gallery: "#gallery__responsive-images",
 										children: ".pswp-gallery__item",
 										counter: false,
 										bgOpacity: 1,
@@ -354,7 +354,7 @@ export function initBlog() {
 								};
 
 								const lightbox = new PhotoSwipeLightbox({
-									gallery: "#gallery--responsive-images",
+									gallery: "#gallery__responsive-images",
 									children: ".pswp-gallery__item",
 									counter: false,
 									bgOpacity: 1,
@@ -388,7 +388,7 @@ export function initBlog() {
 							top: 64, bottom: 24, left: 0, right: 0
 						};
 						const lightbox = new PhotoSwipeLightbox({
-							gallery: "#gallery--responsive-images",
+							gallery: "#gallery__responsive-images",
 							children: "a",
 							counter: false,
 							bgOpacity: 1,
