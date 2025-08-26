@@ -127,15 +127,15 @@ export function initBlog() {
 
 	let app = document.getElementById("js-app");
 	app.innerHTML = `
-		<div id="tx-panel-dismiss" class="backdrop hide"></div>
-		<div id="article-title"></div>
+		<div class="modal__dismiss backdrop hide"></div>
+		<div class="blog__title"></div>
 		<article id="href-top">
-		<p id="article-visited" class="authordate"></p>
-		<p id="article-intro"></p>
-		<aside id="article-aside"></aside>
-		<section id="article-content"></section>
-		<p id="article-updated" class="authordate"></p>
-		<section id="article-sources"></section>
+		<p class="blog__author-visit blog_ital"></p>
+		<p class="blog__intro"></p>
+		<aside class="blog__facts"></aside>
+		<section class="blog__content"></section>
+		<p class="blog__updated blog_ital"></p>
+		<section class="blog__sources"></section>
 		<section id="article-gallery"></section>
 		</article>
 		${backToTopHtml}
@@ -171,23 +171,24 @@ export function initBlog() {
 				(blogContent) => {
 					document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
 					document.querySelector('meta[name="description"]').setAttribute("content", blogContent.description);
-					document.getElementById("article-title").innerHTML = `<h1>${blogContent.title}</h1>`;
+					document.querySelector(".blog__title").innerHTML = `<h1>${blogContent.title}</h1>`;
 					// intro
-					document.getElementById("article-intro").innerHTML = blogContent.intro;
+					document.querySelector(".blog__intro").innerHTML = blogContent.intro;
 
 					// adventure and history
+					let articleContent = document.querySelector(".blog__content");
 					if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
 						const adventureTitle = translator.translate("adventure");
 
-						document.getElementById("article-content").innerHTML += `<h2>${adventureTitle}</h2>`;
-						document.getElementById("article-content").innerHTML += blogContent.adventure;
+						articleContent.innerHTML += `<h2>${adventureTitle}</h2>`;
+						articleContent.innerHTML += blogContent.adventure;
 					}
 
 					if (blogContent.history !== undefined && blogContent.history !== "") {
 						let historyTitle = translator.translate("history");
 
-						document.getElementById("article-content").innerHTML += `<h2>${historyTitle}</h2>`;
-						document.getElementById("article-content").innerHTML += blogContent.history;
+						articleContent.innerHTML += `<h2>${historyTitle}</h2>`;
+						articleContent.innerHTML += blogContent.history;
 					}
 
 					const year = blogContent.created.split("-")[0];
@@ -195,11 +196,11 @@ export function initBlog() {
 
 					let monthBlog = translator.translate(`month.${month}`);
 
-					document.getElementById("article-visited").innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
+					document.querySelector(".blog__author-visit").innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
 
 					let updatedSplit = blogContent.updated.split("-");
 
-					document.getElementById("article-updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
+					document.querySelector(".blog__updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
 				},
 			).catch((error) => {
 				console.error(`An error occured in getting the translated blog content: ${error}`);
@@ -244,18 +245,19 @@ export function initBlog() {
 									break;
 							}
 						});
-						document.getElementById("article-aside").appendChild(ul);
+						document.querySelector(".blog__facts").appendChild(ul);
 					}
 					if (countProperties(blogFacts.facts) <= 0) {
-						document.getElementById("article-aside").style.display = "none";
+						document.querySelector(".blog__facts").style.display = "none";
 					}
 
 					if (blogFacts.sources.length > 0) {
 						let sourceTitle = translator.translate("sources.title");
 						let sourceDescription = translator.translate("sources.description");
+						let articleSources = document.querySelector(".blog__sources");
 
-						document.getElementById("article-sources").innerHTML += `<h2>${sourceTitle}</h2>`;
-						document.getElementById("article-sources").innerHTML += `<p>${sourceDescription}</p>`;
+						articleSources.innerHTML += `<h2>${sourceTitle}</h2>`;
+						articleSources.innerHTML += `<p>${sourceDescription}</p>`;
 						let sourceList = "";
 						blogFacts.sources.forEach(function (source) {
 
@@ -264,7 +266,7 @@ export function initBlog() {
 
 							sourceList += `<li> <a href="${source.url}" title="${source.title}" target="_blank">${source.title}</a> <i>${visitedOn}</i></li>`;
 						});
-						document.getElementById("article-sources").innerHTML += `<ol>${sourceList}</ol>`;
+						articleSources.innerHTML += `<ol>${sourceList}</ol>`;
 					}
 
 					if (document.getElementById("omap")) {

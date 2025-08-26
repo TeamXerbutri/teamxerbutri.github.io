@@ -22,9 +22,9 @@ function setNotFound(translator) {
 	const errorDescription = translator.translate("errors.404.content");
 	document.title = "404 " + errorTitle + " - Xerbutri Urban Exploring";
 	document.querySelector('meta[name="description"]').setAttribute("content", "This Xerbutri blog was not found");
-	document.getElementById("article-title").innerHTML = `<h1>${errorTitle}</h1>`;
+	document.querySelector(".blog__title").innerHTML = `<h1>${errorTitle}</h1>`;
 	// intro
-	document.getElementById("article-intro").innerHTML = `<p>${errorDescription}</p>`;
+	document.querySelector(".blog__intro").innerHTML = `<p>${errorDescription}</p>`;
 }
 
 export default handleNotFound;
