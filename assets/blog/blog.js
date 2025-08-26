@@ -2,11 +2,6 @@
 import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
 import Translator from "../js/translator.js";
 import JsonHelper from "./jsonhelper.js";
-import PhotoSwipeLightbox from "photoswipe/lightbox";
-import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
-import "./gallery/gallery.css"
-import "photoswipe/style.css";
-import {createGallery, createGalleryWithCaptions} from "./gallery/galleryfactory.js";
 import {useGeographic} from "ol/proj";
 import {Icon, Stroke, Style} from "ol/style";
 import {Tile as TileLayer, Vector as VectorLayer} from "ol/layer";
@@ -14,9 +9,7 @@ import OSM from "ol/source/OSM";
 import View from "ol/View";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
-import PhotoswipeMatDesignPlugin from "./gallery/photoswipe-mat-design-plugin.js";
-import {leftArrow, nextArrow, prevArrow, zoomIn} from "../shared/icons/icons.js";
-import PhotoswipeOpenLayersPlugin from "./gallery/photoswipe-ol-plugin.js";
+import {buildGallery} from "./gallery/gallery.js";
 import { initializeBlogHeader} from "../shared/header/header.js";
 import handleNotFound from "./notfound/notfound.js";
 
@@ -31,6 +24,7 @@ function countProperties(obj) {
 	return count;
 }
 
+// TODO: split off the factsmap (is only for rail)
 let omap;
 
 function loadFactsMap(route) {
@@ -201,6 +195,14 @@ export function initBlog() {
 					let updatedSplit = blogContent.updated.split("-");
 
 					document.querySelector(".blog__updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
+					
+					if(document.querySelector("article").scrollHeight < app.clientHeight) {
+						buildGallery(translator, jsonHelper, value, routeId);
+					}
+					else{
+						app.addEventListener("scroll", createImageGallery, true);
+					}
+					
 				},
 			).catch((error) => {
 				console.error(`An error occured in getting the translated blog content: ${error}`);
@@ -284,145 +286,27 @@ export function initBlog() {
 			).catch((error) => {
 				console.error(`An error occured in getting the JSON-LD: ${error}`);
 			});
-
-			jsonHelper.fetchBlogImages(value, routeId).then(
-				(items) => {
-					//gallery
-					let gallerySection = document.querySelector(".blog__gallery");
-					let galleryTitle = translator.translate("gallery.title");
-
-					let galleryDescription = translator.translate("gallery.description");
-
-					let gallery = document.createElement("div");
-					gallery.classList.add("gallery");
-					gallery.id = "gallery__responsive-images";
-
-					let title = document.createElement("h2");
-					title.innerText = galleryTitle;
-					gallerySection.appendChild(title);
-
-					let description = document.createElement("p");
-					description.innerText = galleryDescription;
-					gallerySection.appendChild(description);
-
-					// if there are captions
-					translator.fetchBlogCaptions(value, routeId).then(
-						(captions) => {
-
-							//if the object has coordinates, create gallery with captions and openlayers map
-							jsonHelper.fetchBlogPhotos(value, routeId).then(
-								(photos) => {
-									let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
-									gallerySection.appendChild(openLayersGallery);
-
-									const smallScreenPadding = {
-										top: 64, bottom: 0, left: 0, right: 0
-									};
-									const largeScreenPadding = {
-										top: 64, bottom: 24, left: 52, right: 52
-									};
-
-									const lightbox = new PhotoSwipeLightbox({
-										gallery: "#gallery__responsive-images",
-										children: ".pswp-gallery__item",
-										counter: false,
-										bgOpacity: 1,
-										closeSVG: leftArrow,
-										zoomSVG: zoomIn,
-										arrowNextSVG: nextArrow,
-										arrowPrevSVG: prevArrow,
-										// adjust viewport for design
-										paddingFn: (viewportSize) => {
-											return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-										},
-										pswpModule: () => import("photoswipe")
-									});
-
-									const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
-									lightbox.init();
-								}).catch(() => {
-
-								// create gallery with captions
-								let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
-								gallerySection.appendChild(galleryCaptions);
-
-								const smallScreenPadding = {
-									top: 64, bottom: 0, left: 0, right: 0
-								};
-								const largeScreenPadding = {
-									top: 64, bottom: 24, left: 52, right: 52
-								};
-
-								const lightbox = new PhotoSwipeLightbox({
-									gallery: "#gallery__responsive-images",
-									children: ".pswp-gallery__item",
-									counter: false,
-									bgOpacity: 1,
-									closeSVG: leftArrow,
-									zoomSVG: zoomIn,
-									arrowNextSVG: nextArrow,
-									arrowPrevSVG: prevArrow,
-									// adjust viewport for design
-									paddingFn: (viewportSize) => {
-										return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-									},
-									pswpModule: () => import("photoswipe")
-								});
-
-								const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
-
-								const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
-									mobileLayoutBreakpoint: 700,
-									type: "auto",
-									mobileCaptionOverlapRatio: 1,
-								});
-								lightbox.init();
-							});
-						}).catch(() => {
-
-						// no captions. Create gallery without captions
-						const smallScreenPadding = {
-							top: 64, bottom: 0, left: 0, right: 0
-						};
-						const largeScreenPadding = {
-							top: 64, bottom: 24, left: 0, right: 0
-						};
-						const lightbox = new PhotoSwipeLightbox({
-							gallery: "#gallery__responsive-images",
-							children: "a",
-							counter: false,
-							bgOpacity: 1,
-							closeSVG: leftArrow,
-							zoomSVG: zoomIn,
-							arrowNextSVG: nextArrow,
-							arrowPrevSVG: prevArrow,
-							paddingFn: (viewportSize) => {
-								return viewportSize.x < 700 ? smallScreenPadding : largeScreenPadding
-							},
-							pswpModule: () => import("photoswipe")
-						});
-
-						const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
-
-						let galleryPswp = createGallery(items, value, routeId, gallery);
-						gallerySection.appendChild(galleryPswp);
-						lightbox.init();
-					});
+			
+			function createImageGallery() {
+				
+				if (app.scrollTop + app.clientHeight >= app.scrollHeight-200) {
+					buildGallery(translator, jsonHelper, value, routeId);
+					app.removeEventListener("scroll", createImageGallery, true);
 				}
-			).catch((error) => {
-				console.error(`An error occured in getting the translated blog items: ${error}`);
-			});
+			}
+			
 		}
 
 		translator.getBlogDataById(routeId).then(
 			(value) => {
 
 				if (!value) {
-					handleNotFound(translator, jsonHelper, routeId)
+					handleNotFound(translator, jsonHelper, routeId);
 					return;
 				}
 				
 				constructBlog(value);
+				
 			}
 		).catch((error) => {
 			console.error(`An error occured in getting the translated blog data ${error}`);

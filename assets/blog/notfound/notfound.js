@@ -13,7 +13,7 @@ function handleNotFound(translator, jsonHelper, routeId) {
 		console.error(`An error occured in getting the alternative routes: ${error}`);
 		setNotFound(translator)
 	})
-	console.log("Hit this 404 page for routeId " + routeId);
+	
 	setNotFound(translator);
 }
 

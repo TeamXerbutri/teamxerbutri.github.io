@@ -82,6 +82,7 @@ ${backToTopHtml}`
 
 				app.addEventListener("scroll", function () {
 					if (app.scrollTop + app.clientHeight >= app.scrollHeight) {
+						
 						let cardsToShow = subjects.splice(0, maxCards);
 						if (cardsToShow.length > 0) {
 							cardFactory(cardsToShow);
