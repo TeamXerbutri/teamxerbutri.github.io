@@ -27,6 +27,11 @@ class JsonHelper{
 		const path = this._basePath.concat(category, "/", route, "/photos.json");
 		return fetch(path).then((response) => response.json());
 	}
+	
+	fetchAlternativeRoutes() {
+		const path = this._basePath.concat("routes.json");
+		return fetch(path).then((response) => response.json());
+	}
 }
 
 export default JsonHelper;

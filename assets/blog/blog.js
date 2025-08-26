@@ -1,13 +1,12 @@
-﻿import {routes} from "./routes.js";
-import Map from "ol/Map";
+﻿import Map from "ol/Map";
 import {initializeBackToTop, backToTopHtml} from "../shared/backtotop/backtotop.js";
-import Translator from "./translator.js";
+import Translator from "../js/translator.js";
 import JsonHelper from "./jsonhelper.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
-import "../css/mat/lightbox.css"
+import "./gallery/gallery.css"
 import "photoswipe/style.css";
-import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
+import {createGallery, createGalleryWithCaptions} from "./gallery/galleryfactory.js";
 import {useGeographic} from "ol/proj";
 import {Icon, Stroke, Style} from "ol/style";
 import {Tile as TileLayer, Vector as VectorLayer} from "ol/layer";
@@ -19,6 +18,7 @@ import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {leftArrow, nextArrow, prevArrow, zoomIn} from "../shared/icons/icons.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 import { initializeBlogHeader} from "../shared/header/header.js";
+import handleNotFound from "./notfound/notfound.js";
 
 function countProperties(obj) {
 	let count = 0;
@@ -155,7 +155,7 @@ export function initBlog() {
 		htmlElement.classList.remove("overflow-hidden");
 	
 	initializeBlogHeader();
-	
+
 	let url = window.location.href;
 	if (window.location.hash.length > 1) {
 		// everything before the hash
@@ -163,24 +163,9 @@ export function initBlog() {
 	}
 
 	let routeId = url.split("/").pop().toLowerCase();
-	if (routes[routeId] !== undefined) {
-		routeId = routes[routeId];
-		history.pushState({page: 1}, "", "/avontuur/" + routeId)
-	}
 	
 	function setTranslatedContent() {
 		function constructBlog(value) {
-
-			if (!value) {
-				const errorTitle = translator.translate("errors.404.title");
-				const errorDescription = translator.translate("errors.404.content");
-				document.title = "404 " + errorTitle + " - Xerbutri Urban Exploring";
-				document.querySelector('meta[name="description"]').setAttribute("content", "This Xerbutri blog was not found");
-				document.getElementById("article-title").innerHTML = `<h1>${errorTitle}</h1>`;
-				// intro
-				document.getElementById("article-intro").innerHTML = `<p>${errorDescription}</p>`;
-				return;
-			}
 
 			translator.fetchBlogLanguageContent(value, routeId).then(
 				(blogContent) => {
@@ -429,10 +414,15 @@ export function initBlog() {
 
 		translator.getBlogDataById(routeId).then(
 			(value) => {
+
+				if (!value) {
+					handleNotFound(translator, jsonHelper, routeId)
+					return;
+				}
+				
 				constructBlog(value);
 			}
 		).catch((error) => {
-			// TODO if the blog is not found, show the 404 page
 			console.error(`An error occured in getting the translated blog data ${error}`);
 		});
 	}
