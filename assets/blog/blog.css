@@ -22,17 +22,6 @@ header.blog {
 	margin-left: 16px;
 	font-size: 24px;
 }
-
-#contact {
-	cursor: pointer;
-}
-
-#privacy {
-	cursor: pointer;
-}
-
-/* article */
-
 .blog_ital {
 	margin-left: 4px;
 	font-style: italic;
