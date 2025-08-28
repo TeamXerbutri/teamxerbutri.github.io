@@ -1,8 +1,10 @@
 function showElement(elementId) {
 	let element = document.getElementById(elementId);
-	let dismiss = document.getElementById("tx-panel-dismiss");
+	let dismiss = document.querySelector(".modal__dismiss");
 	element.classList.add("show");
+	element.classList.remove("hide");
 	dismiss.classList.add("show");
+	dismiss.classList.remove("hide");
 	dismiss.addEventListener("click", function () {
 		handleDismiss(elementId)
 	}, true);
@@ -11,14 +13,16 @@ function showElement(elementId) {
 
 function handleDismiss(elementId) {
 	let element = document.getElementById(elementId);
-	let dismiss = document.getElementById("tx-panel-dismiss");
+	let dismiss = document.querySelector(".modal__dismiss");
 	
 	if (dismiss.classList.contains("show")) {
 		dismiss.classList.remove("show");
+		dismiss.classList.add("hide");
 	}
 
 	if (element.classList.contains("show")) {
 		element.classList.remove("show");
+		element.classList.add("hide");
 		document.removeEventListener("click", function () {
 			handleDismiss(elementId)
 		}, true);

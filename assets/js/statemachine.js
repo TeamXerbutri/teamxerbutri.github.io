@@ -1,5 +1,5 @@
 ﻿import {initHome} from "../index/home.js";
-import {initBlog} from "./blog.js";
+import {initBlog} from "../blog/blog.js";
 import {initMap} from "../map/map.js";
 import {initCms} from "./cms.js";
 

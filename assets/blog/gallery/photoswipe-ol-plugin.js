@@ -1,4 +1,4 @@
-import "../css/photoswipe-ol.css"
+import "./photoswipe-ol.css"
 import Map from "ol/Map";
 import {useGeographic} from "ol/proj";
 import {Icon, Stroke, Style} from "ol/style";
