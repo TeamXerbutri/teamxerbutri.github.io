@@ -1,4 +1,4 @@
-const version = "6.1.3";
+const version = "6.1.4";
 
 function fetchServerVersion() {
 	const path = "/data/version.json";
