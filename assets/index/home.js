@@ -14,7 +14,7 @@ export function initHome() {
 	app.classList.remove("blog");
 
 	app.innerHTML = `
-<div id="tx-panel-dismiss" class="backdrop hide"></div>
+<div class="modal__dismiss backdrop hide"></div>
 <div id="href-top" class="index">
 	<div class="index__message-bar hide"></div>
 	<div class="card-filter" role="toolbar"></div>
@@ -82,6 +82,7 @@ ${backToTopHtml}`
 
 				app.addEventListener("scroll", function () {
 					if (app.scrollTop + app.clientHeight >= app.scrollHeight) {
+						
 						let cardsToShow = subjects.splice(0, maxCards);
 						if (cardsToShow.length > 0) {
 							cardFactory(cardsToShow);
