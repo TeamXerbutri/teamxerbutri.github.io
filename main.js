@@ -1,10 +1,7 @@
 import "./style.css"
 import {stateContext} from "./assets/js/statemachine.js";
-import {inject} from "@vercel/analytics";
 
 let navState = new stateContext();
-
-inject();
 
 (function () {
 

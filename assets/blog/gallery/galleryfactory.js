@@ -29,9 +29,47 @@
 	return link;
 }
 
+function createCldLink(item, category, routeId) {
+	let link = document.createElement("a");
+
+	// largest size
+	let sizes = item.sizes;
+	let heights = sizes.map((size) => size.height);
+	let tallest = Math.max(...heights);
+	let tallestIndex = heights.indexOf(tallest);
+	let largest = sizes[tallestIndex];
+
+	// smallest
+	let smallest = Math.min(...heights);
+	let smallestIndex = heights.indexOf(smallest);
+	let smallestSize = sizes[smallestIndex];
+	link.href = "https://res.cloudinary.com/teamxerbutri/image/upload/".concat(category, "/", routeId, "/", routeId, item.name, ".jpg");
+	link.title = ""; //TODO later, add a title to the image
+	link.target = "_blank";
+	
+	link.setAttribute("data-pswp-width", largest.width);
+	link.setAttribute("data-pswp-height", largest.height);
+	link.setAttribute("data-pswp-srcset", sizes.map((size) => "https://res.cloudinary.com/teamxerbutri/image/upload/".concat("c_scale,w_", size.width,"/",category, "/", routeId, "/", routeId, item.name, ".jpg ", size.width, "w"),).join(", "));
+
+	let image = document.createElement("img");
+	image.src = "https://res.cloudinary.com/teamxerbutri/image/upload/".concat("c_scale,w_", smallestSize.width,"/",category, "/", routeId, "/", routeId, item.name, ".jpg");
+	image.alt = ""; //TODO add a title to the image
+
+	link.appendChild(image);
+	return link;
+}
+
 function createGallery(items, category, routeId, gallery){
 	items.forEach((item) => {
 		const link = createLink(item, category, routeId);
+		gallery.appendChild(link);
+	});
+	return gallery;
+}
+
+function createCldGallery(items, category, routeId, gallery){
+	items.forEach((item) => {
+		const link = createCldLink(item, category, routeId);
 		gallery.appendChild(link);
 	});
 	return gallery;
@@ -64,4 +102,4 @@ function decodeHtml(html) {
 	return txt.value;
 }
 
-export { createGallery, createGalleryWithCaptions };
+export { createGallery, createCldGallery, createGalleryWithCaptions };

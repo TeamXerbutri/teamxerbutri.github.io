@@ -8,8 +8,8 @@ import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 import {createGallery, createGalleryWithCaptions} from "./galleryfactory.js";
 
 
-function buildGallery(translator, jsonHelper, value, routeId){
-	jsonHelper.fetchBlogImages(value, routeId).then(
+function buildGallery(translator, jsonHelper, category, routeId){
+	jsonHelper.fetchBlogImages(category, routeId).then(
 		(items) => {
 			//gallery
 			let gallerySection = document.querySelector(".blog__gallery");
@@ -30,13 +30,13 @@ function buildGallery(translator, jsonHelper, value, routeId){
 			gallerySection.appendChild(description);
 
 			// if there are captions // TODO What blogs have captions?
-			translator.fetchBlogCaptions(value, routeId).then(
+			translator.fetchBlogCaptions(category, routeId).then(
 				(captions) => {
 
 					//if the object has coordinates, create gallery with captions and openlayers map
-					jsonHelper.fetchBlogPhotos(value, routeId).then(
+					jsonHelper.fetchBlogPhotos(category, routeId).then(
 						(photos) => {
-							let openLayersGallery = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+							let openLayersGallery = createGalleryWithCaptions(items, captions, category, routeId, gallery);
 							gallerySection.appendChild(openLayersGallery);
 
 							const smallScreenPadding = {
@@ -67,7 +67,7 @@ function buildGallery(translator, jsonHelper, value, routeId){
 						}).catch(() => {
 
 						// create gallery with captions
-						let galleryCaptions = createGalleryWithCaptions(items, captions, value, routeId, gallery);
+						let galleryCaptions = createGalleryWithCaptions(items, captions, category, routeId, gallery);
 						gallerySection.appendChild(galleryCaptions);
 
 						const smallScreenPadding = {
@@ -128,7 +128,7 @@ function buildGallery(translator, jsonHelper, value, routeId){
 
 				const matDesignPlugin = new PhotoswipeMatDesignPlugin(lightbox, {});
 
-				let galleryPswp = createGallery(items, value, routeId, gallery);
+				let galleryPswp = createGallery(items, category, routeId, gallery);
 				gallerySection.appendChild(galleryPswp);
 				lightbox.init();
 			});
