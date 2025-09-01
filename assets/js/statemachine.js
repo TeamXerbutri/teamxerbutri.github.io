@@ -3,82 +3,60 @@ import {initBlog} from "../blog/blog.js";
 import {initMap} from "../map/map.js";
 import {initCms} from "./cms.js";
 
-
 let stateContext = function () {
 	let currentState = new homeState(this);
+	this.currentRoute = "init";
 
 	this.transitionTo = function (state) {
 		currentState = state;
 		currentState.enterState();
 	}
 
-	this.navigate = function () {
-		currentState.navigate();
-	}
-
-	this.initState = function () {
-		const path = window.location.pathname.toLowerCase();
-		if (path.startsWith("/cms")) {
+	this.navigateTo = function (route) {
+		if(route === this.currentRoute) 
+			return;
+		
+		this.currentRoute = route;
+		if (route.startsWith("cms")) {
 			this.transitionTo(new cmsState(this.context));
 			return;
 		}
-		if (path.startsWith("/map")) {
+		if (route.startsWith("map")) {
 			this.transitionTo(new mapState(this.context));
 			return;
 		}
-		if (path.startsWith("/avontuur")) {
+		if (route.startsWith("avontuur")) {
 			this.transitionTo(new blogState(this.context));
 			return;
 		}
+		if (route.startsWith("home")) {
+			this.transitionTo(new homeState(this.context));
+			return;
+		}
 		this.transitionTo(new homeState(this));
+		
+	}
+
+	this.initState = function (route) {
+		// TODO v7 Introduce a historyTracker, keeping the history of the routes like the browser. These are like events?
+		// TODO v7 what happens if you press F5? You go home...
+		this.navigateTo(route);
 	}
 }
 
 let homeState = function (context) {
 	this.context = context;
 	this.enterState = function () {
-		initHome();
+		initHome(this.context);
 	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
-		if (path.length === 0 || path.startsWith("/vijf")) {
-			// do nothing, I am already @home
-			return;
-		}
-		if (path.startsWith("/avontuur")) {
-			this.context.transitionTo(new blogState(this.context));
-			return;
-		}
-		if (path.startsWith("/map")) {
-			this.context.transitionTo(new mapState(this.context));
-		}
-		if (path.startsWith("/cms")) {
-			this.context.transitionTo(new cmsState(this.context));
-		}
-	}
+	
+	// this.navigateTo = function (route) { this.navigateTo(route); }
 }
 
 let blogState = function (context) {
 	this.context = context;
 	this.enterState = function () {
-		initBlog();
-	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
-		if (path.length === 0 || path.startsWith("/vijf")) {
-			this.context.transitionTo(new homeState(this.context));
-			return;
-		}
-		if (path.startsWith("/map")) {
-			this.context.transitionTo(new mapState(this.context));
-			return;
-		}
-		if (path.startsWith("/avontuur")) {
-			this.context.transitionTo(new blogState(this.context));
-		}
-		if (path.startsWith("/cms")) {
-			this.context.transitionTo(new cmsState(this.context));
-		}
+		initBlog(context);
 	}
 }
 
@@ -87,46 +65,12 @@ let mapState = function (context) {
 	this.enterState = function () {
 		initMap();
 	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
-		if (path.length === 0 || path.startsWith("/vijf")) {
-			this.context.transitionTo(new homeState(this.context));
-			return;
-		}
-		if (path.startsWith("/map")) {
-			// do nothing, I am already @map
-			return;
-		}
-		if (path.startsWith("/avontuur")) {
-			this.context.transitionTo(new blogState(this.context));
-		}
-		if (path.startsWith("/cms")) {
-			this.context.transitionTo(new cmsState(this.context));
-		}
-	}
 }
 
 let cmsState = function (context) {
 	this.context = context;
 	this.enterState = function () {
 		initCms();
-	}
-	this.navigate = function () {
-		let path = window.location.pathname.toLowerCase();
-		if (path.length === 0 || path.startsWith("/vijf")) {
-			this.context.transitionTo(new homeState(this.context));
-			return;
-		}
-		if (path.startsWith("/map")) {
-			this.context.transitionTo(new mapState(this.context));
-			return;
-		}
-		if (path.startsWith("/avontuur")) {
-			this.context.transitionTo(new blogState(this.context));
-		}
-		if (path.startsWith("/cms")) {
-			// do nothing, I am already @cms
-		}
 	}
 }
 

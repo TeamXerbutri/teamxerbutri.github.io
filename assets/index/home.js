@@ -6,7 +6,7 @@ import {checkVersion} from "./version/version.js";
 import {initializeHomeHeader} from "../shared/header/header.js";
 
 // Initializes the home page
-export function initHome() {
+export function initHome(stateContext) {
 	let translator = new Translator();
 
 	// Load app
@@ -102,7 +102,7 @@ ${backToTopHtml}`
 			const cardContainer = document.querySelector(".card-feed");
 
 			for (let i in subjects) {
-				let displayCard = createCard(translator, subjects[i]);
+				let displayCard = createCard(translator, stateContext, subjects[i]);
 
 				cardContainer.appendChild(displayCard);
 			}

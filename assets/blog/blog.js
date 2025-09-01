@@ -115,7 +115,7 @@ function loadFactsMap(route) {
 	omap.addLayer(railVector);
 }
 
-export function initBlog() {
+export function initBlog(stateContext) {
 	let translator = new Translator();
 	let jsonHelper = new JsonHelper();
 
@@ -150,18 +150,12 @@ export function initBlog() {
 	
 	initializeBlogHeader();
 
-	let url = window.location.href;
-	if (window.location.hash.length > 1) {
-		// everything before the hash
-		url = window.location.href.split("#")[0];
-	}
-
-	let routeId = url.split("/").pop().toLowerCase();
+	let routeId = stateContext.currentRoute.split("/").pop().toLowerCase();
 	
 	function setTranslatedContent() {
-		function constructBlog(value) {
+		function constructBlog(category) {
 
-			translator.fetchBlogLanguageContent(value, routeId).then(
+			translator.fetchBlogLanguageContent(category, routeId).then(
 				(blogContent) => {
 					document.title = blogContent.shortname + " - Xerbutri Urban Exploring";
 					document.querySelector('meta[name="description"]').setAttribute("content", blogContent.description);
@@ -197,7 +191,7 @@ export function initBlog() {
 					document.querySelector(".blog__updated").innerHTML = translator.translate("article.lastupdate") + translator.localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
 					
 					if(document.querySelector("article").scrollHeight < app.clientHeight) {
-						buildGallery(translator, jsonHelper, value, routeId);
+						buildGallery(translator, jsonHelper, category, routeId);
 					}
 					else{
 						app.addEventListener("scroll", createImageGallery, true);
@@ -208,7 +202,7 @@ export function initBlog() {
 				console.error(`An error occured in getting the translated blog content: ${error}`);
 			});
 
-			jsonHelper.fetchBlogFacts(value, routeId).then(
+			jsonHelper.fetchBlogFacts(category, routeId).then(
 				(blogFacts) => {
 
 					//aside
@@ -279,7 +273,7 @@ export function initBlog() {
 				console.error(`An error occured in getting the translated blog facts: ${error}`);
 			});
 
-			translator.fetchBlogJsonLd(value, routeId).then(
+			translator.fetchBlogJsonLd(category, routeId).then(
 				(jsonld) => {
 					document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
 				}
@@ -290,7 +284,7 @@ export function initBlog() {
 			function createImageGallery() {
 				
 				if (app.scrollTop + app.clientHeight >= app.scrollHeight-200) {
-					buildGallery(translator, jsonHelper, value, routeId);
+					buildGallery(translator, jsonHelper, category, routeId);
 					app.removeEventListener("scroll", createImageGallery, true);
 				}
 			}
@@ -298,14 +292,14 @@ export function initBlog() {
 		}
 
 		translator.getBlogDataById(routeId).then(
-			(value) => {
+			(category) => {
 
-				if (!value) {
+				if (!category) {
 					handleNotFound(translator, jsonHelper, routeId);
 					return;
 				}
 				
-				constructBlog(value);
+				constructBlog(category);
 				
 			}
 		).catch((error) => {

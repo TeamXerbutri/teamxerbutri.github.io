@@ -20,28 +20,30 @@ inject();
 
 			if(route.includes("geef=")) {
 				const subject = route.split("geef=")[1].split("&")[0].toLowerCase();
-				route = "/avontuur/" + subject;
+				route = "avontuur/" + subject;
 			}
 			else if (window.location.pathname.includes(".php")) {
-				route = "/";
+				route = "";
 			}
 			else if (window.location.pathname.length > 1)
-				route = "/" + window.location.pathname.toLowerCase().replace("/", "")
+				route = window.location.pathname.toLowerCase().replace("/", "")
 
 			sessionStorage.redirect = route;
 		}
-
-		(function () {
-			const redirect = sessionStorage.redirect;
-			delete sessionStorage.redirect;
-			if (redirect && redirect !== location.href) {
-				history.replaceState(null, null, redirect);
-			}
-		})();
 	}
 
 	function init() {
 		manipulateHref();
-		navState.initState();
+		
+		// TODO v7 ReThink, going to SessionStorage every time is slow!
+		const redirect = sessionStorage.redirect;
+		delete sessionStorage.redirect;
+		
+		let route = "home";
+		if (redirect && redirect !== location.href) {
+			route = redirect;
+			//history.replaceState(null, null, redirect);
+		}
+		navState.initState(route);
 	}
 })();

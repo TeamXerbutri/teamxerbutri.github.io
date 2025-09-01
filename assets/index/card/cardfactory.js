@@ -1,9 +1,10 @@
-﻿function createCard(translator, BlogObject) {
-	let card = document.createElement("a");
+﻿function createCard(translator, stateContext, BlogObject) {
+	let card = document.createElement("div");
 	card.classList.add("card");
 	card.classList.add("show_inline-block");
 	card.classList.add(BlogObject.category);
-	card.href = createLink(BlogObject.routeid);
+	//ToDo v7 Make this work.
+	card.addEventListener("click", () => {stateContext.navigateTo(createLink(BlogObject.routeid))});
 	card.title = BlogObject.description;
 
 	let image = document.createElement("img");
