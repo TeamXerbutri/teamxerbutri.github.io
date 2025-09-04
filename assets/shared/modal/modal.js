@@ -1,0 +1,1 @@
+export const modalHtml = `<div class="modal__dismiss backdrop hide"></div>`
