@@ -1,8 +1,7 @@
 import "./style.css"
-import {stateContext} from "./assets/js/statemachine.js";
+import {initProgram} from "./assets/program.js";
 import {inject} from "@vercel/analytics";
 
-let navState = new stateContext();
 
 inject();
 
@@ -13,6 +12,11 @@ inject();
 	// github pages 404 work-around
 	function manipulateHref() {
 		// exclude from production
+		console.time("manipulateHref");
+		if (window.location.pathname.length <= 1) {
+			return;
+		}
+				
 		if (import.meta.env.DEV) {
 			console.warn("dev mode");
 
@@ -30,20 +34,14 @@ inject();
 
 			sessionStorage.redirect = route;
 		}
+		console.timeEnd("manipulateHref");
 	}
 
 	function init() {
 		manipulateHref();
 		
 		// TODO v7 ReThink, going to SessionStorage every time is slow!
-		const redirect = sessionStorage.redirect;
-		delete sessionStorage.redirect;
 		
-		let route = "home";
-		if (redirect && redirect !== location.href) {
-			route = redirect;
-			//history.replaceState(null, null, redirect);
-		}
-		navState.initState(route);
+		initProgram();
 	}
 })();

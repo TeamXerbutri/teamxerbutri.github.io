@@ -1,0 +1,24 @@
+﻿{
+	"maps": {
+		"link": "Kaart",
+		"title": "Naar de kaart met alle locaties"
+	},
+	"abouttx": {
+		"link": "Over TX",
+		"title": "Over Team Xerbutri"
+	},
+	"aboutue": {
+		"link": "Over UE",
+		"title": "Over Urban exploring"
+	},
+	"contact": {
+		"link": "Contact",
+		"title": "Neem contact met ons op",
+		"content": "Heb je vragen, opmerkingen of wil je gewoon iets kwijt? Maak een issue op GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> "
+	},
+	"privacy": {
+		"link": "Privacy",
+		"title": "Onze privacy declaratie",
+		"content": "We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy."
+	}
+}
