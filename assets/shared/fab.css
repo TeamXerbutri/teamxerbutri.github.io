@@ -1,0 +1,46 @@
+/* Floating action button */
+
+.fab {
+	color: #F9F0DC;
+	fill: #F9F0DC;
+	background-color: #233237;
+	font-size: 1.6em;
+	width: 56px;
+	height: 56px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 2px rgba(234, 198, 122, 0.4), inset 0 0 8px 8px rgba(0, 0, 0, 0.20);
+	transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.fab:focus {
+	color: #FCF8ED;
+	outline: none;
+	box-shadow: 0 0 4px 2px #EAC67A, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.10);
+}
+
+.fab:focus .icon_dark {
+	fill: #FCF8ED;
+}
+
+.fab:focus-visible {
+	box-shadow: none;
+	outline: #984B43 solid 2px;
+}
+
+.fab:hover {
+	color: #FCF8ED;
+	box-shadow: -2px 2px 8px 4px #000, inset -3px 3px 8px 8px rgba(255, 255, 255, 0.08);
+}
+
+.fab:hover .icon_dark {
+	fill: #FCF8ED;
+}
+
+.fab:active {
+	border: none;
+	box-shadow: 0 0 4px 2px #000, inset -3px 3px 8px 8px rgba(0, 0, 0, 0.70);
+}
+
+.fab:active .icon_dark {
+	fill: #EAC67A;
+}

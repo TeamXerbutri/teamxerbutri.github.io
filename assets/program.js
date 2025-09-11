@@ -25,7 +25,7 @@ export const domLoaded = () => {
 		}
 	}
 	
-	setLanguageInDom()
+	setLanguageInDom(language)
 	
 	
 	window.pageEvents = {

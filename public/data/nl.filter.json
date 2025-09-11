@@ -1,0 +1,18 @@
+﻿{
+	"rail": {
+		"show": "Toon de spoorwegen",
+		"hide": "Verberg de spoorwegen"
+	},
+	"bridge": {
+		"show": "Toon de bruggen",
+		"hide": "Verberg de bruggen"
+	},
+	"tunnel": {
+		"show": "Toon de tunnels",
+		"hide": "Verberg de tunnels"
+	},
+	"building": {
+		"show": "Toon de gebouwen",
+		"hide": "Verberg de gebouwen"
+	}
+}

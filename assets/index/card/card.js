@@ -3,7 +3,6 @@ import {tagComponent} from "./tag/tag.js";
 const fetchCards = async (lang) => {
 	const response = await fetch(`${ApiBasePath}/index.${lang}.json`);
 	return await response.json();
-	
 }
 
 const fetchCardTranslations = async (lang) => {
