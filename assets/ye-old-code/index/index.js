@@ -1,4 +1,3 @@
-// TODO build the index here. This should replace home.js
 // TODO inspired by the Jim-nielsen.com blog on templating in Javascript (2021-12-13)
 
 // have a pattern with files that return strings.

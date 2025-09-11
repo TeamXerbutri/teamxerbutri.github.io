@@ -3,10 +3,6 @@ import {DefaultLanguage, SupportedLanguages} from "./config.js";
 export const lang = () => {
 	const lang = getLanguage();
 	localStorage.setItem("language", lang);
-
-	if (document.documentElement.lang !== lang) {
-		document.documentElement.lang = lang;
-	}
 	
 	return lang;
 }
@@ -19,6 +15,12 @@ const hasLocalStorage = () => {
 		return true;
 	} catch (error) {
 		return false;
+	}
+}
+
+export const setLanguageInDom = (lang) => {
+	if (document.documentElement.lang !== lang) {
+		document.documentElement.lang = lang;
 	}
 }
 

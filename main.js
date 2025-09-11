@@ -1,12 +1,15 @@
 import "./style.css"
-import {initProgram} from "./assets/program.js";
+import {domLoaded, initLanguage} from "./assets/program.js";
 import {inject} from "@vercel/analytics";
 
 
 inject();
+console.time("index");
+initLanguage();
 
 (function () {
 
+	// TODO: I can set the language BEFORE the DOM is loaded
 	document.addEventListener("DOMContentLoaded", init);
 
 	// github pages 404 work-around
@@ -40,8 +43,6 @@ inject();
 	function init() {
 		manipulateHref();
 		
-		// TODO v7 ReThink, going to SessionStorage every time is slow!
-		
-		initProgram();
+		domLoaded();
 	}
 })();
