@@ -202,6 +202,7 @@ export function initBlog() {
 					else{
 						app.addEventListener("scroll", createImageGallery, true);
 					}
+					console.log("blog content loaded");
 					
 				},
 			).catch((error) => {
@@ -274,6 +275,7 @@ export function initBlog() {
 					if (document.getElementById("omap")) {
 						loadFactsMap(routeId);
 					}
+					console.log("blog facts loaded");
 				},
 			).catch((error) => {
 				console.error(`An error occured in getting the translated blog facts: ${error}`);
@@ -282,6 +284,8 @@ export function initBlog() {
 			translator.fetchBlogJsonLd(value, routeId).then(
 				(jsonld) => {
 					document.getElementById("jsonld").innerHTML = JSON.stringify(jsonld);
+					console.log("blog json-ld loaded");
+					console.timeEnd();
 				}
 			).catch((error) => {
 				console.error(`An error occured in getting the JSON-LD: ${error}`);

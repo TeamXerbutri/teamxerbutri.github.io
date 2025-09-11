@@ -91,6 +91,7 @@ ${backToTopHtml}`
 				})
 
 				cardFactory(cardsToShow);
+				console.timeEnd();
 			},
 			function (error) {
 				console.error(error);
