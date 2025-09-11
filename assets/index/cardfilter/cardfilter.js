@@ -4,7 +4,7 @@ let translations;
 
 export const cardFilterComponent = async (lang) => {
 	translations = await fetchFilterTranslations(lang);
-	const buttons = [{ type: "bridge", category: "brug" },{ type: "tunnel", category: "tunnel" },{ type: "rail", category: "spoor" },{ type: "building", category: "gebouw" }]; 
+	const buttons = [ ["bridge","brug"], ["tunnel","tunnel"], ["rail","spoor"], ["building","gebouw"] ].map(([type,category]) => ({ type, category }));
 	const filterHtml =  buttons.map(b => buttonComponent(b.type, b.category)).join("");
 	const filterElement = document.querySelector(".card-filter");
 	filterElement.innerHTML = filterHtml;
@@ -18,8 +18,8 @@ const buttonComponent = (type, category) => `
 <button class="card-filter__button_${type} fab card-filter__button_active" onclick="toggleButton(this, ${type}, ${category})" title="${translations[type + ".hide"]}" data-i18n="filter.${type}.hide"></button>
 `;
 
-
-export function toggleButton(button, translationKey, categoryName) {
+// TODO: this does not work!! 
+function toggleButton(button, translationKey, categoryName) {
 	if (button.isActive) {
 		button.title = translations[translationKey + ".show"];
 		button.setAttribute("data-i18n", "filter." + translationKey + ".show");
