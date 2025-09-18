@@ -1,8 +1,16 @@
+import {ApiBasePath} from "../config.js";
+import {addTranslations, translate} from "../translator.js";
+
 function showBackToTop() {
 	let bt = document.querySelector(".back-to-top");
 	bt.IsActive = true;
 	bt.classList.remove("hide");
 	bt.classList.add("back-to-top_show");
+}
+
+const fetchBackToTopTranslations = async (lang) => {
+	const response = await fetch(`${ApiBasePath}/${lang}.backtotop.json`);
+	return await response.json();
 }
 
 function hideBackToTop() {
@@ -12,9 +20,15 @@ function hideBackToTop() {
 	bt.classList.add("hide");
 }
 
-export const initializeBackToTop = () => {
+export const initializeBackToTop = async (lang) => {
 	let app = document.getElementById("js-app");
 	hideBackToTop();
+
+	const translations = await fetchBackToTopTranslations(lang);
+	addTranslations(translations);
+	let bt = document.querySelector(".back-to-top");
+	bt.title = translate("backtotop.title");
+	bt.setAttribute("data-i18n", "backtotop.title");
 
 	app.onscroll = function (ev) {
 		let bt = document.querySelector(".back-to-top");
@@ -30,12 +44,16 @@ export const initializeBackToTop = () => {
 
 const upArrow = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><path d="m0,24 l0,-12 l12,-12 l12,12 l0,12 l-12,-12 l-12,12 Z"/></svg>';
 
-// TODO: Title and translation(s) and aria-label
-const fabBackToTop = `<a class="back-to-top fab hide" href="#href-top">${upArrow}</a>`;
+// TODO: aria-label
+const fabBackToTop = `<a class="back-to-top fab hide" href="#href-top" title="Back to top">${upArrow}</a>`;
 
-export const backToTopComponent  = (className, children) => `
+// TODO: Why classname?
+export const backToTopComponent = (className, children) => {
+	
+	return `
 <div id="href-top" class="${className}">
 	${children}
 </div>
 ${fabBackToTop}
 `;
+}

@@ -9,7 +9,7 @@ export const loadIndex = (lang) => {
 	let app = document.getElementById("js-app");
 	app.classList.remove("blog");
 
-	app.innerHTML = indexComponent;
+	app.innerHTML = indexComponent(lang);
 
 	const htmlElement = document.querySelector("html");
 
@@ -22,21 +22,20 @@ export const loadIndex = (lang) => {
 	// The third step is the filter. This is dependent on the cards
 	cardFilterComponent(lang);
 	// initialize the component functionality
-	initializeBackToTop()
+	initializeBackToTop(lang)
 	
-	// TODO, the filter, message bar and header
+	// TODO, the message bar and header (is not header more shared?)
 }
 
-const Layout = (children) => `
+const Layout = (lang, children) => `
 ${modalComponent}
 ${backToTopComponent("index", children)}
 `;
 
-// TODO children => how to set them up?
 const children = `
 	<div class="index__message-bar hide"></div>
 	<div class="card-filter" role="toolbar"></div>
 	<nav class="card-feed"></nav>
 `;
 
-const indexComponent = Layout(children)
+const indexComponent = (lang) => Layout(lang, children)

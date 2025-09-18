@@ -1,9 +1,9 @@
 import {ApiBasePath} from "../../config.js";
-
-let translations;
+import {addTranslations, translate} from "../../translator.js";
 
 export const cardFilterComponent = async (lang) => {
-	translations = await fetchFilterTranslations(lang);
+	const translations = await fetchFilterTranslations(lang);
+	addTranslations(translations);
 	const buttons = [ ["bridge","brug"], ["tunnel","tunnel"], ["rail","spoor"], ["building","gebouw"] ].map(([type,category]) => ({ type, category }));
 	const filterElement = document.querySelector(".card-filter");
 	buttons.map(b => buttonComponent(filterElement, b.type, b.category));
@@ -16,7 +16,7 @@ const fetchFilterTranslations = async (lang) => {
 const buttonComponent = (filterElement, type, category) => {
 	const button = document.createElement("button");
 	button.className = `card-filter__button_${type} fab card-filter__button_active`;
-	button.title = translations[type + ".hide"];
+	button.title = translate(type + ".hide");
 	button.setAttribute("data-i18n", "filter." + type + ".hide");
 	button.isActive = true;
 	button.onclick = function() { toggleButton(this, type, category); };
@@ -25,14 +25,14 @@ const buttonComponent = (filterElement, type, category) => {
 
 function toggleButton(button, translationKey, categoryName) {
 	if (button.isActive) {
-		button.title = translations[translationKey + ".show"];
+		button.title = translate(translationKey + ".show");
 		button.setAttribute("data-i18n", "filter." + translationKey + ".show");
 		button.classList.add("card-filter__button_off");
 		button.classList.remove("card-filter__button_active");
 		button.isActive = false;
 		hideCategory(categoryName);
 	} else {
-		button.title = translations[translationKey + ".show"];
+		button.title = translate(translationKey + ".show");
 		button.setAttribute("data-i18n", "filter." + translationKey + ".hide");
 		button.isActive = true;
 		button.classList.remove("card-filter__button_off");
