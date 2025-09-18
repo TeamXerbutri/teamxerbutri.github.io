@@ -1,15 +1,15 @@
 import "./style.css"
-import {domLoaded, initLanguage} from "./assets/program.js";
+import {domLoaded, initLanguage, initTouchFix} from "./assets/program.js";
 import {inject} from "@vercel/analytics";
 
 
 inject();
 console.time("index");
 initLanguage();
+initTouchFix();
 
 (function () {
-
-	// TODO: I can set the language BEFORE the DOM is loaded
+	
 	document.addEventListener("DOMContentLoaded", init);
 
 	// github pages 404 work-around

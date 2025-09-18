@@ -24,7 +24,7 @@ export const loadIndex = (lang) => {
 	// initialize the component functionality
 	initializeBackToTop(lang)
 	
-	// TODO, the message bar and header (is not header more shared?)
+	// TODO, the message bar
 }
 
 const Layout = (lang, children) => `

@@ -4,13 +4,20 @@ import {lang, setLanguageInDom} from "./language.js"
 import {DefaultLanguage} from "./config.js";
 import {loadBlog} from "./blog/blog.js";
 import {loadIndex} from "./index/index.js";
+import {isTouchDevice} from "./fix/touch.js";
 
 let language = DefaultLanguage;
+let isTouch = false;
 
 // language is persisted in localStorage, independent of DOM
 export const initLanguage = () => {
 	language = lang();
 }
+
+export const initTouchFix = () => {
+	isTouch = isTouchDevice();
+}
+
 
 export const domLoaded = () => {
 	
@@ -26,12 +33,12 @@ export const domLoaded = () => {
 	}
 	
 	setLanguageInDom(language)
-	
-	
+		
 	window.pageEvents = {
 		loadBlog,
 	}
 	
+	// TODO For either blog OR index, back-to-top and header are shared. maps does not have a header and back-to-top => "onFirstLoad" or isLoaded?
 	switch (route) {
 		case "home":
 			loadIndex(language);
