@@ -1,12 +1,11 @@
 import "./style.css"
-import {domLoaded, initLanguage, initTouchFix} from "./assets/program.js";
+import {domLoaded, initLanguage} from "./assets/program.js";
 import {inject} from "@vercel/analytics";
 
 
 inject();
 console.time("index");
 initLanguage();
-initTouchFix();
 
 (function () {
 	

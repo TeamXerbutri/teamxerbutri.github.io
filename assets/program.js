@@ -14,7 +14,7 @@ export const initLanguage = () => {
 	language = lang();
 }
 
-export const initTouchFix = () => {
+const initTouchFix = () => {
 	isTouch = isTouchDevice();
 }
 
@@ -37,6 +37,8 @@ export const domLoaded = () => {
 	window.pageEvents = {
 		loadBlog,
 	}
+	
+	initTouchFix();
 	
 	// TODO For either blog OR index, back-to-top and header are shared. maps does not have a header and back-to-top => "onFirstLoad" or isLoaded?
 	switch (route) {
