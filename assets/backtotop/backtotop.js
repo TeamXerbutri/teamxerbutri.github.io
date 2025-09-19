@@ -21,7 +21,7 @@ function hideBackToTop() {
 }
 
 export const initializeBackToTop = async (lang) => {
-	let app = document.getElementById("js-app");
+	let frame = document.getElementById("js-frame");
 	hideBackToTop();
 
 	const translations = await fetchBackToTopTranslations(lang);
@@ -30,13 +30,13 @@ export const initializeBackToTop = async (lang) => {
 	bt.title = translate("backtotop.title");
 	bt.setAttribute("data-i18n", "backtotop.title");
 
-	app.onscroll = function (ev) {
+	frame.onscroll = function (ev) {
 		let bt = document.querySelector(".back-to-top");
-		if (app.scrollTop >= 200 && !bt.IsActive) {
+		if (frame.scrollTop >= 200 && !bt.IsActive) {
 			showBackToTop();
 			return;
 		}
-		if (bt.IsActive && app.scrollTop < 200) {
+		if (bt.IsActive && frame.scrollTop < 200) {
 			hideBackToTop();
 		}
 	}

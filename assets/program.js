@@ -31,9 +31,10 @@ export const domLoaded = () => {
 			route = redirect;
 		}
 	}
-	
-	setLanguageInDom(language)
 		
+	setLanguageInDom(language)
+	
+	// routing via pageEvents TODO detect back button or swiping.
 	window.pageEvents = {
 		loadBlog,
 	}
@@ -41,6 +42,17 @@ export const domLoaded = () => {
 	initTouchFix();
 	
 	// TODO For either blog OR index, back-to-top and header are shared. maps does not have a header and back-to-top => "onFirstLoad" or isLoaded?
+	// js-app
+	// - map (hides shell)
+	// - shell
+	//   -- header
+	//   -- welcome
+	//   -- message-bar
+	//   -- back-to-top
+	//       --- index
+	//       --- article
+	
+	// TODO load the shell or the map, next load sub-components dependent on route. I do need some way to know the route, and how to go back. These need to be page events.
 	switch (route) {
 		case "home":
 			loadIndex(language);

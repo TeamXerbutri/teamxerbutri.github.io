@@ -6,10 +6,11 @@ import {cardFilterComponent} from "./cardfilter/cardfilter.js";
 export const loadIndex = (lang) => {
 
 	// the first step is adding the main components to the DOM
-	let app = document.getElementById("js-app");
-	app.classList.remove("blog");
+	let frame = document.getElementById("js-frame");
+	frame.classList.remove("blog");
 
-	app.innerHTML = indexComponent(lang);
+	// TODO: This is incorrect if the index was loaded at some time. => introduce an isLoaded, and hide/show
+	frame.innerHTML = indexComponent(lang);
 
 	const htmlElement = document.querySelector("html");
 
