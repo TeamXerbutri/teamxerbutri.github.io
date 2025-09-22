@@ -22,13 +22,13 @@
 /*CSS file for the Homepage (Resolution 1024x768 (Viewsize 1010x660) and up)*/
 @media only screen and (min-width: 1024px) {
 	.card-feed {
-		width: 1010px;
+		width: 1006px;
 	}
 }
 
 /* Resolution 1366x768*/
 @media only screen and (min-width: 1350px) {
 	.card-feed {
-		width: 1308px;
+		width: 1302px;
 	}
 }
