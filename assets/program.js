@@ -3,16 +3,7 @@
 import {setLanguageInDom} from "./language.js"
 import {loadBlog} from "./shell/blog/blog.js";
 import {loadIndex} from "./shell/index/index.js"; // TODO index not from here.
-import {isTouchDevice} from "./fix/touch.js";
-
-
-let isTouch = false; // TODO refactor to internal variable in touch.js
-
-// TODO refactor to touch.js and lazy load somehow.
-const initTouchFix = () => {
-	isTouch = isTouchDevice();
-}
-
+import {initTouchFix} from "./fix/touch.js";
 
 export const domLoaded = () => {
 	
