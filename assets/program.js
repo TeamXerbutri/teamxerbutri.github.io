@@ -2,13 +2,11 @@
 
 import {setLanguageInDom} from "./language.js"
 import {initTouchFix} from "./fix/touch.js";
-import {loadShell} from "./shell/shell.js";
-import {currentPage, getInitialPage, registerPages} from "./navigator.js";
+import { initNavigator} from "./navigator.js";
 
 export const domLoaded = () => {
-	
-	getInitialPage();
-	registerPages();
+
+	initNavigator();
 	
 	setLanguageInDom();
 	
@@ -24,16 +22,4 @@ export const domLoaded = () => {
 	//   -- back-to-top
 	//       --- index
 	//       --- article
-	
-	// TODO maybe move this to navigator.js
-	switch (currentPage()) {
-		case "map":
-			loadShell();
-			break;
-		default:
-			loadShell();
-			break;
-	}
-	
-	console.timeEnd("index");
 }

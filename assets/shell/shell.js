@@ -3,6 +3,8 @@ import {backToTopComponent, initializeBackToTop} from "./backtotop/backtotop.js"
 import {indexComponent, loadIndex} from "./index/index.js";
 import {messageBarComponent} from "./messagebar/messagebar.js";
 import {checkVersion} from "./version/version.js";
+import {blogComponent, loadBlog} from "./blog/blog.js";
+import {currentPage} from "../navigator.js";
 
 let isLoaded = false;
 
@@ -10,8 +12,13 @@ export const loadShell = () => {
 	// init
 	if (!isLoaded) {
 		init();
-		
-		return;
+	}
+	
+	if(currentPage()==="home"){
+		loadIndex();
+	}
+	else{
+		loadBlog();
 	}
 
 	let shell = document.querySelector(".shell");
@@ -23,12 +30,8 @@ const init = () => {
 
 	let frame = document.getElementById("js-frame");
 	
-	// TODO for now just paint the index.
-	const children = indexComponent();
-	frame.innerHTML = shellComponent(children);
-	
-	// async.
-	loadIndex();
+	frame.innerHTML = shellComponent(children());
+		
 	// initialize the component functionality
 	initializeBackToTop()
 	
@@ -41,3 +44,9 @@ ${modalComponent}
 ${messageBarComponent}
 ${backToTopComponent(children)}
 `;
+
+const children = () => `
+${indexComponent()}
+${blogComponent()}
+	`;
+	

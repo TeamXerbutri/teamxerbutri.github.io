@@ -1,5 +1,13 @@
 import {lang} from "../../language.js";
+import {currentPage} from "../../navigator.js";
 
-export const loadBlog = (routeKey) => {
-	console.warn(routeKey + " is not yet implemented for " + lang());
+let isLoaded = false;
+export const loadBlog = () => {
+	console.warn(currentPage() + " is not yet implemented for " + lang());
 };
+
+export const blogComponent = () => {
+	return `
+<div class="blog hide"></div>
+`;
+}

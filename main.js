@@ -5,6 +5,7 @@ import {initLanguage} from "./assets/language.js";
 
 inject();
 console.time("index");
+console.time("index-loaded");
 initLanguage();
 
 (function () {

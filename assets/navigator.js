@@ -1,29 +1,56 @@
 import {loadBlog} from "./shell/blog/blog.js";
+import {loadShell} from "./shell/shell.js";
 
 let current = "home";
 
-export const getInitialPage = () => {
-	// 1 The route is dependent on DOM via window.location
+// DOM-dependent
+export const initNavigator = () => {
+	registerPages();
+	getInitialPage();
+	loadThisPage();
+}
+
+export const currentPage = () => current;
+
+const setCurrentPage = (page) => {
+	current = page;
+}
+
+// routing via pageEvents TODO detect back button or swiping.
+const registerPages = () => {
+	window.pageEvents = {
+		loadPage,
+	}
+}
+const loadPage = (page) => {
+	if (page === current) {
+		return;
+	}
 	
+	setCurrentPage(page);
+	loadThisPage();
+}
+
+const loadThisPage = () => {
+	switch (current) {
+		case "map":
+			loadShell(); //TODO loadMap();
+			break;
+		default:
+			loadShell();
+			break;
+	}
+}
+	
+const getInitialPage = () => {
 	if (window.location.pathname.length > 1) {
 		const redirect = sessionStorage.redirect;
 		delete sessionStorage.redirect;
-
+		
 		if (redirect && redirect !== location.href) {
+			// TODO find page / routing table.
 			current = redirect;
 		}
 	}
 }
 
-export const currentPage = () => current;
-
-export const setCurrentPage = (page) => {
-	current = page;
-}
-
-// routing via pageEvents TODO detect back button or swiping.
-export const registerPages = () => {
-	window.pageEvents = {
-		loadBlog,
-	}
-}
