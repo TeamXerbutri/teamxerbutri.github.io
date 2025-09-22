@@ -11,5 +11,5 @@
 /*@import url("assets/shared/header/menu/menu.css");*/
 @import url("assets/shell/index/index.css");
 @import url("assets/shell/index/card/card.css");
-/*@import url("assets/index/messagebar/messagebar.css");*/
+@import url("assets/shell/messagebar/messagebar.css");
 @import url("assets/shell/index/cardfilter/cardfilter.css");

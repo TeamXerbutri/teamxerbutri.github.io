@@ -1,20 +1,17 @@
 import {ApiBasePath, ImageBasePath} from "../../../config.js";
 import {tagComponent} from "./tag/tag.js";
 import {lang} from "../../../language.js";
+import {fetchTranslations} from "../../../translator.js";
+
 const fetchCards = async () => {
 	const response = await fetch(`${ApiBasePath}/index.${lang()}.json`);
 	return await response.json();
 }
 
-const fetchCardTranslations = async () => {
-	const response = await fetch(`${ApiBasePath}/${lang()}.card.json`);
-	return await response.json();
-}
-
 export const loadCards = async () => {
-	const translationResponse = await fetchCardTranslations();
+	const translations = await fetchTranslations("card");
 	const allCardsResponse = await fetchCards();
-	const categoryTypes = await translationResponse;
+	const categoryTypes = await translations;
 	const allCards = await allCardsResponse;
 	appendCards(categoryTypes.category, allCards);
 }

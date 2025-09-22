@@ -1,17 +1,10 @@
-import {ApiBasePath} from "../../config.js";
-import {addTranslations, translate} from "../../translator.js";
-import {lang} from "../../language.js";
+import {fetchTranslations, translate} from "../../translator.js";
 
 function showBackToTop() {
 	let bt = document.querySelector(".back-to-top");
 	bt.IsActive = true;
 	bt.classList.remove("hide");
 	bt.classList.add("back-to-top_show");
-}
-
-const fetchBackToTopTranslations = async () => {
-	const response = await fetch(`${ApiBasePath}/${lang()}.backtotop.json`);
-	return await response.json();
 }
 
 function hideBackToTop() {
@@ -25,8 +18,7 @@ export const initializeBackToTop = async () => {
 	let frame = document.getElementById("js-frame");
 	hideBackToTop();
 
-	const translations = await fetchBackToTopTranslations();
-	addTranslations(translations);
+	await fetchTranslations("backtotop");
 	let bt = document.querySelector(".back-to-top");
 	bt.title = translate("backtotop.title");
 	bt.setAttribute("data-i18n", "backtotop.title");

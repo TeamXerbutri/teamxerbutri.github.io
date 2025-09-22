@@ -1,12 +1,12 @@
 import {modalComponent} from "./modal/modal.js";
 import {backToTopComponent, initializeBackToTop} from "./backtotop/backtotop.js";
 import {indexComponent, loadIndex} from "./index/index.js";
+import {messageBarComponent} from "./messagebar/messagebar.js";
+import {checkVersion} from "./version/version.js";
 
 let isLoaded = false;
 
 export const loadShell = () => {
-	
-	
 	// init
 	if (!isLoaded) {
 		init();
@@ -31,13 +31,13 @@ const init = () => {
 	loadIndex();
 	// initialize the component functionality
 	initializeBackToTop()
-
-	// TODO, the message bar
+	
+	checkVersion();
 	isLoaded = true;
 }
 
 const shellComponent = (children) => `
 ${modalComponent}
-<div class="index__message-bar hide"></div>
+${messageBarComponent}
 ${backToTopComponent(children)}
 `;

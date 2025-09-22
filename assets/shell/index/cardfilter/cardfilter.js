@@ -1,19 +1,12 @@
-import {ApiBasePath} from "../../../config.js";
-import {addTranslations, translate} from "../../../translator.js";
-import {lang} from "../../../language.js";
+import {fetchTranslations, translate} from "../../../translator.js";
 
 export const loadCardFilter = async () => {
-	const translations = await fetchFilterTranslations();
-	addTranslations(translations);
+	const translations = await fetchTranslations("filter");
 	const buttons = [ ["bridge","brug"], ["tunnel","tunnel"], ["rail","spoor"], ["building","gebouw"] ].map(([type,category]) => ({ type, category }));
 	const filterElement = document.querySelector(".card-filter");
 	buttons.map(b => buttonComponent(filterElement, b.type, b.category));
 }
 
-const fetchFilterTranslations = async () => {
-	const response = await fetch(`${ApiBasePath}/${lang()}.filter.json`);
-	return await response.json();
-}
 const buttonComponent = (filterElement, type, category) => {
 	const button = document.createElement("button");
 	button.className = `card-filter__button_${type} fab card-filter__button_active`;
