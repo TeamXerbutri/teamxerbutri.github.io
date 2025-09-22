@@ -2,15 +2,16 @@ import {modalComponent} from "../modal/modal.js";
 import {backToTopComponent, initializeBackToTop} from "../backtotop/backtotop.js";
 import {loadCards} from "./card/card.js";
 import {cardFilterComponent} from "./cardfilter/cardfilter.js";
+
 // the index is a component AND has components
-export const loadIndex = (lang) => {
+export const loadIndex = () => {
 
 	// the first step is adding the main components to the DOM
 	let frame = document.getElementById("js-frame");
 	frame.classList.remove("blog");
 
 	// TODO: This is incorrect if the index was loaded at some time. => introduce an isLoaded, and hide/show
-	frame.innerHTML = indexComponent(lang);
+	frame.innerHTML = indexComponent();
 
 	const htmlElement = document.querySelector("html");
 
@@ -18,17 +19,17 @@ export const loadIndex = (lang) => {
 		htmlElement.classList.remove("overflow-hidden");
 	
 	// the second step is loading the child-component Cards 
-	loadCards(lang); // TODO, lazy loading
+	loadCards(); // TODO, lazy loading
 	
 	// The third step is the filter. This is dependent on the cards
-	cardFilterComponent(lang);
+	cardFilterComponent();
 	// initialize the component functionality
-	initializeBackToTop(lang)
+	initializeBackToTop()
 	
 	// TODO, the message bar
 }
 
-const Layout = (lang, children) => `
+const Layout = (children) => `
 ${modalComponent}
 ${backToTopComponent("index", children)}
 `;
@@ -39,4 +40,4 @@ const children = `
 	<nav class="card-feed"></nav>
 `;
 
-const indexComponent = (lang) => Layout(lang, children)
+const indexComponent = () => Layout(children)

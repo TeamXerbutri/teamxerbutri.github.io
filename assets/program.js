@@ -1,19 +1,14 @@
 // This is my first try
 
-import {lang, setLanguageInDom} from "./language.js"
-import {DefaultLanguage} from "./config.js";
-import {loadBlog} from "./blog/blog.js";
-import {loadIndex} from "./index/index.js";
+import {setLanguageInDom} from "./language.js"
+import {loadBlog} from "./shell/blog/blog.js";
+import {loadIndex} from "./shell/index/index.js"; // TODO index not from here.
 import {isTouchDevice} from "./fix/touch.js";
 
-let language = DefaultLanguage;
-let isTouch = false;
 
-// language is persisted in localStorage, independent of DOM
-export const initLanguage = () => {
-	language = lang();
-}
+let isTouch = false; // TODO refactor to internal variable in touch.js
 
+// TODO refactor to touch.js and lazy load somehow.
 const initTouchFix = () => {
 	isTouch = isTouchDevice();
 }
@@ -32,7 +27,7 @@ export const domLoaded = () => {
 		}
 	}
 		
-	setLanguageInDom(language)
+	setLanguageInDom();
 	
 	// routing via pageEvents TODO detect back button or swiping.
 	window.pageEvents = {
@@ -55,10 +50,10 @@ export const domLoaded = () => {
 	// TODO load the shell or the map, next load sub-components dependent on route. I do need some way to know the route, and how to go back. These need to be page events.
 	switch (route) {
 		case "home":
-			loadIndex(language);
+			loadIndex();
 			break;
 		default:
-			loadIndex(language);
+			loadIndex();
 			break;
 	}
 	

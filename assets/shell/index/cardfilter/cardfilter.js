@@ -1,16 +1,17 @@
-import {ApiBasePath} from "../../config.js";
-import {addTranslations, translate} from "../../translator.js";
+import {ApiBasePath} from "../../../config.js";
+import {addTranslations, translate} from "../../../translator.js";
+import {lang} from "../../../language.js";
 
-export const cardFilterComponent = async (lang) => {
-	const translations = await fetchFilterTranslations(lang);
+export const cardFilterComponent = async () => {
+	const translations = await fetchFilterTranslations();
 	addTranslations(translations);
 	const buttons = [ ["bridge","brug"], ["tunnel","tunnel"], ["rail","spoor"], ["building","gebouw"] ].map(([type,category]) => ({ type, category }));
 	const filterElement = document.querySelector(".card-filter");
 	buttons.map(b => buttonComponent(filterElement, b.type, b.category));
 }
 
-const fetchFilterTranslations = async (lang) => {
-	const response = await fetch(`${ApiBasePath}/${lang}.filter.json`);
+const fetchFilterTranslations = async () => {
+	const response = await fetch(`${ApiBasePath}/${lang()}.filter.json`);
 	return await response.json();
 }
 const buttonComponent = (filterElement, type, category) => {

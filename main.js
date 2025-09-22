@@ -1,7 +1,7 @@
 import "./style.css"
-import {domLoaded, initLanguage} from "./assets/program.js";
+import {domLoaded} from "./assets/program.js";
 import {inject} from "@vercel/analytics";
-
+import {initLanguage} from "./assets/language.js";
 
 inject();
 console.time("index");

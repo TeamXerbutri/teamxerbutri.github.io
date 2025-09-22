@@ -1,11 +1,16 @@
 import {DefaultLanguage, SupportedLanguages} from "./config.js";
 
+let language = DefaultLanguage;
+
 export const lang = () => {
-	const lang = getLanguage();
-	localStorage.setItem("language", lang);
-	
-	return lang;
+	return language;
 }
+
+export const initLanguage = () => {
+	language = getLanguage();
+	localStorage.setItem("language", language);
+}
+
 
 const hasLocalStorage = () => {
 	try {
@@ -18,9 +23,9 @@ const hasLocalStorage = () => {
 	}
 }
 
-export const setLanguageInDom = (lang) => {
-	if (document.documentElement.lang !== lang) {
-		document.documentElement.lang = lang;
+export const setLanguageInDom = () => {
+	if (document.documentElement.lang !== language) {
+		document.documentElement.lang = language;
 	}
 }
 
