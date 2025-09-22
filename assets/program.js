@@ -1,29 +1,16 @@
 // This is my first try
 
 import {setLanguageInDom} from "./language.js"
-import {loadBlog} from "./shell/blog/blog.js";
 import {initTouchFix} from "./fix/touch.js";
 import {loadShell} from "./shell/shell.js";
+import {currentPage, getInitialPage, registerPages} from "./navigator.js";
 
 export const domLoaded = () => {
 	
-	// 1 The route is dependent on DOM via window.location
-	let route = "home";
-	if (window.location.pathname.length > 1) {
-		const redirect = sessionStorage.redirect;
-		delete sessionStorage.redirect;
-		
-		if (redirect && redirect !== location.href) {
-			route = redirect;
-		}
-	}
-		
-	setLanguageInDom();
+	getInitialPage();
+	registerPages();
 	
-	// routing via pageEvents TODO detect back button or swiping.
-	window.pageEvents = {
-		loadBlog,
-	}
+	setLanguageInDom();
 	
 	initTouchFix();
 	
@@ -38,9 +25,9 @@ export const domLoaded = () => {
 	//       --- index
 	//       --- article
 	
-	// TODO load the shell or the map, next load sub-components dependent on route. I do need some way to know the route, and how to go back. These need to be page events.
-	switch (route) {
-		case "home":
+	// TODO maybe move this to navigator.js
+	switch (currentPage()) {
+		case "map":
 			loadShell();
 			break;
 		default:
