@@ -2,8 +2,8 @@
 
 import {setLanguageInDom} from "./language.js"
 import {loadBlog} from "./shell/blog/blog.js";
-import {loadIndex} from "./shell/index/index.js"; // TODO index not from here.
 import {initTouchFix} from "./fix/touch.js";
+import {loadShell} from "./shell/shell.js";
 
 export const domLoaded = () => {
 	
@@ -41,10 +41,10 @@ export const domLoaded = () => {
 	// TODO load the shell or the map, next load sub-components dependent on route. I do need some way to know the route, and how to go back. These need to be page events.
 	switch (route) {
 		case "home":
-			loadIndex();
+			loadShell();
 			break;
 		default:
-			loadIndex();
+			loadShell();
 			break;
 	}
 	

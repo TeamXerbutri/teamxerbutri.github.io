@@ -2,7 +2,7 @@ import {ApiBasePath} from "../../../config.js";
 import {addTranslations, translate} from "../../../translator.js";
 import {lang} from "../../../language.js";
 
-export const cardFilterComponent = async () => {
+export const loadCardFilter = async () => {
 	const translations = await fetchFilterTranslations();
 	addTranslations(translations);
 	const buttons = [ ["bridge","brug"], ["tunnel","tunnel"], ["rail","spoor"], ["building","gebouw"] ].map(([type,category]) => ({ type, category }));
@@ -41,6 +41,8 @@ function toggleButton(button, translationKey, categoryName) {
 		showCategory(categoryName);
 	}
 }
+
+export const cardFilterComponent = `<div class="card-filter" role="toolbar"></div>`
 
 export const filter = () => {
 	const buttons = [

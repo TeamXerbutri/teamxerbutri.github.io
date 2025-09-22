@@ -49,10 +49,10 @@ const upArrow = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" w
 const fabBackToTop = `<a class="back-to-top fab hide" href="#href-top" title="Back to top">${upArrow}</a>`;
 
 // TODO: Why classname?
-export const backToTopComponent = (className, children) => {
+export const backToTopComponent = (children) => {
 	
 	return `
-<div id="href-top" class="${className}">
+<div id="href-top">
 	${children}
 </div>
 ${fabBackToTop}

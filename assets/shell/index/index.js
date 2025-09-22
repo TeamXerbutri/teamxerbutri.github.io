@@ -1,7 +1,5 @@
-import {modalComponent} from "../modal/modal.js";
-import {backToTopComponent, initializeBackToTop} from "../backtotop/backtotop.js";
 import {loadCards} from "./card/card.js";
-import {cardFilterComponent} from "./cardfilter/cardfilter.js";
+import {cardFilterComponent, loadCardFilter} from "./cardfilter/cardfilter.js";
 
 // the index is a component AND has components
 export const loadIndex = () => {
@@ -11,7 +9,7 @@ export const loadIndex = () => {
 	frame.classList.remove("blog");
 
 	// TODO: This is incorrect if the index was loaded at some time. => introduce an isLoaded, and hide/show
-	frame.innerHTML = indexComponent();
+	
 
 	const htmlElement = document.querySelector("html");
 
@@ -22,22 +20,18 @@ export const loadIndex = () => {
 	loadCards(); // TODO, lazy loading
 	
 	// The third step is the filter. This is dependent on the cards
-	cardFilterComponent();
-	// initialize the component functionality
-	initializeBackToTop()
-	
-	// TODO, the message bar
+	loadCardFilter();
 }
-
 const Layout = (children) => `
-${modalComponent}
-${backToTopComponent("index", children)}
+<div class="index show">
+${children}
+</div>
 `;
 
+
 const children = `
-	<div class="index__message-bar hide"></div>
-	<div class="card-filter" role="toolbar"></div>
+	${cardFilterComponent}
 	<nav class="card-feed"></nav>
 `;
 
-const indexComponent = () => Layout(children)
+export const indexComponent = () => Layout(children)
