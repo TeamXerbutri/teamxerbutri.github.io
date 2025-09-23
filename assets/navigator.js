@@ -25,6 +25,7 @@ const registerPages = () => {
 		navigateBack
 	}
 }
+
 const loadPage = (page) => {
 	if (page === current) {
 		return;
@@ -33,17 +34,17 @@ const loadPage = (page) => {
 	// navigation logic
 	// if the history length > currentIndex + 1, I need to cut off the future history
 	if (history.length > currentIndex + 1) {
+		console.warn("slicing history")
 		history = history.slice(0, currentIndex + 1);
 	}
 	
-	history.push(current);
-	currentIndex = history.length - 1;
+	let length = history.push(current);
+	currentIndex = length - 1;
 	
 	setCurrentPage(page);
 	loadThisPage();
 }
 const navigateBack = () => {
-		
 	if(history.length < 2){
 		current = "home";
 		loadThisPage();
@@ -51,11 +52,13 @@ const navigateBack = () => {
 		currentIndex = history.length - 1;
 		return;
 	}
-	
-	current = history[currentIndex - 1];
+
+	current = history[currentIndex];
+
 	currentIndex = currentIndex - 1;
 	loadThisPage();
 };
+
 
 const loadThisPage = () => {
 	switch (current) {

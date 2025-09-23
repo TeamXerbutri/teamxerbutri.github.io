@@ -6,6 +6,7 @@ import {checkVersion} from "./version/version.js";
 import {blogComponent, loadBlog} from "./blog/blog.js";
 import {currentPage} from "../navigator.js";
 import {headerComponent} from "./header/header.js";
+import {initMenu} from "./header/menu/menu.js";
 
 let isLoaded = false;
 
@@ -17,7 +18,7 @@ export const loadShell = () => {
 
 	const htmlElement = document.querySelector("html");
 	htmlElement.classList.remove("overflow-hidden");
-	
+	// TODO: contact and privacy pages => switch with default Blog?
 	if(currentPage()==="home"){
 		loadIndex();
 	}
@@ -41,6 +42,8 @@ const init = () => {
 		
 	// initialize the component functionality
 	initializeBackToTop()
+	
+	initMenu();
 	
 	checkVersion();
 	isLoaded = true;
