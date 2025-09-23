@@ -2,7 +2,7 @@
 
 import {setLanguageInDom} from "./language.js"
 import {initTouchFix} from "./fix/touch.js";
-import { initNavigator} from "./navigator.js";
+import {initNavigator} from "./navigator.js";
 
 export const domLoaded = () => {
 
@@ -12,14 +12,14 @@ export const domLoaded = () => {
 	
 	initTouchFix();
 	
-	// TODO For either blog OR index, back-to-top and header are shared. maps does not have a header and back-to-top => "onFirstLoad" or isLoaded?
+	
 	// js-app
 	// - map (hides shell)
-	// - shell
+	// - shell v
 	//   -- header
-	//   -- welcome
-	//   -- message-bar
-	//   -- back-to-top
-	//       --- index
+	//   -- welcome v
+	//   -- message-bar v
+	//   -- back-to-top v
+	//       --- index (partially ready)
 	//       --- article
 }

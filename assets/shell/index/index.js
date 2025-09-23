@@ -1,5 +1,6 @@
 import {loadCards} from "./card/card.js";
 import {cardFilterComponent, loadCardFilter} from "./cardfilter/cardfilter.js";
+import {hideItems, showItems} from "../togglhelper.js";
 
 let isLoaded = false;
 
@@ -21,10 +22,12 @@ export const loadIndex = () => {
 			console.timeEnd("index-loaded");
 		});
 	}
+
+	hideItems(".header__blog", "show_inline-block");
+	showItems(".header__index", "show_inline-block");
+	hideItems(".blog", "show");
+	showItems(".index", "show");
 	
-	let index = document.querySelector(".index");
-	index.classList.remove("hide");
-	index.classList.add("show");
 	console.timeEnd("index");
 }
 const Layout = (children) => `

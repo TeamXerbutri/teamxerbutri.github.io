@@ -5,6 +5,7 @@ import {messageBarComponent} from "./messagebar/messagebar.js";
 import {checkVersion} from "./version/version.js";
 import {blogComponent, loadBlog} from "./blog/blog.js";
 import {currentPage} from "../navigator.js";
+import {headerComponent} from "./header/header.js";
 
 let isLoaded = false;
 
@@ -31,6 +32,9 @@ const init = () => {
 	let frame = document.getElementById("js-frame");
 	
 	frame.innerHTML = shellComponent(children());
+
+	const headerElem = document.querySelector("header");
+	headerElem.innerHTML = headerComponent;
 		
 	// initialize the component functionality
 	initializeBackToTop()
@@ -49,4 +53,6 @@ const children = () => `
 ${indexComponent()}
 ${blogComponent()}
 	`;
+
+
 	
