@@ -27,8 +27,9 @@ const shareButtonHtml = `<li class="menu__dropdown menu__share header__blog"><a 
 				</li>`
 
 export const headerComponent = `
-		<div class="header__logo header__index">${txLogo}</div><h1>Team Xerbutri</h1>
+		<div class="header__logo header__index">${txLogo}</div>
 		<a class="link_mat-app-bar header__blog" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<h1>Team Xerbutri</h1>
 		<nav role="navigation">
 			<ul class="nav__menu">
 				<li class="header__blog"><a class="link_mat-app-bar header__blog" href="../" data-i18n="navigation.home">${txLogo}</a></li>
