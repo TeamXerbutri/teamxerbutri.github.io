@@ -1,6 +1,7 @@
 import {lang} from "../../language.js";
 import {currentPage} from "../../navigator.js";
 import {hideItems, showItems} from "../togglhelper.js";
+import {initShareMenu} from "../header/menu/menu.js";
 
 let isLoaded = false;
 export const loadBlog = () => {
@@ -17,6 +18,7 @@ export const loadBlog = () => {
 
 	if (!headerElem.classList.contains("blog"))
 		headerElem.classList.add("blog")
+	initShareMenu();
 	
 	console.warn(currentPage() + " is not yet implemented for " + lang());
 };
