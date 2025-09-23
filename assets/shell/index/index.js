@@ -7,14 +7,12 @@ let isLoaded = false;
 // the index is a component AND has components
 export const loadIndex = () => {
 
-	// the first step is adding the main components to the DOM
-	let frame = document.getElementById("js-frame");
-	frame.classList.remove("blog");
 	
-	const htmlElement = document.querySelector("html");
-
-	if(htmlElement.classList.contains("overflow-hidden"))
-		htmlElement.classList.remove("overflow-hidden");
+	let frame = document.getElementById("js-frame");
+	frame.classList.remove("frame__blog_size");
+	
+	const headerElem = document.querySelector("header");
+	headerElem.classList.remove("frame__blog_size")
 	
 	if (!isLoaded) {
 		init().then(()=>{

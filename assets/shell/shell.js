@@ -14,6 +14,9 @@ export const loadShell = () => {
 	if (!isLoaded) {
 		init();
 	}
+
+	const htmlElement = document.querySelector("html");
+	htmlElement.classList.remove("overflow-hidden");
 	
 	if(currentPage()==="home"){
 		loadIndex();

@@ -1,10 +1,10 @@
 /*top-bar*/
 
-header.blog {
+header.frame__blog_size {
 	margin-bottom: 48px;
 }
 
-.frame.blog {
+.frame.frame__blog_size {
 	height: calc(100% - 112px);
 }
 

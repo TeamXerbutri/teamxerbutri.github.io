@@ -9,15 +9,13 @@ export const loadBlog = () => {
 	showItems(".header__blog", "show_inline-block");
 	hideItems(".index", "show");
 	showItems(".blog", "show");
-	
+
+	let frame = document.getElementById("js-frame");
+	frame.classList.add("frame__blog_size");
 	
 	const headerElem = document.querySelector("header");
-
-	if (headerElem.classList.contains("hide"))
-		headerElem.classList.remove("hide");
-
-	if (!headerElem.classList.contains("blog"))
-		headerElem.classList.add("blog")
+	
+	headerElem.classList.add("frame__blog_size")
 	initShareMenu();
 	
 	console.warn(currentPage() + " is not yet implemented for " + lang());
