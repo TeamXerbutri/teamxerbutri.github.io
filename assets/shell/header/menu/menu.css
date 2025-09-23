@@ -92,9 +92,10 @@
 	/*display: inline-block;*/
 	height: 48px;
 	width: 48px;
+	cursor: pointer;
 }
 
-a.link_mat-app-bar .icon_dark {
+.link_mat-app-bar .icon_dark {
 	padding-top: 12px;
 }
 

@@ -16,23 +16,23 @@ const contactHtml = `<div id="contact-panel" class="panel hide">
 			<p data-i18n="contact.content">Contact</p>
 		</div>`
 
-const dotsMenuHtml = `<li class="menu__dropdown menu__dots"><a href="javascript:void(0);" role="button" class="link_mat-app-bar show_inline-block" data-i18n="navigation.menu">${dotsMenu}</a>
+const dotsMenuHtml = `<li class="menu__dropdown menu__dots"><div role="button" class="link_mat-app-bar show_inline-block" data-i18n="navigation.menu">${dotsMenu}</div>
 					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__dots">
 					</ul>
 				</li>`
 
-const shareButtonHtml = `<li class="menu__dropdown menu__share header__blog"><a href="javascript:void(0);" role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.share">${share}</a>
+const shareButtonHtml = `<li class="menu__dropdown menu__share header__blog"><div role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.share">${share}</div>
 					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__share">
 					</ul>
 				</li>`
 
 export const headerComponent = `
 		<div class="header__logo header__index">${txLogo}</div>
-		<a class="link_mat-app-bar header__blog" href="../" data-i18n="navigation.back">${leftArrow}</a>
+		<div role="button" class="link_mat-app-bar header__blog" onclick="pageEvents.navigateBack()" data-i18n="navigation.back">${leftArrow}</div>
 		<h1>Team Xerbutri</h1>
 		<nav role="navigation">
 			<ul class="nav__menu">
-				<li class="header__blog"><a class="link_mat-app-bar header__blog" href="../" data-i18n="navigation.home">${txLogo}</a></li>
+				<li class="header__blog"><div role="button" class="link_mat-app-bar header__blog" onclick="pageEvents.loadPage('home')" data-i18n="navigation.home">${txLogo}</div></li>
 				${shareButtonHtml}
 				${dotsMenuHtml}
 			</ul>

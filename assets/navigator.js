@@ -2,6 +2,8 @@ import {loadBlog} from "./shell/blog/blog.js";
 import {loadShell} from "./shell/shell.js";
 
 let current = "home";
+let history = [];
+let currentIndex = 0;
 
 // DOM-dependent
 export const initNavigator = () => {
@@ -20,6 +22,7 @@ const setCurrentPage = (page) => {
 const registerPages = () => {
 	window.pageEvents = {
 		loadPage,
+		navigateBack
 	}
 }
 const loadPage = (page) => {
@@ -27,9 +30,32 @@ const loadPage = (page) => {
 		return;
 	}
 	
+	// navigation logic
+	// if the history length > currentIndex + 1, I need to cut off the future history
+	if (history.length > currentIndex + 1) {
+		history = history.slice(0, currentIndex + 1);
+	}
+	
+	history.push(current);
+	currentIndex = history.length - 1;
+	
 	setCurrentPage(page);
 	loadThisPage();
 }
+const navigateBack = () => {
+		
+	if(history.length < 2){
+		current = "home";
+		loadThisPage();
+		history.push(current);
+		currentIndex = history.length - 1;
+		return;
+	}
+	
+	current = history[currentIndex - 1];
+	currentIndex = currentIndex - 1;
+	loadThisPage();
+};
 
 const loadThisPage = () => {
 	switch (current) {
