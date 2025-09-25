@@ -30,5 +30,19 @@
 		"top": "Terug naar boven",
 		"back": "Terug naar de vorige pagina",
 		"home": "Terug naar de Team Xerbutri overzichtspagina"
+	},
+	"menu": {
+		"nl": {
+			"link": "Nederlands",
+			"title": "Bezoek deze pagina in het Nederlands"
+		},
+		"en": {
+			"link": "English",
+			"title": "Visit this page in English"
+		},
+		"fr": {
+			"link": "Français",
+			"title": "Visitez cette page en français"
+		}
 	}
 }

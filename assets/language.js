@@ -29,6 +29,19 @@ export const setLanguageInDom = () => {
 	}
 }
 
+export const setLanguage = (lang) => {
+	if(!lang)
+		return;
+	
+	if (!SupportedLanguages.includes(lang)) 
+		return;
+	
+	language = lang;
+	localStorage.setItem("language", language);
+	setLanguageInDom();
+}
+
+
 const getLanguage = () =>{
 	if(!hasLocalStorage()) {
 		return DefaultLanguage;

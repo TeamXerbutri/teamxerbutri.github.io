@@ -60,7 +60,7 @@ const navigateBack = () => {
 };
 
 
-const loadThisPage = () => {
+export const loadThisPage = () => {
 	switch (current) {
 		case "map":
 			loadShell(); //TODO loadMap();

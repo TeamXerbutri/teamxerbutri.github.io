@@ -1,5 +1,7 @@
-import {currentPage} from "../../../navigator.js";
+import {currentPage, loadThisPage} from "../../../navigator.js";
 import {isTouchDevice} from "../../../fix/touch.js";
+import {SupportedLanguages} from "../../../config.js";
+import {lang, setLanguage} from "../../../language.js";
 
 const shareMenuItem = (uri, title) => {
 	return `<li><a class="li_mat-menu" role="button" target="_blank" href="${uri}" title="${title}">${title}</a></li>`;
@@ -39,13 +41,25 @@ function handleDismiss(elementId) {
 const menuItem = (key) => {
 	let item = document.createElement("li");
 	item.innerHTML = `<div class="li_mat-menu" role="button" data-i18n="${key}.link" title="${key}">${key}</div>`;
-
+	
 	if (key === "contact" || key === "privacy") {
 		item.addEventListener("click", function () {
 			const elementId = key.toLowerCase() + "-panel";
 			showElement(elementId);
 		})
-	} else {
+	} else if (key.startsWith("menu")) {
+		const language = key.split(".")[1];
+		item.addEventListener("click", function () {
+			if (language === lang())
+				return;
+			
+			// set language
+			setLanguage(language);
+			// reload page
+			loadThisPage();
+		});
+	}
+	else {
 		item.addEventListener("click", function () {
 			pageEvents.loadPage(routingTable(key))
 		});
@@ -89,11 +103,13 @@ export const initMenu = () => {
 
 	let menu = document.querySelector(".sub-menu__dots");
 	const routes = ["maps", "abouttx", "aboutue", "contact", "privacy"];
+	const languages = SupportedLanguages.filter(l => l !== lang());
+	languages.forEach(l => {
+		routes.push("menu."+l);
+	})
 	routes.forEach(key => {
 		menu.appendChild(menuItem(key));
 	})
-
-	// TODO only add the language options when there are multiple languages
 
 	if (isTouchDevice()) {
 		let menuButton = document.querySelector(".menu__dots");
@@ -112,9 +128,5 @@ const routingTable = (key) => {
 			return "xerbutri-txatx";
 		case "aboutue":
 			return "xerbutri-txaue";
-		case "contact":
-			return "contact";
-		case "privacy":
-			return "privacy";
 	}
 };
