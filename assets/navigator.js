@@ -1,4 +1,3 @@
-import {loadBlog} from "./shell/blog/blog.js";
 import {loadShell} from "./shell/shell.js";
 
 let current = "home";
