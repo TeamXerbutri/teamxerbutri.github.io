@@ -4,7 +4,7 @@ import {SupportedLanguages} from "../../../config.js";
 import {lang, setLanguage} from "../../../language.js";
 
 const shareMenuItem = (uri, title) => {
-	return `<li><a class="li_mat-menu" role="button" target="_blank" href="${uri}" title="${title}">${title}</a></li>`;
+	return `<li><a class="li_mat-menu show" role="button" target="_blank" href="${uri}" title="${title}">${title}</a></li>`;
 }
 
 function showElement(elementId) {
@@ -40,7 +40,10 @@ function handleDismiss(elementId) {
 
 const menuItem = (key) => {
 	let item = document.createElement("li");
-	item.innerHTML = `<div class="li_mat-menu" role="button" data-i18n="${key}.link" title="${key}">${key}</div>`;
+		
+	const hide = key.startsWith("menu") ? " index" : "";
+	
+	item.innerHTML = `<div class="li_mat-menu show${hide}" role="button" data-i18n="${key}.link" title="${key}">${key}</div>`;
 
 	if (key === "contact" || key === "privacy") {
 		item.addEventListener("click", function () {
