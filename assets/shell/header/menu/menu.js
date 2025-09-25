@@ -1,6 +1,5 @@
 import {currentPage} from "../../../navigator.js";
 import {isTouchDevice} from "../../../fix/touch.js";
-import {fetchTranslations, translate} from "../../../translator.js";
 
 const shareMenuItem = (uri, title) => {
 	return `<li><a class="li_mat-menu" role="button" target="_blank" href="${uri}" title="${title}">${title}</a></li>`;
@@ -39,18 +38,19 @@ function handleDismiss(elementId) {
 
 const menuItem = (key) => {
 	let item = document.createElement("li");
-	item.innerHTML = `<div class="li_mat-menu" role="button" data-i18n="${key}.link" title="${translate(key+".title")}">${translate(key+".link")}</div>`;
-	
-	if(key === "contact" || key === "privacy"){
+	item.innerHTML = `<div class="li_mat-menu" role="button" data-i18n="${key}.link" title="${key}">${key}</div>`;
+
+	if (key === "contact" || key === "privacy") {
 		item.addEventListener("click", function () {
 			const elementId = key.toLowerCase() + "-panel";
 			showElement(elementId);
 		})
+	} else {
+		item.addEventListener("click", function () {
+			pageEvents.loadPage(routingTable(key))
+		});
 	}
-	else{
-		item.addEventListener("click", function () {pageEvents.loadPage(translate(key+".route"))});
-	}
-	
+
 	return item;
 }
 
@@ -85,18 +85,17 @@ export const initShareMenu = () => {
 	}
 }
 
-export const initMenu = async () => {
-	
-	const translations = await fetchTranslations("menu");
+export const initMenu = () => {
 
 	let menu = document.querySelector(".sub-menu__dots");
-	Object.entries(translations).forEach(([key, value]) => {
+	const routes = ["maps", "abouttx", "aboutue", "contact", "privacy"];
+	routes.forEach(key => {
 		menu.appendChild(menuItem(key));
 	})
-	
+
 	// TODO only add the language options when there are multiple languages
-	
-	if(isTouchDevice()) {
+
+	if (isTouchDevice()) {
 		let menuButton = document.querySelector(".menu__dots");
 		menuButton.addEventListener("click", function () {
 			document.querySelector(".sub-menu__dots").classList.toggle("show");
@@ -105,4 +104,17 @@ export const initMenu = async () => {
 	}
 }
 
-// TODO: The languages
+const routingTable = (key) => {
+	switch (key) {
+		case "maps":
+			return "map";
+		case "abouttx":
+			return "xerbutri-txatx";
+		case "aboutue":
+			return "xerbutri-txaue";
+		case "contact":
+			return "contact";
+		case "privacy":
+			return "privacy";
+	}
+};

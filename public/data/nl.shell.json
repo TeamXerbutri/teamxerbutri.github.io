@@ -1,29 +1,34 @@
 ﻿{
+	"version": {
+		"update": "Er is een nieuwere versie beschikbaar! Werk de applicatie bij door deze opnieuw te installeren op jouw apparaat."
+	},
 	"maps": {
-		"route": "map",
 		"link": "Kaart",
 		"title": "Naar de kaart met alle locaties"
 	},
 	"abouttx": {
-		"route": "xerbutri-txatx",
 		"link": "Over TX",
 		"title": "Over Team Xerbutri"
 	},
 	"aboutue": {
-		"route": "xerbutri-txaue",
 		"link": "Over UE",
 		"title": "Over Urban exploring"
 	},
 	"contact": {
-		"route": "contact",
 		"link": "Contact",
 		"title": "Neem contact met ons op",
 		"content": "Heb je vragen, opmerkingen of wil je gewoon iets kwijt? Maak een issue op GitHub: <a href=\"https://github.com/TeamXerbutri/teamxerbutri.github.io/issues\" target=\"_blank\" rel=\"noopener nofollow\">Team Xerbutri GitHub</a> "
 	},
 	"privacy": {
-		"route": "privacy",
 		"link": "Privacy",
 		"title": "Onze privacy declaratie",
 		"content": "We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy."
+	},
+	"navigation": {
+		"share": "Deel deze pagina",
+		"menu": "Menu",
+		"top": "Terug naar boven",
+		"back": "Terug naar de vorige pagina",
+		"home": "Terug naar de Team Xerbutri overzichtspagina"
 	}
 }

@@ -20,7 +20,7 @@ export const fetchTranslations = async (key) => {
 	return translations;
 }
 
-export const translateData = () => {
+export const translateAll = () => {
 
 	document.querySelectorAll("[data-i18n]").forEach(replace);
 }
@@ -31,30 +31,36 @@ const replace = (element) => {
 	if (!text)
 		return;
 	
-	// TODO
 	switch (element.tagName) {
-		
+		case "BUTTON":
+			element.title = text;
+			return;
+		case "A":
+			addTranslationToElement(element, text);
+			return;
+		case "DIV":
+			if( element.getAttribute("role") === "button"){
+				addTranslationToElement(element, text);
+				return;
+			}
+			element.innerHTML = text;
+			break;
+		default:
+			element.innerHTML = text;
+			break;
 	}
+}
 
-	if (element.tagName === "BUTTON") {
+const addTranslationToElement = (element, text) => {
+	if (!element.dataset.i18n.endsWith("link")) {
 		element.title = text;
 		return;
 	}
+	// if a dataset ends with link, it has link text and title
 
-	if (element.tagName === "A") {
-
-		if (!element.dataset.i18n.endsWith("link")) {
-			element.title = text;
-			return;
-		}
-
-		// if a dataset ends with link, it has link text and title
-
-		const title = element.dataset.i18n.split('.')[0].concat(".title").split('.').reduce((obj, i) => obj[i], translations);
-		if (title) {
-			element.title = title;
-		}
+	const title = element.dataset.i18n.split('.')[0].concat(".title").split('.').reduce((obj, i) => obj[i], translations);
+	if (title) {
+		element.title = title;
 	}
-
 	element.innerHTML = text;
 }

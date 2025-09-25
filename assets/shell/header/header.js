@@ -39,5 +39,5 @@ export const headerComponent = `
 		</nav>
 		${contactHtml}
 		${privacyHtml}
-		`
-
+		`;
+// TODO replace onclick with eventlistener

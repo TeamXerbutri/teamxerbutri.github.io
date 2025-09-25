@@ -7,6 +7,7 @@ import {blogComponent, loadBlog} from "./blog/blog.js";
 import {currentPage} from "../navigator.js";
 import {headerComponent} from "./header/header.js";
 import {initMenu} from "./header/menu/menu.js";
+import {fetchTranslations, translateAll} from "../translator.js";
 
 let isLoaded = false;
 
@@ -46,6 +47,9 @@ const init = () => {
 	initMenu();
 	
 	checkVersion();
+	fetchTranslations("shell").then(() => {
+	translateAll()});
+	
 	isLoaded = true;
 }
 
