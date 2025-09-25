@@ -6,8 +6,52 @@ const shareMenuItem = (uri, title) => {
 	return `<li><a class="li_mat-menu" role="button" target="_blank" href="${uri}" title="${title}">${title}</a></li>`;
 }
 
+function showElement(elementId) {
+	let element = document.getElementById(elementId);
+	let dismiss = document.querySelector(".modal__dismiss");
+	element.classList.add("show");
+	element.classList.remove("hide");
+	dismiss.classList.add("show");
+	dismiss.classList.remove("hide");
+	dismiss.addEventListener("click", function () {
+		handleDismiss(elementId)
+	}, true);
+}
+
+
+function handleDismiss(elementId) {
+	let element = document.getElementById(elementId);
+	let dismiss = document.querySelector(".modal__dismiss");
+
+	if (dismiss.classList.contains("show")) {
+		dismiss.classList.remove("show");
+		dismiss.classList.add("hide");
+	}
+
+	if (element.classList.contains("show")) {
+		element.classList.remove("show");
+		element.classList.add("hide");
+		document.removeEventListener("click", function () {
+			handleDismiss(elementId)
+		}, true);
+	}
+}
+
 const menuItem = (key) => {
-	return `<li class="li_mat-menu" role="button" onclick="pageEvents.loadPage('${translate(key+".route")}')" data-i18n="${key}.link" title="${translate(key+".title")}">${translate(key+".link")}</li>`;
+	let item = document.createElement("li");
+	item.innerHTML = `<div class="li_mat-menu" role="button" data-i18n="${key}.link" title="${translate(key+".title")}">${translate(key+".link")}</div>`;
+	
+	if(key === "contact" || key === "privacy"){
+		item.addEventListener("click", function () {
+			const elementId = key.toLowerCase() + "-panel";
+			showElement(elementId);
+		})
+	}
+	else{
+		item.addEventListener("click", function () {pageEvents.loadPage(translate(key+".route"))});
+	}
+	
+	return item;
 }
 
 const handleShareDismiss = () => {
@@ -47,8 +91,10 @@ export const initMenu = async () => {
 
 	let menu = document.querySelector(".sub-menu__dots");
 	Object.entries(translations).forEach(([key, value]) => {
-		menu.innerHTML += menuItem(key);
+		menu.appendChild(menuItem(key));
 	})
+	
+	// TODO only add the language options when there are multiple languages
 	
 	if(isTouchDevice()) {
 		let menuButton = document.querySelector(".menu__dots");

@@ -18,7 +18,7 @@ export const loadShell = () => {
 
 	const htmlElement = document.querySelector("html");
 	htmlElement.classList.remove("overflow-hidden");
-	// TODO: contact and privacy pages => switch with default Blog?
+	
 	if(currentPage()==="home"){
 		loadIndex();
 	}
