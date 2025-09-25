@@ -7,12 +7,12 @@ import {initNavigator} from "./navigator.js";
 export const domLoaded = () => {
 
 	initNavigator();
-	
+
 	setLanguageInDom();
-	
+
 	initTouchFix();
-	
-	
+
+
 	// js-app
 	// - map (hides shell)
 	// - shell v

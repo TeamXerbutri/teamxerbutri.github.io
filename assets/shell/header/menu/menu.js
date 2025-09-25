@@ -41,7 +41,7 @@ function handleDismiss(elementId) {
 const menuItem = (key) => {
 	let item = document.createElement("li");
 	item.innerHTML = `<div class="li_mat-menu" role="button" data-i18n="${key}.link" title="${key}">${key}</div>`;
-	
+
 	if (key === "contact" || key === "privacy") {
 		item.addEventListener("click", function () {
 			const elementId = key.toLowerCase() + "-panel";
@@ -52,14 +52,13 @@ const menuItem = (key) => {
 		item.addEventListener("click", function () {
 			if (language === lang())
 				return;
-			
+
 			// set language
 			setLanguage(language);
 			// reload page
 			loadThisPage();
 		});
-	}
-	else {
+	} else {
 		item.addEventListener("click", function () {
 			pageEvents.loadPage(routingTable(key))
 		});
@@ -105,7 +104,7 @@ export const initMenu = () => {
 	const routes = ["maps", "abouttx", "aboutue", "contact", "privacy"];
 	const languages = SupportedLanguages.filter(l => l !== lang());
 	languages.forEach(l => {
-		routes.push("menu."+l);
+		routes.push("menu." + l);
 	})
 	routes.forEach(key => {
 		menu.appendChild(menuItem(key));

@@ -4,8 +4,8 @@ import {lang} from "./language.js";
 let translations = {};
 
 const addTranslations = (newTranslations) => {
-	translations = { ...translations, ...newTranslations };
-	
+	translations = {...translations, ...newTranslations};
+
 }
 
 export const translate = (key) => {
@@ -30,7 +30,7 @@ const replace = (element) => {
 
 	if (!text)
 		return;
-	
+
 	switch (element.tagName) {
 		case "BUTTON":
 			element.title = text;
@@ -39,7 +39,7 @@ const replace = (element) => {
 			addTranslationToElement(element, text);
 			return;
 		case "DIV":
-			if( element.getAttribute("role") === "button"){
+			if (element.getAttribute("role") === "button") {
 				addTranslationToElement(element, text);
 				return;
 			}
