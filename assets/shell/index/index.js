@@ -1,6 +1,7 @@
-import {loadCards} from "./card/card.js";
+import {loadCards, onFilter} from "./card/card.js";
 import {cardFilterComponent, loadCardFilter} from "./cardfilter/cardfilter.js";
 import {hideItems, showItems} from "../togglhelper.js";
+import {filter} from "../../ye-old-code/index/card/filter/cardfilter.js";
 
 let isLoaded = false;
 
@@ -48,6 +49,11 @@ const init = async () => {
 
 		// The third step is the filter. This is dependent on the cards
 		await loadCardFilter();
+
+	const filterElement = document.querySelector(".card-filter");
+	filterElement.onclick = function () {
+		onFilter();
+	}
 }
 
 export const indexComponent = () => Layout(children)
