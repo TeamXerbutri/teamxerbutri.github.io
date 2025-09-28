@@ -13,7 +13,7 @@ const buttonComponent = (filterElement, type, category) => {
 	button.title = translate(type + ".hide");
 	button.setAttribute("data-i18n", "filter." + type + ".hide");
 	button.isActive = true;
-	button.onclick = function() { toggleButton(this, type, category); };
+	button.addEventListener("click", () => { toggleButton(this, type, category); });
 	filterElement.appendChild(button);
 }
 

@@ -5,7 +5,7 @@ import {messageBarComponent} from "./messagebar/messagebar.js";
 import {checkVersion} from "./version/version.js";
 import {blogComponent, loadBlog} from "./blog/blog.js";
 import {currentPage} from "../navigator.js";
-import {headerComponent} from "./header/header.js";
+import {headerComponent, initHeader} from "./header/header.js";
 import {initMenu} from "./header/menu/menu.js";
 import {fetchTranslations, translateAll} from "../translator.js";
 
@@ -43,6 +43,7 @@ const init = () => {
 		
 	// initialize the component functionality
 	initializeBackToTop()
+	initHeader();
 	
 	initMenu();
 	

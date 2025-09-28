@@ -28,11 +28,11 @@ const shareButtonHtml = `<li class="menu__dropdown menu__share header__blog"><di
 
 export const headerComponent = `
 		<div class="header__logo header__index">${txLogo}</div>
-		<div role="button" class="link_mat-app-bar header__blog" onclick="pageEvents.navigateBack()" data-i18n="navigation.back">${leftArrow}</div>
+		<div role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.back">${leftArrow}</div>
 		<h1 class="header__index">Team Xerbutri</h1>
 		<nav role="navigation">
 			<ul class="nav__menu">
-				<li class="header__blog"><div role="button" class="link_mat-app-bar header__blog" onclick="pageEvents.loadPage('home')" data-i18n="navigation.home">${txLogo}</div></li>
+				<li class="header__blog"><div role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.home">${txLogo}</div></li>
 				${shareButtonHtml}
 				${dotsMenuHtml}
 			</ul>
@@ -40,4 +40,19 @@ export const headerComponent = `
 		${contactHtml}
 		${privacyHtml}
 		`;
-// TODO replace onclick with eventlistener
+
+export function initHeader() {
+	const navBack = document.querySelectorAll('[data-i18n="navigation.back"]');
+	navBack.forEach((el) => {
+		el.addEventListener("click", () => {
+			pageEvents.navigateBack();
+		})
+	});
+	
+	const navHome = document.querySelectorAll('[data-i18n="navigation.home"]');
+	navHome.forEach((el) => {
+		el.addEventListener("click", () => {
+			pageEvents.loadPage('home');
+		})
+	});
+}
