@@ -11,26 +11,28 @@ const fetchCards = async () => {
 
 let allCards = [];
 let categoryTypes = {};
+let totalCards;
 
 export const loadCards = async () => {
 	const translations = await fetchTranslations("card");
 	const allCardsResponse = await fetchCards();
 	categoryTypes = translations;
 	allCards = await allCardsResponse;
+	totalCards = maxCards();
 
 	// First load.
-	let totalCards = maxCards();
-
+	
 	if (allCards.length < totalCards) {
 		totalCards = allCards.length;
 	}
 	
-	let frame = document.getElementById("js-frame");
-	
 	const cardsToShow = allCards.splice(0, totalCards);
 	
 	appendCards(cardsToShow);
+}
 
+export const lazyLoadCards = () => {
+	let frame = document.getElementById("js-frame");
 	frame.addEventListener("scroll", function () {
 		if (frame.scrollTop + frame.clientHeight >= frame.scrollHeight) {
 

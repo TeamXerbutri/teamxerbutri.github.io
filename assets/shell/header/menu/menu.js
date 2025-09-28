@@ -2,6 +2,7 @@ import {currentPage, loadThisPage} from "../../../navigator.js";
 import {isTouchDevice} from "../../../fix/touch.js";
 import {SupportedLanguages} from "../../../config.js";
 import {lang, setLanguage} from "../../../language.js";
+import {reloadIndex} from "../../index/index.js";
 
 const shareMenuItem = (uri, title) => {
 	return `<li><a class="li_mat-menu show" role="button" target="_blank" href="${uri}" title="${title}">${title}</a></li>`;
@@ -40,9 +41,9 @@ function handleDismiss(elementId) {
 
 const menuItem = (key) => {
 	let item = document.createElement("li");
-		
+
 	const hide = key.startsWith("menu") ? " index" : "";
-	
+
 	item.innerHTML = `<div class="li_mat-menu show${hide}" role="button" data-i18n="${key}.link" title="${key}">${key}</div>`;
 
 	if (key === "contact" || key === "privacy") {
@@ -56,9 +57,13 @@ const menuItem = (key) => {
 			if (language === lang())
 				return;
 
+			const prevLang = lang();
 			// set language
 			setLanguage(language);
 			// reload page
+			reloadIndex();
+			showRightLanguages(prevLang);
+			// TODO: clean and fetch right translations => retranslate function!
 			loadThisPage();
 		});
 	} else {
@@ -105,8 +110,8 @@ export const initMenu = () => {
 
 	let menu = document.querySelector(".sub-menu__dots");
 	const routes = ["maps", "abouttx", "aboutue", "contact", "privacy"];
-	const languages = SupportedLanguages.filter(l => l !== lang());
-	languages.forEach(l => {
+
+	SupportedLanguages.filter(l => l !== lang()).forEach(l => {
 		routes.push("menu." + l);
 	})
 	routes.forEach(key => {
@@ -120,6 +125,20 @@ export const initMenu = () => {
 			document.addEventListener("click", handleMenuDismiss, true);
 		});
 	}
+}
+
+const showRightLanguages = (prevLang) => {
+	console.log("showRightLanguages", prevLang, lang());
+	let menu = document.querySelector(".sub-menu__dots");
+	const langElement = menu.querySelectorAll(`.index`);
+	langElement.forEach(l => {
+		menu.removeChild(l.parentElement);
+	})
+
+	const languages = SupportedLanguages.filter(l => l !== lang());
+	languages.filter(l => l !== lang()).forEach(key => {
+		menu.appendChild(menuItem("menu." + key));
+	})
 }
 
 const routingTable = (key) => {

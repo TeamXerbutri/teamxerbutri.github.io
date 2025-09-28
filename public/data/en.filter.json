@@ -1,0 +1,18 @@
+﻿{
+	"rail": {
+		"show": "Show the railways",
+		"hide": "Hide the railways"
+	},
+	"bridge": {
+		"show": "Show the bridges",
+		"hide": "Hide the bridges"
+	},
+	"tunnel": {
+		"show": "Show the tunnels",
+		"hide": "Hide the tunnels"
+	},
+	"building": {
+		"show": "Show the buildings",
+		"hide": "Hide the buildings"
+	}
+}

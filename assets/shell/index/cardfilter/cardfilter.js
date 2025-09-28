@@ -1,7 +1,7 @@
 import {fetchTranslations, translate} from "../../../translator.js";
 
 export const loadCardFilter = async () => {
-	const translations = await fetchTranslations("filter");
+	await fetchTranslations("filter");
 	const buttons = [ ["bridge","brug"], ["tunnel","tunnel"], ["rail","spoor"], ["building","gebouw"] ].map(([type,category]) => ({ type, category }));
 	const filterElement = document.querySelector(".card-filter");
 	buttons.map(b => buttonComponent(filterElement, b.type, b.category));

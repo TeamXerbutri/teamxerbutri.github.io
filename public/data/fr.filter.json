@@ -1,0 +1,18 @@
+﻿{
+	"rail": {
+		"show": "Afficher les chemins de fer",
+		"hide": "Masquer les chemins de fer"
+	},
+	"bridge": {
+		"show": "Afficher les ponts",
+		"hide": "Masquer les ponts"
+	},
+	"tunnel": {
+		"show": "Afficher les tunnels",
+		"hide": "Masquer les tunnels"
+	},
+	"building": {
+		"show": "Afficher les bâtiments",
+		"hide": "Masquer les bâtiments"
+	}
+}
