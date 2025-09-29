@@ -68,8 +68,13 @@ const addTranslationToElement = (element, text) => {
 		return;
 	}
 	// if a dataset ends with link, it has link text and title
+	const keys = element.dataset.i18n.split('.');
+	let key = keys[0];
+	
+	if(keys.length > 1)
+		key = key + "." + keys[1];
 
-	const title = element.dataset.i18n.split('.')[0].concat(".title").split('.').reduce((obj, i) => obj[i], translations);
+	const title = key.concat(".title").split('.').reduce((obj, i) => obj[i], translations);
 	if (title) {
 		element.title = title;
 	}
