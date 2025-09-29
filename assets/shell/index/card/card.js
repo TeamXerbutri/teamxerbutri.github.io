@@ -44,11 +44,8 @@ export const lazyLoadCards = () => {
 	})
 }
 
+// Comment: Using map and += for the innerHtml causes annoying flickering of the screen when new cards are added.
 const appendCards = (cards) => {
-	// Comment: This way of building cards causes annoying flickering in chrome.
-
-	// const cardHtml = cards.map(c=> buildCard(categoryTypes.category, c)).join("");
-	// document.querySelector(".card-feed").innerHTML += cardHtml;
 	const cardContainer = document.querySelector(".card-feed");
 
 	for (let i in cards) {
@@ -69,12 +66,6 @@ const buildCard = (categoryTypes, card) => {
 	divCard.innerHTML = `<img src="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`
 	return divCard;
 }
-
-// Comment: This way of building cards causes annoying flickering in chrome.
-const template = (props, children) => `
-<div class="card show_inline-block ${props.category}" onclick="pageEvents.loadPage('${createLink(props.category, props.routeid)}')" title="${props.description}">
-<img src="${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}m.jpg" alt="${props.name}" srcset="${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}m.jpg 164w, ${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}l.jpg 237w, ${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${children}</div>`
-
 
 const createLink = (category, routeid) => {
 	let url;
