@@ -25,7 +25,7 @@ function toggleButton(button, translationKey, categoryName) {
 		button.isActive = false;
 		hideCategory(categoryName);
 	} else {
-		button.title = translate("filter." + translationKey + ".show");
+		button.title = translate("filter." + translationKey + ".hide");
 		button.setAttribute("data-i18n", "filter." + translationKey + ".hide");
 		button.isActive = true;
 		button.classList.remove("card-filter__button_off");
