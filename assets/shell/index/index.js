@@ -1,6 +1,7 @@
 import {lazyLoadCards, loadCards, onFilter} from "./card/card.js";
 import {cardFilterComponent, loadCardFilter} from "./cardfilter/cardfilter.js";
 import {hideItems, showItems} from "../togglhelper.js";
+import {translate} from "../../translator.js";
 
 let isLoaded = false;
 
@@ -11,8 +12,6 @@ export const reloadIndex = () => {
 
 // the index is a component AND has components
 export const loadIndex = () => {
-
-
 	let frame = document.getElementById("js-frame");
 	frame.classList.remove("frame__blog_size");
 
@@ -30,6 +29,9 @@ export const loadIndex = () => {
 	showItems(".header__index", "show_inline-block");
 	hideItems(".blog", "show");
 	showItems(".index", "show");
+	
+	document.title = translate("metadata.title");
+	document.querySelector('meta[name="description"]').setAttribute("content", translate("metadata.content"));
 
 	console.timeEnd("index");
 }

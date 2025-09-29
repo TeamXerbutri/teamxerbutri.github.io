@@ -2,7 +2,7 @@
 /*@import url("assets/css/mat/menu.css");*/
 @import url("assets/shared/shared.css");
 
-/*@import url("assets/blog/blog.css");*/
+@import url("assets/shell/blog/blog.css");
 
 @import url("assets/shell/backtotop/backtotop.css");
 @import url("assets/shell/modal/overlay.css");
