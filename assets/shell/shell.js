@@ -48,6 +48,7 @@ const init = () => {
 	initMenu();
 	
 	checkVersion();
+	// TODO translateAll called twice
 	fetchTranslations("shell").then(() => {
 	translateAll()});
 	

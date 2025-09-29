@@ -1,7 +1,7 @@
 import {lazyLoadCards, loadCards, onFilter} from "./card/card.js";
 import {cardFilterComponent, loadCardFilter} from "./cardfilter/cardfilter.js";
 import {hideItems, showItems} from "../togglhelper.js";
-import {translate} from "../../translator.js";
+import {fetchTranslations, translate, translateAll} from "../../translator.js";
 
 let isLoaded = false;
 
@@ -30,9 +30,9 @@ export const loadIndex = () => {
 	hideItems(".blog", "show");
 	showItems(".index", "show");
 	
-	document.title = translate("metadata.title");
-	document.querySelector('meta[name="description"]').setAttribute("content", translate("metadata.content"));
-
+	if (isLoaded) 
+		setMetaData();
+	
 	console.timeEnd("index");
 }
 const Layout = (children) => `
@@ -53,12 +53,22 @@ const init = async () => {
 	lazyLoadCards();
 
 	// The third step is the filter. This is dependent on the cards
-	await loadCardFilter();
+	loadCardFilter();
 
 	const filterElement = document.querySelector(".card-filter");
 	filterElement.onclick = function () {
 		onFilter();
 	}
+	
+	fetchTranslations("index").then(() => {
+		setMetaData();
+		translateAll();
+	});
+}
+
+const setMetaData = () => {
+	document.title = translate("metadata.title");
+	document.querySelector('meta[name="description"]').setAttribute("content", translate("metadata.content"));
 }
 
 export const indexComponent = () => Layout(children)

@@ -32,7 +32,7 @@ export const reTranslateAll = () => {
 
 const fetchAllTranslations = async () => {
 	await fetchTranslations("shell");
-	await fetchTranslations("filter");
+	await fetchTranslations("index");
 	await fetchTranslations("card");
 }
 
