@@ -7,9 +7,6 @@ let isLoaded = false;
 
 export const reloadIndex = () => {
 	document.querySelector(".card-feed").innerHTML = "";
-	fetchTranslations("filter").then(() => {
-		translateAll();
-	});
 	loadCards();
 }
 

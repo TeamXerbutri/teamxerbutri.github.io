@@ -14,18 +14,31 @@ export const translate = (key) => {
 }
 
 export const fetchTranslations = async (key) => {
+	console.log(`Fetching translations from ${key}`);
 	const response = await fetch(`${ApiBasePath}/${lang()}.${key}.json`);
-	let translations = await response.json();
-	addTranslations(translations);
-	return translations;
+	let result = await response.json();
+	addTranslations(result);
+	return result;
 }
 
 export const translateAll = () => {
-
 	document.querySelectorAll("[data-i18n]").forEach(replace);
 }
 
+export const reTranslateAll = () => {
+	translations = {};
+	fetchAllTranslations().then(() => {translateAll()})
+}
+
+const fetchAllTranslations = async () => {
+	await fetchTranslations("shell");
+	await fetchTranslations("filter");
+	await fetchTranslations("card");
+}
+
+
 const replace = (element) => {
+	console.log("replace", element);
 	const text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], translations);
 
 	if (!text)

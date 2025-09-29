@@ -3,6 +3,7 @@ import {isTouchDevice} from "../../../fix/touch.js";
 import {SupportedLanguages} from "../../../config.js";
 import {lang, setLanguage} from "../../../language.js";
 import {reloadIndex} from "../../index/index.js";
+import {reTranslateAll} from "../../../translator.js";
 
 const shareMenuItem = (uri, title) => {
 	return `<li><a class="li_mat-menu show" role="button" target="_blank" href="${uri}" title="${title}">${title}</a></li>`;
@@ -63,7 +64,7 @@ const menuItem = (key) => {
 			// reload page
 			reloadIndex();
 			showRightLanguages(prevLang);
-			// TODO: clean and fetch right translations => retranslate function!
+			reTranslateAll()
 			loadThisPage();
 		});
 	} else {
@@ -128,7 +129,6 @@ export const initMenu = () => {
 }
 
 const showRightLanguages = (prevLang) => {
-	console.log("showRightLanguages", prevLang, lang());
 	let menu = document.querySelector(".sub-menu__dots");
 	const langElement = menu.querySelectorAll(`.index`);
 	langElement.forEach(l => {

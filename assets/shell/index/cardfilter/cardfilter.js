@@ -10,7 +10,7 @@ export const loadCardFilter = async () => {
 const buttonComponent = (filterElement, type, category) => {
 	const button = document.createElement("button");
 	button.className = `card-filter__button_${type} fab card-filter__button_active`;
-	button.title = translate(type + ".hide");
+	button.title = translate("filter." +type + ".hide");
 	button.setAttribute("data-i18n", "filter." + type + ".hide");
 	button.isActive = true;
 	button.onclick = function() { toggleButton(this, type, category); };
