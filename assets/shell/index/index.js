@@ -1,7 +1,6 @@
 import {lazyLoadCards, loadCards, onFilter} from "./card/card.js";
 import {cardFilterComponent, loadCardFilter} from "./cardfilter/cardfilter.js";
 import {hideItems, showItems} from "../togglhelper.js";
-import {fetchTranslations, translateAll} from "../../translator.js";
 
 let isLoaded = false;
 
@@ -40,12 +39,10 @@ ${children}
 </div>
 `;
 
-
 const children = `
 	${cardFilterComponent}
 	<nav class="card-feed"></nav>
 `;
-
 
 const init = async () => {
 	// TODO: improve by parallel.

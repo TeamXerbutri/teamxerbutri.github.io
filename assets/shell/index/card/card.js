@@ -21,13 +21,13 @@ export const loadCards = async () => {
 	totalCards = maxCards();
 
 	// First load.
-	
+
 	if (allCards.length < totalCards) {
 		totalCards = allCards.length;
 	}
-	
+
 	const cardsToShow = allCards.splice(0, totalCards);
-	
+
 	appendCards(cardsToShow);
 }
 
@@ -45,16 +45,32 @@ export const lazyLoadCards = () => {
 }
 
 const appendCards = (cards) => {
-	const cardHtml = cards.map(c=> buildCard(categoryTypes.category, c)).join("");
-	document.querySelector(".card-feed").innerHTML += cardHtml;
+	// Comment: This way of building cards causes annoying flickering in chrome.
+
+	// const cardHtml = cards.map(c=> buildCard(categoryTypes.category, c)).join("");
+	// document.querySelector(".card-feed").innerHTML += cardHtml;
+	const cardContainer = document.querySelector(".card-feed");
+
+	for (let i in cards) {
+		let displayCard = buildCard(categoryTypes.category, cards[i]);
+		cardContainer.appendChild(displayCard);
+	}
 }
 
 const buildCard = (categoryTypes, card) => {
-	const cardTag = tagComponent(categoryTypes, card); 
-	return template(card, cardTag);
+	const cardTag = tagComponent(categoryTypes, card);
+
+	let divCard = document.createElement("div");
+	divCard.className = `card show_inline-block ${card.category}`;
+	divCard.setAttribute("title", card.description);
+	divCard.addEventListener("click", (e) => {
+		pageEvents.loadPage(`${createLink(card.category, card.routeid)}`)
+	});
+	divCard.innerHTML = `<img src="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`
+	return divCard;
 }
 
-// TODO replace onclick with eventlistener
+// Comment: This way of building cards causes annoying flickering in chrome.
 const template = (props, children) => `
 <div class="card show_inline-block ${props.category}" onclick="pageEvents.loadPage('${createLink(props.category, props.routeid)}')" title="${props.description}">
 <img src="${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}m.jpg" alt="${props.name}" srcset="${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}m.jpg 164w, ${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}l.jpg 237w, ${ImageBasePath}/${props.category}/${props.routeid}/${props.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${children}</div>`
@@ -95,7 +111,7 @@ const maxCards = () => {
 	return rows * columns;
 }
 
-export const onFilter = () =>{
+export const onFilter = () => {
 	appendCards(allCards);
 	allCards = [];
 	filter();
