@@ -37,11 +37,4 @@ export const loadBlogContent = async (category, routeId) => {
 	let updatedSplit = blogContent.updated.split("-");
 
 	document.querySelector(".blog__updated").innerHTML = translate("article.lastupdate") + localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
-
-	// if(document.querySelector("article").scrollHeight < app.clientHeight) {
-	//  buildGallery(translator, jsonHelper, category, routeId);
-	// }
-	// else{
-	// 	app.addEventListener("scroll", createImageGallery, true);
-	// }
 }

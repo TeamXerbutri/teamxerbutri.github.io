@@ -5,6 +5,7 @@ import {initShareMenu} from "../header/menu/menu.js";
 import {fetchTranslations} from "../../translator.js";
 import {loadBlogFacts} from "./facts/facts.js";
 import {loadBlogContent} from "./content/content.js";
+import {buildGallery} from "./gallery/gallery.js";
 
 let isLoaded = false;
 export const loadBlog = () => {
@@ -32,10 +33,10 @@ export const loadBlog = () => {
 	const pathParts = currentPage().split("-");
 	const category = pathParts[0];
 	const routeId = pathParts[1];
-	buildBlog(category, routeId);
+	buildBlog(category, routeId).then(() => {console.timeEnd("blog-loaded");});
 	
 	console.warn(currentPage() + " is not yet implemented for " + lang());
-	console.timeEnd("blog-loaded");
+	
 };
 
 
@@ -44,11 +45,30 @@ const buildBlog = async (category, routeId) => {
 	await fetchTranslations("blog");
 	
 	// second, in parallel
-	await loadBlogContent(category, routeId);
-	await loadBlogFacts(category, routeId);
 	
-	// third and last
+	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId))
+	//await loadBlogContent(category, routeId);
+	//await loadBlogFacts(category, routeId);
+	
+	// after the blogContent is loaded, build the gallery.
+	// TODO, I do NOT want to have a new eventListener every time this is hit.
+	// TODO translateAll?
+	await buildGallery(category, routeId);
+	// if(document.querySelector("article").scrollHeight < app.clientHeight) {
+	//  buildGallery(translator, jsonHelper, category, routeId);
+	// }
+	// else{
+	// 	app.addEventListener("scroll", createImageGallery, true);
+	// }
 }
+
+const parallel = async (task1, task2) => {
+	return {
+		result1: await task1,
+		result2: await task2
+	}
+}
+
 
 
 
