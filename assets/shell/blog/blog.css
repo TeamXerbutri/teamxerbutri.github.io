@@ -280,11 +280,11 @@ span.fact {
 
 /* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
-	.frame.blog {
+	.frame.frame__blog_size {
 		height: calc(100% - 64px);
 	}
 
-	header.blog {
+	header.frame__blog_size {
 		margin-bottom: 0;
 	}
 	
