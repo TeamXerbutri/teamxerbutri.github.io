@@ -60,7 +60,7 @@ const buildCard = (categoryTypes, card) => {
 	let divCard = document.createElement("div");
 	divCard.className = `card show_inline-block ${card.category}`;
 	divCard.setAttribute("title", card.description);
-	divCard.addEventListener("click", (e) => {
+	divCard.addEventListener("click", () => {
 		pageEvents.loadPage(`${createLink(card.category, card.routeid)}`)
 	});
 	divCard.innerHTML = `<img src="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`

@@ -2,8 +2,7 @@ import {lang} from "../../language.js";
 import {currentPage} from "../../navigator.js";
 import {hideItems, showItems} from "../togglhelper.js";
 import {initShareMenu} from "../header/menu/menu.js";
-import {ApiBasePath} from "../../config.js";
-import {fetchTranslations, localDate, translate} from "../../translator.js";
+import {fetchTranslations} from "../../translator.js";
 import {loadBlogFacts} from "./facts/facts.js";
 import {loadBlogContent} from "./content/content.js";
 
