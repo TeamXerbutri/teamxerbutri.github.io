@@ -1,5 +1,6 @@
 import {ApiBasePath} from "../../../config.js";
 import {translate} from "../../../translator.js";
+import {loadFactsMap} from "./map/factmap.js";
 
 const fetchBlogFacts = async (category, routeId) => {
 	const response = await fetch(`${ApiBasePath}/${category}/${routeId}/blog.json`);
@@ -12,12 +13,13 @@ export const loadBlogFacts = async (category, routeId) => {
 	//aside
 	if (countProperties(blogFacts.facts) > 0) {
 		let blogFactsHtml = "";
+		let hasMap = false;
 		
 		Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
 			if (value === "") {
 				return;
 			}
-
+			
 			switch (key) {
 				case "build":
 				case "abandoned":
@@ -39,7 +41,7 @@ export const loadBlogFacts = async (category, routeId) => {
 					blogFactsHtml += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
 					break;
 				case "map":
-					// TODO factsmap
+					hasMap = true;
 					let mapKey = translate("facts.map");
 					blogFactsHtml += `</br><li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
 					break;
@@ -49,6 +51,9 @@ export const loadBlogFacts = async (category, routeId) => {
 		});
 		
 		document.querySelector(".blog__facts").innerHTML = `<ul>${blogFactsHtml}</ul>`;
+		
+		if (hasMap)
+			loadFactsMap(routeId);
 	}
 }
 

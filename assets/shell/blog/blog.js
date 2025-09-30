@@ -46,6 +46,8 @@ const buildBlog = async (category, routeId) => {
 	// second, in parallel
 	await loadBlogContent(category, routeId);
 	await loadBlogFacts(category, routeId);
+	
+	// third and last
 }
 
 
