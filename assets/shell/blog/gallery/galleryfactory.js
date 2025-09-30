@@ -1,32 +1,6 @@
 import {ImageBasePath} from "../../../config.js";
 import {translate} from "../../../translator.js";
 
-// export const createLink = (item, category, routeId) => {
-// 	// largest size
-// 	const sizes = item.sizes;
-// 	const heights = sizes.map((size) => size.height);
-// 	const tallest = Math.max(...heights);
-// 	const tallestIndex = heights.indexOf(tallest);
-// 	const largest = sizes[tallestIndex];
-//
-// 	// smallest size
-// 	const lowest = Math.min(...heights);
-// 	const smallestIndex = heights.indexOf(lowest);
-// 	const smallest = sizes[smallestIndex];
-//	
-// 	const link = createImageLink(category, routeId, item, largest);
-// 	const title = "";
-// 	const sourceSet = createPswpSrcSet(sizes, category, routeId, item);
-// 	const src = createImageLink(category, routeId, item, smallest);
-//	
-// 	return template(link, title, largest, sourceSet, src);
-// }
-
-// const template = (link, title, largest, sourceSet, src) => {
-// 	return `
-// 	<a href="${link}" title="${title}" target="_blank" data-pswp-width="${largest.width}" data-pswp-height="${largest.height}" data-pswp-srcset="${sourceSet}"><img src="${src}" alt="${title}"></a>`;
-// }
-
 const createImageLink = (category, routeId, item, size) => {
 	return `${ImageBasePath}/${category}/${routeId}/${routeId}${item.name}-${size.width}x${size.height}.jpg`
 }

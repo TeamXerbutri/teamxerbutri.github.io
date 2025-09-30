@@ -3,13 +3,12 @@
 @import url("assets/shared/shared.css");
 
 @import url("assets/shell/blog/blog.css");
-
 @import url("assets/shell/backtotop/backtotop.css");
 @import url("assets/shell/modal/overlay.css");
 @import url("assets/shell/icons/icons.css");
 @import url("assets/shell/header/header.css");
 @import url("assets/shell/header/menu/menu.css");
+@import url("assets/shell/messagebar/messagebar.css");
 @import url("assets/shell/index/index.css");
 @import url("assets/shell/index/card/card.css");
-@import url("assets/shell/messagebar/messagebar.css");
 @import url("assets/shell/index/cardfilter/cardfilter.css");

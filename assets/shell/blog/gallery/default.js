@@ -1,8 +1,9 @@
 import {createLink, galleryComponent} from "./galleryfactory.js";
 import {ApiBasePath} from "../../../config.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../../ye-old-code/shared/icons/icons.js";
-import PhotoswipeMatDesignPlugin from "../../../ye-old-code/blog/gallery/photoswipe-mat-design-plugin.js";
+import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../icons/icons.js";
+import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
+
 
 const createGallery = (items, category, routeId) => {
 	let gallery = document.createElement("div");
