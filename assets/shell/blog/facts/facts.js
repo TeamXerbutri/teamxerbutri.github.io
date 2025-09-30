@@ -11,8 +11,8 @@ export const loadBlogFacts = async (category, routeId) => {
 
 	//aside
 	if (countProperties(blogFacts.facts) > 0) {
-		let ul = document.createElement("ul");
-
+		let blogFactsHtml = "";
+		
 		Object.entries(blogFacts["facts"]).forEach(([key, value]) => {
 			if (value === "") {
 				return;
@@ -27,25 +27,28 @@ export const loadBlogFacts = async (category, routeId) => {
 				case "height":
 				case "line":
 					const translation = translate(`facts.${key}`);
-					ul.innerHTML += `<li>${translation}: <span class="fact">${value}</span> </li>`;
+					blogFactsHtml += `<li>${translation}: <span class="fact">${value}</span> </li>`;
 					break;
 				case "visited":
 					const translationVis = translate(`facts.${key}`);
-					ul.innerHTML += `<li>${translationVis}: <span class="fact">${value.substring(0, 4)}</span> </li>`;
+					blogFactsHtml += `<li>${translationVis}: <span class="fact">${value.substring(0, 4)}</span> </li>`;
 					break;
 				case "rating":
+					// TODO rating as svg
 					const ratingKey = translate("facts.rating");
-					ul.innerHTML += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
+					blogFactsHtml += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
 					break;
 				case "map":
+					// TODO factsmap
 					let mapKey = translate("facts.map");
-					ul.innerHTML += `</br><li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+					blogFactsHtml += `</br><li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
 					break;
 				default:
 					break;
 			}
 		});
-		document.querySelector(".blog__facts").appendChild(ul);
+		
+		document.querySelector(".blog__facts").innerHTML = `<ul>${blogFactsHtml}</ul>`;
 	}
 }
 
