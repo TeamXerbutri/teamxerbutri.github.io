@@ -80,3 +80,11 @@ const addTranslationToElement = (element, text) => {
 	}
 	element.innerHTML = text;
 }
+
+export const localDate = (day, month, year)=>{
+	const monthFull = translate(`month.${month}`)
+	if (lang() === "en") {
+		return `${monthFull} ${day} ${year}`;
+	}
+	return `${day} ${monthFull} ${year}`;
+}
