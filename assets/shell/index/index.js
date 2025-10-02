@@ -47,12 +47,12 @@ const children = `
 `;
 
 const init = async () => {
-	// TODO: improve by parallel.
+	
 	// the second step is loading the child-component Cards 
 	await loadCards();
 	lazyLoadCards();
 
-	// The third step is the filter. This is dependent on the cards
+	// The third step is the filter. This is somewhat dependent on the cards
 	loadCardFilter();
 
 	const filterElement = document.querySelector(".card-filter");

@@ -24,7 +24,7 @@ function countProperties(obj) {
 	return count;
 }
 
-// TODO: split off the factsmap (is only for rail)
+
 let omap;
 
 function loadFactsMap(route) {

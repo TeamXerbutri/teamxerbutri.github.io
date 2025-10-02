@@ -1,4 +1,3 @@
-// TODO Move width and height to css. Lay out on 48p-size!
 
 export const leftArrow = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><path d="m24,24 l-12,0 l-12,-12 l12,-12 l12,0 l-12,12 l12,12 Z"/></svg>';
 

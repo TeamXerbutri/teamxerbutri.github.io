@@ -38,8 +38,6 @@ let stateContext = function () {
 	}
 
 	this.initState = function (route) {
-		// TODO v7 Introduce a historyTracker, keeping the history of the routes like the browser. These are like events?
-		// TODO v7 what happens if you press F5? You go home...
 		this.navigateTo(route);
 	}
 }

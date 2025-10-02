@@ -3,7 +3,6 @@
 	card.classList.add("card");
 	card.classList.add("show_inline-block");
 	card.classList.add(BlogObject.category);
-	//ToDo v7 Make this work.
 	card.addEventListener("click", () => {stateContext.navigateTo(createLink(BlogObject.routeid))});
 	card.title = BlogObject.description;
 

@@ -29,7 +29,7 @@ function buildGallery(translator, jsonHelper, value, routeId){
 			description.innerText = galleryDescription;
 			gallerySection.appendChild(description);
 
-			// if there are captions // TODO What blogs have captions?
+			// if there are captions
 			translator.fetchBlogCaptions(value, routeId).then(
 				(captions) => {
 

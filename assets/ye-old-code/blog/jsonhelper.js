@@ -4,7 +4,7 @@ class JsonHelper{
 		this._basePath = this.getBasePath();
 	}
 
-	// TODO: code multiplication from Translator
+
 	getBasePath() {
 		let pathPrefix = "";
 		if (document.location.pathname.toLowerCase().startsWith("/avontuur")) {

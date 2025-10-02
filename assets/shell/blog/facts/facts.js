@@ -37,7 +37,6 @@ export const loadBlogFacts = async (category, routeId) => {
 					blogFactsHtml += `<li>${translationVis}: <span class="fact">${value.substring(0, 4)}</span> </li>`;
 					break;
 				case "rating":
-					// TODO rating as svg
 					const ratingKey = translate("facts.rating");
 					blogFactsHtml += `<li>${ratingKey}: <span class="fact rating">${ratingIcon.repeat(value)}</span></li>`;
 					break;

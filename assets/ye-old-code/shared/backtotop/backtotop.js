@@ -30,7 +30,6 @@ export const initializeBackToTop = () => {
 
 const upArrow = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><path d="m0,24 l0,-12 l12,-12 l12,12 l0,12 l-12,-12 l-12,12 Z"/></svg>';
 
-// TODO: Title and translation(s) and aria-label
 const fabBackToTop = `<a class="back-to-top fab hide" href="#href-top">${upArrow}</a>`;
 
 export const backToTopComponent  = (className, children) => `

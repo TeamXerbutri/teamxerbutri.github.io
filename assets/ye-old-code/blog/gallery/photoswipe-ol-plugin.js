@@ -30,7 +30,6 @@ class PhotoswipeOpenLayersPlugin {
 
 		lightbox.addFilter("uiElement", (element, data) => {
 			if (data.name === "close") {
-				// TODO set translation here, does not work this way because translator did not discover elements not being in DOM
 				element.setAttribute("data-i18n", "gallery.back");
 
 				element.classList.add("link_mat-app-bar");
@@ -83,14 +82,13 @@ class PhotoswipeOpenLayersPlugin {
 					});
 
 					indicatorContainer.appendChild(indicator);
-					el.dataset.pswpSheetType = "default"; // TODO needs to be some value in order to set the correct type
+					el.dataset.pswpSheetType = "default"; 
 					el.appendChild(indicatorContainer);
 				}
 			});
 		});
 	}
-
-	//TODO on windowresize, recalculate the sheet width
+	
 	initSheet() {
 		const {pswp} = this;
 
@@ -306,7 +304,6 @@ class PhotoswipeOpenLayersPlugin {
 
 		// sideSheet
 		if (!usePortraitLayout) {
-			//TODO incorrect sheet size calculation, because I am not sure what the infoSheet contains at this moment!!
 	
 			sheetSize = this.measureSheetSize(infoSheet, e.slide);
 

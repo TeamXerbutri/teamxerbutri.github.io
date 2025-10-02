@@ -20,7 +20,7 @@ class Translator {
 		};
 	}
 
-	// TODO: get rid of this!
+	
 	getBasePath() {
 		let pathPrefix = "";
 		if (document.location.pathname.toLowerCase().startsWith("/avontuur")) {
@@ -93,8 +93,7 @@ class Translator {
 		if (this._options.persist) {
 			localStorage.setItem("language", this._lang);
 		}
-
-		// TODO: At this moment, the functionality reloads the full page.
+		
 		this.load(lang).then(() => {
 			this.addMenuOptions();
 		}).catch((error) => {
@@ -152,7 +151,6 @@ class Translator {
 				if (this._options.persist) {
 					localStorage.setItem("language", this._lang);
 				}
-				// TODO: ARGH!! Call the translateIndex when the index is loaded, not the other way around!
 				const locationPath = window.location.pathname.toLowerCase();
 				if (locationPath.length === 0 || locationPath.startsWith("/vijf") || locationPath.pathname === "/") {
 					this.fetchBlogData().then((data) => {
@@ -168,8 +166,7 @@ class Translator {
 			document.documentElement.lang = this._lang;
 		}
 	}
-
-	// TODO: Move to menu component!
+	
 	addMenuOption(lang) {
 		const menu = document.querySelector(".sub-menu__dots");
 		let existingMenuItem = document.getElementById(`lang-${lang}`);

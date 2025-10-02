@@ -14,7 +14,7 @@
 	let smallestSize = sizes[smallestIndex];
 
 	link.href = "../data/".concat(category, "/", routeId, "/", routeId, item.name, "-", largest.width, "x", largest.height, ".jpg");
-	link.title = ""; //TODO later, add a title to the image
+	link.title = "";
 	link.target = "_blank";
 
 	link.setAttribute("data-pswp-width", largest.width);
@@ -23,7 +23,7 @@
 
 	let image = document.createElement("img");
 	image.src = "../data/".concat(category, "/", routeId, "/", routeId, item.name, "-", smallestSize.width, "x", smallestSize.height, ".jpg");
-	image.alt = ""; //TODO add a title to the image
+	image.alt = "";
 
 	link.appendChild(image);
 	return link;

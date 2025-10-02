@@ -17,7 +17,6 @@ const getGalleryType = async (category, routeId) => {
 
 export const buildGallery = async (category, routeId) => {
 	const type = await getGalleryType(category, routeId);
-	console.log(type);
 	switch (type) {
 		case galleryTypes.none:
 			break;

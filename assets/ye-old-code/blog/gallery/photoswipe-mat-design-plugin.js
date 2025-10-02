@@ -11,7 +11,6 @@ class PhotoswipeMatDesignPlugin {
 		
 		lightbox.addFilter("uiElement", (element, data) => {
 			if(data.name === "close") {
-				// TODO set translation here, does not work this way because translator did not discover elements not being in DOM
 				element.setAttribute("data-i18n", "gallery.back");
 				
 				element.classList.add("link_mat-app-bar");
@@ -28,7 +27,7 @@ class PhotoswipeMatDesignPlugin {
 			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
 		});
 		
-		// add new counter to the bottom //TODO add alternative screenreadable text
+		// add new counter to the bottom 
 		lightbox.on("uiRegister", function() {
 			lightbox.pswp.ui.registerElement({
 				name: "indicator",
