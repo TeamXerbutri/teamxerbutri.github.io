@@ -1,6 +1,7 @@
 import {ApiBasePath} from "../../../config.js";
 import {translate} from "../../../translator.js";
 import {loadFactsMap} from "./map/factmap.js";
+import {ratingIcon} from "../../icons/icons.js";
 
 const fetchBlogFacts = async (category, routeId) => {
 	const response = await fetch(`${ApiBasePath}/${category}/${routeId}/blog.json`);
@@ -38,7 +39,7 @@ export const loadBlogFacts = async (category, routeId) => {
 				case "rating":
 					// TODO rating as svg
 					const ratingKey = translate("facts.rating");
-					blogFactsHtml += `<li>${ratingKey}: <span class="fact"><img src="../ui/pics/ri${value}.gif" alt="${value}" width="152" height="10" /></span></li>`;
+					blogFactsHtml += `<li>${ratingKey}: <span class="fact rating">${ratingIcon.repeat(value)}</span></li>`;
 					break;
 				case "map":
 					hasMap = true;
