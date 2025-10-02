@@ -22,7 +22,7 @@
 	"privacy": {
 		"link": "Privacy",
 		"title": "Notre déclaration de confidentialité",
-		"content": "Nous respectons la vie privée. Ce site est hébergé sur GitHub Pages et est soumis à sa politique de confidentialité."
+		"content": "Nous respectons la vie privée. Ce site est hébergé sur Vercel. Cette entreprise enregistre des statistiques de visiteurs anonymes, telles que le nombre de visiteurs et leur pays d'origine. Aucune donnée personnelle n'est collectée et aucun cookie n'est utilisé."
 	},
 	"navigation": {
 		"share": "Partager cette page",

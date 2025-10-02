@@ -22,7 +22,7 @@
 	"privacy": {
 		"link": "Privacy",
 		"title": "Onze privacy declaratie",
-		"content": "We respecteren privacy, deze site is gehost onder GitHub Pages en valt onder die privacy policy."
+		"content": "Deze website verzamelt geen persoonlijke gegevens, en gebruikt geen cookies. We gebruiken diensten van Vercel voor het hosten van de website. Deze dienst houdt bij hoeveel de website bezocht wordt vanuit welke landen. De verzamelde data is volledig anoniem en niet te herleiden tot een persoon of IP-adres."
 	},
 	"navigation": {
 		"share": "Deel deze pagina",

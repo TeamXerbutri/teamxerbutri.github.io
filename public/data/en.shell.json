@@ -22,7 +22,7 @@
 	"privacy": {
 		"link": "Privacy",
 		"title": "Our privacy declaration",
-		"content": "We respect your privacy. This site is hosted by GitHub pages, and follows the privacy guidelines."
+		"content": "We respect your privacy. This site is hosted by Vercel. This company registers anonymous visitor statistics, such as the number of visitors and their country of origin. No personal data is collected, and no cookies are used."
 	},
 	"navigation": {
 		"share": "Share this page",
