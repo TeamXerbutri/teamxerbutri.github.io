@@ -2,33 +2,29 @@ import "./gallery.css"
 import "photoswipe/style.css";
 import {lang} from "../../../language.js";
 import {ApiBasePath} from "../../../config.js";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
+import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../icons/icons.js";
+import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
+import {createLink} from "./galleryfactory.js";
+import {translate} from "../../../translator.js";
 
-let isLoaded = false;
 
-// I can reload photoswipe every time, but that feels a bit heavy. 
+// I will reload the gallery each time.
 
 export const loadGallery = async (category, routeId) => {
-	if(!isLoaded){
-		await init();
-		isLoaded = true;
-	}
-
+	// TODO: if the old blog gallery exists, remove it and its event listeners
 	const type = await getGalleryType(category, routeId);
-
-	const gallerySection = document.querySelector(".blog__gallery");
-	
 	if (type === galleryTypes.none){
-		gallerySection.classList.add("hide");
-		// TODO empty gallery
 		return;
 	}
-	
-	gallerySection.classList.remove("hide");
-	
-	let gallery = document.getElementById("js-gallery");
 
-	// TODO remove all children of gallery
-
+	let gallerySection = document.querySelector(".blog__gallery");
+	gallerySection.innerHTML = galleryComponent();
+	let gallery = document.createElement("div");
+	gallery.classList.add("gallery");
+	gallery.id = "js-gallery";
+	
+	
 	// each time. This is the heavy part!
 	// TODO, I do NOT want to have a new eventListener every time this is hit.
 	// if(document.querySelector("article").scrollHeight < app.clientHeight) {
@@ -42,7 +38,7 @@ export const loadGallery = async (category, routeId) => {
 			break;
 		case galleryTypes.default:
 			const items = await fetchImages(category, routeId);
-			gallery = createDefaultGallery(items, category, routeId);
+			createDefaultGallery(items, gallery, category, routeId);
 			break;
 		case galleryTypes.captions:
 			const pf = await paraFetch(category, routeId);
@@ -58,23 +54,10 @@ export const loadGallery = async (category, routeId) => {
 			break;
 		}
 	}
+	gallerySection.appendChild(gallery);
 	createDefaultGalleryComponent();
-	
-	
-	// ToDo decouple lightbox from input
-// ToDo isLoaded for lightbox
-// ToDo galleryType IS input for the lightbox. functionality depends on type.
 }
 
-const init = async () => {
-	const gallerySection = document.querySelector(".blog__gallery");
-	gallerySection.innerHTML = galleryComponent();
-	let gallery = document.createElement("div");
-	gallery.classList.add("gallery");
-	gallery.id = "js-gallery";
-	gallerySection.appendChild(gallery);
-	
-}
 
 
 const galleryTypes = {
@@ -91,22 +74,15 @@ const getGalleryType = async (category, routeId) => {
 }
 
 
-const createDefaultGallery = (items, category, routeId) => {
-	let gallery = document.getElementById("js-gallery");
+const createDefaultGallery = (items, gallery, category, routeId) => {
 	items.forEach((item) => {
 
 		const link = createLink(item, category, routeId);
 		gallery.appendChild(link);
 	});
-	return gallery;
 }
 
 const createDefaultGalleryComponent = () => {
-	
-
-	
-	
-	// TODO move these!
 	const smallScreenPadding = {
 		top: 64, bottom: 0, left: 0, right: 0
 	};
@@ -114,7 +90,7 @@ const createDefaultGalleryComponent = () => {
 		top: 64, bottom: 24, left: 0, right: 0
 	};
 	const lightbox = createLightBox(smallScreenPadding, largeScreenPadding);
-	// TODO: This should only be called once!
+	// TODO: This should only be called once!?!?
 	lightbox.init();
 }
 
@@ -160,19 +136,15 @@ const paraFetch = async (category, routeId) => {
 }
 
 const galleryComponent = () =>{
-	return `<h2 data-i18n="gallery.title">${translate("gallery.title")}</h2><p data-i18n="gallery.description">${translate("gallery.description")}</p>`;
+	return `<h2>${translate("gallery.title")}</h2><p>${translate("gallery.description")}</p>`;
 }
 
-import PhotoSwipeLightbox from "photoswipe/lightbox";
-import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../icons/icons.js";
-import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
-import {createLink} from "./galleryfactory.js";
-import {translate} from "../../../translator.js";
+
 
 const createLightBox = (smallScreenPadding, largeScreenPadding) => {
 	const lightbox = new PhotoSwipeLightbox({
-		gallery: "#gallery__responsive-images",
-		children: ".pswp-gallery__item",
+		gallery: "#js-gallery",
+		children: "a",
 		counter: false,
 		bgOpacity: 1,
 		closeSVG: leftArrow,
