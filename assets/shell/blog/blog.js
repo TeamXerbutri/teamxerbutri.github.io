@@ -35,7 +35,7 @@ export const loadBlog = () => {
 	buildBlog(category, routeId).then(() => {console.timeEnd("blog-loaded");});
 };
 
-
+// TODO: sometimes this step is faster than the init step. Fix that.
 const buildBlog = async (category, routeId) => {
 	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId))
 	

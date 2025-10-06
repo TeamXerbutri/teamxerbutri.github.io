@@ -9,11 +9,11 @@ const createPswpSrcSet = (sizes, category, routeId, item ) =>{
 }
 
 export const createLink = (item, category, routeId) => {
-	let linkWrapper = document.createElement("div");
-	linkWrapper.classList.add("gallery__item");
+	// let linkWrapper = document.createElement("div");
+	// linkWrapper.classList.add("gallery__item");
 	
 	let link = document.createElement("a");
-	
+	link.classList.add("gallery__item");
 	// largest size
 	const sizes = item.sizes;
 	const heights = sizes.map((size) => size.height);
@@ -35,6 +35,7 @@ export const createLink = (item, category, routeId) => {
 	link.setAttribute("data-pswp-srcset", createPswpSrcSet(sizes, category, routeId, item));
 	link.innerHTML = `<img src="${createImageLink(category, routeId, item, smallest)}" alt="${link.title}">`
 
-	linkWrapper.appendChild(link);
-	return linkWrapper;
+	// linkWrapper.appendChild(link);
+	// return linkWrapper;
+	return link;
 }
