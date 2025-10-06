@@ -6,6 +6,7 @@ import {fetchTranslations} from "../../translator.js";
 import {loadBlogFacts} from "./facts/facts.js";
 import {loadBlogContent} from "./content/content.js";
 import {buildGallery} from "./gallery/gallery.js";
+import {loadJsonLd} from "./jsonld/jsonld.js";
 
 let isLoaded = false;
 export const loadBlog = () => {
@@ -54,6 +55,7 @@ const buildBlog = async (category, routeId) => {
 	// TODO, I do NOT want to have a new eventListener every time this is hit.
 	// TODO translateAll?
 	await buildGallery(category, routeId);
+	await loadJsonLd(category, routeId);
 	// if(document.querySelector("article").scrollHeight < app.clientHeight) {
 	//  buildGallery(translator, jsonHelper, category, routeId);
 	// }
@@ -68,9 +70,6 @@ const parallel = async (task1, task2) => {
 		result2: await task2
 	}
 }
-
-
-
 
 const init = () => {
 	initShareMenu();
