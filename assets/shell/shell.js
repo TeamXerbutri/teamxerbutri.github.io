@@ -31,7 +31,9 @@ export const loadShell = () => {
 	shell.classList.remove("hide");
 	shell.classList.add("show");
 }
+
 // TODO: there is a async component-part and a sync-part.
+// one-time initialization of the component
 const init = () => {
 
 	let frame = document.getElementById("js-frame");

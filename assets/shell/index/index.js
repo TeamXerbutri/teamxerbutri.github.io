@@ -5,12 +5,10 @@ import {fetchTranslations, translate, translateAll} from "../../translator.js";
 
 let isLoaded = false;
 
-export const reloadIndex = () => {
-	document.querySelector(".card-feed").innerHTML = "";
-	loadCards();
-}
+// component
+export const indexComponent = () => Layout(children)
 
-// the index is a component AND has components
+// load the component => logic for every call of the component
 export const loadIndex = () => {
 	let frame = document.getElementById("js-frame");
 	frame.classList.remove("frame__blog_size");
@@ -35,19 +33,16 @@ export const loadIndex = () => {
 	
 	console.timeEnd("index");
 }
-const Layout = (children) => `
-<div class="index hide">
-${children}
-</div>
-`;
 
-const children = `
-	${cardFilterComponent}
-	<nav class="card-feed"></nav>
-`;
+// TODO rename to reloadCards
+export const reloadIndex = () => {
+	document.querySelector(".card-feed").innerHTML = "";
+	loadCards();
+}
 
+// one-time initialization of the component
 const init = async () => {
-	
+
 	// the second step is loading the child-component Cards 
 	await loadCards();
 	lazyLoadCards();
@@ -59,16 +54,26 @@ const init = async () => {
 	filterElement.onclick = function () {
 		onFilter();
 	}
-	
+
 	fetchTranslations("index").then(() => {
 		setMetaData();
 		translateAll();
 	});
 }
 
+const Layout = (children) => `
+<div class="index hide">
+${children}
+</div>
+`;
+
+const children = `
+	${cardFilterComponent}
+	<nav class="card-feed"></nav>
+`;
+
 const setMetaData = () => {
 	document.title = translate("metadata.title");
 	document.querySelector('meta[name="description"]').setAttribute("content", translate("metadata.content"));
 }
 
-export const indexComponent = () => Layout(children)

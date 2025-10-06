@@ -1,5 +1,4 @@
 import {ImageBasePath} from "../../../config.js";
-import {translate} from "../../../translator.js";
 
 const createImageLink = (category, routeId, item, size) => {
 	return `${ImageBasePath}/${category}/${routeId}/${routeId}${item.name}-${size.width}x${size.height}.jpg`
@@ -33,12 +32,4 @@ export const createLink = (item, category, routeId) => {
 	link.innerHTML = `<img src="${createImageLink(category, routeId, item, smallest)}" alt="${link.title}">`
 	
 	return link;
-}
-
-export const galleryComponent = () =>{
-	//gallery
-	let gallerySection = document.querySelector(".blog__gallery");
-	gallerySection.innerHTML = `<h2>${translate("gallery.title")}</h2><p>${translate("gallery.description")}</p>`;
-	
-	return gallerySection;
 }
