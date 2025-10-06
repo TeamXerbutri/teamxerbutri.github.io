@@ -103,7 +103,7 @@ const init = () => {
 	});
 	// map
 	omap = new Map({
-		target: "omap",
+		target: "js-factsmap",
 		layers: [raster],
 		view: view
 	});

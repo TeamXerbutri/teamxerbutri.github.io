@@ -43,7 +43,7 @@ export const loadBlogFacts = async (category, routeId) => {
 				case "map":
 					hasMap = true;
 					let mapKey = translate("facts.map");
-					blogFactsHtml += `</br><li>${mapKey} </br><div class="omap" id="omap" data-map="${value}"></div> </li>`;
+					blogFactsHtml += `</br><li>${mapKey} </br><div class="facts__map" id="js-factsmap" data-map="${value}"></div> </li>`;
 					break;
 				default:
 					break;
