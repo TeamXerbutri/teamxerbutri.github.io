@@ -45,6 +45,7 @@ export const loadGallery = async (category, routeId) => {
 			});
 			break;
 		case galleryTypes.captions:
+		case galleryTypes.map:
 			const pf = await paraFetch(category, routeId);
 			pf.items.forEach((item) => {
 				const link = createLink(item, category, routeId);
@@ -59,9 +60,6 @@ export const loadGallery = async (category, routeId) => {
 				
 				gallery.appendChild(link);
 			});
-			break;
-		case galleryTypes.map:
-			// TODO build openlayers gallery
 			break;
 		default: {
 			console.error(`Unknown gallery type: ${type}`);
@@ -83,7 +81,7 @@ const galleryTypes = {
 const getGalleryType = async (category, routeId) => {
 	
 	if(category === "spoor")
-		return galleryTypes.captions;
+		return galleryTypes.map;
 	
 	return galleryTypes.default;
 }
@@ -136,7 +134,6 @@ const fetchCaptions = async (category, routeId) => {
 	const response = await fetch(`${ApiBasePath}/${category}/${routeId}/captions.${lang()}.json`);
 	return response.json();
 }
-
 
 const paraFetch = async (category, routeId) => {
 	return {

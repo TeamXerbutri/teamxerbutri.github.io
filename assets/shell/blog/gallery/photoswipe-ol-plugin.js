@@ -62,7 +62,7 @@ class PhotoswipeOpenLayersPlugin {
 					
 					let mapContainer = document.createElement("div");
 					mapContainer.className = "pswp__sheet-map";
-					mapContainer.id = "galnavmap";
+					mapContainer.id = "js-gal-map";
 					el.appendChild(mapContainer);
 
 					let indicatorContainer = document.createElement("div");
@@ -233,7 +233,7 @@ class PhotoswipeOpenLayersPlugin {
 
 		const zoomLevel = slide.zoomLevels.initial;
 		
-		const mapElement = document.getElementById("galnavmap");
+		const mapElement = document.getElementById("js-gal-map");
 		mapElement.style.removeProperty("height");
 		this.setSheetType(infoSheet, this.type);
 		if (this.type === "side") {
@@ -322,7 +322,7 @@ class PhotoswipeOpenLayersPlugin {
 		}
 		// bottomSheet
 		if (usePortraitLayout) {
-			let mapElement = document.getElementById("galnavmap");
+			let mapElement = document.getElementById("js-gal-map");
 			if(window.innerHeight>900){
 				mapElement.style.height = "200px";
 			}
@@ -397,7 +397,7 @@ class PhotoswipeOpenLayersPlugin {
 
 	setSheetType(sheetElement, type) {
 		const prevType = sheetElement.dataset.pswpSheetType;
-		let mapElement = document.getElementById("galnavmap");
+		let mapElement = document.getElementById("js-gal-map");
 		if (type !== prevType) {
 			mapElement.classList.add("pswp__sheet-map--" + type);
 			mapElement.classList.remove("pswp__sheet-map--" + prevType);
@@ -462,7 +462,7 @@ class PhotoswipeOpenLayersPlugin {
 
 		// map
 		navMap = new Map({
-			target: "galnavmap",
+			target: "js-gal-map",
 			layers: [raster],
 			view: view,
 		});
