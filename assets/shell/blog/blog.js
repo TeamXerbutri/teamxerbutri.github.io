@@ -31,6 +31,7 @@ export const loadBlog = async () => {
 
 	// blog loading async part. => fetch and load.
 	await buildBlog();
+	frame.scrollTop = 0;	
 	console.timeEnd("blog-loaded");
 };
 

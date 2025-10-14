@@ -30,7 +30,8 @@ export const loadIndex = () => {
 	
 	if (isLoaded) 
 		setMetaData();
-	
+
+	frame.scrollTop = 0;
 	console.timeEnd("index");
 }
 
