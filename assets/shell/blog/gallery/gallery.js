@@ -14,8 +14,32 @@ import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 
 // I will reload the gallery each time.
 
+let categoryCache = "";
+let routeIdCache = "";
+
 export const loadGallery = async (category, routeId) => {
-	// TODO: if the old blog gallery exists, remove it and its event listeners
+	categoryCache = category;
+	routeIdCache = routeId.toLowerCase();
+	const app = document.getElementById("js-app");
+	app.removeEventListener("scroll", onScrollCreateGallery, true);
+	
+	if (document.querySelector("article").scrollHeight < app.clientHeight) {
+		await createGallery(category, routeId);
+	}
+	else{
+	 	app.addEventListener("scroll", onScrollCreateGallery, true);
+	}
+}
+
+const onScrollCreateGallery = async () => {
+	const app = document.getElementById("js-app");
+	if (app.scrollTop + app.clientHeight >= app.scrollHeight-200){
+		app.removeEventListener("scroll", onScrollCreateGallery, true);
+		await createGallery(categoryCache, routeIdCache);
+	}
+}
+
+const createGallery = async (category, routeId) => {
 	const type = await getGalleryType(category, routeId);
 	if (type === galleryTypes.none){
 		return;
@@ -27,13 +51,6 @@ export const loadGallery = async (category, routeId) => {
 	gallery.classList.add("gallery");
 	gallery.id = "js-gallery";
 	
-		
-	// if(document.querySelector("article").scrollHeight < app.clientHeight) {
-	//  buildGallery(translator, jsonHelper, category, routeId);
-	// }
-	// else{
-	// 	app.addEventListener("scroll", createImageGallery, true);
-	// }
 	switch (type) {
 		case galleryTypes.none:
 			break;
@@ -57,7 +74,7 @@ export const loadGallery = async (category, routeId) => {
 					captionDiv.innerText = caption;
 					link.appendChild(captionDiv);
 				}
-				
+
 				gallery.appendChild(link);
 			});
 			break;
