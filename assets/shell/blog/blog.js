@@ -22,7 +22,7 @@ export const loadBlog = async () => {
 	frame.classList.add("frame__blog_size");
 	
 	const headerElem = document.querySelector("header");
-	headerElem.classList.add("frame__blog_size")
+	headerElem.classList.add("frame__blog_size");
 
 	if (!isLoaded) {
 		await init();
@@ -38,8 +38,8 @@ const buildBlog = async () => {
 	const pathParts = currentPage().split("-");
 	const category = pathParts[0];
 	const routeId = pathParts[1];
-	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId))
-		
+	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId));
+	
 	// TODO translateAll?
 	await loadGallery(category, routeId);
 	await loadJsonLd(category, routeId);

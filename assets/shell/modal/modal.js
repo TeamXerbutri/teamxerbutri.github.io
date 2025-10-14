@@ -1,1 +1,1 @@
-export const modalComponent = `<div class="modal__dismiss backdrop hide"></div>`
+export const modalComponent = `<div class="modal__dismiss backdrop hide"></div>`;

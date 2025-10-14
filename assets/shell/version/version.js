@@ -8,6 +8,7 @@ const fetchVersion = async () => {
 
 export const checkVersion = async () => {
 	const serverVersion = await fetchVersion();
+	
 	if (serverVersion.version === Version)
 		return;
 	

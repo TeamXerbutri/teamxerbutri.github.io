@@ -2,7 +2,7 @@ import {currentPage, loadThisPage} from "../../../navigator.js";
 import {isTouchDevice} from "../../../fix/touch.js";
 import {SupportedLanguages} from "../../../config.js";
 import {lang, setLanguage} from "../../../language.js";
-import {reloadIndex} from "../../index/index.js";
+import {reloadCards} from "../../index/index.js";
 import {reTranslateAll} from "../../../translator.js";
 
 const shareMenuItem = (uri, title) => {
@@ -62,7 +62,7 @@ const menuItem = (key) => {
 			// set language
 			setLanguage(language);
 			// reload page
-			reloadIndex();
+			reloadCards();
 			showRightLanguages(prevLang);
 			reTranslateAll()
 			loadThisPage();
@@ -114,10 +114,10 @@ export const initMenu = () => {
 
 	SupportedLanguages.filter(l => l !== lang()).forEach(l => {
 		routes.push("menu." + l);
-	})
+	});
 	routes.forEach(key => {
 		menu.appendChild(menuItem(key));
-	})
+	});
 
 	if (isTouchDevice()) {
 		let menuButton = document.querySelector(".menu__dots");

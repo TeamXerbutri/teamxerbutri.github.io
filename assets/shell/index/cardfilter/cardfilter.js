@@ -34,7 +34,7 @@ function toggleButton(button, translationKey, categoryName) {
 	}
 }
 
-export const cardFilterComponent = `<div class="card-filter" role="toolbar"></div>`
+export const cardFilterComponent = `<div class="card-filter" role="toolbar"></div>`;
 
 export const filter = () => {
 	const buttons = [

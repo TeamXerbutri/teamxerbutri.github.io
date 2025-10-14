@@ -11,7 +11,6 @@ import {translate} from "../../../translator.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 
-
 // I will reload the gallery each time.
 
 let categoryCache = "";
@@ -137,8 +136,7 @@ const createGalleryComponent = (type, routeId) => {
 			break;
 		}
 	}
-		
-	// TODO: This should only be called once!?!?
+	
 	lightbox.init();
 }
 

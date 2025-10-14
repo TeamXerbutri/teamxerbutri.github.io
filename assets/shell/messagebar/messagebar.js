@@ -1,1 +1,1 @@
-export const messageBarComponent = `<div class="message-bar hide"></div>`
+export const messageBarComponent = `<div class="message-bar hide"></div>`;

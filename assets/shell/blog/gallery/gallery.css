@@ -143,14 +143,12 @@
 	opacity: 0.5;
 }
 
-/*CSS file for the Avontuur design (Tablets and up)*/
 @media only screen and (min-width: 756px) {
 	.gallery {
 		padding-left: 0;
 	}
 }
 
-/* Resolution 1024x768 (Viewsize 1010x660) Emperically 1124*/
 @media only screen and (min-width: 1124px) {
 	.gallery__item img {
 		max-height: 235px;
@@ -158,7 +156,6 @@
 	}
 }
 
-/* Resolution 1366x768*/
 @media only screen and (min-width: 1418px) {
 	.gallery__item img {
 		max-height: 310px;

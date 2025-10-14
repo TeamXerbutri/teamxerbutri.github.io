@@ -34,8 +34,7 @@ export const loadIndex = () => {
 	console.timeEnd("index");
 }
 
-// TODO rename to reloadCards
-export const reloadIndex = () => {
+export const reloadCards = () => {
 	document.querySelector(".card-feed").innerHTML = "";
 	loadCards();
 }

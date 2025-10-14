@@ -58,7 +58,6 @@ const navigateBack = () => {
 	loadThisPage();
 };
 
-
 export const loadThisPage = () => {
 	switch (current) {
 		case "map":

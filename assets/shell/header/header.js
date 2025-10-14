@@ -9,22 +9,22 @@ const txLogo = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" wi
 const privacyHtml = `<div id="privacy-panel" class="panel hide">
 			<h2 data-i18n="privacy.link">Privacy</h2>
 			<p data-i18n="privacy.content">Privacy</p>
-		</div>`
+		</div>`;
 
 const contactHtml = `<div id="contact-panel" class="panel hide">
 			<h2 data-i18n="contact.link">Contact</h2>
 			<p data-i18n="contact.content">Contact</p>
-		</div>`
+		</div>`;
 
 const dotsMenuHtml = `<li class="menu__dropdown menu__dots"><div role="button" class="link_mat-app-bar show_inline-block" data-i18n="navigation.menu">${dotsMenu}</div>
 					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__dots">
 					</ul>
-				</li>`
+				</li>`;
 
 const shareButtonHtml = `<li class="menu__dropdown menu__share header__blog"><div role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.share">${share}</div>
 					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__share">
 					</ul>
-				</li>`
+				</li>`;
 
 export const headerComponent = `
 		<div class="header__logo header__index">${txLogo}</div>

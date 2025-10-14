@@ -8,5 +8,5 @@ const fetchLd = async (category, route) => {
 
 export const loadJsonLd = async (category, route) => {
 	const jsonLd = await fetchLd(category, route);
-	document.getElementById("jsonld").innerHTML = JSON.stringify(jsonLd)
+	document.getElementById("jsonld").innerHTML = JSON.stringify(jsonLd);
 }
