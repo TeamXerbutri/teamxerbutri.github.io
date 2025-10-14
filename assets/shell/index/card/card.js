@@ -63,7 +63,7 @@ const buildCard = (categoryTypes, card) => {
 	divCard.addEventListener("click", () => {
 		pageEvents.loadPage(`${createLink(card.category, card.routeid)}`);
 	});
-	divCard.innerHTML = `<img src="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
+	divCard.innerHTML = `<img src="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
 	return divCard;
 }
 
