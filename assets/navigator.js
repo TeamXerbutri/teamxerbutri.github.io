@@ -9,7 +9,6 @@ let currentIndex = 0;
 export const initNavigator = async () => {
 	registerPages();
 	await getInitialPage();
-	console.log("retrieved initial page:", current);
 	loadThisPage();
 }
 
@@ -75,15 +74,11 @@ const getInitialPage = async () => {
 	if (window.location.pathname.length > 1) {
 		const redirect = sessionStorage.redirect;
 		delete sessionStorage.redirect;
-
-		console.log("redirect", redirect);
-		console.log("redirect is not href location: ", redirect !== location.href);
+		
 		if (redirect !== undefined && redirect.length > 0) {
 			if (redirect.startsWith("avontuur/")) {
 				const routeId = redirect.split("/")[1];
-				console.log("routeId", routeId);
 				const category = await getCategory(routeId);
-				console.log("category", category);
 				if (category !== undefined) {
 					current = `${category}-${routeId}`;
 					return;
@@ -108,7 +103,6 @@ const handleBlogNotFound = async (routeId) => {
 		
 	try {
 		const routes = await fetchAlternativeRoutes();
-		console.log("handleBlogNotFound", routeId, routes);
 		if (routes[routeId] !== undefined) {
 			routeId = routes[routeId];
 			const category = await getCategory(routeId);
@@ -118,7 +112,6 @@ const handleBlogNotFound = async (routeId) => {
 				return;
 			}
 		}
-		console.log("moving though here to 404 setBlogNotFound");
 		current = "xerbutri-404";
 
 	} catch (error) {
@@ -130,6 +123,5 @@ const handleBlogNotFound = async (routeId) => {
 const getCategory = async (routeId) => {
 	const response = await fetch(`${apiBasePath()}/blogs.${lang()}.json`);
 	const blogs = await response.json();
-	console.log("getCategory", routeId, blogs[routeId]);
 	return blogs[routeId];
 }
