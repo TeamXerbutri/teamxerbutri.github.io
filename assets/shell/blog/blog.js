@@ -11,7 +11,7 @@ import {parallel} from "../../helpers.js";
 let isLoaded = false;
 
 // should only contain logic for each call!
-export const loadBlog = () => {
+export const loadBlog = async () => {
 	console.time("blog-loaded");
 	hideItems(".header__index", "show_inline-block");
 	showItems(".header__blog", "show_inline-block");
@@ -25,22 +25,21 @@ export const loadBlog = () => {
 	headerElem.classList.add("frame__blog_size")
 
 	if (!isLoaded) {
-		init().then(() => {isLoaded = true;});
+		await init();
+		isLoaded = true;
 	}
 
 	// blog loading async part. => fetch and load.
+	await buildBlog();
+	console.timeEnd("blog-loaded");
+};
+
+const buildBlog = async () => {
 	const pathParts = currentPage().split("-");
 	const category = pathParts[0];
 	const routeId = pathParts[1];
-	buildBlog(category, routeId).then(() => {console.timeEnd("blog-loaded");});
-};
-
-// TODO: sometimes this step is faster than the init step. Fix that.
-const buildBlog = async (category, routeId) => {
 	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId))
-	
-	// after the blogContent is loaded, build the gallery.
-	
+		
 	// TODO translateAll?
 	await loadGallery(category, routeId);
 	await loadJsonLd(category, routeId);
