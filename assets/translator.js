@@ -1,5 +1,5 @@
-import {ApiBasePath} from "./config.js";
 import {lang} from "./language.js";
+import {apiBasePath} from "./navigator.js";
 
 let translations = {};
 
@@ -13,7 +13,7 @@ export const translate = (key) => {
 }
 
 export const fetchTranslations = async (key) => {
-	const response = await fetch(`${ApiBasePath}/${lang()}.${key}.json`);
+	const response = await fetch(`${apiBasePath()}/${lang()}.${key}.json`);
 	let result = await response.json();
 	addTranslations(result);
 	return result;

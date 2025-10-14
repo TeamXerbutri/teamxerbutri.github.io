@@ -2,7 +2,6 @@ import "./gallery.css"
 import "photoswipe/style.css";
 import "./captions.css"
 import {lang} from "../../../language.js";
-import {ApiBasePath} from "../../../config.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../icons/icons.js";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
@@ -10,6 +9,7 @@ import {createLink} from "./galleryfactory.js";
 import {translate} from "../../../translator.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
+import {apiBasePath} from "../../../navigator.js";
 
 // I will reload the gallery each time.
 
@@ -141,12 +141,12 @@ const createGalleryComponent = (type, routeId) => {
 }
 
 const fetchImages = async (category, routeId) => {
-	const response = await fetch(`${ApiBasePath}/${category}/${routeId}/images.json`);
+	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/images.json`);
 	return response.json();
 }
 
 const fetchCaptions = async (category, routeId) => {
-	const response = await fetch(`${ApiBasePath}/${category}/${routeId}/captions.${lang()}.json`);
+	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/captions.${lang()}.json`);
 	return response.json();
 }
 

@@ -1,8 +1,8 @@
-import {ApiBasePath} from "../../../config.js";
 import {lang} from "../../../language.js";
+import {apiBasePath} from "../../../navigator.js";
 
 const fetchLd = async (category, route) => {
-	const response = await fetch(`${ApiBasePath}/${category}/${route}/${route}.${lang()}.jsonld`);
+	const response = await fetch(`${apiBasePath()}/${category}/${route}/${route}.${lang()}.jsonld`);
 	return await response.json();
 }
 

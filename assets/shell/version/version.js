@@ -1,8 +1,8 @@
-import {ApiBasePath, Version} from "../../config.js";
-import {fetchTranslations, translate} from "../../translator.js";
+import {Version} from "../../config.js";
+import {apiBasePath} from "../../navigator.js";
 
 const fetchVersion = async () => {
-	const response = await fetch(`${ApiBasePath}/version.json`);
+	const response = await fetch(`${apiBasePath()}/version.json`);
 	return await response.json();
 }
 

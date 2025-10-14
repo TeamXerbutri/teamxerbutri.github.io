@@ -1,11 +1,11 @@
-import {ApiBasePath, ImageBasePath} from "../../../config.js";
 import {tagComponent} from "./tag/tag.js";
 import {lang} from "../../../language.js";
 import {fetchTranslations} from "../../../translator.js";
 import {filter} from "../cardfilter/cardfilter.js";
+import {apiBasePath} from "../../../navigator.js";
 
 const fetchCards = async () => {
-	const response = await fetch(`${ApiBasePath}/index.${lang()}.json`);
+	const response = await fetch(`${apiBasePath()}/index.${lang()}.json`);
 	return await response.json();
 }
 

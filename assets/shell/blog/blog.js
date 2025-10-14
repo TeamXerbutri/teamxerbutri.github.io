@@ -1,4 +1,4 @@
-import {currentPage} from "../../navigator.js";
+import {currentPage, setBlogNotFound} from "../../navigator.js";
 import {hideItems, showItems} from "../togglhelper.js";
 import {initShareMenu} from "../header/menu/menu.js";
 import {fetchTranslations} from "../../translator.js";
@@ -12,33 +12,41 @@ let isLoaded = false;
 
 // should only contain logic for each call!
 export const loadBlog = async () => {
-	console.time("blog-loaded");
-	hideItems(".header__index", "show_inline-block");
-	showItems(".header__blog", "show_inline-block");
-	hideItems(".index", "show");
-	showItems(".blog", "show");
+	try {
+		console.time("blog-loaded");
+		hideItems(".header__index", "show_inline-block");
+		showItems(".header__blog", "show_inline-block");
+		hideItems(".index", "show");
+		showItems(".blog", "show");
 
-	let frame = document.getElementById("js-frame");
-	frame.classList.add("frame__blog_size");
-	
-	const headerElem = document.querySelector("header");
-	headerElem.classList.add("frame__blog_size");
+		let frame = document.getElementById("js-frame");
+		frame.classList.add("frame__blog_size");
 
-	if (!isLoaded) {
-		await init();
-		isLoaded = true;
+		const headerElem = document.querySelector("header");
+		headerElem.classList.add("frame__blog_size");
+
+		if (!isLoaded) {
+			await init();
+			isLoaded = true;
+		}
+
+		// blog loading async part. => fetch and load.
+		await buildBlog();
+		frame.scrollTop = 0;
+		console.timeEnd("blog-loaded");
+	} catch (err) {
+		setBlogNotFound();
 	}
-
-	// blog loading async part. => fetch and load.
-	await buildBlog();
-	frame.scrollTop = 0;	
-	console.timeEnd("blog-loaded");
 };
 
 const buildBlog = async () => {
 	const pathParts = currentPage().split("-");
 	const category = pathParts[0];
 	const routeId = pathParts[1];
+	
+	if (routeId === "404")
+		return;
+	
 	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId));
 	
 	// TODO translateAll?

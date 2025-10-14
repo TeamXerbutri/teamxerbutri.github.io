@@ -15,13 +15,15 @@ initLanguage();
 	// github pages 404 work-around
 	function manipulateHref() {
 		// exclude from production
-		console.time("manipulateHref");
-		if (window.location.pathname.length <= 1) {
-			return;
-		}
 				
 		if (import.meta.env.DEV) {
+			console.time("manipulateHref");
 			console.warn("dev mode");
+
+			//TODO: or hash? or query param? or is this slash?
+			if (window.location.pathname.length <= 1) {
+				return;
+			}
 
 			let route = location.href;
 
@@ -33,7 +35,7 @@ initLanguage();
 				route = "";
 			}
 			else if (window.location.pathname.length > 1)
-				route = window.location.pathname.toLowerCase().replace("/", "")
+				route = window.location.pathname.toLowerCase().replace("/", "");
 
 			sessionStorage.redirect = route;
 		}

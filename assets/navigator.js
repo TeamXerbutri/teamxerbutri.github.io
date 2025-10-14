@@ -1,4 +1,7 @@
 import {loadShell} from "./shell/shell.js";
+import {translate} from "./translator.js";
+import {ApiBasePath} from "./config.js";
+import {lang} from "./language.js";
 
 let current = "home";
 let history = [];
@@ -69,15 +72,76 @@ export const loadThisPage = () => {
 	}
 }
 
-const getInitialPage = () => {
+const getInitialPage = async () => {
 	if (window.location.pathname.length > 1) {
 		const redirect = sessionStorage.redirect;
 		delete sessionStorage.redirect;
 
-		if (redirect && redirect !== location.href) {
-			// TODO find page / routing table.
-			current = redirect;
+		console.log("redirect", redirect);
+		console.log("redirect is not href location: ", redirect !== location.href);
+		if (redirect !== undefined && redirect.length > 0) {
+			if (redirect.startsWith("avontuur/")) {
+				const routeId = redirect.split("/")[1];
+				console.log("routeId", routeId);
+				const category = await getCategory(routeId);
+				console.log("category", category);
+				if (category !== undefined) {
+					current = `${category}-${routeId}`;
+					return;
+				} 
+				
+				await handleBlogNotFound(routeId);
+			}
+			else if (redirect === "map") {
+				current = "map";
+				return;
+			}
 		}
 	}
 }
 
+const fetchAlternativeRoutes = async () => {
+	const response = await fetch(`${apiBasePath()}/routes.json`);
+	return await response.json();
+}
+
+const handleBlogNotFound = async (routeId) => {
+	try {
+		const routes = await fetchAlternativeRoutes();
+		if (routes[routeId] !== undefined) {
+			routeId = routes[routeId];
+			const category = await getCategory(routeId);
+			current = `${category}-${routeId}`;
+			return;
+		}
+		setBlogNotFound();
+		
+	} catch (error) {
+		console.error(`An error occured in getting the alternative routes: ${error}`);
+		setBlogNotFound();
+	}
+}
+
+const getCategory = async (routeId) => {
+	console.log("path", `${apiBasePath()}/blogs.${lang()}.json`);
+	const response = await fetch(`${apiBasePath()}/blogs.${lang()}.json`);
+	const blogs = await response.json();
+	console.log(blogs);
+	return blogs[routeId];
+}
+
+export const setBlogNotFound = () => {
+	current = "xerbutri-404";
+	const errorTitle = translate("errors.404.title");
+	const errorDescription = translate("errors.404.content");
+	document.title = "404 " + errorTitle + " - Xerbutri Urban Exploring";
+	document.querySelector('meta[name="description"]').setAttribute("content", errorDescription);
+	document.querySelector(".blog__title").innerHTML = `<h1>${errorTitle}</h1>`;
+	// intro
+	document.querySelector(".blog__intro").innerHTML = `<p>${errorDescription}</p>`;
+}
+
+export const apiBasePath = () => {
+	const base = window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
+	return base + ApiBasePath;
+}
