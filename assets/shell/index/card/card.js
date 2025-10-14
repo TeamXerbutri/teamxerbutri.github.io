@@ -3,6 +3,7 @@ import {lang} from "../../../language.js";
 import {fetchTranslations} from "../../../translator.js";
 import {filter} from "../cardfilter/cardfilter.js";
 import {apiBasePath} from "../../../navigator.js";
+import {ImageBasePath} from "../../../config.js";
 
 const fetchCards = async () => {
 	const response = await fetch(`${apiBasePath()}/index.${lang()}.json`);

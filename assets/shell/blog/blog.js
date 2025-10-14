@@ -1,7 +1,7 @@
-import {currentPage, setBlogNotFound} from "../../navigator.js";
+import {currentPage} from "../../navigator.js";
 import {hideItems, showItems} from "../togglhelper.js";
 import {initShareMenu} from "../header/menu/menu.js";
-import {fetchTranslations} from "../../translator.js";
+import {fetchTranslations, translate} from "../../translator.js";
 import {loadBlogFacts} from "./facts/facts.js";
 import {loadBlogContent} from "./content/content.js";
 import {loadGallery} from "./gallery/gallery.js";
@@ -44,8 +44,10 @@ const buildBlog = async () => {
 	const category = pathParts[0];
 	const routeId = pathParts[1];
 	
-	if (routeId === "404")
+	if (routeId === "404") {
+		setBlogNotFound();
 		return;
+	}
 	
 	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId));
 	
@@ -75,4 +77,14 @@ export const blogComponent = () => {
 <script id="jsonld" type="application/ld+json"></script>
 </div>
 `;
+}
+
+const setBlogNotFound = () => {
+	const errorTitle = translate("errors.404.title");
+	const errorDescription = translate("errors.404.content");
+	document.title = "404 " + errorTitle + " - Xerbutri Urban Exploring";
+	document.querySelector('meta[name="description"]').setAttribute("content", errorDescription);
+	document.querySelector(".blog__title").innerHTML = `<h1>${errorTitle}</h1>`;
+	// intro
+	document.querySelector(".blog__intro").innerHTML = `<p>${errorDescription}</p>`;
 }

@@ -1,5 +1,4 @@
 import {loadShell} from "./shell/shell.js";
-import {translate} from "./translator.js";
 import {ApiBasePath} from "./config.js";
 import {lang} from "./language.js";
 
@@ -8,9 +7,10 @@ let history = [];
 let currentIndex = 0;
 
 // DOM-dependent
-export const initNavigator = () => {
+export const initNavigator = async () => {
 	registerPages();
-	getInitialPage();
+	await getInitialPage();
+	console.log("retrieved initial page:", current);
 	loadThisPage();
 }
 
@@ -88,13 +88,11 @@ const getInitialPage = async () => {
 				if (category !== undefined) {
 					current = `${category}-${routeId}`;
 					return;
-				} 
-				
+				}
+
 				await handleBlogNotFound(routeId);
-			}
-			else if (redirect === "map") {
+			} else if (redirect === "map") {
 				current = "map";
-				return;
 			}
 		}
 	}
@@ -106,41 +104,38 @@ const fetchAlternativeRoutes = async () => {
 }
 
 const handleBlogNotFound = async (routeId) => {
+	if (routeId === "404") 
+		return;
+		
 	try {
 		const routes = await fetchAlternativeRoutes();
+		console.log("handleBlogNotFound", routeId, routes);
 		if (routes[routeId] !== undefined) {
 			routeId = routes[routeId];
 			const category = await getCategory(routeId);
-			current = `${category}-${routeId}`;
-			return;
+			
+			if (category !== undefined) {
+				current = `${category}-${routeId}`;
+				return;
+			}
 		}
-		setBlogNotFound();
-		
+		console.log("moving though here to 404 setBlogNotFound");
+		current = "xerbutri-404";
+
 	} catch (error) {
-		console.error(`An error occured in getting the alternative routes: ${error}`);
-		setBlogNotFound();
+		console.error(`An error occured in handleBlogNotFound: ${error}`);
+		current = "xerbutri-404";
 	}
 }
 
 const getCategory = async (routeId) => {
-	console.log("path", `${apiBasePath()}/blogs.${lang()}.json`);
 	const response = await fetch(`${apiBasePath()}/blogs.${lang()}.json`);
 	const blogs = await response.json();
-	console.log(blogs);
+	console.log("getCategory", routeId, blogs[routeId]);
 	return blogs[routeId];
 }
 
-export const setBlogNotFound = () => {
-	current = "xerbutri-404";
-	const errorTitle = translate("errors.404.title");
-	const errorDescription = translate("errors.404.content");
-	document.title = "404 " + errorTitle + " - Xerbutri Urban Exploring";
-	document.querySelector('meta[name="description"]').setAttribute("content", errorDescription);
-	document.querySelector(".blog__title").innerHTML = `<h1>${errorTitle}</h1>`;
-	// intro
-	document.querySelector(".blog__intro").innerHTML = `<p>${errorDescription}</p>`;
-}
-
+// TODO this is not okay, should be in config I think.
 export const apiBasePath = () => {
 	const base = window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
 	return base + ApiBasePath;
