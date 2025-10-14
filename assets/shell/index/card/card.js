@@ -2,8 +2,7 @@ import {tagComponent} from "./tag/tag.js";
 import {lang} from "../../../language.js";
 import {fetchTranslations} from "../../../translator.js";
 import {filter} from "../cardfilter/cardfilter.js";
-import {apiBasePath} from "../../../navigator.js";
-import {ImageBasePath} from "../../../config.js";
+import {apiBasePath, imageBasePath} from "../../../config.js";
 
 const fetchCards = async () => {
 	const response = await fetch(`${apiBasePath()}/index.${lang()}.json`);
@@ -64,7 +63,7 @@ const buildCard = (categoryTypes, card) => {
 	divCard.addEventListener("click", () => {
 		pageEvents.loadPage(`${createLink(card.category, card.routeid)}`);
 	});
-	divCard.innerHTML = `<img src="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
+	divCard.innerHTML = `<img src="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${ImageBasePath}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
 	return divCard;
 }
 

@@ -1,7 +1,7 @@
-import {ImageBasePath} from "../../../config.js";
+import {imageBasePath} from "../../../config.js";
 
 const createImageLink = (category, routeId, item, size) => {
-	return `${ImageBasePath}/${category}/${routeId}/${routeId}${item.name}-${size.width}x${size.height}.jpg`
+	return `${imageBasePath()}/${category}/${routeId}/${routeId}${item.name}-${size.width}x${size.height}.jpg`
 }
 
 const createPswpSrcSet = (sizes, category, routeId, item ) =>{

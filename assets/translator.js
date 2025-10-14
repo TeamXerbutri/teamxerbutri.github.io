@@ -1,5 +1,5 @@
 import {lang} from "./language.js";
-import {apiBasePath} from "./navigator.js";
+import {apiBasePath} from "./config.js";
 
 let translations = {};
 

@@ -1,6 +1,6 @@
 import {localDate, translate} from "../../../translator.js";
 import {lang} from "../../../language.js";
-import {apiBasePath} from "../../../navigator.js";
+import {apiBasePath} from "../../../config.js";
 
 const fetchBlogContent = async (category, routeId) => {
 	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/blog.${lang()}.json`);

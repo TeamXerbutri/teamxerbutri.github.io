@@ -1,7 +1,7 @@
 import {translate} from "../../../translator.js";
 import {loadFactsMap} from "./map/factmap.js";
 import {ratingIcon} from "../../icons/icons.js";
-import {apiBasePath} from "../../../navigator.js";
+import {apiBasePath} from "../../../config.js";
 
 const fetchBlogFacts = async (category, routeId) => {
 	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/blog.json`);

@@ -1,7 +1,6 @@
 import {loadShell} from "./shell/shell.js";
-import {ApiBasePath} from "./config.js";
+import {apiBasePath} from "./config.js";
 import {lang} from "./language.js";
-
 let current = "home";
 let history = [];
 let currentIndex = 0;
@@ -133,10 +132,4 @@ const getCategory = async (routeId) => {
 	const blogs = await response.json();
 	console.log("getCategory", routeId, blogs[routeId]);
 	return blogs[routeId];
-}
-
-// TODO this is not okay, should be in config I think.
-export const apiBasePath = () => {
-	const base = window.location.origin ? window.location.origin + '/' : window.location.protocol + '/' + window.location.host + '/';
-	return base + ApiBasePath;
 }

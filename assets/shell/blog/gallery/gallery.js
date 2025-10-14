@@ -9,7 +9,7 @@ import {createLink} from "./galleryfactory.js";
 import {translate} from "../../../translator.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
-import {apiBasePath} from "../../../navigator.js";
+import {apiBasePath} from "../../../config.js";
 
 // I will reload the gallery each time.
 
