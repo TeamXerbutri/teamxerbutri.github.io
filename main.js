@@ -34,6 +34,9 @@ initLanguage();
 			else if (window.location.pathname.includes(".php")) {
 				route = "";
 			}
+			else if (window.location.pathname.includes("spoorkrtbenelux.gif")) {
+				route = "map";
+			}
 			else if (window.location.pathname.length > 1)
 				route = window.location.pathname.toLowerCase().replace("/", "");
 
