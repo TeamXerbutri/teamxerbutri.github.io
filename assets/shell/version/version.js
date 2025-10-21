@@ -1,7 +1,7 @@
-import {apiBasePath, Version} from "../../config.js";
+import {Version, versionBasePath} from "../../config.js";
 
 const fetchVersion = async () => {
-	const response = await fetch(`${apiBasePath()}/version.json`);
+	const response = await fetch(`${versionBasePath()}/version.json`);
 	return await response.json();
 }
 
