@@ -57,14 +57,14 @@ const appendCards = (cards) => {
 const buildCard = (categoryTypes, card) => {
 	const cardTag = tagComponent(categoryTypes, card);
 
-	let divCard = document.createElement("div");
-	divCard.className = `card show_inline-block ${card.category}`;
-	divCard.setAttribute("title", card.description);
-	divCard.addEventListener("click", () => {
+	let cardElement = document.createElement("a");
+	cardElement.className = `card show_inline-block ${card.category}`;
+	cardElement.setAttribute("title", card.description);
+	cardElement.addEventListener("click", () => {
 		pageEvents.loadPage(`${createLink(card.category, card.routeid)}`);
 	});
-	divCard.innerHTML = `<img src="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
-	return divCard;
+	cardElement.innerHTML = `<img src="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
+	return cardElement;
 }
 
 const createLink = (category, routeid) => {
