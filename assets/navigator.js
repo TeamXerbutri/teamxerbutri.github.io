@@ -2,7 +2,7 @@ import {loadShell} from "./shell/shell.js";
 import {apiBasePath} from "./config.js";
 import {lang} from "./language.js";
 let current = "home";
-let history = [];
+let txHistory = [];
 let currentIndex = 0;
 
 // DOM-dependent
@@ -26,34 +26,37 @@ const registerPages = () => {
 	}
 }
 
-const loadPage = (page) => {
+const loadPage = (page, data) => {
 	if (page === current) {
 		return;
 	}
+	
+	// TODO refactoring to use history API of DOM
+	history.pushState(data, null, page);
 
 	// navigation logic
-	// if the history length > currentIndex + 1, I need to cut off the future history
-	if (history.length > currentIndex + 1) {
-		console.warn("slicing history")
-		history = history.slice(0, currentIndex + 1);
+	// if the txHistory length > currentIndex + 1, I need to cut off the future txHistory
+	if (txHistory.length > currentIndex + 1) {
+		console.warn("slicing txHistory")
+		txHistory = txHistory.slice(0, currentIndex + 1);
 	}
 
-	let length = history.push(current);
+	let length = txHistory.push(current);
 	currentIndex = length - 1;
 
 	setCurrentPage(page);
 	loadThisPage();
 }
 const navigateBack = () => {
-	if (history.length < 2) {
+	if (txHistory.length < 2) {
 		current = "home";
 		loadThisPage();
-		history.push(current);
-		currentIndex = history.length - 1;
+		txHistory.push(current);
+		currentIndex = txHistory.length - 1;
 		return;
 	}
 
-	current = history[currentIndex];
+	current = txHistory[currentIndex];
 
 	currentIndex = currentIndex - 1;
 	loadThisPage();

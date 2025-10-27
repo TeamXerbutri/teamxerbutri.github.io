@@ -60,8 +60,11 @@ const buildCard = (categoryTypes, card) => {
 	let cardElement = document.createElement("a");
 	cardElement.className = `card show_inline-block ${card.category}`;
 	cardElement.setAttribute("title", card.description);
-	cardElement.addEventListener("click", () => {
-		pageEvents.loadPage(`${createLink(card.category, card.routeid)}`);
+	const link = createLink(card.category, card.routeid);
+	cardElement.href = link;
+	cardElement.addEventListener("click", event => {
+		event.preventDefault();
+		pageEvents.loadPage(link);
 	});
 	cardElement.innerHTML = `<img src="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
 	return cardElement;
