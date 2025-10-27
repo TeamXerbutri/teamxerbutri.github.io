@@ -1,6 +1,6 @@
 # Team Xerbutri
 
-The proof of concept for the new Team Xerbutri website.
+The new Team Xerbutri website.
 
 Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the
 pictures.
@@ -15,6 +15,9 @@ these up for us, because the browser won't do this for us.
 Go to the terminal.  
 Type: "npm run dev"  
 It will start up a localhost and serve the files.
+
+From version 7 onwards you need the API running. Go to the teamxerbutri.api project for that.
+In the config.js configure your api host.
 
 ## Testing preview
 
