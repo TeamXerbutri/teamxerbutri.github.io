@@ -1,9 +1,6 @@
 import {loadShell} from "./shell/shell.js";
 import {apiBasePath} from "./config.js";
 import {lang} from "./language.js";
-let current = "home";
-let txHistory = [];
-let currentIndex = 0;
 
 // TODO: The idea is to store the current state as pathname in the browser.
 
@@ -11,22 +8,23 @@ let currentIndex = 0;
 export const initNavigator = async () => {
 	registerPages();
 	await getInitialPage();
-	loadThisPage();
+	loadPage();
 }
 
-export const currentPage = () => current;
+// TODO This needs to be a better function, filtering hashes and all. See 404.html script as well.
+export const currentPage = () => document.location.pathname;
 
-const setCurrentPage = (page) => {
-	current = page;
-}
-
-// routing via pageEvents TODO detect back button or swiping.
 const registerPages = () => {
 	window.pageEvents = {
 		navigateTo,
 		navigateBack
 	}
 }
+
+// back button support
+window.addEventListener("popstate", (event) => {
+	loadPage();
+})
 
 const navigateTo = (path, data) => {
 	history.pushState(data, null, path);
@@ -35,42 +33,21 @@ const navigateTo = (path, data) => {
 
 // TODO I can load a page.
 const loadPage = () => {
-	if (page === current) {
-		return;
+	const path = currentPage();
+	switch (path) {
+		case "map":
+			loadShell(); //TODO loadMap();
+			break;
+		default:
+			loadShell();
+			break;
 	}
-	
-	// TODO refactoring to use history API of DOM
-	history.pushState(data, null, page);
-
-	// navigation logic
-	// if the txHistory length > currentIndex + 1, I need to cut off the future txHistory
-	if (txHistory.length > currentIndex + 1) {
-		console.warn("slicing txHistory")
-		txHistory = txHistory.slice(0, currentIndex + 1);
-	}
-
-	let length = txHistory.push(current);
-	currentIndex = length - 1;
-
-	setCurrentPage(page);
-	loadThisPage();
 }
 const navigateBack = () => {
-	if (txHistory.length < 2) {
-		current = "home";
-		loadThisPage();
-		txHistory.push(current);
-		history.pushState(null, null, current);
-		currentIndex = txHistory.length - 1;
-		return;
-	}
-
-	current = txHistory[currentIndex];
-
-	currentIndex = currentIndex - 1;
-	loadThisPage();
+	history.back()
 };
 
+// TODO => split reloading (due to language change) from routing. Please use events for that!
 export const loadThisPage = () => {
 	switch (current) {
 		case "map":
@@ -92,13 +69,16 @@ const getInitialPage = async () => {
 				const routeId = redirect.split("/")[1];
 				const category = await getCategory(routeId);
 				if (category !== undefined) {
-					current = `${category}-${routeId}`;
+					// TODO: Need to update the path here!
+					const current = `${category}-${routeId}`;
+					history.replaceState(null, null, current);
 					return;
 				}
 
 				await handleBlogNotFound(routeId);
-			} else if (redirect === "map") {
-				current = "map";
+			} else if (redirect === "map") { //TODO Wanneer is een redirect OOIT map?
+				const current = "map";
+				history.replaceState(null, null, current);
 			}
 		}
 	}

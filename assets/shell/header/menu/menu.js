@@ -65,7 +65,7 @@ const menuItem = (key) => {
 			reloadCards();
 			showRightLanguages(prevLang);
 			reTranslateAll()
-			loadThisPage();
+			loadThisPage(); // TODO, this is reload functionality
 		});
 	} else {
 		item.addEventListener("click", function () {
