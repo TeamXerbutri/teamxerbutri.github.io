@@ -1,10 +1,14 @@
 function showBackToTop() {
 	let bt = document.querySelector(".back-to-top");
+	bt.classList.remove("hide");
+	bt.classList.add("back-to-top_show");
 	bt.hidden = false;
 }
 
 function hideBackToTop() {
 	let bt = document.querySelector(".back-to-top");
+	bt.classList.add("hide");
+	bt.classList.remove("back-to-top_show");
 	bt.hidden = true;
 }
 
@@ -27,7 +31,7 @@ export const initializeBackToTop = async () => {
 const upArrow = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><path d="m0,24 l0,-12 l12,-12 l12,12 l0,12 l-12,-12 l-12,12 Z"/></svg>';
 
 // TODO: aria-label?
-const fabBackToTop = `<a class="back-to-top fab" href="#href-top" title="Back to top" data-i18n="navigation.top">${upArrow}</a>`;
+const fabBackToTop = `<a class="back-to-top fab hide" href="#href-top" title="Back to top" data-i18n="navigation.top">${upArrow}</a>`;
 
 export const backToTopComponent = (children) => {
 
