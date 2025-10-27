@@ -18,6 +18,7 @@ export const loadBlog = async () => {
 		showItems(".header__blog", "show_inline-block");
 		hideItems(".index", "show");
 		showItems(".blog", "show");
+		document.querySelectorAll(".blog_hide").forEach(e=>e.hidden = true);
 
 		let frame = document.getElementById("js-frame");
 		frame.classList.add("frame__blog_size");
@@ -43,14 +44,14 @@ const buildBlog = async () => {
 	const pathParts = currentPage().split("-");
 	const category = pathParts[0];
 	const routeId = pathParts[1];
-	
+
 	if (routeId === "404") {
 		setBlogNotFound();
 		return;
 	}
-	
+
 	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId));
-	
+
 	// TODO translateAll?
 	await loadGallery(category, routeId);
 	await loadJsonLd(category, routeId);
@@ -66,13 +67,13 @@ export const blogComponent = () => {
 <div class="blog hide">
 <div class="blog__title"></div>
 <article>
-<p class="blog__author-visit blog_ital" hidden></p>
+<p class="blog__author-visit blog_ital blog_hide" hidden></p>
 <p class="blog__intro"></p>
-<aside class="blog__facts" hidden></aside>
-<section class="blog__content" hidden></section>
-<p class="blog__updated blog_ital" hidden></p>
-<section class="blog__sources" hidden></section>
-<section class="blog__gallery" hidden></section>
+<aside class="blog__facts blog_hide" hidden></aside>
+<section class="blog__content blog_hide" hidden></section>
+<p class="blog__updated blog_ital blog_hide" hidden></p>
+<section class="blog__sources blog_hide" hidden></section>
+<section class="blog__gallery blog_hide" hidden></section>
 </article>
 <script id="jsonld" type="application/ld+json"></script>
 </div>
@@ -85,14 +86,5 @@ const setBlogNotFound = () => {
 	document.title = "404 " + errorTitle + " - Xerbutri Urban Exploring";
 	document.querySelector('meta[name="description"]').setAttribute("content", errorDescription);
 	document.querySelector(".blog__title").innerHTML = `<h1>${errorTitle}</h1>`;
-	// intro
-	document.querySelector(".blog__author-visit").hidden = true;
 	document.querySelector(".blog__intro").innerHTML = `<p>${errorDescription}</p>`;
-	document.querySelector(".blog__facts").hidden = true;
-	document.querySelector(".blog__content").hidden = true;
-	document.querySelector(".blog__updated").hidden = true;
-	document.querySelector(".blog__gallery").hidden = true;
-	
-	
-	
 }
