@@ -89,8 +89,7 @@ const handleMenuDismiss = () => {
 export const initShareMenu = () => {
 
 	const shareMenu = document.querySelector(".sub-menu__share");
-	const route = currentPage().split("-")[1];
-	const path = location.href.concat("avontuur/", route);
+	const path = location.href.concat(currentPage());
 	const uri = encodeURIComponent(path);
 
 	const facebook = shareMenuItem("https://www.facebook.com/sharer/sharer.php?u=" + uri, "Facebook");
