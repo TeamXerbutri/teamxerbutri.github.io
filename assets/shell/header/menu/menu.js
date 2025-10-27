@@ -69,7 +69,7 @@ const menuItem = (key) => {
 		});
 	} else {
 		item.addEventListener("click", function () {
-			pageEvents.loadPage(routingTable(key))
+			pageEvents.navigateTo(routingTable(key))
 		});
 	}
 

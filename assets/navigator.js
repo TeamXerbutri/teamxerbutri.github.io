@@ -5,6 +5,8 @@ let current = "home";
 let txHistory = [];
 let currentIndex = 0;
 
+// TODO: The idea is to store the current state as pathname in the browser.
+
 // DOM-dependent
 export const initNavigator = async () => {
 	registerPages();
@@ -21,12 +23,18 @@ const setCurrentPage = (page) => {
 // routing via pageEvents TODO detect back button or swiping.
 const registerPages = () => {
 	window.pageEvents = {
-		loadPage,
+		navigateTo,
 		navigateBack
 	}
 }
 
-const loadPage = (page, data) => {
+const navigateTo = (path, data) => {
+	history.pushState(data, null, path);
+	loadPage();
+}
+
+// TODO I can load a page.
+const loadPage = () => {
 	if (page === current) {
 		return;
 	}

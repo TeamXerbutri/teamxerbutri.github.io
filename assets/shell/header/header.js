@@ -52,7 +52,7 @@ export function initHeader() {
 	const navHome = document.querySelectorAll('[data-i18n="navigation.home"]');
 	navHome.forEach((el) => {
 		el.addEventListener("click", () => {
-			pageEvents.loadPage('home');
+			pageEvents.navigateTo('home');
 		})
 	});
 }

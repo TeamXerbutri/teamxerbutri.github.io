@@ -64,7 +64,7 @@ const buildCard = (categoryTypes, card) => {
 	cardElement.href = link;
 	cardElement.addEventListener("click", event => {
 		event.preventDefault();
-		pageEvents.loadPage(link);
+		pageEvents.navigateTo(link);
 	});
 	cardElement.innerHTML = `<img src="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg" alt="${card.name}" srcset="${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}m.jpg 164w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}l.jpg 237w, ${imageBasePath()}/${card.category}/${card.routeid}/${card.routeid}.jpg 310w" sizes="(max-width: 756px) 164px, (max-width: 1350px) 237px, 310px">${cardTag}</div>`;
 	return cardElement;
