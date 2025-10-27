@@ -20,10 +20,12 @@ export const loadBlogContent = async (category, routeId) => {
 	let contentHtml = "";
 	
 	if (blogContent.adventure !== undefined && blogContent.adventure !== "") {
+		articleContent.hidden = false;
 		contentHtml += `<h2>${translate("adventure")}</h2> ${blogContent.adventure}`;
 	}
 
 	if (blogContent.history !== undefined && blogContent.history !== "") {
+		articleContent.hidden = false;
 		contentHtml += `<h2>${translate("history")}</h2> ${blogContent.history}`;
 	}
 	articleContent.innerHTML = contentHtml;
@@ -32,9 +34,13 @@ export const loadBlogContent = async (category, routeId) => {
 	const month = blogContent.created.split("-")[1];
 	let monthBlog = translate(`month.${month}`);
 
-	document.querySelector(".blog__author-visit").innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
+	let authorVisited = document.querySelector(".blog__author-visit");
+	authorVisited.hidden = false;
+	authorVisited.innerHTML = `${blogContent.author} -  ${monthBlog} ${year}`;
 
 	let updatedSplit = blogContent.updated.split("-");
 
-	document.querySelector(".blog__updated").innerHTML = translate("article.lastupdate") + localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
+	let blogUpdated = document.querySelector(".blog__updated");
+	blogUpdated.hidden = false;
+	blogUpdated.innerHTML = translate("article.lastupdate") + localDate(updatedSplit[2], updatedSplit[1], updatedSplit[0]);
 }

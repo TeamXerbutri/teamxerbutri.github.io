@@ -52,6 +52,7 @@ const navigateBack = () => {
 		current = "home";
 		loadThisPage();
 		txHistory.push(current);
+		history.pushState(null, null, current);
 		currentIndex = txHistory.length - 1;
 		return;
 	}

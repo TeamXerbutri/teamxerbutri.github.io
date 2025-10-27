@@ -40,11 +40,14 @@ const onScrollCreateGallery = async () => {
 
 const createGallery = async (category, routeId) => {
 	const type = await getGalleryType(category, routeId);
+	let gallerySection = document.querySelector(".blog__gallery");
+	
 	if (type === galleryTypes.none){
+		gallerySection.hidden = true;
 		return;
 	}
 
-	let gallerySection = document.querySelector(".blog__gallery");
+	gallerySection.hidden = false;
 	gallerySection.innerHTML = `<h2>${translate("gallery.title")}</h2><p>${translate("gallery.description")}</p>`;
 	let gallery = document.createElement("div");
 	gallery.classList.add("gallery");
