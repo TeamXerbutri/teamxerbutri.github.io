@@ -3,6 +3,7 @@ import {apiBasePath} from "./config.js";
 import {lang} from "./language.js";
 
 // TODO: The idea is to store the current state as pathname in the browser.
+// TODO: rethink my strategies. My website is not deep! At the entrance (404), instead of using redirect via sessionstorage, just load the correct page directly and redirect to the correct path (by changing pathname and go!)
 
 // DOM-dependent
 export const initNavigator = async () => {
@@ -100,15 +101,18 @@ const handleBlogNotFound = async (routeId) => {
 			const category = await getCategory(routeId);
 			
 			if (category !== undefined) {
-				current = `${category}-${routeId}`;
+				const current = `${category}-${routeId}`;
+				history.replaceState(null, null, current);
 				return;
 			}
 		}
-		current = "xerbutri-404";
+		const current = `${category}-${routeId}`;
+		history.replaceState(null, null, current);
 
 	} catch (error) {
 		console.error(`An error occured in handleBlogNotFound: ${error}`);
-		current = "xerbutri-404";
+		const current = `${category}-${routeId}`;
+		history.replaceState(null, null, current);
 	}
 }
 
