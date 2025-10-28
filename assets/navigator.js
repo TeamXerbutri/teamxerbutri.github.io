@@ -13,7 +13,15 @@ export const initNavigator = async () => {
 }
 
 // TODO This needs to be a better function, filtering hashes and all. See 404.html script as well.
-export const currentPage = () => document.location.pathname;
+export const currentPage = () => {
+	console.log(`Current path: ${document.location.pathname}`);
+	let path = document.location.pathname;
+	
+	if(!path || path === "/")
+		path = "home";
+	
+	return path;
+}
 
 const registerPages = () => {
 	window.pageEvents = {
@@ -45,12 +53,13 @@ const loadPage = () => {
 	}
 }
 const navigateBack = () => {
-	history.back()
+	history.back();
+	loadPage();
 };
 
 // TODO => split reloading (due to language change) from routing. Please use events for that!
 export const loadThisPage = () => {
-	switch (current) {
+	switch (currentPage()) {
 		case "map":
 			loadShell(); //TODO loadMap();
 			break;
