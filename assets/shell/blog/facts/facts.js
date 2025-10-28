@@ -63,6 +63,7 @@ export const loadBlogFacts = async (category, routeId) => {
 		blogFactsElement.hidden = true;
 
 	let articleSources = document.querySelector(".blog__sources");
+	articleSources.innerHTML = "";
 	if (blogFacts.sources.length > 0) {
 		articleSources.hidden = false;
 		let sourceTitle = translate("sources.title");
