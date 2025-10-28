@@ -40,7 +40,6 @@ const navigateTo = (path, data) => {
 	loadPage();
 }
 
-// TODO I can load a page.
 const loadPage = () => {
 	const path = currentPage();
 	switch (path) {
@@ -59,14 +58,7 @@ const navigateBack = () => {
 
 // TODO => split reloading (due to language change) from routing. Please use events for that!
 export const loadThisPage = () => {
-	switch (currentPage()) {
-		case "map":
-			loadShell(); //TODO loadMap();
-			break;
-		default:
-			loadShell();
-			break;
-	}
+	loadPage();
 }
 
 const getInitialPage = async () => {
