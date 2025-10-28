@@ -4,27 +4,5 @@
 	<title>Not found redirect</title>
 </head>
 <body></body>
-<script>
-
-	if (window.location.pathname.length > 1) {
-		let route = location.href;
-
-		if (route.includes("geef=")) {
-			const subject = route.split("geef=")[1].split("&")[0].toLowerCase();
-			route = "avontuur/" + subject;
-		} else if (window.location.pathname.includes(".php")) {
-			route = "";
-		} else if (window.location.pathname.includes("spoorkrtbenelux.gif")) {
-			route = "map";
-		} else if (window.location.pathname.length > 1)
-			route = window.location.pathname.toLowerCase().replace("/", "")
-
-		sessionStorage.redirect = route;
-		const l = window.location;
-		const repo = "";
-		l.replace(
-			l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo
-		);
-	}
-</script>
+<script src="./404.js" type="module"></script>
 </html>
