@@ -107,12 +107,12 @@ const handleBlogNotFound = async (routeId) => {
 				return;
 			}
 		}
-		const current = `${category}-${routeId}`;
+		const current = "xerbutri-404";
 		history.replaceState(null, null, current);
 
 	} catch (error) {
 		console.error(`An error occured in handleBlogNotFound: ${error}`);
-		const current = `${category}-${routeId}`;
+		const current = "xerbutri-404";
 		history.replaceState(null, null, current);
 	}
 }
@@ -122,3 +122,9 @@ const getCategory = async (routeId) => {
 	const blogs = await response.json();
 	return blogs[routeId];
 }
+
+const oldRoutes = [
+	"avontuur",
+	
+	
+]
