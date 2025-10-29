@@ -16,9 +16,9 @@ export const loadShell = () => {
 	if (!isLoaded) {
 		init();
 	}
-
-	const htmlElement = document.querySelector("html");
-	htmlElement.classList.remove("overflow-hidden");
+	
+	document.querySelector("html").classList.remove("overflow-hidden");
+	document.querySelector("header").classList.remove("hide");
 	
 	if(currentPage()==="home"){
 		loadIndex();
@@ -27,9 +27,7 @@ export const loadShell = () => {
 		loadBlog();
 	}
 
-	let shell = document.querySelector(".shell");
-	shell.classList.remove("hide");
-	shell.classList.add("show");
+	document.querySelector(".shell").hidden = false;
 }
 
 // TODO: there is a async component-part and a sync-part.

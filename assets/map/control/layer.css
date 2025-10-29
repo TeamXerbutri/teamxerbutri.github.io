@@ -1,0 +1,85 @@
+/*CSS for the MapLayerControl*/
+@import "../../shared/bottomsheet.css";
+
+.layer-control {
+	position: absolute;
+	bottom: 4.4em;
+	left: 0.5em;
+}
+
+.layer-control__icon {
+	fill: #060606;
+	width: 24px;
+	height: 24px;
+}
+
+.layer-modal > button {
+	display: inline-block;
+	margin: 10px 20px 10px 0;
+	padding: 0;
+	color: #fff;
+	height: 56px;
+	width: 56px;
+	border: none;
+	border-radius: 10px;
+	vertical-align: middle;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.layer-modal > button:hover {
+	box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.22);
+}
+
+.layer-modal__button_active {
+	color: #fff;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, .8);
+	padding: 4px;
+	border-radius: 16px;
+	vertical-align: middle;
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 15px;
+	width: 16px;
+	height: 16px;
+	position: relative;
+	bottom: 16px;
+	left: 16px;
+}
+
+.layer-modal > button::-moz-focus-inner {
+	border: none;
+	padding: 0;
+}
+
+.layer-modal > button:focus, .layer-modal > button:hover {
+	text-decoration: none;
+	box-shadow: rgba(0, 0, 0, 0.4) 0 5px 15px;
+}
+
+.layer-modal > button:hover {
+	cursor: pointer;
+}
+
+.layer-modal__button{
+	background-blend-mode: multiply;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.layer-modal__button_bridge {
+	background-image: url("../../shared/filter/bridge.jpg");
+}
+
+.layer-modal__button_tunnel {
+	background-image: url("../../shared/filter/tunnel.jpg");
+}
+
+.layer-modal__button_rail {
+	background-image: url("../../shared/filter/rail.jpg");
+}
+
+.layer-modal__button_building {
+	background-image: url("../../shared/filter/building.jpg");
+}

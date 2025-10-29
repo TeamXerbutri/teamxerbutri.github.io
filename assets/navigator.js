@@ -1,6 +1,7 @@
 import {loadShell} from "./shell/shell.js";
 import {apiBasePath} from "./config.js";
 import {lang} from "./language.js";
+import {loadMap} from "./map/map.js";
 
 export const initNavigator = () => {
 	registerPages();
@@ -36,7 +37,7 @@ const loadPage = () => {
 	const path = currentPage();
 	switch (path) {
 		case "map":
-			loadShell(); //TODO loadMap();
+			loadMap();
 			break;
 		default:
 			loadShell();

@@ -1,0 +1,44 @@
+
+.ol-zoom {
+	display: none;
+}
+
+.ol-zoomslider {
+	left: revert;
+	right: 5px;
+	top: 60px;
+	height: 50%;
+	background-color: revert;
+}
+
+.ol-zoomslider-thumb {
+	background-image: url("./zoom-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.8em;
+}
+
+.ol-zoomslider-thumb:focus, .ol-zoomslider-thumb:active, .ol-zoomslider-thumb:hover {
+	background-image: url("./zoomslider-b.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.6em;
+}
+
+
+@media only screen and (min-width: 756px) and (min-height: 500px) {
+	.ol-zoomslider {
+		left: revert;
+		right: 0.5em;
+		top: 0.5em;
+		height: 50%;
+		background-color: revert;
+	}
+
+	.ol-zoomslider-thumb:focus, .ol-zoomslider-thumb:active, .ol-zoomslider-thumb:hover {
+		background-image: url("./zoomslider-b.svg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 1.6em;
+	}
+}
