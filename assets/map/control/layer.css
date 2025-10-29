@@ -1,5 +1,5 @@
 /*CSS for the MapLayerControl*/
-@import "../../shared/bottomsheet.css";
+@import "./bottomsheet.css";
 
 .layer-control {
 	position: absolute;
@@ -69,17 +69,17 @@
 }
 
 .layer-modal__button_bridge {
-	background-image: url("../../shared/filter/bridge.jpg");
+	background-image: url("../../filter/bridge.jpg");
 }
 
 .layer-modal__button_tunnel {
-	background-image: url("../../shared/filter/tunnel.jpg");
+	background-image: url("../../filter/tunnel.jpg");
 }
 
 .layer-modal__button_rail {
-	background-image: url("../../shared/filter/rail.jpg");
+	background-image: url("../../filter/rail.jpg");
 }
 
 .layer-modal__button_building {
-	background-image: url("../../shared/filter/building.jpg");
+	background-image: url("../../filter/building.jpg");
 }

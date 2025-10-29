@@ -3,7 +3,7 @@ import "photoswipe/style.css";
 import "./captions.css"
 import {lang} from "../../../language.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../icons/icons.js";
+import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../../shared/icons/icons.js";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {createLink} from "./galleryfactory.js";
 import {translate} from "../../../translator.js";

@@ -1,4 +1,4 @@
-﻿@import "overlay.css";
+﻿@import "../../shared/overlay.css";
 
 .bottom-sheet {
 	position: fixed;

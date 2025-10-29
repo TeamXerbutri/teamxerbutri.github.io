@@ -65,10 +65,10 @@ export class MapFeatureTooltip {
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 			if (viewportWidth < 756 || viewportHeight < 500) {
-				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="feature-tooltip__img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="feature-tooltip__h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="${category}-${route}" title="${name}"> <img class="feature-tooltip__img" src="data/${category}/${route}/${route}s.jpg" alt="${description}" > <h2 class="feature-tooltip__h2">${name}</h2></a>`;
 			}
 			else {
-				featureTooltip.innerHTML = `<a href="avontuur/${route}" title="${name}"> <img class="feature-tooltip__img" src="data/${category}/${route}/${route}.jpg" alt="${description}" > <h2 class="feature-tooltip__h2">${name}</h2></a>`;
+				featureTooltip.innerHTML = `<a href="${category}-${route}" title="${name}"> <img class="feature-tooltip__img" src="data/${category}/${route}/${route}.jpg" alt="${description}" > <h2 class="feature-tooltip__h2">${name}</h2></a>`;
 				if (featureTooltip.pinned)
 					featureTooltip.innerHTML += `<img class="feature-tooltip_pinned" src="ui/pics/pin.svg" alt="pin" >`;
 

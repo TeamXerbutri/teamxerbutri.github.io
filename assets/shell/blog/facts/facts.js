@@ -1,6 +1,6 @@
 import {localDate, translate} from "../../../translator.js";
 import {loadFactsMap} from "./map/factmap.js";
-import {ratingIcon} from "../../icons/icons.js";
+import {ratingIcon} from "../../../shared/icons/icons.js";
 import {apiBasePath} from "../../../config.js";
 
 const fetchBlogFacts = async (category, routeId) => {

@@ -8,7 +8,7 @@ export const initNavigator = () => {
 }
 
 export const currentPage = () => {
-	let path = window.location.pathname;
+	let path = window.location.pathname.replace(/^\/+/, '');
 	
 	if(!path || path.length < 2 || path === "/vijf" )
 		path = "home";

@@ -1,4 +1,4 @@
-import {leftArrow} from "../icons/icons.js";
+import {leftArrow} from "../../shared/icons/icons.js";
 
 const dotsMenu = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><circle r="3" cx="12" cy="3"/><circle r="3" cx="12" cy="12"/><circle r="3" cx="12" cy="21"/></svg>';
 
