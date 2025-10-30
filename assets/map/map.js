@@ -12,6 +12,7 @@ import {MapMenuControl} from "./control/menu.js";
 import {MapLayerControl} from "./control/layer.js";
 import {MapFeatureTooltip} from "./tooltip/feature.js";
 import GeoJSON from "ol/format/GeoJSON";
+import {apiBasePath} from "../config.js";
 
 let map;
 let isLoaded = false;
@@ -32,7 +33,7 @@ const init = () => {
 	
 	let app = document.getElementById("js-app");
 	
-	app.innerHTML += `<div id="js-map" class="map"><div class="menu-modal__dismiss hide dismiss"></div> <div class="layer-modal__dismiss hide dismiss"></div></div>`;
+		app.insertAdjacentHTML('beforeend', `<div id="js-map" class="map"><div class="menu-modal__dismiss hide dismiss"></div> <div class="layer-modal__dismiss hide dismiss"></div></div>`);
 	
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;
@@ -110,46 +111,23 @@ const init = () => {
 
 	// vectors
 	
-	const tunnelVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-tunnel.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
+	function createVectorLayer(url) {
+		return new VectorLayer({
+			source: new VectorSource({
+				url: url,
+				format: new GeoJSON(),
+			}),
+			style: function (feature) {
+				return styles[feature.get("type")];
+			}
+		});
+	}
 
-	const buildingVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-gebouw.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
-
-	const railVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-spoor.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
-
-	const bridgeVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-brug.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
-
+	const tunnelVector = createVectorLayer(`${apiBasePath()}/geo-tunnel.json`);
+	const buildingVector = createVectorLayer(`${apiBasePath()}/geo-gebouw.json`);
+	const railVector = createVectorLayer(`${apiBasePath()}/geo-spoor.json`);
+	const bridgeVector = createVectorLayer(`${apiBasePath()}/geo-brug.json`);
+	
 	// load styles
 	tunnelVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
