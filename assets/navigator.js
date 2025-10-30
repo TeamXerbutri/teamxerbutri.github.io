@@ -99,7 +99,7 @@ export const initialPageLoad = () => {
 		loadPage();
 		return;
 	}
-	
+	// TODO: the problem is, I need my functions to be triggered in a certain order. Now it breaks the touchfix.
 	validatePath().then(() => {loadPage()});
 }
 
