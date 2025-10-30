@@ -57,13 +57,12 @@ const menuItem = (key) => {
 		item.addEventListener("click", function () {
 			if (language === lang())
 				return;
-
-			const prevLang = lang();
+			
 			// set language
 			setLanguage(language);
 			// reload page
 			reloadCards();
-			showRightLanguages(prevLang);
+			showRightLanguages();
 			reTranslateAll()
 			loadThisPage(); // TODO, this is reload functionality
 		});
@@ -89,7 +88,7 @@ const handleMenuDismiss = () => {
 export const initShareMenu = () => {
 
 	const shareMenu = document.querySelector(".sub-menu__share");
-	const path = location.href.concat(currentPage());
+	const path = location.href;
 	const uri = encodeURIComponent(path);
 
 	const facebook = shareMenuItem("https://www.facebook.com/sharer/sharer.php?u=" + uri, "Facebook");
@@ -107,7 +106,6 @@ export const initShareMenu = () => {
 }
 
 export const initMenu = () => {
-
 	let menu = document.querySelector(".sub-menu__dots");
 	const routes = ["maps", "abouttx", "aboutue", "contact", "privacy"];
 
@@ -127,7 +125,7 @@ export const initMenu = () => {
 	}
 }
 
-const showRightLanguages = (prevLang) => {
+const showRightLanguages = () => {
 	let menu = document.querySelector(".sub-menu__dots");
 	const langElement = menu.querySelectorAll(`.index`);
 	langElement.forEach(l => {
