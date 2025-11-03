@@ -9,8 +9,9 @@ export const lang = () => {
 export const initLanguage = () => {
 	language = getLanguage();
 	localStorage.setItem("language", language);
+	// TODO There is no need to wait.
+	document.addEventListener("DOMContentLoaded", setLanguageInDom);
 }
-
 
 const hasLocalStorage = () => {
 	try {
@@ -23,7 +24,7 @@ const hasLocalStorage = () => {
 	}
 }
 
-export const setLanguageInDom = () => {
+const setLanguageInDom = () => {
 	if (document.documentElement.lang !== language) {
 		document.documentElement.lang = language;
 	}

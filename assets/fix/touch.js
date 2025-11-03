@@ -5,7 +5,6 @@ export const isTouchDevice = () => {
 }
 
 export const initTouchFix = () => {
-
 	if (!("ontouchstart" in document.documentElement)) {
 		document.documentElement.classList.add("no-touch");
 	}

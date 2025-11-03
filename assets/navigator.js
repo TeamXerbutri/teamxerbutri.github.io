@@ -4,7 +4,7 @@ import {lang} from "./language.js";
 import {loadMap} from "./map/map.js";
 
 export const initNavigator = () => {
-	registerPages();
+	registerEvents();
 }
 
 export const currentPage = () => {
@@ -16,17 +16,21 @@ export const currentPage = () => {
 	return path;
 }
 
-const registerPages = () => {
+const registerEvents= () => {
 	window.pageEvents = {
 		navigateTo,
 		navigateBack
 	}
+
+	// back button support
+	window.addEventListener("popstate", () => {
+		loadPage();
+	})
+
+	// document.addEventListener("DOMContentLoaded", () => {loadPage()})
 }
 
-// back button support
-window.addEventListener("popstate", () => {
-	loadPage();
-})
+
 
 const navigateTo = (path, data) => {
 	history.pushState(data, null, path);
@@ -99,8 +103,8 @@ export const initialPageLoad = () => {
 		loadPage();
 		return;
 	}
-	// TODO: the problem is, I need my functions to be triggered in a certain order. Now it breaks the touchfix.
-	validatePath().then(() => {loadPage()});
+	
+	validatePath().then(() => loadPage());
 }
 
 const validatePath = async () => {
