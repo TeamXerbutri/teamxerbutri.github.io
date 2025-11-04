@@ -3,10 +3,16 @@ import {lang} from "../../../language.js";
 import {fetchTranslations} from "../../../translator.js";
 import {filter} from "../cardfilter/cardfilter.js";
 import {apiBasePath, imageBasePath} from "../../../config.js";
+import {get} from "../../../helpers.js";
 
 const fetchCards = async () => {
-	const response = await fetch(`${apiBasePath()}/index.${lang()}.json`);
-	return await response.json();
+	try {
+		const response = await get(`${apiBasePath()}/index.${lang()}.json`);
+		return await response.json();
+	} catch (error) {
+		console.error("Error fetching cards:", error);
+		return [];
+	}
 }
 
 let allCards = [];

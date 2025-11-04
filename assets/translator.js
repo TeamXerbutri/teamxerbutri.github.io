@@ -1,5 +1,6 @@
 import {lang} from "./language.js";
 import {apiBasePath} from "./config.js";
+import {get} from "./helpers.js";
 
 let translations = {};
 
@@ -13,10 +14,15 @@ export const translate = (key) => {
 }
 
 export const fetchTranslations = async (key) => {
-	const response = await fetch(`${apiBasePath()}/${lang()}.${key}.json`);
-	let result = await response.json();
-	addTranslations(result);
-	return result;
+	try {
+		const response = await get(`${apiBasePath()}/${lang()}.${key}.json`);
+		let result = await response.json();
+		addTranslations(result);
+		return result;
+	} catch (error) {
+		console.error(`Error fetching translations for ${key}:`, error);
+	}
+	
 }
 
 export const translateAll = () => {
@@ -25,12 +31,12 @@ export const translateAll = () => {
 
 export const reTranslateAll = () => {
 	translations = {};
-	fetchAllTranslations().then(() => {
+	fetchIndexTranslations().then(() => {
 		translateAll()
 	})
 }
 
-const fetchAllTranslations = async () => {
+const fetchIndexTranslations = async () => {
 	await fetchTranslations("shell");
 	await fetchTranslations("index");
 	await fetchTranslations("card");
@@ -74,7 +80,7 @@ const addTranslationToElement = (element, text) => {
 	if(keys.length > 1)
 		key = key + "." + keys[1];
 
-		const title = key.concat(".title").split('.').reduce((obj, i) => obj?.[i], translations);
+			const title = key.concat(".title").split('.').reduce((obj, i) => obj?.[i], translations);
 	if (title) {
 		element.title = title;
 	}

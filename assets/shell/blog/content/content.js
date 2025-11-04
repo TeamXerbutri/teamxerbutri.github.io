@@ -1,10 +1,16 @@
 import {localDate, translate} from "../../../translator.js";
 import {lang} from "../../../language.js";
 import {apiBasePath} from "../../../config.js";
+import {get} from "../../../helpers.js";
 
 const fetchBlogContent = async (category, routeId) => {
-	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/blog.${lang()}.json`);
-	return await response.json();
+	try {
+		const response = await get(`${apiBasePath()}/${category}/${routeId}/blog.${lang()}.json`);
+		return await response.json();
+	} catch (error) {
+		console.error(`Error fetching blog content for ${routeId} in category ${category}: ${error}`);
+		return {};
+	}
 }
 
 export const loadBlogContent = async (category, routeId) => {

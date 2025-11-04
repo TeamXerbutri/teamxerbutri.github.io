@@ -1,8 +1,15 @@
 import {Version, versionBasePath} from "../../config.js";
+import {get} from "../../helpers.js";
 
 const fetchVersion = async () => {
-	const response = await fetch(`${versionBasePath()}/version.json`);
-	return await response.json();
+	try {
+		const response = await get(`${versionBasePath()}/version.json`);
+		return await response.json();
+	} catch (error) {
+		console.error(`Error fetching version:`, error);
+		return { version: Version };
+	}
+	
 }
 
 export const checkVersion = async () => {

@@ -2,10 +2,16 @@ import {localDate, translate} from "../../../translator.js";
 import {loadFactsMap} from "./map/factmap.js";
 import {ratingIcon} from "../../../shared/icons/icons.js";
 import {apiBasePath} from "../../../config.js";
+import {get} from "../../../helpers.js";
 
 const fetchBlogFacts = async (category, routeId) => {
-	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/blog.json`);
-	return await response.json();
+	try {
+		const response = await get(`${apiBasePath()}/${category}/${routeId}/blog.json`);
+		return await response.json();
+	} catch (error) {
+		console.error(`Error fetching blog facts for ${routeId}: ${error}`);
+		return {facts: {}, sources: []};
+	}
 }
 
 export const loadBlogFacts = async (category, routeId) => {

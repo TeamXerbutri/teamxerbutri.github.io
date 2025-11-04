@@ -2,6 +2,7 @@ import {loadShell} from "./shell/shell.js";
 import {apiBasePath} from "./config.js";
 import {lang} from "./language.js";
 import {loadMap} from "./map/map.js";
+import {get} from "./helpers.js";
 
 export const initNavigator = () => {
 	registerEvents();
@@ -56,8 +57,13 @@ export const loadThisPage = () => {
 }
 
 const fetchAlternativeRoutes = async () => {
-	const response = await fetch(`${apiBasePath()}/routes.json`);
-	return await response.json();
+	try {
+		const response = await get(`${apiBasePath()}/routes.json`);
+		return await response.json();
+	} catch (error) {
+		console.error(`Error fetching alternative routes: ${error}`);
+		return {};
+	}
 }
 
 const handleBlogNotFound = async (routeId) => {
@@ -87,9 +93,14 @@ const handleBlogNotFound = async (routeId) => {
 }
 
 const getCategory = async (routeId) => {
-	const response = await fetch(`${apiBasePath()}/blogs.${lang()}.json`);
-	const blogs = await response.json();
-	return blogs[routeId];
+	try {
+		const response = await get(`${apiBasePath()}/blogs.${lang()}.json`);
+		const blogs = await response.json();
+		return blogs[routeId];
+	} catch (error) {
+		console.error(`Error fetching category for ${routeId}. Error: ${error}`);
+		return undefined;
+	}
 }
 
 

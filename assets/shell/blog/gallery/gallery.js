@@ -10,6 +10,7 @@ import {translate} from "../../../translator.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import {apiBasePath} from "../../../config.js";
+import {get} from "../../../helpers.js";
 
 // I will reload the gallery each time.
 
@@ -144,13 +145,24 @@ const createGalleryComponent = (type, routeId) => {
 }
 
 const fetchImages = async (category, routeId) => {
-	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/images.json`);
-	return response.json();
+	try {
+		const response = await get(`${apiBasePath()}/${category}/${routeId}/images.json`);
+		return response.json();
+	} catch (error) {
+		console.error(`Error fetching images for ${category}/${routeId}:`, error);
+		return [];
+	}
+	
 }
 
 const fetchCaptions = async (category, routeId) => {
-	const response = await fetch(`${apiBasePath()}/${category}/${routeId}/captions.${lang()}.json`);
-	return response.json();
+	try {
+		const response = await get(`${apiBasePath()}/${category}/${routeId}/captions.${lang()}.json`);
+		return response.json();
+	} catch (error) {
+		console.error(`Error fetching captions for ${category}/${routeId}:`, error);
+		return {};
+	}
 }
 
 const paraFetch = async (category, routeId) => {
