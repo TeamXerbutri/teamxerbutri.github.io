@@ -8,9 +8,14 @@ export const lang = () => {
 
 export const initLanguage = () => {
 	language = getLanguage();
-	localStorage.setItem("language", language);
-	// TODO There is no need to wait.
-	document.addEventListener("DOMContentLoaded", setLanguageInDom);
+	try {
+		localStorage.setItem("language", language);
+	}
+	catch (error) {
+		console.error("Could not store language preference in localStorage:", error);
+	}
+	
+	document.addEventListener("DOMContentLoaded", setLanguageInDom); // there is no need to wait for DOM. I just don't care.
 }
 
 const hasLocalStorage = () => {
@@ -30,27 +35,34 @@ const setLanguageInDom = () => {
 	}
 }
 
-export const setLanguage = (lang) => {
-	if (!lang)
+export const setLanguage = (languageCode) => {
+	if (!languageCode)
 		return;
 
-	if (!SupportedLanguages.includes(lang))
+	if (!SupportedLanguages.includes(languageCode))
 		return;
 
-	language = lang;
-	localStorage.setItem("language", language);
+	language = languageCode;
+	try {
+		localStorage.setItem("language", language);
+	}
+	catch (error) {
+		console.error("Could not store language preference in localStorage:", error);
+	}
+	
 	setLanguageInDom();
 }
 
 
 const getLanguage = () => {
 	if (!hasLocalStorage()) {
+		console.warn("Fallback to default language");
 		return DefaultLanguage;
 	}
 
 	const storedLanguage = localStorage.getItem("language");
 
-	if (storedLanguage) {
+	if (storedLanguage && SupportedLanguages.includes(storedLanguage)) {
 		return storedLanguage;
 	}
 
@@ -62,11 +74,12 @@ const getLanguage = () => {
 		return DefaultLanguage;
 	}
 
-	let lang = browserLanguage.substring(0, 2).toLowerCase();
+	const languageCode = browserLanguage.substring(0, 2).toLowerCase();
 
-	if (!SupportedLanguages.includes(lang)) {
+	if (!SupportedLanguages.includes(languageCode)) {
+		console.warn("Fallback to default language");
 		return DefaultLanguage;
 	}
 
-	return lang;
+	return languageCode;
 }
