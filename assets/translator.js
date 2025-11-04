@@ -8,7 +8,7 @@ const addTranslations = (newTranslations) => {
 }
 
 export const translate = (key) => {
-	const text = key.split('.').reduce((obj, i) => obj[i], translations);
+	const text = key.split('.').reduce((obj, i) => obj?.[i], translations);
 	return text || key;
 }
 
@@ -37,7 +37,7 @@ const fetchAllTranslations = async () => {
 }
 
 const replace = (element) => {
-	const text = element.dataset.i18n.split('.').reduce((obj, i) => obj[i], translations);
+	const text = element.dataset.i18n.split('.').reduce((obj, i) => obj?.[i], translations);
 
 	if (!text)
 		return;
@@ -74,7 +74,7 @@ const addTranslationToElement = (element, text) => {
 	if(keys.length > 1)
 		key = key + "." + keys[1];
 
-	const title = key.concat(".title").split('.').reduce((obj, i) => obj[i], translations);
+		const title = key.concat(".title").split('.').reduce((obj, i) => obj?.[i], translations);
 	if (title) {
 		element.title = title;
 	}
