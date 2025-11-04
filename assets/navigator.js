@@ -9,14 +9,14 @@ export const initNavigator = () => {
 
 export const currentPage = () => {
 	let path = window.location.pathname.replace(/^\/+/, '');
-	
-	if(!path || path.length < 2 || path === "/vijf" )
+
+	if (!path || path.length < 2 || path === "/vijf")
 		path = "home";
-	
+
 	return path;
 }
 
-const registerEvents= () => {
+const registerEvents = () => {
 	window.pageEvents = {
 		navigateTo,
 		navigateBack
@@ -26,10 +26,7 @@ const registerEvents= () => {
 	window.addEventListener("popstate", () => {
 		loadPage();
 	})
-
-	// document.addEventListener("DOMContentLoaded", () => {loadPage()})
 }
-
 
 
 const navigateTo = (path, data) => {
@@ -51,7 +48,6 @@ const loadPage = () => {
 
 const navigateBack = () => {
 	history.back();
-	loadPage();
 };
 
 // TODO => split reloading (due to language change) from routing. Please use events for that!
@@ -65,15 +61,15 @@ const fetchAlternativeRoutes = async () => {
 }
 
 const handleBlogNotFound = async (routeId) => {
-	if (routeId === "404") 
+	if (routeId === "404")
 		return;
-		
+
 	try {
 		const routes = await fetchAlternativeRoutes();
 		if (routes[routeId] !== undefined) {
 			routeId = routes[routeId];
 			const category = await getCategory(routeId);
-			
+
 			if (category !== undefined) {
 				const current = `${category}-${routeId}`;
 				replacePath(current);
@@ -84,7 +80,7 @@ const handleBlogNotFound = async (routeId) => {
 		replacePath(current);
 
 	} catch (error) {
-		console.error(`An error occured in handleBlogNotFound: ${error}`);
+		console.error(`An error occurred in handleBlogNotFound: ${error}`);
 		const current = "xerbutri-404";
 		replacePath(current);
 	}
@@ -98,12 +94,12 @@ const getCategory = async (routeId) => {
 
 
 export const initialPageLoad = () => {
-	
+
 	if (window.location.pathname.length < 2) {
 		loadPage();
 		return;
 	}
-	
+
 	validatePath().then(() => loadPage());
 }
 
@@ -115,16 +111,16 @@ const validatePath = async () => {
 		await handleOldAdventureRoute(subject);
 		return;
 	}
-	
+
 	if (route.includes(".php")) {
 		route = "";
 		replacePath(route);
 		return;
-	} 
-		
+	}
+
 	const segments = route.split('/');
-	
-	if (segments.count <= 2) {
+
+	if (segments.length <= 2) {
 		return;
 	}
 
@@ -139,22 +135,22 @@ const validatePath = async () => {
 		await handleOldAdventureRoute(subject);
 		return;
 	}
-	
+
 	// fallback	
-	route = route.toLowerCase().replace("/", "");
+	route = route.toLowerCase().replaceAll("/", "");
 	replacePath(route);
 }
 
 const handleOldAdventureRoute = async (routeId) => {
-		const category = await getCategory(routeId);
-		
-		if (category !== undefined) {
-			const current = `${category}-${routeId}`;
-			replacePath(current);
-			return;
-		}
+	const category = await getCategory(routeId);
 
-		await handleBlogNotFound(routeId);
+	if (category !== undefined) {
+		const current = `${category}-${routeId}`;
+		replacePath(current);
+		return;
+	}
+
+	await handleBlogNotFound(routeId);
 }
 
 const replacePath = (newPath) => {
