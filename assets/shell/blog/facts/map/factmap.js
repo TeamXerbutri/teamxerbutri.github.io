@@ -6,6 +6,7 @@ import View from "ol/View";
 import Map from "ol/Map";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
+import {apiBasePath} from "../../../../config.js";
 
 let omap;
 let isLoaded = false;
@@ -23,7 +24,7 @@ export const loadFactsMap = (route) => {
 	
 	railVector = new VectorLayer({
 		source: new VectorSource({
-			url: "../data/spoor/" + route + "/geometry.json",
+			url: apiBasePath() + "/spoor/" + route + "/geometry.json",
 			format: new GeoJSON(),
 		}),
 		style: function (feature) {

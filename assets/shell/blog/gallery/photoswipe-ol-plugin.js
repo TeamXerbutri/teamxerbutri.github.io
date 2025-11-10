@@ -9,6 +9,7 @@ import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import {Select} from "ol/interaction";
 import {click, pointerMove} from "ol/events/condition";
+import {apiBasePath} from "../../../config.js";
 
 const defaultOptions = {
 	captionContent: ".pswp-caption-content",
@@ -469,7 +470,7 @@ class PhotoswipeOpenLayersPlugin {
 
 		const railVector = new VectorLayer({
 			source: new VectorSource({
-				url: "../data/spoor/" + route + "/geometry.json",
+				url: apiBasePath() + "/spoor/" + route + "/geometry.json",
 				format: new GeoJSON(),
 			}),
 			style: function (feature) {
@@ -478,7 +479,7 @@ class PhotoswipeOpenLayersPlugin {
 		});
 
 		const photoVectorSource = new VectorSource({
-			url: "../data/spoor/" + route + "/photos.json",
+			url: apiBasePath() + "/spoor/" + route + "/photos.json",
 			format: new GeoJSON(),
 		})
 
