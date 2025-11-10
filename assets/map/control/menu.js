@@ -56,7 +56,18 @@ export class MapMenuControl extends Control {
 		
 		const menuContainer = document.createElement("div");
 		menuContainer.classList.add("menu-modal__item");
-		menuContainer.innerHTML = `<a class="mat-button light" href="../" title="Ga naar het index-overzicht van Team Xerbutri, met alle bezochte locaties">Naar het index-overzicht van Team Xerbutri</a>`; //TODO translate => use i18n
+		
+		let menuContainerLink = document.createElement("a");
+		menuContainerLink.classList.add("mat-button", "light");
+		menuContainerLink.href = "home";
+		menuContainerLink.title = "Ga naar het index-overzicht van Team Xerbutri, met alle bezochte locaties"; //TODO translate => use i18n
+		menuContainerLink.innerHTML = "Naar het index-overzicht van Team Xerbutri"; //TODO translate => use i18n
+		menuContainerLink.addEventListener("click", event => {
+			event.preventDefault();
+			pageEvents.navigateTo("home");
+		});
+		
+		menuContainer.appendChild(menuContainerLink);
 		
 		menuModal.appendChild(dragHandle);
 		menuModal.appendChild(modalHeader);
