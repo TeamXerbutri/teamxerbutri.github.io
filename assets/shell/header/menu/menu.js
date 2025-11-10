@@ -86,6 +86,16 @@ const handleMenuDismiss = () => {
 }
 
 export const initShareMenu = () => {
+	if (isTouchDevice()) {
+		const shareButton = document.querySelector(".menu__share");
+		shareButton.addEventListener("click", () => {
+			document.querySelector(".sub-menu__share").classList.toggle("show");
+			document.addEventListener("click", handleShareDismiss, true);
+		});
+	}
+}
+
+export const loadShareMenu = () => {
 
 	const shareMenu = document.querySelector(".sub-menu__share");
 	const path = location.href;
@@ -95,14 +105,6 @@ export const initShareMenu = () => {
 	const whatsapp = shareMenuItem("whatsapp://send?text=" + uri, "Whatsapp");
 
 	shareMenu.innerHTML = facebook + whatsapp;
-
-	if (isTouchDevice()) {
-		const shareButton = document.querySelector(".menu__share");
-		shareButton.addEventListener("click", () => {
-			document.querySelector(".sub-menu__share").classList.toggle("show");
-			document.addEventListener("click", handleShareDismiss, true);
-		});
-	}
 }
 
 export const initMenu = () => {

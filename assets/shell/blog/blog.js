@@ -1,6 +1,6 @@
 import {currentPage} from "../../navigator.js";
 import {hideItems, showItems} from "../togglhelper.js";
-import {initShareMenu} from "../header/menu/menu.js";
+import {initShareMenu, loadShareMenu} from "../header/menu/menu.js";
 import {fetchTranslations, translate} from "../../translator.js";
 import {loadBlogFacts} from "./facts/facts.js";
 import {loadBlogContent} from "./content/content.js";
@@ -51,6 +51,7 @@ const buildBlog = async () => {
 	}
 
 	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId));
+	loadShareMenu();
 
 	// TODO translateAll?
 	await loadGallery(category, routeId);
