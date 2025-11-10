@@ -27,6 +27,7 @@ export const loadMap = () => {
 	document.querySelector("html").classList.add("overflow-hidden");
 	document.querySelector(".shell").hidden = true;
 	document.querySelector("header").classList.add("hide");
+	document.querySelector(".map").hidden = false;
 }
 
 const init = () => {

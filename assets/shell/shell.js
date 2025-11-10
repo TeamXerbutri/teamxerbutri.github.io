@@ -20,7 +20,7 @@ export const loadShell = () => {
 	document.querySelector("html").classList.remove("overflow-hidden");
 	document.querySelector("header").classList.remove("hide");
 	
-	if(currentPage()==="home"){
+	if (currentPage()==="home"){
 		loadIndex();
 	}
 	else{
@@ -28,6 +28,11 @@ export const loadShell = () => {
 	}
 
 	document.querySelector(".shell").hidden = false;
+	
+	let map = document.querySelector(".map");
+	
+	if (map !== null)
+		map.hidden = true;
 }
 
 // TODO: there is a async component-part and a sync-part.
