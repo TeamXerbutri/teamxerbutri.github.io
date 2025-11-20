@@ -65,7 +65,7 @@ const createGallery = async (category, routeId, type) => {
 				gallery.appendChild(link);
 			});
 			break;
-		case galleryTypes.map:
+		case galleryTypes.maps:
 			const pf = await paraFetch(category, routeId);
 			pf.items.forEach((item) => {
 				const link = createLink(item, category, routeId);
@@ -93,7 +93,7 @@ const createGallery = async (category, routeId, type) => {
 const galleryTypes = {
 	none: "none",
 	images: "images",
-	map: "map"
+	maps: "maps"
 };
 
 const createGalleryComponent = (type, routeId) => {
@@ -104,7 +104,7 @@ const createGalleryComponent = (type, routeId) => {
 	let largeScreenPadding = {
 		top: 64, bottom: 24, left: 0, right: 0
 	};
-	if(type === galleryTypes.map || type === galleryTypes.captions)
+	if(type === galleryTypes.maps || type === galleryTypes.captions)
 	largeScreenPadding = {
 		top: 64, bottom: 24, left: 52, right: 52
 	};
@@ -122,7 +122,7 @@ const createGalleryComponent = (type, routeId) => {
 				mobileCaptionOverlapRatio: 1,
 			});
 			break;
-		case galleryTypes.map:
+		case galleryTypes.maps:
 			const olPlugin = new PhotoswipeOpenLayersPlugin(lightbox, routeId, {});
 			break;
 		default: {
