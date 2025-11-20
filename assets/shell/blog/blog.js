@@ -2,11 +2,10 @@ import {currentPage} from "../../navigator.js";
 import {hideItems, showItems} from "../togglhelper.js";
 import {initShareMenu, loadShareMenu} from "../header/menu/menu.js";
 import {fetchTranslations, translate} from "../../translator.js";
-import {loadBlogFacts} from "./facts/facts.js";
 import {loadBlogContent} from "./content/content.js";
-import {loadGallery} from "./gallery/gallery.js";
 import {loadJsonLd} from "./jsonld/jsonld.js";
 import {parallel} from "../../helpers.js";
+import {loadBlogInfo} from "./info/info.js";
 
 let isLoaded = false;
 
@@ -50,11 +49,9 @@ const buildBlog = async () => {
 		return;
 	}
 
-	await parallel(loadBlogContent(category, routeId), loadBlogFacts(category, routeId));
+	await parallel(loadBlogContent(category, routeId), loadBlogInfo(category, routeId));
 	loadShareMenu();
-
-	// TODO translateAll?
-	await loadGallery(category, routeId);
+	
 	await loadJsonLd(category, routeId);
 }
 

@@ -1,4 +1,4 @@
-import {imageBasePath} from "../../../config.js";
+import {imageBasePath} from "../../../../config.js";
 
 const createImageLink = (category, routeId, item, size) => {
 	return `${imageBasePath()}/${category}/${routeId}/${routeId}${item.name}-${size.width}x${size.height}.jpg`

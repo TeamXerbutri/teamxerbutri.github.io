@@ -1,30 +1,32 @@
 import "./gallery.css"
 import "photoswipe/style.css";
 import "./captions.css"
-import {lang} from "../../../language.js";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../../shared/icons/icons.js";
+import {leftArrow, nextArrow, prevArrow, zoomIn} from "../../../../shared/icons/icons.js";
 import PhotoswipeMatDesignPlugin from "./photoswipe-mat-design-plugin.js";
 import {createLink} from "./galleryfactory.js";
-import {translate} from "../../../translator.js";
+import {translate} from "../../../../translator.js";
 import PhotoswipeOpenLayersPlugin from "./photoswipe-ol-plugin.js";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
-import {apiBasePath} from "../../../config.js";
-import {get} from "../../../helpers.js";
+import {apiBasePath} from "../../../../config.js";
+import {get} from "../../../../helpers.js";
+import {lang} from "../../../../language.js";
 
 // I will reload the gallery each time.
 
 let categoryCache = "";
 let routeIdCache = "";
+let galleryTypeCache = "none";
 
-export const loadGallery = async (category, routeId) => {
+export const loadGallery = async (category, routeId, galleryType) => {
 	categoryCache = category;
 	routeIdCache = routeId.toLowerCase();
+	galleryTypeCache = galleryType.toLowerCase();
 	const app = document.getElementById("js-app");
 	app.removeEventListener("scroll", onScrollCreateGallery, true);
 	
 	if (document.querySelector("article").scrollHeight < app.clientHeight) {
-		await createGallery(category, routeId);
+		await createGallery(category, routeId, galleryType);
 	}
 	else{
 	 	app.addEventListener("scroll", onScrollCreateGallery, true);
@@ -35,12 +37,11 @@ const onScrollCreateGallery = async () => {
 	const app = document.getElementById("js-app");
 	if (app.scrollTop + app.clientHeight >= app.scrollHeight-200){
 		app.removeEventListener("scroll", onScrollCreateGallery, true);
-		await createGallery(categoryCache, routeIdCache);
+		await createGallery(categoryCache, routeIdCache, galleryTypeCache);
 	}
 }
 
-const createGallery = async (category, routeId) => {
-	const type = await getGalleryType(category, routeId);
+const createGallery = async (category, routeId, type) => {
 	let gallerySection = document.querySelector(".blog__gallery");
 	
 	if (type === galleryTypes.none){
@@ -57,14 +58,13 @@ const createGallery = async (category, routeId) => {
 	switch (type) {
 		case galleryTypes.none:
 			break;
-		case galleryTypes.default:
+		case galleryTypes.images:
 			const items = await fetchImages(category, routeId);
 			items.forEach((item) => {
 				const link = createLink(item, category, routeId);
 				gallery.appendChild(link);
 			});
 			break;
-		case galleryTypes.captions:
 		case galleryTypes.map:
 			const pf = await paraFetch(category, routeId);
 			pf.items.forEach((item) => {
@@ -92,19 +92,9 @@ const createGallery = async (category, routeId) => {
 
 const galleryTypes = {
 	none: "none",
-	default: "default",
-	captions: "captions",
+	images: "images",
 	map: "map"
 };
-
-// TODO implement
-const getGalleryType = async (category, routeId) => {
-	
-	if(category === "spoor")
-		return galleryTypes.map;
-	
-	return galleryTypes.default;
-}
 
 const createGalleryComponent = (type, routeId) => {
 
@@ -123,7 +113,7 @@ const createGalleryComponent = (type, routeId) => {
 	
 	switch (type) {
 		case galleryTypes.none:
-		case galleryTypes.default:
+		case galleryTypes.images:
 			break;
 		case galleryTypes.captions:
 			const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {

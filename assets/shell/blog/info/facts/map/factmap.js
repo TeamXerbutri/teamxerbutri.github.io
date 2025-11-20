@@ -6,7 +6,7 @@ import View from "ol/View";
 import Map from "ol/Map";
 import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
-import {apiBasePath} from "../../../../config.js";
+import {apiBasePath} from "../../../../../config.js";
 
 let omap;
 let isLoaded = false;

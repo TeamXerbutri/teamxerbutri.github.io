@@ -9,7 +9,7 @@ import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import {Select} from "ol/interaction";
 import {click, pointerMove} from "ol/events/condition";
-import {apiBasePath} from "../../../config.js";
+import {apiBasePath} from "../../../../config.js";
 
 const defaultOptions = {
 	captionContent: ".pswp-caption-content",
@@ -191,7 +191,7 @@ class PhotoswipeOpenLayersPlugin {
 			slide.infoSheetData.hidden = true;
 			infoSheet.classList.add("pswp__sheet--faded");
 
-			// Disable caption visibility with the delay, so it"s not interactable 
+			// Disable caption visibility with the delay, so it's not interactable 
 			if (slide.captionFadeTimeout) {
 				clearTimeout(slide.captionFadeTimeout);
 			}
