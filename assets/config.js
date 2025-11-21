@@ -9,14 +9,13 @@ export const SupportedLanguages = ["nl", "en", "fr"];
 
 export const Version = "7.0.0";
 
-export const apiBasePath = () => {
-	return basePath() + ApiBasePath;
-}
-
 const basePath = () => {
 	return "";
 }
 
+export const apiBasePath = () => {
+	return basePath() + ApiBasePath;
+}
 export const imageBasePath = () => {
 	return basePath() + ImageBasePath;
 }
