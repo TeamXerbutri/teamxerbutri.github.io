@@ -73,11 +73,11 @@ const handleBlogNotFound = async (routeId) => {
 	try {
 		const routes = await fetchAlternativeRoutes();
 		if (routes[routeId] !== undefined) {
-			routeId = routes[routeId];
-			const category = await getCategory(routeId);
+			const redirectRouteId = routes[routeId];
+			const category = await getCategory(redirectRouteId);
 
 			if (category !== undefined) {
-				const current = `${category}-${routeId}`;
+				const current = `${category}-${redirectRouteId}`;
 				replacePath(current);
 				return;
 			}
@@ -111,14 +111,21 @@ export const initialPageLoad = () => {
 		return;
 	}
 
-	validatePath().then(() => loadPage());
+		validatePath()
+		.then(() => loadPage())
+		.catch(err => {
+			console.error('Path validation failed:', err);
+			const current = "xerbutri-404";
+			replacePath(current);
+			loadPage();
+		});
 }
 
 const validatePath = async () => {
 	let route = window.location.pathname;
 
-	if (location.href.includes("geef=")) {
-		const subject = location.href.split("geef=")[1].split("&")[0].toLowerCase();
+	if (window.location.href.includes("geef=")) {
+		const subject = window.location.href.split("geef=")[1].split("&")[0].toLowerCase();
 		await handleOldAdventureRoute(subject);
 		return;
 	}

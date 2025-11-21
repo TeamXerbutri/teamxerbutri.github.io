@@ -15,7 +15,7 @@ export const initLanguage = () => {
 		console.error("Could not store language preference in localStorage:", error);
 	}
 	
-	document.addEventListener("DOMContentLoaded", setLanguageInDom); // there is no need to wait for DOM. I just don't care.
+	setLanguageInDom();
 }
 
 const hasLocalStorage = () => {
@@ -42,6 +42,11 @@ export const setLanguage = (languageCode) => {
 	if (!SupportedLanguages.includes(languageCode))
 		return;
 
+	if (!hasLocalStorage()) {
+		console.warn("Could not store language preference, localStorage is not available");
+		return;
+	}
+
 	language = languageCode;
 	try {
 		localStorage.setItem("language", language);
@@ -67,8 +72,7 @@ const getLanguage = () => {
 	}
 
 	const browserLanguage = navigator.languages ? navigator.languages[0] : navigator.language;
-
-	// default fallback to nl
+	
 	if (!browserLanguage) {
 		console.warn("Fallback to default language");
 		return DefaultLanguage;

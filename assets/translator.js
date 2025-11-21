@@ -9,7 +9,7 @@ const addTranslations = (newTranslations) => {
 }
 
 export const translate = (key) => {
-	const text = key.split('.').reduce((obj, i) => obj?.[i], translations);
+	const text = key.split('.').reduce((obj, segment) => obj?.[segment], translations);
 	return text || key;
 }
 
@@ -20,9 +20,10 @@ export const fetchTranslations = async (key) => {
 		addTranslations(result);
 		return result;
 	} catch (error) {
-		console.error(`Error fetching translations for ${key}:`, error);
+				console.error(`Error fetching translations for ${key}:`, error);
+		return null;
 	}
-	
+
 }
 
 export const translateAll = () => {
@@ -76,18 +77,18 @@ const addTranslationToElement = (element, text) => {
 	// if a dataset ends with link, it has link text and title
 	const keys = element.dataset.i18n.split('.');
 	let key = keys[0];
-	
-	if(keys.length > 1)
+
+	if (keys.length > 1)
 		key = key + "." + keys[1];
 
-			const title = key.concat(".title").split('.').reduce((obj, i) => obj?.[i], translations);
+	const title = key.concat(".title").split('.').reduce((obj, segment) => obj?.[segment], translations);
 	if (title) {
 		element.title = title;
 	}
 	element.innerHTML = text;
 }
 
-export const localDate = (day, month, year)=>{
+export const localDate = (day, month, year) => {
 	const monthFull = translate(`month.${month}`)
 	if (lang() === "en") {
 		return `${monthFull} ${day} ${year}`;
