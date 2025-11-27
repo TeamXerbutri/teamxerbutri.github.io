@@ -23,7 +23,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: npm
-      - run: npm install
+          cache: 'npm'
+      - name: Lint lockfile
+        run: npx --yes lockfile-lint --path `package-lock.json` --type npm --allowed-hosts npm --validate-https
+      
+      - run: npm ci --only=production
       - name: Build
         run: npm run build
