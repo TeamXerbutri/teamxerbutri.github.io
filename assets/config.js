@@ -1,7 +1,7 @@
 // Use Vite environment variables when available, otherwise fall back to localhost defaults
 const ApiBasePath = import.meta && import.meta.env && import.meta.env.VITE_API_BASE_PATH
 	? import.meta.env.VITE_API_BASE_PATH
-	: "http://localhost:5174/api";
+	: "https://teamxerbutri.github.io/teamxerbutri.api/api";
 const ImageBasePath = import.meta && import.meta.env && import.meta.env.VITE_IMAGE_BASE_PATH
 	? import.meta.env.VITE_IMAGE_BASE_PATH
 	: ApiBasePath;
