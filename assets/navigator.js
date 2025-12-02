@@ -121,7 +121,7 @@ export const initialPageLoad = () => {
 		});
 }
 
-const validatePath = async () => {
+export const validatePath = async () => {
 	let route = window.location.pathname;
 
 	if (window.location.href.includes("geef=")) {
