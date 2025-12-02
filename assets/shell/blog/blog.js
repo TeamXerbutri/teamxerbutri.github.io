@@ -1,7 +1,7 @@
 import {currentPage} from "../../navigator.js";
 import {hideItems, showItems} from "../togglhelper.js";
 import {initShareMenu, loadShareMenu} from "../header/menu/menu.js";
-import {fetchTranslations, translate} from "../../translator.js";
+import {fetchTranslations, translate, translateAll} from "../../translator.js";
 import {loadBlogContent} from "./content/content.js";
 import {loadJsonLd} from "./jsonld/jsonld.js";
 import {parallel} from "../../helpers.js";
@@ -53,6 +53,7 @@ const buildBlog = async () => {
 	loadShareMenu();
 	
 	await loadJsonLd(category, routeId);
+	translateAll();
 }
 
 const init = async () => {

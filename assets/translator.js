@@ -32,15 +32,16 @@ export const translateAll = () => {
 
 export const reTranslateAll = () => {
 	translations = {};
-	fetchIndexTranslations().then(() => {
+	fetchAllTranslations().then(() => {
 		translateAll()
 	})
 }
 
-const fetchIndexTranslations = async () => {
+const fetchAllTranslations = async () => {
 	await fetchTranslations("shell");
 	await fetchTranslations("index");
 	await fetchTranslations("card");
+	await fetchTranslations("blog");
 }
 
 const replace = (element) => {

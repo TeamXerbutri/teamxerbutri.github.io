@@ -1,3 +1,5 @@
+import {translate} from "../../../../translator.js";
+
 const defaultOptions = {};
 
 class PhotoswipeMatDesignPlugin {
@@ -10,13 +12,23 @@ class PhotoswipeMatDesignPlugin {
 		});
 		
 		lightbox.addFilter("uiElement", (element, data) => {
-			if(data.name === "close") {
-				element.setAttribute("data-i18n", "gallery.back");
-				
-				element.classList.add("link_mat-app-bar");
-			}
-			if(data.name === "zoom") {
-				element.classList.add("link_mat-app-bar");
+			switch (data.name) {
+				case "close":
+					this.setTranslation(element, "gallery.back");
+					element.classList.add("link_mat-app-bar");
+					break;
+				case "zoom":
+					this.setTranslation(element, "gallery.zoom");
+					element.classList.add("link_mat-app-bar");
+					break;
+				case "arrowPrev":
+					this.setTranslation(element, "gallery.prev");
+					break;
+				case "arrowNext":
+					this.setTranslation(element, "gallery.next");
+					break;
+				default:
+					// leave element unchanged
 			}
 			return element;
 		})
@@ -50,7 +62,12 @@ class PhotoswipeMatDesignPlugin {
 				}
 			});
 		});
-	}	
+	}
+
+	setTranslation(element, key) {
+		element.setAttribute("data-i18n", key);
+		element.title = translate(key);
+	}
 }
 
 export default PhotoswipeMatDesignPlugin;
