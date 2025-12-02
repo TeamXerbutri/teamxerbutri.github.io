@@ -29,24 +29,6 @@ class PhotoswipeOpenLayersPlugin {
 			this.initSheet();
 		});
 
-		lightbox.addFilter("uiElement", (element, data) => {
-			if (data.name === "close") {
-				element.setAttribute("data-i18n", "gallery.back");
-
-				element.classList.add("link_mat-app-bar");
-			}
-			if (data.name === "zoom") {
-				element.classList.add("link_mat-app-bar");
-			}
-			return element;
-		})
-
-		// change the order
-		lightbox.on("firstUpdate", () => {
-			const closeEl = this.pswp.topBar.querySelector(".pswp__button--close");
-			this.pswp.topBar.insertBefore(closeEl, this.pswp.topBar.firstChild);
-		})
-
 		lightbox.on("afterInit", () => {
 			this.loadNavMap(route);
 		})
