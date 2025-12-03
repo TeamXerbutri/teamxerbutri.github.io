@@ -30,7 +30,7 @@ jobs:
       - name: Lint lockfile
         run: npx --yes lockfile-lint --path `package-lock.json` --type npm --allowed-hosts npm --validate-https
       - name: Install dependencies
-        run: npm ci --only=production
+        run: npm ci --ignore-scripts
       - name: Build
         run: npm run build
       - uses: actions/configure-pages@v4
