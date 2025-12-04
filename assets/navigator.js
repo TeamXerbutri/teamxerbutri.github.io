@@ -41,6 +41,11 @@ const loadPage = () => {
 		case "map":
 			loadMap();
 			break;
+		case "cmsmap":
+			import("./cms/cmsmap.js").then(module => {
+				module.loadCmsMap();
+			});
+			break;
 		default:
 			loadShell();
 			break;
@@ -151,6 +156,12 @@ export const validatePath = async () => {
 	if (route.startsWith("/avontuur")) {
 		const subject = route.split("/").pop().toLowerCase();
 		await handleOldAdventureRoute(subject);
+		return;
+	}
+	
+	if (window.location.hostname === "teamxerbutri.github.io" && route.startsWith("/cmsmap")) {
+		route = "cmsmap";
+		replacePath(route);
 		return;
 	}
 

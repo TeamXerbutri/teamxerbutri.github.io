@@ -34,7 +34,7 @@ const init = () => {
 	
 	let app = document.getElementById("js-app");
 	
-		app.insertAdjacentHTML('beforeend', `<div id="js-map" class="map"><div class="menu-modal__dismiss hide dismiss"></div> <div class="layer-modal__dismiss hide dismiss"></div></div>`);
+	app.insertAdjacentHTML('beforeend', `<div id="js-map" class="map"><div class="menu-modal__dismiss hide dismiss"></div> <div class="layer-modal__dismiss hide dismiss"></div></div>`);
 	
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;
