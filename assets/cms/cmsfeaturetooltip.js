@@ -8,7 +8,7 @@ export class CmsFeatureTooltip {
 		featureTooltip.pinned = false;
 		featureTooltip.id = "cms-feature-tooltip";
 		featureTooltip.classList.add("cms-feature-tooltip");
-		document.getElementById("cmsmap").appendChild(featureTooltip);
+		document.getElementById("js-cmsmap").appendChild(featureTooltip);
 
 		const selectPointerMove = new Select({
 			condition: pointerMove,

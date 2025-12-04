@@ -1,6 +1,7 @@
 import "./cms.css";
+import "./topbar.css";
 import "ol/ol.css";
-import {defaults as defaultControls, MousePosition, ZoomSlider} from "ol/control";
+import {defaults as defaultControls, MousePosition} from "ol/control";
 import Map from "ol/Map";
 import View from "ol/View";
 import {Tile as TileLayer, Vector as VectorLayer} from "ol/layer";
@@ -12,6 +13,7 @@ import GeoJSON from "ol/format/GeoJSON";
 import {createStringXY} from 'ol/coordinate';
 import {CmsFeatureTooltip} from "./cmsfeaturetooltip.js";
 import {apiBasePath} from "../config.js";
+import {CmsTopBarControl} from "./topbar.js";
 
 let map;
 let isLoaded = false;
@@ -26,7 +28,10 @@ export const loadCmsMap = () =>{
 	document.querySelector("html").classList.add("overflow-hidden");
 	document.querySelector(".shell").hidden = true;
 	document.querySelector("header").classList.add("hide");
-	document.querySelector(".map").hidden = true;
+	
+	if(document.querySelector(".map"))
+		document.querySelector(".map").hidden = true;
+	
 	document.querySelector(".cmsmap").hidden = false;
 }
 
@@ -91,7 +96,7 @@ const init = () => {
 			center: [6, 51.7],
 			zoom: 8
 		}),
-		controls: defaultControls().extend([ new ZoomSlider(), mousePositionControl])
+		controls: defaultControls().extend([mousePositionControl])
 	});
 
 	// vectors
@@ -115,35 +120,10 @@ const init = () => {
 	map.addLayer(railVector);
 
 	new CmsFeatureTooltip(map, styles);
-
-	// top bar
-	const topbar = document.createElement("div");
-	topbar.id = "tx-cms-top-bar";
-	topbar.className = "ol-unselectable ol-control";
-	topbar.innerHTML = `<input type="text" value="" id="tx-mouse-position"><button id="tx-copy-button" onclick="copyText()">Copy</button>`;
-
-	map.addEventListener("click", function() {
-		const element = document.getElementById("tx-mouse-position");
-		element.value = document.getElementsByClassName("custom-mouse-position")[0].innerHTML;
-		copyText();
-	})
-
-	document.getElementById("js-app").appendChild(topbar);
+	map.addControl(new CmsTopBarControl(map));
 
 	document
 		.querySelector('meta[name="description"]')
 		.setAttribute("content", "Team Xerbutri, content for future blogs.");
 	document.title = "TX-The tunnel: CMS";
 }
-
-function copyText() {
-	// Get the text field
-	let copiedText = document.getElementById("tx-mouse-position");
-
-	// Select the text field
-	copiedText.select();
-	copiedText.setSelectionRange(0, 99999); // For mobile devices
-
-	// Copy the text inside the text field
-	navigator.clipboard.writeText(copiedText.value);
-} 
