@@ -1,0 +1,1 @@
+export const modalComponent = `<div class="modal__dismiss backdrop hide"></div>`;

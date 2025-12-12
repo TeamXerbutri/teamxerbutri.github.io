@@ -6,3 +6,12 @@
 	fill: #F9F0DC;
 	color: #000;
 }
+
+.icon_rating{
+	display: inline-block;
+	width: 30px;
+	height: 8px;
+	fill: #cfcf02;
+	color: #000;
+	background-color: #000000;
+}

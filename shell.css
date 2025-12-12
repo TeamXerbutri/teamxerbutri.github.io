@@ -5,7 +5,7 @@ body {
 	margin: 0;
 }
 
-main {
+.shell {
 	height: 100vh;
 }
 
@@ -34,7 +34,7 @@ noscript {
 	padding: 16px;
 }
 
-.shell {
+.frame {
 	overflow-y: auto;
 	height: calc(100% - 64px);
 }
