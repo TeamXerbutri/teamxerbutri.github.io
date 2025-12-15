@@ -41,7 +41,8 @@ const init = () => {
 
 	let frame = document.getElementById("js-frame");
 	
-	frame.innerHTML = shellComponent(children());
+	if (frame)
+		frame.innerHTML = shellComponent(children());
 
 	const headerElem = document.querySelector("header");
 	headerElem.innerHTML = headerComponent;

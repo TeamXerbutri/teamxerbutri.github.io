@@ -1,4 +1,4 @@
-import {currentPage, loadThisPage} from "../../../navigator.js";
+import {reloadPage} from "../../../navigator.js";
 import {isTouchDevice} from "../../../fix/touch.js";
 import {SupportedLanguages} from "../../../config.js";
 import {lang, setLanguage} from "../../../language.js";
@@ -64,7 +64,7 @@ const menuItem = (key) => {
 			reloadCards();
 			showRightLanguages();
 			reTranslateAll()
-			loadThisPage(); // TODO, this is reload functionality
+			reloadPage();
 		});
 	} else {
 		item.addEventListener("click", function () {

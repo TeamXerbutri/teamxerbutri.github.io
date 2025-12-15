@@ -57,7 +57,7 @@ const navigateBack = () => {
 };
 
 // TODO => split reloading (due to language change) from routing. Please use events for that!
-export const loadThisPage = () => {
+export const reloadPage = () => {
 	loadPage();
 }
 
