@@ -16,7 +16,7 @@ export const initializeBackToTop = async () => {
 	let frame = document.getElementById("js-frame");
 	hideBackToTop();
 
-	frame.onscroll = function (ev) {
+	frame.onscroll = function () {
 		let bt = document.querySelector(".back-to-top");
 		if (frame.scrollTop >= 200 && bt.hidden) {
 			showBackToTop();
