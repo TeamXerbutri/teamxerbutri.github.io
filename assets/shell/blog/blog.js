@@ -16,7 +16,7 @@ export const loadBlog = async () => {
 		showItems(".header__blog", "show_inline-block");
 		hideItems(".index", "show");
 		showItems(".blog", "show");
-		document.querySelectorAll(".blog_hide").forEach(e=>e.hidden = true);
+		document.querySelectorAll(".blog_hide").forEach(e => e.hidden = true);
 
 		let frame = document.getElementById("js-frame");
 		if (frame)
@@ -33,7 +33,7 @@ export const loadBlog = async () => {
 		// blog loading async part. => fetch and load.
 		await buildBlog();
 		frame.scrollTop = 0;
-		} catch (err) {
+	} catch (err) {
 		console.error('Blog loading failed:', err);
 		setBlogNotFound();
 	}
@@ -51,7 +51,7 @@ const buildBlog = async () => {
 
 	await parallel(loadBlogContent(category, routeId), loadBlogInfo(category, routeId));
 	loadShareMenu();
-	
+
 	await loadJsonLd(category, routeId);
 	translateAll();
 }
