@@ -19,7 +19,6 @@ export const loadIndex = () => {
 	if (!isLoaded) {
 		init().then(() => {
 			isLoaded = true;
-			console.timeEnd("index-loaded");
 		});
 	}
 
@@ -32,7 +31,6 @@ export const loadIndex = () => {
 		setMetaData();
 
 	frame.scrollTop = 0;
-	console.timeEnd("index");
 }
 
 export const reloadCards = () => {

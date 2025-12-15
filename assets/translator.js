@@ -23,7 +23,6 @@ export const fetchTranslations = async (key) => {
 				console.error(`Error fetching translations for ${key}:`, error);
 		return null;
 	}
-
 }
 
 export const translateAll = () => {
