@@ -127,6 +127,11 @@ export const initialPageLoad = () => {
 }
 
 export const validatePath = async () => {
+	const redirect = sessionStorage.redirect;
+	delete sessionStorage.redirect;
+	if (redirect && redirect !== location.href) {
+		history.replaceState(null, null, redirect);
+	}
 	let route = window.location.pathname;
 
 	if (window.location.href.includes("geef=")) {
@@ -153,7 +158,7 @@ export const validatePath = async () => {
 		return;
 	}
 
-	if (route.startsWith("/avontuur")) {
+	if (route.startsWith("/avontuur/")) {
 		const subject = route.split("/").pop().toLowerCase();
 		await handleOldAdventureRoute(subject);
 		return;
@@ -165,7 +170,7 @@ export const validatePath = async () => {
 		return;
 	}
 
-	// fallback	
+	// fallback
 	route = route.toLowerCase().replaceAll("/", "");
 	replacePath(route);
 }

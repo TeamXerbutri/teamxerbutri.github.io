@@ -1,13 +1,45 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-	<title>Not found redirect</title>
+	<title>404 Pagina niet gevonden</title>
+	<link href="/shell.css" rel="stylesheet">
 </head>
-<body></body>
+<body>
+<main>
+	<div class="shell">
+		<header>
+			<h1>Team Xerbutri - Pagina niet gevonden</h1>
+		</header>
+
+		<div class="frame">
+			<div class="welcome">
+				<p>Er is iets mis gegaan, de pagina is niet gevonden. Ga terug naar de <a href="/" title="Terug naar de Team Xerbutri overzichtspagina">overzichtspagina</a></p>
+			</div>
+			<noscript>
+				<h2>Probleem bij het laden!</h2>
+				<p>Javascript is niet geactiveerd. <br/>
+					Team Xerbutri gebruikt Javascript voor de werking van de applicatie.</p>
+				<h3>Hoe los ik dit op?</h3>
+				<p>Voor instructies om Javascript aan te zetten, zie <a
+						href="https://www.browserchecker.nl/javascript-aanzetten" target="_blank">Browserchecker,
+					Javascript
+					aanzetten</a>.
+				</p>
+			</noscript>
+		</div>
+	</div>
+
+</main>
+
+</body>
 <script>
+	let route = location.href;
 	
-	
-	
-	
+	sessionStorage.redirect = route;
+	const l = window.location;
+	const repo = "";
+	l.replace(
+		l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo
+	);
 </script>
 </html>
