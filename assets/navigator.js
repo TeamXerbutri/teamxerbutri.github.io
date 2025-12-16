@@ -127,13 +127,15 @@ export const initialPageLoad = () => {
 }
 
 export const validatePath = async () => {
+	let route = window.location.pathname;
+	
 	const redirect = sessionStorage.redirect;
 	delete sessionStorage.redirect;
 	if (redirect && redirect !== location.href) {
 		history.replaceState(null, null, redirect);
+		route = redirect;
 	}
-	let route = window.location.pathname;
-
+	
 	if (window.location.href.includes("geef=")) {
 		const subject = window.location.href.split("geef=")[1].split("&")[0].toLowerCase();
 		await handleOldAdventureRoute(subject);
