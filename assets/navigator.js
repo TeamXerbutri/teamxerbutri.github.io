@@ -111,12 +111,18 @@ const getCategory = async (routeId) => {
 
 export const initialPageLoad = () => {
 
-	if (window.location.pathname.length < 2) {
+	const redirect = sessionStorage.redirect;
+	delete sessionStorage.redirect;
+	if (redirect && redirect !== location.href) {
+		history.replaceState(null, null, redirect);
+	}
+	
+	if (!redirect && window.location.pathname.length < 2) {
 		loadPage();
 		return;
 	}
-
-		validatePath()
+	
+	validatePath(redirect)
 		.then(() => loadPage())
 		.catch(err => {
 			console.error('Path validation failed:', err);
@@ -126,17 +132,8 @@ export const initialPageLoad = () => {
 		});
 }
 
-export const validatePath = async () => {
-	let route = window.location.pathname;
-	
-	const redirect = sessionStorage.redirect;
-	delete sessionStorage.redirect;
-	if (redirect && redirect !== location.href) {
-		history.replaceState(null, null, redirect);
-		route = redirect;
-	}
-	
-	if (window.location.href.includes("geef=")) {
+const validatePath = async (route) => {
+	if (route.includes("geef=")) {
 		const subject = window.location.href.split("geef=")[1].split("&")[0].toLowerCase();
 		await handleOldAdventureRoute(subject);
 		return;
