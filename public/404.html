@@ -33,7 +33,13 @@
 
 </body>
 <script>
+	
 	let route = window.location.pathname;
+
+	if (location.href.includes("geef=")) {
+		const subject = route.split("geef=")[1].split("&")[0].toLowerCase();
+		route = "/avontuur/" + subject;
+	}
 	
 	sessionStorage.redirect = route;
 	const l = window.location;

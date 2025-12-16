@@ -20,12 +20,12 @@
 
 @media only screen and (min-width: 1024px) {
 	.card-feed {
-		width: 1006px;
+		width: 1008px;
 	}
 }
 
 @media only screen and (min-width: 1350px) {
 	.card-feed {
-		width: 1302px;
+		width: 1304px;
 	}
 }
