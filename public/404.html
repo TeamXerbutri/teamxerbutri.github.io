@@ -36,8 +36,8 @@
 	
 	let route = window.location.pathname;
 
-	if (location.href.includes("geef=")) {
-		const subject = route.split("geef=")[1].split("&")[0].toLowerCase();
+	if (location.search.includes("geef=")) {
+		const subject = location.search.split("geef=")[1].split("&")[0].toLowerCase();
 		route = "/avontuur/" + subject;
 	}
 	
