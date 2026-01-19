@@ -461,7 +461,7 @@ class PhotoswipeOpenLayersPlugin {
 		});
 
 		const photoVectorSource = new VectorSource({
-			url: apiBasePath() + "/spoor/" + route + "/photos.json",
+			url: apiBasePath() + "/spoor/" + route + "/coords.json",
 			format: new GeoJSON(),
 		})
 
