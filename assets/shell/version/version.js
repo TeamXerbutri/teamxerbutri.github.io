@@ -14,6 +14,7 @@ const fetchVersion = async () => {
 
 export const checkVersion = async () => {
 	const serverVersion = await fetchVersion();
+	document.querySelector('meta[name="version"]').setAttribute("content", Version);
 	
 	if (serverVersion.version === Version)
 		return;
