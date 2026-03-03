@@ -9,3 +9,4 @@ export const nextArrow = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0
 
 export const dragIcon = '<svg aria-hidden="true" class="drag-handle" viewBox="0 0 22 4" width="22" height="4"><path d="m2,0 a2,2,0,0,0,0,4 L18,4 a-2,-2,0,0,0,0,-4"></path></svg>';
 
+export const ratingIcon = '<svg aria-hidden="true" class="icon_rating" viewBox="0 0 30 8" width="30" height="8"><path d="M15,0 h15 L22,8 h-15 Z"/></svg>';
