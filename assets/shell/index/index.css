@@ -1,0 +1,31 @@
+.card-feed a{
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 756px) {
+	.card-feed {
+		margin-left: auto;
+		margin-right: auto;
+		width: 360px;
+	}
+}
+
+@media only screen and (min-width: 756px) {
+	.card-feed {
+		margin-left: auto;
+		margin-right: auto;
+		width: 756px;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.card-feed {
+		width: 1008px;
+	}
+}
+
+@media only screen and (min-width: 1350px) {
+	.card-feed {
+		width: 1304px;
+	}
+}

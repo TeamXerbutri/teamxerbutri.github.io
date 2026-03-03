@@ -12,15 +12,30 @@ import {MapMenuControl} from "./control/menu.js";
 import {MapLayerControl} from "./control/layer.js";
 import {MapFeatureTooltip} from "./tooltip/feature.js";
 import GeoJSON from "ol/format/GeoJSON";
+import {apiBasePath} from "../config.js";
 
 let map;
-export function initMap() {
+let isLoaded = false;
+
+export const loadMap = () => {
+	// init
+	if (!isLoaded) {
+		init();
+		isLoaded = true;
+	}
+	
+	document.querySelector("html").classList.add("overflow-hidden");
+	document.querySelector(".shell").hidden = true;
+	document.querySelector("header").classList.add("hide");
+	document.querySelector(".map").hidden = false;
+}
+
+const init = () => {
 	
 	let app = document.getElementById("js-app");
 	
-	app.innerHTML = `<div id="js-map" class="map"><div class="menu-modal__dismiss hide dismiss"></div> <div class="layer-modal__dismiss hide dismiss"></div></div>`;
-	app.classList.remove("blog");
-
+	app.insertAdjacentHTML('beforeend', `<div id="js-map" class="map"><div class="menu-modal__dismiss hide dismiss"></div> <div class="layer-modal__dismiss hide dismiss"></div></div>`);
+	
 	// The vertical height fix for mobile devices
 	let vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -30,19 +45,6 @@ export function initMap() {
 		let vh = window.innerHeight * 0.01;
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	});
-	
-	// do not show header in map
-	const headerElem = document.querySelector("header");
-	if (!headerElem.classList.contains("hide")) {
-		headerElem.classList.add("hide")
-		headerElem.innerHTML = "";
-	}
-	
-	// correct the overflow in mobile
-	const htmlElement = document.querySelector("html");
-	if(!htmlElement.classList.contains("overflow-hidden")){
-		htmlElement.classList.add("overflow-hidden");
-	}
 	
 	useGeographic();
 
@@ -110,46 +112,23 @@ export function initMap() {
 
 	// vectors
 	
-	const tunnelVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-tunnel.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
+	function createVectorLayer(url) {
+		return new VectorLayer({
+			source: new VectorSource({
+				url: url,
+				format: new GeoJSON(),
+			}),
+			style: function (feature) {
+				return styles[feature.get("type")];
+			}
+		});
+	}
 
-	const buildingVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-gebouw.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
-
-	const railVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-spoor.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
-
-	const bridgeVector = new VectorLayer({
-		source: new VectorSource({
-			url: "data/geo-brug.json",
-			format: new GeoJSON(),
-		}),
-		style: function (feature) {
-			return styles[feature.get("type")];
-		}
-	});
-
+	const tunnelVector = createVectorLayer(`${apiBasePath()}/geo-tunnel.json`);
+	const buildingVector = createVectorLayer(`${apiBasePath()}/geo-gebouw.json`);
+	const railVector = createVectorLayer(`${apiBasePath()}/geo-spoor.json`);
+	const bridgeVector = createVectorLayer(`${apiBasePath()}/geo-brug.json`);
+	
 	// load styles
 	tunnelVector.getSource().on("featuresloadend", function (event) {
 		event.features.forEach(function (feature) {
@@ -186,6 +165,6 @@ export function initMap() {
 		
 	document
 		.querySelector('meta[name="description"]')
-		.setAttribute("content", "Team Xerbutri explores abandoned buildings, railway tunnels and bridges. The website is about urban exploring, enjoy the pictures.");
-	document.title = "Xerbutri Urban Exploring";
+		.setAttribute("content", "A map with all the abandoned places visited by Team Xerbutri.");
+	document.title = "Team Xerbutri - Maps";
 }
