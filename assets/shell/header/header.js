@@ -6,7 +6,7 @@ const share = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" wid
 
 const txLogo = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><path d="M0,0 L48,0 L48,14 L44,8 L29,8 L29,44 L32,48 L28,48 L35.4,37.8 L42,48 L48,48 L38.6,33.4 L48,20 L44,20 L36.6,30.4 L30,20 L24,20 L33.4,34.8 L24,48 L16,48 L19,44 L19,8 L4,8 L0,12 Z" /></svg>';
 
-const searchIcon = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><circle r="4" cx="4" cy="12"/><circle r="4" cx="20" cy="20"/><circle r="4" cx="20" cy="4"/><path d="M22,22 L22,22 L2,12 L22,2 L22,4 L6,12 L22,20 Z"/></svg>';
+const searchIcon = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><path d="M30,33.8 a18,18,0,1,1,4,-4 L48,43.2 L43.2,48 l-16.0,-16.0 Z"></path><circle r="12" cx="19.5" cy="19.5" fill="currentColor"></circle>/></svg>';
 
 const privacyHtml = `<div id="privacy-panel" class="panel hide">
 			<h2 data-i18n="privacy.link">Privacy</h2>
@@ -35,6 +35,7 @@ export const headerComponent = `
 		<nav role="navigation">
 			<ul class="nav__menu">
 				<li class="header__blog"><div role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.home">${txLogo}</div></li>
+				<li class="header__index"><div role="button" class="link_mat-app-bar header__index" data-i18n="navigation.search">${searchIcon}</div></li>
 				${shareButtonHtml}
 				${dotsMenuHtml}
 			</ul>
