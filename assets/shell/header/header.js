@@ -1,4 +1,5 @@
 import {leftArrow} from "../../shared/icons/icons.js";
+import {onFilter} from "../index/card/card.js";
 
 const dotsMenu = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><circle r="6" cx="24" cy="6"/><circle r="6" cx="24" cy="24"/><circle r="6" cx="24" cy="42"/></svg>';
 
@@ -17,6 +18,7 @@ const contactHtml = `<div id="contact-panel" class="panel hide">
 			<h2 data-i18n="contact.link">Contact</h2>
 			<p data-i18n="contact.content">Contact</p>
 		</div>`;
+const searchHtml = `<div class="search-popover hide"><input type="text" class="search-popover__input" placeholder="Search for blogs.."></div>`
 
 const dotsMenuHtml = `<li class="menu__dropdown menu__dots"><div role="button" class="link_mat-app-bar show_inline-block" data-i18n="navigation.menu">${dotsMenu}</div>
 					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__dots">
@@ -42,6 +44,7 @@ export const headerComponent = `
 		</nav>
 		${contactHtml}
 		${privacyHtml}
+		${searchHtml}
 		`;
 
 export function initHeader() {
@@ -58,4 +61,45 @@ export function initHeader() {
 			pageEvents.navigateTo('home');
 		})
 	});
+
+	const searchPopover = document.querySelector('.search-popover');
+
+	const searchButton = document.querySelectorAll('[data-i18n="navigation.search"]');
+	searchButton.forEach((el) => {
+		el.addEventListener("click", () => {
+			// show search bar
+			if(searchPopover.classList.contains("show")) {
+				searchPopover.classList.remove("show");
+				searchPopover.classList.add("hide");
+			}
+			else{
+				onFilter();
+				searchPopover.classList.remove("hide");
+				searchPopover.classList.add("show");
+			}
+	});
+	const searchInput = document.querySelector('.search-popover__input');
+	searchInput.addEventListener("keyup", () => {
+		// filter cards
+		let inputValue = searchInput.value.toLowerCase();
+		const cards = document.querySelectorAll(".card");
+		cards.forEach(el => {
+			const title = el.querySelector(".card-tag__title").innerText;
+			if (title.toLowerCase().indexOf(inputValue)>-1){
+				el.classList.add("show_inline-block");
+				el.classList.remove("hide");
+			}
+			else{
+				el.classList.add("hide");
+				el.classList.remove("show_inline-block");
+			}
+		})
+		
+	}
+	)
+
+	
+
+
+});
 }
