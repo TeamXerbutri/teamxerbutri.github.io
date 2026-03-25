@@ -18,7 +18,9 @@ const contactHtml = `<div id="contact-panel" class="panel hide">
 			<h2 data-i18n="contact.link">Contact</h2>
 			<p data-i18n="contact.content">Contact</p>
 		</div>`;
-const searchHtml = `<div class="search-popover hide"><input type="text" class="search-popover__input" placeholder="Search for blogs.."></div>`
+const searchHtml = `<div class="search-popover header__index hide">
+			<div class="search-popover__container">
+			<div role="button" class="search-popover__button">${searchIcon}</div><input type="text" class="search-popover__input" placeholder="Search" name="Search" data-i18n="navigation.search"></div></div>`
 
 const dotsMenuHtml = `<li class="menu__dropdown menu__dots"><div role="button" class="link_mat-app-bar show_inline-block" data-i18n="navigation.menu">${dotsMenu}</div>
 					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__dots">
@@ -37,7 +39,7 @@ export const headerComponent = `
 		<nav role="navigation">
 			<ul class="nav__menu">
 				<li class="header__blog"><div role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.home">${txLogo}</div></li>
-				<li class="header__index"><div role="button" class="link_mat-app-bar header__index" data-i18n="navigation.search">${searchIcon}</div></li>
+				<li class="header__index"><div role="button" class="link_mat-app-bar search-popover__button header__index" data-i18n="navigation.search">${searchIcon}</div></li>
 				${shareButtonHtml}
 				${dotsMenuHtml}
 			</ul>
@@ -64,19 +66,11 @@ export function initHeader() {
 
 	const searchPopover = document.querySelector('.search-popover');
 
-	const searchButton = document.querySelectorAll('[data-i18n="navigation.search"]');
+	const searchButton = document.querySelectorAll('.search-popover__button');
 	searchButton.forEach((el) => {
 		el.addEventListener("click", () => {
 			// show search bar
-			if(searchPopover.classList.contains("show")) {
-				searchPopover.classList.remove("show");
-				searchPopover.classList.add("hide");
-			}
-			else{
-				onFilter();
-				searchPopover.classList.remove("hide");
-				searchPopover.classList.add("show");
-			}
+			toggleSearchBar();
 	});
 	const searchInput = document.querySelector('.search-popover__input');
 	searchInput.addEventListener("keyup", () => {
@@ -94,11 +88,21 @@ export function initHeader() {
 				el.classList.remove("show_inline-block");
 			}
 		})
-		
-	}
-	)
-
+	});
 	
+	const toggleSearchBar = () =>{
+		if(searchPopover.classList.contains("show_inline-block")) {
+				searchPopover.classList.remove("show_inline-block");
+				searchPopover.classList.add("hide");
+			}
+			else{
+				onFilter();
+				searchPopover.classList.remove("hide");
+				searchPopover.classList.add("show_inline-block");
+			}
+	}
+
+	// TODO close (dismiss) and back buttons
 
 
 });

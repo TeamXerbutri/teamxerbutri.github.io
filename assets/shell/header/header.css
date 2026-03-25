@@ -7,13 +7,31 @@
 .search-popover{
 	width: 200px;
 	position: absolute;
-	right: calc(50% - 116px);
-	top: 5px;
+	right: 64px;
 	color: #FCF8ED;
-	background-color: #18121e;
+	background-color: #0A080D;
 	z-index: 600;
-	font-size: .85em;
-	padding: 16px;
-	border-radius: 12px;
+	font-size: 1em;
+	padding: 12px;
+	border-radius: 24px;
 	box-shadow: 0 0 4px 2px rgba(234, 198, 122, 0.4), inset -3px 3px 8px 8px rgba(0, 0, 0, 0.10);
+}
+
+.search-popover__container{
+	display: flex;
+	justify-content: left;
+}
+
+.search-popover__input{
+	width: 150px;
+	margin-left: 12px;
+	color: #FCF8ED;
+	background-color: #0A080D;
+	border: none;
+	outline: none;
+}
+
+.search-popover__button{
+	height: 24px;
+    width: 24px;
 }
