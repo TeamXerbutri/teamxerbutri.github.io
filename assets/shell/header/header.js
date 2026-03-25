@@ -71,7 +71,9 @@ export function initHeader() {
 		el.addEventListener("click", () => {
 			// show search bar
 			toggleSearchBar();
+		});
 	});
+	
 	const searchInput = document.querySelector('.search-popover__input');
 	searchInput.addEventListener("keyup", () => {
 		// filter cards
@@ -101,9 +103,4 @@ export function initHeader() {
 				searchPopover.classList.add("show_inline-block");
 			}
 	}
-
-	// TODO close (dismiss) and back buttons
-
-
-});
 }
