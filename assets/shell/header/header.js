@@ -1,5 +1,6 @@
 import {leftArrow} from "../../shared/icons/icons.js";
 import {onFilter} from "../index/card/card.js";
+import { filter } from "../index/cardfilter/cardfilter.js";
 
 const dotsMenu = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><circle r="6" cx="24" cy="6"/><circle r="6" cx="24" cy="24"/><circle r="6" cx="24" cy="42"/></svg>';
 
@@ -73,7 +74,7 @@ export function initHeader() {
 			toggleSearchBar();
 		});
 	});
-	
+
 	const searchInput = document.querySelector('.search-popover__input');
 	searchInput.addEventListener("keyup", () => {
 		// filter cards
@@ -90,6 +91,9 @@ export function initHeader() {
 				el.classList.remove("show_inline-block");
 			}
 		})
+
+		if(inputValue==="")
+			filter()
 	});
 	
 	const toggleSearchBar = () =>{
