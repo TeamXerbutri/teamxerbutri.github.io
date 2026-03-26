@@ -33,6 +33,9 @@ export const loadBlog = async () => {
 		// blog loading async part. => fetch and load.
 		await buildBlog();
 		frame.scrollTop = 0;
+
+		// TODO: for all internal links, addEventListener to handle this as pageEvent
+
 	} catch (err) {
 		console.error('Blog loading failed:', err);
 		setBlogNotFound();
