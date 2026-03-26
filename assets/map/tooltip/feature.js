@@ -15,6 +15,31 @@ export class MapFeatureTooltip {
 		let featureTooltip = document.createElement("div");
 		featureTooltip.pinned = false;
 		featureTooltip.classList.add("feature-tooltip");
+		let smallScreen = false;
+		const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		
+		if (viewportWidth < 756 || viewportHeight < 500) {
+			smallScreen = true;
+		}
+
+		let cardElement = document.createElement("a");
+		cardElement.id = "js-map-tooltip";
+		cardElement.href = "";
+		cardElement.addEventListener("click", event => {
+			event.preventDefault();
+			pageEvents.navigateTo(cardElement.href);
+		});
+
+		let featureTooltipHtml = `<img class="feature-tooltip__img"> <h2 class="feature-tooltip__h2"></h2>`;
+			
+		if (!smallScreen)
+			featureTooltipHtml += `<span class="feature-tooltip_pinned" hidden>${pinSvg}</span>`;
+		
+		cardElement.innerHTML = featureTooltipHtml;
+			
+		featureTooltip.appendChild(cardElement);
+
 		document.getElementById("js-map").appendChild(featureTooltip);
 
 		const selectPointerMove = new Select({
@@ -73,11 +98,10 @@ export class MapFeatureTooltip {
 			const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
 			if (viewportWidth < 756 || viewportHeight < 500) {
-				featureTooltip.innerHTML = featureTooltipComponent(category, route, name, description, true);
+				thisFeatureTooltipComponent(category, route, name, description, true);
 			}
 			else {
-				featureTooltip.innerHTML = featureTooltipComponent(category, route, name, description, false);
-				
+				thisFeatureTooltipComponent(category, route, name, description, false);
 				featureTooltip.querySelector("span").hidden = !featureTooltip.pinned;
 				
 				// width large = 310px
@@ -95,14 +119,20 @@ export class MapFeatureTooltip {
 			featureTooltip.style.visibility = "visible";
 		}
 		
-		const featureTooltipComponent = (category, route, name, description, smallScreen) => {
+		// TODO instead of building it, manipulate the values!
+		const thisFeatureTooltipComponent = (category, route, name, description, smallScreen) => {
 			const s = smallScreen ? "s" : "";
-			let featureTooltipHtml = `<a href="${category}-${route}" title="${name}"> <img class="feature-tooltip__img" src="${imageBasePath()}/${category}/${route}/${route}${s}.jpg" alt="${description}" > <h2 class="feature-tooltip__h2">${name}</h2></a>`;
-			
-			if (!smallScreen)
-				featureTooltipHtml += `<span class="feature-tooltip_pinned" hidden>${pinSvg}</span>`;
-			
-			return featureTooltipHtml;
+
+			let cardElement = document.getElementById("js-map-tooltip");
+			const link = `${category}-${route}`;
+			cardElement.href = link;
+			cardElement.title = name;
+
+			let img = cardElement.getElementsByTagName("img")[0];
+			img.src = `${imageBasePath()}/${category}/${route}/${route}${s}.jpg`;
+			img.alt = description;
+			let nameElem = cardElement.getElementsByTagName("h2")[0];
+			nameElem.innerHTML = name;
 		}
 	}
 }
