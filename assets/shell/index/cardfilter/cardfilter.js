@@ -61,6 +61,7 @@ function hideCategory(className) {
 		categories[i].classList.remove("show_inline-block");
 	}
 }
+
 function showCategory(className) {
 	let categories = document.getElementsByClassName(className);
 	let i;

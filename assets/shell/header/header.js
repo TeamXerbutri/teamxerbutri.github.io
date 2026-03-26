@@ -1,10 +1,14 @@
 import {leftArrow} from "../../shared/icons/icons.js";
+import {onFilter} from "../index/card/card.js";
+import { filter } from "../index/cardfilter/cardfilter.js";
 
-const dotsMenu = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><circle r="3" cx="12" cy="3"/><circle r="3" cx="12" cy="12"/><circle r="3" cx="12" cy="21"/></svg>';
+const dotsMenu = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><circle r="6" cx="24" cy="6"/><circle r="6" cx="24" cy="24"/><circle r="6" cx="24" cy="42"/></svg>';
 
-const share = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><circle r="4" cx="4" cy="12"/><circle r="4" cx="20" cy="20"/><circle r="4" cx="20" cy="4"/><path d="M22,22 L22,22 L2,12 L22,2 L22,4 L6,12 L22,20 Z"/></svg>';
+const share = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><circle r="8" cx="8" cy="24"/><circle r="8" cx="40" cy="40"/><circle r="8" cx="40" cy="8"/><path d="M44,44 L44,44 L4,24 L44,4 L44,8 L12,24 L44,40 Z"/></svg>';
 
-const txLogo = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 24 24" width="24" height="24"><path d="M0,0 L24,0 L24,7 L22,4 L14.5,4 L14.5,22 L16,24 L14,24 L17.7,18.9 L21,24 L24,24 L19.3,16.7 L24,10 L22,10 L18.3,15.2 L15,10 L12,10 L16.7,17.4 L12,24 L8,24 L9.5,22 L9.5,4 L2,4 L0,6 Z" /></svg>';
+const txLogo = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><path d="M0,0 L48,0 L48,14 L44,8 L29,8 L29,44 L32,48 L28,48 L35.4,37.8 L42,48 L48,48 L38.6,33.4 L48,20 L44,20 L36.6,30.4 L30,20 L24,20 L33.4,34.8 L24,48 L16,48 L19,44 L19,8 L4,8 L0,12 Z" /></svg>';
+
+const searchIcon = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><path d="M30,33.8 a18,18,0,1,1,4,-4 L48,43.2 L43.2,48 l-16.0,-16.0 Z"></path><circle r="12" cx="19.5" cy="19.5" fill="currentColor"></circle>/></svg>';
 
 const privacyHtml = `<div id="privacy-panel" class="panel hide">
 			<h2 data-i18n="privacy.link">Privacy</h2>
@@ -15,6 +19,9 @@ const contactHtml = `<div id="contact-panel" class="panel hide">
 			<h2 data-i18n="contact.link">Contact</h2>
 			<p data-i18n="contact.content">Contact</p>
 		</div>`;
+const searchHtml = `<div class="search-popover header__index hide">
+			<div class="search-popover__container">
+			<div role="button" class="search-popover__button">${searchIcon}</div><input type="text" class="search-popover__input" placeholder="Search" name="Search" data-i18n="navigation.search"></div></div>`
 
 const dotsMenuHtml = `<li class="menu__dropdown menu__dots"><div role="button" class="link_mat-app-bar show_inline-block" data-i18n="navigation.menu">${dotsMenu}</div>
 					<ul class="dropdown__sub-menu ul_mat-menu sub-menu__dots">
@@ -33,12 +40,14 @@ export const headerComponent = `
 		<nav role="navigation">
 			<ul class="nav__menu">
 				<li class="header__blog"><div role="button" class="link_mat-app-bar header__blog" data-i18n="navigation.home">${txLogo}</div></li>
+				<li class="header__index"><div role="button" class="link_mat-app-bar search-popover__button header__index" data-i18n="navigation.search">${searchIcon}</div></li>
 				${shareButtonHtml}
 				${dotsMenuHtml}
 			</ul>
 		</nav>
 		${contactHtml}
 		${privacyHtml}
+		${searchHtml}
 		`;
 
 export function initHeader() {
@@ -55,4 +64,47 @@ export function initHeader() {
 			pageEvents.navigateTo('home');
 		})
 	});
+
+	const searchPopover = document.querySelector('.search-popover');
+
+	const searchButton = document.querySelectorAll('.search-popover__button');
+	searchButton.forEach((el) => {
+		el.addEventListener("click", () => {
+			// show search bar
+			toggleSearchBar();
+		});
+	});
+
+	const searchInput = document.querySelector('.search-popover__input');
+	searchInput.addEventListener("keyup", () => {
+		// filter cards
+		let inputValue = searchInput.value.toLowerCase();
+		const cards = document.querySelectorAll(".card");
+		cards.forEach(el => {
+			const title = el.querySelector(".card-tag__title").innerText;
+			if (title.toLowerCase().indexOf(inputValue)>-1){
+				el.classList.add("show_inline-block");
+				el.classList.remove("hide");
+			}
+			else{
+				el.classList.add("hide");
+				el.classList.remove("show_inline-block");
+			}
+		})
+
+		if(inputValue==="")
+			filter()
+	});
+	
+	const toggleSearchBar = () =>{
+		if(searchPopover.classList.contains("show_inline-block")) {
+				searchPopover.classList.remove("show_inline-block");
+				searchPopover.classList.add("hide");
+			}
+			else{
+				onFilter();
+				searchPopover.classList.remove("hide");
+				searchPopover.classList.add("show_inline-block");
+			}
+	}
 }
