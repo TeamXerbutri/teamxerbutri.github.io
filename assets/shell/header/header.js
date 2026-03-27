@@ -8,7 +8,7 @@ const share = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" wid
 
 const txLogo = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><path d="M0,0 L48,0 L48,14 L44,8 L29,8 L29,44 L32,48 L28,48 L35.4,37.8 L42,48 L48,48 L38.6,33.4 L48,20 L44,20 L36.6,30.4 L30,20 L24,20 L33.4,34.8 L24,48 L16,48 L19,44 L19,8 L4,8 L0,12 Z" /></svg>';
 
-const searchIcon = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><path d="M30,33.8 a18,18,0,1,1,4,-4 L48,43.2 L43.2,48 l-16.0,-16.0 Z"></path><circle r="12" cx="19.5" cy="19.5" fill="currentColor"></circle>/></svg>';
+const searchIcon = '<svg aria-hidden="true" class="icon_dark" viewBox="0 0 48 48" width="48" height="48"><path d="M30,33.8 a18,18,0,1,1,4,-4 L48,43.2 L43.2,48 l-16.0,-16.0 Z"></path><circle r="12" cx="19.5" cy="19.5" fill="currentColor"></circle></svg>';
 
 const privacyHtml = `<div id="privacy-panel" class="panel hide">
 			<h2 data-i18n="privacy.link">Privacy</h2>
