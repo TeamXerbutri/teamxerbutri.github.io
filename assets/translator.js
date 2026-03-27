@@ -63,6 +63,9 @@ const replace = (element) => {
 			}
 			element.innerHTML = text;
 			break;
+		case "INPUT":
+			element.placeholder = text;
+			break;
 		default:
 			element.innerHTML = text;
 			break;

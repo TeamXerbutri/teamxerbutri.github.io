@@ -26,6 +26,7 @@ export const loadIndex = () => {
 	showItems(".header__index", "show_inline-block");
 	hideItems(".blog", "show");
 	showItems(".index", "show");
+	hideItems(".search-popover", "show_inline-block");
 	
 	if (isLoaded) 
 		setMetaData();

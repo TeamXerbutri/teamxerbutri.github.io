@@ -33,6 +33,15 @@ export const loadBlog = async () => {
 		// blog loading async part. => fetch and load.
 		await buildBlog();
 		frame.scrollTop = 0;
+
+		// TODO: I am thinking about creating an array, so I can remove them all?
+		const pageLinks = document.querySelectorAll(".tx-page");
+		pageLinks.forEach( el =>{
+			el.addEventListener("click", event => {
+				event.preventDefault();
+				pageEvents.navigateTo(el.href);
+			})
+		});
 	} catch (err) {
 		console.error('Blog loading failed:', err);
 		setBlogNotFound();
