@@ -34,14 +34,6 @@ export const loadBlog = async () => {
 		await buildBlog();
 		frame.scrollTop = 0;
 
-		// TODO: I am thinking about creating an array, so I can remove them all?
-		const pageLinks = document.querySelectorAll(".tx-page");
-		pageLinks.forEach( el =>{
-			el.addEventListener("click", event => {
-				event.preventDefault();
-				pageEvents.navigateTo(el.href);
-			})
-		});
 	} catch (err) {
 		console.error('Blog loading failed:', err);
 		setBlogNotFound();
@@ -66,8 +58,24 @@ const buildBlog = async () => {
 }
 
 const init = async () => {
+	let blogIntro = document.querySelector(".blog__intro");
+	blogIntro.addEventListener("click", (event) => {
+		registerPageEvent(event)
+	});
+	let blogContent = document.querySelector(".blog__content");
+	blogContent.addEventListener("click", (event) => {
+		registerPageEvent(event)
+	});
+
 	await fetchTranslations("blog");
 	initShareMenu();
+}
+
+const registerPageEvent = (event) => {
+	if (event.target.matches(".tx-page")) {
+		event.preventDefault();
+		pageEvents.navigateTo(event.target.href);
+	}
 }
 
 export const blogComponent = () => {
