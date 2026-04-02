@@ -191,3 +191,5 @@ const replacePath = (newPath) => {
 	const repo = "";
 	history.replaceState(null, null, l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo + '/' + newPath);
 }
+
+export const links = [];
