@@ -25,7 +25,7 @@ In the env.local configure your api host.
 
 ## Testing preview
 
-Type: "vite build"
+Type: "npm run build"
 When building is ready, type: "npm run preview"
 
 ## Style guide
